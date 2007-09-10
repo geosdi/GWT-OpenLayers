@@ -1,0 +1,19 @@
+package com.eg.gwt.openLayers.client.control;
+
+import com.eg.gwt.openLayers.client.JSObject;
+
+/**
+ * 
+ * @author Erdem Gunay
+ *
+ */
+public class LayerSwitcher extends Control {
+
+	protected LayerSwitcher(JSObject element) {
+		super(element);
+	}
+
+	public LayerSwitcher() {
+		this(LayerSwitcherImpl.create());
+	}
+}

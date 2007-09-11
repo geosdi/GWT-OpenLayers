@@ -14,4 +14,12 @@ public abstract class Control extends OpenLayersWidget {
 		super(element);
 	}
 
+	public boolean activate() {
+		return ControlImpl.activate(getJSObject());
+	}
+
+	public boolean deactivate() {
+		return ControlImpl.deactivate(getJSObject());
+	}
+	
 }

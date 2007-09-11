@@ -1,5 +1,6 @@
 package com.eg.gwt.openLayers.client.layer;
 
+import com.eg.gwt.openLayers.client.Bounds;
 import com.eg.gwt.openLayers.client.Options;
 
 /**
@@ -27,4 +28,17 @@ public class WMSParams extends Options {
 		return getAttribute("styles");
 	}
 	
+	public void setFormat(String styles) {
+		setAttribute("format", styles);
+	}
+	public String getFormat() {
+		return getAttribute("format");
+	}
+	
+	public void setMaxExtent(Bounds bounds) {
+		setAttribute("maxExtent", bounds.getJSObject());
+	}
+	public Bounds getMaxExtent() {
+		return Bounds.narrowToBounds(getAttributeAsJSObject("maxExtent"));
+	}
 }

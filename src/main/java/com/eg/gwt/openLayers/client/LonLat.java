@@ -19,4 +19,13 @@ public class LonLat extends OpenLayersWidget {
 	public LonLat(double lon, double lat) {
 		this (LonLatImpl.create(lon, lat));
 	}
+	
+	public double lon() {
+		return LonLatImpl.lon(getJSObject());
+	}
+
+	public double lat() {
+		return LonLatImpl.lat(getJSObject());
+	}
+	
 }

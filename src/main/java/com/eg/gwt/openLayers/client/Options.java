@@ -24,78 +24,78 @@ public class Options extends OpenLayersWidget {
 		this(OptionsImpl.create());
 	}
 	
-	protected void setAttribute(String attr, boolean value)
+	public void setAttribute(String attr, boolean value)
 	{
 		ElementHelper.setAttribute(getJSObject(), attr, value);
 	}
 	
-	protected void setAttribute(String attr, int value)
+	public void setAttribute(String attr, int value)
 	{
 		ElementHelper.setAttribute(getJSObject(), attr, value);
 	}
 
-	protected void setAttribute(String attr, int[] value)
+	public void setAttribute(String attr, int[] value)
 	{
 		setAttribute(attr, new JIntArray(value).getJSObject());
 	}	
 	
-	protected void setAttribute(String attr, String value)
+	public void setAttribute(String attr, String value)
 	{
 		ElementHelper.setAttribute(getJSObject(), attr, value);
 	}
 
-	protected void setAttribute(String attr, Element value)
+	public void setAttribute(String attr, Element value)
 	{
 		ElementHelper.setAttribute(getJSObject(), attr, value);
 	}
 	
-	protected void setAttribute(String attr, JSObject value)
+	public void setAttribute(String attr, JSObject value)
 	{
 		ElementHelper.setAttribute(getJSObject(), attr, value);
 	}
 	
-	protected void setAttribute(String attr, JObjectArray value)
+	public void setAttribute(String attr, JObjectArray value)
 	{
 		ElementHelper.setAttribute(getJSObject(), attr, value.getJSObject());
 	}
 	
-	protected String getAttribute(String attr)
+	public String getAttribute(String attr)
 	{
 		return ElementHelper.getAttribute(getJSObject(), attr);
 	}
 	
-	protected boolean getAttributeAsBoolean(String attr)
+	public boolean getAttributeAsBoolean(String attr)
 	{
 		return ElementHelper.getAttributeAsBoolean(getJSObject(), attr);
 	}
 	
-	protected double getAttributeAsDouble(String attr)
+	public double getAttributeAsDouble(String attr)
 	{
 		return ElementHelper.getAttributeAsDouble(getJSObject(), attr);
 	}
 	
-	protected Element getAttributeAsElement(String attr)
+	public Element getAttributeAsElement(String attr)
 	{
 		return ElementHelper.getAttributeAsElement(getJSObject(), attr);
 	}
 
-	protected JSObject getAttributeAsJSObject(String attr)
+	public JSObject getAttributeAsJSObject(String attr)
 	{
 		return ElementHelper.getAttributeAsJSObject(getJSObject(), attr);
 	}
 	
-	protected int getAttributeAsInt(String attr)
+	public int getAttributeAsInt(String attr)
 	{
 		return ElementHelper.getAttributeAsInt(getJSObject(), attr);
 	}
 	
 	//TODO Perhaps move these back to helper methods
-	protected int[] getAttributeAsIntArray(String attr)
+	public int[] getAttributeAsIntArray(String attr)
 	{
 		return new JIntArray(getAttributeAsJSObject(attr)).toArray();
 	}
 	
-	protected String[] getAttributes()
+	public String[] getAttributes()
 	{
 		JSObject attributes = ElementHelper.getAttributes(getJSObject());
 		

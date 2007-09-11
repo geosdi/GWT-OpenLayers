@@ -11,4 +11,12 @@ class LonLatImpl {
     	return new $wnd.OpenLayers.LonLat(lon, lat);
     }-*/;
 	
+	public static native double lon(JSObject self)/*-{
+		return self.lon;
+	}-*/;
+	
+	public static native double lat(JSObject self)/*-{
+		return self.lat;
+	}-*/;
+	
 }

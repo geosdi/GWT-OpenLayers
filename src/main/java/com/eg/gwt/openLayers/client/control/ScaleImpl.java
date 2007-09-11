@@ -1,6 +1,7 @@
 package com.eg.gwt.openLayers.client.control;
 
 import com.eg.gwt.openLayers.client.JSObject;
+import com.google.gwt.user.client.Element;
 
 /**
  * 
@@ -13,4 +14,7 @@ class ScaleImpl {
 		return new $wnd.OpenLayers.Control.Scale();
 	}-*/;
 	
+	public static native JSObject create(Element div)/*-{
+		return new $wnd.OpenLayers.Control.Scale(div);
+	}-*/;
 }

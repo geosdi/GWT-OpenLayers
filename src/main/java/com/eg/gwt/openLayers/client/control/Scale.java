@@ -1,6 +1,8 @@
 package com.eg.gwt.openLayers.client.control;
 
 import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.Options;
+import com.google.gwt.user.client.Element;
 
 /**
  * 
@@ -15,5 +17,9 @@ public class Scale extends Control {
 
 	public Scale() {
 		this(ScaleImpl.create());
+	}
+
+	public Scale(Element div) {
+		this(ScaleImpl.create(div));
 	}
 }

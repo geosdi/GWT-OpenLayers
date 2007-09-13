@@ -1,0 +1,43 @@
+GWT - OpenLayers plugin v0.1
+
+In this release following OpenLayers classes are supported 
+
+OpenLayers package 
+- Bounds 
+- Icon 
+- LonLat 
+- Map 
+- Marker 
+- Pixel 
+- Size 
+
+OpenLayers.Control package 
+- Control 
+- DrawFeature 
+- LayerSwitcher 
+- MousePosition 
+- MouseToolbar 
+- PanZoomBar 
+- Scale 
+
+OpenLayers.event package 
+- Event 
+- Events 
+
+OpenLayers.Handler package 
+- Handler 
+- Path 
+- Point 
+- Polygon 
+
+OpenLayers.Layer package 
+- Layer 
+- Google 
+- Markers 
+- Vector 
+- WMS 
+
+OpenLayers.Popup package 
+- Popup 
+- Anchored 
+- AnchoredBubble

@@ -12,7 +12,7 @@ public class Marker extends OpenLayersWidget {
 		super(element);
 	}
 
-	public static Marker narrowToMap(JSObject element)
+	public static Marker narrowToMarker(JSObject element)
 	{
 		return (element == null)? null: new Marker(element);
 	}

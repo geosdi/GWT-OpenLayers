@@ -24,4 +24,8 @@ class LayerImpl {
 	public static native String getId(JSObject layer) /*-{
 		return layer.id;
 	}-*/;
+	
+	public static native void setOpacity(float opacity, JSObject layer) /*-{
+		layer.setOpacity(opacity);
+	}-*/;
 }

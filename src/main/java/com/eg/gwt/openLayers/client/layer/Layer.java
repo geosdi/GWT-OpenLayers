@@ -30,4 +30,8 @@ public class Layer extends OpenLayersWidget {
 	public String getId() {
 		return LayerImpl.getId(getJSObject());
 	}
+	
+	public void setOpacity(float opacity){ 
+	    	LayerImpl.setOpacity(opacity, getJSObject());
+	}
 }

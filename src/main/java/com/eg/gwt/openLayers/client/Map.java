@@ -8,6 +8,7 @@ import com.google.gwt.user.client.Element;
 /**
  * 
  * @author Erdem Gunay
+ *  	   Amr Alam - Refractions Research
  *
  */
 public class Map extends OpenLayersWidget {
@@ -63,5 +64,42 @@ public class Map extends OpenLayersWidget {
 
 	public void removePopup(Popup popup) {
 		MapImpl.removePopup(getJSObject(), popup.getJSObject());
+	}
+	
+	public Integer getNumLayers() {
+	    	return MapImpl.getNumLayers(getJSObject());
+	}
+	
+	public Layer getLayer(String id) {
+	    JSObject jsObject = MapImpl.getLayer(id, getJSObject());
+	    Layer layer = new Layer(jsObject);
+	    return layer;
+	}
+	
+	public Layer[] getLayers() {
+	    	JSObject jsObjects = MapImpl.getLayers(getJSObject());
+	    	JObjectArray jObjectArray = new JObjectArray(jsObjects);
+	    	Layer[] layers = new Layer[jObjectArray.length()];
+	    	for(int i = 0; i < jObjectArray.length(); i++) {
+	    	    layers[i] = new Layer(jObjectArray.get(i));
+	    	}
+	    	return layers;
+	}
+
+	public void removeLayer(Layer layer) {
+	    	MapImpl.removeLayer(getJSObject(), layer.getJSObject());
+	}
+	
+	/**
+	 * This is not an openLayers native function. Will remove all overlays
+	 * from the this Map.
+	 */
+	public void removeOverlayLayers() {
+	    	Layer[] layers = getLayers();
+	    	for (int i = 0; i < layers.length; i++ ) {
+	    	    if( ((Layer)layers[i]).isBaseLayer() == false ) {
+	    		removeLayer(layers[i]);
+	    	    }
+	    	}
 	}
 }

@@ -1,10 +1,12 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.Options;
 
 /**
  * 
  * @author Erdem Gunay
+ * 	   Amr Alam - Refractions Research
  *
  */
 public class WMS extends Layer {
@@ -15,6 +17,10 @@ public class WMS extends Layer {
 	
 	public WMS(String name, String url, WMSParams params) {
 		this(WMSImpl.create(name, url, params.getJSObject()));
+	}
+	
+	public WMS(String name, String url, WMSParams params, Options options) {
+		this(WMSImpl.create(name, url, params.getJSObject(), options.getJSObject()));
 	}
 
 }

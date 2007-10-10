@@ -5,6 +5,7 @@ import com.google.gwt.user.client.Element;
 /**
  * 
  * @author Erdem Gunay
+ *         Amr Alam - Refractions Research
  *
  */
 class MapImpl {
@@ -44,4 +45,22 @@ class MapImpl {
 	public static native void removePopup(JSObject map, JSObject popup)/*-{
 		map.removePopup(popup);
 	}-*/;
+
+	public static native Integer getNumLayers(JSObject map)/*-{
+		return map.getNumLayers();
+	}-*/;
+
+	public static native JSObject getLayer(String id, JSObject map)/*-{
+		var layer = map.getLayer('id');
+		return (layer === undefined) ? null : layer;
+	}-*/;
+	
+	public static native JSObject getLayers(JSObject map)/*-{
+		return (map.layers === undefined) ? null : map.layers;
+	}-*/;
+
+	public static native void removeLayer(JSObject map, JSObject layer)/*-{
+		map.removeLayer(layer);
+	}-*/;
+
 }

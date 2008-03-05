@@ -52,6 +52,10 @@ public class ElementHelper
 		elem[attr] = value;
 	}-*/;
 	
+	public static native void setAttribute(JSObject elem, String attr, double value) /*-{
+	   elem[attr] = value;
+   }-*/;
+	
 	public static native void setAttribute(JSObject elem, String attr, int value) /*-{
     	elem[attr] = value;
     }-*/;

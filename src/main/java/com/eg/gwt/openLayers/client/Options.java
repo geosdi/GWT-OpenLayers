@@ -37,7 +37,12 @@ public class Options extends OpenLayersWidget {
 	public void setAttribute(String attr, int[] value)
 	{
 		setAttribute(attr, new JIntArray(value).getJSObject());
-	}	
+	}
+	
+	public void setAttribute(String attr, double value)
+	{
+	   ElementHelper.setAttribute(getJSObject(), attr, value);
+	}
 	
 	public void setAttribute(String attr, String value)
 	{

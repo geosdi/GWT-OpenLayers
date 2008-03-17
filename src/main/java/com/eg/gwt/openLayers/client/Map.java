@@ -102,4 +102,8 @@ public class Map extends OpenLayersWidget {
 	    	    }
 	    	}
 	}
+	
+	public int getZoomForExtent(Bounds bounds, boolean closest) {
+			return MapImpl.getZoomForExtent(getJSObject(), bounds.getJSObject(), closest);
+	}
 }

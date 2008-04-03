@@ -16,4 +16,7 @@ public class TMS extends Layer {
 		this(TMSImpl.create(name, url, params.getJSObject()));
 	}
     
+	public int getNumLoadingTiles(){
+		return TMSImpl.getNumLoadingTiles(this.getJSObject());
+	}
 }

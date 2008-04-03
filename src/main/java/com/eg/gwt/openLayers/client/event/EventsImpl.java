@@ -5,6 +5,7 @@ import com.eg.gwt.openLayers.client.JSObject;
 /**
  * 
  * @author Erdem Gunay
+ * 	   Wayne Fang - Refractions Research
  *
  */
 class EventsImpl {
@@ -19,7 +20,7 @@ class EventsImpl {
 	}-*/;
 	
 	public native static void unregister(JSObject self, String type, JSObject obj)/*-{
-		self.unregister(event, obj);
+		self.unregister(type, obj);
 	}-*/;
 	
 	public native static JSObject getMousePosition(JSObject self, JSObject evt)/*-{

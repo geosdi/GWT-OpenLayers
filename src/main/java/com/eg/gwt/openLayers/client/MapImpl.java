@@ -66,5 +66,8 @@ class MapImpl {
 	public static native int getZoomForExtent(JSObject map, JSObject bounds, boolean closest)/*-{
 		return map.getZoomForExtent(bounds, closest);
 	}-*/;
-	
+
+	public static native JSObject getLonLatFromPixel(JSObject map, JSObject pixel)/*-{
+		return map.getLonLatFromPixel(pixel);
+	}-*/;
 }

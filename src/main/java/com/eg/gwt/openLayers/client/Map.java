@@ -106,4 +106,8 @@ public class Map extends OpenLayersWidget {
 	public int getZoomForExtent(Bounds bounds, boolean closest) {
 			return MapImpl.getZoomForExtent(getJSObject(), bounds.getJSObject(), closest);
 	}
+
+	public LonLat getLonLatFromPixel(Pixel pixel) {
+		return new LonLat( MapImpl.getLonLatFromPixel(getJSObject(), pixel.getJSObject()) );
+	}
 }

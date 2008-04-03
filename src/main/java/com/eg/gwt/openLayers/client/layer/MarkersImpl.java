@@ -5,6 +5,7 @@ import com.eg.gwt.openLayers.client.JSObject;
 /**
  * 
  * @author Erdem Gunay
+ * 	   Wayne Fang - Refractions Research
  *
  */
 class MarkersImpl {
@@ -14,12 +15,14 @@ class MarkersImpl {
 	}-*/;
 
 	public static native void addMarker(JSObject markers, JSObject marker)/*-{
-			var lonlat = new $wnd.OpenLayers.LonLat(37.38,37.06);
-			var size = new $wnd.OpenLayers.Size(10,17);
-			var offset = new $wnd.OpenLayers.Pixel(-(size.w/2), -size.h);
-			var icon = new $wnd.OpenLayers.Icon('img/marker.png',size,offset);
-			markers.addMarker(new $wnd.OpenLayers.Marker(lonlat,icon));
-			markers.addMarker(marker);
+		markers.addMarker(marker);
 	}-*/;
-
+	
+	public static native void removeMarker(JSObject markers, JSObject marker)/*-{
+		markers.removeMarker(marker);
+	}-*/;
+	
+	public static native void destroy(JSObject markers)/*-{
+		markers.destroy();
+	}-*/;
 }

@@ -18,4 +18,7 @@ class WMSImpl {
 		return new $wnd.OpenLayers.Layer.WMS(name, url, params, options);
 	}-*/;
 	
+	public static native int getNumLoadingTiles(JSObject layer)/*-{
+		return layer.numLoadingTiles;
+	}-*/;
 }

@@ -6,6 +6,7 @@ import com.eg.gwt.openLayers.client.Marker;
 /**
  * 
  * @author Erdem Gunay
+ * 	   Wayne Fang - Refractions Research
  *
  */
 public class Markers extends Layer {
@@ -22,4 +23,11 @@ public class Markers extends Layer {
 		MarkersImpl.addMarker(getJSObject(), marker.getJSObject());
 	}
 	
+	public void removeMarker(Marker marker) {
+		MarkersImpl.removeMarker(getJSObject(), marker.getJSObject());
+	}
+	
+	public void destroy() {
+		MarkersImpl.destroy(getJSObject());
+	}
 }

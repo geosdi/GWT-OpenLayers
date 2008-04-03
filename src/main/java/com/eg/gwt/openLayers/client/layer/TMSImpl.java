@@ -12,4 +12,7 @@ public class TMSImpl {
 		return new $wnd.OpenLayers.Layer.TMS(name, url, params);
 	}-*/;
 
+	public static native int getNumLoadingTiles(JSObject layer)/*-{
+		return layer.numLoadingTiles;
+	}-*/;
 }

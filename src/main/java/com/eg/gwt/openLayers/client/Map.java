@@ -89,6 +89,14 @@ public class Map extends OpenLayersWidget {
 	public void removeLayer(Layer layer) {
 	    	MapImpl.removeLayer(getJSObject(), layer.getJSObject());
 	}
+
+	public int getLayerIndex(Layer layer) {
+		return MapImpl.getLayerIndex(getJSObject(), layer.getJSObject());
+	}
+
+	public void setLayerIndex(Layer layer, int index) {
+		MapImpl.setLayerIndex(getJSObject(), layer.getJSObject(), index);
+	}
 	
 	/**
 	 * This is not an openLayers native function. Will remove all overlays

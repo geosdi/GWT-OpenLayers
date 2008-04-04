@@ -62,6 +62,14 @@ class MapImpl {
 	public static native void removeLayer(JSObject map, JSObject layer)/*-{
 		map.removeLayer(layer);
 	}-*/;
+	
+	public static native int getLayerIndex(JSObject map, JSObject layer)/*-{
+		return map.getLayerIndex(layer);
+	}-*/;
+
+	public static native void setLayerIndex(JSObject map, JSObject layer, int index)/*-{
+		map.setLayerIndex(layer, index);
+	}-*/;
 
 	public static native int getZoomForExtent(JSObject map, JSObject bounds, boolean closest)/*-{
 		return map.getZoomForExtent(bounds, closest);

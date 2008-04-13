@@ -19,4 +19,7 @@ class GoogleImpl {
       return new $wnd.OpenLayers.Layer.Google(name, params);
    }-*/;
 	
+   public static native JSObject forwardMercator(JSObject google, double lon, double lat)/*-{
+      return google.forwardMercator(lon, lat);
+   }-*/;
 }

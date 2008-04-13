@@ -5,8 +5,8 @@ import com.google.gwt.user.client.Element;
 /**
  * 
  * @author Erdem Gunay
- *         Amr Alam - Refractions Research
- *
+ * @author Amr Alam - Refractions Research
+ * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  */
 class MapImpl {
 	
@@ -71,7 +71,11 @@ class MapImpl {
 		map.setLayerIndex(layer, index);
 	}-*/;
 
-	public static native int getZoomForExtent(JSObject map, JSObject bounds, boolean closest)/*-{
+	public static native void zoomToExtent(JSObject map, JSObject bounds)/*-{
+      map.zoomToExtent(bounds);
+   }-*/;
+
+   public static native int getZoomForExtent(JSObject map, JSObject bounds, boolean closest)/*-{
 		return map.getZoomForExtent(bounds, closest);
 	}-*/;
 

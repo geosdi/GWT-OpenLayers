@@ -8,8 +8,8 @@ import com.google.gwt.user.client.Element;
 /**
  * 
  * @author Erdem Gunay
- *  	   Amr Alam - Refractions Research
- *
+ * @author Amr Alam - Refractions Research
+ * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  */
 public class Map extends OpenLayersWidget {
 
@@ -52,7 +52,9 @@ public class Map extends OpenLayersWidget {
 	public void addLayers(Layer[] layers) {
 		JSObject[] jsObjects = new JSObject[layers.length];
 		for (int i = 0; i < layers.length; i++)
-			jsObjects[i] = layers[i].getJSObject();
+      {
+         jsObjects[i] = layers[i].getJSObject();
+      }
 		
 		JObjectArray array = new JObjectArray(jsObjects);
 		MapImpl.addLayers(getJSObject(), array.getJSObject());
@@ -105,10 +107,14 @@ public class Map extends OpenLayersWidget {
 	public void removeOverlayLayers() {
 	    	Layer[] layers = getLayers();
 	    	for (int i = 0; i < layers.length; i++ ) {
-	    	    if( ((Layer)layers[i]).isBaseLayer() == false ) {
+	    	    if(layers[i].isBaseLayer() == false ) {
 	    		removeLayer(layers[i]);
 	    	    }
 	    	}
+	}
+	
+	public void zoomToExtent(Bounds bounds) {
+	   MapImpl.zoomToExtent(getJSObject(), bounds.getJSObject());
 	}
 	
 	public int getZoomForExtent(Bounds bounds, boolean closest) {

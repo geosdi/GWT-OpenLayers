@@ -5,7 +5,8 @@ import com.eg.gwt.openLayers.client.JSObject;
 /**
  * 
  * @author Erdem Gunay
- * 	   Wayne Fang - Refractions Research
+ * @author Wayne Fang - Refractions Research
+ * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  *
  */
 class MarkersImpl {
@@ -20,6 +21,10 @@ class MarkersImpl {
 	
 	public static native void removeMarker(JSObject markers, JSObject marker)/*-{
 		markers.removeMarker(marker);
+	}-*/;
+	
+	public static native JSObject getDataExtent(JSObject markers)/*-{
+	   return markers.getDataExtent();
 	}-*/;
 	
 	public static native void destroy(JSObject markers)/*-{

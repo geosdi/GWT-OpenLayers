@@ -1,12 +1,14 @@
 package com.eg.gwt.openLayers.client.layer;
 
+import com.eg.gwt.openLayers.client.Bounds;
 import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Marker;
 
 /**
  * 
  * @author Erdem Gunay
- * 	   Wayne Fang - Refractions Research
+ * @author Wayne Fang - Refractions Research
+ * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  *
  */
 public class Markers extends Layer {
@@ -25,6 +27,10 @@ public class Markers extends Layer {
 	
 	public void removeMarker(Marker marker) {
 		MarkersImpl.removeMarker(getJSObject(), marker.getJSObject());
+	}
+	
+	public Bounds getDataExtent() {
+	   return Bounds.narrowToBounds(MarkersImpl.getDataExtent(getJSObject()));
 	}
 	
 	public void destroy() {

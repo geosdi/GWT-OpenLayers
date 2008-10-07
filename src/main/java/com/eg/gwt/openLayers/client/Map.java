@@ -10,6 +10,7 @@ import com.google.gwt.user.client.Element;
  * @author Erdem Gunay
  * @author Amr Alam - Refractions Research
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
+ * @author Edwin Commandeur - Atlis Information Systems
  */
 public class Map extends OpenLayersWidget {
 
@@ -123,5 +124,9 @@ public class Map extends OpenLayersWidget {
 
 	public LonLat getLonLatFromPixel(Pixel pixel) {
 		return new LonLat( MapImpl.getLonLatFromPixel(getJSObject(), pixel.getJSObject()) );
+	}
+	
+	public String getProjection() {
+	    return MapImpl.getProjection(getJSObject());
 	}
 }

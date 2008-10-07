@@ -7,6 +7,7 @@ import com.google.gwt.user.client.Element;
  * @author Erdem Gunay
  * @author Amr Alam - Refractions Research
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
+ * @author Edwin Commandeur - Atlis Information Systems 
  */
 class MapImpl {
 	
@@ -82,4 +83,8 @@ class MapImpl {
 	public static native JSObject getLonLatFromPixel(JSObject map, JSObject pixel)/*-{
 		return map.getLonLatFromPixel(pixel);
 	}-*/;
+    
+	public static native String getProjection(JSObject map)/*-{
+        return map.getProjection();
+    }-*/;	
 }

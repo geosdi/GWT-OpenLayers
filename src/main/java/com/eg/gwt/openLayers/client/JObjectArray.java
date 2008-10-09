@@ -22,8 +22,18 @@ public class JObjectArray extends JArrayBase
 			set(i, array[i]);
 		}
 	}
-	
-	public void set(int index, JSObject value)
+
+    public JObjectArray(OpenLayersWidget[] array)
+    {
+        super(array.length);
+        
+        for(int i = 0; i < array.length; i++)
+        {
+            set(i, array[i].getJSObject());
+        }
+    }
+
+    public void set(int index, JSObject value)
 	{
 		JObjectArrayImpl.arraySet(getJSObject(), index, value);
 	}

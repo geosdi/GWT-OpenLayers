@@ -24,5 +24,13 @@ public class PointImpl {
     public native static String getId(JSObject self)/*-{
         return self.id;
     }-*/;
-
+    
+    public native static void setX(JSObject self, double x)/*-{
+        self.x = x;
+    }-*/;
+    
+    public native static void setY(JSObject self, double y)/*-{
+        self.x = y;
+    }-*/;
+    
 }

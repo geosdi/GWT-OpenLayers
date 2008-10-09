@@ -25,4 +25,13 @@ public class Point extends Geometry {
     public String getId(){
         return PointImpl.getId(getJSObject());
     }
+
+    public void setX(double x){
+        PointImpl.setX(getJSObject(), x);
+    }
+    
+    public void setY(double y){
+        PointImpl.setY(getJSObject(), y);
+    }
+
 }

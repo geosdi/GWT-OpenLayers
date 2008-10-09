@@ -16,7 +16,17 @@ var gwt = {
             */
     
             //paste new relay function here
-    
+
+            createPolygon : function(o){
+                return new OpenLayers.Geometry.Polygon(
+                        gwt.openlayers.convertToArray(o));
+            },
+            
+            createLinearRing : function(o){
+                return new OpenLayers.Geometry.LinearRing(
+                        gwt.openlayers.convertToArray(o));
+            },
+            
             createLineString : function(o){
                 return new OpenLayers.Geometry.LineString(
                         gwt.openlayers.convertToArray(o));

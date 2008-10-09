@@ -1,3 +1,4 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
+     <script src="js/gwt-openlayers/relay.js"></script>
 </module>

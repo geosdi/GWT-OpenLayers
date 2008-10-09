@@ -4,7 +4,6 @@ import com.eg.gwt.openLayers.client.JObjectArray;
 import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Options;
 import com.eg.gwt.openLayers.client.feature.Feature;
-import com.eg.gwt.openLayers.client.geometry.Point;
 
 public class Vector extends Layer {
 
@@ -26,9 +25,13 @@ public class Vector extends Layer {
     }
 
     public void addFeatures(Feature[] features){
+        JObjectArray a = new JObjectArray(features);
+        VectorImpl.addFeatures(getJSObject(), a.getJSObject());
+        
+        /* Solution without relay:
         for(int i = 0, max = features.length; i < max; i++){
             addFeature(features[i]);
-        }
+        }*/
     }
     
     public void addFeature(Feature f){

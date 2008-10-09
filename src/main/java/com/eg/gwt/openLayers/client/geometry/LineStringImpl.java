@@ -9,10 +9,10 @@ import com.eg.gwt.openLayers.client.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class GeometryImpl {
- 
-    public static native void destroy(JSObject self)/*-{
-        self.destroy();
+public class LineStringImpl {
+
+    public static native JSObject create(JSObject points)
+    /*-{
+       return new $wnd.gwt.openlayers.relay.createLineString(points);
     }-*/;
-    
 }

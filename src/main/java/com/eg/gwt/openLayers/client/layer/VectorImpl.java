@@ -18,11 +18,12 @@ class VectorImpl {
         return new $wnd.OpenLayers.Layer.Vector(name, options);
     }-*/;
     
-    //Add per feature. Reason: putting Features in JObjectArray 
-    // and passing Array returned from getJSObject doesn't work.
-    // Array turns into Object somewhere and addFeatures does instanceof Array check.
     public static native void addFeature(JSObject self, JSObject feature) /*-{
         self.addFeatures(feature);
+    }-*/;
+    
+    public static native void addFeatures(JSObject self, JSObject features) /*-{
+         $wnd.gwt.openlayers.relay.vectorAddFeatures(self, features);
     }-*/;
 
 }

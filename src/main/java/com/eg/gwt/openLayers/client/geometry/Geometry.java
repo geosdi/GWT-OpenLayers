@@ -4,8 +4,7 @@ import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
 
 /**
- * 
- * @author Atlis EJS, Edwin Commandeur
+ * @author Edwin Commandeur - Atlis EJS
  * 
  */
 public abstract class Geometry extends OpenLayersWidget{

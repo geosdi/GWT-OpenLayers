@@ -9,10 +9,10 @@ import com.eg.gwt.openLayers.client.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class GeometryImpl {
- 
-    public static native void destroy(JSObject self)/*-{
-        self.destroy();
-    }-*/;
-    
+public class Curve extends MultiPoint {
+
+    protected Curve(JSObject element){
+        super(element);
+    }
+
 }

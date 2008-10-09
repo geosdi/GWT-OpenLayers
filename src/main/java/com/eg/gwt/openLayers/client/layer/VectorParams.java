@@ -1,5 +1,6 @@
 package com.eg.gwt.openLayers.client.layer;
 
+import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Options;
 import com.eg.gwt.openLayers.client.Style;
 
@@ -31,9 +32,13 @@ public class VectorParams extends Options {
         return getAttribute("geometryType");
     }
     
-    public void vectorStyle(Style style){
-        
+    public void setStyle(Style style){
+        setAttribute("style", style.getJSObject());
     }
     
+    public JSObject getStyle(Style style){
+        return getAttributeAsJSObject("style");
+    }
+
 }
 

@@ -42,8 +42,8 @@ var gwt = {
             var a = new Array();
             for(var i = 0, m = o.length; i < m; i++){
                 a[i] = o[i];
-                return a;
             }
+            return a;
         }
     }
 }

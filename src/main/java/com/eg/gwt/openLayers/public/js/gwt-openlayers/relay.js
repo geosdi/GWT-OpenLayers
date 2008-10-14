@@ -1,9 +1,8 @@
 
 /*
- * The sole purpose of this class is to relay calls to OpenLayers functions 
- * that take an Array as parameter and that check if the type is Array.
+ * The sole purpose of this class is to relay calls to OpenLayers functions that
+ * take an Array as parameter and that fail if the type of the parameter is not Array.
  *  
- * Adding a relay function is a last resort solution, and should be used judiciously.
  */
 
 var gwt = {
@@ -37,13 +36,14 @@ var gwt = {
             }
         },
         
-        //Don't touch
+        //convert array-like Object to array of type Array
+        //object should be an array created using JObjectArray
         convertToArray : function(o){
             var a = new Array();
             for(var i = 0, m = o.length; i < m; i++){
                 a[i] = o[i];
+                return a;
             }
-            return a;
         }
     }
 }

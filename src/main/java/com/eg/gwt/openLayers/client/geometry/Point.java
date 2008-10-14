@@ -10,6 +10,10 @@ import com.eg.gwt.openLayers.client.OpenLayersWidget;
  */
 public class Point extends Geometry {
 
+    public Point(JSObject point){
+        super(point);
+    }
+    
     public Point(double x, double y) {
         super(PointImpl.create(x,y));
     }    

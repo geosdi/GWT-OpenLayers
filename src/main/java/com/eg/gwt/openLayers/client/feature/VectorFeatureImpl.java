@@ -17,5 +17,14 @@ public class VectorFeatureImpl {
     
     public native static JSObject create(JSObject geometry, JSObject style)/*-{
     return new $wnd.OpenLayers.Feature.Vector(geometry, null, style);
-}-*/;
+    }-*/;
+    
+    public native static String getGeometryClassName(JSObject self)/*-{
+        return self.geometry.CLASS_NAME;
+    }-*/;
+    
+    public native static JSObject getGeometry(JSObject self) /*-{
+        return self.geometry;
+    }-*/;
+    
 }

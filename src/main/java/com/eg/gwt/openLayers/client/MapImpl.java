@@ -86,5 +86,10 @@ class MapImpl {
     
 	public static native String getProjection(JSObject map)/*-{
         return map.getProjection();
-    }-*/;	
+    }-*/;
+	
+    public static native void destroy(JSObject map)/*-{
+        map.destroy();
+    }-*/;
+	
 }

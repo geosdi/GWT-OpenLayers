@@ -129,4 +129,8 @@ public class Map extends OpenLayersWidget {
 	public String getProjection() {
 	    return MapImpl.getProjection(getJSObject());
 	}
+	
+	public void destroy(){
+	    MapImpl.destroy(getJSObject());
+	}
 }

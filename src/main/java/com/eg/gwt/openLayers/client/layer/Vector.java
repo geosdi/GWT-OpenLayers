@@ -3,7 +3,7 @@ package com.eg.gwt.openLayers.client.layer;
 import com.eg.gwt.openLayers.client.JObjectArray;
 import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Options;
-import com.eg.gwt.openLayers.client.feature.Feature;
+import com.eg.gwt.openLayers.client.feature.VectorFeature;
 
 public class Vector extends Layer {
 
@@ -24,19 +24,40 @@ public class Vector extends Layer {
         this(VectorImpl.create(name, options.getJSObject()));
     }
 
-    public void addFeatures(Feature[] features){
+    public void addFeatures(VectorFeature[] features){
         JObjectArray a = new JObjectArray(features);
         VectorImpl.addFeatures(getJSObject(), a.getJSObject());
         
-        /* Solution without relay:
+        /* Solution without relay (see VectorImpl):
         for(int i = 0, max = features.length; i < max; i++){
             addFeature(features[i]);
         }*/
     }
     
-    public void addFeature(Feature f){
+    public void addFeature(VectorFeature f){
         VectorImpl.addFeature(getJSObject(), f.getJSObject());
     }
     
-	//TODO add methods for getting and selecting features
+	//TODO add methods for getting all and selected features
+    
+    public int getNumberOfFeatures(){
+        return VectorImpl.getNumberOfFeatures(getJSObject());
+    }
+    
+    /**
+     * @return Array of VectorFeature objects or null if layer does not contain any features
+     */
+    public VectorFeature[] getFeatures(){
+        int nr = getNumberOfFeatures();
+        if(nr < 1 ){
+            return null;
+        } else {
+            VectorFeature[] vfs = new VectorFeature[nr];
+            for(int i = 0; i < nr; i++){
+                VectorFeature vf = new VectorFeature(VectorImpl.getFeature(getJSObject(), i));
+                vfs[i] = vf;
+            }
+            return vfs;
+        }
+    };
 }

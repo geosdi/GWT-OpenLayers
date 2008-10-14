@@ -24,5 +24,17 @@ class VectorImpl {
     public static native void addFeatures(JSObject self, JSObject features) /*-{
          $wnd.gwt.openlayers.relay.vectorAddFeatures(self, features);
     }-*/;
+    
+    public static native JSObject getFeature(JSObject self, int index) /*-{
+        return self.features[index];
+    }-*/;
+    
+    public static native int getNumberOfFeatures(JSObject self) /*-{
+        if(self.features){
+            return self.features.length;
+        } else {
+            return -1;
+        }
+    }-*/;
 
 }

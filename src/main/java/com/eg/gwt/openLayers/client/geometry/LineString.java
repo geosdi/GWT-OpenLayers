@@ -12,7 +12,7 @@ import com.eg.gwt.openLayers.client.JSObject;
  */
 public class LineString extends Curve{
 
-    protected LineString(JSObject element){
+    public LineString(JSObject element){
         super(element);
     }
     

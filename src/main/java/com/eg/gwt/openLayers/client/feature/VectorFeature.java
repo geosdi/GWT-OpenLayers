@@ -7,7 +7,9 @@ import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Style;
 import com.eg.gwt.openLayers.client.geometry.Geometry;
 import com.eg.gwt.openLayers.client.geometry.LineString;
+import com.eg.gwt.openLayers.client.geometry.LinearRing;
 import com.eg.gwt.openLayers.client.geometry.Point;
+import com.eg.gwt.openLayers.client.geometry.Polygon;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
@@ -53,7 +55,13 @@ public class VectorFeature extends Feature {
         }else if(getGeometryClassName().equals(Geometry.LINESTRING_CLASS_NAME)){
             LineString l = new LineString(VectorFeatureImpl.getGeometry(getJSObject()));
             return null;
+        }else if(getGeometryClassName().equals(Geometry.LINEARRING_CLASS_NAME)){
+            LinearRing r = new LinearRing(VectorFeatureImpl.getGeometry(getJSObject()));
+            return null;            
         }else if(getGeometryClassName().equals(Geometry.POLYGON_CLASS_NAME)){
+            //TODO polygon is not a Multipoint geometry
+            // it consists of Multipoint geometries!!!
+            Polygon p = new Polygon(VectorFeatureImpl.getGeometry(getJSObject()));
             return null;
         }else{
             return null;

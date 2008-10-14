@@ -7,9 +7,9 @@ import com.eg.gwt.openLayers.client.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class Polygon extends Geometry {
+public class Polygon extends Collection {
 
-    protected Polygon(JSObject element){
+    public Polygon(JSObject element){
         super(element);
     }
     

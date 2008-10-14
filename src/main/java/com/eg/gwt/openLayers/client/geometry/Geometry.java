@@ -8,9 +8,10 @@ import com.eg.gwt.openLayers.client.OpenLayersWidget;
  * 
  */
 public abstract class Geometry extends OpenLayersWidget{
-
-    public final static String POINT_CLASS_NAME = "OpenLayers.Geometry.Point";
+    
+    public final static String LINEARRING_CLASS_NAME = "OpenLayers.Geometry.LinearRing";
     public final static String LINESTRING_CLASS_NAME = "OpenLayers.Geometry.LineString";
+    public final static String POINT_CLASS_NAME = "OpenLayers.Geometry.Point";
     public final static String POLYGON_CLASS_NAME = "OpenLayers.Geometry.Polygon";
     
     

@@ -9,7 +9,7 @@ import com.eg.gwt.openLayers.client.JSObject;
  */
 public class LinearRing extends LineString {
 
-    protected LinearRing(JSObject element){
+    public LinearRing(JSObject element){
         super(element);
     }
     

@@ -64,20 +64,20 @@ public class VectorFeature extends Feature {
     public double[][] getCoordinateArray(){
                 
         if(getGeometryClassName().equals(Geometry.POINT_CLASS_NAME)){
-            Point p = new Point(getGeometry());
+            Point p = Point.narrowToPoint(getGeometry());
             double[] coordinates = p.getXY();
             double[][] coordinateArray = {coordinates};
             return coordinateArray;
         }else if(getGeometryClassName().equals(Geometry.LINESTRING_CLASS_NAME)){
-            LineString l = new LineString(VectorFeatureImpl.getGeometry(getJSObject()));
+            LineString l = LineString.narrowToLineString(getGeometry());
             return null;
         }else if(getGeometryClassName().equals(Geometry.LINEARRING_CLASS_NAME)){
-            LinearRing r = new LinearRing(VectorFeatureImpl.getGeometry(getJSObject()));
+            LinearRing r = LinearRing.narrowToLinearRing(getGeometry());
             return null;
         }else if(getGeometryClassName().equals(Geometry.POLYGON_CLASS_NAME)){
             //TODO polygon is not a Multipoint geometry
             // it consists of Multipoint geometries!!!
-            Polygon p = new Polygon(VectorFeatureImpl.getGeometry(getJSObject()));
+            Polygon p = Polygon.narrowToPolygon(getGeometry());
             return null;
         }else{
             return null;

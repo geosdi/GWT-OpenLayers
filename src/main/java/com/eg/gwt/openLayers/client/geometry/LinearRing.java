@@ -9,8 +9,12 @@ import com.eg.gwt.openLayers.client.JSObject;
  */
 public class LinearRing extends LineString {
 
-    public LinearRing(JSObject element){
-        super(element);
+    protected LinearRing(JSObject linearRing){
+        super(linearRing);
+    }
+    
+    public static LinearRing narrowToLinearRing(JSObject linearRing){
+        return (linearRing == null)?null: new LinearRing(linearRing);
     }
     
     public LinearRing(Point[] pts){

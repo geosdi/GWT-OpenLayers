@@ -9,8 +9,12 @@ import com.eg.gwt.openLayers.client.JSObject;
  */
 public class Polygon extends Collection {
 
-    public Polygon(JSObject element){
+    protected Polygon(JSObject element){
         super(element);
+    }
+
+    public static Polygon narrowToPolygon(JSObject polygon){
+        return (polygon == null)?null: new Polygon(polygon);
     }
     
     public Polygon(LinearRing[] rings){

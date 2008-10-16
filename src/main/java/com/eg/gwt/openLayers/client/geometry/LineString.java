@@ -12,8 +12,12 @@ import com.eg.gwt.openLayers.client.JSObject;
  */
 public class LineString extends Curve{
 
-    public LineString(JSObject element){
+    protected LineString(JSObject element){
         super(element);
+    }
+
+    public static LineString narrowToLineString(JSObject lineString){
+        return (lineString == null)?null: new LineString(lineString);
     }
     
     public LineString(Point[] pts){

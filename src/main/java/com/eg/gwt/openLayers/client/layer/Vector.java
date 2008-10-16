@@ -5,6 +5,12 @@ import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Options;
 import com.eg.gwt.openLayers.client.feature.VectorFeature;
 
+/**
+ * 
+ * @author Erdem Gunay
+ * @author Edwin Commandeur - Atlis EJS
+ *
+ */
 public class Vector extends Layer {
 
     protected Vector(JSObject element) {
@@ -54,7 +60,8 @@ public class Vector extends Layer {
         } else {
             VectorFeature[] vfs = new VectorFeature[nr];
             for(int i = 0; i < nr; i++){
-                VectorFeature vf = new VectorFeature(VectorImpl.getFeature(getJSObject(), i));
+                VectorFeature vf = VectorFeature.narrowToVectorFeature(
+                        VectorImpl.getFeature(getJSObject(), i));
                 vfs[i] = vf;
             }
             return vfs;

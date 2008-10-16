@@ -7,8 +7,10 @@ import com.eg.gwt.openLayers.client.Style;
 /**
  * 
  * @author Edwin commandeur - Atlis EJS
+ * 
  * Convenience class exposing options that are valid for a vector layer.
- *  
+ * There's also a Vector constructor that can take an Options object directly. 
+ * 
  */
 public class VectorParams extends Options {
 

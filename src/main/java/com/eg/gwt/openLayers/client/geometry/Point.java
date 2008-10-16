@@ -4,19 +4,22 @@ import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
 
 /**
- * 
- * @author Atlis EJS, Edwin Commandeur
+ * @author Edwin Commandeur - Atlis EJS
  * 
  */
 public class Point extends Geometry {
 
-    public Point(JSObject point){
+    protected Point(JSObject point){
         super(point);
     }
     
     public Point(double x, double y) {
         super(PointImpl.create(x,y));
     }    
+    
+    public static Point narrowToPoint(JSObject point){
+        return (point == null)?null: new Point(point);
+    }
     
     public double getX(){
         return PointImpl.getX(getJSObject());
@@ -38,4 +41,13 @@ public class Point extends Geometry {
         PointImpl.setY(getJSObject(), y);
     }
 
+    public double[] getXY(){
+        double[] xy = {this.getX(), this.getY()};
+        return xy;
+    }
+    
+    public void setXY(double x, double y){
+        this.setX(x);
+        this.setY(y);
+    }
 }

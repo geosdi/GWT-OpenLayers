@@ -12,4 +12,8 @@ public class FeatureImpl {
     public static native void destroy(JSObject self)/*-{
         self.destroy();
     }-*/;
+    
+    public static native String getFeatureId(JSObject self)/*-{
+        return self.id;
+    }-*/;    
 }

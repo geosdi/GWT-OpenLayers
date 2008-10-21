@@ -17,4 +17,8 @@ public abstract class Feature extends OpenLayersWidget {
     public void destroy(){
         FeatureImpl.destroy(getJSObject());
     }
+    
+    public String getFeatureId(){
+        return FeatureImpl.getFeatureId(getJSObject());
+    }
 }

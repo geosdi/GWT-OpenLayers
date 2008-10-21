@@ -36,5 +36,13 @@ class VectorImpl {
             return -1;
         }
     }-*/;
+    
+    public static native void destroyFeatures(JSObject self) /*-{
+        self.destroyFeatures();
+    }-*/;
+    
+    public static native JSObject getFeatureById(JSObject self, String id) /*-{
+        return self.getFeatureById(id);
+    }-*/;
 
 }

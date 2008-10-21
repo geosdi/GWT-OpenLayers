@@ -44,7 +44,6 @@ public class Vector extends Layer {
         VectorImpl.addFeature(getJSObject(), f.getJSObject());
     }
     
-	//TODO add methods for getting all and selected features
     
     public int getNumberOfFeatures(){
         return VectorImpl.getNumberOfFeatures(getJSObject());
@@ -67,4 +66,21 @@ public class Vector extends Layer {
             return vfs;
         }
     };
+    
+    /**
+     * Destroy all features in the vector layer
+     */
+    public void destroyFeatures(){
+        VectorImpl.destroyFeatures(getJSObject());
+    }
+    
+    public VectorFeature getFeatureById(String id){
+        return VectorFeature.narrowToVectorFeature(
+                VectorImpl.getFeatureById(getJSObject(), id));
+    }
+
+    //TODO add method for getting selected features
+    public VectorFeature[] getSelectedFeatures(){
+        return null;
+    }
 }

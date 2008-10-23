@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.JSObject;
-import com.eg.gwt.openLayers.client.Options;
+import com.eg.gwt.openLayers.client.OptionsBase;
 import com.eg.gwt.openLayers.client.Style;
 
 /**
@@ -12,7 +12,7 @@ import com.eg.gwt.openLayers.client.Style;
  * There's also a Vector constructor that can take an Options object directly. 
  * 
  */
-public class VectorParams extends Options {
+public class VectorParams extends OptionsBase {
 
     public VectorParams(){
     }

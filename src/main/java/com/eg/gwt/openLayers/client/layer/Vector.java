@@ -21,6 +21,10 @@ public class Vector extends Layer {
         this(VectorImpl.create(name));
     }
     
+    public static Vector narrowToVector(JSObject vectorLayer){
+        return (vectorLayer == null)?null:new Vector(vectorLayer);
+    }
+    
     //maintain for backwards compatibility
     public Vector(String name, Options options) {
         this(VectorImpl.create(name, options.getJSObject()));

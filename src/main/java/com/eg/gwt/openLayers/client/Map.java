@@ -133,4 +133,12 @@ public class Map extends OpenLayersWidget {
 	public void destroy(){
 	    MapImpl.destroy(getJSObject());
 	}
+	
+	public JSObject getLayerByName(String name){
+	    return MapImpl.getLayerByName(getJSObject(), name);
+	}
+	
+	public void removeLayer(){
+	    //TODO implement
+	}
 }

@@ -92,4 +92,17 @@ class MapImpl {
         map.destroy();
     }-*/;
 	
+    /**
+     * Returns the Layer (as JSObject) that best matches the given name, if any 
+     */
+    public static native JSObject getLayerByName(JSObject map, String name)/*-{
+        var layers = map.getLayersByName(String);
+        if(layers[0]){
+            return layers[0];
+        }else{
+            return null;
+        } 
+    }-*/;
+    
+    public static native void removeLayer()/*-{}-*/; 
 }

@@ -21,7 +21,7 @@ public class DrawFeature extends Control {
         this(DrawFeatureImpl.create(layer.getJSObject(), handler));
     }
 
-    //TODO see if these constructors can be reduced to 1 with DrawFeatureParams object
+    //TODO see if these three constructors can be reduced to 1 with DrawFeatureParams object
     
     public DrawFeature(Vector layer, JSObject handler, Options options) {
         this(DrawFeatureImpl.create(layer.getJSObject(), handler, options.getJSObject()));
@@ -30,8 +30,7 @@ public class DrawFeature extends Control {
     public DrawFeature(Vector layer, JSObject handler, FeatureAddedListener listener){
         this(DrawFeatureImpl.create(layer.getJSObject(), handler, listener));
     }
-
-    //TODO test if this works
+    
     public DrawFeature(Vector layer, JSObject handler, FeatureAddedListener listener, Options options){
         this(DrawFeatureImpl.create(layer.getJSObject(), handler, listener, options.getJSObject()));
     }

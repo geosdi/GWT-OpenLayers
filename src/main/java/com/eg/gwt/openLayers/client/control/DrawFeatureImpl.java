@@ -15,6 +15,8 @@ class DrawFeatureImpl {
         return new $wnd.OpenLayers.Control.DrawFeature(layer, handler);
     }-*/;
 
+    //TODO reduce these three methods to one with DrawFeatureOptions
+    
     public static native JSObject create(JSObject layer, JSObject handler, JSObject options)/*-{
         return new $wnd.OpenLayers.Control.DrawFeature(layer, handler, options);
     }-*/;
@@ -26,8 +28,6 @@ class DrawFeatureImpl {
         return new $wnd.OpenLayers.Control.DrawFeature(layer, handler, {featureAdded:callback});
     }-*/;
     
-    
-    //TODO test if this works
     public static native JSObject create(JSObject layer, JSObject handler, FeatureAddedListener listener, JSObject options)/*-{
         var callback = function(obj){
             listener.@com.eg.gwt.openLayers.client.event.FeatureAddedListener::onFeatureAdded(Lcom/eg/gwt/openLayers/client/JSObject;)(obj);

@@ -12,6 +12,6 @@ import com.eg.gwt.openLayers.client.JSObject;
 public class LinearRingImpl {
 
     public static native JSObject create(JSObject points)/*-{
-        return new $wnd.gwt.openlayers.relay.createLinearRing(points);
+        return new $wnd.com.eg.gwt.openLayers.client.relay.createLinearRing(points);
     }-*/;
 }

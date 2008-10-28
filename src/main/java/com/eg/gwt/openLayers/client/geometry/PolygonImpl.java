@@ -12,7 +12,7 @@ import com.eg.gwt.openLayers.client.JSObject;
 public class PolygonImpl {
 
     public static native JSObject create(JSObject rings)/*-{
-        return new $wnd.gwt.openlayers.relay.createPolygon(rings);
+        return new $wnd.com.eg.gwt.openLayers.client.relay.createPolygon(rings);
     }-*/;
     
 }

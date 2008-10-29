@@ -1,14 +1,14 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.Bounds;
-import com.eg.gwt.openLayers.client.Options;
+import com.eg.gwt.openLayers.client.OptionsBase;
 
 /**
  * 
  * @author Erdem Gunay
  *
  */
-public class WMSParams extends Options {
+public class WMSParams extends LayerOptions {
 
 	public WMSParams() {
 		

@@ -23,8 +23,8 @@ public class WMS extends Layer {
 		this(WMSImpl.create(name, url, params.getJSObject(), options.getJSObject()));
 	}
 
-	public WMS(String name, String url, WMSParams params, WMSExtraParams xparams) {
-	        this(WMSImpl.create(name, url, params.getJSObject(), xparams.getJSObject()));
+	public WMS(String name, String url, WMSParams params, WMSExtraParams extraParams) {
+	        this(WMSImpl.create(name, url, params.getJSObject(), extraParams.getJSObject()));
 	}
 	
 	public int getNumLoadingTiles(){

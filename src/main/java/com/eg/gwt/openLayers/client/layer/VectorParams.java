@@ -1,7 +1,6 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.JSObject;
-import com.eg.gwt.openLayers.client.OptionsBase;
 import com.eg.gwt.openLayers.client.Style;
 
 /**

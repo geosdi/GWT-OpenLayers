@@ -12,7 +12,7 @@ import com.eg.gwt.openLayers.client.Style;
  * There's also a Vector constructor that can take an Options object directly. 
  * 
  */
-public class VectorParams extends OptionsBase {
+public class VectorParams extends LayerOptions {
 
     public VectorParams(){
     }

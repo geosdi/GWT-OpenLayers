@@ -5,7 +5,8 @@ import com.eg.gwt.openLayers.client.JSObject;
 /**
  * 
  * @author Erdem Gunay
- *	   Amr Alam - Refractions Research 
+ *         Amr Alam - Refractions Research 
+ *         Edwin Commandeur - Atlis EJS
  *
  */
 class LayerImpl {
@@ -13,8 +14,8 @@ class LayerImpl {
 		layer.redraw();
 	}-*/;
 	
-	public static native void setIsBaseLayer(boolean bool, JSObject layer) /*-{
-		layer.setIsBaseLayer(bool);
+	public static native void setIsBaseLayer(boolean isBaseLayer, JSObject layer) /*-{
+		layer.setIsBaseLayer(isBaseLayer);
 	}-*/;
 	
 	public static native boolean isBaseLayer(JSObject layer) /*-{
@@ -28,4 +29,12 @@ class LayerImpl {
 	public static native void setOpacity(float opacity, JSObject layer) /*-{
 		layer.setOpacity(opacity);
 	}-*/;
+	
+	public static native boolean displayInLayerSwitcher(JSObject layer) /*-{
+       return layer.displayInLayerSwitcher;
+    }-*/;
+
+	public static native void setDisplayInLayerSwitcher(boolean display, JSObject layer)/*-{
+       layer.displayInLayerSwitcher = display;
+    }-*/;
 }

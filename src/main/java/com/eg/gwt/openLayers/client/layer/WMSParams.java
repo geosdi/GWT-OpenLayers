@@ -41,4 +41,16 @@ public class WMSParams extends LayerOptions {
 	public Bounds getMaxExtent() {
 		return Bounds.narrowToBounds(getAttributeAsJSObject("maxExtent"));
 	}
+	
+	/**
+	 * Set transparent parameter in WMS request.
+	 * Within this method the value of the parameter will be set in uppercase,
+	 * since the WMS specification require that. 
+	 */
+	public void setIsTransparent(boolean isTransparent){
+	    if(isTransparent){
+	        setAttribute("transparent", "TRUE");
+	    } else {
+	    }
+	}
 }

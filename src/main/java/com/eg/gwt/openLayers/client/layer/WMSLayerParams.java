@@ -6,11 +6,12 @@ package com.eg.gwt.openLayers.client.layer;
  */
 public class WMSLayerParams extends LayerOptions {
 
+    
     /**
      * Set the singleTile property to be true or false. 
      * By default singleTile is set to false.
      * .
-     * If true, the map is served as a single tile instead of in separate tiles.
+     * If true, the map is served as a single tile instead of separate tiles.
      * 
      * Why tile or not tile?
      * At www.bostongis.com some guidelines can be found

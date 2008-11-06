@@ -14,8 +14,8 @@ class WMSImpl {
 		return new $wnd.OpenLayers.Layer.WMS(name, url, params);
 	}-*/;
 	
-	public static native JSObject create(String name, String url, JSObject params, JSObject options)/*-{
-		return new $wnd.OpenLayers.Layer.WMS(name, url, params, options);
+	public static native JSObject create(String name, String url, JSObject params, JSObject layerParams)/*-{
+		return new $wnd.OpenLayers.Layer.WMS(name, url, params, layerParams);
 	}-*/;
 	
 	public static native int getNumLoadingTiles(JSObject layer)/*-{

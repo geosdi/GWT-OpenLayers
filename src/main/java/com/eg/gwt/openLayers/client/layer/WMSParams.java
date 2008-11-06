@@ -1,7 +1,6 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.Bounds;
-import com.eg.gwt.openLayers.client.OptionsBase;
 
 /**
  * 

@@ -17,6 +17,10 @@ public class OverviewMap extends Control {
         this(OverviewMapImpl.create());
     }
     
+    /** 
+     * @param params non-default options: In the OpenLayers example for the overviewmap
+     *      mapOptions are copied to overviewmap
+     */
     public OverviewMap(Options params) {
         this(OverviewMapImpl.create(params.getJSObject()));
     }

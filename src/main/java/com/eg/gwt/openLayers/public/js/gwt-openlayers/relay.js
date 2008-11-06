@@ -32,6 +32,33 @@ com.eg.gwt.openLayers.client.convertToArray = function(o){
     return a;
 }
 
+//function for converting GWT enhanced javascript Object to plain javascript Object
+//GWT enhances javascript object with the functions of Object from Java
+//  TO DO make recursive
+com.eg.gwt.openLayers.client.convertToPlainObject = function(o){
+    var obj = new Object();
+    for(prop in o){
+        var x = prop;
+    }
+    return obj;
+}
+
+//code to get around the test: if(this.eventListeners instanceof Object){ ...}
+com.eg.gwt.openLayers.client.eventListenersToObject = function(options){
+    if(options.eventListeners){
+        var obj = new Object();
+        for(i in options.eventListeners){
+            alert(i)
+            obj[i] = options.eventListeners[i]
+        }
+        options.eventListeners = new Object();
+        for(j in obj){
+            options.eventListeners[j] = obj[j]
+        }
+    }
+    return options;
+} 
+
 //relay functions
 com.eg.gwt.openLayers.client.relay = {
 

@@ -52,7 +52,7 @@ class MapImpl {
 	}-*/;
 
 	public static native JSObject getLayer(String id, JSObject map)/*-{
-		var layer = map.getLayer('id');
+		var layer = map.getLayer(id);
 		return (layer === undefined) ? null : layer;
 	}-*/;
 	

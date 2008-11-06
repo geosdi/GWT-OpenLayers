@@ -20,4 +20,9 @@ public class DragPan extends Control
    {
       this(DragPanImpl.create(options.getJSObject()));
    }
+   
+   public DragPan(DragPanOptions options){
+       this(DragPanImpl.create(options.getJSObject()));
+   }
+   
 }

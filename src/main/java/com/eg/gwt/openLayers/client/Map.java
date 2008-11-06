@@ -134,11 +134,26 @@ public class Map extends OpenLayersWidget {
 	    MapImpl.destroy(getJSObject());
 	}
 	
-	public JSObject getLayerByName(String name){
+	/**
+	 * Returns the Layer as a JSObject that has to be narrowed down
+	 * to the appropriate type of Layer.
+	 * 
+	 * TO DO replace by method that returns Layer
+	 * If you can query the type of the layer, then you cast it.
+	 * 
+	 * @param name - the name of the Layer
+	 * @return the
+	 */
+/*	public JSObject getLayerByName(String name){
 	    return MapImpl.getLayerByName(getJSObject(), name);
+	}*/
+	
+	public Layer getLayerByName(String name){
+	    Layer layer = new Layer(MapImpl.getLayerByName(getJSObject(), name));
+	    return layer;
 	}
 	
-	public void removeLayer(){
+	public void removeLayerByName(String name){
 	    //TODO implement
-	}
+	}	
 }

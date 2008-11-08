@@ -12,8 +12,8 @@ import com.google.gwt.user.client.Element;
 class MapImpl {
 	
 	public static native JSObject create(Element div)/*-{
-    	return new $wnd.OpenLayers.Map(div);
-    }-*/;
+		return new $wnd.OpenLayers.Map(div);
+	}-*/;
 	
 	public static native JSObject create(Element div, JSObject options)/*-{
 		return new $wnd.OpenLayers.Map(div, options);
@@ -25,11 +25,15 @@ class MapImpl {
 
 	public static native void setCenter(JSObject map, JSObject lonlat, int zoom)/*-{
 		map.setCenter(lonlat, zoom);
-    }-*/;
+	}-*/;
+
+	public static native String getCenter(JSObject map)/*-{
+        	return map.getCenter().toShortString();
+	}-*/;
 	
 	public static native void addControl(JSObject map, JSObject control)/*-{
 		map.addControl(control);
-    }-*/;
+	}-*/;
 	
 	public static native void addLayer(JSObject map, JSObject layer)/*-{
 		map.addLayer(layer);
@@ -73,11 +77,15 @@ class MapImpl {
 	}-*/;
 
 	public static native void zoomToExtent(JSObject map, JSObject bounds)/*-{
-      map.zoomToExtent(bounds);
-   }-*/;
+                map.zoomToExtent(bounds);
+        }-*/;
 
-   public static native int getZoomForExtent(JSObject map, JSObject bounds, boolean closest)/*-{
+        public static native int getZoomForExtent(JSObject map, JSObject bounds, boolean closest)/*-{
 		return map.getZoomForExtent(bounds, closest);
+	}-*/;
+
+	public static native String getZoom(JSObject map)/*-{
+	    return map.getZoom()+'';
 	}-*/;
 
 	public static native JSObject getLonLatFromPixel(JSObject map, JSObject pixel)/*-{
@@ -85,24 +93,24 @@ class MapImpl {
 	}-*/;
     
 	public static native String getProjection(JSObject map)/*-{
-        return map.getProjection();
-    }-*/;
+                return map.getProjection();
+        }-*/;
 	
-    public static native void destroy(JSObject map)/*-{
-        map.destroy();
-    }-*/;
+        public static native void destroy(JSObject map)/*-{
+		map.destroy();
+	}-*/;
 	
-    /**
-     * Returns the Layer (as JSObject) that best matches the given name, if any 
-     */
-    public static native JSObject getLayerByName(JSObject map, String name)/*-{
-        var layers = map.getLayersByName(String);
-        if(layers[0]){
-            return layers[0];
-        }else{
-            return null;
-        } 
-    }-*/;
+	/**
+	* Returns the Layer (as JSObject) that best matches the given name, if any 
+	*/
+	public static native JSObject getLayerByName(JSObject map, String name)/*-{
+		var layers = map.getLayersByName(String);
+		if(layers[0]){
+			return layers[0];
+		}else{
+			return null;
+		} 
+	}-*/;
     
-    public static native void removeLayer()/*-{}-*/; 
+	public static native void removeLayer()/*-{}-*/; 
 }

@@ -33,6 +33,14 @@ public class Map extends OpenLayersWidget {
 	{
 		return (element == null)? null: new Map(element);
 	}
+
+	/**
+	 * Returns current center of map object.
+	 * @return current center
+	 */
+	public String getCenter(){
+		return MapImpl.getCenter(getJSObject());
+	}
 	
 	public void setCenter(LonLat lonlat) {
 		MapImpl.setCenter(getJSObject(), lonlat.getJSObject());
@@ -120,6 +128,14 @@ public class Map extends OpenLayersWidget {
 	
 	public int getZoomForExtent(Bounds bounds, boolean closest) {
 			return MapImpl.getZoomForExtent(getJSObject(), bounds.getJSObject(), closest);
+	}
+
+	/**
+	 * Returns current zoom level of map object.
+	 * @return current zoom level
+	 */
+	public String getZoom(){
+		return MapImpl.getZoom(getJSObject());
 	}
 
 	public LonLat getLonLatFromPixel(Pixel pixel) {

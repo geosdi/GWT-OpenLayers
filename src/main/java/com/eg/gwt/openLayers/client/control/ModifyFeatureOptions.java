@@ -7,5 +7,6 @@ package com.eg.gwt.openLayers.client.control;
  *
  */
 public class ModifyFeatureOptions extends ControlOptions{
-
+    
+    
 }

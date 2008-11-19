@@ -13,6 +13,6 @@ public class LineStringImpl {
 
     public static native JSObject create(JSObject points)
     /*-{
-        return new $wnd.com.eg.gwt.openLayers.client.relay.createLineString(points);
+        return new $wnd.gwt_openlayers_util.relay.createLineString(points);
     }-*/;
 }

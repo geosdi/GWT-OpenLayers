@@ -5,8 +5,8 @@ import com.eg.gwt.openLayers.client.OpenLayersWidget;
 
 /**
  * 
- * @author Erdem Gunay
- *         Amr Alam - Refractions Research
+ * @author Erdem Gunay, 
+ *         Amr Alam - Refractions Research, 
  *         Edwin Commandeur - Atlis EJS
  *
  */

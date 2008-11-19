@@ -77,4 +77,21 @@ public class WMSLayerParams extends LayerOptions {
     public void setLayerOpacity(double opacity){
         setAttribute("opacity", opacity);
     }
+    
+    /**
+     * Set a non-default projection. Default projection is EPSG:4326. 
+     * 
+     * @param epsgCode - the EPSG code for the coordinate reference system 
+     */
+    public void setProjection(String epsgCode){
+        setAttribute("projection", epsgCode);
+    }
+    
+    /**
+     * e.g. "m", "km", ...
+     */
+    public void setUnits(String units){
+        setAttribute("units", units);
+    }
+    
 }

@@ -22,7 +22,7 @@ class VectorImpl {
     }-*/;
     
     public static native void addFeatures(JSObject self, JSObject features) /*-{
-         $wnd.com.eg.gwt.openLayers.client.relay.vectorAddFeatures(self, features);
+         $wnd.gwt_openlayers_util.relay.vectorAddFeatures(self, features);
     }-*/;
     
     public static native JSObject getFeature(JSObject self, int index) /*-{

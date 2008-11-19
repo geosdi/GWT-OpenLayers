@@ -1,6 +1,10 @@
 package com.eg.gwt.openLayers.client;
 
 /**
+ * Represents a longitude, latitude coordinate pair.
+ * 
+ * Longitude: east-west geographic coordinate.
+ * Latitude: south-north geographic coordinate. 
  * 
  * @author Erdem Gunay
  *

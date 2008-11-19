@@ -6,6 +6,10 @@ import com.eg.gwt.openLayers.client.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface ControlDeactivateListener {
-    void onDeactivate(JSObject event);
+public class ZoomInImpl {
+
+    public static native JSObject create()/*-{
+        return new $wnd.OpenLayers.Control.ZoomIn();
+    }-*/;
+
 }

@@ -1,6 +1,13 @@
 package com.eg.gwt.openLayers.client;
 
 import com.eg.gwt.openLayers.client.control.Control;
+import com.eg.gwt.openLayers.client.event.EventHandler;
+import com.eg.gwt.openLayers.client.event.EventListenerCollection;
+import com.eg.gwt.openLayers.client.event.EventType;
+import com.eg.gwt.openLayers.client.event.MapLayerAddedListener;
+import com.eg.gwt.openLayers.client.event.MapMoveListener;
+import com.eg.gwt.openLayers.client.event.MapLayerAddedListener.MapLayerAddedEvent;
+import com.eg.gwt.openLayers.client.event.MapMoveListener.MapMoveEvent;
 import com.eg.gwt.openLayers.client.layer.Layer;
 import com.eg.gwt.openLayers.client.popup.Popup;
 import com.google.gwt.user.client.Element;
@@ -172,4 +179,32 @@ public class Map extends OpenLayersWidget {
 	public void removeLayerByName(String name){
 	    //TODO implement
 	}	
+	
+	//TODO you want to keep track of Listeners
+	// EventListenerCollection should be property of Map
+	// that is also necessary for conveniently removing listeners
+	public void addMapLayerAddedListener(final MapLayerAddedListener listener){
+	    EventListenerCollection c = new EventListenerCollection();
+	    c.addListener(this, EventType.MAP_LAYER_ADDED, new EventHandler(){
+	        
+	        public void onHandle(JSObject source, JSObject eventObject){
+	            Map map = Map.narrowToMap(source);
+	            MapLayerAddedEvent e = new MapLayerAddedEvent(eventObject);
+	            listener.onLayerAdded(map, e);
+	        }
+	    });
+	};
+	
+	public void addMapMoveListener(final MapMoveListener listener){
+
+	     EventListenerCollection c = new EventListenerCollection();
+	     c.addListener(this, EventType.MAP_MOVE, new EventHandler(){
+            
+	         public void onHandle(JSObject source, JSObject eventObject) {
+	            Map map = Map.narrowToMap(source);
+	            MapMoveEvent e = new MapMoveEvent(eventObject);
+                listener.onMapMove(map, e);
+            }
+	     });
+	};
 }

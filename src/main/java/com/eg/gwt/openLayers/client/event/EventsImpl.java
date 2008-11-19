@@ -9,12 +9,12 @@ import com.eg.gwt.openLayers.client.JSObject;
  *
  */
 class EventsImpl {
-
+ 
 	public native static void register(JSObject self, String type, JSObject obj, EventHandler handler)/*-{
     	self.register(type, obj,  
-			function()
+			function(eo)
 			{
-		    	@com.eg.gwt.openLayers.client.ElementBridge::onHandle(Lcom/eg/gwt/openLayers/client/JSObject;Lcom/eg/gwt/openLayers/client/JSObject;Lcom/eg/gwt/openLayers/client/event/EventHandler;)(obj, arguments, handler);
+		    	@com.eg.gwt.openLayers.client.ElementBridge::onHandle(Lcom/eg/gwt/openLayers/client/JSObject;Lcom/eg/gwt/openLayers/client/JSObject;Lcom/eg/gwt/openLayers/client/event/EventHandler;)(obj, eo, handler);
 			}
 		);
 	}-*/;

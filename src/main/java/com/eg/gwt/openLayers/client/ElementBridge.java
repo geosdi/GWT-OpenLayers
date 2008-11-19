@@ -4,9 +4,9 @@ import com.eg.gwt.openLayers.client.event.EventHandler;
 
 public class ElementBridge {
 
-	public static void onHandle(JSObject source, JSObject args, EventHandler handler)
+	public static void onHandle(JSObject source, JSObject eventObject, EventHandler handler)
 	{
-		handler.onHandle(source, (args==null)?null:new JObjectArray(args).toArray());
+		handler.onHandle(source, eventObject);
 	}
 	
 }

@@ -6,18 +6,23 @@ package com.eg.gwt.openLayers.client;
 import com.google.gwt.user.client.Element;
 
 /**
- * This class is meant to serve as a base class for making Option objects that
- * only expose options that are relevant for the OpenLayers object taking the objects.
+ * Serves as a base class for making Option objects that
+ * only expose options specific to a given OpenLayers class.
  *  
- *  It overlaps a lot with Options, but intentionally does not extend OpenLayersWidget.
+ * There is a lot overlaps a lot with Options. However, OptionsBase 
+ *      - intentionally does not extend OpenLayersWidget, and
+ *      - hides it's methods for non-children
  *  
- * Instead of Options, this class hides methods that allow an end-user to set 
- * arbitrary properties on the Options objects.
+ * Use Options to set arbitrary properties.
+ *      example here 
+ * 
+ * Use Objects that extend OptionsBase to set class specific properties.
+ *      example here 
  * 
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public abstract class OptionsBase {
+public class OptionsBase {
 
     private JSObject options;
     

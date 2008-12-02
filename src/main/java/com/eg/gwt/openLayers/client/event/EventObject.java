@@ -1,22 +1,23 @@
 package com.eg.gwt.openLayers.client.event;
 
 import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.feature.VectorFeature;
 import com.eg.gwt.openLayers.client.layer.Layer;
 
 /**
  * <p>Base class for event objects.</p>
  *  
- * <b>Caveat: Currently, events are not yet used uniformly in OpenLayers. This is on the OpenLayers roadmap for version 3.x.</b>
+ * <b>Caveat: In Openlayers 2.x event handling is not yet implemented uniformly in OpenLayers. This should be fixed in version 3.x and higher.</b>
  * <p>
- * In OpenLayers, a listener may be passed a reference to an event object. 
- * In GWT OpenLayers, the {@link EventHandler} interface enables registering listeners  
- * and the event object argument gets passed to the onHandle method of the EventHandler.
+ * In OpenLayers, an event object is an argument that gets passed to the listener when it is called. 
+ * In GWT OpenLayers, this event object gets passed to the onHandle method of the EventHandler {@link EventHandler} when   
+ * the onHandle method is called. An event object class extending this base class can wrap this event object.
  * </p>
  * <p>
  * Depending on which event is fired, and from which source the event is fired 
  * (e.g. Map, Layer, etc.), the event object may differ. Therefore, the 
- * higher-level way to register events (see also {@link EventHandler))
- * passes an event object to the listener method that is specific to the event. 
+ * higher-level way to register events through addXxxListener methdos (see also {@link EventHandler))
+ * wrap the event object passed to onHandle in a way that is specific to the event. 
  * </p>
  * 
  * @author Edwin Commandeur - Atlis EJS
@@ -46,7 +47,15 @@ public class EventObject {
      */
     public String getType(){
         String type = EventObjectImpl.getType(getJSObject());
-        return (type.equals("undefined"))?null:type;
+        return type;
+    }
+    
+    /**
+     * @return opaque handle on javascript object that fired the event 
+     */
+    public JSObject getObject(){
+        JSObject object = EventObjectImpl.getObject(getJSObject());
+        return object;
     }
     
     //TODO move this javadoc?
@@ -58,9 +67,22 @@ public class EventObject {
      */
     protected Layer getLayer(){
         JSObject layer = EventObjectImpl.getLayer(getJSObject());
-        return Layer.narrowToLayer(layer);
+        if(layer!= null){
+            return Layer.narrowToLayer(layer);
+        } else {
+            return null;
+        }
     }
 
+    protected VectorFeature getFeature(){
+        JSObject vectorFeature = EventObjectImpl.getFeature(getJSObject());
+        if(vectorFeature != null){
+            return VectorFeature.narrowToVectorFeature(vectorFeature);
+        } else {
+            return null;
+        }
+    }
+    
     public JSObject getJSObject(){
         return this.eventObject;
     }

@@ -6,10 +6,6 @@ package com.eg.gwt.openLayers.client.feature;
 import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Style;
 import com.eg.gwt.openLayers.client.geometry.Geometry;
-import com.eg.gwt.openLayers.client.geometry.LineString;
-import com.eg.gwt.openLayers.client.geometry.LinearRing;
-import com.eg.gwt.openLayers.client.geometry.Point;
-import com.eg.gwt.openLayers.client.geometry.Polygon;
 
 /**
  * @author Edwin Commandeur - Atlis EJS

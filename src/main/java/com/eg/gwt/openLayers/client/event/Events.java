@@ -7,6 +7,7 @@ import com.eg.gwt.openLayers.client.Pixel;
 /**
  * 
  * @author Erdem Gunay
+ * @author Edwin Commandeur - Atlis EJS
  *
  */
 public class Events extends OpenLayersWidget {
@@ -22,12 +23,12 @@ public class Events extends OpenLayersWidget {
 	
 	public void register(String type, OpenLayersWidget obj, EventHandler handler)
 	{
-		EventsImpl.register(getJSObject(), type, obj.getJSObject(), handler);
+		EventsImpl.register(getJSObject(), type, obj.getJSObject(), handler.getJSObject());
 	}
 	
-	public void unregister(String type, OpenLayersWidget obj)
+	public void unregister(String type, OpenLayersWidget obj, EventHandler handler)
 	{
-		EventsImpl.unregister(getJSObject(), type, obj.getJSObject());
+	    EventsImpl.unregister(getJSObject(), type, obj.getJSObject(), handler.getJSObject());
 	}
 	
 	public Pixel getMousePosition(Event e) 

@@ -2,6 +2,18 @@ package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.event.EventHandler;
+import com.eg.gwt.openLayers.client.event.EventListener;
+import com.eg.gwt.openLayers.client.event.EventListenerCollection;
+import com.eg.gwt.openLayers.client.event.EventType;
+import com.eg.gwt.openLayers.client.event.LayerLoadCancelListener;
+import com.eg.gwt.openLayers.client.event.LayerLoadCancelListener.LoadCancelEvent;
+import com.eg.gwt.openLayers.client.event.LayerLoadEndListener;
+import com.eg.gwt.openLayers.client.event.LayerLoadStartListener;
+import com.eg.gwt.openLayers.client.event.LayerVisibilityChangedListener;
+import com.eg.gwt.openLayers.client.event.LayerLoadEndListener.LoadEndEvent;
+import com.eg.gwt.openLayers.client.event.LayerLoadStartListener.LoadStartEvent;
+import com.eg.gwt.openLayers.client.event.LayerVisibilityChangedListener.VisibilityChangedEvent;
 
 /**
  * 
@@ -12,6 +24,8 @@ import com.eg.gwt.openLayers.client.OpenLayersWidget;
  */
 public class Layer extends OpenLayersWidget {
 
+    EventListenerCollection eventListeners = new EventListenerCollection();
+    
     public Layer(JSObject element) {
         super(element);
     }
@@ -79,4 +93,50 @@ public class Layer extends OpenLayersWidget {
         LayerImpl.setIsVisible(isVisible, getJSObject());
     }
     
+    //TODO EventListenerCollection should be property of layer
+    //  and keep references to listeners 
+    
+    public void addLayerLoadStartListener(final LayerLoadStartListener listener){
+        eventListeners.addListener(this, listener, EventType.LAYER_LOADSTART, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Layer layer = Layer.narrowToLayer(source);
+                LoadStartEvent e = new LoadStartEvent(eventObject);
+                listener.onLoadStart(layer, e);
+            }
+         });
+    }
+    
+    public void addLayerLoadEndListener(final LayerLoadEndListener listener){
+        eventListeners.addListener(this, listener, EventType.LAYER_LOADEND, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Layer layer = Layer.narrowToLayer(source);
+                LoadEndEvent e = new LoadEndEvent(eventObject);
+                listener.onLoadEnd(layer, e);
+            }
+         });
+    }    
+
+    public void addLayerLoadCancelListener(final LayerLoadCancelListener listener){
+        eventListeners.addListener(this, listener, EventType.LAYER_LOADCANCEL, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Layer layer = Layer.narrowToLayer(source);
+                LoadCancelEvent e = new LoadCancelEvent(eventObject);
+                listener.onLoadCancel(layer, e);
+            }
+         });
+    }    
+    
+    public void addLayerVisibilityChangedListener(final LayerVisibilityChangedListener listener){
+        eventListeners.addListener(this, listener, EventType.LAYER_VISIBILITYCHANGED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Layer layer = Layer.narrowToLayer(source);
+                VisibilityChangedEvent e = new VisibilityChangedEvent(eventObject);
+                listener.onVisibilityChanged(layer, e);
+            }
+         });
+    }    
+
+    public void removeListener(EventListener listener){
+        eventListeners.removeListener(this, listener);
+    };
 }

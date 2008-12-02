@@ -3,6 +3,18 @@ package com.eg.gwt.openLayers.client.layer;
 import com.eg.gwt.openLayers.client.JObjectArray;
 import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Options;
+import com.eg.gwt.openLayers.client.event.EventHandler;
+import com.eg.gwt.openLayers.client.event.EventType;
+import com.eg.gwt.openLayers.client.event.VectorFeatureAddedListener;
+import com.eg.gwt.openLayers.client.event.VectorFeatureModifiedListener;
+import com.eg.gwt.openLayers.client.event.VectorFeatureRemovedListener;
+import com.eg.gwt.openLayers.client.event.VectorFeatureSelectedListener;
+import com.eg.gwt.openLayers.client.event.VectorFeatureUnselectedListener;
+import com.eg.gwt.openLayers.client.event.VectorFeatureAddedListener.FeatureAddedEvent;
+import com.eg.gwt.openLayers.client.event.VectorFeatureModifiedListener.FeatureModifiedEvent;
+import com.eg.gwt.openLayers.client.event.VectorFeatureRemovedListener.FeatureRemovedEvent;
+import com.eg.gwt.openLayers.client.event.VectorFeatureSelectedListener.FeatureSelectedEvent;
+import com.eg.gwt.openLayers.client.event.VectorFeatureUnselectedListener.FeatureUnselectedEvent;
 import com.eg.gwt.openLayers.client.feature.VectorFeature;
 
 /**
@@ -12,7 +24,7 @@ import com.eg.gwt.openLayers.client.feature.VectorFeature;
  *
  */
 public class Vector extends Layer {
-
+    
     protected Vector(JSObject element) {
         super(element);
     }
@@ -88,5 +100,54 @@ public class Vector extends Layer {
         return null;
     }
     
+    public void addVectorFeatureModifiedListener(final VectorFeatureModifiedListener listener){
+        eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_MODIFIED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Vector vector = Vector.narrowToVector(source);
+                FeatureModifiedEvent e = new FeatureModifiedEvent(eventObject);
+                listener.onFeatureModified(vector, e);
+            }
+         });
+    }
+    
+    public void addVectorFeatureAddedListener(final VectorFeatureAddedListener listener){
+        eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_ADDED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Vector vector = Vector.narrowToVector(source);
+                FeatureAddedEvent e = new FeatureAddedEvent(eventObject);
+                listener.onFeatureAdded(vector, e);
+            }
+         });
+    }
 
+    public void addVectorFeatureRemovedListener(final VectorFeatureRemovedListener listener){
+        eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_REMOVED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Vector vector = Vector.narrowToVector(source);
+                FeatureRemovedEvent e = new FeatureRemovedEvent(eventObject);
+                listener.onFeatureRemoved(vector, e);
+            }
+         });
+    }
+    
+    public void addVectorFeatureSelectedListener(final VectorFeatureSelectedListener listener){
+        eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_SELECTED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Vector vector = Vector.narrowToVector(source);
+                FeatureSelectedEvent e = new FeatureSelectedEvent(eventObject);
+                listener.onFeatureSelected(vector, e);
+            }
+         });
+    }
+
+    public void addVectorFeatureUnselectedListener(final VectorFeatureUnselectedListener listener){
+        eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_UNSELECTED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Vector vector = Vector.narrowToVector(source);
+                FeatureUnselectedEvent e = new FeatureUnselectedEvent(eventObject);
+                listener.onFeatureUnselected(vector, e);
+            }
+         });
+    }
+ 
 }

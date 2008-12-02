@@ -22,6 +22,7 @@ public class DrawFeature extends Control {
     }
 
     //TODO see if these three constructors can be reduced to 1 with DrawFeatureParams object
+    //  bring in line with how events are handled 
     
     public DrawFeature(Vector layer, JSObject handler, Options options) {
         this(DrawFeatureImpl.create(layer.getJSObject(), handler, options.getJSObject()));

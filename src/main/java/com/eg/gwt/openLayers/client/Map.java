@@ -2,12 +2,27 @@ package com.eg.gwt.openLayers.client;
 
 import com.eg.gwt.openLayers.client.control.Control;
 import com.eg.gwt.openLayers.client.event.EventHandler;
+import com.eg.gwt.openLayers.client.event.EventListener;
 import com.eg.gwt.openLayers.client.event.EventListenerCollection;
 import com.eg.gwt.openLayers.client.event.EventType;
+import com.eg.gwt.openLayers.client.event.MapBaseLayerChangedListener;
 import com.eg.gwt.openLayers.client.event.MapLayerAddedListener;
+import com.eg.gwt.openLayers.client.event.MapLayerChangedListener;
+import com.eg.gwt.openLayers.client.event.MapLayerRemovedListener;
+import com.eg.gwt.openLayers.client.event.MapMarkerAddedListener;
+import com.eg.gwt.openLayers.client.event.MapMarkerRemovedListener;
 import com.eg.gwt.openLayers.client.event.MapMoveListener;
+import com.eg.gwt.openLayers.client.event.MapPopupClosedListener;
+import com.eg.gwt.openLayers.client.event.MapPopupOpenedListener;
+import com.eg.gwt.openLayers.client.event.MapBaseLayerChangedListener.MapBaseLayerChangedEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerAddedListener.MapLayerAddedEvent;
+import com.eg.gwt.openLayers.client.event.MapLayerChangedListener.MapLayerChangedEvent;
+import com.eg.gwt.openLayers.client.event.MapLayerRemovedListener.MapLayerRemovedEvent;
+import com.eg.gwt.openLayers.client.event.MapMarkerAddedListener.MapMarkerAddedEvent;
+import com.eg.gwt.openLayers.client.event.MapMarkerRemovedListener.MapMarkerRemovedEvent;
 import com.eg.gwt.openLayers.client.event.MapMoveListener.MapMoveEvent;
+import com.eg.gwt.openLayers.client.event.MapPopupClosedListener.MapPopupClosedEvent;
+import com.eg.gwt.openLayers.client.event.MapPopupOpenedListener.MapPopupOpenedEvent;
 import com.eg.gwt.openLayers.client.layer.Layer;
 import com.eg.gwt.openLayers.client.popup.Popup;
 import com.google.gwt.user.client.Element;
@@ -21,6 +36,8 @@ import com.google.gwt.user.client.Element;
  */
 public class Map extends OpenLayersWidget {
 
+    EventListenerCollection eventListeners = new EventListenerCollection();
+    
 	public Map(Element e)
 	{
 		super(MapImpl.create(e));
@@ -183,28 +200,102 @@ public class Map extends OpenLayersWidget {
 	//TODO you want to keep track of Listeners
 	// EventListenerCollection should be property of Map
 	// that is also necessary for conveniently removing listeners
-	public void addMapLayerAddedListener(final MapLayerAddedListener listener){
-	    EventListenerCollection c = new EventListenerCollection();
-	    c.addListener(this, EventType.MAP_LAYER_ADDED, new EventHandler(){
-	        
-	        public void onHandle(JSObject source, JSObject eventObject){
-	            Map map = Map.narrowToMap(source);
-	            MapLayerAddedEvent e = new MapLayerAddedEvent(eventObject);
-	            listener.onLayerAdded(map, e);
-	        }
-	    });
-	};
-	
-	public void addMapMoveListener(final MapMoveListener listener){
+    public void addMapBaseLayerChangedListener(final MapBaseLayerChangedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_BASE_LAYER_CHANGED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject){
+                Map map = Map.narrowToMap(source);
+                MapBaseLayerChangedEvent e = new MapBaseLayerChangedEvent(eventObject);
+                listener.onBaseLayerChanged(map, e);
+            }
+        });
+    
+    }
 
-	     EventListenerCollection c = new EventListenerCollection();
-	     c.addListener(this, EventType.MAP_MOVE, new EventHandler(){
-            
-	         public void onHandle(JSObject source, JSObject eventObject) {
-	            Map map = Map.narrowToMap(source);
-	            MapMoveEvent e = new MapMoveEvent(eventObject);
+    public void addMapLayerAddedListener(final MapLayerAddedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_LAYER_ADDED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject){
+                Map map = Map.narrowToMap(source);
+                MapLayerAddedEvent e = new MapLayerAddedEvent(eventObject);
+                listener.onLayerAdded(map, e);
+            }
+        });
+    };
+
+    public void addMapLayerChangedListener(final MapLayerChangedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_LAYER_CHANGED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject){
+                Map map = Map.narrowToMap(source);
+                MapLayerChangedEvent e = new MapLayerChangedEvent(eventObject);
+                listener.onLayerChanged(map, e);
+            }
+        });
+    
+    }
+
+    public void addMapLayerRemovedListener(final MapLayerRemovedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_LAYER_REMOVED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject){
+                Map map = Map.narrowToMap(source);
+                MapLayerRemovedEvent e = new MapLayerRemovedEvent(eventObject);
+                listener.onLayerRemoved(map, e);
+            }
+        });
+    
+    }
+    
+    public void addMapMoveListener(final MapMoveListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_MOVE, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Map map = Map.narrowToMap(source);
+                MapMoveEvent e = new MapMoveEvent(eventObject);
                 listener.onMapMove(map, e);
             }
 	     });
 	};
+	
+
+    public void addMapMarkerAddedListener(final MapMarkerAddedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_MARKER_ADDED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Map map = Map.narrowToMap(source);
+                MapMarkerAddedEvent e = new MapMarkerAddedEvent(eventObject);
+                listener.onMarkerAdded(map, e);
+            }
+         });
+    };
+
+    public void addMapMarkerRemovedListener(final MapMarkerRemovedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_MARKER_REMOVED, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Map map = Map.narrowToMap(source);
+                MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(eventObject);
+                listener.onMarkerRemoved(map, e);
+            }
+         });
+    };
+    
+    public void addMapPopupOpenedListener(final MapPopupOpenedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_POPUP_OPEN, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Map map = Map.narrowToMap(source);
+                MapPopupOpenedEvent e = new MapPopupOpenedEvent(eventObject);
+                listener.onPopupOpened(map, e);
+            }
+         });
+    };    
+
+    public void addMapPopupClosedListener(final MapPopupClosedListener listener){
+        eventListeners.addListener(this, listener, EventType.MAP_POPUP_CLOSE, new EventHandler(){
+            public void onHandle(JSObject source, JSObject eventObject) {
+                Map map = Map.narrowToMap(source);
+                MapPopupClosedEvent e = new MapPopupClosedEvent(eventObject);
+                listener.onPopupClosed(map, e);
+            }
+         });
+    };    
+    
+    public void removeListener(EventListener listener){
+        eventListeners.removeListener(this, listener);
+    };
+
 }

@@ -3,15 +3,15 @@ package com.eg.gwt.openLayers.client.layer;
 import com.eg.gwt.openLayers.client.JSObject;
 
 /**
- * 
+ *
  * @author Erdem Gunay
- *         Amr Alam - Refractions Research 
+ *         Amr Alam - Refractions Research
  *         Edwin Commandeur - Atlis EJS
  *
  */
 class LayerImpl {
-    public static native void redraw(JSObject layer) /*-{
-        layer.redraw();
+    public static native void redraw(JSObject layer, boolean force) /*-{
+        layer.redraw(force);
     }-*/;
 
     public static native void setIsBaseLayer(boolean isBaseLayer, JSObject layer) /*-{
@@ -26,7 +26,7 @@ class LayerImpl {
         return layer.id;
     }-*/;
 
-    public static native float getOpacity(JSObject layer)/*-{ 
+    public static native float getOpacity(JSObject layer)/*-{
         if(layer.opacity){ return layer.opacity }else{ return 1.0 };
     }-*/;
 
@@ -45,7 +45,7 @@ class LayerImpl {
     public static native String getName(JSObject layer)/*-{
         if(layer.name){ return layer.name }else{ return "" };
     }-*/;
-    
+
     public static native void setName(String name, JSObject layer)/*-{
         layer.setName(name);
     }-*/;
@@ -56,11 +56,11 @@ class LayerImpl {
     public static native void setIsVisible(boolean isVisible, JSObject layer)/*-{
         layer.setVisibility(isVisible);
     }-*/;
-    
+
     public static native String getUnits(JSObject layer)/*-{
         if(layer.units){ return layer.units }else{ return ""};
     }-*/;
-    
+
 
 
 }

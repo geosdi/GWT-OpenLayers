@@ -39,7 +39,7 @@ import com.google.gwt.user.client.Element;
  */
 public class Map extends OpenLayersWidget {
 
-	EventListenerCollection eventListeners = new EventListenerCollection();
+	private EventListenerCollection eventListeners = new EventListenerCollection();
 
 	public Map(Element e)
 	{
@@ -104,7 +104,7 @@ public class Map extends OpenLayersWidget {
 		MapImpl.removePopup(getJSObject(), popup.getJSObject());
 	}
 
-	public Integer getNumLayers() {
+	public int getNumLayers() {
 		return MapImpl.getNumLayers(getJSObject());
 	}
 
@@ -143,7 +143,6 @@ public class Map extends OpenLayersWidget {
 	public void setLayerIndex(Layer layer, int index) {
 		MapImpl.setLayerIndex(getJSObject(), layer.getJSObject(), index);
 	}
-
 
 	/**
 	 *  This is not an OpenLayers native function. OpenLayers has getLayersByName

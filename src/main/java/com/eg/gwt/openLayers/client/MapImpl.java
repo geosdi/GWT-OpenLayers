@@ -51,7 +51,7 @@ class MapImpl {
 		map.removePopup(popup);
 	}-*/;
 
-	public static native Integer getNumLayers(JSObject map)/*-{
+	public static native int getNumLayers(JSObject map)/*-{
 		return map.getNumLayers();
 	}-*/;
 

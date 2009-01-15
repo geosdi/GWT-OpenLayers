@@ -6,15 +6,19 @@ import java.util.Map;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
 
 /**
- * Registers listeners and keeps track of listener that are registered for events an object fires.
- * 
+ * The EventListenerCollection serves to maintain references to EventListeners, and
+ * keeps hold of the properties necessary to unregister EventListeners.
+ *
+ * When an EventListener is added to the EventListener collection it is passed all
+ * the information to add it as a listener for events a particular widget fires.
+ *
  * @author Edwin Commandeur - Atlis EJS
  *
  */
 public class EventListenerCollection {
 
     private Map map = new HashMap();
-    
+
     public void addListener(OpenLayersWidget w, EventListener listener, String type, EventHandler handler){
         //TODO check if type is defined and valid?
         w.getEvents().register(type, w, handler);
@@ -37,15 +41,15 @@ public class EventListenerCollection {
         int size = map.size();
         if(size > 0){
             for(int i = 0;i< size;i++){
-                
+
             }
         }
     }
-*/    
+*/
     private void addToCollection(EventListener listener, ListenerRegisteredProperties props){
         map.put(listener, props);
     }
-    
+
     private ListenerRegisteredProperties getRegisteredProperties(EventListener listener){
         return (ListenerRegisteredProperties) map.get(listener);
     }
@@ -53,21 +57,21 @@ public class EventListenerCollection {
     private void removeRegisteredProperties(EventListener listener){
         map.remove(listener);
     }
-    
-    
+
+
     private class ListenerRegisteredProperties {
         String type;
         EventHandler handler;
-        
+
         ListenerRegisteredProperties(String type, EventHandler handler){
             this.type = type;
             this.handler = handler;
         }
-        
+
         String getType(){
             return this.type;
         }
-        
+
         EventHandler getEventHandler(){
             return this.handler;
         }

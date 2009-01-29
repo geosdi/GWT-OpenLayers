@@ -1,43 +1,67 @@
+NOTE: the release that is out is v0.2, the release notes are only up to date to v0.1
+
+GWT - OpenLayers plugin v0.3 [ IN PROGRESS ]
+
+In this release support for the following OpenLayers classes has been added
+
+OpenLayers.Feature package
+- Feature
+- Vector (as VectorFeature)
+
+OpenLayers.Geometry package
+- Collection
+- Curve
+- Geometry
+- LinearRing
+- LineString
+- MultiPoint
+- Point
+- Polygon
+
+The functionality of the following classes has been enhanced
+- Vector
+
+
 GWT - OpenLayers plugin v0.1
 
-In this release following OpenLayers classes are supported 
+In this release following OpenLayers classes are supported
 
-OpenLayers package 
-- Bounds 
-- Icon 
-- LonLat 
-- Map 
-- Marker 
-- Pixel 
-- Size 
+OpenLayers package
+- Bounds
+- Icon
+- LonLat
+- Map
+- Marker
+- Pixel
+- Size
 
-OpenLayers.Control package 
-- Control 
-- DrawFeature 
-- LayerSwitcher 
-- MousePosition 
-- MouseToolbar 
-- PanZoomBar 
-- Scale 
+OpenLayers.Control package
+- Control
+- DrawFeature
+- LayerSwitcher
+- MousePosition
+- MouseToolbar
+- PanZoomBar
+- Scale
 
-OpenLayers.event package 
-- Event 
-- Events 
+OpenLayers.event package
+- Event
+- Events
 
-OpenLayers.Handler package 
-- Handler 
-- Path 
-- Point 
-- Polygon 
+OpenLayers.Handler package
+- Handler
+- Path
+- Point
+- Polygon
 
-OpenLayers.Layer package 
-- Layer 
-- Google 
-- Markers 
-- Vector 
-- WMS 
+OpenLayers.Layer package
+- Layer
+- Google
+- Markers
+- Vector
+- WMS
 
-OpenLayers.Popup package 
-- Popup 
-- Anchored 
+OpenLayers.Popup package
+- Popup
+- Anchored
 - AnchoredBubble

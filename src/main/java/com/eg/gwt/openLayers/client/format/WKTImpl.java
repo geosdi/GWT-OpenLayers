@@ -6,11 +6,11 @@ import com.eg.gwt.openLayers.client.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class WMCImpl {
+public class WKTImpl {
 
 	public static native JSObject create()
 	/*-{
-		return new $wnd.OpenLayers.Format.WMC();
+		return new $wnd.OpenLayers.Format.WKT();
 	}-*/;
 
 }

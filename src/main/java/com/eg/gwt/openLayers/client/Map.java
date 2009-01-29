@@ -9,6 +9,8 @@ import com.eg.gwt.openLayers.client.event.EventListener;
 import com.eg.gwt.openLayers.client.event.EventListenerCollection;
 import com.eg.gwt.openLayers.client.event.EventType;
 import com.eg.gwt.openLayers.client.event.MapBaseLayerChangedListener;
+import com.eg.gwt.openLayers.client.event.MapClickListener;
+import com.eg.gwt.openLayers.client.event.MapClickListener.MapClickEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerAddedListener;
 import com.eg.gwt.openLayers.client.event.MapLayerChangedListener;
 import com.eg.gwt.openLayers.client.event.MapLayerRemovedListener;
@@ -321,6 +323,16 @@ public class Map extends OpenLayersWidget {
 				listener.onPopupClosed(map, e);
 			}
 		 });
+	};
+
+	public void addMapClickListener(final MapClickListener listener){
+		eventListeners.addListener(this, listener, EventType.MAP_CLICK, new EventHandler (){
+			public void onHandle(JSObject source, JSObject eventObject) {
+				Map map = Map.narrowToMap(source);
+				MapClickEvent e = new MapClickEvent(eventObject);
+				listener.onClick(map, e);
+			}
+		});
 	};
 
 	public void removeListener(EventListener listener){

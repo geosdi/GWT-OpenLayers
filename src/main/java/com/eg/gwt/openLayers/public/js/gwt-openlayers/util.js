@@ -1,11 +1,12 @@
 /*
- * Utility class with helper functions and workarounds for problematic JSNI cases. 
- * 
- * gwt_openlayers_util.relay
- *   relays calls to OpenLayers functions that taken an Array parameter
- *   and test is instanceof Array.
+ * Utility class with helper functions and workarounds for problematic JSNI cases.
  *
- * @author 
+ * gwt_openlayers_util.relay
+ *   Relays calls to OpenLayers functions that taken an Array parameter
+ *   and perform an instanceof test for the type Array, and possible for other
+ *   corner cases.
+ *
+ * @author
  */
 
 //make namespacing object
@@ -46,7 +47,7 @@ gwt_openlayers_util.eventListenersToObject = function(options){
         }
     }
     return options;
-} 
+}
 
 //relay functions
 gwt_openlayers_util.relay = {
@@ -58,22 +59,27 @@ gwt_openlayers_util.relay = {
 
         //paste new relay function here
 
+        writeFeatures : function(features, o){
+            return features.write(gwt_openlayers_util.convertToArray(o));
+        },
+
         createPolygon : function(o){
             return new OpenLayers.Geometry.Polygon(
                     gwt_openlayers_util.convertToArray(o));
         },
-        
+
         createLinearRing : function(o){
             return new OpenLayers.Geometry.LinearRing(
                     gwt_openlayers_util.convertToArray(o));
         },
-        
+
         createLineString : function(o){
             return new OpenLayers.Geometry.LineString(
                     gwt_openlayers_util.convertToArray(o));
         },
-        
+
         vectorAddFeatures : function(vector, o){
             vector.addFeatures(gwt_openlayers_util.convertToArray(o));
         }
+
 }

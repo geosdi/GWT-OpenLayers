@@ -33,6 +33,6 @@ public class Events extends OpenLayersWidget {
 	
 	public Pixel getMousePosition(Event e) 
 	{
-		return Pixel.narrowToMap(EventsImpl.getMousePosition(getJSObject(), e.getJSObject()));
+		return Pixel.narrowToPixel(EventsImpl.getMousePosition(getJSObject(), e.getJSObject()));
 	}
 }

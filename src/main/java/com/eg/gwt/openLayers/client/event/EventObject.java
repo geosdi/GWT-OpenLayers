@@ -1,6 +1,7 @@
 package com.eg.gwt.openLayers.client.event;
 
 import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.Pixel;
 import com.eg.gwt.openLayers.client.feature.VectorFeature;
 import com.eg.gwt.openLayers.client.layer.Layer;
 
@@ -25,65 +26,74 @@ import com.eg.gwt.openLayers.client.layer.Layer;
  */
 public class EventObject {
 
-    private JSObject eventObject;
+	private JSObject eventObject;
 
-    public EventObject(JSObject eventObject){
-        this.eventObject = eventObject;
-    }
+	public EventObject(JSObject eventObject){
+		this.eventObject = eventObject;
+	}
 
-    /**
-     *
-     * @return Element as an opaque JSObject
-     */
-    public JSObject getElement(){
-        return EventObjectImpl.getElement(getJSObject());
-    }
+	/**
+	 *
+	 * @return Element as an opaque JSObject
+	 */
+	public JSObject getElement(){
+		return EventObjectImpl.getElement(getJSObject());
+	}
 
 
-    /**
-     * Type is a string like "addlayer" or "move" denoting the type of event.
-     *
-     * @return A string denoting the type of event, or null if there is no type property.
-     */
-    public String getType(){
-        String type = EventObjectImpl.getType(getJSObject());
-        return type;
-    }
+	/**
+	 * Type is a string like "addlayer" or "move" denoting the type of event.
+	 *
+	 * @return A string denoting the type of event, or null if there is no type property.
+	 */
+	public String getType(){
+		String type = EventObjectImpl.getType(getJSObject());
+		return type;
+	}
 
-    /**
-     * @return opaque handle on javascript object that fired the event
-     */
-    public JSObject getObject(){
-        JSObject object = EventObjectImpl.getObject(getJSObject());
-        return object;
-    }
+	/**
+	 * @return opaque handle on javascript object that fired the event
+	 */
+	public JSObject getObject(){
+		JSObject object = EventObjectImpl.getObject(getJSObject());
+		return object;
+	}
 
-    //TODO move this javadoc?
-    /**
-     * Events fired by the Map like "addlayer", "removelayer", etc.
-     * return the layer as property of the event object.
-     *
-     * @return Layer effected by the event, or null if there is no layer property
-     */
-    protected Layer getLayer(){
-        JSObject layer = EventObjectImpl.getLayer(getJSObject());
-        if(layer!= null){
-            return Layer.narrowToLayer(layer);
-        } else {
-            return null;
-        }
-    }
+	//TODO move this javadoc?
+	/**
+	 * Events fired by the Map like "addlayer", "removelayer", etc.
+	 * return the layer as property of the event object.
+	 *
+	 * @return Layer effected by the event, or null if there is no layer property
+	 */
+	protected Layer getLayer(){
+		JSObject layer = EventObjectImpl.getLayer(getJSObject());
+		if(layer!= null){
+			return Layer.narrowToLayer(layer);
+		} else {
+			return null;
+		}
+	}
 
-    protected VectorFeature getFeature(){
-        JSObject vectorFeature = EventObjectImpl.getFeature(getJSObject());
-        if(vectorFeature != null){
-            return VectorFeature.narrowToVectorFeature(vectorFeature);
-        } else {
-            return null;
-        }
-    }
+	protected VectorFeature getFeature(){
+		JSObject vectorFeature = EventObjectImpl.getFeature(getJSObject());
+		if(vectorFeature != null){
+			return VectorFeature.narrowToVectorFeature(vectorFeature);
+		} else {
+			return null;
+		}
+	}
 
-    public JSObject getJSObject(){
-        return this.eventObject;
-    }
+	protected Pixel getPixel(){
+		JSObject pixel = EventObjectImpl.getPixel(getJSObject());
+		if(pixel != null){
+			return Pixel.narrowToPixel(pixel);
+		} else {
+			return null;
+		}
+	}
+
+	public JSObject getJSObject(){
+		return this.eventObject;
+	}
 }

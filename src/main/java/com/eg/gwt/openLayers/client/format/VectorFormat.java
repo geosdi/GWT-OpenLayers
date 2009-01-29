@@ -1,0 +1,63 @@
+package com.eg.gwt.openLayers.client.format;
+
+import com.eg.gwt.openLayers.client.JObjectArray;
+import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.feature.VectorFeature;
+
+/**
+ * Format objects provide support for reading and writing formats for
+ * representing ...
+ *
+ * There are different standard formats for representing vector features.
+ * For example, WKT GML, and KML.
+ *
+ * A format object can read and write vector features in a specific format
+ *
+ * @author Edwin Commandeur - Atlis EJS
+ */
+public class VectorFormat extends Format {
+
+	protected VectorFormat(JSObject element) {
+		super(element);
+	}
+
+	public void read(String vectorFormat){
+		FormatImpl.read(getJSObject(), vectorFormat);
+	}
+
+	/**
+	 * Write an array of {@link com.eg.gwt.openLayers.client.feature.VectorFeature} objects
+	 * in a particular format that depends on the specific format object.
+	 *
+	 * For example, a WKT format object writes the features in Well Known Text format:
+	 * <code>
+	 *   WKT wktFormat = new WKT();
+	 *   String wkt = wktFormat.write(vectorFeatures);
+	 * </code>
+	 *
+	 * @param vectorFeatures - an array of vector features
+	 * @return a String containing the vector features written in a particular format.
+	 */
+	public String write(VectorFeature[] vectorFeatures){
+		JObjectArray features = new JObjectArray(vectorFeatures);
+		return FormatImpl.writeFeatures(getJSObject(), features.getJSObject());
+	};
+
+	/**
+	 * Write a {@link com.eg.gwt.openLayers.client.feature.VectorFeature} in a
+	 * particular format that depends on the specific format object.
+	 *
+	 * For example, a WKT format object writes the features in Well Known Text format:
+	 * <code>
+	 *   WKT wktFormat = new WKT();
+	 *   String wkt = wktFormat.write(vectorFeatures);
+	 * </code>
+	 *
+	 * @param vectorFeature - a vector feature
+	 * @return a String containing the vector feature written in a particular format.
+	 */
+	public String write(VectorFeature vectorFeature){
+		return FormatImpl.write(getJSObject(), vectorFeature.getJSObject());
+	};
+
+}

@@ -27,8 +27,8 @@ class MapImpl {
 		map.setCenter(lonlat, zoom);
 	}-*/;
 
-	public static native String getCenter(JSObject map)/*-{
-		return map.getCenter().toShortString();
+	public static native JSObject getCenter(JSObject map)/*-{
+		return map.getCenter();
 	}-*/;
 
 	public static native void addControl(JSObject map, JSObject control)/*-{
@@ -92,8 +92,64 @@ class MapImpl {
 		return map.getLonLatFromPixel(pixel);
 	}-*/;
 
+	public static native JSObject getPixelFromLonLat(JSObject map, JSObject lonlat)/*-{
+		return map.getPixelFromLonLat(lonlat);
+	}-*/;
 	public static native String getProjection(JSObject map)/*-{
 		return map.getProjection();
+	}-*/;
+
+	public static native String getUnits(JSObject map)/*-{
+		return map.getUnits();
+	}-*/;
+
+	public static native JSObject getExtent(JSObject map)/*-{
+		return map.getExtent();
+	}-*/;
+
+	public static native JSObject getMaxExtent(JSObject map)/*-{
+		return map.getMaxExtent();
+	}-*/;
+
+	public static native double getResolution(JSObject map)/*-{
+		return map.getResolution();
+	}-*/;
+
+	public static native double getScale(JSObject map)/*-{
+		return map.getScale();
+	}-*/;
+
+
+	public static native void raiseLayer(JSObject map, JSObject layer, int delta)/*-{
+		map.raiseLayer(layer, delta);
+	}-*/;
+
+	public static native void zoomTo(JSObject map, int zoomLevel)/*-{
+		map.zoomTo(zoomLevel);
+	}-*/;
+
+	public static native void zoomToMaxExtent(JSObject map)/*-{
+		map.zoomToMaxExtent();
+	}-*/;
+
+	public static native void removeControl(JSObject map, JSObject control)/*-{
+		map.removeControl(control);
+	}-*/;
+
+	public static native void setOptions(JSObject map, JSObject mapOptions)/*-{
+		map.setOptions(mapOptions);
+	}-*/;
+
+	public static native void panTo(JSObject map, JSObject lonlat)/*-{
+		map.panTo(lonlat);
+	}-*/;
+
+	public static native JSObject getTileSize(JSObject map)/*-{
+		map.getTileSize();
+	}-*/;
+
+	public static native JSObject getSize(JSObject map)/*-{
+		map.getSize();
 	}-*/;
 
 	public static native void destroy(JSObject map)/*-{

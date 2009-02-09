@@ -64,11 +64,10 @@ public class Map extends OpenLayersWidget {
 	}
 
 	/**
-	 * Returns current center of map object.
-	 * @return current center
+	 * @return LonLat - the coordinates of the center
 	 */
-	public String getCenter(){
-		return MapImpl.getCenter(getJSObject());
+	public LonLat getCenter(){
+		return new LonLat(MapImpl.getCenter(getJSObject()));
 	}
 
 	public void setCenter(LonLat lonlat) {
@@ -219,8 +218,69 @@ public class Map extends OpenLayersWidget {
 		return new LonLat( MapImpl.getLonLatFromPixel(getJSObject(), pixel.getJSObject()) );
 	}
 
+	public Pixel getPixelFromLonLat (LonLat lonlat) {
+		return new Pixel(MapImpl.getPixelFromLonLat(getJSObject(), lonlat.getJSObject()));
+	}
+
 	public String getProjection() {
 		return MapImpl.getProjection(getJSObject());
+	}
+
+	/**
+	 * See also {@link MapUnits}.
+	 *
+	 * @return String - the units used by the projection
+	 */
+	public String getUnits(){
+		return MapImpl.getUnits(getJSObject());
+	}
+
+	public Bounds getExtent(){
+		return new Bounds(MapImpl.getExtent(getJSObject()));
+	}
+
+	public Bounds getMaxExtent(){
+		return new Bounds(MapImpl.getMaxExtent(getJSObject()));
+	}
+
+	public double getResolution(){
+		return MapImpl.getResolution(getJSObject());
+	}
+
+	public double getScale(){
+		return MapImpl.getScale(getJSObject());
+	}
+
+	public void raiseLayer(Layer layer, int delta){
+		MapImpl.raiseLayer(getJSObject(), layer.getJSObject(), delta);
+	}
+
+	public void zoomTo(int zoomLevel){
+		MapImpl.zoomTo(getJSObject(), zoomLevel);
+	}
+
+	public void zoomToMaxExtent(){
+		MapImpl.zoomToMaxExtent(getJSObject());
+	}
+
+	public void removeControl(Control control){
+		MapImpl.removeControl(getJSObject(), control.getJSObject());
+	}
+
+	public void setOptions(MapOptions mapOptions){
+		MapImpl.setOptions(getJSObject(), mapOptions.getJSObject());
+	}
+
+	public void panTo(LonLat lonlat){
+		MapImpl.panTo(getJSObject(), lonlat.getJSObject());
+	}
+
+	public Size getTileSize(){
+		return new Size(MapImpl.getTileSize(getJSObject()));
+	}
+
+	public Size getSize(){
+		return new Size(MapImpl.getSize(getJSObject()));
 	}
 
 	public void destroy(){

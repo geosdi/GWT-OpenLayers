@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.popup;
 
-import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * 

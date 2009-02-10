@@ -1,4 +1,4 @@
-package com.eg.gwt.openLayers.client;
+package com.eg.gwt.openLayers.client.util;
 
 
 class JBooleanImpl 

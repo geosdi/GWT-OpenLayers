@@ -1,25 +1,28 @@
-package com.eg.gwt.openLayers.client;
+package com.eg.gwt.openLayers.client.util;
 
 
 
+/**
+ *
+ *
+ */
+public class JArrayBase extends JSObjectWrapper {
 
-public class JArrayBase extends OpenLayersWidget {
-
-	protected JArrayBase(JSObject element) 
+	protected JArrayBase(JSObject element)
 	{
 		super(element);
 	}
-	
-	public static JArrayBase narrowToGoogleMapsWidgetArray(JSObject element)
+
+	public static JArrayBase narrowToJArray(JSObject element)
 	{
 		return (element == null)?null: new JArrayBase(element);
 	}
-	
+
 	protected JArrayBase(int length)
 	{
 		this(JArrayBaseImpl.create(length));
 	}
-	
+
 	public int length()
 	{
 		return JArrayBaseImpl.arrayLength(getJSObject());

@@ -30,6 +30,8 @@ import com.eg.gwt.openLayers.client.event.MapPopupClosedListener.MapPopupClosedE
 import com.eg.gwt.openLayers.client.event.MapPopupOpenedListener.MapPopupOpenedEvent;
 import com.eg.gwt.openLayers.client.layer.Layer;
 import com.eg.gwt.openLayers.client.popup.Popup;
+import com.eg.gwt.openLayers.client.util.JObjectArray;
+import com.eg.gwt.openLayers.client.util.JSObject;
 import com.google.gwt.user.client.Element;
 
 /**
@@ -125,7 +127,7 @@ public class Map extends OpenLayersWidget {
 
 	public Layer[] getLayers() {
 		JSObject jsObjects = MapImpl.getLayers(getJSObject());
-		JObjectArray jObjectArray = new JObjectArray(jsObjects);
+		JObjectArray jObjectArray = JObjectArray.narrowToJObjectArray(jsObjects);
 		Layer[] layers = new Layer[jObjectArray.length()];
 		for(int i = 0; i < jObjectArray.length(); i++) {
 			layers[i] = new Layer(jObjectArray.get(i));
@@ -281,6 +283,10 @@ public class Map extends OpenLayersWidget {
 
 	public Size getSize(){
 		return new Size(MapImpl.getSize(getJSObject()));
+	}
+
+	public double getMaxResolution(){
+		return MapImpl.getMaxResolution(getJSObject());
 	}
 
 	public void destroy(){

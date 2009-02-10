@@ -1,5 +1,7 @@
 package com.eg.gwt.openLayers.client;
 
+import com.eg.gwt.openLayers.client.util.JObjectArray;
+
 
 /**
  * Properties of the map can be set via map options

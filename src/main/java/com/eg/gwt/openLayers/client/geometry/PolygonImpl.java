@@ -3,7 +3,7 @@
  */
 package com.eg.gwt.openLayers.client.geometry;
 
-import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS

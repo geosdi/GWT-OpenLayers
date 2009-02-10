@@ -1,6 +1,5 @@
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
 import com.eg.gwt.openLayers.client.event.EventHandler;
 import com.eg.gwt.openLayers.client.event.EventListener;
@@ -14,6 +13,7 @@ import com.eg.gwt.openLayers.client.event.LayerVisibilityChangedListener;
 import com.eg.gwt.openLayers.client.event.LayerLoadEndListener.LoadEndEvent;
 import com.eg.gwt.openLayers.client.event.LayerLoadStartListener.LoadStartEvent;
 import com.eg.gwt.openLayers.client.event.LayerVisibilityChangedListener.VisibilityChangedEvent;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  *

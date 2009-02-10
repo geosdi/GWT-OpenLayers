@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.geometry;
 
-import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 public class CollectionImpl {
 

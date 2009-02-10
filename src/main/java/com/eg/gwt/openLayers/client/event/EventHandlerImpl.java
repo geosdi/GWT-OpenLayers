@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.event;
 
-import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 public class EventHandlerImpl {
 
@@ -10,9 +10,9 @@ public class EventHandlerImpl {
     public native static JSObject createHandler(EventHandler self)/*-{
         var handler = function(eo){
                 var source = eo.object?eo.object:null;
-                @com.eg.gwt.openLayers.client.event.EventHandlerBridge::onHandle(Lcom/eg/gwt/openLayers/client/JSObject;Lcom/eg/gwt/openLayers/client/JSObject;Lcom/eg/gwt/openLayers/client/event/EventHandler;)(source, eo, self);
+                @com.eg.gwt.openLayers.client.event.EventHandlerBridge::onHandle(Lcom/eg/gwt/openLayers/client/util/JSObject;Lcom/eg/gwt/openLayers/client/util/JSObject;Lcom/eg/gwt/openLayers/client/event/EventHandler;)(source, eo, self);
             }
         return handler;
      }-*/;
-    
+
 }

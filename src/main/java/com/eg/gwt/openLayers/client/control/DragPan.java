@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Options;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.

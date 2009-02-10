@@ -3,8 +3,8 @@
  */
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.layer.Vector;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS

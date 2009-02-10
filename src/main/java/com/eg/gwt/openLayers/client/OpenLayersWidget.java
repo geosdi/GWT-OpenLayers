@@ -1,32 +1,24 @@
 package com.eg.gwt.openLayers.client;
 
 import com.eg.gwt.openLayers.client.event.Events;
+import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
 
 /**
- * 
+ *
  * @author Erdem Gunay
  *
  */
-public class OpenLayersWidget {
-
-	private JSObject element;
+public class OpenLayersWidget extends JSObjectWrapper {
 
 	protected OpenLayersWidget(JSObject element)
 	{
-		setJSObject(element);
+		super(element);
 	}
-	
+
 	public static OpenLayersWidget narrowToOpenLayersWidget(JSObject element)
 	{
 		return (element == null)?null: new OpenLayersWidget(element);
-	}
-	
-	public JSObject getJSObject() {
-		return element;
-	}
-
-	public void setJSObject(JSObject element) {
-		this.element = element;
 	}
 
 	public Events getEvents() {

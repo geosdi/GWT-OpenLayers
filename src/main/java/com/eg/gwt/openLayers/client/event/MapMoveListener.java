@@ -3,8 +3,8 @@
  */
 package com.eg.gwt.openLayers.client.event;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Map;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * Needs to be implemented to listen to map move events.

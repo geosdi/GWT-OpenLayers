@@ -3,6 +3,8 @@
  */
 package com.eg.gwt.openLayers.client;
 
+import com.eg.gwt.openLayers.client.util.JSObject;
+
 /**
  * @author Edwin Commandeur - Atlis EJS
  *

@@ -3,8 +3,8 @@
  */
 package com.eg.gwt.openLayers.client.format;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * Format objects provide support for reading and writing formats that are

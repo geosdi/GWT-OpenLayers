@@ -1,7 +1,5 @@
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.JObjectArray;
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Options;
 import com.eg.gwt.openLayers.client.event.EventHandler;
 import com.eg.gwt.openLayers.client.event.EventType;
@@ -18,6 +16,8 @@ import com.eg.gwt.openLayers.client.event.VectorFeatureRemovedListener.FeatureRe
 import com.eg.gwt.openLayers.client.event.VectorFeatureSelectedListener.FeatureSelectedEvent;
 import com.eg.gwt.openLayers.client.event.VectorFeatureUnselectedListener.FeatureUnselectedEvent;
 import com.eg.gwt.openLayers.client.feature.VectorFeature;
+import com.eg.gwt.openLayers.client.util.JObjectArray;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  *

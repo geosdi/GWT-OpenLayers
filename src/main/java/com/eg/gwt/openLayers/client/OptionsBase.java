@@ -3,6 +3,11 @@
  */
 package com.eg.gwt.openLayers.client;
 
+import com.eg.gwt.openLayers.client.util.ElementHelper;
+import com.eg.gwt.openLayers.client.util.JIntArray;
+import com.eg.gwt.openLayers.client.util.JObjectArray;
+import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
 import com.google.gwt.user.client.Element;
 
 /**
@@ -22,16 +27,11 @@ import com.google.gwt.user.client.Element;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class OptionsBase {
-
-	private JSObject options;
+public class OptionsBase extends JSObjectWrapper {
 
 	protected OptionsBase(){
-		this.options = OptionsBaseImpl.create();
-	}
-
-	public JSObject getJSObject(){
-		return this.options;
+		super(OptionsBaseImpl.create());
+		//super((JSObject) JSObject.createObject()); //should work
 	}
 
 	protected void setAttribute(String attr, boolean value)
@@ -107,7 +107,7 @@ public class OptionsBase {
 	//TODO Perhaps move these back to helper methods
 	protected int[] getAttributeAsIntArray(String attr)
 	{
-		return new JIntArray(getAttributeAsJSObject(attr)).toArray();
+		return JIntArray.narrowToJIntArray(getAttributeAsJSObject(attr)).toArray();
 	}
 
 	protected String[] getAttributes()

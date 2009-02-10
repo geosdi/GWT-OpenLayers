@@ -1,8 +1,8 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.Bounds;
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Marker;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * 

@@ -1,8 +1,8 @@
 package com.eg.gwt.openLayers.client.format;
 
-import com.eg.gwt.openLayers.client.JObjectArray;
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.feature.VectorFeature;
+import com.eg.gwt.openLayers.client.util.JObjectArray;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * Format objects provide support for reading and writing formats for

@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client.handler;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 public class Handler extends OpenLayersWidget {
 

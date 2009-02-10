@@ -1,4 +1,6 @@
-package com.eg.gwt.openLayers.client;
+package com.eg.gwt.openLayers.client.util;
+
+import com.eg.gwt.openLayers.client.OpenLayersWidget;
 
 
 

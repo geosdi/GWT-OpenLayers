@@ -1,9 +1,9 @@
 package com.eg.gwt.openLayers.client.event;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.Pixel;
 import com.eg.gwt.openLayers.client.feature.VectorFeature;
 import com.eg.gwt.openLayers.client.layer.Layer;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * <p>Base class for event objects.</p>

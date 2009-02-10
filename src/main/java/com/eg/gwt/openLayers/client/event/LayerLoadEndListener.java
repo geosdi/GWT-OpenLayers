@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client.event;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.layer.Layer;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS

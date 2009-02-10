@@ -1,6 +1,5 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.JSObject;
 import com.eg.gwt.openLayers.client.OpenLayersWidget;
 import com.eg.gwt.openLayers.client.event.ControlActivateListener;
 import com.eg.gwt.openLayers.client.event.ControlDeactivateListener;
@@ -10,6 +9,7 @@ import com.eg.gwt.openLayers.client.event.EventListener;
 import com.eg.gwt.openLayers.client.event.EventListenerCollection;
 import com.eg.gwt.openLayers.client.event.EventType;
 import com.eg.gwt.openLayers.client.event.ControlActivateListener.ControlActivateEvent;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  *

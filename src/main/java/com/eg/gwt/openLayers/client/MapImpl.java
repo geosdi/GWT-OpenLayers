@@ -1,5 +1,6 @@
 package com.eg.gwt.openLayers.client;
 
+import com.eg.gwt.openLayers.client.util.JSObject;
 import com.google.gwt.user.client.Element;
 
 /**
@@ -115,6 +116,10 @@ class MapImpl {
 		return map.getResolution();
 	}-*/;
 
+	public static native double getMaxResolution(JSObject map)/*-{
+		return map.getMaxResolution();
+	}-*/;
+
 	public static native double getScale(JSObject map)/*-{
 		return map.getScale();
 	}-*/;
@@ -155,6 +160,5 @@ class MapImpl {
 	public static native void destroy(JSObject map)/*-{
 		map.destroy();
 	}-*/;
-
 
 }

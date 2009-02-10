@@ -1,48 +1,50 @@
-package com.eg.gwt.openLayers.client;
+package com.eg.gwt.openLayers.client.util;
+
+import com.eg.gwt.openLayers.client.OpenLayersWidget;
 
 
-public class JObjectArray extends JArrayBase 
+public class JObjectArray extends JArrayBase
 {
 	protected JObjectArray(JSObject element)
 	{
 		super(element);
 	}
-	
-	public static JObjectArray narrowToJElementArray(JSObject element)
+
+	public static JObjectArray narrowToJObjectArray(JSObject element)
 	{
 		return (element == null)?null: new JObjectArray(element);
 	}
-	
+
 	public JObjectArray(JSObject[] array)
 	{
 		super(array.length);
-		
+
 		for(int i = 0; i < array.length; i++)
 		{
 			set(i, array[i]);
 		}
 	}
 
-    public JObjectArray(OpenLayersWidget[] array)
-    {
-        super(array.length);
-        
-        for(int i = 0; i < array.length; i++)
-        {
-            set(i, array[i].getJSObject());
-        }
-    }
+	public JObjectArray(OpenLayersWidget[] array)
+	{
+		super(array.length);
 
-    public void set(int index, JSObject value)
+		for(int i = 0; i < array.length; i++)
+		{
+			set(i, array[i].getJSObject());
+		}
+	}
+
+	public void set(int index, JSObject value)
 	{
 		JObjectArrayImpl.arraySet(getJSObject(), index, value);
 	}
-	
+
 	public JSObject get(int index)
 	{
 		return JObjectArrayImpl.getAsJSObject(getJSObject(), index);
 	}
-	
+
 	public JSObject[] toArray()
 	{
 		JSObject[] rtn = new JSObject[length()];
@@ -59,8 +61,8 @@ public class JObjectArray extends JArrayBase
 			}
 			else rtn[i] = JObjectArrayImpl.getAsJSObject(getJSObject(), i);
 		}
-		
+
 		return rtn;
 	}
-	
+
 }

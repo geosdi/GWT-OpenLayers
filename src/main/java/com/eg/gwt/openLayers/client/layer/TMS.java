@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Amr Alam - Refractions Research

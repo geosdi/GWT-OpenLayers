@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.handler;
 
-import com.eg.gwt.openLayers.client.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * Equal to Polygon handler, but avoids name conflicts with Polygon geometry

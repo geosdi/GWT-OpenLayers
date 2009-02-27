@@ -20,5 +20,9 @@ class LonLatImpl {
 	public static native double lat(JSObject self)/*-{
 		return self.lat;
 	}-*/;
-	
+
+	public static native void transform(JSObject self, String src, String dst)/*-{
+		self.transform(new $wnd.OpenLayers.Projection(src), new $wnd.OpenLayers.Projection(dst));
+	}-*/;
+
 }

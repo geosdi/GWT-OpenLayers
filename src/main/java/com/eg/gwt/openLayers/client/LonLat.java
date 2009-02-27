@@ -34,4 +34,8 @@ public class LonLat extends OpenLayersWidget {
 		return LonLatImpl.lat(getJSObject());
 	}
 	
+	public void transform(String src, String dst){
+		LonLatImpl.transform(getJSObject(), src, dst);
+	}
+	
 }

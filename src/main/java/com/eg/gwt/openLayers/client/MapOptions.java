@@ -47,6 +47,16 @@ public class MapOptions extends OptionsBase {
 	}
 
 	/**
+	 * Use this method to change the display projection
+	 * to another projection.
+	 *
+	 * @param projection
+	 */
+	public void setDisplayProjection(Projection projection) {
+		setAttribute("displayProjection", projection.getJSObject());
+	}
+
+	/**
 	 * The upper bounds of the spatial coordinate reference system, provided
 	 * in the units that CRS.
 	 * OR
@@ -114,8 +124,8 @@ public class MapOptions extends OptionsBase {
 	 * These units are also used by map controls.
 	 *
 	 * From the OpenLayers docs:
-	 * Defaults to ‘degrees’. Possible values are ‘degrees’ (or ‘dd’),
-	 * ‘m’, ‘ft’, ‘km’, ‘mi’, ‘inches’.
+	 * Defaults to ï¿½degreesï¿½. Possible values are ï¿½degreesï¿½ (or ï¿½ddï¿½),
+	 * ï¿½mï¿½, ï¿½ftï¿½, ï¿½kmï¿½, ï¿½miï¿½, ï¿½inchesï¿½.
 	 */
 	public void setUnits(String units){
 		setAttribute("units", units);

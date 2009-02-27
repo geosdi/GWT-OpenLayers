@@ -1,10 +1,6 @@
-package com.eg.gwt.openLayers.client;
+package com.eg.gwt.openLayers.client.util;
 
 
-import com.eg.gwt.openLayers.client.util.ElementHelper;
-import com.eg.gwt.openLayers.client.util.JIntArray;
-import com.eg.gwt.openLayers.client.util.JObjectArray;
-import com.eg.gwt.openLayers.client.util.JSObject;
 import com.google.gwt.user.client.Element;
 
 /**
@@ -12,7 +8,7 @@ import com.google.gwt.user.client.Element;
  * @author Erdem Gunay
  *
  */
-public class Options extends OpenLayersWidget {
+public class Options extends JSObjectWrapper {
 
 	protected Options(JSObject element) {
 		super(element);

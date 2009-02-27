@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.eg.gwt.openLayers.client;
+package com.eg.gwt.openLayers.client.util;
 
 import com.eg.gwt.openLayers.client.util.JSObject;
 
@@ -10,7 +7,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *
  */
 public class OptionsBaseImpl {
-    
+
     protected static native JSObject create()/*-{
         return new Object();
     }-*/;

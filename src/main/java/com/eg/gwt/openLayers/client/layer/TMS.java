@@ -7,7 +7,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *
  */
 public class TMS extends Layer {
-   
+
 	protected TMS(JSObject element) {
 		super(element);
 	}
@@ -15,7 +15,7 @@ public class TMS extends Layer {
 	public TMS(String name, String url, TMSParams params) {
 		this(TMSImpl.create(name, url, params.getJSObject()));
 	}
-    
+
 	public int getNumLoadingTiles(){
 		return TMSImpl.getNumLoadingTiles(this.getJSObject());
 	}

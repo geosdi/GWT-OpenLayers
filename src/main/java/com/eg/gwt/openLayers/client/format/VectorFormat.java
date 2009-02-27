@@ -21,10 +21,6 @@ public class VectorFormat extends Format {
 		super(element);
 	}
 
-	public void read(String vectorFormat){
-		FormatImpl.read(getJSObject(), vectorFormat);
-	}
-
 	/**
 	 * Write an array of {@link com.eg.gwt.openLayers.client.feature.VectorFeature} objects
 	 * in a particular format that depends on the specific format object.
@@ -39,8 +35,8 @@ public class VectorFormat extends Format {
 	 * @return a String containing the vector features written in a particular format.
 	 */
 	public String write(VectorFeature[] vectorFeatures){
-		JObjectArray features = new JObjectArray(vectorFeatures);
-		return FormatImpl.writeFeatures(getJSObject(), features.getJSObject());
+		JObjectArray objectArray = new JObjectArray(vectorFeatures);
+		return FormatImpl.writeArray(getJSObject(), objectArray.getJSObject());
 	};
 
 	/**
@@ -59,5 +55,16 @@ public class VectorFormat extends Format {
 	public String write(VectorFeature vectorFeature){
 		return FormatImpl.write(getJSObject(), vectorFeature.getJSObject());
 	};
+
+	/**
+	 * TODO: implement
+	 *
+	 * @param input - the vector features in a particular vector format
+	 * @return null
+	 */
+	public VectorFeature[] read(String input){
+		//VectorFeature.narrowToVectorFeature(FormatImpl.read(getJSObject(), input)) ;
+		return null;
+	}
 
 }

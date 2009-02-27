@@ -3,23 +3,29 @@ package com.eg.gwt.openLayers.client.format;
 import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
+ *
  * @author Edwin Commandeur - Atlis EJS
  *
  */
 public class FormatImpl {
 
-	public static native String read(JSObject format, String input)
+	public static native JSObject read(JSObject format, String input)
 	/*-{
 		return format.read(input);
 	}-*/;
 
-	public static native String write(JSObject format, JSObject vectorFeature)
+	public static native JSObject read(JSObject format, String input, JSObject options)
 	/*-{
-		return format.write(vectorFeature);
+		return format.read(input, options);
 	}-*/;
 
-	public static native String writeFeatures(JSObject format, JSObject vectorFeatures)
+	public static native String write(JSObject format, JSObject object)
 	/*-{
-		return $wnd.gwt_openlayers_util.relay.writeFeatures(format, vectorFeatures);
+		return format.write(object);
+	}-*/;
+
+	public static native String writeArray(JSObject format, JSObject array)
+	/*-{
+		return $wnd.gwt_openlayers_util.relay.writeArray(format, array);
 	}-*/;
 }

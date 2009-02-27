@@ -3,7 +3,7 @@ package com.eg.gwt.openLayers.client.format;
 import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
- * Brief explanation of WKT vector format here.
+ * Brief explanation of Well Known Text (WKT) vector format here.
  *
  * Reference to WKT specification.
  *
@@ -19,7 +19,4 @@ public class WKT extends VectorFormat {
 		this(WKTImpl.create());
 	}
 
-	public void read(WKT wkt){
-		//todo implement
-	}
 }

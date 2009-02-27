@@ -1,11 +1,11 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.Options;
 import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.Options;
 import com.google.gwt.user.client.Element;
 
 /**
- * 
+ *
  * @author Erdem Gunay
  *
  */
@@ -18,7 +18,7 @@ public class MousePosition extends Control {
 	public MousePosition() {
 		this(MousePositionImpl.create());
 	}
-	
+
 	public MousePosition(Element div) {
 		super((JSObject)null);
 		Options options = new Options();
@@ -29,5 +29,5 @@ public class MousePosition extends Control {
 	public MousePosition(Options options) {
 		this(MousePositionImpl.create(options.getJSObject()));
 	}
-	
+
 }

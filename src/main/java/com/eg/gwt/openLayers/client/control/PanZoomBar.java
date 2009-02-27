@@ -1,11 +1,11 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.Options;
 import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.Options;
 import com.google.gwt.user.client.Element;
 
 /**
- * 
+ *
  * @author Erdem Gunay
  *
  */
@@ -26,7 +26,7 @@ public class PanZoomBar extends Control {
 		setJSObject(PanZoomBarImpl.create(options.getJSObject()));
 	}
 
-	
+
 	public PanZoomBar(Options options) {
 		this(PanZoomBarImpl.create(options.getJSObject()));
 	}

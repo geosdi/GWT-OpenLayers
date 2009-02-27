@@ -59,8 +59,8 @@ gwt_openlayers_util.relay = {
 
         //paste new relay function here
 
-        writeFeatures : function(features, o){
-            return features.write(gwt_openlayers_util.convertToArray(o));
+        writeArray : function(format, o){
+            return format.write(gwt_openlayers_util.convertToArray(o));
         },
 
         createPolygon : function(o){

@@ -1,6 +1,7 @@
 package com.eg.gwt.openLayers.client;
 
 import com.eg.gwt.openLayers.client.util.JObjectArray;
+import com.eg.gwt.openLayers.client.util.OptionsBase;
 
 
 /**
@@ -10,10 +11,6 @@ import com.eg.gwt.openLayers.client.util.JObjectArray;
  *
  */
 public class MapOptions extends OptionsBase {
-
-	public MapOptions() {
-
-	}
 
 	public void setNumZoomLevels(int numZoomLevels) {
 		setAttribute("numZoomLevels", numZoomLevels);

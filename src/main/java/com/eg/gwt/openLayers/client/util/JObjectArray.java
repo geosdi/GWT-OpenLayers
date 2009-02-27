@@ -1,6 +1,5 @@
 package com.eg.gwt.openLayers.client.util;
 
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
 
 
 public class JObjectArray extends JArrayBase
@@ -25,7 +24,7 @@ public class JObjectArray extends JArrayBase
 		}
 	}
 
-	public JObjectArray(OpenLayersWidget[] array)
+	public JObjectArray(JSObjectWrapper[] array)
 	{
 		super(array.length);
 

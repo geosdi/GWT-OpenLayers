@@ -1,7 +1,4 @@
-/**
- *
- */
-package com.eg.gwt.openLayers.client;
+package com.eg.gwt.openLayers.client.util;
 
 import com.eg.gwt.openLayers.client.util.ElementHelper;
 import com.eg.gwt.openLayers.client.util.JIntArray;
@@ -11,18 +8,30 @@ import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
 import com.google.gwt.user.client.Element;
 
 /**
- * Serves as a base class for making Option objects that
- * only expose options specific to a given OpenLayers class.
+ * Serves as a base class for making Option objects that must
+ * only expose a set of options that are valid for a particular object.
  *
- * There is a lot of overlaps of OptionsBase with Options. However, OptionsBase
- *      - intentionally does not extend OpenLayersWidget, and
- *      - hides it's methods for non-children
+ * Other than that the functions in OptionsBase are protected this class
+ * is identical to the {@link Options} class.
  *
- * Use Options to set arbitrary properties.
- *      [insert example here]
+ * Use Options to set arbitrary properties on an opaque JSObject.
+ *   Options options = new Options();
+ *   options.setAttribute("div", div);
  *
  * Use Objects that extend OptionsBase to set class specific properties.
- *      [insert example here]
+ *   MapOptions mapOptions = new MapOptions();
+ *   mapOptions.setProjection("EPSG:28992");
+ *   mapOptions.setUnits(MapUnits.METER);
+ *   mapOptions.setMaxExtent(new Bounds(12628.0541, 308179.0423, 283594.4779, 611063.1429));
+ *   mapOptions.setMasResolutionToAuto();
+ *
+ * An object like MapOptions can be created using Options, but that is errorprone
+ * and requires knowledge of the property names in OpenLayers:
+ *   Options options = new Options();
+ *   options.setAttribute("projection", "EPSG":28992");
+ *   options.setAttribute("units", "m");
+ *   options.setAttribute("maxExtent", new Bounds(12628.0541, 308179.0423, 283594.4779, 611063.1429));
+ *   options.setAttribute("maxResolution", "auto");
  *
  * @author Edwin Commandeur - Atlis EJS
  *

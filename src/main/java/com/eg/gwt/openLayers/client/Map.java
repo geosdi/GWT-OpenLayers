@@ -166,6 +166,7 @@ public class Map extends OpenLayersWidget {
 	 * @return Layer[] - all layers with a name that fully or partially
 	 *    matches the input name
 	 */
+	@SuppressWarnings("unchecked")
 	public Layer[] getLayersByName(String name){
 		String regex= ".*" + name + ".*";
 		Layer[] layers = this.getLayers();

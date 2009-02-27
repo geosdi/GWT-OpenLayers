@@ -18,7 +18,7 @@ public class Projection extends OpenLayersWidget {
 	 * @param code -
 	 */
 	public void setProjectionCode(String code){
-
+		ProjectionImpl.setProjectionCode(getJSObject(), code);
 	}
 
 }

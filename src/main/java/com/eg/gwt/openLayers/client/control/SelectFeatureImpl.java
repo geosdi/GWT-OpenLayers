@@ -18,7 +18,7 @@ class SelectFeatureImpl {
 
 
 	public static native JSObject create(JSObject layer, JSObject options)/*-{
-		return new $wnd.OpenLayers.Control.DrawFeature(layer, options);
+		return new $wnd.OpenLayers.Control.SelectFeature(layer, options);
 	}-*/;
 
 	public static native void setClickOut(JSObject self, boolean clickout)/*-{

@@ -10,7 +10,7 @@ public class GML3Impl {
 
 	public static native JSObject create()
 	/*-{
-		return new $wnd.OpenLayers.Format.GML.v3();
+		return new $wnd.OpenLayers.Format.GML.v3({});
 	}-*/;
 
 }

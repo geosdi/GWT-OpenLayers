@@ -10,7 +10,7 @@ public class GML2Impl {
 
 	public static native JSObject create()
 	/*-{
-		return new $wnd.OpenLayers.Format.GML.v2();
+		return new $wnd.OpenLayers.Format.GML.v2({});
 	}-*/;
 
 }

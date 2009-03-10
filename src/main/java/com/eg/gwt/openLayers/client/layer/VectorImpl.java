@@ -6,6 +6,8 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * 
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
+ * @author Curtis Jensen
+ *
  */
 class VectorImpl {
 
@@ -44,5 +46,17 @@ class VectorImpl {
     public static native JSObject getFeatureById(JSObject self, String id) /*-{
         return self.getFeatureById(id);
     }-*/;
+
+	public static native void redraw(JSObject vector)/*-{
+		vector.redraw();
+	}-*/;
+	
+	public static native void drawFeature(JSObject vector, JSObject feature, JSObject style)/*-{
+		vector.drawFeature(feature, style);
+	}-*/;
+	
+	public static native void eraseFeatures(JSObject vector)/*-{
+		vector.eraseFeatures();
+	}-*/;
 
 }

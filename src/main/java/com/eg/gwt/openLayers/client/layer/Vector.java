@@ -1,5 +1,6 @@
 package com.eg.gwt.openLayers.client.layer;
 
+import com.eg.gwt.openLayers.client.Style;
 import com.eg.gwt.openLayers.client.event.EventHandler;
 import com.eg.gwt.openLayers.client.event.EventType;
 import com.eg.gwt.openLayers.client.event.VectorBeforeFeatureAddedListener;
@@ -23,6 +24,7 @@ import com.eg.gwt.openLayers.client.util.Options;
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
+ * @author Curtis Jensen
  *
  */
 public class Vector extends Layer {
@@ -60,6 +62,19 @@ public class Vector extends Layer {
 
 	public void addFeature(VectorFeature f){
 		VectorImpl.addFeature(getJSObject(), f.getJSObject());
+	}
+
+	
+	public void redraw() {
+		VectorImpl.redraw(this.getJSObject());
+	}
+	
+	public void drawFeature(VectorFeature vector, Style style) {
+		VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject(), style.getJSObject());
+	}
+	
+	public void eraseFeatures() {
+		VectorImpl.eraseFeatures(this.getJSObject());
 	}
 
 

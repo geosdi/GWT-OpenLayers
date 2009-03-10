@@ -7,7 +7,8 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
- *
+ * @author Curtis Jensen
+ * 
  */
 public class StyleImpl {
 
@@ -66,4 +67,37 @@ public class StyleImpl {
     /*-{
         return self.strokeWidth;
     }-*/;
+    
+    public static native void setExternalGraphic(JSObject self, String graphicURL)
+    /*-{
+    	self.externalGraphic = graphicURL;
+	}-*/;
+    
+    public static native String getExternalGraphic(JSObject self)
+    /*-{
+		return self.externalGraphic;
+	}-*/;
+
+    public static native void setGraphicSize(JSObject self, int width, int height)
+    /*-{
+		self.graphicWidth = width;
+		self.graphicHeight = height;
+	}-*/;
+    
+    public static native int getGraphicWidth(JSObject self)
+    /*-{
+		return self.graphicWidth;
+	}-*/;
+    
+    public static native int getGraphicHeight(JSObject self)
+    /*-{
+		return self.graphicHeight;
+	}-*/;
+    
+    public static native void setGraphicOffset(JSObject self, int xOffset, int yOffset) 
+    /*-{
+		self.graphicXOffset = xOffset;
+		self.graphicYOffset = yOffset;
+	}-*/;
+
 }

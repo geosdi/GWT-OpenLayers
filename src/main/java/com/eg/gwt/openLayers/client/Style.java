@@ -4,6 +4,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
+ * @author Curtis Jensen
  *
  */
 public class Style extends OpenLayersWidget{
@@ -68,4 +69,27 @@ public class Style extends OpenLayersWidget{
         return StyleImpl.getStrokeWidth(getJSObject());
     }    
     
+    public void setExternalGraphic(String graphicURL) {
+    	StyleImpl.setExternalGraphic(getJSObject(), graphicURL);
+    }
+    
+    public String getExternalGraphic() {
+    	return StyleImpl.getExternalGraphic(getJSObject());
+    }
+    
+    public void setGraphicSize(int width, int height) {
+    	StyleImpl.setGraphicSize(getJSObject(), width, height);
+    }
+    
+    public int getGraphicWidth() {
+    	return StyleImpl.getGraphicWidth(getJSObject());
+    }
+    
+    public int getGraphicHeight() {
+    	return StyleImpl.getGraphicHeight(getJSObject());
+    }
+    
+    public void setGraphicOffset(int xOffset, int yOffset) {
+    	StyleImpl.setGraphicOffset(getJSObject(), xOffset, yOffset);
+    }
 }

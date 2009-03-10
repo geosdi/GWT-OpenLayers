@@ -5,6 +5,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 /**
  *
  * @author Erdem Gunay
+ * @author Curtis Jensen
  *
  */
 public class Pixel extends OpenLayersWidget {
@@ -22,6 +23,14 @@ public class Pixel extends OpenLayersWidget {
 		this(PixelImpl.create(x, y));
 	}
 
+	public int x() {
+		return PixelImpl.getX(this.getJSObject());
+	}
+	
+	public int y() {
+		return PixelImpl.getY(this.getJSObject());
+	}
+	
 	public String toString() {
 		return PixelImpl.toString(getJSObject());
 	}

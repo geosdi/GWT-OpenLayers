@@ -7,6 +7,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
+ * @author Curtis Jensen
  *
  */
 public class GeometryImpl {
@@ -15,4 +16,8 @@ public class GeometryImpl {
         self.destroy();
     }-*/;
     
+	public static native JSObject getBounds(JSObject geom)/*-{
+		return geom.getBounds();
+    }-*/;
+
 }

@@ -4,6 +4,9 @@ GWT - OpenLayers plugin v0.3 [ IN PROGRESS ]
 
 In this release support for the following OpenLayers classes has been added
 
+OpenLayers.Popup package
+- Framed
+
 OpenLayers.Feature package
 - Feature
 - Vector (as VectorFeature)

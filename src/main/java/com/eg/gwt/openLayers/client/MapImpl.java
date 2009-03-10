@@ -9,6 +9,7 @@ import com.google.gwt.user.client.Element;
  * @author Amr Alam - Refractions Research
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  * @author Edwin Commandeur - Atlis Information Systems
+ * @author Curtis Jensen - Integrity Applications Inc.
  */
 class MapImpl {
 
@@ -69,6 +70,10 @@ class MapImpl {
 		map.removeLayer(layer);
 	}-*/;
 
+	public static native void removeControl(JSObject map, JSObject control)/*-{
+		map.removeControl(control);
+	}-*/;
+	
 	public static native int getLayerIndex(JSObject map, JSObject layer)/*-{
 		return map.getLayerIndex(layer);
 	}-*/;
@@ -135,10 +140,6 @@ class MapImpl {
 
 	public static native void zoomToMaxExtent(JSObject map)/*-{
 		map.zoomToMaxExtent();
-	}-*/;
-
-	public static native void removeControl(JSObject map, JSObject control)/*-{
-		map.removeControl(control);
 	}-*/;
 
 	public static native void setOptions(JSObject map, JSObject mapOptions)/*-{

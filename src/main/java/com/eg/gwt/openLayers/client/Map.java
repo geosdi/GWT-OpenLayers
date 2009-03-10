@@ -52,6 +52,7 @@ import com.google.gwt.user.client.Element;
  * @author Amr Alam - Refractions Research
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  * @author Edwin Commandeur - Atlis Information Systems
+ * @author Curtis Jensen - Integrity Applications Inc.
  */
 public class Map extends OpenLayersWidget {
 
@@ -149,6 +150,10 @@ public class Map extends OpenLayersWidget {
 
 	public void removeLayer(Layer layer) {
 		MapImpl.removeLayer(getJSObject(), layer.getJSObject());
+	}
+
+	public void removeControl(Control control) {
+    	MapImpl.removeControl(getJSObject(), control.getJSObject());
 	}
 
 	public int getLayerIndex(Layer layer) {
@@ -275,10 +280,6 @@ public class Map extends OpenLayersWidget {
 
 	public void zoomToMaxExtent(){
 		MapImpl.zoomToMaxExtent(getJSObject());
-	}
-
-	public void removeControl(Control control){
-		MapImpl.removeControl(getJSObject(), control.getJSObject());
 	}
 
 	public void setOptions(MapOptions mapOptions){

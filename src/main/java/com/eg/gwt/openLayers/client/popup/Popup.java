@@ -8,10 +8,15 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 /**
  * 
  * @author Erdem Gunay
+ * @author Curtis Jensen
  *
  */
 public class Popup extends OpenLayersWidget {
 
+	public interface CloseListener {
+		void onPopupClose(JSObject evt);
+	}
+	
 	protected Popup(JSObject element) {
 		super(element);
 	}
@@ -22,5 +27,13 @@ public class Popup extends OpenLayersWidget {
 				size.getJSObject(),
 				html,
 				closeBox));
+	}
+
+	public static Popup narrowToOpenLayersPopup(JSObject element) {
+		return (element == null) ? null: new Popup(element);
+	}
+
+	public void addCloseListener(CloseListener callback) {
+		PopupImpl.addCloseBox(this.getJSObject(), callback);
 	}
 }

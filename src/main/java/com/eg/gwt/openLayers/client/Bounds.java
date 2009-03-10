@@ -1,5 +1,6 @@
 package com.eg.gwt.openLayers.client;
 
+import com.eg.gwt.openLayers.client.geometry.Geometry;
 import com.eg.gwt.openLayers.client.util.JDoubleArray;
 import com.eg.gwt.openLayers.client.util.JSObject;
 
@@ -7,6 +8,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * Represents a bounding box (or bounding rectangle).
  *
  * @author Erdem Gunay
+ * @author Curtis Jensen
  *
  */
 public class Bounds extends OpenLayersWidget {
@@ -92,5 +94,13 @@ public class Bounds extends OpenLayersWidget {
 
 	public String toString(){
 		return BoundsImpl.toString(getJSObject());
+	}
+
+	public LonLat getCenterLonLat() {
+		return LonLat.narrowToLonLat(BoundsImpl.getCenterLonLat(this.getJSObject()));
+	}
+	
+	public Geometry toGeometry() {
+		return Geometry.narrowToGeometry(BoundsImpl.toGeometry(this.getJSObject()));
 	}
 }

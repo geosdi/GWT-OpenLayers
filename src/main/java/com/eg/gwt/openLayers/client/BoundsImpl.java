@@ -40,4 +40,13 @@ class BoundsImpl {
 	public static native String toString(JSObject bounds)/*-{
 		return bounds.toString();
 	}-*/;
+
+	public static native JSObject getCenterLonLat(JSObject bounds)/*-{
+    	return bounds.getCenterLonLat();
+    }-*/;
+	
+	public static native JSObject toGeometry(JSObject bounds)/*-{
+	return bounds.toGeometry();
+}-*/;
+
 }

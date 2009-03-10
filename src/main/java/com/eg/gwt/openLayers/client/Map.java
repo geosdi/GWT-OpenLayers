@@ -35,7 +35,19 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 import com.google.gwt.user.client.Element;
 
 /**
+ * <p>
+ * The Map class is the hub of OpenLayers. Instances of the Map class
+ * are "interactive maps embedded in a webpage".
+ * </p>
  *
+ * <p>
+ * Adjusted from OL API docs:
+ * On their own maps do not provide much functionality.  To extend a map
+ * it’s necessary to add controls, see {@link com.eg.gwt.openLayers.client.control.Control}
+ * and layers, see {@link com.eg.gwt.openLayers.client.layer.Layer}
+ * to the map.
+ *
+ * </p>
  * @author Erdem Gunay
  * @author Amr Alam - Refractions Research
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
@@ -166,7 +178,6 @@ public class Map extends OpenLayersWidget {
 	 * @return Layer[] - all layers with a name that fully or partially
 	 *    matches the input name
 	 */
-	@SuppressWarnings("unchecked")
 	public Layer[] getLayersByName(String name){
 		String regex= ".*" + name + ".*";
 		Layer[] layers = this.getLayers();

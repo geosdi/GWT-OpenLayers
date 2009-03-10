@@ -8,6 +8,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * See {@link SelectFeature}.
  *
  * @author Edwin Commandeur - Atlis EJS
+ * @author Curtis Jensen
  *
  */
 class SelectFeatureImpl {
@@ -51,4 +52,15 @@ class SelectFeatureImpl {
 		return callback;
 	}-*/;
 
+	public static native void unselect(JSObject selectFeature, JSObject feature)/*-{
+    	selectFeature.unselect(feature);
+	}-*/;
+	
+	public static native void setToggleKey(JSObject selectFeature, String keyName)/*-{
+		selectFeature["toggleKey"] = keyName;
+	}-*/;
+	
+	public static native void setMultipleKey(JSObject selectFeature, String keyName)/*-{
+		selectFeature["multipleKey"] = keyName;
+	}-*/;
 }

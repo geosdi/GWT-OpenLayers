@@ -12,6 +12,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
+ * @author Curtis Jensen
  *
  */
 public class SelectFeature extends Control {
@@ -86,6 +87,18 @@ public class SelectFeature extends Control {
 	 */
 	public void setMultiple(boolean multiple){
 		SelectFeatureImpl.setMultiple(getJSObject(), multiple);
+	}
+
+	public void setMultipleKey(String keyName) {
+		SelectFeatureImpl.setMultipleKey(this.getJSObject(), keyName);
+	}
+
+	public void setToggleKey(String keyName) {
+		SelectFeatureImpl.setToggleKey(this.getJSObject(), keyName);
+	}
+
+	public void unselect(JSObject feature) {
+		SelectFeatureImpl.unselect(this.getJSObject(), feature);
 	}
 
 	/**

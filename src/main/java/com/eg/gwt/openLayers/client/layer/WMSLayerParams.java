@@ -107,4 +107,13 @@ public class WMSLayerParams extends LayerOptions {
 		setAttribute("ratio", ratio);
 	}
 
+	/**
+	 * Sets an attribution block on the map. For example:
+	 * "This map is provided by <a href="url">company X</a>."
+	 *
+	 * @param attribution - the attribution text
+	 */
+	public void setAttribution(String attribution){
+		setAttribute("attribution", attribution);
+	}
 }

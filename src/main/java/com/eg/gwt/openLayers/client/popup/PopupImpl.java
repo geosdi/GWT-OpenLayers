@@ -6,6 +6,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 /**
  * 
  * @author Erdem Gunay
+ * @author Curtis Jensen
  *
  */
 class PopupImpl {
@@ -16,7 +17,7 @@ class PopupImpl {
 
 	public static native void addCloseBox(JSObject popup, CloseListener callback) /*-{
     	function closebox(evt) {
-    		callback.@com.eg.gwt.openLayers.client.popup.Popup.CloseListener::onPopupClose(Lcom/eg/gwt/openLayers/client/JSObject;)(evt);
+    		callback.@com.eg.gwt.openLayers.client.popup.Popup.CloseListener::onPopupClose(Lcom/eg/gwt/openLayers/client/util/JSObject;)(evt);
     	}
     
 		popup.addCloseBox(closebox);

@@ -37,9 +37,22 @@ import com.google.gwt.user.client.Element;
 /**
  * <p>
  * The Map class is the hub of OpenLayers. Instances of the Map class
- * are "interactive maps embedded in a webpage".
+ * are "interactive maps embedded in a webpage". In GWT-OpenLayers the map is
+ * wrapped in a MapWidget which is a GWT Widget. GWT Widgets can receive
+ * events from the browser and can be added to GWT Panels.
  * </p>
- *
+ * <pre>
+ *    MapWidget mapWidget = new MapWidget("100%", "100%");
+ *    Map map = mapWidget.getMap(); //instantiates map
+ *    map.setControls(new LayerSwitcher());
+ * </pre>
+ * <em>Or</em>
+ * <pre>
+ *    MapOptions options = new MapOptions();
+ *    options.setControls(new LayerSwitcher());
+ *    MapWidget mapWidget = new MapWidget("100%", "100%", options);
+ *    Map map = mapWidget.getMap(); //instantiates map
+ * </pre>
  * <p>
  * Adjusted from OL API docs:
  * On their own maps do not provide much functionality.  To extend a map
@@ -58,12 +71,12 @@ public class Map extends OpenLayersWidget {
 
 	private EventListenerCollection eventListeners = new EventListenerCollection();
 
-	public Map(Element e)
+	Map(Element e)
 	{
 		super(MapImpl.create(e));
 	}
 
-	public Map(Element e, MapOptions options)
+	Map(Element e, MapOptions options)
 	{
 		super(MapImpl.create(e, options.getJSObject()));
 	}

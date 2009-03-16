@@ -52,7 +52,7 @@ public class MapWidget extends Widget {
 		setHeight(height);
 	}
 
-	/**
+	/*
 	 * Uses the elementId to obtain the element that will contain the map from
 	 * the application html.
 	 *
@@ -69,6 +69,9 @@ public class MapWidget extends Widget {
 	 *
 	 * @since GWT-OL 0.4
 	 */
+	//TODO: this needs more thought - when the map is destroyed a MapWidget
+	// created this way can give problems.
+	/*
 	public MapWidget(String elementId, MapOptions options) {
 	    Element element = DOM.getElementById(elementId);
 		if(element != null){
@@ -79,9 +82,12 @@ public class MapWidget extends Widget {
 				"Failed to get element by id " +  elementId + ".");
 		}
 	}
+	*/
 
 	/**
-	 * The map is instantiated the first time it is returned.
+	 * Gets the map associated with a MapWidget instance.
+	 *
+	 * The map is instantiated when this method is called for the first time.
 	 *
 	 * @return Map - see {@link Map}.
 	 */

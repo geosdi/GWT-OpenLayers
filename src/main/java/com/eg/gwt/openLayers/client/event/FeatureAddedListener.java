@@ -3,10 +3,12 @@ package com.eg.gwt.openLayers.client.event;
 import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
+ * TODO: nest this interface under control ...
+ *
  * Listens to firing of featureAdded handler.
- * 
+ *
  * The featureAdded handler is invoked by the DrawFeature control.
- * 
+ *
  * @author Edwin Commandeur - Atlis EJS
  *
  * Example of use:
@@ -19,11 +21,11 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *      DrawFeature drawPolygon = new DrawFeature(vectorLayer, polygonHandler, listener);
  */
 public interface FeatureAddedListener {
-    
+
     //TODO: can this be refactored along the lines of MapMoveListener etc.?
     class FeatureAddedEvent{
-        
+
     }
-    
+
     void onFeatureAdded(JSObject vectorFeature);
 }

@@ -11,8 +11,15 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * </p>
  * <p>
  * An event handler can be registered in the following way:<br/>
- * <code> map.getEvents().register("addlayer", map, new EventHandler()
- * { public void onHandle(JSObject source, JSObject eventObject){ //handler code here } })</code>
+ * <pre>
+ *     map.getEvents().register("addlayer", map, new EventHandler()
+ *     {
+ *         public void onHandle(JSObject source, JSObject eventObject)
+ *         {
+ *             //handler code here
+ *         }
+ *     });
+ * </pre>
  * </p>
  * <p>
  * Consult the OpenLayers API documentation at the <a href="http://openlayers.org/" target="_blank">OpenLayers site</a>
@@ -20,11 +27,18 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * and to see which events these objects fire (e.g. "addlayer" fired by Map).
  * </p>
  * <p>
- * GWT OpenLayers provides a higher level way to register events through addXxxListener methods, that should
- * be easier to use, and that are type-safe. However, these may not be implemented for all events in OpenLayers.
+ * GWT OpenLayers provides a higher level way to register events through addXxxListener methods, which are
+ * easier to use, and which provide type-safety. However, these may not be implemented for all events in OpenLayers.
  * The addXxxListener methods are methods on the Object firing the event:<br/>
- * <code> map.addMapMoveListener(new MapMoveListener()
- * { public void onMapMove(Map source, MapMoveEvent eventObject){ //handler code here } })
+ * <pre>
+ *     map.addMapMoveListener(new MapMoveListener()
+ *     {
+ *         public void onMapMove(Map source, MapMoveEvent eventObject)
+ *         {
+ *             //handler code here
+ *         }
+ *     })
+ * </pre>
  * </p>
  *
  * @author Erdem Gunay

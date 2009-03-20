@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.eg.gwt.openLayers.client.event.EventHandler;
 import com.eg.gwt.openLayers.client.event.EventListener;
 import com.eg.gwt.openLayers.client.event.EventListenerCollection;
@@ -22,7 +22,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *         Edwin Commandeur - Atlis EJS
  *
  */
-public class Layer extends OpenLayersWidget {
+public class Layer extends OpenLayersObjectWrapper {
 
     protected EventListenerCollection eventListeners = new EventListenerCollection();
 

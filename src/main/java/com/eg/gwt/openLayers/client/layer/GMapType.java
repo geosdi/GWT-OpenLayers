@@ -1,13 +1,13 @@
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.eg.gwt.openLayers.client.util.JSObject;
 
 /**
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  *
  */
-public class GMapType extends OpenLayersWidget
+public class GMapType extends OpenLayersObjectWrapper
 {
    /**
     * This map type shows Google Earth satellite images.

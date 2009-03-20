@@ -33,8 +33,8 @@ class BoundsImpl {
 		return bounds.top;
 	}-*/;
 
-	public static native String toBBox(JSObject bounds)/*-{
-		return bounds.toBBOX();
+	public static native String toBBox(JSObject bounds, Integer significantDigits)/*-{
+		return bounds.toBBOX(significantDigits);
 	}-*/;
 
 	public static native String toString(JSObject bounds)/*-{
@@ -44,7 +44,7 @@ class BoundsImpl {
 	public static native JSObject getCenterLonLat(JSObject bounds)/*-{
     	return bounds.getCenterLonLat();
     }-*/;
-	
+
 	public static native JSObject toGeometry(JSObject bounds)/*-{
 	return bounds.toGeometry();
 }-*/;

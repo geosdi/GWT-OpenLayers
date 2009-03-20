@@ -1,11 +1,11 @@
 package com.eg.gwt.openLayers.client.util;
 
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 
 
 
 
-public class JBoolean extends OpenLayersWidget {
+public class JBoolean extends OpenLayersObjectWrapper {
 
 	protected JBoolean(JSObject element) {
 		super(element);

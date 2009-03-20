@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.eg.gwt.openLayers.client.event.ControlActivateListener;
 import com.eg.gwt.openLayers.client.event.ControlDeactivateListener;
 import com.eg.gwt.openLayers.client.event.ControlDeactivateListener.ControlDeactivateEvent;
@@ -16,7 +16,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Erdem Gunay
  *
  */
-public class Control extends OpenLayersWidget {
+public class Control extends OpenLayersObjectWrapper {
 
 	protected EventListenerCollection eventListeners = new EventListenerCollection();
 

@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client.popup;
 
 import com.eg.gwt.openLayers.client.LonLat;
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.eg.gwt.openLayers.client.Size;
 import com.eg.gwt.openLayers.client.util.JSObject;
 
@@ -11,7 +11,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Curtis Jensen
  *
  */
-public class Popup extends OpenLayersWidget {
+public class Popup extends OpenLayersObjectWrapper {
 
 	public interface CloseListener {
 		void onPopupClose(JSObject evt);

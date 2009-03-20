@@ -4,7 +4,7 @@
   <groupId>com.eg.gwt.openLayers</groupId>
   <artifactId>openlayers_gwt</artifactId>
   <packaging>jar</packaging>
-  <version>0.3.1-SNAPSHOT</version>
+  <version>0.4-SNAPSHOT</version>
   <name>gwt-openlayers</name>
   <url>http://maven.apache.org</url>
   <dependencies>

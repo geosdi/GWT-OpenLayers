@@ -2,7 +2,7 @@ package com.eg.gwt.openLayers.client.feature;
 
 import com.eg.gwt.openLayers.client.Bounds;
 import com.eg.gwt.openLayers.client.LonLat;
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.eg.gwt.openLayers.client.Style;
 import com.eg.gwt.openLayers.client.popup.Popup;
 import com.eg.gwt.openLayers.client.util.JSObject;
@@ -13,7 +13,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Curtis Jensen
  * 
  */
-public abstract class Feature extends OpenLayersWidget {
+public abstract class Feature extends OpenLayersObjectWrapper {
 
     protected Feature(JSObject element){
         super(element);

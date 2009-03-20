@@ -1,6 +1,6 @@
 package com.eg.gwt.openLayers.client.util;
 
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.google.gwt.user.client.Element;
 
 public class ElementHelper
@@ -110,7 +110,7 @@ public class ElementHelper
     	return (ret === undefined) ? null : ret;
     }-*/;
 	
-	public static JSObject arrayConvert(OpenLayersWidget[] array) 
+	public static JSObject arrayConvert(OpenLayersObjectWrapper[] array) 
 	{ 
 	        JSObject result = newJSArray(array.length); 
 	        for (int i = 0; i < array.length; i++) 

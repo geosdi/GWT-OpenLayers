@@ -7,7 +7,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Curtis Jensen
  *
  */
-public class Style extends OpenLayersWidget{
+public class Style extends OpenLayersObjectWrapper{
     
     public static final String STROKE_DASHSTYLE_SOLID = "solid";
     public static final String STROKE_DASHSTYLE_DASHDOT = "dashdot";

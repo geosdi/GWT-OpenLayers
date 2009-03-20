@@ -9,9 +9,9 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *
  * @author Erdem Gunay
  * @author Curtis Jensen
- *
+ * @author Edwin Commandeur
  */
-public class Bounds extends OpenLayersWidget {
+public class Bounds extends OpenLayersObjectWrapper {
 
 	protected Bounds(JSObject element) {
 		super(element);
@@ -88,8 +88,14 @@ public class Bounds extends OpenLayersWidget {
 		return BoundsImpl.getMaxY(getJSObject());
 	}
 
-	public String toBBox(){
-		return BoundsImpl.toBBox(getJSObject());
+	/**
+	 * @param significantDigits - Number of significant digits in the bbox coordinates,
+	 *  	pass null to use the default of 6.
+	 * @return String - simple string representation of a Bounds object. For example:
+	 *  	"5,42,10,45"
+	 */
+	public String toBBox(Integer significantDigits){
+		return BoundsImpl.toBBox(getJSObject(), significantDigits);
 	}
 
 	public String toString(){
@@ -99,7 +105,7 @@ public class Bounds extends OpenLayersWidget {
 	public LonLat getCenterLonLat() {
 		return LonLat.narrowToLonLat(BoundsImpl.getCenterLonLat(this.getJSObject()));
 	}
-	
+
 	public Geometry toGeometry() {
 		return Geometry.narrowToGeometry(BoundsImpl.toGeometry(this.getJSObject()));
 	}

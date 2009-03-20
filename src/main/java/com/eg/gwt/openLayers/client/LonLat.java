@@ -11,7 +11,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Erdem Gunay
  *
  */
-public class LonLat extends OpenLayersWidget {
+public class LonLat extends OpenLayersObjectWrapper {
 
 	protected LonLat(JSObject element) {
 		super(element);

@@ -7,7 +7,9 @@ import com.eg.gwt.openLayers.client.util.JSObject;
 /**
  * <p>
  * Event handlers should be concrete extensions of this abstract class.
- * These handlers get called when an event fires to which they are registered.
+ * The onHandle method of a handlers gets called when an event fires
+ * to which the handler is registered. See below, for a more convenient
+ * way to listen to events.
  * </p>
  * <p>
  * An event handler can be registered in the following way:<br/>
@@ -23,8 +25,8 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * </p>
  * <p>
  * Consult the OpenLayers API documentation at the <a href="http://openlayers.org/" target="_blank">OpenLayers site</a>
- * to see which type of objects fire events (e.g. Map, Layer, etc)
- * and to see which events these objects fire (e.g. "addlayer" fired by Map).
+ * to see which objects fire events (e.g. Map, Layer, etc)
+ * and which events they fire (e.g. "addlayer" fired by Map).
  * </p>
  * <p>
  * GWT OpenLayers provides a higher level way to register events through addXxxListener methods, which are

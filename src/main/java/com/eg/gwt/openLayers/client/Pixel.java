@@ -8,7 +8,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Curtis Jensen
  *
  */
-public class Pixel extends OpenLayersWidget {
+public class Pixel extends OpenLayersObjectWrapper {
 
 	protected Pixel(JSObject element) {
 		super(element);

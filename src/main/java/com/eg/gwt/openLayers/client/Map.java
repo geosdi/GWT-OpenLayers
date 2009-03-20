@@ -67,7 +67,7 @@ import com.google.gwt.user.client.Element;
  * @author Edwin Commandeur - Atlis Information Systems
  * @author Curtis Jensen - Integrity Applications Inc.
  */
-public class Map extends OpenLayersWidget {
+public class Map extends OpenLayersObjectWrapper {
 
 	private EventListenerCollection eventListeners = new EventListenerCollection();
 

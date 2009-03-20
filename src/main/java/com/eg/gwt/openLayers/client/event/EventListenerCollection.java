@@ -3,7 +3,7 @@ package com.eg.gwt.openLayers.client.event;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 
 /**
  * The EventListenerCollection serves to maintain references to EventListeners, and
@@ -19,13 +19,13 @@ public class EventListenerCollection {
 
     private Map map = new HashMap();
 
-    public void addListener(OpenLayersWidget w, EventListener listener, String type, EventHandler handler){
+    public void addListener(OpenLayersObjectWrapper w, EventListener listener, String type, EventHandler handler){
         //TODO check if type is defined and valid?
         w.getEvents().register(type, w, handler);
         addToCollection(listener, new ListenerRegisteredProperties(type, handler));
     }
 
-    public void removeListener(OpenLayersWidget w, EventListener listener){
+    public void removeListener(OpenLayersObjectWrapper w, EventListener listener){
         ListenerRegisteredProperties props = getRegisteredProperties(listener);
         if(props!=null){
             w.getEvents().unregister(props.getType(), w, props.getEventHandler());
@@ -34,10 +34,10 @@ public class EventListenerCollection {
         //TODO give feedback that listener is not in collection
     }
 
-//EventListenerCollection is propery of widget, so removing all listeners
+//EventListenerCollection is propery of object, so removing all listeners
 // means clearing the complete map (is calling map.clear() enough?)
 /*
-    public void removeListeners(OpenLayersWidget w){
+    public void removeListeners(OpenLayersObjectWrapper w){
         int size = map.size();
         if(size > 0){
             for(int i = 0;i< size;i++){

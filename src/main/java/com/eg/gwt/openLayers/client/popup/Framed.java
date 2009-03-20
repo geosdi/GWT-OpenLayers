@@ -2,7 +2,7 @@ package com.eg.gwt.openLayers.client.popup;
 
 import com.eg.gwt.openLayers.client.util.JSObject;
 import com.eg.gwt.openLayers.client.LonLat;
-import com.eg.gwt.openLayers.client.OpenLayersWidget;
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.eg.gwt.openLayers.client.Size;
 
 /**
@@ -16,7 +16,7 @@ public class Framed extends Popup {
 		super(element);
 	}
 
-	public Framed(String id, LonLat lonlat, Size size, String html, OpenLayersWidget anchor, boolean closeBox) {
+	public Framed(String id, LonLat lonlat, Size size, String html, OpenLayersObjectWrapper anchor, boolean closeBox) {
 		this(FramedImpl.create(id, 
 				lonlat.getJSObject(),
 				size.getJSObject(),

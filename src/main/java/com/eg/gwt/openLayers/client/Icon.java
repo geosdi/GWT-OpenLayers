@@ -7,7 +7,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Erdem Gunay
  *
  */
-public class Icon extends OpenLayersWidget {
+public class Icon extends OpenLayersObjectWrapper {
 
 	protected Icon(JSObject element) {
 		super(element);

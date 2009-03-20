@@ -8,7 +8,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Erdem Gunay
  *
  */
-public class Marker extends OpenLayersWidget {
+public class Marker extends OpenLayersObjectWrapper {
 
 	protected Marker(JSObject element) {
 		super(element);

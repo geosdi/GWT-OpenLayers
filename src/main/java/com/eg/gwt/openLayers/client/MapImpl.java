@@ -73,7 +73,7 @@ class MapImpl {
 	public static native void removeControl(JSObject map, JSObject control)/*-{
 		map.removeControl(control);
 	}-*/;
-	
+
 	public static native int getLayerIndex(JSObject map, JSObject layer)/*-{
 		return map.getLayerIndex(layer);
 	}-*/;
@@ -160,6 +160,10 @@ class MapImpl {
 
 	public static native void destroy(JSObject map)/*-{
 		map.destroy();
+	}-*/;
+
+	public static native void getZIndexBase(JSObject map)/*-{
+
 	}-*/;
 
 }

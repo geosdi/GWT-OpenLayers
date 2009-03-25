@@ -121,8 +121,8 @@ public class MapOptions extends OptionsBase {
 	 * These units are also used by map controls.
 	 *
 	 * From the OpenLayers docs:
-	 * Defaults to �degrees�. Possible values are �degrees� (or �dd�),
-	 * �m�, �ft�, �km�, �mi�, �inches�.
+	 * Defaults to degrees. Possible values are:
+	 * degrees (or dd), mi, ft, km, mi, inches
 	 */
 	public void setUnits(String units){
 		setAttribute("units", units);
@@ -140,6 +140,10 @@ public class MapOptions extends OptionsBase {
 	public void setTileSize(Size size){
 		setAttribute("tileSize", size.getJSObject());
 
+	}
+
+	public void setZIndexBase(ZIndexBase zIndexBase){
+		setAttribute("Z_INDEX_BASE", zIndexBase.getJSObject());
 	}
 
 }

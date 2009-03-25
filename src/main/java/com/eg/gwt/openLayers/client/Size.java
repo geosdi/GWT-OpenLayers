@@ -9,6 +9,8 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * @author Edwin Commandeur
  * @since GWT-OL 0.2, OL ...
  */
+//TODO Is Size used for non integer sizes?
+// if not, this class needs to be adjusted
 public class Size extends OpenLayersObjectWrapper {
 
 	protected Size(JSObject size) {

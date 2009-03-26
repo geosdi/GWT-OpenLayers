@@ -58,5 +58,9 @@ class VectorImpl {
 	public static native void eraseFeatures(JSObject vector)/*-{
 		vector.eraseFeatures();
 	}-*/;
+	
+	public static native void removeFeature(JSObject vector, JSObject feature)/*-{
+    	vector.removeFeatures(feature);
+	}-*/;
 
 }

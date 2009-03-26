@@ -76,6 +76,11 @@ public class Vector extends Layer {
 	public void eraseFeatures() {
 		VectorImpl.eraseFeatures(this.getJSObject());
 	}
+		
+	public void removeFeature(VectorFeature feature) {
+		VectorImpl.removeFeature(getJSObject(), feature.getJSObject());
+	}
+	
 
 
 	public int getNumberOfFeatures(){

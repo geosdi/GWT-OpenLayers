@@ -1,12 +1,13 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.JStringArray;
 
 /**
  * 
  * @author Erdem Gunay
- * 	   Amr Alam - Refractions Research
- *
+ * 	       Amr Alam - Refractions Research
+ *         Curtis Jensen
  */
 class WMSImpl {
 
@@ -18,6 +19,34 @@ class WMSImpl {
 		return new $wnd.OpenLayers.Layer.WMS(name, url, params, layerParams);
 	}-*/;
 	
+	public static native JSObject create(String name, JSObject urls, JSObject params)/*-{
+	    // JavaScript can loose the type of objects.
+	    // the Array that was created in JArrayBaseImpl is reported as an "object" 
+	    // when the OpenLayers code checks for instanceof Array.  Converting the passed in urls Array to a new Array corrects this problem.  
+	    // There may be a better way, until it is figured out, this is what is done.
+	       
+	    var wmsURLs = new $wnd.Array(urls.length);
+		for (i = 0; i < urls.length; i++) {
+		  wmsURLs[i] = urls[i];
+		}
+		
+		return new $wnd.OpenLayers.Layer.WMS(name, wmsURLs, params);
+	}-*/;
+
+	public static native JSObject create(String name, JSObject urls, JSObject params, JSObject layerParams)/*-{
+		// JavaScript can loose the type of objects.
+	    // the Array that was created in JArrayBaseImpl is reported as an "object" 
+	    // when the OpenLayers code checks for instanceof Array.  Converting the passed in urls Array to a new Array corrects this problem.  
+	    // There may be a better way, until it is figured out, this is what is done.
+	     
+		var wmsURLs = new $wnd.Array(urls.length);
+		for (i = 0; i < urls.length; i++) {
+		  wmsURLs[i] = urls[i];
+		}
+		
+		return new $wnd.OpenLayers.Layer.WMS(name, wmsURLs, params, layerParams);
+	}-*/;
+
 	public static native int getNumLoadingTiles(JSObject layer)/*-{
 		return layer.numLoadingTiles;
 	}-*/;

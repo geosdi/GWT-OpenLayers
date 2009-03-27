@@ -1,7 +1,5 @@
 package com.eg.gwt.openLayers.client.util;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 /**
  * Base class for Objects that wrap an opaque JavaScriptObject, to provide
  * (part of) the JavaScriptObject's functionality in GWT.

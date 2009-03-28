@@ -1,8 +1,6 @@
 package com.eg.gwt.openLayers.client.util;
 
 
-import com.google.gwt.user.client.Element;
-
 /**
  * <p>
  * In javascript it is common to pass options to objects as an object literal.
@@ -18,6 +16,14 @@ import com.google.gwt.user.client.Element;
  * The second argument is an object literal with the properties.
  * </p>
  * <p>
+ * A {@link JSObject} allows properties to be set on it, and to be get from it. Therefore an options
+ * object can be a JSObject wrapper, and getter and setter methods for specific Options objects
+ * can use getJSOpject().setProperty(...) to set properties and getJSObject().getProperty(...), or
+ * getJSObject.getPropertyAsXxx(...) to get properties.
+ * </p>
+ * <p>
+ * Since the getJSObject() is public any properties can be set. However, you are on your own
+ * if you use this to work around limitations of the current GWT-OL API.
  * </p>
  *
  * @author Erdem Gunay
@@ -35,96 +41,24 @@ public class Options extends JSObjectWrapper {
 	}
 
 	/**
-	 * @deprecated
-	 */
-	public void setAttribute(String attr, boolean value)
-	{
-		ElementHelper.setAttribute(getJSObject(), attr, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public void setAttribute(String attr, int value)
-	{
-		ElementHelper.setAttribute(getJSObject(), attr, value);
-	}
-
-	/**
-	 *
+	 *@deprecated
 	 */
 	public void setAttribute(String attr, int[] value)
 	{
-		setAttribute(attr, new JIntArray(value).getJSObject());
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public void setAttribute(String attr, double value)
-	{
-	   ElementHelper.setAttribute(getJSObject(), attr, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public void setAttribute(String attr, String value)
-	{
-		ElementHelper.setAttribute(getJSObject(), attr, value);
-	}
-
-	public void setAttribute(String attr, Element value)
-	{
-		ElementHelper.setAttribute(getJSObject(), attr, value);
-	}
-
-	public void setAttribute(String attr, JSObject value)
-	{
-		ElementHelper.setAttribute(getJSObject(), attr, value);
-	}
-
-	public void setAttribute(String attr, JObjectArray value)
-	{
-		ElementHelper.setAttribute(getJSObject(), attr, value.getJSObject());
-	}
-
-	public String getAttribute(String attr)
-	{
-		return ElementHelper.getAttribute(getJSObject(), attr);
-	}
-
-	public boolean getAttributeAsBoolean(String attr)
-	{
-		return ElementHelper.getAttributeAsBoolean(getJSObject(), attr);
-	}
-
-	public double getAttributeAsDouble(String attr)
-	{
-		return ElementHelper.getAttributeAsDouble(getJSObject(), attr);
-	}
-
-	public Element getAttributeAsElement(String attr)
-	{
-		return ElementHelper.getAttributeAsElement(getJSObject(), attr);
-	}
-
-	public JSObject getAttributeAsJSObject(String attr)
-	{
-		return ElementHelper.getAttributeAsJSObject(getJSObject(), attr);
-	}
-
-	public int getAttributeAsInt(String attr)
-	{
-		return ElementHelper.getAttributeAsInt(getJSObject(), attr);
+		getJSObject().setProperty(attr, new JIntArray(value).getJSObject());
 	}
 
 	//TODO Perhaps move these back to helper methods
+	/*
 	public int[] getAttributeAsIntArray(String attr)
 	{
 		return JIntArray.narrowToJIntArray(getAttributeAsJSObject(attr)).toArray();
 	}
+	*/
 
+	/**
+	 *@deprecated
+	 */
 	public String[] getAttributes()
 	{
 		JSObject attributes = ElementHelper.getAttributes(getJSObject());

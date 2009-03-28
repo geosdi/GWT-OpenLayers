@@ -1,5 +1,7 @@
 package com.eg.gwt.openLayers.client.util;
 
+import com.google.gwt.user.client.Element;
+
 
 /**
  *
@@ -77,5 +79,13 @@ public class JSObjectHelper {
 		return (ret === undefined) ? 0 : ret;
 	}-*/;
 
+	public static native void setProperty(JSObject object, String name, Element value) /*-{
+		object[name] = value;
+	}-*/;
+
+	public static native Element getPropertyAsDomElement(JSObject object, String name) /*-{
+		var ret = object[name];
+		return (ret === undefined) ? 0 : ret;
+	}-*/;
 
 }

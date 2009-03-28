@@ -30,7 +30,7 @@ public class VectorOptions extends LayerOptions {
 	}
 
 	public String getGeometryType(){
-		return getAttribute("geometryType");
+		return getJSObject().getPropertyAsString("geometryType");
 	}
 
 	public void setStyle(Style style){

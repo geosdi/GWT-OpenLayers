@@ -2,7 +2,6 @@ package com.eg.gwt.openLayers.client.control;
 
 import com.eg.gwt.openLayers.client.util.JSObject;
 import com.eg.gwt.openLayers.client.util.Options;
-import com.google.gwt.user.client.Element;
 
 /**
  * Displays the geographic coordinates of the position of the mouse cursor.
@@ -23,14 +22,15 @@ public class MousePosition extends Control {
 	public MousePosition() {
 		this(MousePositionImpl.create());
 	}
-
-	public MousePosition(Element div) {
+/*
+//TODO: move to MousePositionOptions
+	public MousePosition(Element divId) {
 		super((JSObject)null);
 		Options options = new Options();
-		options.setAttribute("element", div);
+		options.getJSObject().setProperty("element", divId);
 		setJSObject(MousePositionImpl.create(options.getJSObject()));
 	}
-
+*/
 	/**
 	 * Supported for backward compatibility.
 	 */

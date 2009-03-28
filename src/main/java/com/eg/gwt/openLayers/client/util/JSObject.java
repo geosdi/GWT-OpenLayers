@@ -1,6 +1,7 @@
 package com.eg.gwt.openLayers.client.util;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.user.client.Element;
 
 public class JSObject extends JavaScriptObject {
 
@@ -62,6 +63,14 @@ public class JSObject extends JavaScriptObject {
 		return JSObjectHelper.getPropertyAsDouble(this, name);
 	}
 
+	public final void setProperty(String name, Element value){
+		JSObjectHelper.setProperty(this, name, value);
+	}
+
+	public final Element getPropertyAsDomElement(String name){
+		return JSObjectHelper.getPropertyAsDomElement(this, name);
+	}
+
 	public final void setProperty(String name, JSObject value){
 		JSObjectHelper.setProperty(this, name, value);
 	}
@@ -69,4 +78,7 @@ public class JSObject extends JavaScriptObject {
 	public final JSObject getProperty(String name){
 		return JSObjectHelper.getProperty(this, name);
 	}
+
+
+
 }

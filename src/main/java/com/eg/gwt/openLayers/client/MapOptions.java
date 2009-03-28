@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client;
 
 import com.eg.gwt.openLayers.client.util.JObjectArray;
-import com.eg.gwt.openLayers.client.util.OptionsBase;
+import com.eg.gwt.openLayers.client.util.Options;
 
 
 /**
@@ -10,14 +10,14 @@ import com.eg.gwt.openLayers.client.util.OptionsBase;
  * @author Erdem Gunay, Edwin Commandeur
  *
  */
-public class MapOptions extends OptionsBase {
+public class MapOptions extends Options {
 
 	public void setNumZoomLevels(int numZoomLevels) {
-		setAttribute("numZoomLevels", numZoomLevels);
+		getJSObject().setProperty("numZoomLevels", numZoomLevels);
 	}
 
 	public void setControls(JObjectArray controls) {
-		setAttribute("controls", controls);
+		getJSObject().setProperty("controls", controls.getJSObject());
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class MapOptions extends OptionsBase {
 	 * @param projection
 	 */
 	public void setProjection(String projection) {
-		setAttribute("projection", projection);
+		getJSObject().setProperty("projection", projection);
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class MapOptions extends OptionsBase {
 	 * @param projection
 	 */
 	public void setDisplayProjection(Projection projection) {
-		setAttribute("displayProjection", projection.getJSObject());
+		getJSObject().setProperty("displayProjection", projection.getJSObject());
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class MapOptions extends OptionsBase {
 	 * @param maxExtent - a bounding rectangle
 	 */
 	public void setMaxExtent(Bounds maxExtent) {
-		setAttribute("maxExtent", maxExtent.getJSObject());
+		getJSObject().setProperty("maxExtent", maxExtent.getJSObject());
 	}
 
 
@@ -77,11 +77,11 @@ public class MapOptions extends OptionsBase {
 	 * @param minExtent - a bounding rectangle
 	 */
 	public void setMinExtent(Bounds minExtent) {
-		setAttribute("minExtent", minExtent.getJSObject());
+		getJSObject().setProperty("minExtent", minExtent.getJSObject());
 	}
 
 	public void setRestrictedExtent(Bounds restrictedExtent) {
-		setAttribute("restrictedExtent", restrictedExtent.getJSObject());
+		getJSObject().setProperty("restrictedExtent", restrictedExtent.getJSObject());
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class MapOptions extends OptionsBase {
 	 * zoom level 0 on gmaps.
 	 */
 	public void setMaxResolution(float maxResolution){
-		setAttribute("maxResolution", maxResolution);
+		getJSObject().setProperty("maxResolution", maxResolution);
 	}
 
 	/**
@@ -103,11 +103,11 @@ public class MapOptions extends OptionsBase {
 	 *
 	 */
 	public void setMaxResolutionToAuto(){
-		setAttribute("maxResolution", "auto");
+		getJSObject().setProperty("maxResolution", "auto");
 	}
 
 	public void setMinResolution(float minResolution){
-		setAttribute("minResolution", minResolution);
+		getJSObject().setProperty("minResolution", minResolution);
 	}
 
 	/**
@@ -125,25 +125,25 @@ public class MapOptions extends OptionsBase {
 	 * degrees (or dd), mi, ft, km, mi, inches
 	 */
 	public void setUnits(String units){
-		setAttribute("units", units);
+		getJSObject().setProperty("units", units);
 	}
 
 
 	public void setMaxScale(float maxScale){
-		setAttribute("maxScale", maxScale);
+		getJSObject().setProperty("maxScale", maxScale);
 	}
 
 	public void setMinScale(float minScale){
-		setAttribute("minScale", minScale);
+		getJSObject().setProperty("minScale", minScale);
 	}
 
 	public void setTileSize(Size size){
-		setAttribute("tileSize", size.getJSObject());
+		getJSObject().setProperty("tileSize", size.getJSObject());
 
 	}
 
 	public void setZIndexBase(ZIndexBase zIndexBase){
-		setAttribute("Z_INDEX_BASE", zIndexBase.getJSObject());
+		getJSObject().setProperty("Z_INDEX_BASE", zIndexBase.getJSObject());
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client.format;
 
-import com.eg.gwt.openLayers.client.util.OptionsBase;
+import com.eg.gwt.openLayers.client.util.Options;
 
-public class WKTOptions extends OptionsBase{
+public class WKTOptions extends Options {
 
 }

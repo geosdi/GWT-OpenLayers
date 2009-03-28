@@ -46,7 +46,7 @@ public class Vector extends Layer {
 		this(VectorImpl.create(name, options.getJSObject()));
 	}
 
-	public Vector(String name, VectorParams options) {
+	public Vector(String name, VectorOptions options) {
 		this(VectorImpl.create(name, options.getJSObject()));
 	}
 

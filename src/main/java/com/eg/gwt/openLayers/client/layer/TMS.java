@@ -12,7 +12,7 @@ public class TMS extends Layer {
 		super(element);
 	}
 
-	public TMS(String name, String url, TMSParams params) {
+	public TMS(String name, String url, TMSOptions params) {
 		this(TMSImpl.create(name, url, params.getJSObject()));
 	}
 

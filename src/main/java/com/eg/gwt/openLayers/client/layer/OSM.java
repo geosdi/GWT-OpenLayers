@@ -12,7 +12,7 @@ public class OSM extends Layer {
 		return new OSM(OSMImpl.Mapnik(name));
 	}
 	
-	public static OSM Mapnik (String name, OSMParams params){
+	public static OSM Mapnik (String name, OSMOptions params){
 		return new OSM(OSMImpl.Mapnik(name, params.getJSObject()));
 	}
 	
@@ -20,7 +20,7 @@ public class OSM extends Layer {
 		return new OSM(OSMImpl.Osmarender(name));
 	}
 	
-	public static OSM Osmarender (String name, OSMParams params){
+	public static OSM Osmarender (String name, OSMOptions params){
 		return new OSM(OSMImpl.Osmarender(name, params.getJSObject()));
 	}
 	
@@ -28,7 +28,7 @@ public class OSM extends Layer {
 		return new OSM(OSMImpl.CycleMap(name));
 	}
 	
-	public static OSM CycleMap (String name, OSMParams params){
+	public static OSM CycleMap (String name, OSMOptions params){
 		return new OSM(OSMImpl.CycleMap(name, params.getJSObject()));
 	}
 	
@@ -36,7 +36,7 @@ public class OSM extends Layer {
 		return new OSM(OSMImpl.Maplint(name));
 	}
 	
-	public static OSM Maplint (String name, OSMParams params){
+	public static OSM Maplint (String name, OSMOptions params){
 		return new OSM(OSMImpl.Maplint(name, params.getJSObject()));
 	}
 	

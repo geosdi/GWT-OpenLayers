@@ -3,13 +3,13 @@
  */
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.util.OptionsBase;
+import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class LayerOptions extends OptionsBase {
+public class LayerOptions extends Options {
 
 	/**
 	 * Display or hide the name of a Layer in the LayerSwitcher Control.
@@ -19,7 +19,7 @@ public class LayerOptions extends OptionsBase {
 	 *                  false to hide the layer
 	 */
 	public void setDisplayInLayerSwitcher(boolean display){
-		setAttribute("displayInLayerSwitcher", display);
+		getJSObject().setProperty("displayInLayerSwitcher", display);
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class LayerOptions extends OptionsBase {
 	 * By default isBaseLayer is set to true for WMS layers, ... .
 	 */
 	public void setIsBaseLayer(boolean isBaseLayer){
-		setAttribute("isBaseLayer", isBaseLayer);
+		getJSObject().setProperty("isBaseLayer", isBaseLayer);
 	}
 
 

@@ -29,4 +29,44 @@ public class JSObject extends JavaScriptObject {
 	public final int getPropertyAsInt(String name){
 		return JSObjectHelper.getPropertyAsInt(this, name);
 	}
+
+	public final void setProperty(String name, String value){
+		JSObjectHelper.setProperty(this, name, value);
+	}
+
+	public final String getPropertyAsString(String name){
+		return JSObjectHelper.getPropertyAsString(this, name);
+	}
+
+	public final void setProperty(String name, Boolean value){
+		JSObjectHelper.setProperty(this, name, value);
+	}
+
+	public final Boolean getPropertyAsBoolean(String name){
+		return JSObjectHelper.getPropertyAsBoolean(this, name);
+	}
+
+	public final void setProperty(String name, Float value){
+		JSObjectHelper.setProperty(this, name, value);
+	}
+
+	public final float getPropertyAsFloat(String name){
+		return JSObjectHelper.getPropertyAsFloat(this, name);
+	}
+
+	public final void setProperty(String name, Double value){
+		JSObjectHelper.setProperty(this, name, value);
+	}
+
+	public final double getPropertyAsDouble(String name){
+		return JSObjectHelper.getPropertyAsDouble(this, name);
+	}
+
+	public final void setProperty(String name, JSObject value){
+		JSObjectHelper.setProperty(this, name, value);
+	}
+
+	public final JSObject getProperty(String name){
+		return JSObjectHelper.getProperty(this, name);
+	}
 }

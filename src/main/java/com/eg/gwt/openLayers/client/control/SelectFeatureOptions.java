@@ -3,7 +3,6 @@ package com.eg.gwt.openLayers.client.control;
 import com.eg.gwt.openLayers.client.control.SelectFeature.SelectFeatureListener;
 import com.eg.gwt.openLayers.client.control.SelectFeature.UnselectFeatureListener;
 import com.eg.gwt.openLayers.client.util.JSObject;
-import com.eg.gwt.openLayers.client.util.OptionsBase;
 
 /**
  * See {@link SelectFeature}.
@@ -14,15 +13,14 @@ import com.eg.gwt.openLayers.client.util.OptionsBase;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class SelectFeatureOptions extends OptionsBase {
-
+public class SelectFeatureOptions extends ControlOptions {
 
 	/**
 	 *
 	 * @since GWT-OL 0.4
 	 */
 	public void setHover(){
-		setAttribute("hover", true);
+		getJSObject().setProperty("hover", true);
 	}
 
 	/**
@@ -30,7 +28,7 @@ public class SelectFeatureOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setToggle(){
-		setAttribute("toggle", true);
+		getJSObject().setProperty("toggle", true);
 	}
 
 	/**
@@ -38,7 +36,7 @@ public class SelectFeatureOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setMultiple(){
-		setAttribute("multiple", true);
+		getJSObject().setProperty("multiple", true);
 	}
 
 	/**
@@ -48,7 +46,7 @@ public class SelectFeatureOptions extends OptionsBase {
 	 */
 	public void onSelect(SelectFeatureListener listener){
 		JSObject callback = SelectFeatureImpl.createSelectFeatureCallback(listener);
-		setAttribute("onSelect", callback);
+		getJSObject().setProperty("onSelect", callback);
 	}
 
 	/**
@@ -58,7 +56,7 @@ public class SelectFeatureOptions extends OptionsBase {
 	 */
 	public void onUnSelect(UnselectFeatureListener listener){
 		JSObject callback = SelectFeatureImpl.createUnselectFeatureCallback(listener);
-		setAttribute("onUnselect", callback);
+		getJSObject().setProperty("onUnselect", callback);
 	}
 
 }

@@ -7,37 +7,37 @@ import com.eg.gwt.openLayers.client.util.Options;
  * @author Amr Alam - Refractions Research
  *
  */
-public class TMSParams extends Options {
+public class TMSOptions extends Options {
 
-	public TMSParams() {
+	public TMSOptions() {
 	}
 
 	public void setLayers(String layers) {
-		setAttribute("layers", layers);
+		getJSObject().setProperty("layers", layers);
 	}
 
 	public String getLayers() {
-		return getAttribute("layers");
+		return getJSObject().getPropertyAsString("layers");
 	}
 
 	public void setStyles(String styles) {
-		setAttribute("styles", styles);
+		getJSObject().setProperty("styles", styles);
 	}
 	public String getStyles() {
-		return getAttribute("styles");
+		return getJSObject().getPropertyAsString("styles");
 	}
 
 	public void setFormat(String styles) {
-		setAttribute("format", styles);
+		getJSObject().setProperty("format", styles);
 	}
 	public String getFormat() {
-		return getAttribute("format");
+		return getJSObject().getPropertyAsString("format");
 	}
 
 	public void setMaxExtent(Bounds bounds) {
-		setAttribute("maxExtent", bounds.getJSObject());
+		getJSObject().setProperty("maxExtent", bounds.getJSObject());
 	}
 	public Bounds getMaxExtent() {
-		return Bounds.narrowToBounds(getAttributeAsJSObject("maxExtent"));
+		return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
 	}
 }

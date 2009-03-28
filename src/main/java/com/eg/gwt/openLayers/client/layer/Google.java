@@ -19,7 +19,7 @@ public class Google extends Layer {
 		this(GoogleImpl.create(name));
 	}
 
-	public Google(String name, GoogleParams params) {
+	public Google(String name, GoogleOptions params) {
 	   this(GoogleImpl.create(name, params.getJSObject()));
 	}
 

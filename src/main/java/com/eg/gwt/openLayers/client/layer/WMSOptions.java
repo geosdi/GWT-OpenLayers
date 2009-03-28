@@ -1,46 +1,49 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.Bounds;
+import com.eg.gwt.openLayers.client.util.Options;
 
 /**
- * 
+ * The WMS options correspond with parameters that can be specified
+ * in the WMS request.
+ *
+ * This differs from {@link WMSLayerOptions}, which are options
+ * that are set on the OL concept of a layer.
+ *
  * @author Erdem Gunay
+ * @author Edwin Commandeur
  *
  */
-public class WMSParams extends LayerOptions {
+public class WMSOptions extends Options {
 
-	public WMSParams() {
-		
-	}
-	
 	public void setLayers(String layers) {
-		setAttribute("layers", layers);
+		getJSObject().setProperty("layers", layers);
 	}
 	public String getLayers() {
-		return getAttribute("layers");
+		return getJSObject().getPropertyAsString("layers");
 	}
-	
+
 	public void setStyles(String styles) {
-		setAttribute("styles", styles);
+		getJSObject().setProperty("styles", styles);
 	}
 	public String getStyles() {
-		return getAttribute("styles");
+		return getJSObject().getPropertyAsString("styles");
 	}
-	
+
 	public void setFormat(String styles) {
-		setAttribute("format", styles);
+		getJSObject().setProperty("format", styles);
 	}
 	public String getFormat() {
-		return getAttribute("format");
+		return getJSObject().getPropertyAsString("format");
 	}
-	
+
 	public void setMaxExtent(Bounds bounds) {
-		setAttribute("maxExtent", bounds.getJSObject());
+		getJSObject().setProperty("maxExtent", bounds.getJSObject());
 	}
 	public Bounds getMaxExtent() {
-		return Bounds.narrowToBounds(getAttributeAsJSObject("maxExtent"));
+		return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
 	}
-	
+
     /**
      * Set transparent parameter in WMS request. Default is false.
      *
@@ -51,15 +54,15 @@ public class WMSParams extends LayerOptions {
      * The WMS 1.1.1 spec states:
      *  "TRANSPARENT can take on two values, "TRUE" or "FALSE"."
      *  and
-     *  "Parameter names shall not be case sensitive, 
+     *  "Parameter names shall not be case sensitive,
      *  but parameter values shall be case sensitive."
-     *  
+     *
      */
     public void setIsTransparent(boolean isTransparent){
         if(isTransparent){
-            setAttribute("transparent", "TRUE");
+        	getJSObject().setProperty("transparent", "TRUE");
         } else {
-            setAttribute("transparent", "FALSE");
+        	getJSObject().setProperty("transparent", "FALSE");
         }
     }
 }

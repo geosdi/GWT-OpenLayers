@@ -1,21 +1,21 @@
 package com.eg.gwt.openLayers.client.format;
 
 import com.eg.gwt.openLayers.client.Projection;
-import com.eg.gwt.openLayers.client.util.OptionsBase;
+import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  *
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class FormatOptions extends OptionsBase {
+public class FormatOptions extends Options {
 
 	/**
 	 *
 	 * @param projection
 	 */
 	public void setInternalProjection(Projection projection){
-		setAttribute("internalProjection", projection.getJSObject());
+		getJSObject().setProperty("internalProjection", projection.getJSObject());
 	};
 
 	/**
@@ -23,7 +23,7 @@ public class FormatOptions extends OptionsBase {
 	 * @param projection
 	 */
 	public void setExternalProjection(Projection projection){
-		setAttribute("externalProjection", projection.getJSObject());
+		getJSObject().setProperty("externalProjection", projection.getJSObject());
 	};
 
 }

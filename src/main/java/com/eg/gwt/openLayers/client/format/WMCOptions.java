@@ -1,9 +1,9 @@
 package com.eg.gwt.openLayers.client.format;
 
 import com.eg.gwt.openLayers.client.Map;
-import com.eg.gwt.openLayers.client.util.OptionsBase;
+import com.eg.gwt.openLayers.client.util.Options;
 
-public class WMCOptions extends OptionsBase {
+public class WMCOptions extends Options {
 
 	//TODO: create constructors that take map or id
 
@@ -17,7 +17,7 @@ public class WMCOptions extends OptionsBase {
 	 *   on the basis of the WMC document
 	 */
 	public void setMap(Map map){
-		setAttribute("map", map.getJSObject());
+		getJSObject().setProperty("map", map.getJSObject());
 	};
 
 	/**
@@ -26,6 +26,6 @@ public class WMCOptions extends OptionsBase {
 	 *   from reading a WMC document
 	 */
 	public void setMapDomElementId(String id){
-		setAttribute("map", id);
+		getJSObject().setProperty("map", id);
 	}
 }

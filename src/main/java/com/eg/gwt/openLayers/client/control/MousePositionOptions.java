@@ -1,8 +1,6 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.LonLat;
-import com.eg.gwt.openLayers.client.Map;
-import com.eg.gwt.openLayers.client.util.OptionsBase;
+import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  * See {@link MousePosition}.
@@ -11,7 +9,7 @@ import com.eg.gwt.openLayers.client.util.OptionsBase;
  * @since GWT-OL 0.4
  *
  */
-public class MousePositionOptions extends OptionsBase {
+public class MousePositionOptions extends Options {
 
 	/**
 	 * <p>
@@ -47,7 +45,7 @@ public class MousePositionOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setFormatOutput(MousePositionOutput output){
-		setAttribute("formatOutput", MousePositionImpl.formatOutput(output));
+		getJSObject().setProperty("formatOutput",  MousePositionImpl.formatOutput(output));
 	}
 
 	/**
@@ -61,7 +59,7 @@ public class MousePositionOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setNumDigits(int numDigits){
-		setAttribute("numDigits", numDigits);
+		getJSObject().setProperty("numDigits", numDigits);
 	}
 
 	/**
@@ -72,7 +70,7 @@ public class MousePositionOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setSeparator(String separator){
-		setAttribute("separator", separator);
+		getJSObject().setProperty("separator", separator);
 	}
 
 	/**
@@ -83,7 +81,7 @@ public class MousePositionOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setPrefix(String prefix){
-		setAttribute("prefix", prefix);
+		getJSObject().setProperty("prefix", prefix);
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class MousePositionOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setSuffix(String suffix){
-		setAttribute("suffix", suffix);
+		getJSObject().setProperty("suffix", suffix);
 	}
 
 	/**
@@ -104,7 +102,7 @@ public class MousePositionOptions extends OptionsBase {
 	 * @since GWT-OL 0.4
 	 */
 	public void setGranularity(int granularity){
-		setAttribute("granularity", granularity);
+		getJSObject().setProperty("granularity", granularity);
 	}
 
 }

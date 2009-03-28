@@ -32,4 +32,50 @@ public class JSObjectHelper {
 		return (ret === undefined) ? 0 : ret;
 	}-*/;
 
+	public static native void setProperty(JSObject object, String name, String value) /*-{
+		object[name] = value;
+	}-*/;
+
+	public static native String getPropertyAsString(JSObject object, String name) /*-{
+		var ret = object[name];
+		return (ret === undefined) ? 0 : ret;
+	}-*/;
+
+	public static native void setProperty(JSObject object, String name, boolean value) /*-{
+		object[name] = value;
+	}-*/;
+
+	public static native boolean getPropertyAsBoolean(JSObject object, String name) /*-{
+		var ret = object[name];
+		return (ret === undefined) ? 0 : ret;
+	}-*/;
+
+	public static native void setProperty(JSObject object, String name, float value) /*-{
+		object[name] = value;
+	}-*/;
+
+	public static native float getPropertyAsFloat(JSObject object, String name) /*-{
+		var ret = object[name];
+		return (ret === undefined) ? 0 : ret;
+	}-*/;
+
+	public static native void setProperty(JSObject object, String name, double value) /*-{
+		object[name] = value;
+	}-*/;
+
+	public static native double getPropertyAsDouble(JSObject object, String name) /*-{
+		var ret = object[name];
+		return (ret === undefined) ? 0 : ret;
+	}-*/;
+
+	public static native void setProperty(JSObject object, String name, JSObject value) /*-{
+		object[name] = value;
+	}-*/;
+
+	public static native JSObject getProperty(JSObject object, String name) /*-{
+		var ret = object[name];
+		return (ret === undefined) ? 0 : ret;
+	}-*/;
+
+
 }

@@ -1,8 +1,8 @@
 package com.eg.gwt.openLayers.client.util;
 
 /**
- * Base class for Objects that wrap an opaque JavaScriptObject, to provide
- * (part of) the JavaScriptObject's functionality in GWT.
+ * Base class for Objects that wrap an opaque javascript object (represented by a JSObject),
+ * to provide (part of) the javascript object's functionality in GWT.
  *
  * @author Edwin Commandeur - Atlis EJS
  */

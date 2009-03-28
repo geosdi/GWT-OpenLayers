@@ -13,33 +13,33 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  */
 public class VectorOptions extends LayerOptions {
 
-    public VectorOptions(){
-    }
+	public VectorOptions(){
+	}
 
-    public void setIsBaseLayer(boolean b){
-        setAttribute("isBaseLayer", b);
-    }
+	public void setIsBaseLayer(boolean b){
+		getJSObject().setProperty("isBaseLayer", b);
+	}
 
-    public String getIsBaseLayer(){
-        return getAttribute("isBaseLayer");
-    }
+	public boolean getIsBaseLayer(){
+		return getJSObject().getPropertyAsBoolean("isBaseLayer");
+	}
 
-    //limit geometry type to a specific geometry type
-    public void setGeometryType(String gtype){
-        setAttribute("geometryType", gtype);
-    }
+	//limit geometry type to a specific geometry type
+	public void setGeometryType(String gtype){
+		getJSObject().setProperty("geometryType", gtype);
+	}
 
-    public String getGeometryType(){
-        return getAttribute("geometryType");
-    }
+	public String getGeometryType(){
+		return getAttribute("geometryType");
+	}
 
-    public void setStyle(Style style){
-        setAttribute("style", style.getJSObject());
-    }
+	public void setStyle(Style style){
+		getJSObject().setProperty("style", style.getJSObject());
+	}
 
-    public JSObject getStyle(Style style){
-        return getAttributeAsJSObject("style");
-    }
+	public JSObject getStyle(Style style){
+		return getJSObject().getProperty("style");
+	}
 
 }
 

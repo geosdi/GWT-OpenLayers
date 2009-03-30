@@ -39,15 +39,15 @@ public class JSObject extends JavaScriptObject {
 		return JSObjectHelper.getPropertyAsString(this, name);
 	}
 
-	public final void setProperty(String name, Boolean value){
+	public final void setProperty(String name, boolean value){
 		JSObjectHelper.setProperty(this, name, value);
 	}
 
-	public final Boolean getPropertyAsBoolean(String name){
+	public final boolean getPropertyAsBoolean(String name){
 		return JSObjectHelper.getPropertyAsBoolean(this, name);
 	}
 
-	public final void setProperty(String name, Float value){
+	public final void setProperty(String name, float value){
 		JSObjectHelper.setProperty(this, name, value);
 	}
 
@@ -55,7 +55,7 @@ public class JSObject extends JavaScriptObject {
 		return JSObjectHelper.getPropertyAsFloat(this, name);
 	}
 
-	public final void setProperty(String name, Double value){
+	public final void setProperty(String name, double value){
 		JSObjectHelper.setProperty(this, name, value);
 	}
 

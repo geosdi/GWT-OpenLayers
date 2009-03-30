@@ -25,8 +25,9 @@ package com.eg.gwt.openLayers.client.util;
  * getJSObject.getPropertyAsXxx(...) to get properties.
  * </p>
  * <p>
- * Since the getJSObject() is public any properties can be set. However, you are on your own
- * if you use this to work around limitations of the current GWT-OL API.
+ * Since the getJSObject() is public it is possible to set any properties you like on a JSObject wrapped by
+ * a child of JSObjectWrapper. However, you are on your own if you use this to work around limitations of the
+ * current GWT-OL API.
  * </p>
  *
  * @author Erdem Gunay

@@ -4,6 +4,10 @@ import com.google.gwt.user.client.Element;
 
 
 /**
+ * Static methods for working with {@link JSObject} objects.
+ *
+ * These are convenience methods for reducing the amount of JSNI code for
+ * creating JSObject wrappers.
  *
  * @author Edwin Commandeur - Atlis EJS
  *
@@ -86,6 +90,22 @@ public class JSObjectHelper {
 	public static native Element getPropertyAsDomElement(JSObject object, String name) /*-{
 		var ret = object[name];
 		return (ret === undefined) ? 0 : ret;
+	}-*/;
+
+	public static native String getPropertyNames(JSObject object) /*-{
+		var ret = "";
+		for (var i in object){
+			if(ret == ""){
+				ret = ret + i
+			} else {
+				ret = ret + "," + i;
+			}
+		}
+		return ret;
+	}-*/;
+
+	public static native boolean hasProperty(JSObject object, String name) /*-{
+		if(object[name] != undefined){return true}else{return false};
 	}-*/;
 
 }

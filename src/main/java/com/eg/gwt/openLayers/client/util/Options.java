@@ -3,7 +3,10 @@ package com.eg.gwt.openLayers.client.util;
 
 /**
  * <p>
- * In javascript it is common to pass options to objects as an object literal.
+ * In javascript it is common to pass options to objects as an object literal. See also:
+ *
+ * </p>
+ * <p>
  * For example:
  * <pre>
  *   map = new OpenLayers.Map('map',
@@ -40,39 +43,4 @@ public class Options extends JSObjectWrapper {
 		this(JSObject.createJSObject());
 	}
 
-	/**
-	 *@deprecated
-	 */
-	public void setAttribute(String attr, int[] value)
-	{
-		getJSObject().setProperty(attr, new JIntArray(value).getJSObject());
-	}
-
-	//TODO Perhaps move these back to helper methods
-	/*
-	public int[] getAttributeAsIntArray(String attr)
-	{
-		return JIntArray.narrowToJIntArray(getAttributeAsJSObject(attr)).toArray();
-	}
-	*/
-
-	/**
-	 *@deprecated
-	 */
-	public String[] getAttributes()
-	{
-		JSObject attributes = ElementHelper.getAttributes(getJSObject());
-
-		int size = ElementHelper.arrayLength(attributes);
-		String[] rtn = new String[size];
-
-		for(int i = 0; i < size; i++)
-		{
-			JSObject elem = ElementHelper.getElementFromArray(attributes, i);
-			rtn[i] = ElementHelper.getAttributeName(elem);
-		}
-
-		return rtn;
-
-	}
 }

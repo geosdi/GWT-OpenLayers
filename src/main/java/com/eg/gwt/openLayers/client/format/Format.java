@@ -1,7 +1,7 @@
 package com.eg.gwt.openLayers.client.format;
 
+import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 import com.eg.gwt.openLayers.client.util.JSObject;
-import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
 
 /**
  * Format objects provide support for reading and writing text and xml formats.
@@ -16,7 +16,7 @@ import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public abstract class Format extends JSObjectWrapper {
+public abstract class Format extends OpenLayersObjectWrapper {
 
 	protected Format(JSObject format) {
 		super(format);

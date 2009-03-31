@@ -242,7 +242,7 @@ public class Map extends OpenLayersObjectWrapper {
 	 * Returns current zoom level of map object.
 	 * @return current zoom level
 	 */
-	public String getZoom(){
+	public int getZoom(){
 		return MapImpl.getZoom(getJSObject());
 	}
 

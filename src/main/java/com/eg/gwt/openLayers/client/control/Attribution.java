@@ -9,7 +9,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *
  * Where the attribution must be specified depends on the layer.
  * For example, for WMS layers the attribution can be set as WMS layer
- * paramer, see {@link com.eg.gwt.openLayers.client.layer.WMSLayerOptions}.
+ * paramer, see {@link com.eg.gwt.openLayers.client.layer.WMSOptions}.
  *
  * This control is added to OpenLayers maps by default.
  *

@@ -1,68 +1,109 @@
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.Bounds;
-import com.eg.gwt.openLayers.client.util.Options;
-
 /**
- * The WMS options correspond with parameters that can be specified
- * in the WMS request.
- *
- * This differs from {@link WMSLayerOptions}, which are options
- * that are set on the OL concept of a layer.
- *
- * @author Erdem Gunay
- * @author Edwin Commandeur
+ * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class WMSOptions extends Options {
+public class WMSOptions extends LayerOptions {
 
-	public void setLayers(String layers) {
-		getJSObject().setProperty("layers", layers);
-	}
-	public String getLayers() {
-		return getJSObject().getPropertyAsString("layers");
+	//TODO: see which options should be moved to LayerOptions
+
+	/**
+	 * Set the singleTile property to be true or false.
+	 * By default singleTile is set to false.
+	 * .
+	 * If true, the map is served as a single tile instead of separate tiles.
+	 *
+	 * Why tile or not tile?
+	 * At www.bostongis.com some guidelines can be found
+	 *
+	 *   Use untiled in the following scenarios:
+	 *   -fairly lightweight (in file size) geometries that span huge areas
+	 *   -a process constrained WMS server
+	 *   -you find it annoying that half of your map paints, while the other half is loading
+	 *   -high-bandwith servers and high-bandwith clients
+	 *   -map images with embedded scales
+	 *
+	 *   Use tiled in the following scenarios:
+	 *   -have heavy geometries that (in file size) that span small areas
+	 *   -super fast WMS server or server with tile caching (built in)
+	 *   -low band-width clients
+	 *   -relatively long pauses of a completely blank map area that suddenly loads all at once annoys you
+	 *    (remark: the blank map problem can be solved by setting a transition effect)
+	 *
+	 */
+	public void setSingleTile(boolean b){
+		getJSObject().setProperty("singleTile", b);
 	}
 
-	public void setStyles(String styles) {
-		getJSObject().setProperty("styles", styles);
-	}
-	public String getStyles() {
-		return getJSObject().getPropertyAsString("styles");
+
+	/**
+	 * Sets singleTile option to true.
+	 */
+	public void setUntiled(){
+		setSingleTile(true);
 	}
 
-	public void setFormat(String styles) {
-		getJSObject().setProperty("format", styles);
-	}
-	public String getFormat() {
-		return getJSObject().getPropertyAsString("format");
+
+	public void setTransitionEffect(String transition){
+		getJSObject().setProperty("transitionEffect", transition);
 	}
 
-	public void setMaxExtent(Bounds bounds) {
-		getJSObject().setProperty("maxExtent", bounds.getJSObject());
-	}
-	public Bounds getMaxExtent() {
-		return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
+	/**
+	 * From the OpenLayers examples: The 'resize' effect
+	 * resamples the current tile and displays it stretched
+	 * or compressed until the new tile is available.
+	 */
+	public void setTransitionEffectResize(){
+		setTransitionEffect("resize");
 	}
 
-    /**
-     * Set transparent parameter in WMS request. Default is false.
-     *
-     * Within this method the value of the parameter will be set in uppercase,
-     * since at least IONIC's WMS requires it to be in uppercase, in
-     * accordance with the WMS Specification
-     *
-     * The WMS 1.1.1 spec states:
-     *  "TRANSPARENT can take on two values, "TRUE" or "FALSE"."
-     *  and
-     *  "Parameter names shall not be case sensitive,
-     *  but parameter values shall be case sensitive."
-     *
-     */
-    public void setIsTransparent(boolean isTransparent){
-        if(isTransparent){
-        	getJSObject().setProperty("transparent", "TRUE");
-        } else {
-        	getJSObject().setProperty("transparent", "FALSE");
-        }
-    }
+
+	/**
+	 * To specify the opacity of a Layer.
+	 *
+	 * @param opacity - 1 = completely opaque, 0 = completely non-opaque
+	 */
+	public void setLayerOpacity(double opacity){
+		getJSObject().setProperty("opacity", opacity);
+	}
+
+	/**
+	 * Set a non-default projection. Default projection is EPSG:4326.
+	 *
+	 * @param epsgCode - the EPSG code for the coordinate reference system
+	 */
+	public void setProjection(String epsgCode){
+		getJSObject().setProperty("projection", epsgCode);
+	}
+
+	/**
+	 * e.g. "m", "km", ...
+	 */
+	public void setUnits(String units){
+		getJSObject().setProperty("units", units);
+	}
+
+	/**
+	 * For tiled layers the buffer size can be set.
+	 *
+	 * The default buffer is 2.
+	 */
+	public void setBuffer(int buffer){
+		getJSObject().setProperty("buffer", buffer);
+	}
+
+	public void setRatio(int ratio){
+		getJSObject().setProperty("ratio", ratio);
+	}
+
+	/**
+	 * Sets an attribution block on the map. For example:
+	 * "This map is provided by <a href="url">company X</a>."
+	 *
+	 * @param attribution - the attribution text
+	 */
+	public void setAttribution(String attribution){
+		getJSObject().setProperty("attribution", attribution);
+	}
 }

@@ -12,8 +12,8 @@ public class TMS extends Layer {
 		super(element);
 	}
 
-	public TMS(String name, String url, TMSOptions params) {
-		this(TMSImpl.create(name, url, params.getJSObject()));
+	public TMS(String name, String url, TMSOptions options) {
+		this(TMSImpl.create(name, url, options.getJSObject()));
 	}
 
 	public int getNumLoadingTiles(){

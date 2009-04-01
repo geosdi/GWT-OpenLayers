@@ -16,27 +16,27 @@ public class WMS extends Layer {
 		super(element);
 	}
 
-	public WMS(String name, String url, WMSOptions params) {
+	public WMS(String name, String url, WMSParams params) {
 		this(WMSImpl.create(name, url, params.getJSObject()));
 	}
 
-	public WMS(String name, String url, WMSOptions params, Options options) {
+	public WMS(String name, String url, WMSParams params, Options options) {
 		this(WMSImpl.create(name, url, params.getJSObject(), options.getJSObject()));
 	}
 
-	public WMS(String name, String url, WMSOptions params, WMSLayerOptions layerParams) {
+	public WMS(String name, String url, WMSParams params, WMSOptions layerParams) {
 	        this(WMSImpl.create(name, url, params.getJSObject(), layerParams.getJSObject()));
 	}
 
-	public WMS(String name, String[] urls, WMSOptions params) {
+	public WMS(String name, String[] urls, WMSParams params) {
 		this(WMSImpl.create(name, new JStringArray(urls).getJSObject(), params.getJSObject()));
 	}
 
-	public WMS(String name, String[] urls, WMSOptions params, Options options) {
+	public WMS(String name, String[] urls, WMSParams params, Options options) {
 		this(WMSImpl.create(name, new JStringArray(urls).getJSObject(), params.getJSObject(), options.getJSObject()));
 	}
 
-	public WMS(String name, String[] urls, WMSOptions params, WMSLayerOptions layerParams) {
+	public WMS(String name, String[] urls, WMSParams params, WMSOptions layerParams) {
 	        this(WMSImpl.create(name, new JStringArray(urls).getJSObject(), params.getJSObject(), layerParams.getJSObject()));
 	}
 	

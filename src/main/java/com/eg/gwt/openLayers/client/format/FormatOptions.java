@@ -1,14 +1,23 @@
 package com.eg.gwt.openLayers.client.format;
 
 import com.eg.gwt.openLayers.client.Projection;
-import com.eg.gwt.openLayers.client.util.Options;
+import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
 
 /**
  *
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class FormatOptions extends Options {
+public class FormatOptions extends JSObjectWrapper {
+
+	protected FormatOptions(JSObject jsObject) {
+		super(jsObject);
+	}
+
+	public FormatOptions(){
+		this(JSObject.createJSObject());
+	}
 
 	/**
 	 *

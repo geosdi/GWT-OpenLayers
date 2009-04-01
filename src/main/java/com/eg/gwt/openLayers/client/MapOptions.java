@@ -1,16 +1,28 @@
 package com.eg.gwt.openLayers.client;
 
 import com.eg.gwt.openLayers.client.util.JObjectArray;
-import com.eg.gwt.openLayers.client.util.Options;
+import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
 
 
 /**
- * Properties of the map can be set via map options
+ * <p>
+ * Map properties can be configurated by passing a MapOptions object
+ * to the {@link MapWidget} constructor. See also the {@link Map} javadoc.
+ * </p>
  *
  * @author Erdem Gunay, Edwin Commandeur
  *
  */
-public class MapOptions extends Options {
+public class MapOptions extends JSObjectWrapper {
+
+	protected MapOptions(JSObject jsObject) {
+		super(jsObject);
+	}
+
+	public MapOptions(){
+		this(JSObject.createJSObject());
+	}
 
 	public void setNumZoomLevels(int numZoomLevels) {
 		getJSObject().setProperty("numZoomLevels", numZoomLevels);

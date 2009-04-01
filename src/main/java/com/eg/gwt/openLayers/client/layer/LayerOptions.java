@@ -3,13 +3,30 @@
  */
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.util.Options;
+import com.eg.gwt.openLayers.client.util.JSObject;
+import com.eg.gwt.openLayers.client.util.JSObjectWrapper;
 
 /**
+ *
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class LayerOptions extends Options {
+public class LayerOptions extends JSObjectWrapper {
+
+	//TODO: support ... (shared by all layers)
+	// -alpha -> setHasAlphaChannel ; false by default/true if image
+	// -alwaysInRange -> setAlwaysInRange ; ...
+	// -visible -> setVisibility
+
+	//supported isBaseLayer, displayInLayerSwitcher
+
+	protected LayerOptions(JSObject jsObject) {
+		super(jsObject);
+	}
+
+	public LayerOptions(){
+		this(JSObject.createJSObject());
+	}
 
 	/**
 	 * Display or hide the name of a Layer in the LayerSwitcher Control.

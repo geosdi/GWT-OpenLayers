@@ -4,7 +4,7 @@ package com.eg.gwt.openLayers.client.layer;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class WMSOptions extends LayerOptions {
+public class WMSOptions extends GridLayerOptions {
 
 	//TODO: see which options should be moved to LayerOptions
 
@@ -58,16 +58,6 @@ public class WMSOptions extends LayerOptions {
 		setTransitionEffect("resize");
 	}
 
-
-	/**
-	 * To specify the opacity of a Layer.
-	 *
-	 * @param opacity - 1 = completely opaque, 0 = completely non-opaque
-	 */
-	public void setLayerOpacity(double opacity){
-		getJSObject().setProperty("opacity", opacity);
-	}
-
 	/**
 	 * Set a non-default projection. Default projection is EPSG:4326.
 	 *
@@ -97,13 +87,4 @@ public class WMSOptions extends LayerOptions {
 		getJSObject().setProperty("ratio", ratio);
 	}
 
-	/**
-	 * Sets an attribution block on the map. For example:
-	 * "This map is provided by <a href="url">company X</a>."
-	 *
-	 * @param attribution - the attribution text
-	 */
-	public void setAttribution(String attribution){
-		getJSObject().setProperty("attribution", attribution);
-	}
 }

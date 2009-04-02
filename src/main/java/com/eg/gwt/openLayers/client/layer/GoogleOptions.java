@@ -1,12 +1,11 @@
 package com.eg.gwt.openLayers.client.layer;
 
-import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  *
  */
-public class GoogleOptions extends Options {
+public class GoogleOptions extends LayerOptions {
 
 	public void setType(GMapType type) {
 		getJSObject().setProperty("type", type.getJSObject());

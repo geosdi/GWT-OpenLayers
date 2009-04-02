@@ -11,6 +11,9 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  */
 public class Google extends Layer {
 
+	//In OpenLayers this class inherits from both EventPane
+	// and FixedZoomLevels
+
 	protected Google(JSObject element) {
 		super(element);
 	}

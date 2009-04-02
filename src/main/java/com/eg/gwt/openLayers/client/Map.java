@@ -166,7 +166,7 @@ public class Map extends OpenLayersObjectWrapper {
 	}
 
 	public void removeControl(Control control) {
-    	MapImpl.removeControl(getJSObject(), control.getJSObject());
+		MapImpl.removeControl(getJSObject(), control.getJSObject());
 	}
 
 	public int getLayerIndex(Layer layer) {
@@ -315,14 +315,41 @@ public class Map extends OpenLayersObjectWrapper {
 		return MapImpl.getMaxResolution(getJSObject());
 	}
 
+	public double getResolutionForZoom(){
+		return getJSObject().getPropertyAsDouble("fractionalZoom");
+	}
+
+	/**
+	 * <p>
+	 * Somehow this is not an API property in OL, but it seems it would
+	 * make sense as an API property and it is well documented:
+	 * </p>
+	 * <p>
+	 * For a base layer that supports it, allow the map resolution
+	 * to be set to a value between one of the values in the resolutions
+	 * array.  Default is false.
+	 *
+	 * When fractionalZoom is set to true, it is possible to zoom to
+	 * an arbitrary extent.  This requires a base layer from a source
+	 * that supports requests for arbitrary extents (i.e. not cached
+	 * tiles on a regular lattice).  This means that fractionalZoom
+	 * will not work with commercial layers (Google, Yahoo, VE), layers
+	 * using TileCache, or any other pre-cached data sources.
+	 *
+	 * If you are using fractionalZoom, then you should also use
+	 * getResolutionForZoom instead of layer.resolutions[zoom] as the
+	 * former works for non-integer zoom levels.
+	 * </p>
+	 *
+	 */
+	public void setFractionalZoom(boolean fractionalZoom){
+		getJSObject().setProperty("fractionalZoom", fractionalZoom);
+	}
+
 	public void destroy(){
 		MapImpl.destroy(getJSObject());
 	}
 
-
-	//TODO you want to keep track of Listeners
-	// EventListenerCollection should be property of Map
-	// that is also necessary for conveniently removing listeners
 	public void addMapBaseLayerChangedListener(final MapBaseLayerChangedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_BASE_LAYER_CHANGED, new EventHandler(){
 			public void onHandle(JSObject source, JSObject eventObject){
@@ -373,7 +400,7 @@ public class Map extends OpenLayersObjectWrapper {
 				MapMoveEvent e = new MapMoveEvent(eventObject);
 				listener.onMapMove(map, e);
 			}
-		 });
+		});
 	};
 
 
@@ -384,7 +411,7 @@ public class Map extends OpenLayersObjectWrapper {
 				MapMarkerAddedEvent e = new MapMarkerAddedEvent(eventObject);
 				listener.onMarkerAdded(map, e);
 			}
-		 });
+		});
 	};
 
 	public void addMapMarkerRemovedListener(final MapMarkerRemovedListener listener){
@@ -394,7 +421,7 @@ public class Map extends OpenLayersObjectWrapper {
 				MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(eventObject);
 				listener.onMarkerRemoved(map, e);
 			}
-		 });
+		});
 	};
 
 	public void addMapPopupOpenedListener(final MapPopupOpenedListener listener){
@@ -404,7 +431,7 @@ public class Map extends OpenLayersObjectWrapper {
 				MapPopupOpenedEvent e = new MapPopupOpenedEvent(eventObject);
 				listener.onPopupOpened(map, e);
 			}
-		 });
+		});
 	};
 
 	public void addMapPopupClosedListener(final MapPopupClosedListener listener){
@@ -414,7 +441,7 @@ public class Map extends OpenLayersObjectWrapper {
 				MapPopupClosedEvent e = new MapPopupClosedEvent(eventObject);
 				listener.onPopupClosed(map, e);
 			}
-		 });
+		});
 	};
 
 	public void addMapClickListener(final MapClickListener listener){

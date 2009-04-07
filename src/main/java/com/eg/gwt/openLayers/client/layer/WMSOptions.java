@@ -2,7 +2,7 @@ package com.eg.gwt.openLayers.client.layer;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
- *
+ * @author Curtis Jensen
  */
 public class WMSOptions extends GridLayerOptions {
 
@@ -74,6 +74,15 @@ public class WMSOptions extends GridLayerOptions {
 		getJSObject().setProperty("units", units);
 	}
 
+	/**
+	 * Set whether or not to wrap at the international date line.
+	 * 
+	 * @param wrap - true to wrap, false to not wrap
+	 */
+	public void setWrapDateLine(boolean wrap) {
+		getJSObject().setProperty("wrapDateLine", wrap);
+	}
+	
 	/**
 	 * For tiled layers the buffer size can be set.
 	 *

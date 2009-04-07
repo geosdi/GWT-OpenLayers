@@ -60,7 +60,7 @@ public class StyleImpl {
 
     public static native void setStrokeWidth(JSObject self, double w)
     /*-{
-        self.strokeWidth = s;
+        self.strokeWidth = w;
     }-*/;
 
     public static native double getStrokeWidth(JSObject self)

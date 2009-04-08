@@ -19,6 +19,7 @@ import com.eg.gwt.openLayers.client.event.MapMarkerRemovedListener;
 import com.eg.gwt.openLayers.client.event.MapMoveListener;
 import com.eg.gwt.openLayers.client.event.MapPopupClosedListener;
 import com.eg.gwt.openLayers.client.event.MapPopupOpenedListener;
+import com.eg.gwt.openLayers.client.event.MapZoomListener;
 import com.eg.gwt.openLayers.client.event.MapBaseLayerChangedListener.MapBaseLayerChangedEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerAddedListener.MapLayerAddedEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerChangedListener.MapLayerChangedEvent;
@@ -28,6 +29,7 @@ import com.eg.gwt.openLayers.client.event.MapMarkerRemovedListener.MapMarkerRemo
 import com.eg.gwt.openLayers.client.event.MapMoveListener.MapMoveEvent;
 import com.eg.gwt.openLayers.client.event.MapPopupClosedListener.MapPopupClosedEvent;
 import com.eg.gwt.openLayers.client.event.MapPopupOpenedListener.MapPopupOpenedEvent;
+import com.eg.gwt.openLayers.client.event.MapZoomListener.MapZoomEvent;
 import com.eg.gwt.openLayers.client.layer.Layer;
 import com.eg.gwt.openLayers.client.popup.Popup;
 import com.eg.gwt.openLayers.client.util.JObjectArray;
@@ -403,6 +405,15 @@ public class Map extends OpenLayersObjectWrapper {
 		});
 	};
 
+	public void addMapZoomListener(final MapZoomListener listener){
+		eventListeners.addListener(this, listener, EventType.MAP_ZOOMEND, new EventHandler(){
+			public void onHandle(JSObject source, JSObject eventObject) {
+				Map map = Map.narrowToMap(source);
+				MapZoomEvent e = new MapZoomEvent(eventObject);
+				listener.onMapZoom(map, e);
+			}
+		});
+	};
 
 	public void addMapMarkerAddedListener(final MapMarkerAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_MARKER_ADDED, new EventHandler(){

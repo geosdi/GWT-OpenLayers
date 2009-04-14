@@ -348,6 +348,19 @@ public class Map extends OpenLayersObjectWrapper {
 		getJSObject().setProperty("fractionalZoom", fractionalZoom);
 	}
 
+	public void setMinExtent(Bounds extent){
+		getJSObject().setProperty("minExtent", extent.getJSObject());
+	}
+
+	public void setMaxExtent(Bounds extent){
+		getJSObject().setProperty("maxExtent", extent.getJSObject());
+	}
+
+	public void setRestrictedExtent(Bounds extent){
+		getJSObject().setProperty("restrictedExtent", extent.getJSObject());
+	}
+
+
 	public void destroy(){
 		MapImpl.destroy(getJSObject());
 	}

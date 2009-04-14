@@ -2,6 +2,7 @@ package com.eg.gwt.openLayers.client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.eg.gwt.openLayers.client.control.Control;
 import com.eg.gwt.openLayers.client.event.EventHandler;
@@ -10,7 +11,6 @@ import com.eg.gwt.openLayers.client.event.EventListenerCollection;
 import com.eg.gwt.openLayers.client.event.EventType;
 import com.eg.gwt.openLayers.client.event.MapBaseLayerChangedListener;
 import com.eg.gwt.openLayers.client.event.MapClickListener;
-import com.eg.gwt.openLayers.client.event.MapClickListener.MapClickEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerAddedListener;
 import com.eg.gwt.openLayers.client.event.MapLayerChangedListener;
 import com.eg.gwt.openLayers.client.event.MapLayerRemovedListener;
@@ -21,6 +21,7 @@ import com.eg.gwt.openLayers.client.event.MapPopupClosedListener;
 import com.eg.gwt.openLayers.client.event.MapPopupOpenedListener;
 import com.eg.gwt.openLayers.client.event.MapZoomListener;
 import com.eg.gwt.openLayers.client.event.MapBaseLayerChangedListener.MapBaseLayerChangedEvent;
+import com.eg.gwt.openLayers.client.event.MapClickListener.MapClickEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerAddedListener.MapLayerAddedEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerChangedListener.MapLayerChangedEvent;
 import com.eg.gwt.openLayers.client.event.MapLayerRemovedListener.MapLayerRemovedEvent;
@@ -481,5 +482,9 @@ public class Map extends OpenLayersObjectWrapper {
 	public void removeListener(EventListener listener){
 		eventListeners.removeListener(this, listener);
 	};
+
+	public Set getListeners(){
+		return eventListeners.getListeners();
+	}
 
 }

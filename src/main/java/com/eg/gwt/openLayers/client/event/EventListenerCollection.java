@@ -1,7 +1,9 @@
 package com.eg.gwt.openLayers.client.event;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
 
@@ -17,63 +19,76 @@ import com.eg.gwt.openLayers.client.OpenLayersObjectWrapper;
  */
 public class EventListenerCollection {
 
-    private Map map = new HashMap();
+	private Map map = new HashMap();
 
-    public void addListener(OpenLayersObjectWrapper w, EventListener listener, String type, EventHandler handler){
-        //TODO check if type is defined and valid?
-        w.getEvents().register(type, w, handler);
-        addToCollection(listener, new ListenerRegisteredProperties(type, handler));
-    }
+	public void addListener(OpenLayersObjectWrapper w, EventListener listener, String type, EventHandler handler){
+		//TODO check if type is defined and valid?
+		w.getEvents().register(type, w, handler);
+		addToCollection(listener, new ListenerRegisteredProperties(type, handler));
+	}
 
-    public void removeListener(OpenLayersObjectWrapper w, EventListener listener){
-        ListenerRegisteredProperties props = getRegisteredProperties(listener);
-        if(props!=null){
-            w.getEvents().unregister(props.getType(), w, props.getEventHandler());
-            removeRegisteredProperties(listener);
-        }
-        //TODO give feedback that listener is not in collection
-    }
+	public void removeListener(OpenLayersObjectWrapper w, EventListener listener){
+		ListenerRegisteredProperties props = getRegisteredProperties(listener);
+		if(props!=null){
+			w.getEvents().unregister(props.getType(), w, props.getEventHandler());
+			removeRegisteredProperties(listener);
+		}
+		//TODO give feedback that listener is not in collection
+	}
 
-//EventListenerCollection is propery of object, so removing all listeners
-// means clearing the complete map (is calling map.clear() enough?)
-/*
-    public void removeListeners(OpenLayersObjectWrapper w){
-        int size = map.size();
-        if(size > 0){
-            for(int i = 0;i< size;i++){
+	/**
+	 * Removes all listeners registered on an object.
+	 *
+	 * @param wrapper - wrapper object for OpenLayers object that fires events
+	 */
+	public void removeListeners(OpenLayersObjectWrapper wrapper){
+		Set keys = map.keySet(); //iterate over keyset
+		for(Iterator it = keys.iterator();it.hasNext();){
+			EventListener listener = (EventListener) it.next();
+			removeListener(wrapper, listener);
+		}
+	}
 
-            }
-        }
-    }
-*/
-    private void addToCollection(EventListener listener, ListenerRegisteredProperties props){
-        map.put(listener, props);
-    }
+	/**
+	 *  A view of all the listeners registered on an object.
+	 *
+	 *  Items in the set can be cast to {@link com.eg.gwt.openLayers.client.event.EventListener} objects.
+	 *
+	 *  @returns - a Set of {@link com.eg.gwt.openLayers.client.event.EventListener} objects.
+	 */
+	public Set getListeners(){
+		Set keys = map.keySet();
+		return keys;
+	}
 
-    private ListenerRegisteredProperties getRegisteredProperties(EventListener listener){
-        return (ListenerRegisteredProperties) map.get(listener);
-    }
+	private void addToCollection(EventListener listener, ListenerRegisteredProperties props){
+		map.put(listener, props);
+	}
 
-    private void removeRegisteredProperties(EventListener listener){
-        map.remove(listener);
-    }
+	private ListenerRegisteredProperties getRegisteredProperties(EventListener listener){
+		return (ListenerRegisteredProperties) map.get(listener);
+	}
+
+	private void removeRegisteredProperties(EventListener listener){
+		map.remove(listener);
+	}
 
 
-    private class ListenerRegisteredProperties {
-        String type;
-        EventHandler handler;
+	private class ListenerRegisteredProperties {
+		String type;
+		EventHandler handler;
 
-        ListenerRegisteredProperties(String type, EventHandler handler){
-            this.type = type;
-            this.handler = handler;
-        }
+		ListenerRegisteredProperties(String type, EventHandler handler){
+			this.type = type;
+			this.handler = handler;
+		}
 
-        String getType(){
-            return this.type;
-        }
+		String getType(){
+			return this.type;
+		}
 
-        EventHandler getEventHandler(){
-            return this.handler;
-        }
-    }
+		EventHandler getEventHandler(){
+			return this.handler;
+		}
+	}
 }

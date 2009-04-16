@@ -1,9 +1,8 @@
 package com.eg.gwt.openLayers.client.format;
 
 import com.eg.gwt.openLayers.client.Map;
-import com.eg.gwt.openLayers.client.util.Options;
 
-public class WMCOptions extends Options {
+public class WMCOptions extends FormatOptions {
 
 	//TODO: create constructors that take map or id
 

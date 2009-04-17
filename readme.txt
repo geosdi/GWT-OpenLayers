@@ -9,3 +9,4 @@ Building GWT OpenLayers with Ant:
   - create lib directory
   - drop gwt-user.jar from GWT 1.4.60  in the lib directory
   - run > ant package
+ 

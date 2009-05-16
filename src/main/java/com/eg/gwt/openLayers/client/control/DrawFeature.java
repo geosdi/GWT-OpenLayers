@@ -28,11 +28,21 @@ public class DrawFeature extends Control {
 		super(element);
 	}
 
-	//FIXME: make method's with handler params type safe: let handler be of handler type!
+	/**
+	 *
+	 * @param layer
+	 * @param handler - a PointHandler, PathHandler or PolygonHandler
+	 */
 	public DrawFeature(Vector layer, Handler handler) {
 		this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject()));
 	}
 
+	/**
+	 *
+	 * @param layer
+	 * @param handler - a PointHandler, PathHandler or PolygonHandler
+	 * @param options - see {@link DrawFeatureOptions}
+	 */
 	public DrawFeature(Vector layer, Handler handler, DrawFeatureOptions options){
 		this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject(), options.getJSObject()));
 	}

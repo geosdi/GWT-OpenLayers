@@ -9,7 +9,6 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  *
  * Default mode of selection is clickout, see {@link SelectFeature}.
  *
- * @since GWT-OL 0.4
  * @author Edwin Commandeur - Atlis EJS
  *
  */
@@ -17,7 +16,6 @@ public class SelectFeatureOptions extends ControlOptions {
 
 	/**
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setHover(){
 		getJSObject().setProperty("hover", true);
@@ -25,7 +23,6 @@ public class SelectFeatureOptions extends ControlOptions {
 
 	/**
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setToggle(){
 		getJSObject().setProperty("toggle", true);
@@ -33,7 +30,6 @@ public class SelectFeatureOptions extends ControlOptions {
 
 	/**
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setMultiple(){
 		getJSObject().setProperty("multiple", true);
@@ -42,7 +38,6 @@ public class SelectFeatureOptions extends ControlOptions {
 	/**
 	 * Triggers when a feature is selected
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void onSelect(SelectFeatureListener listener){
 		JSObject callback = SelectFeatureImpl.createSelectFeatureCallback(listener);
@@ -52,7 +47,6 @@ public class SelectFeatureOptions extends ControlOptions {
 	/**
 	 * Triggers when a feature is unselected
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void onUnSelect(UnselectFeatureListener listener){
 		JSObject callback = SelectFeatureImpl.createUnselectFeatureCallback(listener);

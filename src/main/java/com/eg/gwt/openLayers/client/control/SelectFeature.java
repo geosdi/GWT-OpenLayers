@@ -7,8 +7,6 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * When activated, selects features on click by default. Use SelectFeatureOptions
  * argument to select on hover.
  *
- * @since GWT-OL 0.4 and OL 2.4
- * (tested in OpenLayers 2.7)
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
@@ -20,7 +18,6 @@ public class SelectFeature extends Control {
 
 	/**
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public interface SelectFeatureListener {
 		void onFeatureSelected(JSObject vectorFeature);
@@ -28,7 +25,6 @@ public class SelectFeature extends Control {
 
 	/**
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public interface UnselectFeatureListener {
 		void onFeatureUnselected(JSObject vectorFeature);
@@ -40,7 +36,6 @@ public class SelectFeature extends Control {
 
 	/**
 	 *
-	 * @since GWT-OL 0.4
 	 * @param layer
 	 */
 	public SelectFeature(Vector layer) {
@@ -49,7 +44,6 @@ public class SelectFeature extends Control {
 
 	/**
 	*
-	* @since GWT-OL 0.4
 	* @param layer
 	*/
 	public SelectFeature(Vector layer, SelectFeatureOptions options) {
@@ -60,7 +54,6 @@ public class SelectFeature extends Control {
 	 * Select a feature when hovering over it with the mouse
 	 * (mouse in) and deselect it on mouse out.
 	 *
-	 * @since GWT-OL 0.4
 	 * @param hover - true to select on hover
 	 */
 	public void setHover(boolean hover){
@@ -71,7 +64,6 @@ public class SelectFeature extends Control {
 	 *
 	 * Select and deselect a feature by clicking on it with the mouse.
 	 *
-	 * @since GWT-OL 0.4
 	 * @param toggle - true to enabling toggling feature selection
 	 */
 	public void setToggle(boolean toggle){
@@ -82,7 +74,6 @@ public class SelectFeature extends Control {
 	 *
 	 * Hold down shift or ctrl and click to select multiple features.
 	 *
-	 * @since GWT-OL 0.4
 	 * @param multipe - true to enable selecting multiple features
 	 */
 	public void setMultiple(boolean multiple){
@@ -107,7 +98,6 @@ public class SelectFeature extends Control {
 	 *
 	 * This is the default way of selecting/unselecting features.
 	 *
-	 * @since GWT-OL 0.4
 	 * @param clickout - true to enable unselect on click outside feature.
 	 */
 	public void setClickOut(boolean clickout){

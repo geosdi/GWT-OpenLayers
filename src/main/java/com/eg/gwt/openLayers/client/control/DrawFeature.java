@@ -1,5 +1,6 @@
 package com.eg.gwt.openLayers.client.control;
 
+import com.eg.gwt.openLayers.client.handler.Handler;
 import com.eg.gwt.openLayers.client.layer.Vector;
 import com.eg.gwt.openLayers.client.util.JSObject;
 
@@ -28,12 +29,12 @@ public class DrawFeature extends Control {
 	}
 
 	//FIXME: make method's with handler params type safe: let handler be of handler type!
-	public DrawFeature(Vector layer, JSObject handler) {
-		this(DrawFeatureImpl.create(layer.getJSObject(), handler));
+	public DrawFeature(Vector layer, Handler handler) {
+		this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject()));
 	}
 
-	public DrawFeature(Vector layer, JSObject handler, DrawFeatureOptions options){
-		this(DrawFeatureImpl.create(layer.getJSObject(), handler, options.getJSObject()));
+	public DrawFeature(Vector layer, Handler handler, DrawFeatureOptions options){
+		this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject(), options.getJSObject()));
 	}
 
 }

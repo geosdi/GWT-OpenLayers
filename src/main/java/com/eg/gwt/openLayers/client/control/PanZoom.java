@@ -24,4 +24,8 @@ public class PanZoom extends Control {
 		this(PanZoomImpl.create());
 	}
 
+	public PanZoom(PanZoomOptions options) {
+		this(PanZoomImpl.create(options.getJSObject()));
+	}
+
 }

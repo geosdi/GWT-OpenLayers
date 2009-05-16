@@ -1,15 +1,13 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  * See {@link MousePosition}.
  *
  * @author Edwin Commandeur - Atlis EJS
- * @since GWT-OL 0.4
  *
  */
-public class MousePositionOptions extends Options {
+public class MousePositionOptions extends ControlOptions {
 
 	/**
 	 * <p>
@@ -42,7 +40,7 @@ public class MousePositionOptions extends Options {
 	 *     setFormatOutput(mpOut);
 	 * </pre>
 	 * </p>
-	 * @since GWT-OL 0.4
+	 *
 	 */
 	public void setFormatOutput(MousePositionOutput output){
 		getJSObject().setProperty("formatOutput",  MousePositionImpl.formatOutput(output));
@@ -56,7 +54,6 @@ public class MousePositionOptions extends Options {
 	 *
 	 * Default number of fractional digits displayed is 5.
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setNumDigits(int numDigits){
 		getJSObject().setProperty("numDigits", numDigits);
@@ -67,7 +64,6 @@ public class MousePositionOptions extends Options {
 	 *
 	 * Default separator is ", ".
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setSeparator(String separator){
 		getJSObject().setProperty("separator", separator);
@@ -78,7 +74,6 @@ public class MousePositionOptions extends Options {
 	 *
 	 * prefixHere 0.00000, 0.0000
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setPrefix(String prefix){
 		getJSObject().setProperty("prefix", prefix);
@@ -89,7 +84,6 @@ public class MousePositionOptions extends Options {
 	 *
 	 * 0.00000, 0.0000 suffixHere
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setSuffix(String suffix){
 		getJSObject().setProperty("suffix", suffix);
@@ -99,7 +93,6 @@ public class MousePositionOptions extends Options {
 	 *
 	 * Default granularity is 10.
 	 *
-	 * @since GWT-OL 0.4
 	 */
 	public void setGranularity(int granularity){
 		getJSObject().setProperty("granularity", granularity);

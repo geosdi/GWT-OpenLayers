@@ -18,7 +18,6 @@ import com.eg.gwt.openLayers.client.event.VectorFeatureUnselectedListener.Featur
 import com.eg.gwt.openLayers.client.feature.VectorFeature;
 import com.eg.gwt.openLayers.client.util.JObjectArray;
 import com.eg.gwt.openLayers.client.util.JSObject;
-import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  *
@@ -41,11 +40,6 @@ public class Vector extends Layer {
 		return (vectorLayer == null)?null:new Vector(vectorLayer);
 	}
 
-	//maintain for backwards compatibility
-	public Vector(String name, Options options) {
-		this(VectorImpl.create(name, options.getJSObject()));
-	}
-
 	public Vector(String name, VectorOptions options) {
 		this(VectorImpl.create(name, options.getJSObject()));
 	}
@@ -64,23 +58,23 @@ public class Vector extends Layer {
 		VectorImpl.addFeature(getJSObject(), f.getJSObject());
 	}
 
-	
+
 	public void redraw() {
 		VectorImpl.redraw(this.getJSObject());
 	}
-	
+
 	public void drawFeature(VectorFeature vector, Style style) {
 		VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject(), style.getJSObject());
 	}
-	
+
 	public void eraseFeatures() {
 		VectorImpl.eraseFeatures(this.getJSObject());
 	}
-		
+
 	public void removeFeature(VectorFeature feature) {
 		VectorImpl.removeFeature(getJSObject(), feature.getJSObject());
 	}
-	
+
 
 
 	public int getNumberOfFeatures(){

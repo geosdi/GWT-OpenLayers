@@ -15,4 +15,8 @@ class PanZoomImpl {
 		return new $wnd.OpenLayers.Control.PanZoom();
 	}-*/;
 
+	public static native JSObject create(JSObject options)/*-{
+		return new $wnd.OpenLayers.Control.PanZoom(options);
+	}-*/;
+
 }

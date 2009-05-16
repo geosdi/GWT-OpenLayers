@@ -1,13 +1,12 @@
 package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.Bounds;
-import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  * @author Amr Alam - Refractions Research
  *
  */
-public class TMSOptions extends Options {
+public class TMSOptions extends LayerOptions {
 
 	public TMSOptions() {
 	}

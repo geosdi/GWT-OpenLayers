@@ -10,7 +10,7 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  * Miles are English miles? (not sea miles; are those nmi)
  *
  * TODO: Find out if nmi are nautical miles, changing mi to nmi seemed to have
- *  little effect on
+ *  little effect.
  *
  *
  * @author Edwin Commandeur - Atlis EJS

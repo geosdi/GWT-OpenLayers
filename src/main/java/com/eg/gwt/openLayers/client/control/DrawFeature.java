@@ -1,9 +1,7 @@
 package com.eg.gwt.openLayers.client.control;
 
-import com.eg.gwt.openLayers.client.event.FeatureAddedListener;
 import com.eg.gwt.openLayers.client.layer.Vector;
 import com.eg.gwt.openLayers.client.util.JSObject;
-import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  *
@@ -19,26 +17,23 @@ import com.eg.gwt.openLayers.client.util.Options;
  */
 public class DrawFeature extends Control {
 
+	//FIXME: make call typesafe (JSObject -> VectorFeature) by using same trick as in MousePositionImpl
+	// also for select feature
+	public interface FeatureAddedListener {
+		void onFeatureAdded(JSObject vectorFeature);
+	}
+
 	protected DrawFeature(JSObject element) {
 		super(element);
 	}
 
+	//FIXME: make method's with handler params type safe: let handler be of handler type!
 	public DrawFeature(Vector layer, JSObject handler) {
 		this(DrawFeatureImpl.create(layer.getJSObject(), handler));
 	}
 
-	//TODO see if these three constructors can be reduced to 1 with DrawFeatureParams object
-	//  see SelectFeature
-
-	public DrawFeature(Vector layer, JSObject handler, Options options) {
+	public DrawFeature(Vector layer, JSObject handler, DrawFeatureOptions options){
 		this(DrawFeatureImpl.create(layer.getJSObject(), handler, options.getJSObject()));
 	}
 
-	public DrawFeature(Vector layer, JSObject handler, FeatureAddedListener listener){
-		this(DrawFeatureImpl.create(layer.getJSObject(), handler, listener));
-	}
-
-	public DrawFeature(Vector layer, JSObject handler, FeatureAddedListener listener, Options options){
-		this(DrawFeatureImpl.create(layer.getJSObject(), handler, listener, options.getJSObject()));
-	}
 }

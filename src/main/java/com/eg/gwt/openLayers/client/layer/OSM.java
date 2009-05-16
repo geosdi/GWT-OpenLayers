@@ -2,6 +2,12 @@ package com.eg.gwt.openLayers.client.layer;
 
 import com.eg.gwt.openLayers.client.util.JSObject;
 
+/**
+ * The javascript implementation of the class OSM is defined in a small add-on
+ * javascript library for OpenStreetMap.
+ *
+ * See: http://openstreetmap.org/openlayers/OpenStreetMap.js
+ */
 public class OSM extends Layer {
 
 	protected OSM(JSObject element) {

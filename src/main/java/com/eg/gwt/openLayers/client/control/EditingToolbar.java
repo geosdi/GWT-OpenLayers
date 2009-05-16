@@ -9,11 +9,15 @@ import com.eg.gwt.openLayers.client.util.JSObject;
  */
 public class EditingToolbar extends Control{
 
-    protected EditingToolbar(JSObject element){
-        super(element);
-    }
-    
-    public EditingToolbar(Vector vectorLayer){
-        this(EditingToolbarImpl.create(vectorLayer.getJSObject()));
-    }
+	protected EditingToolbar(JSObject element){
+		super(element);
+	}
+
+	public EditingToolbar(Vector vectorLayer){
+		this(EditingToolbarImpl.create(vectorLayer.getJSObject()));
+	}
+
+	public EditingToolbar(Vector vectorLayer, EditingToolbarOptions options){
+		this(EditingToolbarImpl.create(vectorLayer.getJSObject(), options.getJSObject()));
+	}
 }

@@ -1,7 +1,6 @@
 package com.eg.gwt.openLayers.client.control;
 
 import com.eg.gwt.openLayers.client.util.JSObject;
-import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  * Access the openlayers navtoolbar control.
@@ -19,17 +18,18 @@ public class NavToolBar extends Control{
 		this(NavToolBarImpl.create());
 	}
 
-/*
-//TODO: move to PanZoomBarOptions
-	public NavToolBar(Element div){
-		super((JSObject)null);
-		Options options = new Options();
-		options.setAttribute("div", div);
-		setJSObject(NavToolBarImpl.create(options.getJSObject()));
-	}
-*/
-	public NavToolBar(Options options) {
+	public NavToolBar(NavToolBarOptions options) {
 		this(NavToolBarImpl.create(options.getJSObject()));
 	}
+
+	/*
+	//TODO: move to PanZoomBarOptions
+		public NavToolBar(Element div){
+			super((JSObject)null);
+			Options options = new Options();
+			options.setAttribute("div", div);
+			setJSObject(NavToolBarImpl.create(options.getJSObject()));
+		}
+	*/
 
 }

@@ -186,9 +186,11 @@ public class Map extends OpenLayersObjectWrapper {
 	 *
 	 * @param name - the name of a layer or part of it
 	 * @return Layer - the first layer that matches the name (so, if there are more layers
-	 *    matching the name then only one is returned)
+	 *    matching the name then only one is returned) or null if no layer matches
 	 */
 	public Layer getLayerByName(String name){
+		//FIXME: this function goes wrong if getLayersByName returns null
+		// fix - let getLayersByName return empty array + update javadoc
 		Layer[] layers = this.getLayersByName(name);
 		if(layers != null && layers.length > 0){return layers[0];}else{return null;}
 	}
@@ -197,12 +199,12 @@ public class Map extends OpenLayersObjectWrapper {
 	 *
 	 * @param name - the name of a layer or part of it
 	 * @return Layer[] - all layers with a name that fully or partially
-	 *    matches the input name
+	 *    matches the input name or null if no layer matches
 	 */
 	public Layer[] getLayersByName(String name){
 		String regex= ".*" + name + ".*";
 		Layer[] layers = this.getLayers();
-		List<Layer> layersFound = new ArrayList<Layer>();
+		List layersFound = new ArrayList();
 		for(int i = 0, max = layers.length; i < max;i++){
 			if(layers[i].getName().matches(regex)){
 				layersFound.add(layers[i]);

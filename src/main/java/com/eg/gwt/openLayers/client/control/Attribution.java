@@ -29,4 +29,7 @@ public class Attribution extends Control {
 		this(AttributionImpl.create());
 	}
 
+	public Attribution(AttributionOptions options){
+		this(AttributionImpl.create(options.getJSObject()));
+	}
 }

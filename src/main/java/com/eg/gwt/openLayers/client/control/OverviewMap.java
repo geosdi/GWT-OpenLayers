@@ -1,7 +1,6 @@
 package com.eg.gwt.openLayers.client.control;
 
 import com.eg.gwt.openLayers.client.util.JSObject;
-import com.eg.gwt.openLayers.client.util.Options;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
@@ -9,19 +8,25 @@ import com.eg.gwt.openLayers.client.util.Options;
  */
 public class OverviewMap extends Control {
 
-    protected OverviewMap(JSObject element) {
-        super(element);
-    }
+	protected OverviewMap(JSObject element) {
+		super(element);
+	}
 
-    public OverviewMap() {
-        this(OverviewMapImpl.create());
-    }
+	public OverviewMap() {
+		this(OverviewMapImpl.create());
+	}
 
-    /**
-     * @param params non-default options: In the OpenLayers example for the overviewmap
-     *      mapOptions are copied to overviewmap
-     */
-    public OverviewMap(Options params) {
-        this(OverviewMapImpl.create(params.getJSObject()));
-    }
+	public OverviewMap(OverviewMapOptions options) {
+		this(OverviewMapImpl.create(options.getJSObject()));
+	}
+
+	//
+	// legacy
+	//
+
+	/*
+	public OverviewMap(Options params) {
+		this(OverviewMapImpl.create(params.getJSObject()));
+	}
+	*/
 }

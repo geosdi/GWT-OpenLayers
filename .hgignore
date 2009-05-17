@@ -1,0 +1,13 @@
+#
+# use glob syntax
+#
+syntax: glob
+.project
+.classpath
+
+#
+# use regex syntax
+#
+syntax: regexp
+
+# add regexes for resources that have to be ignored below

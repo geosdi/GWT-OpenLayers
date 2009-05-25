@@ -1,5 +1,5 @@
  
-GWT-OpenLayers can be build using either Maven or Ant.
+GWT-OpenLayers 0.4 can be build using either Maven or Ant.
 
 Building GWT OpenLayers with Maven:
   -see website (repeat here)

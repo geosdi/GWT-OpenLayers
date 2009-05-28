@@ -1,0 +1,43 @@
+
+/*
+ *  How about copyright for the images?
+ *
+ *  Can we include the images without violating copyright.
+ *
+ *  All third-party\OpenLayers images are the creative property of OpenLayers.
+ *
+ */
+
+.olControlEditingToolbar  {
+		width: 400px!important;
+}
+
+.olControlEditingToolbar .olControlSelectFeatureItemActive {
+	background-image: url("img/gwt-openlayers/third-party/OpenLayers/select_feature_on.png");
+	background-repeat: no-repeat;
+}
+
+.olControlEditingToolbar .olControlSelectFeatureItemInactive {
+	background-image: url("img/gwt-openlayers/third-party/OpenLayers/select_feature_off.png");
+	background-repeat: no-repeat;
+}
+
+.olControlEditingToolbar .olControlModifyFeatureItemActive {
+	background-image: url("img/gwt-openlayers/third-party/OpenLayers/move_vertex_on.png");
+	background-repeat: no-repeat;
+}
+
+.olControlEditingToolbar .olControlModifyFeatureItemInactive {
+	background-image: url("img/gwt-openlayers/third-party/OpenLayers/move_vertex_off.png");
+	background-repeat: no-repeat;
+}
+
+.olControlEditingToolbar .olControlDragFeatureItemActive {
+	background-image: url("img/gwt-openlayers/third-party/OpenLayers/move_feature_on.png");
+	background-repeat: no-repeat;
+}
+
+.olControlEditingToolbar .olControlDragFeatureItemInactive {
+	background-image: url("img/gwt-openlayers/third-party/OpenLayers/move_feature_off.png");
+	background-repeat: no-repeat;
+}

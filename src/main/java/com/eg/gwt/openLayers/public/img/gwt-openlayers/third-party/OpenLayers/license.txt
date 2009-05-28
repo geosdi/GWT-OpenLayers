@@ -1,0 +1,4 @@
+
+Include proper license.
+
+All the images under this directory are the creative property of OpenLayers.

@@ -1,0 +1,35 @@
+package org.gwtopenmaps.openlayers.client.control;
+
+import org.gwtopenmaps.openlayers.client.util.JSObject;
+
+/**
+ *
+ * @author Erdem Gunay
+ *
+ */
+class MousePositionImpl {
+
+	public static native JSObject create()/*-{
+		return new $wnd.OpenLayers.Control.MousePosition();
+	}-*/;
+
+	public static native JSObject create(JSObject options)/*-{
+		return new $wnd.OpenLayers.Control.MousePosition(options);
+	}-*/;
+
+	//TODO: the way typesafety is achieved here for MousePositionOutput.format function
+	// can be applied elsewhere
+	public static native JSObject formatOutput(MousePositionOutput output)/*-{
+		var outputFn = function(lonLat){
+			var out = ""
+			var lonLatObj = @org.gwtopenmaps.openLayers.client.LonLat::narrowToLonLat(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(lonLat);
+			var mapObj = @org.gwtopenmaps.openLayers.client.Map::narrowToMap(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(this.map);
+
+			out = output.@org.gwtopenmaps.openLayers.client.control.MousePositionOutput::format(Lorg/gwtopenmaps/openlayers/client/LonLat;Lorg/gwtopenmaps/openlayers/client/Map;)(lonLatObj,mapObj);
+
+			return $wnd.gwt_openlayers_util.sanitize(out);
+		}
+		return outputFn;
+	}-*/;
+
+}

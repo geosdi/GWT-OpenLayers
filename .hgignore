@@ -9,5 +9,10 @@ syntax: glob
 # use regex syntax
 #
 syntax: regexp
+^bin/*
+^lib/*
+^.settings/*
+^target/*
+^build/*
 
 # add regexes for resources that have to be ignored below

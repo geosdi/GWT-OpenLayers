@@ -1,6 +1,7 @@
 
- 
-GWT-OpenLayers 0.4 can be build using either Maven or Ant.
+The present version of GWT-OpenLayers is version 0.4.
+
+GWT-OpenLayers can be build using either Maven or Ant.
 
 Building GWT OpenLayers with Maven:
   -see website (repeat here)
@@ -10,4 +11,6 @@ Building GWT OpenLayers with Ant:
   - create lib directory
   - drop gwt-user.jar from GWT 1.4.60  in the lib directory
   - run > ant package
- 
+
+Contributors:
+ [names here]

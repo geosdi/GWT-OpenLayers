@@ -1,8 +1,14 @@
-NOTE: the release that is out is v0.2, the release notes are only up to date to v0.1
+=====================
+ GWT-OpenLayers release notes
+=====================
 
-GWT - OpenLayers plugin v0.3 [ IN PROGRESS ]
+=====================
+ GWT - OpenLayers  v0.4
+=====================
 
-In this release support for the following OpenLayers classes has been added
+GWT OpenLayers has undergone some extensive changes from version 0.2 to 0.4 (that's why v0.3 is skipped). The most obvious one being the package rename from org.gwtopenmaps.openLayers to org.gwtopenmaps.openlayers.
+
+In this release support for the following OpenLayers classes has been added:
 
 OpenLayers.Popup package
 - Framed
@@ -24,8 +30,15 @@ OpenLayers.Geometry package
 The functionality of the following classes has been enhanced
 - Vector
 
+=====================
+GWT - OpenLayers v0.2
+=====================
 
-GWT - OpenLayers plugin v0.1
+No release notes available.
+
+=====================
+GWT - OpenLayers v0.1
+=====================
 
 In this release following OpenLayers classes are supported
 

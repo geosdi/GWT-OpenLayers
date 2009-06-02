@@ -17,7 +17,7 @@ class PopupImpl {
 
 	public static native void addCloseBox(JSObject popup, CloseListener callback) /*-{
 		function closebox(evt) {
-			callback.@org.gwtopenmaps.openLayers.client.popup.Popup.CloseListener::onPopupClose(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(evt);
+			callback.@org.gwtopenmaps.openlayers.client.popup.Popup.CloseListener::onPopupClose(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(evt);
 		}
 
 		popup.addCloseBox(closebox);

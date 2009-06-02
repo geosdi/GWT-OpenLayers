@@ -33,6 +33,7 @@ class SizeImpl {
 		self.h = height;
 	}-*/;
 
+	//uses OL equals implementation
 	public static native boolean equals(JSObject self, JSObject size)/*-{
 		return self.equals(size);
 	}-*/;

@@ -40,14 +40,14 @@ class SelectFeatureImpl {
 
 	public static native JSObject createSelectFeatureCallback(SelectFeatureListener listener)/*-{
 		var callback = function(obj){
-			listener.@org.gwtopenmaps.openLayers.client.control.SelectFeature.SelectFeatureListener::onFeatureSelected(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
+			listener.@org.gwtopenmaps.openlayers.client.control.SelectFeature.SelectFeatureListener::onFeatureSelected(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
 		}
 		return callback;
 	}-*/;
 
 	public static native JSObject createUnselectFeatureCallback(UnselectFeatureListener listener)/*-{
 		var callback = function(obj){
-			listener.@org.gwtopenmaps.openLayers.client.control.SelectFeature.UnselectFeatureListener::onFeatureUnselected(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
+			listener.@org.gwtopenmaps.openlayers.client.control.SelectFeature.UnselectFeatureListener::onFeatureUnselected(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
 		}
 		return callback;
 	}-*/;

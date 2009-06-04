@@ -91,7 +91,7 @@ gwt_openlayers_util.relay = {
  *
  * Output sanitization should always be based on a whitelist.
  */
-//TODO look for smarter solutions or enhance this function further
+//TODO enhance sanitize function or move to templating solution vs html injection (e.g. for MousePositionOutput)
 gwt_openlayers_util.sanitize = function(input){
 	var originalInput = input;
 	var whiteListRegEx = [
@@ -112,7 +112,7 @@ gwt_openlayers_util.sanitize = function(input){
 	if(whiteListCharsRegEx.test(input)){
 		return originalInput;
 	} else {
-		return "attempt at unsafe dom insertion";
+		return "";
 	}
 }
 

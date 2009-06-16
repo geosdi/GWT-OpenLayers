@@ -1,0 +1,23 @@
+<module rename-to="gwt_ol_showcase">
+
+	<!-- Inherit the core Web Toolkit stuff.                        -->
+	<inherits name='com.google.gwt.user.User'/>
+
+	<!-- Inherit a GWT style.                             -->
+	<inherits name='com.google.gwt.user.theme.standard.Standard'/>
+	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+	<!-- Other module inherits                                      -->
+	<inherits name='org.gwtopenmaps.openlayers.OpenLayers'/>
+
+	<!--Entry point class.                         -->
+	<entry-point class='org.gwtopenmaps.demo.openlayers.client.GwtOpenLayersShowcase'/>
+
+	<!--Application specific style sheet.              -->
+	<stylesheet src='GwtOpenLayersShowcase.css' />
+
+<!-- 
+	<script src="js/OpenLayers-2.7/OpenLayers-debug.js"></script>
+	 -->
+</module>

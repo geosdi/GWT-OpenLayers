@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="gwt-openlayers-showcase" default="test" basedir=".">
+	<description>
+		Build and run test cases for GWT-OpenLayers.
+	</description>
+
+	<!-- See 'build.properties' for custom properties used by this script. -->
+	<property file="build.properties"/>
+
+	<!-- Classpath for compile and test -->
+	<path id="classpath.compile">
+		<pathelement path="${java.class.path}/"/>
+		<fileset dir="${gwt.home.dir}">
+			<include name="gwt-user.jar"/>
+		</fileset>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<path id="classpath.test">
+		<pathelement path="${src.dir}/"/>
+		<pathelement path="${build.dir}/"/>
+		<fileset dir="${gwt.home.dir}">
+			<include name="gwt-user.jar"/>
+			<include name="${gwt.dev.jar}"/>
+			<include name="gwt-servlet.jar"/>
+		</fileset>
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<!-- module has no entry points therefore compile with javac vs GWTCompiler -->
+	<target name="compile" depends="clean">
+		<mkdir dir="${build.dir}"/>
+		<javac srcdir="src/main/test" destdir="${build.dir}" includes="**" debug="on" debuglevel="lines,vars,source" source="1.5">
+			<classpath refid="classpath.compile"/>
+		</javac>
+	</target>
+
+	<target name="test" depends="compile">
+		<java classpathref="classpath.test"
+			className="junit.textui.TestRunner"
+			fork="true"
+			maxmemory="512M">
+			<arg value="${test.class}"/>
+		</java>
+	</target>
+
+
+	<!--
+	<target name="test-ext" description="" depends="compile">
+		<mkdir dir="${testreport.dir}"/>
+		<echo>Invoking JUnit</echo>
+		<junit dir="${lib.dir}" failureproperty="test.failure" printSummary="yes"
+			 fork="true" haltonerror="true">
+			<jvmarg value="-Dgwt.args=-out www-test" />
+			<sysproperty key="basedir" value="." />
+			<formatter type="xml" />
+			<formatter usefile="false" type="plain" />
+			<classpath>
+				<path refid="classpath.testcases" />
+				<pathelement path="${buid.dir}" />
+				<pathelement path="${src.dir}" />
+			</classpath>
+			<batchtest todir="${testreportdir}">
+				<fileset dir="test">
+					<include name="**/**Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+	-->
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+</project>

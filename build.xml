@@ -14,7 +14,7 @@
 	<fileset dir="${lib.dir}">
 		<include name="**/*.jar"/>
 	</fileset>
-    <!-- Additional dependencies (such as junit) go here -->
+    <!-- Additional dependencies go here -->
   </path>
 
   <target name="compile" depends="clean" description="Compile src to build dir (see build.properties)">
@@ -22,7 +22,7 @@
   	<!--
     <javac srcdir="src/main/java:src/main/test" destdir="${build.dir}" includes="**" debug="on" debuglevel="lines,vars,source" source="1.5">
     -->
-    <javac srcdir="src/main/java" destdir="${build.dir}" includes="**" debug="on" debuglevel="lines,vars,source" source="1.4">
+    <javac srcdir="src/main/java" destdir="${build.dir}" includes="**" debug="on" debuglevel="lines,vars,source" source="1.5">
       <classpath refid="project.class.path"/>
     </javac>
   </target>

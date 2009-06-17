@@ -1,7 +1,17 @@
 
-#gwt-openlayers-banner {
-    background-color:#9D9FA1;
-    color:white;
-    text-align:center;
-    padding:2%;
+#header {
+	background-color:#9D9FA1;
+	color:white;
+	text-align:center;
+	padding:2%;
+}
+
+#sidebar {
+	width:15%;
+	float:left;
+}
+
+#content {
+	width:79%;
+	float:left;
 }

@@ -4,6 +4,7 @@
 syntax: glob
 .project
 .classpath
+.gwt-tmp
 
 #
 # use regex syntax
@@ -14,5 +15,8 @@ syntax: regexp
 ^.settings/*
 ^target/*
 ^build/*
+^dist/*
+^src/main/test/org/gwtopenmaps/test/openlayers/public/third-party/*
+^tomcat/*
 
 # add regexes for resources that have to be ignored below

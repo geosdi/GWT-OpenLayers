@@ -1,10 +1,10 @@
-=====================
+=============================
  GWT-OpenLayers release notes
-=====================
+=============================
 
-=====================
- GWT - OpenLayers  v0.4
-=====================
+====================
+ GWT-OpenLayers v0.4
+====================
 
 GWT OpenLayers has undergone some extensive changes from version 0.2 to 0.4 (that's why v0.3 is skipped). The most obvious one being the package rename from org.gwtopenmaps.openLayers to org.gwtopenmaps.openlayers.
 
@@ -30,15 +30,15 @@ OpenLayers.Geometry package
 The functionality of the following classes has been enhanced
 - Vector
 
-=====================
-GWT - OpenLayers v0.2
-=====================
+===================
+GWT-OpenLayers v0.2
+===================
 
 No release notes available.
 
-=====================
-GWT - OpenLayers v0.1
-=====================
+===================
+GWT-OpenLayers v0.1
+===================
 
 In this release following OpenLayers classes are supported
 

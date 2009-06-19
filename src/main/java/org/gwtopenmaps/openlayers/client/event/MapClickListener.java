@@ -11,7 +11,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface MapClickListener extends EventListener {
 
-	class MapClickEvent extends EventObject {
+	class MapClickEvent extends MapEvent {
 
 		public MapClickEvent(JSObject eventObject) {
 			super(eventObject);
@@ -19,14 +19,10 @@ public interface MapClickListener extends EventListener {
 
 		public LonLat getLonLat(){
 			Map map = Map.narrowToMap(this.getObject());
-			Pixel pixel = super.getPixel();
-			if(pixel != null){
-				return map.getLonLatFromPixel(pixel);
-			} else {
-				return null;
-			}
+			Pixel pixel = Pixel.narrowToPixel(getJSObject().getProperty("xy"));
+			return (pixel != null)? map.getLonLatFromPixel(pixel):null;
 		}
 	}
 
-	public void onClick(Map source, MapClickEvent mapClickEvent);
+	public void onClick(MapClickEvent mapClickEvent);
 }

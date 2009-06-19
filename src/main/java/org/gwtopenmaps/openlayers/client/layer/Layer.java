@@ -28,7 +28,7 @@ public class Layer extends OpenLayersObjectWrapper {
 
 	protected EventListenerCollection eventListeners = new EventListenerCollection();
 
-	public Layer(JSObject element) {
+	protected Layer(JSObject element) {
 		super(element);
 	}
 
@@ -109,40 +109,36 @@ public class Layer extends OpenLayersObjectWrapper {
 
 	public void addLayerLoadStartListener(final LayerLoadStartListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADSTART, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Layer layer = Layer.narrowToLayer(source);
+			public void onHandle(JSObject eventObject) {
 				LoadStartEvent e = new LoadStartEvent(eventObject);
-				listener.onLoadStart(layer, e);
+				listener.onLoadStart(e);
 			}
 		 });
 	}
 
 	public void addLayerLoadEndListener(final LayerLoadEndListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADEND, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Layer layer = Layer.narrowToLayer(source);
+			public void onHandle(JSObject eventObject) {
 				LoadEndEvent e = new LoadEndEvent(eventObject);
-				listener.onLoadEnd(layer, e);
+				listener.onLoadEnd(e);
 			}
 		 });
 	}
 
 	public void addLayerLoadCancelListener(final LayerLoadCancelListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADCANCEL, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Layer layer = Layer.narrowToLayer(source);
+			public void onHandle(JSObject eventObject) {
 				LoadCancelEvent e = new LoadCancelEvent(eventObject);
-				listener.onLoadCancel(layer, e);
+				listener.onLoadCancel(e);
 			}
 		 });
 	}
 
 	public void addLayerVisibilityChangedListener(final LayerVisibilityChangedListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_VISIBILITYCHANGED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Layer layer = Layer.narrowToLayer(source);
+			public void onHandle(JSObject eventObject) {
 				VisibilityChangedEvent e = new VisibilityChangedEvent(eventObject);
-				listener.onVisibilityChanged(layer, e);
+				listener.onVisibilityChanged(e);
 			}
 		 });
 	}

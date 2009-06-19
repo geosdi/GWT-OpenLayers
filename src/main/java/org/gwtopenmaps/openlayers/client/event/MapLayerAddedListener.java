@@ -1,7 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.Map;
-import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -10,16 +8,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface MapLayerAddedListener extends EventListener {
 
-    class MapLayerAddedEvent extends EventObject{
+	class MapLayerAddedEvent extends MapLayerEvent {
 
-        public MapLayerAddedEvent(JSObject eventObject) {
-            super(eventObject);
-        }
-        
-        public Layer getLayer() {
-            return super.getLayer();
-        }
-    }
-    
-    public void onLayerAdded(Map source, MapLayerAddedEvent eventObject);
+		public MapLayerAddedEvent(JSObject eventObject) {
+			super(eventObject);
+		}
+
+	}
+
+	public void onLayerAdded(MapLayerAddedEvent eventObject);
 }

@@ -118,60 +118,54 @@ public class Vector extends Layer {
 
 	public void addVectorFeatureModifiedListener(final VectorFeatureModifiedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_MODIFIED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Vector vector = Vector.narrowToVector(source);
+			public void onHandle(JSObject eventObject) {
 				FeatureModifiedEvent e = new FeatureModifiedEvent(eventObject);
-				listener.onFeatureModified(vector, e);
+				listener.onFeatureModified(e);
 			}
 		 });
 	}
 
 	public void addVectorFeatureAddedListener(final VectorFeatureAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_ADDED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Vector vector = Vector.narrowToVector(source);
+			public void onHandle(JSObject eventObject) {
 				FeatureAddedEvent e = new FeatureAddedEvent(eventObject);
-				listener.onFeatureAdded(vector, e);
+				listener.onFeatureAdded(e);
 			}
 		 });
 	}
 
 	public void addVectorFeatureRemovedListener(final VectorFeatureRemovedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_REMOVED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Vector vector = Vector.narrowToVector(source);
+			public void onHandle(JSObject eventObject) {
 				FeatureRemovedEvent e = new FeatureRemovedEvent(eventObject);
-				listener.onFeatureRemoved(vector, e);
+				listener.onFeatureRemoved(e);
 			}
 		 });
 	}
 
 	public void addVectorFeatureSelectedListener(final VectorFeatureSelectedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_SELECTED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Vector vector = Vector.narrowToVector(source);
+			public void onHandle(JSObject eventObject) {
 				FeatureSelectedEvent e = new FeatureSelectedEvent(eventObject);
-				listener.onFeatureSelected(vector, e);
+				listener.onFeatureSelected(e);
 			}
 		 });
 	}
 
 	public void addVectorFeatureUnselectedListener(final VectorFeatureUnselectedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_UNSELECTED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Vector vector = Vector.narrowToVector(source);
+			public void onHandle(JSObject eventObject) {
 				FeatureUnselectedEvent e = new FeatureUnselectedEvent(eventObject);
-				listener.onFeatureUnselected(vector, e);
+				listener.onFeatureUnselected(e);
 			}
 		 });
 	}
 
 	public void addVectorBeforeFeatureAddedListener(final VectorBeforeFeatureAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_BEFORE_FEATURE_ADDED,  new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Vector vector = Vector.narrowToVector(source);
+			public void onHandle(JSObject eventObject) {
 				BeforeFeatureAddedEvent e = new BeforeFeatureAddedEvent(eventObject);
-				listener.onBeforeFeatureAdded(vector, e);
+				listener.onBeforeFeatureAdded(e);
 
 			}
 		});

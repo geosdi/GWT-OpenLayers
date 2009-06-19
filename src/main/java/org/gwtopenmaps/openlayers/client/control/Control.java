@@ -38,20 +38,18 @@ public class Control extends OpenLayersObjectWrapper {
 
 	public void AddControlActivateListener(final ControlActivateListener listener){
 		eventListeners.addListener(this, listener, EventType.CONTROL_ACTIVATE, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Control control = Control.narrowToControl(source);
+			public void onHandle(JSObject eventObject) {
 				ControlActivateEvent e = new ControlActivateEvent(eventObject);
-				listener.onActivate(control, e);
+				listener.onActivate(e);
 			}
 		 });
 	};
 
 	public void AddControlDeactivateListener(final ControlDeactivateListener listener){
 		eventListeners.addListener(this, listener, EventType.CONTROL_DEACTIVATE, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Control control = Control.narrowToControl(source);
+			public void onHandle(JSObject eventObject) {
 				ControlDeactivateEvent e = new ControlDeactivateEvent(eventObject);
-				listener.onDeactivate(control, e);
+				listener.onDeactivate(e);
 			}
 		 });
 	};

@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -9,13 +8,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface LayerLoadEndListener extends EventListener {
 
-    class LoadEndEvent extends EventObject{
+	class LoadEndEvent extends LayerEvent {
 
-        public LoadEndEvent(JSObject eventObject) {
-            super(eventObject);
-        }
-        
-    }
-    
-    public void onLoadEnd(Layer source, LoadEndEvent eventObject);
+		public LoadEndEvent(JSObject eventObject) {
+			super(eventObject);
+		}
+
+	}
+
+	public void onLoadEnd(LoadEndEvent eventObject);
 }

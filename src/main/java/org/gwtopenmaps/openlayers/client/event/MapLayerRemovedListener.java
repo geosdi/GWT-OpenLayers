@@ -1,7 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.Map;
-import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -10,16 +8,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface MapLayerRemovedListener extends EventListener {
 
-    class MapLayerRemovedEvent extends EventObject{
+	class MapLayerRemovedEvent extends MapLayerEvent {
 
-        public MapLayerRemovedEvent(JSObject eventObject) {
-            super(eventObject);
-        }
-        
-        public Layer getLayer() {
-            return super.getLayer();
-        }
-    }
-    
-    public void onLayerRemoved(Map source, MapLayerRemovedEvent eventObject);
+		public MapLayerRemovedEvent(JSObject eventObject) {
+			super(eventObject);
+		}
+
+	}
+
+	public void onLayerRemoved(MapLayerRemovedEvent eventObject);
 }

@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.control.Control;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -9,11 +8,11 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface ControlActivateListener extends EventListener {
 
-	class ControlActivateEvent extends EventObject {
+	class ControlActivateEvent extends ControlEvent {
 		public ControlActivateEvent(JSObject eventObject){
 			super(eventObject);
 		}
 	}
 
-	void onActivate(Control source, ControlActivateEvent eventObject);
+	void onActivate(ControlActivateEvent eventObject);
 }

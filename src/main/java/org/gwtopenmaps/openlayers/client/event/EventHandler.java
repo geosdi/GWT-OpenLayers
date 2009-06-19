@@ -16,7 +16,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * <pre>
  *     map.getEvents().register("addlayer", map, new EventHandler()
  *     {
- *         public void onHandle(JSObject source, JSObject eventObject)
+ *         public void onHandle(JSObject eventObject)
  *         {
  *             //handler code here
  *         }
@@ -35,7 +35,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * <pre>
  *     map.addMapMoveListener(new MapMoveListener()
  *     {
- *         public void onMapMove(Map source, MapMoveEvent eventObject)
+ *         public void onMapMove(MapMoveEvent eventObject)
  *         {
  *             //handler code here
  *         }
@@ -50,23 +50,23 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 public abstract class EventHandler
 {
 
-    JSObject handler = EventHandlerImpl.createHandler(this);
+	JSObject handler = EventHandlerImpl.createHandler(this);
 
-    /**
-     * This method is called on the EventHandler when the event fires
-     * that the handler is registered for.
-     *
-     * @param source - the object firing the event
-     * @param eventObject - an event object that is passed by OpenLayers
-     * when the event is fired (see also {@link EventObject}).
-     */
-	public abstract void onHandle(JSObject source, JSObject eventObject);
+	/**
+	 * This method is called on the EventHandler when the event fires
+	 * that the handler is registered for.
+	 *
+	 * @param source - the object firing the event
+	 * @param eventObject - an event object that is passed by OpenLayers
+	 * when the event is fired (see also {@link EventObject}).
+	 */
+	public abstract void onHandle(JSObject eventObject);
 
 	/**
 	 *
 	 * @return the actual handler (a javascript object)
 	 */
-    public JSObject getJSObject(){
-        return this.handler;
-    }
+	public JSObject getJSObject(){
+		return this.handler;
+	}
 }

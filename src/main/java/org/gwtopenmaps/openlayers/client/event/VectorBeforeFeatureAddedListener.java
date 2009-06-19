@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -9,7 +8,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface VectorBeforeFeatureAddedListener extends EventListener {
 
-	class BeforeFeatureAddedEvent extends EventObject {
+	class BeforeFeatureAddedEvent extends VectorEvent {
 
 		public BeforeFeatureAddedEvent(JSObject eventObject) {
 			super(eventObject);
@@ -17,6 +16,6 @@ public interface VectorBeforeFeatureAddedListener extends EventListener {
 
 	}
 
-	public void onBeforeFeatureAdded(Vector source, BeforeFeatureAddedEvent eventObject);
+	public void onBeforeFeatureAdded(BeforeFeatureAddedEvent eventObject);
 
 }

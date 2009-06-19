@@ -1,7 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
-import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -10,16 +8,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface VectorFeatureModifiedListener extends EventListener {
 
-    class FeatureModifiedEvent extends EventObject{
+	class FeatureModifiedEvent extends VectorFeatureEvent {
 
-        public FeatureModifiedEvent(JSObject eventObject) {
-            super(eventObject);
-        }
+		public FeatureModifiedEvent(JSObject eventObject) {
+			super(eventObject);
+		}
 
-        public VectorFeature getFeature(){
-            return super.getFeature();
-        }
-    }
-    
-    public void onFeatureModified(Vector source, FeatureModifiedEvent eventObject);
+	}
+
+	public void onFeatureModified(FeatureModifiedEvent eventObject);
 }

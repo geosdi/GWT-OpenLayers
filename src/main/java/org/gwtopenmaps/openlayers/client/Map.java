@@ -151,7 +151,7 @@ public class Map extends OpenLayersObjectWrapper {
 	 */
 	public Layer getLayer(String id) {
 		JSObject jsObject = MapImpl.getLayer(id, getJSObject());
-		Layer layer = new Layer(jsObject);
+		Layer layer = Layer.narrowToLayer(jsObject);
 		return layer;
 	}
 
@@ -160,7 +160,7 @@ public class Map extends OpenLayersObjectWrapper {
 		JObjectArray jObjectArray = JObjectArray.narrowToJObjectArray(jsObjects);
 		Layer[] layers = new Layer[jObjectArray.length()];
 		for(int i = 0; i < jObjectArray.length(); i++) {
-			layers[i] = new Layer(jObjectArray.get(i));
+			layers[i] = Layer.narrowToLayer(jObjectArray.get(i));
 		}
 		return layers;
 	}
@@ -371,10 +371,9 @@ public class Map extends OpenLayersObjectWrapper {
 
 	public void addMapBaseLayerChangedListener(final MapBaseLayerChangedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_BASE_LAYER_CHANGED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject){
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject){
 				MapBaseLayerChangedEvent e = new MapBaseLayerChangedEvent(eventObject);
-				listener.onBaseLayerChanged(map, e);
+				listener.onBaseLayerChanged(e);
 			}
 		});
 
@@ -382,20 +381,18 @@ public class Map extends OpenLayersObjectWrapper {
 
 	public void addMapLayerAddedListener(final MapLayerAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_LAYER_ADDED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject){
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject){
 				MapLayerAddedEvent e = new MapLayerAddedEvent(eventObject);
-				listener.onLayerAdded(map, e);
+				listener.onLayerAdded(e);
 			}
 		});
 	};
 
 	public void addMapLayerChangedListener(final MapLayerChangedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_LAYER_CHANGED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject){
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject){
 				MapLayerChangedEvent e = new MapLayerChangedEvent(eventObject);
-				listener.onLayerChanged(map, e);
+				listener.onLayerChanged(e);
 			}
 		});
 
@@ -403,10 +400,9 @@ public class Map extends OpenLayersObjectWrapper {
 
 	public void addMapLayerRemovedListener(final MapLayerRemovedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_LAYER_REMOVED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject){
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject){
 				MapLayerRemovedEvent e = new MapLayerRemovedEvent(eventObject);
-				listener.onLayerRemoved(map, e);
+				listener.onLayerRemoved(e);
 			}
 		});
 
@@ -414,70 +410,63 @@ public class Map extends OpenLayersObjectWrapper {
 
 	public void addMapMoveListener(final MapMoveListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_MOVE, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject) {
 				MapMoveEvent e = new MapMoveEvent(eventObject);
-				listener.onMapMove(map, e);
+				listener.onMapMove(e);
 			}
 		});
 	};
 
 	public void addMapZoomListener(final MapZoomListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_ZOOMEND, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject) {
 				MapZoomEvent e = new MapZoomEvent(eventObject);
-				listener.onMapZoom(map, e);
+				listener.onMapZoom(e);
 			}
 		});
 	};
 
 	public void addMapMarkerAddedListener(final MapMarkerAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_MARKER_ADDED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject) {
 				MapMarkerAddedEvent e = new MapMarkerAddedEvent(eventObject);
-				listener.onMarkerAdded(map, e);
+				listener.onMarkerAdded(e);
 			}
 		});
 	};
 
 	public void addMapMarkerRemovedListener(final MapMarkerRemovedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_MARKER_REMOVED, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject) {
 				MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(eventObject);
-				listener.onMarkerRemoved(map, e);
+				listener.onMarkerRemoved(e);
 			}
 		});
 	};
 
 	public void addMapPopupOpenedListener(final MapPopupOpenedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_POPUP_OPEN, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject) {
 				MapPopupOpenedEvent e = new MapPopupOpenedEvent(eventObject);
-				listener.onPopupOpened(map, e);
+				listener.onPopupOpened(e);
 			}
 		});
 	};
 
 	public void addMapPopupClosedListener(final MapPopupClosedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_POPUP_CLOSE, new EventHandler(){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject) {
 				MapPopupClosedEvent e = new MapPopupClosedEvent(eventObject);
-				listener.onPopupClosed(map, e);
+				listener.onPopupClosed(e);
 			}
 		});
 	};
 
 	public void addMapClickListener(final MapClickListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_CLICK, new EventHandler (){
-			public void onHandle(JSObject source, JSObject eventObject) {
-				Map map = Map.narrowToMap(source);
+			public void onHandle(JSObject eventObject) {
 				MapClickEvent e = new MapClickEvent(eventObject);
-				listener.onClick(map, e);
+				listener.onClick(e);
 			}
 		});
 	};

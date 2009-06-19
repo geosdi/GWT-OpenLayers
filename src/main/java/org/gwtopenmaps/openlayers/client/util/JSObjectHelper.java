@@ -10,6 +10,8 @@ import com.google.gwt.user.client.Element;
  * These are convenience methods for reducing the amount of JSNI code for
  * creating JSObject wrappers.
  *
+ * Be aware: getProperty methods can die horribly if property does not exist.
+ *
  * @author Edwin Commandeur - Atlis EJS
  *
  */
@@ -45,7 +47,7 @@ public class JSObjectHelper {
 
 	public static native String getPropertyAsString(JSObject object, String name) /*-{
 		var ret = object[name];
-		return (ret === undefined) ? 0 : ret;
+		return (ret === undefined) ? null : ret;
 	}-*/;
 
 	public static native void setProperty(JSObject object, String name, boolean value) /*-{
@@ -81,7 +83,7 @@ public class JSObjectHelper {
 
 	public static native JSObject getProperty(JSObject object, String name) /*-{
 		var ret = object[name];
-		return (ret === undefined) ? 0 : ret;
+		return (ret === undefined) ? null : ret;
 	}-*/;
 
 	public static native void setProperty(JSObject object, String name, Element value) /*-{
@@ -90,7 +92,7 @@ public class JSObjectHelper {
 
 	public static native Element getPropertyAsDomElement(JSObject object, String name) /*-{
 		var ret = object[name];
-		return (ret === undefined) ? 0 : ret;
+		return (ret === undefined) ? null : ret;
 	}-*/;
 
 	public static native String getPropertyNames(JSObject object) /*-{

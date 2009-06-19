@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -9,13 +8,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public interface LayerVisibilityChangedListener extends EventListener {
 
-    class VisibilityChangedEvent extends EventObject{
+	class VisibilityChangedEvent extends LayerEvent {
 
-        public VisibilityChangedEvent(JSObject eventObject) {
-            super(eventObject);
-        }
-        
-    }
-    
-    public void onVisibilityChanged(Layer source, VisibilityChangedEvent eventObject);
+		public VisibilityChangedEvent(JSObject eventObject) {
+			super(eventObject);
+		}
+
+	}
+
+	public void onVisibilityChanged(VisibilityChangedEvent eventObject);
 }

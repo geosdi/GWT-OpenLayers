@@ -20,16 +20,4 @@ class EventObjectImpl {
 		return (eventObject.object)?(eventObject.object):null;
 	}-*/;
 
-	public static native JSObject getLayer(JSObject eventObject)/*-{
-		return (eventObject.layer)?(eventObject.layer):null;
-	}-*/;
-
-	public static native JSObject getFeature(JSObject eventObject)/*-{
-		return (eventObject.feature)?(eventObject.feature):null;
-	}-*/;
-
-	public static native JSObject getPixel(JSObject eventObject)/*-{
-		return (eventObject.xy)?(eventObject.xy):null;
-	}-*/;
-
 }

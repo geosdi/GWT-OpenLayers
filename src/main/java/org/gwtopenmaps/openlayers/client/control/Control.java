@@ -1,11 +1,9 @@
 package org.gwtopenmaps.openlayers.client.control;
 
-import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
+import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
 import org.gwtopenmaps.openlayers.client.event.ControlActivateListener;
 import org.gwtopenmaps.openlayers.client.event.ControlDeactivateListener;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
-import org.gwtopenmaps.openlayers.client.event.EventListener;
-import org.gwtopenmaps.openlayers.client.event.EventListenerCollection;
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.event.ControlActivateListener.ControlActivateEvent;
 import org.gwtopenmaps.openlayers.client.event.ControlDeactivateListener.ControlDeactivateEvent;
@@ -16,9 +14,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Erdem Gunay
  *
  */
-public class Control extends OpenLayersObjectWrapper {
-
-	protected EventListenerCollection eventListeners = new EventListenerCollection();
+public class Control extends OpenLayersEObjectWrapper {
 
 	protected Control(JSObject element) {
 		super(element);
@@ -52,10 +48,6 @@ public class Control extends OpenLayersObjectWrapper {
 				listener.onDeactivate(e);
 			}
 		 });
-	};
-
-	public void removeListener(EventListener listener){
-		eventListeners.removeListener(this, listener);
 	};
 
 }

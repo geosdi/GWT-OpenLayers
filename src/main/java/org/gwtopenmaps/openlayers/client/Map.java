@@ -2,12 +2,9 @@ package org.gwtopenmaps.openlayers.client;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.gwtopenmaps.openlayers.client.control.Control;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
-import org.gwtopenmaps.openlayers.client.event.EventListener;
-import org.gwtopenmaps.openlayers.client.event.EventListenerCollection;
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.event.MapBaseLayerChangedListener;
 import org.gwtopenmaps.openlayers.client.event.MapClickListener;
@@ -71,9 +68,7 @@ import com.google.gwt.user.client.Element;
  * @author Edwin Commandeur - Atlis Information Systems
  * @author Curtis Jensen - Integrity Applications Inc.
  */
-public class Map extends OpenLayersObjectWrapper {
-
-	private EventListenerCollection eventListeners = new EventListenerCollection();
+public class Map extends OpenLayersEObjectWrapper {
 
 	Map(Element e)
 	{
@@ -470,13 +465,5 @@ public class Map extends OpenLayersObjectWrapper {
 			}
 		});
 	};
-
-	public void removeListener(EventListener listener){
-		eventListeners.removeListener(this, listener);
-	};
-
-	public Set getListeners(){
-		return eventListeners.getListeners();
-	}
 
 }

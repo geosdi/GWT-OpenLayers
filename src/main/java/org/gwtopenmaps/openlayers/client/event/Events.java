@@ -5,7 +5,7 @@ import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
- * 
+ *
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
  *
@@ -20,19 +20,15 @@ public class Events extends OpenLayersObjectWrapper {
 	{
 		return (element == null)?null: new Events(element);
 	}
-	
+
 	public void register(String type, OpenLayersObjectWrapper obj, EventHandler handler)
 	{
 		EventsImpl.register(getJSObject(), type, obj.getJSObject(), handler.getJSObject());
 	}
-	
+
 	public void unregister(String type, OpenLayersObjectWrapper obj, EventHandler handler)
 	{
-	    EventsImpl.unregister(getJSObject(), type, obj.getJSObject(), handler.getJSObject());
+		EventsImpl.unregister(getJSObject(), type, obj.getJSObject(), handler.getJSObject());
 	}
-	
-	public Pixel getMousePosition(Event e) 
-	{
-		return Pixel.narrowToPixel(EventsImpl.getMousePosition(getJSObject(), e.getJSObject()));
-	}
+
 }

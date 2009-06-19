@@ -100,56 +100,56 @@ public class MapEvents implements ShowcaseExample {
 
 		example.getMap().addMapLayerAddedListener(new MapLayerAddedListener(){
 
-			public void onLayerAdded(Map source, MapLayerAddedEvent eventObject) {
+			public void onLayerAdded(MapLayerAddedEvent eventObject) {
 				String txt = eventMessageArea.getText();
-				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + source.getClass() + eventObject.getLayer().getId());
+				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + eventObject.getSource().getClass() + eventObject.getLayer().getId());
 			}
 
 		});
 
 		example.getMap().addMapLayerChangedListener(new MapLayerChangedListener(){
 
-			public void onLayerChanged(Map source, MapLayerChangedEvent eventObject) {
+			public void onLayerChanged(MapLayerChangedEvent eventObject) {
 				String txt = eventMessageArea.getText();
-				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + source.getClass() + eventObject.getLayer().getId());
+				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + eventObject.getSource().getClass() + eventObject.getLayer().getId());
 			}
 
 		});
 
 		example.getMap().addMapBaseLayerChangedListener(new MapBaseLayerChangedListener(){
 
-			public void onBaseLayerChanged(Map source, MapBaseLayerChangedEvent eventObject) {
+			public void onBaseLayerChanged(MapBaseLayerChangedEvent eventObject) {
 				String txt = eventMessageArea.getText();
-				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + source.getClass() + " layer: " + eventObject.getLayer().getId());
+				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + eventObject.getSource().getClass() + " layer: " + eventObject.getLayer().getId());
 			}
 
 		});
 
 		MapMoveListener moveListener1 = new MapMoveListener(){
 
-			public void onMapMove(Map source, MapMoveEvent eventObject) {
+			public void onMapMove(MapMoveEvent eventObject) {
 				String txt = eventMessageArea.getText();
-				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + source.getClass());
+				eventMessageArea.setText(txt + "\n\n" + "event: " + eventObject.getType() + "; source: " + eventObject.getSource().getClass());
 			}
 
 		};
 
 		MapMoveListener moveListener2 = new MapMoveListener(){
 
-			public void onMapMove(Map source, MapMoveEvent eventObject) {
+			public void onMapMove(MapMoveEvent eventObject) {
 				String txt = eventMessageArea.getText();
-				eventMessageArea.setText(txt + "\n\n" + "another event: " + eventObject.getType() + "; source: " + source.getClass());
+				eventMessageArea.setText(txt + "\n\n" + "another event: " + eventObject.getType() + "; source: " + eventObject.getSource().getClass());
 			}
 
 		};
 
 		MapClickListener mapClickListener = new MapClickListener(){
 
-			public void onClick(Map source, MapClickEvent eventObject){
+			public void onClick(MapClickEvent eventObject){
 				LonLat lonlat = eventObject.getLonLat();
 				String txt = eventMessageArea.getText();
 				eventMessageArea.setText(txt + "\n\n" + "click event: " + lonlat.lon() + ", " + lonlat.lat()
-					+ "; source: " + source.getClass());
+					+ "; source: " + eventObject.getSource().getClass());
 			}
 
 		};

@@ -28,6 +28,8 @@ public class OpenLayersObjectWrapper extends JSObjectWrapper {
 	 *  	null if the object does not fire events via event system.
 	 */
 	public Events getEvents() {
+		//intentionally defined here instead of in OpenLayersEObjectWrapper
+		// so you can always do Xxx.getEvents().register("eventname", ...)
 		return Events.narrowToEvents(OpenLayersObjectWrapperImpl.getEvents(getJSObject()));
 	}
 

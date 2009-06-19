@@ -108,16 +108,6 @@ public class MapOptions extends JSObjectWrapper {
 		getJSObject().setProperty("maxResolution", maxResolution);
 	}
 
-	/**
-	 * Convenience method for setting max resolution to auto.
-	 *
-	 * ???Best option when the map can be resized?
-	 *
-	 */
-	public void setMaxResolutionToAuto(){
-		getJSObject().setProperty("maxResolution", "auto");
-	}
-
 	public void setMinResolution(float minResolution){
 		getJSObject().setProperty("minResolution", minResolution);
 	}
@@ -141,6 +131,16 @@ public class MapOptions extends JSObjectWrapper {
 	}
 
 
+	/**
+	 * Convenience method for setting max resolution to auto.
+	 *
+	 * ???Best option when the map can be resized?
+	 *
+	 */
+	public void setMaxResolutionToAuto(){
+		getJSObject().setProperty("maxResolution", "auto");
+	}
+
 	public void setMaxScale(float maxScale){
 		getJSObject().setProperty("maxScale", maxScale);
 	}
@@ -151,11 +151,16 @@ public class MapOptions extends JSObjectWrapper {
 
 	public void setTileSize(Size size){
 		getJSObject().setProperty("tileSize", size.getJSObject());
-
 	}
 
 	public void setZIndexBase(ZIndexBase zIndexBase){
 		getJSObject().setProperty("Z_INDEX_BASE", zIndexBase.getJSObject());
 	}
 
+	/**
+	 * By default, OpenLayers 2.7 adds Attribution, ArgParser, Navigation and PanZoom Controls.
+	 */
+	public void removeDefaultControls(){
+		this.setControls(new JObjectArray(new JSObject[] {}));
+	}
 }

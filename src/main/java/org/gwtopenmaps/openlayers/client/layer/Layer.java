@@ -1,9 +1,7 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
-import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
+import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
-import org.gwtopenmaps.openlayers.client.event.EventListener;
-import org.gwtopenmaps.openlayers.client.event.EventListenerCollection;
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.event.LayerLoadCancelListener;
 import org.gwtopenmaps.openlayers.client.event.LayerLoadEndListener;
@@ -22,11 +20,9 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *         Edwin Commandeur - Atlis EJS
  *
  */
-public class Layer extends OpenLayersObjectWrapper {
+public class Layer extends OpenLayersEObjectWrapper {
 
 	//TODO: add support for moveend event
-
-	protected EventListenerCollection eventListeners = new EventListenerCollection();
 
 	protected Layer(JSObject element) {
 		super(element);
@@ -143,7 +139,4 @@ public class Layer extends OpenLayersObjectWrapper {
 		 });
 	}
 
-	public void removeListener(EventListener listener){
-		eventListeners.removeListener(this, listener);
-	};
 }

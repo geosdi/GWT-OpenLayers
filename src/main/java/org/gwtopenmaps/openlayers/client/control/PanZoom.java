@@ -9,7 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * Remove this control from the map when using the PanZoomBar.
  *
  * Other controls that are added by default are the {@link Attribution},
- * Navigation and ArgParser.
+ * {@link Navigation} and {@link ArgParser}.
  *
  * @author Edwin Commandeur
  * @since GWT-OL 0.4

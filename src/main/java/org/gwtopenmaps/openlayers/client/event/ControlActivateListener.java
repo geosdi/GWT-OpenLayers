@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
@@ -9,8 +8,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 public interface ControlActivateListener extends EventListener {
 
 	class ControlActivateEvent extends ControlEvent {
-		public ControlActivateEvent(JSObject eventObject){
-			super(eventObject);
+		public ControlActivateEvent(EventObject eventObject){
+			super(eventObject.getJSObject());
 		}
 	}
 

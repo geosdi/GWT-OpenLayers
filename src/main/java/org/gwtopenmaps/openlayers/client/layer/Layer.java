@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
+import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.event.LayerLoadCancelListener;
 import org.gwtopenmaps.openlayers.client.event.LayerLoadEndListener;
@@ -105,7 +106,7 @@ public class Layer extends OpenLayersEObjectWrapper {
 
 	public void addLayerLoadStartListener(final LayerLoadStartListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADSTART, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				LoadStartEvent e = new LoadStartEvent(eventObject);
 				listener.onLoadStart(e);
 			}
@@ -114,7 +115,7 @@ public class Layer extends OpenLayersEObjectWrapper {
 
 	public void addLayerLoadEndListener(final LayerLoadEndListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADEND, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				LoadEndEvent e = new LoadEndEvent(eventObject);
 				listener.onLoadEnd(e);
 			}
@@ -123,7 +124,7 @@ public class Layer extends OpenLayersEObjectWrapper {
 
 	public void addLayerLoadCancelListener(final LayerLoadCancelListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADCANCEL, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				LoadCancelEvent e = new LoadCancelEvent(eventObject);
 				listener.onLoadCancel(e);
 			}
@@ -132,7 +133,7 @@ public class Layer extends OpenLayersEObjectWrapper {
 
 	public void addLayerVisibilityChangedListener(final LayerVisibilityChangedListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_VISIBILITYCHANGED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				VisibilityChangedEvent e = new VisibilityChangedEvent(eventObject);
 				listener.onVisibilityChanged(e);
 			}

@@ -3,7 +3,6 @@ package org.gwtopenmaps.openlayers.client.event;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
-
 /**
  * <p>
  * Event handlers should be concrete extensions of this abstract class.
@@ -16,7 +15,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * <pre>
  *     map.getEvents().register("addlayer", map, new EventHandler()
  *     {
- *         public void onHandle(JSObject eventObject)
+ *         public void onHandle(EventObject eventObject)
  *         {
  *             //handler code here
  *         }
@@ -60,7 +59,7 @@ public abstract class EventHandler
 	 * @param eventObject - an event object that is passed by OpenLayers
 	 * when the event is fired (see also {@link EventObject}).
 	 */
-	public abstract void onHandle(JSObject eventObject);
+	public abstract void onHandle(EventObject eventObject);
 
 	/**
 	 *

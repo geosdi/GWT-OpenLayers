@@ -6,7 +6,7 @@ import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
- * 
+ *
  * @author Erdem Gunay
  * @author Curtis Jensen
  *
@@ -16,15 +16,25 @@ public class Popup extends OpenLayersObjectWrapper {
 	public interface CloseListener {
 		void onPopupClose(JSObject evt);
 	}
-	
+
 	protected Popup(JSObject element) {
 		super(element);
 	}
 
+	/**
+	 *
+	 * Use addCloseListener to respond to popup close event.
+	 *
+	 * @param id - String identifier for Popup. Used by ..?..
+	 * @param lonlat - {@link org.gwtopenmaps.openlayers.client.LonLat} where Popup should appear
+	 * @param size - {@link org.gwtopenmaps.openlayers.client.Size} that provides height and width for Popup
+	 * @param html - String with html content to appear in Popup
+	 * @param closeBox - Set to true to get close button in upper right corner of Popup
+	 */
 	public Popup(String id, LonLat lonlat, Size size, String html, boolean closeBox) {
-		this(PopupImpl.create(id, 
+		this(PopupImpl.create(id,
 				lonlat.getJSObject(),
-				size.getJSObject(),
+				(size!=null)?size.getJSObject():null,
 				html,
 				closeBox));
 	}
@@ -34,6 +44,6 @@ public class Popup extends OpenLayersObjectWrapper {
 	}
 
 	public void addCloseListener(CloseListener callback) {
-		PopupImpl.addCloseBox(this.getJSObject(), callback);
+		PopupImpl.addCloseListener(this.getJSObject(), callback);
 	}
 }

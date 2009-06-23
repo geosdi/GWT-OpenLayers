@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * Needs to be implemented to listen to map move events.
@@ -11,8 +10,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 public interface MapMoveListener extends EventListener {
 
 	class MapMoveEvent extends MapEvent {
-		public MapMoveEvent(JSObject eventObject) {
-			super(eventObject);
+		public MapMoveEvent(EventObject eventObject) {
+			super(eventObject.getJSObject());
 		}
 	}
 

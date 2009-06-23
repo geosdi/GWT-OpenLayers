@@ -14,7 +14,7 @@ class MapEvent extends EventObject {
 	}
 
 	public Map getSource(){
-		JSObject object = getObject();
+		JSObject object = getSourceJSObject();
 		return (object!=null)?Map.narrowToMap(object):null;
 	}
 

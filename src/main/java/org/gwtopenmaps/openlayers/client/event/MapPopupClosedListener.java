@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  *
@@ -11,8 +10,8 @@ public interface MapPopupClosedListener extends EventListener {
 
 	class MapPopupClosedEvent extends MapEvent {
 
-		public MapPopupClosedEvent(JSObject eventObject) {
-			super(eventObject);
+		public MapPopupClosedEvent(EventObject eventObject) {
+			super(eventObject.getJSObject());
 		}
 		//getPopup ???
 	}

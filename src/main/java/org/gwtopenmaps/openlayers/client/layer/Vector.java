@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
+import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.event.VectorBeforeFeatureAddedListener;
 import org.gwtopenmaps.openlayers.client.event.VectorFeatureAddedListener;
@@ -118,7 +119,7 @@ public class Vector extends Layer {
 
 	public void addVectorFeatureModifiedListener(final VectorFeatureModifiedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_MODIFIED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				FeatureModifiedEvent e = new FeatureModifiedEvent(eventObject);
 				listener.onFeatureModified(e);
 			}
@@ -127,7 +128,7 @@ public class Vector extends Layer {
 
 	public void addVectorFeatureAddedListener(final VectorFeatureAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_ADDED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				FeatureAddedEvent e = new FeatureAddedEvent(eventObject);
 				listener.onFeatureAdded(e);
 			}
@@ -136,7 +137,7 @@ public class Vector extends Layer {
 
 	public void addVectorFeatureRemovedListener(final VectorFeatureRemovedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_REMOVED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				FeatureRemovedEvent e = new FeatureRemovedEvent(eventObject);
 				listener.onFeatureRemoved(e);
 			}
@@ -145,7 +146,7 @@ public class Vector extends Layer {
 
 	public void addVectorFeatureSelectedListener(final VectorFeatureSelectedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_SELECTED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				FeatureSelectedEvent e = new FeatureSelectedEvent(eventObject);
 				listener.onFeatureSelected(e);
 			}
@@ -154,7 +155,7 @@ public class Vector extends Layer {
 
 	public void addVectorFeatureUnselectedListener(final VectorFeatureUnselectedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_UNSELECTED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				FeatureUnselectedEvent e = new FeatureUnselectedEvent(eventObject);
 				listener.onFeatureUnselected(e);
 			}
@@ -163,7 +164,7 @@ public class Vector extends Layer {
 
 	public void addVectorBeforeFeatureAddedListener(final VectorBeforeFeatureAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.VECTOR_BEFORE_FEATURE_ADDED,  new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				BeforeFeatureAddedEvent e = new BeforeFeatureAddedEvent(eventObject);
 				listener.onBeforeFeatureAdded(e);
 

@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.handler.Handler;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
@@ -18,10 +19,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class DrawFeature extends Control {
 
-	//FIXME: make call typesafe (JSObject -> VectorFeature) by using same trick as in MousePositionImpl
-	// also for select feature
 	public interface FeatureAddedListener {
-		void onFeatureAdded(JSObject vectorFeature);
+		void onFeatureAdded(VectorFeature vectorFeature);
 	}
 
 	protected DrawFeature(JSObject element) {

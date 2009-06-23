@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  *
@@ -12,8 +11,8 @@ public interface MapMarkerRemovedListener extends EventListener {
 
 	class MapMarkerRemovedEvent extends MapEvent {
 
-		public MapMarkerRemovedEvent(JSObject eventObject) {
-			super(eventObject);
+		public MapMarkerRemovedEvent(EventObject eventObject) {
+			super(eventObject.getJSObject());
 		}
 
 		//getMarker ???

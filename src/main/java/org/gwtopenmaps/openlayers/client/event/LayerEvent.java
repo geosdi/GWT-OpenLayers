@@ -14,7 +14,7 @@ class LayerEvent extends EventObject {
 	}
 
 	public Layer getSource(){
-		JSObject object = getObject();
+		JSObject object = getSourceJSObject();
 		return (object!=null)?Layer.narrowToLayer(object):null;
 	}
 

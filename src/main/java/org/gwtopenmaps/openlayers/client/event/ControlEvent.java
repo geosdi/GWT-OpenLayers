@@ -14,7 +14,7 @@ class ControlEvent extends EventObject {
 	}
 
 	public Control getSource(){
-		JSObject object = getObject();
+		JSObject object = getSourceJSObject();
 		return (object!=null)?Control.narrowToControl(object):null;
 	}
 

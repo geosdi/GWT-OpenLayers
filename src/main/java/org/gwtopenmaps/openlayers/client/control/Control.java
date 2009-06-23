@@ -4,6 +4,7 @@ import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
 import org.gwtopenmaps.openlayers.client.event.ControlActivateListener;
 import org.gwtopenmaps.openlayers.client.event.ControlDeactivateListener;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
+import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.event.ControlActivateListener.ControlActivateEvent;
 import org.gwtopenmaps.openlayers.client.event.ControlDeactivateListener.ControlDeactivateEvent;
@@ -34,7 +35,7 @@ public class Control extends OpenLayersEObjectWrapper {
 
 	public void AddControlActivateListener(final ControlActivateListener listener){
 		eventListeners.addListener(this, listener, EventType.CONTROL_ACTIVATE, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				ControlActivateEvent e = new ControlActivateEvent(eventObject);
 				listener.onActivate(e);
 			}
@@ -43,7 +44,7 @@ public class Control extends OpenLayersEObjectWrapper {
 
 	public void AddControlDeactivateListener(final ControlDeactivateListener listener){
 		eventListeners.addListener(this, listener, EventType.CONTROL_DEACTIVATE, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				ControlDeactivateEvent e = new ControlDeactivateEvent(eventObject);
 				listener.onDeactivate(e);
 			}

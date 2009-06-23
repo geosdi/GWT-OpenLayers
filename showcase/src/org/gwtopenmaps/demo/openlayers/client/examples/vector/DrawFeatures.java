@@ -65,8 +65,7 @@ public class DrawFeatures implements ShowcaseExample {
 		//JSObject polygonHandler = Polygon.getJSClass();
 
 		FeatureAddedListener listener = new FeatureAddedListener(){
-			public void onFeatureAdded(JSObject vectorFeature) {
-				VectorFeature vf = VectorFeature.narrowToVectorFeature(vectorFeature);
+			public void onFeatureAdded(VectorFeature vf) {
 				org.gwtopenmaps.openlayers.client.geometry.Polygon aoi =
 					org.gwtopenmaps.openlayers.client.geometry.Polygon.narrowToPolygon(vf.getGeometry());
 				LinearRing[] rings = aoi.getComponents();

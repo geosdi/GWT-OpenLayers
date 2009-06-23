@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * Listens to 'changelayer' event that fires on:
@@ -16,8 +15,8 @@ public interface MapLayerChangedListener extends EventListener {
 
 	class MapLayerChangedEvent extends MapLayerEvent {
 
-		public MapLayerChangedEvent(JSObject eventObject) {
-			super(eventObject);
+		public MapLayerChangedEvent(EventObject eventObject) {
+			super(eventObject.getJSObject());
 		}
 
 	}

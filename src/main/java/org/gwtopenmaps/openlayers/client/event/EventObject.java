@@ -22,10 +22,15 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-class EventObject extends JSObjectWrapper {
+public class EventObject extends JSObjectWrapper {
 
 	protected EventObject(JSObject eventObject){
 		super(eventObject);
+	}
+
+
+	public static EventObject narrowToEventObject(JSObject object){
+		return (object!=null)? new EventObject(object):null;
 	}
 
 	/**
@@ -47,9 +52,9 @@ class EventObject extends JSObjectWrapper {
 	}
 
 	/**
-	 * @return opaque handle on javascript object that fired the event
+	 * @return JSObject - source object that fired the event
 	 */
-	protected JSObject getObject(){
+	public JSObject getSourceJSObject(){
 		JSObject object = EventObjectImpl.getObject(getJSObject());
 		return object;
 	}

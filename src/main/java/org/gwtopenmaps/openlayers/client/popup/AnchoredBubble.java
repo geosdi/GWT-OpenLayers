@@ -6,7 +6,7 @@ import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
- * 
+ *
  * @author Erdem Gunay
  *
  */
@@ -16,13 +16,19 @@ public class AnchoredBubble extends Popup {
 		super(element);
 	}
 
+	/**
+	 *
+	 * Use addCloseListener to respond to popup close event.
+	 *
+	 * For explanation of parameters see {@link Popup}.
+	 */
 	public AnchoredBubble(String id, LonLat lonlat, Size size, String html, OpenLayersObjectWrapper anchor, boolean closeBox) {
-		this(AnchoredBubbleImpl.create(id, 
+		this(AnchoredBubbleImpl.create(id,
 				lonlat.getJSObject(),
 				size.getJSObject(),
 				html,
-				anchor.getJSObject(), 
+				anchor.getJSObject(),
 				closeBox));
 	}
-	
+
 }

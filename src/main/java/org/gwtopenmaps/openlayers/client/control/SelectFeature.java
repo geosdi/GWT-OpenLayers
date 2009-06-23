@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
@@ -15,12 +16,11 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class SelectFeature extends Control {
 
-
 	/**
 	 *
 	 */
 	public interface SelectFeatureListener {
-		void onFeatureSelected(JSObject vectorFeature);
+		void onFeatureSelected(VectorFeature vectorFeature);
 	}
 
 	/**

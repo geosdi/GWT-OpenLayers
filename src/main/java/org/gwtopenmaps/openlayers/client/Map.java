@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.gwtopenmaps.openlayers.client.control.Control;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
+import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.event.MapBaseLayerChangedListener;
 import org.gwtopenmaps.openlayers.client.event.MapClickListener;
@@ -85,9 +86,9 @@ public class Map extends OpenLayersEObjectWrapper {
 		super(e);
 	}
 
-	public static Map narrowToMap(JSObject element)
+	public static Map narrowToMap(JSObject object)
 	{
-		return (element == null)? null: new Map(element);
+		return (object == null)? null: new Map(object);
 	}
 
 	/**
@@ -366,7 +367,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapBaseLayerChangedListener(final MapBaseLayerChangedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_BASE_LAYER_CHANGED, new EventHandler(){
-			public void onHandle(JSObject eventObject){
+			public void onHandle(EventObject eventObject){
 				MapBaseLayerChangedEvent e = new MapBaseLayerChangedEvent(eventObject);
 				listener.onBaseLayerChanged(e);
 			}
@@ -376,7 +377,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapLayerAddedListener(final MapLayerAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_LAYER_ADDED, new EventHandler(){
-			public void onHandle(JSObject eventObject){
+			public void onHandle(EventObject eventObject){
 				MapLayerAddedEvent e = new MapLayerAddedEvent(eventObject);
 				listener.onLayerAdded(e);
 			}
@@ -385,7 +386,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapLayerChangedListener(final MapLayerChangedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_LAYER_CHANGED, new EventHandler(){
-			public void onHandle(JSObject eventObject){
+			public void onHandle(EventObject eventObject){
 				MapLayerChangedEvent e = new MapLayerChangedEvent(eventObject);
 				listener.onLayerChanged(e);
 			}
@@ -395,7 +396,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapLayerRemovedListener(final MapLayerRemovedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_LAYER_REMOVED, new EventHandler(){
-			public void onHandle(JSObject eventObject){
+			public void onHandle(EventObject eventObject){
 				MapLayerRemovedEvent e = new MapLayerRemovedEvent(eventObject);
 				listener.onLayerRemoved(e);
 			}
@@ -405,7 +406,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapMoveListener(final MapMoveListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_MOVE, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MapMoveEvent e = new MapMoveEvent(eventObject);
 				listener.onMapMove(e);
 			}
@@ -414,7 +415,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapZoomListener(final MapZoomListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_ZOOMEND, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MapZoomEvent e = new MapZoomEvent(eventObject);
 				listener.onMapZoom(e);
 			}
@@ -423,7 +424,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapMarkerAddedListener(final MapMarkerAddedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_MARKER_ADDED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MapMarkerAddedEvent e = new MapMarkerAddedEvent(eventObject);
 				listener.onMarkerAdded(e);
 			}
@@ -432,7 +433,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapMarkerRemovedListener(final MapMarkerRemovedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_MARKER_REMOVED, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(eventObject);
 				listener.onMarkerRemoved(e);
 			}
@@ -441,7 +442,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapPopupOpenedListener(final MapPopupOpenedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_POPUP_OPEN, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MapPopupOpenedEvent e = new MapPopupOpenedEvent(eventObject);
 				listener.onPopupOpened(e);
 			}
@@ -450,7 +451,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapPopupClosedListener(final MapPopupClosedListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_POPUP_CLOSE, new EventHandler(){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MapPopupClosedEvent e = new MapPopupClosedEvent(eventObject);
 				listener.onPopupClosed(e);
 			}
@@ -459,7 +460,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
 	public void addMapClickListener(final MapClickListener listener){
 		eventListeners.addListener(this, listener, EventType.MAP_CLICK, new EventHandler (){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MapClickEvent e = new MapClickEvent(eventObject);
 				listener.onClick(e);
 			}

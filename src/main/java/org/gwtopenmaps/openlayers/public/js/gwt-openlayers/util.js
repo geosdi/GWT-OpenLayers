@@ -85,13 +85,14 @@ gwt_openlayers_util.relay = {
 }
 
 /**
- * Does output sanitization on strings that are inserted into the html dom at runtime.
+ * For performing output sanitization on strings that are inserted into the html dom at runtime.
  *
- * This is to prevent XSS.
+ * This is to prevent XSS. Sanitization should only be done on input that
+ * can be inserted by "users" in some way. If an attacker can hijack javascript
+ * methods that take input html than sanitization is not relevant anymore.
  *
  * Output sanitization should always be based on a whitelist.
  */
-//TODO enhance sanitize function or move to templating solution vs html injection (e.g. for MousePositionOutput)
 gwt_openlayers_util.sanitize = function(input){
 	var originalInput = input;
 	var whiteListRegEx = [

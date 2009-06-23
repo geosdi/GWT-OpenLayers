@@ -14,7 +14,7 @@ class VectorEvent extends EventObject {
 	}
 
 	public Vector getSource(){
-		JSObject object = getObject();
+		JSObject object = getSourceJSObject();
 		return (object!=null)?Vector.narrowToVector(object):null;
 	}
 

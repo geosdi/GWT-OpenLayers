@@ -21,7 +21,8 @@ class DrawFeatureImpl {
 
 	public static native JSObject createFeatureAddedCallback(FeatureAddedListener listener)/*-{
 		var callback = function(obj){
-			listener.@org.gwtopenmaps.openlayers.client.control.DrawFeature.FeatureAddedListener::onFeatureAdded(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
+			var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
+			listener.@org.gwtopenmaps.openlayers.client.control.DrawFeature.FeatureAddedListener::onFeatureAdded(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;)(vectorFeatureObj);
 		}
 		return callback;
 	}-*/;

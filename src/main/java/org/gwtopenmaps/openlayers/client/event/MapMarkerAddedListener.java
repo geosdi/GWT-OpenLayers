@@ -12,8 +12,8 @@ public interface MapMarkerAddedListener extends EventListener {
 
 	class MapMarkerAddedEvent extends MapEvent {
 
-		public MapMarkerAddedEvent(JSObject eventObject) {
-			super(eventObject);
+		public MapMarkerAddedEvent(EventObject eventObject) {
+			super(eventObject.getJSObject());
 		}
 
 		//getMarker ???

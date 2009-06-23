@@ -10,8 +10,8 @@ public interface VectorFeatureUnselectedListener extends EventListener {
 
 	class FeatureUnselectedEvent extends VectorFeatureEvent {
 
-		public FeatureUnselectedEvent(JSObject eventObject) {
-			super(eventObject);
+		public FeatureUnselectedEvent(EventObject eventObject) {
+			super(eventObject.getJSObject());
 		}
 
 	}

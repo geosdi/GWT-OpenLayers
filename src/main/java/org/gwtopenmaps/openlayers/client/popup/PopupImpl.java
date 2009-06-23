@@ -15,7 +15,7 @@ class PopupImpl {
 		return new $wnd.OpenLayers.Popup(id, lonlat, size, html, closeBox);
 	}-*/;
 
-	public static native void addCloseBox(JSObject popup, CloseListener callback) /*-{
+	public static native void addCloseListener(JSObject popup, CloseListener callback) /*-{
 		function closebox(evt) {
 			callback.@org.gwtopenmaps.openlayers.client.popup.Popup.CloseListener::onPopupClose(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(evt);
 		}

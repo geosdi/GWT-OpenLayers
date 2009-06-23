@@ -1,10 +1,9 @@
 package org.gwtopenmaps.openlayers.client;
 
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
-import org.gwtopenmaps.openlayers.client.event.EventType;
+import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.MarkerBrowserEventListener;
 import org.gwtopenmaps.openlayers.client.event.MarkerBrowserEventListener.MarkerBrowserEvent;
-import org.gwtopenmaps.openlayers.client.event.MapClickListener.MapClickEvent;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
@@ -42,7 +41,7 @@ public class Marker extends OpenLayersEObjectWrapper {
 
 	public void addBrowserEventListener(String browserEvent, final MarkerBrowserEventListener listener){
 		eventListeners.addListener(this, listener, browserEvent, new EventHandler (){
-			public void onHandle(JSObject eventObject) {
+			public void onHandle(EventObject eventObject) {
 				MarkerBrowserEvent e = new MarkerBrowserEvent(eventObject);
 				listener.onBrowserEvent(e);
 			}

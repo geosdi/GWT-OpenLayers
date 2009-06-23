@@ -14,7 +14,7 @@ class MarkerEvent extends EventObject {
 	}
 
 	public Marker getSource(){
-		JSObject object = getObject();
+		JSObject object = getSourceJSObject();
 		return (object!=null)?Marker.narrowToMarker(object):null;
 	}
 

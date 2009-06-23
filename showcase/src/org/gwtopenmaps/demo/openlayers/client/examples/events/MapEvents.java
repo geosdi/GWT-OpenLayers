@@ -7,7 +7,6 @@ import org.gwtopenmaps.demo.openlayers.client.examples.ExampleConstants;
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
-import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.MousePosition;
 import org.gwtopenmaps.openlayers.client.control.NavToolBar;
@@ -54,9 +53,6 @@ public class MapEvents implements ShowcaseExample {
 				wmsParams,
 				wmsLayerParams);
 
-
-
-
 		WMSParams wmsParams2 = new WMSParams();
 		wmsParams2.setFormat("image/png");
 		wmsParams2.setLayers("Countries,Borders,Coastline");
@@ -72,7 +68,7 @@ public class MapEvents implements ShowcaseExample {
 				wmsParams2,
 				wmsLayerParams2);
 
-		//Gewoon GoogleLayer toevoegen leid tot nulpointer excepties
+		//Adding GoogleLayer like this leads to nullpointer exceptions
 		//Google googleLayer = new Google("Google Hybrid");
 		//example.getMap().addLayers(new Layer[] {googleLayer});
 
@@ -89,14 +85,13 @@ public class MapEvents implements ShowcaseExample {
 		example.add(eventMessageArea, DockPanel.EAST);
 /*
 		example.getMap().getEvents().register("move", example.getMap(), new EventHandler(){
-			public void onHandle(JSObject source, EventObject eo) {
+			public void onHandle(EventObject eo) {
 
 				String txt = eventMessageArea.getText();
 				eventMessageArea.setText(txt + "\n" + "event: " + eo.getType());
 			}
 		});
 	  */
-
 
 		example.getMap().addMapLayerAddedListener(new MapLayerAddedListener(){
 
@@ -187,6 +182,5 @@ public class MapEvents implements ShowcaseExample {
 	public MapExample getMapExample() {
 		return this.example;
 	}
-
 
 }

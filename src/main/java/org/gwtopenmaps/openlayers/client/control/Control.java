@@ -33,7 +33,7 @@ public class Control extends OpenLayersEObjectWrapper {
 		return ControlImpl.deactivate(getJSObject());
 	}
 
-	public void AddControlActivateListener(final ControlActivateListener listener){
+	public void addControlActivateListener(final ControlActivateListener listener){
 		eventListeners.addListener(this, listener, EventType.CONTROL_ACTIVATE, new EventHandler(){
 			public void onHandle(EventObject eventObject) {
 				ControlActivateEvent e = new ControlActivateEvent(eventObject);
@@ -42,7 +42,7 @@ public class Control extends OpenLayersEObjectWrapper {
 		 });
 	};
 
-	public void AddControlDeactivateListener(final ControlDeactivateListener listener){
+	public void addControlDeactivateListener(final ControlDeactivateListener listener){
 		eventListeners.addListener(this, listener, EventType.CONTROL_DEACTIVATE, new EventHandler(){
 			public void onHandle(EventObject eventObject) {
 				ControlDeactivateEvent e = new ControlDeactivateEvent(eventObject);

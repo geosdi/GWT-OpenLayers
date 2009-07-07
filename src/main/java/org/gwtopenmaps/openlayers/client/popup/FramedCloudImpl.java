@@ -2,6 +2,8 @@ package org.gwtopenmaps.openlayers.client.popup;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+import com.google.gwt.dom.client.Element;
+
 /**
  *
  * @author Edwin Commandeur - Atlis Information Systems
@@ -16,4 +18,7 @@ public class FramedCloudImpl {
 		return framedCloud;
 	}-*/;
 
+	public static native Element getContentDiv(JSObject popup)/*-{
+		return popup.contentDiv;
+	}-*/;
 }

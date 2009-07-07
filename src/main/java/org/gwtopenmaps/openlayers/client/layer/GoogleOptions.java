@@ -5,7 +5,7 @@ package org.gwtopenmaps.openlayers.client.layer;
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  *
  */
-public class GoogleOptions extends LayerOptions {
+public class GoogleOptions extends EventPaneOptions {
 
 	public void setType(GMapType type) {
 		getJSObject().setProperty("type", type.getJSObject());

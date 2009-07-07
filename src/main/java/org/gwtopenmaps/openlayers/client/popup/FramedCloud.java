@@ -5,6 +5,9 @@ import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.Widget;
+
 /**
  *
  * @author Edwin Commandeur - Atlis Information Systems
@@ -39,19 +42,29 @@ public class FramedCloud extends Popup {
 				html,
 				(anchor != null) ? anchor.getJSObject(): null,
 				closeBox));
+
+		//if size is not defined set Size to auto
+		//
+
 	}
 
-	//TODO: Fix that GWT widgets can be used inside popup
-	/*
 	public FramedCloud(
 			String id,
 			LonLat lonlat,
 			Size size,
-			Widget html,
+			Widget widget,
 			OpenLayersObjectWrapper anchor,
-			boolean closeBox,
-			PopupCloseListener callback) {
+			boolean closeBox) {
 
-		this();
-	}*/
+		this(FramedCloudImpl.create(
+				id,
+				lonlat.getJSObject(),
+				(size != null) ? size.getJSObject() : null,
+				"widget here",
+				(anchor != null) ? anchor.getJSObject(): null,
+				closeBox));
+
+		Element contentDiv = FramedCloudImpl.getContentDiv(this.getJSObject());
+		//widget.setElement(contentDiv);
+	}
 }

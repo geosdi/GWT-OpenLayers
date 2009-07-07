@@ -50,9 +50,9 @@ public class CustomMousePosition implements ShowcaseExample{
 
 			public String format(LonLat lonLat, Map map) {
 				String out = "";
-				out += "<b>Dit is de longitude</b> ";
+				out += "<b>This is the longitude </b> ";
 				out += lonLat.lon();
-				out += "<b>, en dit de latitude</b> ";
+				out += "<b>, and this the latitude</b> ";
 				out += lonLat.lon();
 				return out;
 			}

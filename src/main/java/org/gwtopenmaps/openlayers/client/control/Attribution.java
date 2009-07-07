@@ -16,7 +16,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * Other controls that are added by default are the {@link PanZoom},
  * Navigation, and ArgParser.
  *
- * @author Edwin Commandeur
+ * @author Edwin Commandeur -Atlis Information Systems
  * @since GWT-OL 0.4, OL ...
  */
 public class Attribution extends Control {

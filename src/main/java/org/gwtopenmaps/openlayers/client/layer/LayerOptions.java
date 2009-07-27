@@ -103,4 +103,12 @@ public class LayerOptions extends JSObjectWrapper {
 		getJSObject().setProperty("displayOutsideMaxExtent", displayOutsideMaxExtent);
 	}
 
+	/**
+	 *
+	 * @param alpha - true to enable IE6 alpha hack for transparent PNGs.
+	 */
+	public void setAlphaHack(boolean alpha){
+		getJSObject().setProperty("alpha", alpha);
+	}
+
 }

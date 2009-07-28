@@ -1,5 +1,5 @@
 
-The present version of GWT-OpenLayers is 0.4-SNAPSHOT.
+The present version of GWT-OpenLayers is 0.5-SNAPSHOT.
 
 GWT-OpenLayers can be build using either Maven or Ant.
 At present, test cases can only be run using Ant.

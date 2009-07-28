@@ -13,6 +13,9 @@ syntax: regexp
 ^bin/*
 ^lib/*
 ^showcase/lib/*
+^showcase/war/js/*
+^showcase/war/WEB-INF/classes/*
+^showcase/war/gwt_ol_showcase/*
 ^.settings/*
 ^target/*
 ^build/*

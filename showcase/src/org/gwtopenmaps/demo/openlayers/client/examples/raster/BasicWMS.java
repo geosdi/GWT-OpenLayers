@@ -8,6 +8,7 @@ import org.gwtopenmaps.openlayers.client.control.MousePosition;
 import org.gwtopenmaps.openlayers.client.control.NavToolBar;
 import org.gwtopenmaps.openlayers.client.control.PanZoomBar;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
+import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
@@ -32,7 +33,7 @@ public class BasicWMS implements ShowcaseExample{
 
 		WMSOptions wmsLayerParams = new WMSOptions();
 		wmsLayerParams.setUntiled();
-		wmsLayerParams.setTransitionEffectResize();
+		wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
 
 		wmsLayer = new WMS(
 				"Basic WMS",

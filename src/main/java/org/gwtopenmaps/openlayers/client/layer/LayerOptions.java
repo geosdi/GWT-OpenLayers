@@ -182,16 +182,14 @@ public class LayerOptions extends JSObjectWrapper {
 	/**
 	 *
 	 * @param transition - document supported transition effects here
+	 *
+	 * @deprecated - use setTransitionEffect(TransitionEffect)
 	 */
 	public void setTransitionEffect(String transition){
 		getJSObject().setProperty("transitionEffect", transition);
 	}
 
 	public void setTransitionEffect(TransitionEffect transition){
-		switch(transition){
-			case RESIZE:
-				getJSObject().setProperty("transitionEffect", "resize");
-				break;
-		}
+		getJSObject().setProperty("transitionEffect", transition.toString());
 	}
 }

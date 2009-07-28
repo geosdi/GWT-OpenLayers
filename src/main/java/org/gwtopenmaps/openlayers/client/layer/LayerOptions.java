@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
+import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
@@ -7,24 +8,19 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  *
  * @author Edwin Commandeur - Atlis EJS
  *
+ * Find out about OpenLayers: Why doesn't Layer have a setOptions method like Map?
+ * Is the addOptions method comparable?
  */
 public class LayerOptions extends JSObjectWrapper {
 
 	//TODO: support ... (shared by all layers)
-	// -alpha -> setHasAlphaChannel ; false by default/true if image
-	// -alwaysInRange -> setAlwaysInRange ; true/false
-	// -gutter
-	// -projection
-	// -units
-	// -minExtent
-	// -maxExtent
+	// -displayOutsideMaxExtent
 	// -minResolution
 	// -maxResolution
 	// -minScale
 	// -maxScale
-	// -scales => does not seem sensible
-
-	//supported isBaseLayer, displayInLayerSwitcher
+	// -resolutions
+	// -scales
 
 	protected LayerOptions(JSObject jsObject) {
 		super(jsObject);
@@ -53,7 +49,10 @@ public class LayerOptions extends JSObjectWrapper {
 	 * If there is more than one BaseLayer then it is possible to choose between BaseLayers in the LayerSwitcher.
 	 *
 	 * The default value for isBaseLayer depends on the type of layer.
-	 * By default isBaseLayer is set to true for WMS layers, ... .
+	 * By default isBaseLayer is true for WMS layers, ... .
+	 *
+	 * Since OL 2.8 it is possible to specify on the map that only overlays should be
+	 * used (will this overrule isBaseLayer property of layer?).
 	 */
 	public void setIsBaseLayer(boolean isBaseLayer){
 		getJSObject().setProperty("isBaseLayer", isBaseLayer);
@@ -66,8 +65,6 @@ public class LayerOptions extends JSObjectWrapper {
 	 * @param attribution - the attribution text
 	 */
 	public void setAttribution(String attribution){
-		//FIXME sanitize String before setting it!
-		// solution - wrap js sanitize function, so it can be used in java and js
 		getJSObject().setProperty("attribution", attribution);
 	}
 
@@ -83,8 +80,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 * see {@Layer}.
-	 *
-	 * Default is true.
+	 * @param visible - Visibility of the layer on the map. Default is true.
 	 */
 	public void setVisibility(boolean visible){
 		getJSObject().setProperty("visible", visible);
@@ -96,8 +92,8 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param displayOutsideMaxExtent - true to request map tiles outside
-	 *  the maxExtent of the Layer, defaults to false.
+	 * @param displayOutsideMaxExtent - Set true to request map tiles outside
+	 *  the maxExtent of the Layer, default is false.
 	 */
 	public void setDisplayOutsideMaxExtent(boolean displayOutsideMaxExtent){
 		getJSObject().setProperty("displayOutsideMaxExtent", displayOutsideMaxExtent);
@@ -105,10 +101,97 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param alpha - true to enable IE6 alpha hack for transparent PNGs.
+	 * @param alpha - Set true to enable IE6 alpha hack for transparent PNGs.
+	 *  Default is false, because of performance overhead.
 	 */
-	public void setAlphaHack(boolean alpha){
-		getJSObject().setProperty("alpha", alpha);
+	public void setApplyAlphaHack(boolean applyAlphaHack){
+		getJSObject().setProperty("alpha", applyAlphaHack);
 	}
 
+	/**
+	 *
+	 */
+	public void setAlwaysInRange(boolean alwaysInRange){
+		getJSObject().setProperty("alwaysInRange", alwaysInRange);
+	}
+
+	/**
+	 *
+	 * @param gutter - The width in pixels of the gutter around the image. The gutter
+	 *  is ignored.
+	 *  <br/>
+	 *  From OpenLayers API: "By setting this property to a non-zero value,
+	 *  images will be requested that are wider and taller than the tile
+	 *  size by a value of 2 x gutter.  This allows artifacts of rendering
+	 *  at tile edges to be ignored.  Set a gutter value that is equal to
+	 *  half the size of the widest symbol that needs to be displayed.
+	 *  Defaults to zero.  Non-tiled layers always have zero gutter."
+	 */
+	public void setGutter(float gutter){
+		getJSObject().setProperty("alwaysInRange", gutter);
+	}
+
+	/**
+	 *
+	 * @param projection - {@link see org.gwtopenmaps.openlayers.client.MapOptions}
+	 */
+	public void setProjection(String projection){
+		getJSObject().setProperty("projection", projection);
+	};
+
+	/**
+	 *
+	 * @param units - {@link see org.gwtopenmaps.openlayers.client.MapOptions}
+	 */
+	public void setUnits(String units){
+		getJSObject().setProperty("units", units);
+	}
+
+	/**
+	 *
+	 * @param maxExtent - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMaxExtent(Bounds)}
+	 */
+	public void setMaxExtent(Bounds maxExtent) {
+		getJSObject().setProperty("maxExtent", maxExtent.getJSObject());
+	}
+
+	/**
+	 *
+	 * @param minExtent - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMinExtent(Bounds)}
+	 */
+	public void setMinExtent(Bounds minExtent) {
+		getJSObject().setProperty("minExtent", minExtent.getJSObject());
+	}
+
+	/**
+	 *
+	 * @param maxResolution - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMaxResolution(float)}
+	 */
+	public void setMaxResolution(float maxResolution){
+		getJSObject().setProperty("maxResolution", maxResolution);
+	}
+
+	/**
+	 *
+	 * @param minResolution - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMinResolution(float)}
+	 */
+	public void setMinResolution(float minResolution){
+		getJSObject().setProperty("minResolution", minResolution);
+	}
+
+	/**
+	 *
+	 * @param transition - document supported transition effects here
+	 */
+	public void setTransitionEffect(String transition){
+		getJSObject().setProperty("transitionEffect", transition);
+	}
+
+	public void setTransitionEffect(TransitionEffect transition){
+		switch(transition){
+			case RESIZE:
+				getJSObject().setProperty("transitionEffect", "resize");
+				break;
+		}
+	}
 }

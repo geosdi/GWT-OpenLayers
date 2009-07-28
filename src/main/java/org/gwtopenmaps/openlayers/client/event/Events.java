@@ -1,7 +1,6 @@
 package org.gwtopenmaps.openlayers.client.event;
 
 import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
-import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**

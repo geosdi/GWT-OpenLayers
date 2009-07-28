@@ -36,7 +36,6 @@ public class WMSOptions extends GridLayerOptions {
 		getJSObject().setProperty("singleTile", b);
 	}
 
-
 	/**
 	 * Sets singleTile option to true.
 	 */
@@ -44,15 +43,13 @@ public class WMSOptions extends GridLayerOptions {
 		setSingleTile(true);
 	}
 
-
-	public void setTransitionEffect(String transition){
-		getJSObject().setProperty("transitionEffect", transition);
-	}
-
 	/**
 	 * From the OpenLayers examples: The 'resize' effect
 	 * resamples the current tile and displays it stretched
 	 * or compressed until the new tile is available.
+	 *
+	 * @deprecated - use setTransitionEffect(TransitionEffect) instead of this
+	 *  convenience method.
 	 */
 	public void setTransitionEffectResize(){
 		setTransitionEffect("resize");
@@ -76,13 +73,13 @@ public class WMSOptions extends GridLayerOptions {
 
 	/**
 	 * Set whether or not to wrap at the international date line.
-	 * 
+	 *
 	 * @param wrap - true to wrap, false to not wrap
 	 */
 	public void setWrapDateLine(boolean wrap) {
 		getJSObject().setProperty("wrapDateLine", wrap);
 	}
-	
+
 	/**
 	 * For tiled layers the buffer size can be set.
 	 *

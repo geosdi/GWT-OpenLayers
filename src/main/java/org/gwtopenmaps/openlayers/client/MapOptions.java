@@ -116,7 +116,7 @@ public class MapOptions extends JSObjectWrapper {
 	 * The units used by the map to express geospatial coordinates. These units
 	 * should be consistent with the projection used.
 	 *
-	 * Use constants from the worker class MapUnits as input parameter.
+	 * Use constants from the class MapUnits as input parameter.
 	 * For example:
 	 *  setUnits(MapUnits.DEGREES);
 	 *

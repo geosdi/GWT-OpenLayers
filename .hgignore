@@ -2,16 +2,17 @@
 # use glob syntax
 #
 syntax: glob
-.project
-.classpath
 .gwt-tmp
 
 #
 # use regex syntax
 #
 syntax: regexp
+^.project
+^.classpath
 ^bin/*
 ^lib/*
+^showcase/lib/*
 ^.settings/*
 ^target/*
 ^build/*

@@ -27,7 +27,7 @@ public class Image extends Layer {
 	 *
 	 * @param name - OpenLayers layerName
 	 * @param url - a relative url or web uri
-	 * @param exent - ...
+	 * @param extent - bounds for the Image
 	 * @param size - the size of the picture
 	 * @param options - see {@link ImageOptions}
 	 */

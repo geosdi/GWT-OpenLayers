@@ -20,7 +20,7 @@ import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
  */
 public class EventListenerCollection {
 
-	private Map map = new HashMap();
+	private Map<EventListener, ListenerRegisteredProperties> map = new HashMap<EventListener, ListenerRegisteredProperties>();
 
 	public void addListener(OpenLayersObjectWrapper w, EventListener listener, String type, EventHandler handler){
 		//TODO check if type is defined and valid?
@@ -43,8 +43,8 @@ public class EventListenerCollection {
 	 * @param wrapper - wrapper object for OpenLayers object that fires events
 	 */
 	public void removeListeners(OpenLayersObjectWrapper wrapper){
-		Set keys = map.keySet(); //iterate over keyset
-		for(Iterator it = keys.iterator();it.hasNext();){
+		Set<EventListener> keys = map.keySet(); //iterate over keyset
+		for(Iterator<EventListener> it = keys.iterator();it.hasNext();){
 			EventListener listener = (EventListener) it.next();
 			removeListener(wrapper, listener);
 		}
@@ -55,10 +55,10 @@ public class EventListenerCollection {
 	 *
 	 *  Items in the set can be cast to {@link org.gwtopenmaps.openlayers.client.event.EventListener} objects.
 	 *
-	 *  @returns - a Set of {@link org.gwtopenmaps.openlayers.client.event.EventListener} objects.
+	 *  @return - a Set of {@link org.gwtopenmaps.openlayers.client.event.EventListener} objects.
 	 */
-	public Set getListeners(){
-		Set keys = map.keySet();
+	public Set<EventListener> getListeners(){
+		Set<EventListener> keys = map.keySet();
 		return keys;
 	}
 

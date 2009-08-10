@@ -5,7 +5,6 @@ import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -64,7 +63,7 @@ public class FramedCloud extends Popup {
 				(anchor != null) ? anchor.getJSObject(): null,
 				closeBox));
 
-		Element contentDiv = FramedCloudImpl.getContentDiv(this.getJSObject());
+		//Element contentDiv = FramedCloudImpl.getContentDiv(this.getJSObject());
 		//widget.setElement(contentDiv);
 	}
 }

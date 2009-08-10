@@ -44,7 +44,7 @@ public class LayerOptions extends JSObjectWrapper {
 	/**
 	 * To specify if the layer is a BaseLayer. Only one BaseLayer can be active at a time,
 	 *
-	 * IS THIS TRUE?: if a BaseLayer is active it cannot be made invisible {link @Layer}.
+	 * IS THIS TRUE?: if a BaseLayer is active it cannot be made invisible {@link Layer}.
 	 *
 	 * If there is more than one BaseLayer then it is possible to choose between BaseLayers in the LayerSwitcher.
 	 *
@@ -79,7 +79,7 @@ public class LayerOptions extends JSObjectWrapper {
 	}
 
 	/**
-	 * see {@Layer}.
+	 * see {@link Layer}.
 	 * @param visible - Visibility of the layer on the map. Default is true.
 	 */
 	public void setVisibility(boolean visible){
@@ -101,7 +101,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param alpha - Set true to enable IE6 alpha hack for transparent PNGs.
+	 * @param applyAlphaHack - Set true to enable IE6 alpha hack for transparent PNGs.
 	 *  Default is false, because of performance overhead.
 	 */
 	public void setApplyAlphaHack(boolean applyAlphaHack){
@@ -133,7 +133,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param projection - {@link see org.gwtopenmaps.openlayers.client.MapOptions}
+	 * @param projection - see {@link org.gwtopenmaps.openlayers.client.MapOptions}
 	 */
 	public void setProjection(String projection){
 		getJSObject().setProperty("projection", projection);
@@ -141,7 +141,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param units - {@link see org.gwtopenmaps.openlayers.client.MapOptions}
+	 * @param units - see {@link org.gwtopenmaps.openlayers.client.MapOptions}
 	 */
 	public void setUnits(String units){
 		getJSObject().setProperty("units", units);
@@ -149,7 +149,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param maxExtent - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMaxExtent(Bounds)}
+	 * @param maxExtent - see {@link org.gwtopenmaps.openlayers.client.MapOptions#setMaxExtent(Bounds)}
 	 */
 	public void setMaxExtent(Bounds maxExtent) {
 		getJSObject().setProperty("maxExtent", maxExtent.getJSObject());
@@ -157,7 +157,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param minExtent - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMinExtent(Bounds)}
+	 * @param minExtent - see {@link org.gwtopenmaps.openlayers.client.MapOptions#setMinExtent(Bounds)}
 	 */
 	public void setMinExtent(Bounds minExtent) {
 		getJSObject().setProperty("minExtent", minExtent.getJSObject());
@@ -165,7 +165,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param maxResolution - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMaxResolution(float)}
+	 * @param maxResolution - see {@link org.gwtopenmaps.openlayers.client.MapOptions#setMaxResolution(float)}
 	 */
 	public void setMaxResolution(float maxResolution){
 		getJSObject().setProperty("maxResolution", maxResolution);
@@ -173,7 +173,7 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 *
-	 * @param minResolution - {@link see org.gwtopenmaps.openlayers.client.MapOptions#setMinResolution(float)}
+	 * @param minResolution - see {@link org.gwtopenmaps.openlayers.client.MapOptions#setMinResolution(float)}
 	 */
 	public void setMinResolution(float minResolution){
 		getJSObject().setProperty("minResolution", minResolution);

@@ -74,7 +74,7 @@ public class SelectFeature extends Control {
 	 *
 	 * Hold down shift or ctrl and click to select multiple features.
 	 *
-	 * @param multipe - true to enable selecting multiple features
+	 * @param multiple - true to enable selecting multiple features
 	 */
 	public void setMultiple(boolean multiple){
 		SelectFeatureImpl.setMultiple(getJSObject(), multiple);

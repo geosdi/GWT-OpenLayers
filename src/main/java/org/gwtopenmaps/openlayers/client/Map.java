@@ -201,7 +201,7 @@ public class Map extends OpenLayersEObjectWrapper {
 	public Layer[] getLayersByName(String name){
 		String regex= ".*" + name + ".*";
 		Layer[] layers = this.getLayers();
-		List layersFound = new ArrayList();
+		List<Layer> layersFound = new ArrayList<Layer>();
 		for(int i = 0, max = layers.length; i < max;i++){
 			if(layers[i].getName().matches(regex)){
 				layersFound.add(layers[i]);

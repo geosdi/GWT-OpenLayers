@@ -55,7 +55,6 @@ public abstract class EventHandler
 	 * This method is called on the EventHandler when the event fires
 	 * that the handler is registered for.
 	 *
-	 * @param source - the object firing the event
 	 * @param eventObject - an event object that is passed by OpenLayers
 	 * when the event is fired (see also {@link EventObject}).
 	 */

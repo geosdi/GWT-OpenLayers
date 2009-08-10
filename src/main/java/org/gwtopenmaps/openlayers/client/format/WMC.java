@@ -36,8 +36,8 @@ public class WMC extends Format {
 	/**
 	 *
 	 * @param input
-	 * @param options
-	 * @return
+	 * @param wmcOptions
+	 * @return map object
 	 */
 	public Map read(String input, WMCOptions wmcOptions){
 		Map map = Map.narrowToMap(FormatImpl.read(getJSObject(), input, wmcOptions.getJSObject()));

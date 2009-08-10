@@ -28,7 +28,7 @@ public class OpenLayersEObjectWrapper extends OpenLayersObjectWrapper {
 		eventListeners.removeListener(this, listener);
 	};
 
-	public Set getListeners(){
+	public Set<EventListener> getListeners(){
 		return eventListeners.getListeners();
 	}
 }

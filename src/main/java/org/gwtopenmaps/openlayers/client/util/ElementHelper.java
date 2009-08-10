@@ -17,7 +17,7 @@ public class ElementHelper
 	}-*/;
 
 	/**
-	 * @returns Element - the Document object of the topmost ancestor window
+	 * @return Element - the Document object of the topmost ancestor window
 	 *
 	 */
 	public static native Element getTopDocument() /*-{

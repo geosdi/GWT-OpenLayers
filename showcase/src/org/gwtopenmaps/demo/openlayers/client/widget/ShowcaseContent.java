@@ -49,7 +49,7 @@ public class ShowcaseContent extends TabPanel {
 
     //TODO find out how to get pretty print source
     public void setExampleSource(String x) {
-    	if(!(x.indexOf("http") > -1)){
+    	if(!(x.indexOf("http") == 0) && !(x.indexOf("file") == 0)){
     		replaceExampleSource(x);
     	} else {
     		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, x);

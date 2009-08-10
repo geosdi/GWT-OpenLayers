@@ -1,7 +1,7 @@
 package org.gwtopenmaps.demo.openlayers.client;
 
-import org.gwtopenmaps.demo.openlayers.client.widget.ContentPanel;
-import org.gwtopenmaps.demo.openlayers.client.widget.MenuPanel;
+import org.gwtopenmaps.demo.openlayers.client.widget.ShowcaseContent;
+import org.gwtopenmaps.demo.openlayers.client.widget.ShowcaseMenu;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.DockPanel;
@@ -17,24 +17,11 @@ public class GwtOpenLayersShowcase implements EntryPoint {
 	/**
 	 * main panel contains the showcase app
 	 */
-	//TODO borrow idea from gwtip calculator to make OpenLayerShowcaseApp
-	// that extends Dockpanel
 	private DockPanel mainPanel = new DockPanel();
 
-	/**
-	 *
-	 */
-
 	private SimplePanel bannerPanel = new SimplePanel();
-
-	private ContentPanel contentPanel = new ContentPanel();
-
-	private MenuPanel menuPanel = new MenuPanel(contentPanel);
-
-	//private ContentPanel examplePanel = new ContentPanel();
-
-
-
+	private ShowcaseContent contentPanel = new ShowcaseContent();
+	private ShowcaseMenu menuPanel = new ShowcaseMenu(contentPanel);
 
 	/**
 	 * Entry point for the GWT OpenLayers Showcase
@@ -44,13 +31,11 @@ public class GwtOpenLayersShowcase implements EntryPoint {
 		HTML tempBanner = new HTML("Welcome to the GWT OpenLayers showcase.");
 		bannerPanel.add(tempBanner);
 
-
 		//TODO menuPanel gets passed a ShowcaseMenu widget
 		// the ShowcaseMenu widget gets passed a reference to the contentPanel
 
 		menuPanel.setTitle("Menu");
 		menuPanel.setWidth("200px");
-
 
 		contentPanel.setTitle("Example");
 

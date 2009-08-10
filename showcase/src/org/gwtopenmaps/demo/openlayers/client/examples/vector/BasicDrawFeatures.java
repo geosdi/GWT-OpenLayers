@@ -18,12 +18,12 @@ import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.Widget;
 
 public class BasicDrawFeatures implements ShowcaseExample {
 
@@ -104,8 +104,8 @@ public class BasicDrawFeatures implements ShowcaseExample {
 
 
         Button featureInfo = new Button("Feature info");
-        featureInfo.addClickListener(new ClickListener() {
-            public void onClick(Widget sender) {
+        featureInfo.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent evt) {
               VectorFeature[] fts = vectorLayer.getFeatures();
               int x = vectorLayer.getNumberOfFeatures();
               //normally you would have to check the class name

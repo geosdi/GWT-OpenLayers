@@ -16,13 +16,12 @@ import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.ToggleButton;
-import com.google.gwt.user.client.ui.Widget;
 
 public class DrawFeatures implements ShowcaseExample {
 
@@ -83,8 +82,8 @@ public class DrawFeatures implements ShowcaseExample {
 
 		final ToggleButton drawPolygonBtn = new ToggleButton("Draw Polygon (listener)");
 		drawPolygonBtn.setWidth("200px");
-		drawPolygonBtn.addClickListener(new ClickListener(){
-			public void onClick(Widget sender) {
+		drawPolygonBtn.addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent evt) {
 				//TODO je wilt aan een control kunnen vragen of hij geactiveerd is
 				if(drawPolygonBtn.isDown()){
 					drawPolygon.activate();

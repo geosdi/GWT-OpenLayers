@@ -18,6 +18,7 @@ import org.gwtopenmaps.openlayers.client.event.MapLayerAddedListener;
 import org.gwtopenmaps.openlayers.client.event.MapLayerChangedListener;
 import org.gwtopenmaps.openlayers.client.event.MapMoveListener;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
+import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
@@ -45,7 +46,7 @@ public class MapEvents implements ShowcaseExample {
 
 		WMSOptions wmsLayerParams = new WMSOptions();
 		wmsLayerParams.setUntiled();
-		wmsLayerParams.setTransitionEffectResize();
+		wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
 
 		wmsLayer = new WMS(
 				"Basic WMS",
@@ -60,7 +61,7 @@ public class MapEvents implements ShowcaseExample {
 
 		WMSOptions wmsLayerParams2 = new WMSOptions();
 		wmsLayerParams2.setUntiled();
-		wmsLayerParams2.setTransitionEffectResize();
+		wmsLayerParams2.setTransitionEffect(TransitionEffect.RESIZE);
 
 		WMS wmsLayer2 = new WMS(
 				"Demis WMS",
@@ -163,9 +164,9 @@ public class MapEvents implements ShowcaseExample {
 		example.getMap().setCenter(new LonLat(lon, lat), zoom);
 
 		example.getMap().removeListener(moveListener2);
-		Set listeners = example.getMap().getListeners();
+		Set<EventListener> listeners = example.getMap().getListeners();
 		int counter = 1;
-		for(Iterator it = listeners.iterator(); it.hasNext();){
+		for(Iterator<EventListener> it = listeners.iterator(); it.hasNext();){
 			EventListener el = (EventListener) it.next();
 
 			if(el instanceof MapClickListener){
@@ -176,7 +177,6 @@ public class MapEvents implements ShowcaseExample {
 			}
 			counter++;
 		}
-
 	}
 
 	public MapExample getMapExample() {

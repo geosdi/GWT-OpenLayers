@@ -10,16 +10,4 @@
     <welcome-file>GwtOpenLayersShowcase.html</welcome-file>
   </welcome-file-list>
 
-  <!-- Servlets -->
-  <!--
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>my.plugin.test.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/testgoogleplugin/greet</url-pattern>
-  </servlet-mapping>
- -->
 </web-app>

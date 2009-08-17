@@ -11,9 +11,10 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur
+ * 
  */
 public class OpenLayersEObjectWrapper extends OpenLayersObjectWrapper {
-
+   
 	protected EventListenerCollection eventListeners = new EventListenerCollection();
 
 	protected OpenLayersEObjectWrapper(JSObject openLayersObject) {

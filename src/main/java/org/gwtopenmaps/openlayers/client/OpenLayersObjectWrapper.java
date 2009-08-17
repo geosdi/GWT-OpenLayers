@@ -9,9 +9,10 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur
+ * 
  */
 public class OpenLayersObjectWrapper extends JSObjectWrapper {
-
+   
 	protected OpenLayersObjectWrapper(JSObject openLayersObject)
 	{
 		super(openLayersObject);

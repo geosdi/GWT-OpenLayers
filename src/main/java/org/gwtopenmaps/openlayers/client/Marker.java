@@ -10,10 +10,11 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  *
  * @author Erdem Gunay
+ * @author Michel Vitor - Intec
  *
  */
 public class Marker extends OpenLayersEObjectWrapper {
-
+    
 	protected Marker(JSObject element) {
 		super(element);
 	}
@@ -38,7 +39,13 @@ public class Marker extends OpenLayersEObjectWrapper {
 	public Icon getIcon() {
 		return Icon.narrowToIcon(MarkerImpl.getIcon(getJSObject()));
 	}
-
+    public void setIcon(Icon icon){
+        MarkerImpl.setIcon(getJSObject(),icon.getJSObject()); 	
+    }
+    public void setLonLat(LonLat lonlat){
+    	MarkerImpl.setLonLat(lonlat.getJSObject());
+    	
+    }
 	public void addBrowserEventListener(String browserEvent, final MarkerBrowserEventListener listener){
 		eventListeners.addListener(this, listener, browserEvent, new EventHandler (){
 			public void onHandle(EventObject eventObject) {

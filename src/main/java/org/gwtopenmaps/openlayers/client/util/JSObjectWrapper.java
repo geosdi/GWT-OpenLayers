@@ -6,11 +6,12 @@ package org.gwtopenmaps.openlayers.client.util;
  * to provide (part of) the javascript object's functionality in GWT.
  *
  * @author Edwin Commandeur - Atlis EJS
+ * @author Michel Vitor - Intec
  */
 public class JSObjectWrapper {
 
 	private JSObject jsObject;
-
+    
 	protected JSObjectWrapper(JSObject jsObject)
 	{
 		setJSObject(jsObject);

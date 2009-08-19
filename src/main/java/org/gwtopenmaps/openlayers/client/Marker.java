@@ -39,9 +39,19 @@ public class Marker extends OpenLayersEObjectWrapper {
 	public Icon getIcon() {
 		return Icon.narrowToIcon(MarkerImpl.getIcon(getJSObject()));
 	}
+   /*
+	* Method: setIcon
+	* Change the icon of Image.
+	* icon - {<Icon>} 
+	*/    
     public void setIcon(Icon icon){
         MarkerImpl.setIcon(getJSObject(),icon.getJSObject()); 	
     }
+    /*
+	 * Method setLonlat
+	 * Change the lonlat of Image
+	 * lonlat (LonLat) the position of this marker
+	 */
     public void setLonLat(LonLat lonlat){
     	MarkerImpl.setLonLat(lonlat.getJSObject());
     	

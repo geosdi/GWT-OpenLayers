@@ -23,7 +23,6 @@ public class Marker extends OpenLayersEObjectWrapper {
 	{
 		return (element == null)? null: new Marker(element);
 	}
-
 	public Marker(LonLat lonlat) {
 		this (MarkerImpl.create(lonlat.getJSObject()));
 	}
@@ -39,21 +38,21 @@ public class Marker extends OpenLayersEObjectWrapper {
 	public Icon getIcon() {
 		return Icon.narrowToIcon(MarkerImpl.getIcon(getJSObject()));
 	}
-   /*
+   /**
 	* Method: setIcon
-	* Change the icon of Image.
-	* icon - {<Icon>} 
+	* Change the icon image.
+	* icon (Icon) the image of icon  
 	*/    
     public void setIcon(Icon icon){
         MarkerImpl.setIcon(getJSObject(),icon.getJSObject()); 	
     }
-    /*
+    /**
 	 * Method setLonlat
-	 * Change the lonlat of Image
+	 * Change the lonlat of Icon
 	 * lonlat (LonLat) the position of this marker
 	 */
     public void setLonLat(LonLat lonlat){
-    	MarkerImpl.setLonLat(lonlat.getJSObject());
+    	MarkerImpl.setLonLat(getJSObject(),lonlat.getJSObject());
     	
     }
 	public void addBrowserEventListener(String browserEvent, final MarkerBrowserEventListener listener){

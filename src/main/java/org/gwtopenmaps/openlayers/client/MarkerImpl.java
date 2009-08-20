@@ -32,4 +32,5 @@ class MarkerImpl {
 	public static native JSObject getIcon(JSObject self)/*-{
 		return self.icon;
 	}-*/;
+	
 }

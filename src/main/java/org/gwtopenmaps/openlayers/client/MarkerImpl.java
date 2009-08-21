@@ -18,7 +18,7 @@ class MarkerImpl {
 	     self.icon = icon;
 	     self.events= new $wnd.OpenLayers.Events(self,self.icon.imageDiv,null);     
     }-*/;
-	public static native JSObject setLonLat(JSObject self,JSObject lonlat)/*-{
+	public static native void setLonLat(JSObject self,JSObject lonlat)/*-{
         self.lonlat = lonlat;
     }-*/;
 	public static native JSObject create(JSObject lonlat, JSObject icon)/*-{
@@ -28,9 +28,10 @@ class MarkerImpl {
 	public static native JSObject getLonLat(JSObject self)/*-{
 		return self.lonlat;
 	}-*/;
-
+	public static native void setImageUrl(JSObject self, String imageUrl)/*-{
+          self.icon.url = imageUrl;
+    }-*/;
 	public static native JSObject getIcon(JSObject self)/*-{
 		return self.icon;
 	}-*/;
-	
 }

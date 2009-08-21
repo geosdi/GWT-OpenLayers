@@ -52,8 +52,15 @@ public class Marker extends OpenLayersEObjectWrapper {
 	 * lonlat (LonLat) the position of this marker
 	 */
     public void setLonLat(LonLat lonlat){
-    	MarkerImpl.setLonLat(getJSObject(),lonlat.getJSObject());
-    	
+    	MarkerImpl.setLonLat(getJSObject(),lonlat.getJSObject());    	
+    }
+    /**
+	 * Method setImageUrl
+	 * Change the Url of Icon
+	 * imageUrl (Url) the url of this marker
+	 */
+    public void setImageUrl(String imageUrl){
+    	MarkerImpl.setImageUrl(getJSObject(),imageUrl);	
     }
 	public void addBrowserEventListener(String browserEvent, final MarkerBrowserEventListener listener){
 		eventListeners.addListener(this, listener, browserEvent, new EventHandler (){

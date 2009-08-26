@@ -19,4 +19,8 @@ public class MeasureImpl {
 		return new $wnd.OpenLayers.Control.Measure(handler, options);
 	}-*/;
 
+	public static native void setPersist(JSObject self,boolean persist)/*{
+	     self.persist = persist;
+	}*/;
+	
 }

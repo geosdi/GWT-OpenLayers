@@ -21,5 +21,7 @@ public class Measure extends Control {
 	public Measure(Handler handler, MeasureOptions options) {
 		this(MeasureImpl.create(handler.getJSObject(),options.getJSObject()));
 	}
-
+    public void setPersist(boolean persist ){
+    	MeasureImpl.setPersist(getJSObject(),persist);   	
+    }
 }

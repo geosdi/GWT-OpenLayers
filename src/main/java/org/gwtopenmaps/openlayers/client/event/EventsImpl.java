@@ -15,7 +15,9 @@ class EventsImpl {
 	public native static JSObject register(JSObject self, String type, JSObject obj, JSObject handler) /*-{
 		self.register(type, obj, handler);
 	}-*/;
-
+	public native static JSObject on(JSObject self,JSObject object ) /*-{
+	    self.on(object);
+    }-*/;
 	public native static void unregister(JSObject self, String type, JSObject obj, JSObject handler)/*-{
 	   self.unregister(type, obj, handler);
 	}-*/;
@@ -23,4 +25,5 @@ class EventsImpl {
 	public native static JSObject getMousePosition(JSObject self, JSObject evt)/*-{
 		return self.getMousePosition(evt);
 	}-*/;
+	
 }

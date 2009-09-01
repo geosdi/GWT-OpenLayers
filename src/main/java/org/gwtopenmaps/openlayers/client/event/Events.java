@@ -24,7 +24,10 @@ public class Events extends OpenLayersObjectWrapper {
 	{
 		EventsImpl.register(getJSObject(), type, obj.getJSObject(), handler.getJSObject());
 	}
-
+	public void on(OpenLayersObjectWrapper obj)
+	{
+		EventsImpl.on(getJSObject(),obj.getJSObject());
+	}
 	public void unregister(String type, OpenLayersObjectWrapper obj, EventHandler handler)
 	{
 		EventsImpl.unregister(getJSObject(), type, obj.getJSObject(), handler.getJSObject());

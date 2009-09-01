@@ -42,7 +42,7 @@ class SelectFeatureImpl {
 		var callback = function(obj){
 			var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
 			listener.@org.gwtopenmaps.openlayers.client.control.SelectFeature.SelectFeatureListener::onFeatureSelected(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;)(vectorFeatureObj);
-		}
+		}                                                                     
 		return callback;
 	}-*/;
 
@@ -50,7 +50,7 @@ class SelectFeatureImpl {
 		var callback = function(obj){
 			var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
 			listener.@org.gwtopenmaps.openlayers.client.control.SelectFeature.UnselectFeatureListener::onFeatureUnselected(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;)(vectorFeatureObj);
-		}
+		}                                                                                              
 		return callback;
 	}-*/;
 

@@ -6,6 +6,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  *
  * @author Edwin commandeur - Atlis EJS
+ * @author Rafael Cerávolo
  *
  * Convenience class exposing options that are valid for a vector layer.
  * There's also a Vector constructor that can take an Options object directly.
@@ -40,6 +41,12 @@ public class VectorOptions extends LayerOptions {
 	public JSObject getStyle(Style style){
 		return getJSObject().getProperty("style");
 	}
+	
+	public void setRendererOptions(RendererOptions rendererOptions){
+		getJSObject().setProperty("rendererOptions", rendererOptions.getJSObject());
+    }
 
+    public JSObject getRendererOptions(){
+    	return getJSObject().getProperty("rendererOptions");
+    }
 }
-

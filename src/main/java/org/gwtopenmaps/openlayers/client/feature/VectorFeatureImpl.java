@@ -7,7 +7,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
- *
+ * @author Rafael Ceravolo - LOGANN
  */
 public class VectorFeatureImpl {
 
@@ -25,6 +25,17 @@ public class VectorFeatureImpl {
     
     public native static JSObject getGeometry(JSObject self) /*-{
         return self.geometry;
+    }-*/;
+
+    public static native void setAttributes(JSObject self,
+	    JSObject vectorFeatureAttributes) 
+    /*-{
+        self.attributes = vectorFeatureAttributes;
+    }-*/;
+    
+    public static native JSObject getAttributes(JSObject self) 
+    /*-{
+        return self.attributes;   
     }-*/;
     
 }

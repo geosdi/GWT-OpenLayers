@@ -4,6 +4,7 @@
 package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.control.DrawFeature.FeatureAddedListener;
+import org.gwtopenmaps.openlayers.client.handler.HandlerOptions;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -11,9 +12,6 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  */
 public class DrawFeatureOptions extends ControlOptions {
-
-	//TODO: define HandlerOptions, probably in it's own class under handlers
-	public class HandlerOptions extends ControlOptions {}
 
 	public void onFeatureAdded(FeatureAddedListener listener){
 		JSObject callback = DrawFeatureImpl.createFeatureAddedCallback(listener);

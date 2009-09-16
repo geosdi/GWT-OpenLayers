@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.gwtopenmaps.openlayers.client;
 
@@ -12,21 +12,15 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class StyleImpl {
 
+	//FIXME: OpenLayers.Feature.Vector.style returns a style map!
+	// This stylemap contains styles, but in the case of Vector it seems to contain
+	// symbolizers rather than styles.
     public static native JSObject create()
     /*-{
         return $wnd.OpenLayers.Util.extend({}, $wnd.OpenLayers.Feature.Vector.style['default']);
         //return new Object(); //do it all yourself
     }-*/;
 
-    public static native void setFillColor(JSObject self, String s)
-    /*-{
-        self.fillColor = s;
-    }-*/;
-
-    public static native String getFillColor(JSObject self)
-    /*-{
-        return self.fillColor;
-    }-*/;
 
     public static native void setFillOpacity(JSObject self, double o)
     /*-{
@@ -175,7 +169,7 @@ public class StyleImpl {
     /*-{
     	self.label = label;
     }-*/;
-    
+
     public static native String getLabel(JSObject self)
     /*-{
     	return self.label;
@@ -185,7 +179,7 @@ public class StyleImpl {
     /*-{
     	self.fontColor = fontColor;
     }-*/;
-    
+
     public static native String getFontColor(JSObject self)
     /*-{
     	return self.fontColor;
@@ -195,7 +189,7 @@ public class StyleImpl {
     /*-{
     	self.fontSize = fontSize;
     }-*/;
-    
+
     public static native String getFontSize(JSObject self)
     /*-{
     	return self.fontSize;
@@ -205,7 +199,7 @@ public class StyleImpl {
     /*-{
         self.fontFamily = fontFamily;
     }-*/;
-    
+
     public static native String getFontFamily(JSObject self)
     /*-{
         return self.fontFamily;
@@ -215,7 +209,7 @@ public class StyleImpl {
     /*-{
     	self.fontWeight = fontWeight;
     }-*/;
-    
+
     public static native String getFontWeight(JSObject self  )
     /*-{
     	return self.fontWeight;

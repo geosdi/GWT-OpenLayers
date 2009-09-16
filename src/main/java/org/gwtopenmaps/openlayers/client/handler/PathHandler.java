@@ -17,4 +17,5 @@ public class PathHandler extends PointHandler {
 	public PathHandler(){
 		this(PathHandlerImpl.create());
 	}
+
 }

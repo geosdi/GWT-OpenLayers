@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.gwtopenmaps.openlayers.client.control;
 

@@ -11,7 +11,7 @@
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>1.6.4</version>
+			<version>1.7.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

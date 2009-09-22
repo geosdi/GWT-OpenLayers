@@ -6,14 +6,16 @@ import com.google.gwt.user.client.Element;
 
 /**
  * Static methods for working with {@link JSObject} objects.
- *
- * These are convenience methods for reducing the amount of JSNI code for
- * creating JSObject wrappers.
- *
- * Be aware: getProperty methods can die horribly if property does not exist.
+ * <p>
+ * The getProperty/setProperty methods are convenience methods for reducing
+ * the amount of JSNI code that is necessary for creating JSObject wrappers.
+ * Be aware: getProperty methods can die horribly at runtime if
+ * property does not exist.
+ * </p>
+ * ECMA-262 (Ecmascript = Javascript) defines an object as an “unordered collection of
+ * properties each of which contains a  primitive value, object, or function.”
  *
  * @author Edwin Commandeur - Atlis EJS
- *
  */
 public class JSObjectHelper {
 
@@ -109,6 +111,14 @@ public class JSObjectHelper {
 
 	public static native boolean hasProperty(JSObject object, String name) /*-{
 		if(object[name] != undefined){return true}else{return false};
+	}-*/;
+
+	public static native JSObject asArray(JSObject object)/*-{
+		//how to test for array if GWT-OL brakes instanceof?
+		if(object.push){
+		}else{
+			return [object];
+		}
 	}-*/;
 
 }

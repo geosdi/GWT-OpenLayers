@@ -1,8 +1,18 @@
 package org.gwtopenmaps.openlayers.client.util;
 
 
-
-
+/**
+ * Wraps a Javascript array that contains "non-basic type" of elements or
+ * elements of mixed type. "Basic type" elements are wrapped in the following
+ * array classes:
+ * <ul>
+ *  <li>{@link JIntArray}</li>
+ *  <li>{@link JBooleanArray}</li>
+ *  <li>{@link JFloatArray}</li>
+ *  <li>{@link JDoubleArray}</li>
+ *  <li>{@link JStringArray}</li>
+ * </ul>
+ */
 public class JObjectArray extends JArrayBase
 {
 	protected JObjectArray(JSObject element)

@@ -1,10 +1,11 @@
 package org.gwtopenmaps.openlayers.client.util;
 
 
-
-
 /**
+ * Base class for classes wrapping Javascript arrays.
  *
+ * Get and set methods are implemented in subclasses, to make sure
+ * they get and set the correct type of array element.
  *
  */
 public class JArrayBase extends JSObjectWrapper {

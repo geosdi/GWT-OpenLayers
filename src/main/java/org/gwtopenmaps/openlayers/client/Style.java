@@ -16,6 +16,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Rafael Ceravolo - LOGANN
  *
  */
+//FIXME: This class does not wrap the OpenLayers.Style object, but a symbolizer
+// with 'style' attributes! Move this to VectorStyle/VectorFeatureStyle or to symbolizer
 public class Style extends OpenLayersObjectWrapper {
 
 	public static final String STROKE_DASHSTYLE_SOLID = "solid";
@@ -28,27 +30,6 @@ public class Style extends OpenLayersObjectWrapper {
 	public Style() {
 		this(StyleImpl.create());
 	}
-
-	public void setName(String name){
-		getJSObject().setProperty("name", name);
-	}
-
-	/**
-	 *
-	 * @return name - the name of the Style, for example 'default' or 'roads'
-	 */
-	public String getName(){
-		return getJSObject().getPropertyAsString("name");
-	}
-
-	public void setDescription(String description){
-		getJSObject().setProperty("description", description);
-	}
-
-	public String getDescription(){
-		return getJSObject().getPropertyAsString("description");
-	}
-
 
 	/**
 	 * Hex fill color. Default is “#ee9900”.

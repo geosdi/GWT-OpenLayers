@@ -10,18 +10,26 @@ import org.gwtopenmaps.openlayers.client.control.EditingToolbar;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.DrawFeature.FeatureAddedListener;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
+import org.gwtopenmaps.openlayers.client.geometry.Geometry;
 import org.gwtopenmaps.openlayers.client.geometry.LinearRing;
+import org.gwtopenmaps.openlayers.client.geometry.Polygon;
+import org.gwtopenmaps.openlayers.client.handler.HandlerOptions;
 import org.gwtopenmaps.openlayers.client.handler.PolygonHandler;
+import org.gwtopenmaps.openlayers.client.handler.RegularPolygonHandler;
+import org.gwtopenmaps.openlayers.client.handler.RegularPolygonHandlerOptions;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
+import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.ToggleButton;
+import com.google.gwt.user.client.ui.Widget;
 
 public class DrawFeatures implements ShowcaseExample {
 
@@ -30,7 +38,7 @@ public class DrawFeatures implements ShowcaseExample {
 	private WMS wmsLayer;
 
 	private final Vector vectorLayer = new Vector("Vector layer");
-
+    private final Vector boxLayer = new Vector("Box Layer");
 	public DrawFeatures(){
 
 		example = new MapExample();
@@ -48,7 +56,7 @@ public class DrawFeatures implements ShowcaseExample {
 
 		example.getMap().addLayers(new Layer[] {wmsLayer});
 		//example.getMap().addControl(new NavToolBar());
-		example.getMap().addControl(new LayerSwitcher());
+		//example.getMap().addControl(new LayerSwitcher());
 
 		double lon = 4.0;
 		double lat = 5.0;
@@ -69,7 +77,9 @@ public class DrawFeatures implements ShowcaseExample {
 					org.gwtopenmaps.openlayers.client.geometry.Polygon.narrowToPolygon(vf.getGeometry());
 				LinearRing[] rings = aoi.getComponents();
 				if(rings!=null){ rings[0].getComponents();}
-				Window.alert("Feature of class " + vf.getGeometryClassName() +  " added!");
+				Geometry geo = Geometry.narrowToGeometry(vf.getGeometry());
+				
+				Window.alert("Feature of class " + vf.getGeometryClassName() +  " added with bounds " + geo.getBounds().toString());
 			}
 		};
 
@@ -78,12 +88,19 @@ public class DrawFeatures implements ShowcaseExample {
 		//Options options = new Options();
 		//final DrawFeature drawPolygon = new DrawFeature(vectorLayer, polygonHandler, listener, options);
 		final DrawFeature drawPolygon = new DrawFeature(vectorLayer, new PolygonHandler(), drawFeatureOptions);
-		example.getMap().addControl(drawPolygon);
-
+		//example.getMap().addControl(drawPolygon);
+		DrawFeatureOptions drawRegularPolygonFeatureOptions = new DrawFeatureOptions();
+		drawRegularPolygonFeatureOptions.onFeatureAdded(listener);
+		RegularPolygonHandlerOptions regularPolygonHandlerOptions = new RegularPolygonHandlerOptions();
+		regularPolygonHandlerOptions.setSides(4);
+		regularPolygonHandlerOptions.setIrregular(true);
+		drawRegularPolygonFeatureOptions.setHandlerOptions(regularPolygonHandlerOptions);
+        final DrawFeature drawRegularPolygon = new DrawFeature(boxLayer, new RegularPolygonHandler(), drawRegularPolygonFeatureOptions);
+        example.getMap().addControl(drawRegularPolygon);  
 		final ToggleButton drawPolygonBtn = new ToggleButton("Draw Polygon (listener)");
 		drawPolygonBtn.setWidth("200px");
-		drawPolygonBtn.addClickHandler(new ClickHandler(){
-			public void onClick(ClickEvent evt) {
+		drawPolygonBtn.addClickListener(new ClickListener(){
+			public void onClick(Widget sender) {
 				//TODO je wilt aan een control kunnen vragen of hij geactiveerd is
 				if(drawPolygonBtn.isDown()){
 					drawPolygon.activate();
@@ -92,7 +109,22 @@ public class DrawFeatures implements ShowcaseExample {
 				}
 			}
 		});
-		example.add(drawPolygonBtn, DockPanel.SOUTH);
+		final ToggleButton drawRegularPolygonBtn = new ToggleButton("Draw Rectangle");
+		drawRegularPolygonBtn.addClickListener(new ClickListener(){
+			public void onClick(Widget sender) {
+				if ( drawRegularPolygonBtn.isDown() ) {
+					drawRegularPolygon.activate();
+				} else {
+					drawRegularPolygon.deactivate();
+				}
+			}
+			
+		});
+		Grid buttons = new Grid(1, 2);
+		buttons.setWidget(0, 0, drawPolygonBtn);
+		buttons.setWidget(0, 1, drawRegularPolygonBtn);
+		example.add(buttons, DockPanel.SOUTH);
+		example.getMap().addLayer(boxLayer);
 		example.getMap().addControl(new EditingToolbar(vectorLayer));
 	}
 

@@ -64,6 +64,7 @@ public class VectorFormat extends Format {
 	 */
 	public VectorFeature[] read(String input){
 		//VectorFeature.narrowToVectorFeature(FormatImpl.read(getJSObject(), input)) ;
+		//use ensureArray
 		return null;
 	}
 

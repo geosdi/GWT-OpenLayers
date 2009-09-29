@@ -113,9 +113,10 @@ public class JSObjectHelper {
 		if(object[name] != undefined){return true}else{return false};
 	}-*/;
 
-	public static native JSObject asArray(JSObject object)/*-{
-		//how to test for array if GWT-OL brakes instanceof?
-		if(object.push){
+	public static native JSObject ensureArray(JSObject object)/*-{
+		//GWT breaks instanceof, so ducktype
+		if(object.push && object.splice && object.unshift){
+			return object;
 		}else{
 			return [object];
 		}

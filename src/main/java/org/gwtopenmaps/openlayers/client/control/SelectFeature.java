@@ -27,7 +27,7 @@ public class SelectFeature extends Control {
 	 *
 	 */
 	public interface UnselectFeatureListener {
-		void onFeatureUnselected(JSObject vectorFeature);
+		void onFeatureUnselected(VectorFeature vectorFeature);
 	}
 
 	protected SelectFeature(JSObject element) {

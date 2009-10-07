@@ -3,6 +3,25 @@
 =============================
 
 ====================
+ GWT-OpenLayers v0.5
+====================
+
+Breaking changes:
+-----------------
+OpenLayers.Handler package
+- VectorFeature
+Replaced getGeometryClassName():String and getGeometry():JSObject by getGeometry():Geometry.
+The geometry classname can by obtained from Geometry, in order to narrow the Geometry to a specific Geometry type.
+For example:
+Geometry g = vf.getGeometry()
+Point p = Point.narrowToPoint(g.getJSObject());
+
+Enhancements:
+-------------
+OpenLayers.Handler package
+- RegularPolygonHandler
+
+====================
  GWT-OpenLayers v0.4
 ====================
 

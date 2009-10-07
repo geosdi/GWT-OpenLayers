@@ -6,18 +6,18 @@ import com.google.gwt.user.client.Element;
 
 /**
  * <p>
- * A JSObject is an opaque handle to a javascript object. Like it's parent it
- * cannot be created directly,  but has to be created via JSNI or via the
+ * A JSObject is an opaque handle to a JavaScript object. Like it's parent it
+ * cannot be created directly. A JSObject has to be created via JSNI or via the
  * static factory method createJSObject.
  *
- * It expands upon it's parent by offering setter and getter methods to set properties
- * on the JSObject. A property can a number, boolean or string, but also another JSObject
- * or a DOM Element. To set a function on a JSObject, it can be created via JSNI,
- * returned as a JSObject and set as property.
+ * It expands upon it's parent by offering several convenience functions, such as
+ * setter and getter methods to set properties on the JSObject. A property can be
+ * a number, boolean or string, but also another JSObject or a DOM Element.
+ * To set a function on a JSObject, it can be created via JSNI, returned as a JSObject and set as property.
  * </p>
  * <p>
  * The purpose of the setter and getter methods is to reduce the amount of JSNI code
- * necessary for working with javascript objects.
+ * necessary for working with JavaScript objects.
  * </p>
  *
  * @author Erdem Gunay
@@ -114,4 +114,14 @@ public class JSObject extends JavaScriptObject {
 		return JSObjectHelper.hasProperty(this, name);
 	}
 
+	/**
+	 * Checks whether the JSObject is a JavaScript Array by duck typing. If the
+	 * JSObject is a JavaScript Array it is returned as is, otherwise a JavaScript
+	 * Array is returned with the JSObject as element.
+	 *
+	 * @return JSObject - A JavaScript Array
+	 */
+	public final JSObject ensureOpaqueArray(){
+		return JSObjectHelper.ensureOpaqueArray(this);
+	}
 }

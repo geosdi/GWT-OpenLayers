@@ -113,7 +113,7 @@ public class JSObjectHelper {
 		if(object[name] != undefined){return true}else{return false};
 	}-*/;
 
-	public static native JSObject ensureArray(JSObject object)/*-{
+	public static native JSObject ensureOpaqueArray(JSObject object)/*-{
 		//GWT breaks instanceof, so ducktype
 		if(object.push && object.splice && object.unshift){
 			return object;

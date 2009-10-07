@@ -4,7 +4,6 @@ import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.format.KML;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.test.openlayers.client.BaseTestCase;
 
 public class KMLTest extends BaseTestCase {
@@ -24,12 +23,11 @@ public class KMLTest extends BaseTestCase {
 		KML kml = new KML();
 		VectorFeature[] vf = kml.read(KML_EXPORTED_POINT);
 		vf.toString();
-		JSObject _g = vf[0].getGeometry();
-		Geometry g = Geometry.narrowToGeometry(_g);
+		Geometry g = vf[0].getGeometry();;
 		assertEquals(Geometry.POINT_CLASS_NAME, g.getClassName());
 		// sequence from unknown geometry type to specific geometry type:
 		// 1. narrowToGeometry, 2. ask for class, 3. then narrow to appropriate class
-		Point p = Point.narrowToPoint(_g);
+		Point p = Point.narrowToPoint(g.getJSObject());
 		assertEquals(1.0 ,p.getX());
 
 	}

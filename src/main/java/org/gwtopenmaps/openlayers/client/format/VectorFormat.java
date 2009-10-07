@@ -6,12 +6,12 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * Format objects provide support for reading and writing formats for
- * representing ...
+ * representing vector features (or their geometries).
  *
  * There are different standard formats for representing vector features.
  * For example, WKT GML, and KML.
  *
- * A format object can read and write vector features in a specific format
+ * A format object can read and write vector features in a specific format.
  *
  * @author Edwin Commandeur - Atlis EJS
  */
@@ -57,15 +57,26 @@ public class VectorFormat extends Format {
 	};
 
 	/**
-	 * TODO: implement
+	 * Read a String representation of a vector format into an array of vector features.
 	 *
-	 * @param input - the vector features in a particular vector format
-	 * @return null
+	 * @param vectorFormatString - String of a particular vector format
+	 * @return array of vector features
 	 */
-	public VectorFeature[] read(String input){
-		//VectorFeature.narrowToVectorFeature(FormatImpl.read(getJSObject(), input)) ;
-		//use ensureArray
-		return null;
+	//For VectorFormats with specific read options or different return types
+	// specific read functions should be constructed.
+	//For example:
+	// read(String vfString, WKTReadOptions options)
+	// readToMap(String vfString, WKTReadOptions options)
+	public VectorFeature[] read(String vectorFormatString){
+		JSObject out = FormatImpl.read(getJSObject(), vectorFormatString);
+		JObjectArray jObjectArray = JObjectArray.narrowToJObjectArray(out.ensureOpaqueArray());
+		int nr = jObjectArray.length();
+		VectorFeature[] vfs = new VectorFeature[nr];
+		for(int i =0; i < nr;i++){
+			//get objects and narrow them to vector features
+			vfs[i] = VectorFeature.narrowToVectorFeature(jObjectArray.get(i));
+		}
+		return vfs;
 	}
 
 }

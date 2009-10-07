@@ -74,12 +74,12 @@ public class DrawFeatures implements ShowcaseExample {
 		FeatureAddedListener listener = new FeatureAddedListener(){
 			public void onFeatureAdded(VectorFeature vf) {
 				org.gwtopenmaps.openlayers.client.geometry.Polygon aoi =
-					org.gwtopenmaps.openlayers.client.geometry.Polygon.narrowToPolygon(vf.getGeometry());
+					org.gwtopenmaps.openlayers.client.geometry.Polygon.narrowToPolygon(vf.getGeometry().getJSObject());
 				LinearRing[] rings = aoi.getComponents();
 				if(rings!=null){ rings[0].getComponents();}
-				Geometry geo = Geometry.narrowToGeometry(vf.getGeometry());
-				
-				Window.alert("Feature of class " + vf.getGeometryClassName() +  " added with bounds " + geo.getBounds().toString());
+				Geometry geo = vf.getGeometry();
+
+				Window.alert("Feature of class " + geo.getClassName() +  " added with bounds " + geo.getBounds().toString());
 			}
 		};
 
@@ -96,7 +96,7 @@ public class DrawFeatures implements ShowcaseExample {
 		regularPolygonHandlerOptions.setIrregular(true);
 		drawRegularPolygonFeatureOptions.setHandlerOptions(regularPolygonHandlerOptions);
         final DrawFeature drawRegularPolygon = new DrawFeature(boxLayer, new RegularPolygonHandler(), drawRegularPolygonFeatureOptions);
-        example.getMap().addControl(drawRegularPolygon);  
+        example.getMap().addControl(drawRegularPolygon);
 		final ToggleButton drawPolygonBtn = new ToggleButton("Draw Polygon (listener)");
 		drawPolygonBtn.setWidth("200px");
 		drawPolygonBtn.addClickListener(new ClickListener(){
@@ -118,7 +118,7 @@ public class DrawFeatures implements ShowcaseExample {
 					drawRegularPolygon.deactivate();
 				}
 			}
-			
+
 		});
 		Grid buttons = new Grid(1, 2);
 		buttons.setWidget(0, 0, drawPolygonBtn);

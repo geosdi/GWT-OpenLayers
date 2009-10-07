@@ -109,18 +109,18 @@ public class BasicDrawFeatures implements ShowcaseExample {
               VectorFeature[] fts = vectorLayer.getFeatures();
               int x = vectorLayer.getNumberOfFeatures();
               //normally you would have to check the class name
-              Point p = Point.narrowToPoint(fts[0].getGeometry());
-              LineString l = LineString.narrowToLineString(fts[1].getGeometry());
-              Polygon pg = Polygon.narrowToPolygon(fts[2].getGeometry());
+              Point p = Point.narrowToPoint(fts[0].getGeometry().getJSObject());
+              LineString l = LineString.narrowToLineString(fts[1].getGeometry().getJSObject());
+              Polygon pg = Polygon.narrowToPolygon(fts[2].getGeometry().getJSObject());
               LinearRing r = LinearRing.narrowToLinearRing(pg.getComponent(0));
               double[][] lcoord = l.getCoordinateArray();
               WKT wktFormat = new WKT();
               String wkt = wktFormat.write(fts);
               eventMessageArea.setText(wkt);
               Window.alert("Number of features: " + x + "\n"
-                      + "Geometry class f1: " + fts[0].getGeometryClassName() + "\n"
-                      + "Geometry class f2: " + fts[1].getGeometryClassName() + "\n"
-                      + "Geometry class f3: " + fts[2].getGeometryClassName() + "\n"
+                      + "Geometry class f1: " + fts[0].getGeometry().getClassName() + "\n"
+                      + "Geometry class f2: " + fts[1].getGeometry().getClassName() + "\n"
+                      + "Geometry class f3: " + fts[2].getGeometry().getClassName() + "\n"
                       + "Geometry coordinates f1: " + p.getX() + ", " + p.getY() + "\n"
                       + "Number of components f2: " + l.getNumberOfComponents() + "\n"
                       + "Geometry coordinates f2 - component 1: " + lcoord[0][0]+ ", " + lcoord[0][1] + "\n"

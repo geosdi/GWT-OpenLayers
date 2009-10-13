@@ -50,3 +50,14 @@ class BoundsImpl {
 }-*/;
 
 }
+	public float getWidth() {
+		return BoundsImpl.getWidth(getJSObject());
+	}
+	
+	public float getHeight() {
+		return BoundsImpl.getHeight(getJSObject());
+	}
+	
+	public boolean containsBounds(Bounds bounds, boolean partial, boolean contains ) {
+		return BoundsImpl.containsBounds(getJSObject(), bounds.getJSObject(), partial, contains);
+	}

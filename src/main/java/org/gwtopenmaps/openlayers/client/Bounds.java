@@ -88,6 +88,13 @@ public class Bounds extends OpenLayersObjectWrapper {
 		return BoundsImpl.getMaxY(getJSObject());
 	}
 
+	public float getWidth() {
+		return BoundsImpl.getWidth(getJSObject());
+	}
+	
+	public float getHeight() {
+		return BoundsImpl.getHeight(getJSObject());
+	}
 	/**
 	 * @param significantDigits - Number of significant digits in the bbox coordinates,
 	 *  	pass null to use the default of 6.
@@ -108,5 +115,9 @@ public class Bounds extends OpenLayersObjectWrapper {
 
 	public Geometry toGeometry() {
 		return Geometry.narrowToGeometry(BoundsImpl.toGeometry(this.getJSObject()));
+	}
+	
+	public boolean containsBounds(Bounds bounds, boolean partial, boolean contains ) {
+		return BoundsImpl.containsBounds(getJSObject(), bounds.getJSObject(), partial, contains);
 	}
 }

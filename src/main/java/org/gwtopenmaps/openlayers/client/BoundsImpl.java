@@ -46,18 +46,18 @@ class BoundsImpl {
     }-*/;
 
 	public static native JSObject toGeometry(JSObject bounds)/*-{
-	return bounds.toGeometry();
-}-*/;
+	   return bounds.toGeometry();
+    }-*/;
+	
+	public static native boolean containsBounds(JSObject bounds, JSObject in_bounds, boolean partial, boolean contains)/*-{
+		return bounds.containsBounds(in_bounds, partial, contains);
+	}-*/;
 
+	public static native float getWidth(JSObject bounds)/*-{
+		return bounds.getWidth();
+	}-*/;
+   
+	public static native float getHeight(JSObject bounds)/*-{
+		return bounds.getHeight();
+	}-*/;
 }
-	public float getWidth() {
-		return BoundsImpl.getWidth(getJSObject());
-	}
-	
-	public float getHeight() {
-		return BoundsImpl.getHeight(getJSObject());
-	}
-	
-	public boolean containsBounds(Bounds bounds, boolean partial, boolean contains ) {
-		return BoundsImpl.containsBounds(getJSObject(), bounds.getJSObject(), partial, contains);
-	}

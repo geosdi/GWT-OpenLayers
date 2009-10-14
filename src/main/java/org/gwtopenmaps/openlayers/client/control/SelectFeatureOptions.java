@@ -28,14 +28,20 @@ public class SelectFeatureOptions extends ControlOptions {
 	public void setToggle() {
 		getJSObject().setProperty("toggle", true);
 	}
-
+	
 	/**
 	 *
 	 */
 	public void setMultiple() {
 		getJSObject().setProperty("multiple", true);
 	}
-
+	
+	/**
+	 * Allows features to be selected by dragging a box.
+	 */
+         public void setBox(boolean box) {
+             getJSObject().setProperty("box", box);
+        }
 	/**
 	 * Triggers when a feature is selected
 	 * 

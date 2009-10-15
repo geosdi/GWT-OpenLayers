@@ -9,4 +9,11 @@ public class HandlerOptions extends JSObjectWrapper {
 		super(jsObject);
 	}
 
+	/**
+	 * 
+	 * @param keyMask Use bitwise operators and one or more of the OpenLayers.Handler constants to construct a keyMask.
+	 */
+	public void setKeyMask(int keyMask) {
+		getJSObject().setProperty("keyMask", keyMask);
+	}
 }

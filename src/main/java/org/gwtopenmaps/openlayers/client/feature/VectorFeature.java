@@ -4,6 +4,7 @@ import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
 import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
+import org.gwtopenmaps.openlayers.client.util.Attributes;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -59,12 +60,12 @@ public class VectorFeature extends Feature {
 	 * @param vectorFeatureAttributes
 	 *            The attributes to set
 	 */
-	public void setAttributes(VectorFeatureAttributes attributes) {
+	public void setAttributes(Attributes attributes) {
 		getJSObject().setProperty("attributes", attributes.getJSObject());
 	}
 
-	public VectorFeatureAttributes getAttributes(VectorFeature attributes){
-		return VectorFeatureAttributes.narrowToVectorFeatureAttributes(getJSObject().getProperty("attributes"));
+	public Attributes getAttributes(VectorFeature attributes){
+		return Attributes.narrowToAttributes(getJSObject().getProperty("attributes"));
 	}
 
 }

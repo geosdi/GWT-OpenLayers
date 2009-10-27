@@ -10,6 +10,7 @@ import org.gwtopenmaps.test.openlayers.client.format.KMLTest;
 import org.gwtopenmaps.test.openlayers.client.format.WKTTest;
 import org.gwtopenmaps.test.openlayers.client.geometry.PointTest;
 import org.gwtopenmaps.test.openlayers.client.map.MapOptionsTest;
+import org.gwtopenmaps.test.openlayers.client.util.AttributesTest;
 import org.gwtopenmaps.test.openlayers.client.util.JSObjectTest;
 
 import com.google.gwt.junit.tools.GWTTestSuite;
@@ -33,6 +34,7 @@ public class GwtOpenLayersTestSuite extends GWTTestSuite {
 
 		//Tests for Util
 		suite.addTestSuite(MapOptionsTest.class);
+		suite.addTestSuite(AttributesTest.class);
 
 		//Tests for Util
 		suite.addTestSuite(JSObjectTest.class);

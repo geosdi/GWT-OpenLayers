@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client;
 
-import org.gwtopenmaps.openlayers.client.feature.VectorFeatureAttributes;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -249,11 +248,11 @@ public class Style extends OpenLayersObjectWrapper {
 	 * <p>
 	 * Note: you can set a custom label for each feature added to a layer by
 	 * using tags in the label, and setting attributes using
-	 * {@link VectorFeatureAttributes}. For example, set the style.label to
+	 * {@link org.gwtopenmaps.openlayers.client.util.Attributes}. For example, set the style.label to
 	 * "${customLabel}", then, for each feature added to the layer, add an
 	 * "customLabel" attribute with
 	 * <p>
-	 * <code>VectorFeatureAttributes.setAttribute("customLabel","myLabel for this specific feature")</code>
+	 * <code>attributes.setAttribute("customLabel","myLabel for this specific feature")</code>
 	 * <p>
 	 * Note: this can also be used in any style field of type String, such as
 	 * fillColor, fontColor, etc

@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -20,13 +21,15 @@ public class OverviewMap extends Control {
 		this(OverviewMapImpl.create(options.getJSObject()));
 	}
 
-	//
-	// legacy
-	//
-
-	/*
-	public OverviewMap(Options params) {
-		this(OverviewMapImpl.create(params.getJSObject()));
+	/**
+	 * The overview map control has a reference to a {@link org.gwtopenmaps.openlayers.client.Map} instance,
+	 * which is the actual overview map.
+	 *
+	 * @return map - instance of {@link org.gwtopenmaps.openlayers.client.Map}
+	 *   map will be null if the control is not added to any map yet
+	 */
+	public Map getMap(){
+		return Map.narrowToMap(getJSObject().getProperty("ovmap"));
 	}
-	*/
+
 }

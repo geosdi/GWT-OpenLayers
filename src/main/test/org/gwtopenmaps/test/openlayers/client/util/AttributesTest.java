@@ -17,8 +17,6 @@ public class AttributesTest extends BaseTestCase{
 		assertEquals(false, attributes.getAttributeAsBoolean("testBoolean"));
 		attributes.setAttribute("testString", "test");
 		assertEquals("test", attributes.getAttributeAsString("testString"));
-//		assertEquals("testInt,testFloat,testDouble,testBoolean,testString",
-//				attributes.getJSObject().getPropertyNames());
 	}
 
 }

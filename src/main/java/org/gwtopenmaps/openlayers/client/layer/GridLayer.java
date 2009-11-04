@@ -10,15 +10,36 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 * Base class for layers that use a lattice of tiles.
 *
 * @author Edwin Commandeur - Atlis EJS
+* @author Michel Vitor A Rodrigues - Intec
 *
 */
 public class GridLayer extends HTTPRequestLayer {
 
-	//TODO: properties that are specific to GridLayer
-
 	protected GridLayer(JSObject element) {
 		super(element);
 	}
-
+    public GridLayer(String name, String url,WMSParams params,GridLayerOptions options ){
+    	
+    	this(GridLayerImpl.create(name, url, params.getJSObject(), options.getJSObject()));
+    } 
+    public GridLayer(String name, String url,WMSParams params){
+    	
+    	this(GridLayerImpl.create(name, url, params.getJSObject()));
+    } 
+    public void setTitleSize(Integer tileSize){
+    	GridLayerImpl.setTitleSize(getJSObject(),tileSize);
+    }
+    public void setSingleTile(boolean singleTile){
+    	GridLayerImpl.setSingleTile(getJSObject(),singleTile);
+    }
+    public void setRatio(float ratio){
+    	GridLayerImpl.setRatio(getJSObject(), ratio);	
+    }
+    public void setBuffer(Integer buffer){
+    	GridLayerImpl.setBuffer(getJSObject(), buffer);
+    }
+    public void setNumLoadingTiles(Integer numLoadingTiles){
+    	GridLayerImpl.setNumLoadingTiles(getJSObject(), numLoadingTiles);
+    }
 
 }

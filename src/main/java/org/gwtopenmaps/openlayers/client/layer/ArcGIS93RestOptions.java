@@ -3,8 +3,8 @@ package org.gwtopenmaps.openlayers.client.layer;
  * @author Michel Vitor A Rodrigues - Intec
  */
 public class ArcGIS93RestOptions extends GridLayerOptions {
-	
-	
+
+
 	public void setSingleTile(boolean b){
 		getJSObject().setProperty("singleTile", b);
 	}
@@ -13,7 +13,7 @@ public class ArcGIS93RestOptions extends GridLayerOptions {
 	}
 
 	public void setTransitionEffectResize(){
-		setTransitionEffect("resize");
+		setTransitionEffect(TransitionEffect.RESIZE);
 	}
 	public void setProjection(String epsgCode){
 		getJSObject().setProperty("projection", epsgCode);

@@ -4,6 +4,8 @@ import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
+import com.google.gwt.core.client.JsArrayNumber;
+
 /**
  *
  * @author Edwin Commandeur - Atlis EJS
@@ -15,8 +17,6 @@ public class LayerOptions extends JSObjectWrapper {
 
 	//TODO: support ... (shared by all layers)
 	// -displayOutsideMaxExtent
-	// -minResolution
-	// -maxResolution
 	// -minScale
 	// -maxScale
 	// -resolutions
@@ -177,6 +177,32 @@ public class LayerOptions extends JSObjectWrapper {
 	 */
 	public void setMinResolution(float minResolution){
 		getJSObject().setProperty("minResolution", minResolution);
+	}
+
+	/**
+	 *
+	 */
+	public void setMaxScale(float maxScale){
+		getJSObject().setProperty("maxScale", maxScale);
+	}
+
+	/**
+	 *
+	 */
+	public void setMinScale(float minScale){
+		getJSObject().setProperty("minScale", minScale);
+	}
+
+	/**
+	 *
+	 */
+	public void setScales(float[] scales){
+		//does this work?
+		JSObject scaleArray = JSObject.createJSArray().cast();
+		for(int i = 0, max = scales.length; i < max;i++){
+			scaleArray.setProperty(Integer.toString(i), scales[i]);
+		}
+		getJSObject().setProperty("scales", scaleArray);
 	}
 
 	/**

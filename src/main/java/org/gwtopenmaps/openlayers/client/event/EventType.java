@@ -13,6 +13,7 @@ public class EventType {
 	public static final String CONTROL_DEACTIVATE = "deactivate";
 	public static final String CONTROL_MEASURE = "measure";
 	public static final String CONTROL_MEASURE_PARTIAL = "measurepartial";
+	public static final String CONTROL_GET_FEATURE_INFO = "getfeatureinfo";
 
 	public static final String LAYER_LOADSTART = "loadstart";
 	public static final String LAYER_LOADEND = "loadend";

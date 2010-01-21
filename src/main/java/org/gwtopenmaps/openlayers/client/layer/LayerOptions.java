@@ -4,8 +4,6 @@ import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
-import com.google.gwt.core.client.JsArrayNumber;
-
 /**
  *
  * @author Edwin Commandeur - Atlis EJS

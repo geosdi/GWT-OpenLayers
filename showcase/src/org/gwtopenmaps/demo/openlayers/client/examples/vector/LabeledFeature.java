@@ -10,7 +10,6 @@ import org.gwtopenmaps.openlayers.client.control.MousePosition;
 import org.gwtopenmaps.openlayers.client.control.NavToolBar;
 import org.gwtopenmaps.openlayers.client.control.PanZoomBar;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
-import org.gwtopenmaps.openlayers.client.feature.VectorFeatureAttributes;
 import org.gwtopenmaps.openlayers.client.geometry.LinearRing;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
 import org.gwtopenmaps.openlayers.client.geometry.Polygon;
@@ -21,6 +20,7 @@ import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
+import org.gwtopenmaps.openlayers.client.util.Attributes;
 
 public class LabeledFeature implements ShowcaseExample {
 
@@ -120,7 +120,7 @@ public class LabeledFeature implements ShowcaseExample {
 	// create a point feature
 	Point point = new Point(-111.04, 45.68);
 	VectorFeature pointFeature = new VectorFeature(point);
-	pointFeature.setAttributes(new VectorFeatureAttributes() {
+	pointFeature.setAttributes(new Attributes() {
 	    {
 		this.setAttribute("name", "toto");
 		this.setAttribute("age", 20);
@@ -143,7 +143,7 @@ public class LabeledFeature implements ShowcaseExample {
 	LinearRing linearRing = new LinearRing(pointList);
 	VectorFeature polygonFeature = new VectorFeature(new Polygon(
 		new LinearRing[] { linearRing }));
-	polygonFeature.setAttributes(new VectorFeatureAttributes() {
+	polygonFeature.setAttributes(new Attributes() {
 	    {
 		this.setAttribute("name", "dude");
 		this.setAttribute("age", 21);
@@ -156,7 +156,7 @@ public class LabeledFeature implements ShowcaseExample {
 	// create a image feature
 	VectorFeature imageFeatureRedCar = new VectorFeature(new Point(point
 		.getX() + 5, point.getY() - 10));
-	imageFeatureRedCar.setAttributes(new VectorFeatureAttributes() {
+	imageFeatureRedCar.setAttributes(new Attributes() {
 	    {
 		this.setAttribute("plate", "XYZ-1234");
 		this.setAttribute("favColor", "red");
@@ -166,7 +166,7 @@ public class LabeledFeature implements ShowcaseExample {
 
 	VectorFeature imageFeatureBlueCar = new VectorFeature(new Point(point
 		.getX() - 5, point.getY() + 10));
-	imageFeatureBlueCar.setAttributes(new VectorFeatureAttributes() {
+	imageFeatureBlueCar.setAttributes(new Attributes() {
 	    {
 		this.setAttribute("plate", "ABC-9876");
 		this.setAttribute("favColor", "blue");

@@ -9,10 +9,10 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur
- * 
+ *
  */
 public class OpenLayersObjectWrapper extends JSObjectWrapper {
-   
+
 	protected OpenLayersObjectWrapper(JSObject openLayersObject)
 	{
 		super(openLayersObject);
@@ -41,5 +41,16 @@ public class OpenLayersObjectWrapper extends JSObjectWrapper {
 	 */
 	public String getClassName(){
 		return OpenLayersObjectWrapperImpl.getClassName(getJSObject());
+	}
+
+	/**
+	 * Each OpenLayers object has an id property.
+	 *
+	 * What can you do with Id? ...
+	 *
+	 * @return String - id
+	 */
+	public String getId(){
+		return OpenLayersObjectWrapperImpl.getId(getJSObject());
 	}
 }

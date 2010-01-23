@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  * cross-domain requests with Javascript. However, the OpenLayers proxy needs
  * Python to run. This is a port of the Open Proxy to Java.
  *
- * For security reasons the allowedHosts should be specified.
+ * For extra security the allowedHosts should be specified.
+ * The allowedHosts are the allowed target hosts to which the request may be proxied.
  *
  * Parameter expected for GET requests:
  *    url - an URL that is directly queried in a proxied GET
@@ -26,14 +27,16 @@ import javax.servlet.http.HttpServletResponse;
  * What are the plans for OpenLayers 3.x?
  *
  * Plan for GWT: do check on parameters, and only allow specific types of requests.
+ * However: does this make it more secure in any way???
  *
  */
 
 @SuppressWarnings("serial")
 public class GwtOpenLayersProxyServlet extends HttpServlet {
 
-	private static final String PARAMETER_URL = "URL";
-	private static final String PARAMETER_BODY = "URL";
+	private static final String PARAMETER_URL_LC = "url";
+	private static final String PARAMETER_URL_UC = "URL";
+//	private static final String PARAMETER_BODY = "body";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
@@ -52,8 +55,10 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 //		httpUtils.parsePostData(len, in); //should I use this for parsing POST data?
 
 		String host = request.getRemoteHost();
-		String targetURL = request.getParameter(PARAMETER_URL);
-
+		String targetURL = request.getParameter(PARAMETER_URL_LC);
+		if(targetURL == null){
+			targetURL = request.getParameter(PARAMETER_URL_UC);
+		}
 
 		//read from configuration file
 		//String[] allowedHosts = {"", ""};
@@ -61,7 +66,7 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 
 		response.setContentType("text/plain");
 
-		//response.write();
+		//TODO: make serious implementation of proxy
 		PrintWriter writer = response.getWriter();
 		writer.println("Host: " + host);
 		writer.println("URL: " + targetURL);

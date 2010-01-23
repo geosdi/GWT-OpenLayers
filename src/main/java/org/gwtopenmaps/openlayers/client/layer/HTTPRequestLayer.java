@@ -113,6 +113,7 @@ public class HTTPRequestLayer extends Layer {
     public boolean MergeNewParams(WMSParams params){
     	return HTTPRequestLayerImpl.mergeNewParams(getJSObject(), params.getJSObject());
     }
+
     /**
      * Method: selectUrl
      * selectUrl() implements the standard floating-point multiplicative

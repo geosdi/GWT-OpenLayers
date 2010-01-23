@@ -16,6 +16,7 @@ syntax: regexp
 ^showcase/.settings/*
 ^showcase/lib/*
 ^showcase/war/js/*
+^showcase/war/thirdparty/*
 ^showcase/war/WEB-INF/classes/*
 ^showcase/war/WEB-INF/lib/*
 ^showcase/war/gwt_ol_showcase/*

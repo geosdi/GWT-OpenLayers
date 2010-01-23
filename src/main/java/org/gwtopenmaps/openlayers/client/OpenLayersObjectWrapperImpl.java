@@ -20,9 +20,4 @@ class OpenLayersObjectWrapperImpl {
 		return (className === undefined) ? null : className;
 	}-*/;
 
-	public static native String getId(JSObject self)/*-{
-		var id = self.id;
-		return (id === undefined) ? null : id;
-	}-*/;
-
 }

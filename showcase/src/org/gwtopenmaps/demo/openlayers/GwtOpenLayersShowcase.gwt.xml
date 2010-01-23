@@ -17,7 +17,5 @@
 	<!--Application specific style sheet.              -->
 	<stylesheet src='GwtOpenLayersShowcase.css' />
 
-<!-- 
-	<script src="js/OpenLayers-2.7/OpenLayers-debug.js"></script>
-	 -->
+	<!-- third party scripts are referenced in GwtOpenLayersShowcase.html -->
 </module>

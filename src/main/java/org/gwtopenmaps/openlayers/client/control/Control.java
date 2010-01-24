@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
 import org.gwtopenmaps.openlayers.client.event.ControlActivateListener;
 import org.gwtopenmaps.openlayers.client.event.ControlDeactivateListener;
@@ -50,5 +51,14 @@ public class Control extends OpenLayersEObjectWrapper {
 			}
 		 });
 	};
-
+	
+	/**
+	 * get the map to which this control is attached
+	 *
+	 * @return the map
+	 */
+	public Map getMap() {
+		return Map.narrowToMap(this.getJSObject().getProperty("map"));
+	}
+	
 }

@@ -32,4 +32,20 @@ public class OverviewMap extends Control {
 		return Map.narrowToMap(getJSObject().getProperty("ovmap"));
 	}
 
+	/**
+	 * Turn on autoPan
+	 * @param autoPan
+	 */
+	public void setAutoPan(boolean autoPan){
+		getJSObject().setProperty("autoPan", autoPan);
+	}
+
+	/**
+	 * Turn on autoPan
+	 * @return autoPan
+	 */
+	public boolean getAutoPan(){
+		return getJSObject().getPropertyAsBoolean("autoPan");
+	}
+
 }

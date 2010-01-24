@@ -26,4 +26,8 @@ class EventsImpl {
 		return self.getMousePosition(evt);
 	}-*/;
 	
+	public native static JSObject stop(JSObject evt, boolean allowDefault)/*-{
+		$wnd.OpenLayers.Event.stop(evt, allowDefault);
+	}-*/;
+	
 }

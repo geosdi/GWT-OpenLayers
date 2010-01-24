@@ -32,5 +32,13 @@ public class Events extends OpenLayersObjectWrapper {
 	{
 		EventsImpl.unregister(getJSObject(), type, obj.getJSObject(), handler.getJSObject());
 	}
+	public void stop(EventObject event, boolean allowDefault)
+	{
+		EventsImpl.stop(event.getJSObject(), allowDefault);
+	}
+	public void stop(EventObject event)
+	{
+		this.stop(event, false);
+	}
 
 }

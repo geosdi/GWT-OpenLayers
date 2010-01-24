@@ -58,7 +58,7 @@ import com.google.gwt.user.client.Element;
  * <p>
  * Adjusted from OL API docs:
  * On their own maps do not provide much functionality.  To extend a map
- * it’s necessary to add controls, see {@link org.gwtopenmaps.openlayers.client.control.Control}
+ * it's necessary to add controls, see {@link org.gwtopenmaps.openlayers.client.control.Control}
  * and layers, see {@link org.gwtopenmaps.openlayers.client.layer.Layer}
  * to the map.
  *

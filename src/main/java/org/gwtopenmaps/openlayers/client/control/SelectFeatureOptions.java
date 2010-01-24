@@ -64,7 +64,7 @@ public class SelectFeatureOptions extends ControlOptions {
 
 	/**
 	 * From OpenLayers documentation: If true do not actually select features
-	 * (i.e. place them in the layer’s selected features array), just highlight
+	 * (i.e. place them in the layer's selected features array), just highlight
 	 * them. This property has no effect if hover is false. Defaults to false.
 	 * 
 	 * @param highlightOnly

@@ -4,7 +4,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * From OpenLayers documentation: "OpenLayers features can have a number of
- * style attributes. The ‘default’ style will typically be used if no other
+ * style attributes. The 'default' style will typically be used if no other
  * style is specified. These styles correspond for the most part, to the styling
  * properties defined by the SVG standard. Information on fill properties:
  * http://www.w3.org/TR/SVG/painting.html#FillProperties Information on stroke
@@ -31,7 +31,7 @@ public class Style extends OpenLayersObjectWrapper {
 	}
 
 	/**
-	 * Hex fill color. Default is “#ee9900”.
+	 * Hex fill color. Default is '#ee9900'.
 	 *
 	 * @param c
 	 *            - hexidecimal color code or a W3C standard color name
@@ -68,7 +68,7 @@ public class Style extends OpenLayersObjectWrapper {
 	}
 
 	/**
-	 * Hex stroke color. Default is “#ee9900”.
+	 * Hex stroke color. Default is '#ee9900'.
 	 *
 	 * @param c
 	 *            - see setFillColor
@@ -288,10 +288,10 @@ public class Style extends OpenLayersObjectWrapper {
 	 * The first character is for the horizontal alignment, the second for the
 	 * vertical alignment.
 	 * <p>
-	 * Valid values for horizontal alignment: “l”=left, “c”=center, “r”=right.
-	 * Valid values for vertical alignment: “t”=top, “m”=middle, “b”=bottom.
-	 * Example values: “lt”, “cm”, “rb”. The canvas renderer does not support
-	 * vertical alignment, it will always use “b”.
+	 * Valid values for horizontal alignment: 'l'=left, 'c'=center, 'r'=right.
+	 * Valid values for vertical alignment: 't'=top, 'm'=middle, 'b'=bottom.
+	 * Example values: 'lt', 'cm', 'rb'. The canvas renderer does not support
+	 * vertical alignment, it will always use 'b'.
 	 */
 	public void setLabelAlign(String align) {
 		StyleImpl.setLabelAlign(this.getJSObject(), align);
@@ -311,7 +311,7 @@ public class Style extends OpenLayersObjectWrapper {
 	}
 
 	/**
-	 * Directly sets the StrokeLineCap string. Default is “round”. [butt | round
+	 * Directly sets the StrokeLineCap string. Default is 'round'. [butt | round
 	 * | square]
 	 */
 	public void setStrokeLinecap(String strokeLinecap) {
@@ -320,7 +320,7 @@ public class Style extends OpenLayersObjectWrapper {
 
 	/**
 	 * Directly sets the stroke dash style string. Default is Default is
-	 * “solid”. [dot | dash | dashdot | longdash | longdashdot | solid]
+	 * 'solid'. [dot | dash | dashdot | longdash | longdashdot | solid]
 	 */
 	public void setStrokeDashstyle(String strokeDashstyle) {
 		StyleImpl.setStrokeDashstyle(this.getJSObject(), strokeDashstyle);
@@ -363,7 +363,7 @@ public class Style extends OpenLayersObjectWrapper {
 		return StyleImpl.getGraphic(this.getJSObject());
 	}
 
-	/** Cursor. Default is “”. */
+	/** Cursor. Default is ''. */
 	public void setCursor(String cursor) {
 		StyleImpl.setCursor(this.getJSObject(), cursor);
 	}
@@ -377,8 +377,8 @@ public class Style extends OpenLayersObjectWrapper {
 	 * Directly sets the named graphic to use when rendering points. Default is
 	 * 'circle'.
 	 * <p>
-	 * Supported values include “circle” (default), “square”, “star”, “x”,
-	 * “cross”, “triangle”.
+	 * Supported values include 'circle' (default), 'square', 'star', 'x',
+	 * 'cross', 'triangle'.
 	 */
 	public void setGraphicName(String graphicName) {
 		StyleImpl.setGraphicName(this.getJSObject(), graphicName);
@@ -386,7 +386,7 @@ public class Style extends OpenLayersObjectWrapper {
 
 	/**
 	 * Named graphic to use when rendering points. Supported values include
-	 * “circle” (default), “square”, “star”, “x”, “cross”, “triangle”.
+	 * 'circle' (default), 'square', 'star', 'x', 'cross', 'triangle'.
 	 */
 	public String getGraphicName() {
 		return StyleImpl.getGraphicName(this.getJSObject());

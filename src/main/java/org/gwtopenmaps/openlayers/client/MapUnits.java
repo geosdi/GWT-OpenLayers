@@ -5,7 +5,7 @@ package org.gwtopenmaps.openlayers.client;
  * (not an Enum to stay java 1.4 compatible)
  *
  * The OpenLayers docs about map units:
- * Possible values are ‘degrees’ (or ‘dd’), ‘m’, ‘ft’, ‘km’, ‘mi’, ‘inches’.
+ * Possible values are "degrees" (or "dd"), "m", "ft", "km", "mi", "inches".
  *
  * @author Edwin Commandeur - Atlis EJS
  */

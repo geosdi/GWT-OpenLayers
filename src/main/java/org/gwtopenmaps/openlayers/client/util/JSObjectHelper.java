@@ -12,8 +12,8 @@ import com.google.gwt.user.client.Element;
  * Be aware: getProperty methods can die horribly at runtime if
  * property does not exist.
  * </p>
- * ECMA-262 (Ecmascript = Javascript) defines an object as an “unordered collection of
- * properties each of which contains a  primitive value, object, or function.”
+ * ECMA-262 (Ecmascript = Javascript) defines an object as an unordered collection of
+ * properties each of which contains a  primitive value, object, or function.
  *
  * @author Edwin Commandeur - Atlis EJS
  */

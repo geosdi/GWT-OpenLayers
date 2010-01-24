@@ -64,8 +64,17 @@ public class VectorFeature extends Feature {
 		getJSObject().setProperty("attributes", attributes.getJSObject());
 	}
 
-	public Attributes getAttributes(VectorFeature attributes){
+	/**
+	 * 
+	 * @return Attributes object
+	 */
+	public Attributes getAttributes(){
 		return Attributes.narrowToAttributes(getJSObject().getProperty("attributes"));
+	}
+	
+	@Deprecated
+	public Attributes getAttributes(VectorFeature attributes){
+		return this.getAttributes();
 	}
 
 }

@@ -124,4 +124,23 @@ public class JSObject extends JavaScriptObject {
 	public final JSObject ensureOpaqueArray(){
 		return JSObjectHelper.ensureOpaqueArray(this);
 	}
+	
+	/**
+	 * Takes a property name of a JSObject that is a javascript array.  It ensures
+	 * the object is an array by calling ensureOpaqueArray so you don't have to
+	 * 
+	 * @param name
+	 * @return JSObject[]
+	 */
+	public final JSObject[] getPropertyAsArray(String name){
+		JSObject JSArray = JSObjectHelper.ensureOpaqueArray(this.getProperty(name));
+		String[] indices = JSArray.getPropertyNames().split(",");
+		JSObject[] arrayOfProperties = new JSObject[indices.length];
+		int i = 0;
+		for (String index : indices) {
+			arrayOfProperties[i++] = JSArray.getProperty(index);
+		}
+		return arrayOfProperties;
+	}
+	//TODO: do we need a setProperty(array[])?
 }

@@ -88,10 +88,6 @@ public class SelectFeature extends Control {
 		SelectFeatureImpl.setToggleKey(this.getJSObject(), keyName);
 	}
 
-	public void unselect(JSObject feature) {
-		SelectFeatureImpl.unselect(this.getJSObject(), feature);
-	}
-
 	/**
 	 *
 	 * Unselect a feature by clicking outside it.
@@ -105,4 +101,5 @@ public class SelectFeature extends Control {
 	}
 
 	//TODO allow setting onSelect and onUnSelect here as well
+	// now onSelect/onUnselect listeners should be added to SelectFeatureOptions
 }

@@ -28,7 +28,7 @@ public class OverviewMap extends Control {
 	 * @return map - instance of {@link org.gwtopenmaps.openlayers.client.Map}
 	 *   map will be null if the control is not added to any map yet
 	 */
-	public Map getMap(){
+	public Map getOverviewMap(){
 		return Map.narrowToMap(getJSObject().getProperty("ovmap"));
 	}
 

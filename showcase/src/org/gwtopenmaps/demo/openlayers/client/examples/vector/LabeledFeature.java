@@ -3,12 +3,16 @@ package org.gwtopenmaps.demo.openlayers.client.examples.vector;
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
+import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
+import org.gwtopenmaps.openlayers.client.control.DragFeature;
+import org.gwtopenmaps.openlayers.client.control.DragFeatureOptions;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.MousePosition;
 import org.gwtopenmaps.openlayers.client.control.NavToolBar;
 import org.gwtopenmaps.openlayers.client.control.PanZoomBar;
+import org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.geometry.LinearRing;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
@@ -21,6 +25,8 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 import org.gwtopenmaps.openlayers.client.util.Attributes;
+
+import com.google.gwt.user.client.Window;
 
 public class LabeledFeature implements ShowcaseExample {
 
@@ -74,7 +80,7 @@ public class LabeledFeature implements ShowcaseExample {
 	Style styleVector = new Style();
 	styleVector.setStrokeColor("#00FF00");
 	styleVector.setStrokeWidth(3);
-	styleVector.setFillColor("#FF5500");
+	styleVector.setFillColor("#FFFF00");
 	styleVector.setFillOpacity(0.5);
 	styleVector.setPointRadius(6);
 	styleVector.setStrokeOpacity(1.0);
@@ -89,9 +95,10 @@ public class LabeledFeature implements ShowcaseExample {
 	stylePicture.setFillOpacity(1);
 	stylePicture.setExternalGraphic("${picture}");
 	stylePicture.setGraphicSize(64, 35);
-	stylePicture.setPointRadius(6);
+	stylePicture.setPointRadius(30);
 	stylePicture.setGraphicOffset(-32, -30);
 	stylePicture.setLabel("${plate}");
+	stylePicture.setFillColor("black");
 	stylePicture.setFontColor("${favColor}");
 	stylePicture.setFontSize("12px");
 	stylePicture.setFontFamily("Courier New, monospace");
@@ -194,6 +201,48 @@ public class LabeledFeature implements ShowcaseExample {
 	labeledLayer.addFeature(pointFeature);
 	labeledLayerPicture.addFeature(imageFeatureRedCar);
 	labeledLayerPicture.addFeature(imageFeatureBlueCar);
+
+	/*
+	 * ModifyFeature modifyFeature = new ModifyFeature(labeledLayer);
+	 * example.getMap().addControl(modifyFeature);
+	 * modifyFeature.setMode(Mode.RESHAPE); // modifyFeature.activate();
+	 */
+
+	DragFeatureOptions dragFeatureOptions = new DragFeatureOptions();
+	dragFeatureOptions.onComplete(new DragFeatureListener() {
+
+	    @Override
+	    public void onDragEvent(VectorFeature vectorFeature, Pixel pixel) {
+		Window.alert("x=" + pixel.x() + " y=" + pixel.y());
+
+	    }
+	});
+
+	// SelectFeatureOptions
+	DragFeature dragFeature = new DragFeature(labeledLayerPicture,
+		dragFeatureOptions);
+	example.getMap().addControl(dragFeature);
+	dragFeature.activate();
+
+	// SelectFeatureOptions selectFeatureOptions = new
+	// SelectFeatureOptions();
+	// selectFeatureOptions.setHover();
+
+	/*
+	 * SelectFeature selectFeature = new SelectFeature(labeledLayerPicture,
+	 * selectFeatureOptions); example.getMap().addControl(selectFeature);
+	 * selectFeature.activate();
+	 */
+
+	// ModifyFeature modifyFeature2 = new
+	// ModifyFeature(labeledLayerPicture);
+	// example.getMap().addControl(modifyFeature2);
+	// modifyFeature2.setMode(Mode.DRAG);
+	// modifyFeature2.activate();
+	/*
+	 * DragFeature dragFeature2 = new DragFeature(labeledLayerPicture);
+	 * example.getMap().addControl(dragFeature2); dragFeature2.activate();
+	 */
 
     }
 

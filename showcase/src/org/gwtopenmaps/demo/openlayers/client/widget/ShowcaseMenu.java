@@ -4,8 +4,11 @@ import org.gwtopenmaps.demo.openlayers.client.examples.control.CustomMousePositi
 import org.gwtopenmaps.demo.openlayers.client.examples.events.MapEvents;
 import org.gwtopenmaps.demo.openlayers.client.examples.raster.BasicWMS;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.BasicDrawFeatures;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.DragExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.DrawFeatures;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.LabeledFeature;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.ModifyFeatureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.SelectFeatureExamples;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -89,8 +92,46 @@ public class ShowcaseMenu extends FlexTable {
 		"Labeled Features", "Create vector features with labels.",
 		new ClickHandler() {
 		    public void onClick(ClickEvent evt) {
-			LabeledFeature labeledFeature = new LabeledFeature();
-			contentPanel.setExample(labeledFeature.getMapExample());
+			LabeledFeature labeledFeatureExamples = new LabeledFeature();
+			contentPanel.setExample(labeledFeatureExamples
+				.getMapExample());
+			contentPanel.setExampleDescription("Description here.");
+			contentPanel.setExampleSource("Source here");
+			contentPanel.selectTab(0);
+		    }
+		});
+
+	ShowcaseMenuItem selectFeatureExamplesItem = new ShowcaseMenuItem(
+		"SelectFeature Examples",
+		"Examples of the SelectFeature events.", new ClickHandler() {
+		    public void onClick(ClickEvent evt) {
+			SelectFeatureExamples selectFeatureExamples = new SelectFeatureExamples();
+			contentPanel.setExample(selectFeatureExamples
+				.getMapExample());
+			contentPanel.setExampleDescription("Description here.");
+			contentPanel.setExampleSource("Source here");
+			contentPanel.selectTab(0);
+		    }
+		});
+
+	ShowcaseMenuItem dragExamplesItem = new ShowcaseMenuItem(
+		"Drag Example", "Example of the Drag features.",
+		new ClickHandler() {
+		    public void onClick(ClickEvent evt) {
+			DragExample dragExamples = new DragExample();
+			contentPanel.setExample(dragExamples.getMapExample());
+			contentPanel.setExampleDescription("Description here.");
+			contentPanel.setExampleSource("Source here");
+			contentPanel.selectTab(0);
+		    }
+		});
+
+	ShowcaseMenuItem modifyExampleItem = new ShowcaseMenuItem(
+		"Modify Feature Example",
+		"Example of the Modify feature control.", new ClickHandler() {
+		    public void onClick(ClickEvent evt) {
+			ModifyFeatureExample modifyExample = new ModifyFeatureExample();
+			contentPanel.setExample(modifyExample.getMapExample());
 			contentPanel.setExampleDescription("Description here.");
 			contentPanel.setExampleSource("Source here");
 			contentPanel.selectTab(0);
@@ -103,6 +144,9 @@ public class ShowcaseMenu extends FlexTable {
 	addMenuItem(mapEventsItem);
 	addMenuItem(mpOutputItem);
 	addMenuItem(labeledFeaturesItem);
+	addMenuItem(selectFeatureExamplesItem);
+	addMenuItem(dragExamplesItem);
+	addMenuItem(modifyExampleItem);
 
 	// this.setWidget(getMenuItemCount() + getMenuItemCount(), 0,
 	// menuItem4Link);

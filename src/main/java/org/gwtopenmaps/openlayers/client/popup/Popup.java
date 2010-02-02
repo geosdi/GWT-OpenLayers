@@ -46,4 +46,68 @@ public class Popup extends OpenLayersObjectWrapper {
 	public void addCloseListener(CloseListener callback) {
 		PopupImpl.addCloseListener(this.getJSObject(), callback);
 	}
+	
+	/**
+	 * autosize the popup
+	 * @param autoSize - boolean
+	 */
+	public void setAutoSize(boolean autoSize) {
+		this.getJSObject().setProperty("autoSize", autoSize);
+	}
+	
+	/**
+	 * Get the popup autoSize state
+	 * @return autoSize - boolean
+	 */
+	public boolean getAutoSize() {
+		return this.getJSObject().getPropertyAsBoolean("autoSize");
+	}
+
+	/**
+	 * Set the popup backgroundColor.  Sets the style
+	 * @param color - String
+	 */
+	public void setBackgroundColor(String color) {
+		this.getJSObject().setProperty("backgroundColor", color);
+	}
+
+	/**
+	 * Get the popup backgroundColor
+	 * @return backgroundColor - String
+	 */
+	public String getBackgroundColor() {
+		return this.getJSObject().getPropertyAsString("backgroundColor");
+	}
+
+	/**
+	 * Set the popup opacity
+	 * @param opacity - double
+	 */
+	public void setOpacity(double opacity) {
+		this.getJSObject().setProperty("opacity", opacity);
+	}
+
+	/**
+	 * Get the popup opacity
+	 * @return opacity - double
+	 */
+	public double getOpacity() {
+		return this.getJSObject().getPropertyAsDouble("opacity");
+	}
+
+	/**
+	 * Set the border style
+	 * @param border - String
+	 */
+	public void setBorder(String border) {
+		this.getJSObject().setProperty("border", border);
+	}
+
+	/**
+	 * Get the border style as set by setBorder
+	 * @return border CSS
+	 */
+	public String getBorder() {
+		return this.getJSObject().getPropertyAsString("border");
+	}
 }

@@ -1,7 +1,7 @@
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
-import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
 /**
  * Options specific to Control widgets.
@@ -9,7 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class ControlOptions extends JSObjectWrapper {
+public class ControlOptions extends OpenLayersEObjectWrapper {
 
 	protected ControlOptions(JSObject jsObject) {
 		super(jsObject);

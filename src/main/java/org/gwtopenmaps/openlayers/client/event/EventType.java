@@ -14,6 +14,11 @@ public class EventType {
 	public static final String CONTROL_MEASURE = "measure";
 	public static final String CONTROL_MEASURE_PARTIAL = "measurepartial";
 	public static final String CONTROL_GET_FEATURE_INFO = "getfeatureinfo";
+	public static final String CONTROL_SELECT_FEATURE_SELECT = "onSelect"; //in OL 2.8 not really event, but name of property that refers to callback fn
+	public static final String CONTROL_SELECT_FEATURE_UNSELECT = "onUnselect"; //in OL 2.8 not really event , but name of property that refers to callback fn
+	public static final String CONTROL_SELECT_FEATURE_BEFORE_HIGHLIGHTED = "beforefeaturehighlighted";
+	public static final String CONTROL_SELECT_FEATURE_HIGHLIGHTED = "featurehighlighted";
+	public static final String CONTROL_SELECT_FEATURE_UNHIGHLIGHTED = "featureunhighlighted";
 
 	public static final String LAYER_LOADSTART = "loadstart";
 	public static final String LAYER_LOADEND = "loadend";

@@ -74,6 +74,7 @@ public class DrawFeatures implements ShowcaseExample {
 
 		/*
 		 * NOW FOR CUSTOM DRAW / SELECT BEHAVIOUR...
+		 * (see also select feature example)
 		 *
 		 * The 'Draw Polygon' button activates DrawFeature control to draw polygon.
 		 * When the polygon has been added the FeatureAdded event is fired to which the FeatureAddedListener responds.

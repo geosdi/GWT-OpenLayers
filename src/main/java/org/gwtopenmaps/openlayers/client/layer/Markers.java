@@ -17,6 +17,10 @@ public class Markers extends Layer {
 		super(element);
 	}
 
+	public Markers narrowToMarkers(JSObject markersLayer){
+		return (markersLayer == null)?null: new Markers(markersLayer);
+	}
+
 	public Markers(String name) {
 		this (MarkersImpl.create(name));
 	}
@@ -34,7 +38,7 @@ public class Markers extends Layer {
 	}
 
 	public Bounds getDataExtent() {
-	   return Bounds.narrowToBounds(MarkersImpl.getDataExtent(getJSObject()));
+		return Bounds.narrowToBounds(MarkersImpl.getDataExtent(getJSObject()));
 	}
 
 	public void destroy() {

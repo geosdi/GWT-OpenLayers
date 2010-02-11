@@ -78,10 +78,10 @@ public class LayerOptions extends JSObjectWrapper {
 
 	/**
 	 * see {@link Layer}.
-	 * @param visible - Visibility of the layer on the map. Default is true.
+	 * @param visibility - Visibility of the layer on the map. Default is true.
 	 */
-	public void setVisibility(boolean visible){
-		getJSObject().setProperty("visible", visible);
+	public void setVisibility(boolean visibility){
+		getJSObject().setProperty("visibility", visibility);
 	}
 
 	public void setNumZoomLevels(int numZoomLevels){

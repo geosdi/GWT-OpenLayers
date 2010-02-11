@@ -7,8 +7,12 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 */
 public class Boxes extends Markers {
 
-	protected Boxes(JSObject element) {
-		super(element);
+	protected Boxes(JSObject boxes) {
+		super(boxes);
+	}
+
+	public Boxes narrowToBoxes(JSObject boxes){
+		return (boxes == null)?null:new Boxes(boxes);
 	}
 
 	public Boxes(String name, BoxesMarkersOptions options) {
@@ -19,10 +23,10 @@ public class Boxes extends Markers {
 		this(BoxesImpl.create(name));
 	}
 	public void drawMarker(Box marker){
-		BoxesImpl.drawMarker(getJSObject(), marker);	
+		BoxesImpl.drawMarker(getJSObject(), marker);
 	}
 	public void removeMarker(Box marker){
-		BoxesImpl.removeMarker(getJSObject(), marker);	
+		BoxesImpl.removeMarker(getJSObject(), marker);
 	}
 
 }

@@ -15,12 +15,12 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class Image extends Layer {
 
-	protected Image(JSObject element) {
-		super(element);
+	protected Image(JSObject imageLayer) {
+		super(imageLayer);
 	}
 
-	public static Image narrowToImage(JSObject layer){
-		return new Image(layer);
+	public Image narrowToImage(JSObject imageLayer){
+		return (imageLayer == null)?null: new Image(imageLayer);
 	}
 
 	/**

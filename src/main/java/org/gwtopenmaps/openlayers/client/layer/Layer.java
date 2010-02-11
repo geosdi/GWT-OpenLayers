@@ -23,7 +23,18 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class Layer extends OpenLayersEObjectWrapper {
 
+	public final static String ARCGIS93REST_CLASS_NAME = "OpenLayers.Layer.ArcGIS93Rest";
+	public final static String BOXES_CLASS_NAME = "OpenLayers.Layer.Boxes";
+	public final static String GOOGLE_CLASS_NAME = "OpenLayers.Layer.Google";
+	public final static String IMAGE_CLASS_NAME = "OpenLayers.Layer.Image";
+	public final static String MARKERS_CLASS_NAME ="OpenLayers.Layer.Markers";
+	public final static String OSM_CLASS_NAME = "OpenLayers.Layer.OSM";
+	public final static String TMS_CLASS_NAME = "OpenLayers.Layer.TMS";
+	public final static String VECTOR_CLASS_NAME = "OpenLayers.Layer.Vector";
+	public final static String WMS_CLASS_NAME = "OpenLayers.Layer.WMS";
+
 	//TODO: add support for moveend event
+	//TODO: refactor to use getJSObject().getProperty/setProperty
 
 	protected Layer(JSObject element) {
 		super(element);
@@ -32,19 +43,6 @@ public class Layer extends OpenLayersEObjectWrapper {
 	public static Layer narrowToLayer(JSObject layer){
 		return new Layer(layer);
 	}
-
-	/**
-	 * @param force - if true force redraw by adding random parameter to getMap request
-	 *
-	 * If force is false or null no random parameters are added, in that case
-	 * the browser may cache the getMap request, thus not redrawing the map
-	 *
-	 */
-	public void redraw(boolean force) {
-		LayerImpl.redraw(getJSObject(), force);
-	}
-
-
 
 	public void setIsBaseLayer(boolean isBaseLayer) {
 		LayerImpl.setIsBaseLayer(isBaseLayer, getJSObject());
@@ -93,6 +91,13 @@ public class Layer extends OpenLayersEObjectWrapper {
 		return LayerImpl.getName(getJSObject());
 	}
 
+	/**
+	 * @param name - the new name for the layer.
+	 */
+	public void setName(String name){
+		getJSObject().setProperty("name", name);
+	}
+
 	public boolean isVisible(){
 		return LayerImpl.isVisible(getJSObject());
 	}
@@ -100,9 +105,6 @@ public class Layer extends OpenLayersEObjectWrapper {
 	public void setIsVisible(boolean isVisible){
 		LayerImpl.setIsVisible(isVisible, getJSObject());
 	}
-
-	//TODO EventListenerCollection should be property of layer
-	//  and keep references to listeners
 
 	public void addLayerLoadStartListener(final LayerLoadStartListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADSTART, new EventHandler(){

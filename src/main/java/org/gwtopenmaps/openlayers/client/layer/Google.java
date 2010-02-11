@@ -18,6 +18,10 @@ public class Google extends Layer {
 		super(element);
 	}
 
+	public Google narrowToGoogle(JSObject google){
+		return (google == null)?null:new Google(google);
+	}
+
 	public Google(String name) {
 		this(GoogleImpl.create(name));
 	}

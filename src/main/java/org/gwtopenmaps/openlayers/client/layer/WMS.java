@@ -11,10 +11,14 @@ import org.gwtopenmaps.openlayers.client.util.JStringArray;
  */
 public class WMS extends Layer {
 
-	protected WMS(JSObject element) {
-		super(element);
+	protected WMS(JSObject wms) {
+		super(wms);
 	}
 
+	public static WMS narrowToWMS(JSObject wms){
+		return (wms == null)?null: new WMS(wms);
+	}
+	
 	public WMS(String name, String url, WMSParams params) {
 		this(WMSImpl.create(name, url, params.getJSObject()));
 	}

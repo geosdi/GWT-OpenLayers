@@ -13,8 +13,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class Markers extends Layer {
 
-	protected Markers(JSObject element) {
-		super(element);
+	protected Markers(JSObject markersLayer) {
+		super(markersLayer);
 	}
 
 	public Markers narrowToMarkers(JSObject markersLayer){

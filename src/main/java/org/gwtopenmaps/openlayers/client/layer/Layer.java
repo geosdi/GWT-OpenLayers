@@ -34,6 +34,7 @@ public class Layer extends OpenLayersEObjectWrapper {
 	public final static String TMS_CLASS_NAME = "OpenLayers.Layer.TMS";
 	public final static String VECTOR_CLASS_NAME = "OpenLayers.Layer.Vector";
 	public final static String WMS_CLASS_NAME = "OpenLayers.Layer.WMS";
+	public final static String XYZ_CLASS_NAME = "OpenLayers.Layer.XYZ";
 
 	//TODO: add support for moveend event
 	//TODO: refactor to use getJSObject().getProperty/setProperty

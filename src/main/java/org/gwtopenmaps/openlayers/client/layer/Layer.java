@@ -26,6 +26,8 @@ public class Layer extends OpenLayersEObjectWrapper {
 	public final static String ARCGIS93REST_CLASS_NAME = "OpenLayers.Layer.ArcGIS93Rest";
 	public final static String BOXES_CLASS_NAME = "OpenLayers.Layer.Boxes";
 	public final static String GOOGLE_CLASS_NAME = "OpenLayers.Layer.Google";
+	public final static String GRIDLAYER_CLASS_NAME = "OpenLayers.Layer.Grid";
+	public final static String HTTPREQUESTLAYER_CLASS_NAME = "OpenLayers.Layer.HTTPRequest";
 	public final static String IMAGE_CLASS_NAME = "OpenLayers.Layer.Image";
 	public final static String MARKERS_CLASS_NAME ="OpenLayers.Layer.Markers";
 	public final static String OSM_CLASS_NAME = "OpenLayers.Layer.OSM";

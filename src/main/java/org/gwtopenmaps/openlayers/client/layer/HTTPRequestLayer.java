@@ -21,8 +21,12 @@ import org.gwtopenmaps.openlayers.client.util.JStringArray;
 */
 public class HTTPRequestLayer extends Layer {
 
-	protected HTTPRequestLayer(JSObject element) {
-		super(element);
+	protected HTTPRequestLayer(JSObject httpRequestLayer) {
+		super(httpRequestLayer);
+	}
+
+	public HTTPRequestLayer narrowToHTTPRequestLayer(JSObject httpRequestLayer){
+		return (httpRequestLayer == null)?null:new HTTPRequestLayer(httpRequestLayer);
 	}
 
 	/**

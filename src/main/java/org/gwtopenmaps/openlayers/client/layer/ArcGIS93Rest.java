@@ -8,7 +8,7 @@ import org.gwtopenmaps.openlayers.client.util.JStringArray;
 /**
  * @author Michel Vitor A Rodrigues - Intec
  */
-public class ArcGIS93Rest extends Layer {
+public class ArcGIS93Rest extends GridLayer {
 
 	protected ArcGIS93Rest(JSObject element) {
 		super(element);

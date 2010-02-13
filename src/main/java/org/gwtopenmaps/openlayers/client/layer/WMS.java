@@ -9,7 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JStringArray;
  * 	       Amr Alam - Refractions Research
  *         Curtis Jensen
  */
-public class WMS extends Layer {
+public class WMS extends GridLayer {
 
 	protected WMS(JSObject wms) {
 		super(wms);
@@ -18,7 +18,7 @@ public class WMS extends Layer {
 	public static WMS narrowToWMS(JSObject wms){
 		return (wms == null)?null: new WMS(wms);
 	}
-	
+
 	public WMS(String name, String url, WMSParams params) {
 		this(WMSImpl.create(name, url, params.getJSObject()));
 	}

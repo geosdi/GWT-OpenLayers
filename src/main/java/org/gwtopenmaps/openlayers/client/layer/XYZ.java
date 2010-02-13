@@ -9,7 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @see XYZOptions
  * @author Andrew Hughes
  */
-public class XYZ extends Layer {
+public class XYZ extends GridLayer {
 
 	protected XYZ(JSObject xyzLayer) {
 		super(xyzLayer);

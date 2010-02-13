@@ -6,7 +6,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Amr Alam - Refractions Research
  *
  */
-public class TMS extends Layer {
+public class TMS extends GridLayer {
 
 	protected TMS(JSObject element) {
 		super(element);

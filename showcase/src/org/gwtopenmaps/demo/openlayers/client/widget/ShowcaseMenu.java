@@ -4,6 +4,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.control.CustomMousePositi
 import org.gwtopenmaps.demo.openlayers.client.examples.events.MapEvents;
 import org.gwtopenmaps.demo.openlayers.client.examples.raster.BasicWMS;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.BasicDrawFeatures;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.BasicWFS;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.DragExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.DrawFeatures;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.LabeledFeature;
@@ -138,6 +139,18 @@ public class ShowcaseMenu extends FlexTable {
 		    }
 		});
 
+	ShowcaseMenuItem basicWFSItem = new ShowcaseMenuItem(
+			"Basic WFS Example",
+			"WFS with the WFS protocol.", new ClickHandler() {
+			    public void onClick(ClickEvent evt) {
+				BasicWFS wfsExample = new BasicWFS();
+				contentPanel.setExample(wfsExample.getMapExample());
+				contentPanel.setExampleDescription("Description here.");
+				contentPanel.setExampleSource("Source here");
+				contentPanel.selectTab(0);
+			    }
+			});
+
 	addMenuItem(basicWMSItem);
 	addMenuItem(vectorFeaturesItem);
 	addMenuItem(drawFeaturesItem);
@@ -147,6 +160,7 @@ public class ShowcaseMenu extends FlexTable {
 	addMenuItem(selectFeatureExamplesItem);
 	addMenuItem(dragExamplesItem);
 	addMenuItem(modifyExampleItem);
+	addMenuItem(basicWFSItem);
 
 	// this.setWidget(getMenuItemCount() + getMenuItemCount(), 0,
 	// menuItem4Link);

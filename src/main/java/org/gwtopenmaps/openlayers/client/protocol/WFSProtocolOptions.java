@@ -4,7 +4,7 @@ import org.gwtopenmaps.openlayers.client.protocol.ProtocolOptions;
 
 /**
  * WFSProtocolOptions
- * 
+ *
  * @author davek<at>komacke<dot>com
  *
  */
@@ -18,4 +18,10 @@ public class WFSProtocolOptions extends ProtocolOptions {
 		getJSObject().setProperty("geometryName",  geometryName);
 	}
 
+	/**
+	 * @param url - the url of the WFS
+	 */
+	public void setUrl(String url){
+		getJSObject().setProperty("url",  url);
+	}
 }

@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * Python to run. This is a port of the Open Proxy to Java.
  *
  * For extra security the allowedHosts should be specified.
- * The allowedHosts are the allowed target hosts to which the request may be proxied.
+ * The allowedHosts are the allowed target hosts to which the request may be forwarded
  *
  * Parameter expected for GET requests:
  *    url - an URL that is directly queried in a proxied GET
@@ -32,14 +32,13 @@ import javax.servlet.http.HttpServletResponse;
  * Plan for GWT: do check on parameters, and only allow specific types of requests.
  * However: does this make it more secure in any way???
  *
+ * Initial code for this proxy is based upon the following code:
+ * http://trac.openlayers.org/changeset/8099/sandbox?format=diff&new=8099
+ *
  */
 
 @SuppressWarnings("serial")
 public class GwtOpenLayersProxyServlet extends HttpServlet {
-
-//	private static final String PARAMETER_URL_LC = "url";
-//	private static final String PARAMETER_URL_UC = "URL";
-//	private static final String PARAMETER_BODY = "body";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
@@ -54,93 +53,76 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 	private void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-//		HttpUtils httpUtils = new HttpUtils();
-//		httpUtils.parsePostData(len, in); //should I use this for parsing POST data?
 
-        HttpURLConnection connection = null;
-        InputStream istream = null;
-        OutputStream ostream = null;
-        InputStream ristream = null;
-        OutputStream rostream = null;
-           
-        try {
-            if(request.getParameter("resourceUrl") != null && request.getParameter("resourceUrl") != "") {
-                URL resourceUrl = new URL(request.getParameter("resourceUrl"));
-                connection = (HttpURLConnection)resourceUrl.openConnection();
-                connection.setDoInput(true);
-                connection.setRequestMethod(request.getMethod());
-                connection.setRequestProperty("Content-Type", "application/xml");
-                ristream = connection.getInputStream();
-                response.setContentType("application/vnd.google-earth.kml+xml");
-                rostream = response.getOutputStream();
-                final int length = 5000;
-                byte[] bytes = new byte[length];
-                int bytesRead = 0;
 
-                int totalBytes = 0;
-                while ((bytesRead = ristream.read(bytes, 0, length)) > 0) {
-                    rostream.write(bytes, 0, bytesRead);
-                    totalBytes += bytesRead;
-                }
-            } else if(request.getParameter("targetUrl") != null && request.getParameter("targetUrl") != "") {
-                URL targetUrl = new URL(request.getParameter("targetUrl"));
-                connection = (HttpURLConnection)targetUrl.openConnection();
-                connection.setDoOutput(true);
-                connection.setRequestMethod(request.getMethod());
+		HttpURLConnection connection = null;
+		InputStream istream = null;
+		OutputStream ostream = null;
+		InputStream ristream = null;
+		OutputStream rostream = null;
 
-                int clength = request.getContentLength();
-                if(clength > 0) {
-                    connection.setDoInput(true);
-                    istream = request.getInputStream();
-                    ostream = connection.getOutputStream();
-                    final int length = 5000;
-                    byte[] bytes = new byte[length];
-                    int bytesRead = 0;
-                    while((bytesRead = istream.read(bytes, 0, length)) > 0) {
-                        ostream.write(bytes, 0, bytesRead);
-                    }
-                }
+		//Does it make sense to have resourceUrl for GET and targetURL for POST?
+		//Why not expect url param and look at request method to decide upon action?
+		//Or call them getUrl and postUrl?
+		try {
+			if(request.getParameter("resourceUrl") != null && request.getParameter("resourceUrl") != "") {
+				URL resourceUrl = new URL(request.getParameter("resourceUrl"));
+				connection = (HttpURLConnection)resourceUrl.openConnection();
+				connection.setDoInput(true);
+				connection.setRequestMethod(request.getMethod());
+				connection.setRequestProperty("Content-Type", "application/xml");
+				ristream = connection.getInputStream();
+				//why not get the content type from the connection here?
+				response.setContentType("application/vnd.google-earth.kml+xml");
+				rostream = response.getOutputStream();
+				final int length = 5000;
+				byte[] bytes = new byte[length];
+				int bytesRead = 0;
 
-                rostream = response.getOutputStream();
-                response.setContentType(connection.getContentType());
-                ristream = connection.getInputStream();
-                final int length = 5000;
-                byte[] bytes = new byte[length];
-                int bytesRead = 0;
-                while ((bytesRead = ristream.read(bytes, 0, length)) > 0) {
-                    rostream.write(bytes, 0, bytesRead);
-                }
-            } else {
-                return;
-            }
-        } catch(Exception e) {
-            response.setStatus(500);
-            e.printStackTrace();
-        } finally {
-            if(istream != null) { istream.close(); }
-            if(ostream != null) { ostream.close(); }
-            if(ristream != null) { ristream.close(); }
-            if(rostream != null) { rostream.close(); }
-        }
+				int totalBytes = 0;
+				while ((bytesRead = ristream.read(bytes, 0, length)) > 0) {
+					rostream.write(bytes, 0, bytesRead);
+					totalBytes += bytesRead;
+				}
+			} else if(request.getParameter("targetUrl") != null && request.getParameter("targetUrl") != "") {
+				URL targetUrl = new URL(request.getParameter("targetUrl"));
+				connection = (HttpURLConnection)targetUrl.openConnection();
+				connection.setDoOutput(true);
+				connection.setRequestMethod(request.getMethod());
+
+				int clength = request.getContentLength();
+				if(clength > 0) {
+					connection.setDoInput(true);
+					istream = request.getInputStream();
+					ostream = connection.getOutputStream();
+					final int length = 5000;
+					byte[] bytes = new byte[length];
+					int bytesRead = 0;
+					while((bytesRead = istream.read(bytes, 0, length)) > 0) {
+						ostream.write(bytes, 0, bytesRead);
+					}
+				}
+
+				rostream = response.getOutputStream();
+				response.setContentType(connection.getContentType());
+				ristream = connection.getInputStream();
+				final int length = 5000;
+				byte[] bytes = new byte[length];
+				int bytesRead = 0;
+				while ((bytesRead = ristream.read(bytes, 0, length)) > 0) {
+					rostream.write(bytes, 0, bytesRead);
+				}
+			} else {
+				return;
+			}
+		} catch(Exception e) {
+			response.setStatus(500);
+			e.printStackTrace();
+		} finally {
+			if(istream != null) { istream.close(); }
+			if(ostream != null) { ostream.close(); }
+			if(ristream != null) { ristream.close(); }
+			if(rostream != null) { rostream.close(); }
+		}
 	}
-
-		
-//		String host = request.getRemoteHost();
-//		String targetURL = request.getParameter(PARAMETER_URL_LC);
-//		if(targetURL == null){
-//			targetURL = request.getParameter(PARAMETER_URL_UC);
-//		}
-//
-//		//read from configuration file
-//		//String[] allowedHosts = {"", ""};
-//
-//
-//		response.setContentType("text/plain");
-//
-//		//TODO: make serious implementation of proxy
-//		PrintWriter writer = response.getWriter();
-//		writer.println("Host: " + host);
-//		writer.println("URL: " + targetURL);
-//	}
-
 }

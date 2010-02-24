@@ -61,12 +61,31 @@ public class Style extends OpenLayersObjectWrapper {
 	public void setPointRadius(double r) {
 		StyleImpl.setPointRadius(getJSObject(), r);
 	}
-
+	
 	/** Pixel point radius. */
-	public double getPointRadius() {
-		return StyleImpl.getPointRadius(getJSObject());
+	public double getPointRadiusAsDouble() {
+		return StyleImpl.getPointRadiusAsDouble(getJSObject());
 	}
-
+	
+	/** Use getPointRadiusAsDouble() instead */
+	@Deprecated
+	public double getPointRadius() {
+		return getPointRadiusAsDouble();
+	}
+	
+	/**
+	 * The passed String is the name of the attribute whose value will determine
+	 * the point radius
+	 */
+	public void setPointRadius(String r) {
+		StyleImpl.setPointRadius(getJSObject(), r);
+	}
+	
+	/** The name of the attribute which value determines the point radius */
+	public String getPointRadiusAsString() {
+		return StyleImpl.getPointRadiusAsString(getJSObject());
+	}
+	
 	/**
 	 * Hex stroke color. Default is '#ee9900'.
 	 *

@@ -128,6 +128,11 @@ public class Map extends OpenLayersEObjectWrapper {
 	public void addPopup(Popup popup) {
 		MapImpl.addPopup(getJSObject(), popup.getJSObject());
 	}
+	
+	/** Closes all other popups first */
+	public void addPopupExclusive(Popup popup) {
+		MapImpl.addPopupExclusive(getJSObject(), popup.getJSObject());
+	}
 
 	public void removePopup(Popup popup) {
 		MapImpl.removePopup(getJSObject(), popup.getJSObject());

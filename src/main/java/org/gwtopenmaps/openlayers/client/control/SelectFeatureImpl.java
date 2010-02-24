@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.control.SelectFeature.ClickFeatureListener;
 import org.gwtopenmaps.openlayers.client.control.SelectFeature.SelectFeatureListener;
 import org.gwtopenmaps.openlayers.client.control.SelectFeature.UnselectFeatureListener;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
@@ -50,6 +51,14 @@ class SelectFeatureImpl {
 		var callback = function(obj){
 			var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
 			listener.@org.gwtopenmaps.openlayers.client.control.SelectFeature.UnselectFeatureListener::onFeatureUnselected(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;)(vectorFeatureObj);
+		}                                                                                              
+		return callback;
+	}-*/;
+	
+	public static native JSObject createClickFeatureCallback(ClickFeatureListener listener)/*-{
+		var callback = function(obj){
+			var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(obj);
+			listener.@org.gwtopenmaps.openlayers.client.control.SelectFeature.ClickFeatureListener::onFeatureClicked(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;)(vectorFeatureObj);
 		}                                                                                              
 		return callback;
 	}-*/;

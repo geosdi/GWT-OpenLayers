@@ -62,6 +62,22 @@ public class Popup extends OpenLayersObjectWrapper {
 	public boolean getAutoSize() {
 		return this.getJSObject().getPropertyAsBoolean("autoSize");
 	}
+	
+	/**
+	 * When drawn, pan map such that the entire popup is visible in the current viewport (if necessary). 
+	 * @param panMapIfOutOfView - boolean
+	 */
+	public void setPanMapIfOutOfView(boolean panMapIfOutOfView) {
+		this.getJSObject().setProperty("panMapIfOutOfView", panMapIfOutOfView);
+	}
+	
+	/**
+	 * Get the popup panMapIfOutOfView state
+	 * @return panMapIfOutOfView - boolean
+	 */
+	public boolean getPanMapIfOutOfView() {
+		return this.getJSObject().getPropertyAsBoolean("panMapIfOutOfView");
+	}
 
 	/**
 	 * Set the popup backgroundColor.  Sets the style

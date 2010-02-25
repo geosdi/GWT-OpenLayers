@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.RenderIntent;
+import org.gwtopenmaps.openlayers.client.control.SelectFeature.ClickFeatureListener;
 import org.gwtopenmaps.openlayers.client.control.SelectFeature.SelectFeatureListener;
 import org.gwtopenmaps.openlayers.client.control.SelectFeature.UnselectFeatureListener;
 import org.gwtopenmaps.openlayers.client.event.EventType;
@@ -68,6 +69,16 @@ public class SelectFeatureOptions extends ControlOptions {
 	JSObject callback = SelectFeatureImpl
 		.createUnselectFeatureCallback(listener);
 	getJSObject().setProperty(EventType.CONTROL_SELECT_FEATURE_UNSELECT, callback);
+	}
+	
+	/**
+	 * Triggers when a feature is clicked
+	 * 
+	 * TODO: Same concern that for onSelect and onUnSelect ?
+	 */
+	public void clickFeature(ClickFeatureListener listener) {
+		JSObject callback = SelectFeatureImpl.createClickFeatureCallback(listener);
+		getJSObject().setProperty("clickFeature", callback);
 	}
 
 	/**

@@ -37,7 +37,17 @@ public class StyleImpl {
         self.pointRadius = o;
     }-*/;
 
-    public static native double getPointRadius(JSObject self)
+    public static native double getPointRadiusAsDouble(JSObject self)
+    /*-{
+        return self.pointRadius;
+    }-*/;
+    
+    public static native void setPointRadius(JSObject self, String o)
+    /*-{
+        self.pointRadius = o;
+    }-*/;
+    
+    public static native String getPointRadiusAsString(JSObject self)
     /*-{
         return self.pointRadius;
     }-*/;

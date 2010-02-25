@@ -49,6 +49,10 @@ class MapImpl {
 	public static native void addPopup(JSObject map, JSObject popup)/*-{
 		map.addPopup(popup);
 	}-*/;
+	
+	public static native void addPopupExclusive(JSObject map, JSObject popup)/*-{
+	map.addPopup(popup, true);
+}-*/;
 
 	public static native void removePopup(JSObject map, JSObject popup)/*-{
 		map.removePopup(popup);

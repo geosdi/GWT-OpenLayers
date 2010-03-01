@@ -10,7 +10,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  */
 class LayerImpl {
-	public static native void redraw(JSObject layer, boolean force) /*-{
+	public static native boolean redraw(JSObject layer, boolean force) /*-{
 		layer.redraw(force);
 	}-*/;
 

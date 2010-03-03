@@ -60,8 +60,8 @@ public class Vector extends Layer {
 		VectorImpl.addFeature(getJSObject(), f.getJSObject());
 	}
 
-	public void redraw() {
-		VectorImpl.redraw(this.getJSObject());
+	public boolean redraw() {
+		return VectorImpl.redraw(this.getJSObject());
 	}
 
 	public void drawFeature(VectorFeature vector, Style style) {

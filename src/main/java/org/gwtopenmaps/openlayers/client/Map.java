@@ -470,6 +470,14 @@ public class Map extends OpenLayersEObjectWrapper {
 				listener.onClick(e);
 			}
 		});
+	}
+
+	/**
+	 * This function should be called by any external code which dynamically changes the size of the map div.
+	 * It can also be called when experiencing the problem of the single small tile in the upper left corner (doesn't work in all situations thought)
+	 */
+	public void updateSize() {
+		MapImpl.updateSize(getJSObject());
 	};
 
 }

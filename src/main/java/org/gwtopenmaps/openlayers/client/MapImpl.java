@@ -170,5 +170,9 @@ class MapImpl {
 	public static native void getZIndexBase(JSObject map)/*-{
 
 	}-*/;
+	
+	public static native void updateSize(JSObject map)/*-{
+	 	map.updateSize();
+}-*/;
 
 }

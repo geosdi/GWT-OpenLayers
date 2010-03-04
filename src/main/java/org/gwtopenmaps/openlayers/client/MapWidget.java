@@ -131,5 +131,15 @@ public class MapWidget extends Widget {
 	protected void onAttach() {
 		super.onAttach();
 	}
+	
+	/*
+	 * Overrides onLoad method of Widget, which is called immediately after a widget becomes attached to the
+	 * browser's document.
+	 */
+	protected void onLoad() {
+		// We update the size of the map to try to display the map correctly when the MapWidget's size is set with percentage
+		// Works in some configurations (for example, MapWidget in a SimplePanel who has a parent with a fixed size)
+		getMap().updateSize();
+	}
 
 }

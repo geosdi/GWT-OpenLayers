@@ -26,4 +26,8 @@ public class GetFeatureImpl {
 		self.selectBox(bounds);
 	}-*/;
 
+	public static native JSObject getBounds(JSObject self)/*-{
+		return self.bounds;
+	}-*/;
+
 }

@@ -40,4 +40,8 @@ public class GetFeature extends Control {
 	public void selectBox(Bounds bounds) {
 		GetFeatureImpl.selectBox(getJSObject(), bounds.getJSObject());
 	}
+
+	public Bounds getBounds() {
+		return Bounds.narrowToBounds(GetFeatureImpl.getBounds(getJSObject()));
+	}
 }

@@ -47,8 +47,8 @@ class VectorImpl {
         return self.getFeatureById(id);
     }-*/;
 
-    public static native void redraw(JSObject vector)/*-{
-        vector.redraw();
+    public static native boolean redraw(JSObject vector)/*-{
+        return vector.redraw();
     }-*/;
 
     public static native void drawFeature(JSObject vector, JSObject feature,

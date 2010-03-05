@@ -131,8 +131,8 @@ public class HTTPRequestLayer extends Layer {
 	 * the browser may cache the getMap request, thus not redrawing the map
 	 *
 	 */
-	public void redraw(boolean force) {
-		LayerImpl.redraw(getJSObject(), force);
+	public boolean redraw(boolean force) {
+		return LayerImpl.redraw(getJSObject(), force);
 	}
 
 	/**

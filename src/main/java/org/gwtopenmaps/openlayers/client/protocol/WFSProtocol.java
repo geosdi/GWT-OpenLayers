@@ -8,16 +8,16 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
  * basically OpenLayers.Protocol.WFS
  * 
  * @author davek<at>komacke<dot>com
- *
+ * @author Mikael Couzic
  */
 
 public class WFSProtocol extends Protocol {
 
-	 /**
+	/**
 	 * @param options - WFSProtocolOptions used to configure this protocol 
 	 * @return WFSProtocol object 
 	 */
-	 public WFSProtocol(WFSProtocolOptions options) {
+	public WFSProtocol(WFSProtocolOptions options) {
 		super(WFSProtocolImpl.create(options.getJSObject()));
 	}
 
@@ -36,4 +36,17 @@ public class WFSProtocol extends Protocol {
 	public WFSProtocol(WMS layer, WFSProtocolOptions options) {
 		super(WFSProtocolImpl.create(layer.getJSObject(), options.getJSObject()));
 	}
+	
+	/**
+	 * Performs a GetFeature request on the WFS service.
+	 * 
+	 * Due to the asymetric callback system, the return type of the method has been set to void.
+	 * The results are accessed by the <code>Callback.computeResult()</code> method.
+	 *
+	 * @param options - Options object, encapsulating the callback
+	 */
+	public void read(CRUDOptions options) {
+		WFSProtocolImpl.read(this.getJSObject(), options.getJSObject());
+	}
+	
 }

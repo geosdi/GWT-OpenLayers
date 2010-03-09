@@ -7,7 +7,6 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * ProtocolOptions base class
  * 
  * @author davek<at>komacke<dot>com
- *
  */
 public class ProtocolOptions extends JSObjectWrapper {
 

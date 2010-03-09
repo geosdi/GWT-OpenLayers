@@ -23,8 +23,15 @@ public abstract class Feature extends OpenLayersObjectWrapper {
         FeatureImpl.destroy(getJSObject());
     }
     
+    /**
+     * @return a generated ID. Prefer the use of <code>getFID</code>, which supports an OGC standard.
+     */
     public String getFeatureId(){
         return FeatureImpl.getFeatureId(getJSObject());
+    }
+    
+    public String getFID(){
+        return FeatureImpl.getFID(getJSObject());
     }
 
 	public Popup createPopup(boolean closeBox) {

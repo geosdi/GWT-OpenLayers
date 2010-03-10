@@ -67,6 +67,11 @@ gwt_openlayers_util.relay = {
 		return new OpenLayers.Geometry.Polygon(
 			gwt_openlayers_util.convertToArray(o));
 	},
+	
+	createMultiPolygon : function(o){
+		return new OpenLayers.Geometry.MultiPolygon(
+			gwt_openlayers_util.convertToArray(o));
+	},
 
 	createLinearRing : function(o){
 		return new OpenLayers.Geometry.LinearRing(

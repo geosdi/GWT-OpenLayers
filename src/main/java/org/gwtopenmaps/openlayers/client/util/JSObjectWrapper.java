@@ -10,7 +10,7 @@ package org.gwtopenmaps.openlayers.client.util;
 public class JSObjectWrapper {
 
 	private JSObject jsObject;
-    
+
 	protected JSObjectWrapper(JSObject jsObject)
 	{
 		setJSObject(jsObject);

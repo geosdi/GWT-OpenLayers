@@ -24,4 +24,18 @@ public class WFSProtocolOptions extends ProtocolOptions {
 	public void setUrl(String url){
 		getJSObject().setProperty("url",  url);
 	}
+
+	/**
+	 * @param feature namespace - the namespace of the feature schema
+	 */
+	public void setFeatureNameSpace(String featureNS){
+		getJSObject().setProperty("featureNS", featureNS);
+	}
+
+	/**
+	 * @param feature type - the type of feature, for example: roads, lakes, cities
+	 */
+	public void setFeatureType(String featureType){
+		getJSObject().setProperty("featureType", featureType);
+	}
 }

@@ -15,6 +15,8 @@ import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
+import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
+import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 
 public class BasicWFS implements ShowcaseExample {
 
@@ -44,7 +46,7 @@ public class BasicWFS implements ShowcaseExample {
 				wmsLayerParams);
 
 		//set a proxyHost
-		OpenLayers.setProxyHost("GwtOpenlayersProxy?resourceUrl=");
+		OpenLayers.setProxyHost("GwtOpenlayersProxy?targetUrl=");
 		//String proxyHost = OpenLayers.getProxyHost();
 
 
@@ -52,13 +54,17 @@ public class BasicWFS implements ShowcaseExample {
 		//Define a WFS with WFS protocol
 		WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
 		wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
-		wfsProtocolOptions.getJSObject().setProperty("featureType", "tasmania_roads");
-		wfsProtocolOptions.getJSObject().setProperty("featureNS", "http://www.openplans.org/topp");
+		wfsProtocolOptions.setFeatureType("tasmania_roads");
+		wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
 
 		WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
 
+		String url = wfsProtocol.getUrl();
+		url.length();
+
 		VectorOptions vectorOptions =  new VectorOptions();
-		vectorOptions.getJSObject().setProperty("protocol", wfsProtocol.getJSObject());
+		vectorOptions.setProtocol(wfsProtocol);
+		vectorOptions.setStrategies(new Strategy[]{new BBoxStrategy()});
 		Vector wfsLayer = new Vector("wfsExample", vectorOptions);
 
 		example.getMap().addLayers(new Layer[] {wmsLayer, wfsLayer});

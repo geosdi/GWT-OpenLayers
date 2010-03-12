@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.Bounds;
+import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
 import org.gwtopenmaps.openlayers.client.event.EventObject;
@@ -18,15 +19,16 @@ import org.gwtopenmaps.openlayers.client.event.VectorFeatureRemovedListener.Feat
 import org.gwtopenmaps.openlayers.client.event.VectorFeatureSelectedListener.FeatureSelectedEvent;
 import org.gwtopenmaps.openlayers.client.event.VectorFeatureUnselectedListener.FeatureUnselectedEvent;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
+import org.gwtopenmaps.openlayers.client.protocol.Protocol;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
- * 
+ *
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
- * 
+ *
  */
 public class Vector extends Layer {
 
@@ -37,7 +39,7 @@ public class Vector extends Layer {
 	public static Vector narrowToVector(JSObject vectorLayer) {
 		return (vectorLayer == null) ? null : new Vector(vectorLayer);
 	}
-	
+
 	public Vector(String name) {
 		this(VectorImpl.create(name));
 	}
@@ -78,6 +80,11 @@ public class Vector extends Layer {
 
 	public int getNumberOfFeatures() {
 		return VectorImpl.getNumberOfFeatures(getJSObject());
+	}
+
+
+	public OpenLayersObjectWrapper getProtocol(){
+		return Protocol.narrowToOpenLayersObjectWrapper(getJSObject().getProperty("protocol"));
 	}
 
 	/**
@@ -171,7 +178,7 @@ public class Vector extends Layer {
 	/**
 	 * Calculates the max extent which includes all of the features of this
 	 * vetor layer.
-	 * 
+	 *
 	 * @return The bounds of the max extend calculated
 	 */
 	public Bounds getDataExtent() {

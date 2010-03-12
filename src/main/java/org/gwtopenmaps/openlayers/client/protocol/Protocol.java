@@ -5,7 +5,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * Protocol abstract base class
- * 
+ *
  * @author davek<at>komacke<dot>com
  *
  */

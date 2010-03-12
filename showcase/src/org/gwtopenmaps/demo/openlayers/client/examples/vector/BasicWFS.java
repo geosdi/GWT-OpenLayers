@@ -46,7 +46,7 @@ public class BasicWFS implements ShowcaseExample {
 				wmsLayerParams);
 
 		//set a proxyHost
-		OpenLayers.setProxyHost("GwtOpenlayersProxy?targetUrl=");
+		OpenLayers.setProxyHost("gwtOpenLayersProxy?targetUrl=");
 		//String proxyHost = OpenLayers.getProxyHost();
 
 

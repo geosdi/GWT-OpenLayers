@@ -50,7 +50,7 @@ gwt_openlayers_util.eventListenersToObject = function(options){
 }
 
 //relay functions
-// TODO move these functions to JSNI methods on the Impl classes
+//TODO move these functions to JSNI methods on the Impl classes
 gwt_openlayers_util.relay = {
 
 	/* copy, paste directly below here, adjust name of function, and specify body
@@ -62,21 +62,6 @@ gwt_openlayers_util.relay = {
 
 	writeArray : function(format, o){
 		return format.write(gwt_openlayers_util.convertToArray(o));
-	},
-
-	createPolygon : function(o){
-		return new OpenLayers.Geometry.Polygon(
-			gwt_openlayers_util.convertToArray(o));
-	},
-
-	createLinearRing : function(o){
-		return new OpenLayers.Geometry.LinearRing(
-			gwt_openlayers_util.convertToArray(o));
-	},
-
-	createLineString : function(o){
-		return new OpenLayers.Geometry.LineString(
-			gwt_openlayers_util.convertToArray(o));
 	},
 
 	vectorAddFeatures : function(vector, o){

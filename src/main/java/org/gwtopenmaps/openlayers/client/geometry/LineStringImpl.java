@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.gwtopenmaps.openlayers.client.geometry;
 
@@ -11,8 +11,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class LineStringImpl {
 
-    public static native JSObject create(JSObject points)
-    /*-{
-        return new $wnd.gwt_openlayers_util.relay.createLineString(points);
-    }-*/;
+	public static native JSObject create(JSObject points)
+	/*-{
+		return new $wnd.OpenLayers.Geometry.LineString($wnd.gwt_openlayers_util.convertToArray(points));
+	}-*/;
 }

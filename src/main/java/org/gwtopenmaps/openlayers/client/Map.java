@@ -128,7 +128,7 @@ public class Map extends OpenLayersEObjectWrapper {
 	public void addPopup(Popup popup) {
 		MapImpl.addPopup(getJSObject(), popup.getJSObject());
 	}
-	
+
 	/** Closes all other popups first */
 	public void addPopupExclusive(Popup popup) {
 		MapImpl.addPopupExclusive(getJSObject(), popup.getJSObject());
@@ -364,7 +364,6 @@ public class Map extends OpenLayersEObjectWrapper {
 	public void setRestrictedExtent(Bounds extent){
 		getJSObject().setProperty("restrictedExtent", extent.getJSObject());
 	}
-
 
 	public void destroy(){
 		MapImpl.destroy(getJSObject());

@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.Bounds;
+import org.gwtopenmaps.openlayers.client.util.JDoubleArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
@@ -215,5 +216,17 @@ public class LayerOptions extends JSObjectWrapper {
 
 	public void setTransitionEffect(TransitionEffect transition){
 		getJSObject().setProperty("transitionEffect", transition.toString());
+	}
+
+	/**
+	 * For information on how OpenLayers can be configured to use different scales/resolutions, see:
+	 * <br/>
+	 * http://trac.openlayers.org/wiki/SettingZoomLevels
+	 *
+	 * @param resolutions -array of resolutions
+	 */
+	public void setResolutions(double[] resolutions){
+		JDoubleArray array = JDoubleArray.create(resolutions);
+		getJSObject().setProperty("resolutions", array.getJSObject());
 	}
 }

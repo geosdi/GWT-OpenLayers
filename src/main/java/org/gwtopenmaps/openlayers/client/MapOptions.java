@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client;
 
+import org.gwtopenmaps.openlayers.client.util.JDoubleArray;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
@@ -158,7 +159,21 @@ public class MapOptions extends JSObjectWrapper {
 	}
 
 	/**
+	 * For information on how OpenLayers can be configured to use different scales/resolutions, see:
+	 * <br/>
+	 * http://trac.openlayers.org/wiki/SettingZoomLevels
+	 *
+	 * @param resolutions -array of resolutions
+	 */
+	public void setResolutions(double[] resolutions){
+		JDoubleArray array = JDoubleArray.create(resolutions);
+		getJSObject().setProperty("resolutions", array.getJSObject());
+	}
+
+	/**
 	 * By default, OpenLayers 2.7 adds Attribution, ArgParser, Navigation and PanZoom Controls.
+	 *
+	 * This method removes these default controls from the Map.
 	 */
 	public void removeDefaultControls(){
 		this.setControls(new JObjectArray(new JSObject[] {}));

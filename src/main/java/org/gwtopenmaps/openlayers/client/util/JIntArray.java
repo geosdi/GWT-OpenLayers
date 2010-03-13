@@ -45,4 +45,15 @@ public class JIntArray extends JArrayBase
 		return rtn;
 	}
 
+	public static JIntArray create(int[] integers){
+		JIntArray array = JIntArray.narrowToJIntArray(JSObject.createJSArray());
+		for(int i=0, max = integers.length; i < max;i++){
+			array.push(integers[i]);
+		}
+		return array;
+	}
+
+	public void push(int i){
+		JIntArrayImpl.push(getJSObject(), i);
+	}
 }

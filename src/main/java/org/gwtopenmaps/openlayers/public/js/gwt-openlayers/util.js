@@ -50,6 +50,7 @@ gwt_openlayers_util.eventListenersToObject = function(options){
 }
 
 //relay functions
+// TODO move these functions to JSNI methods on the Impl classes
 gwt_openlayers_util.relay = {
 
 	/* copy, paste directly below here, adjust name of function, and specify body

@@ -45,4 +45,16 @@ public class JStringArray extends JArrayBase
 		return rtn;
 	}
 
+	public static JStringArray create(String[] strings){
+		JStringArray array = JStringArray.narrowToJStringArray(JSObject.createJSArray());
+		for(int i=0, max = strings.length; i < max;i++){
+			array.push(strings[i]);
+		}
+		return array;
+	}
+
+	public void push(String s){
+		JStringArrayImpl.push(getJSObject(), s);
+	}
+
 }

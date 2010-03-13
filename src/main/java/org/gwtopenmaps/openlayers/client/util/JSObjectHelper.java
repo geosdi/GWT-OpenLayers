@@ -113,8 +113,14 @@ public class JSObjectHelper {
 		if(object[name] != undefined){return true}else{return false};
 	}-*/;
 
+	/**
+	 * Utility method for creating arguments to functions that take an array of objects.
+	 *
+	 * @param object - an opaque handle on a JavaScript object
+	 * @return object - an opaque handle on a JavaScript object that is surely an Array
+	 */
 	public static native JSObject ensureOpaqueArray(JSObject object)/*-{
-		//GWT breaks instanceof, so ducktype
+		//GWT breaks instanceof, so use a duck type test for testing if object is Array
 		if(object.push && object.splice && object.unshift){
 			return object;
 		}else{

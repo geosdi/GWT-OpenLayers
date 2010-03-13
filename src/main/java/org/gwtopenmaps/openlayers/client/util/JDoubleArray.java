@@ -15,4 +15,16 @@ public class JDoubleArray extends JArrayBase {
 		return JDoubleArrayImpl.get(getJSObject(), index);
 	}
 
+	public static JDoubleArray create(double[] doubles){
+		JDoubleArray array = JDoubleArray.narrowToJDoubleArray(JSObject.createJSArray());
+		for(int i=0, max = doubles.length; i < max;i++){
+			array.push(doubles[i]);
+		}
+		return array;
+	}
+
+	public void push(double d){
+		JDoubleArrayImpl.push(getJSObject(), d);
+	}
+
 }

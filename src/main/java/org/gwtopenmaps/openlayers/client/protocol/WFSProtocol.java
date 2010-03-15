@@ -8,6 +8,7 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
  * basically OpenLayers.Protocol.WFS
  *
  * @author davek<at>komacke<dot>com
+ * @author Mikael Couzic
  *
  */
 
@@ -38,10 +39,18 @@ public class WFSProtocol extends Protocol {
 	}
 
 	/**
-	 * @param url - the url of the WFS
+	 * Performs a GetFeature request on the WFS service.
+	 * 
+	 * Due to the asymetric callback system, the return type of the method has been set to void.
+	 * The results are accessed by the <code>Callback.computeResult()</code> method.
+	 *
+	 * @param options - Options object, encapsulating the callback
+
 	 */
-	public void setUrl(String url){
-		getJSObject().setProperty("url",  url);
+	public void read(CRUDOptions options) {
+		WFSProtocolImpl.read(this.getJSObject(), options.getJSObject());
+
+
 	}
 
 	/**

@@ -11,7 +11,20 @@ import org.gwtopenmaps.openlayers.client.protocol.ProtocolOptions;
 
 public class WFSProtocolOptions extends ProtocolOptions {
 
+	/** 
+	 * This constructor doesn't allow proper use of method <code>WFSProtocol.read()</code>.
+	 * Use <code>WFSProtocolOptions(String url, String featureNS, String featureType )</code> instead.
+	 */
+	public WFSProtocolOptions(){}
+	
+	public WFSProtocolOptions(String url, String featureNS, String featureType ){
+		setUrl(url);
+		setFeatureNameSpace(featureNS);
+		setFeatureType(featureType);
+	}
+	
 	/**
+	 * @param geometryName - set the geometry name. Default is "the_geom".
 	 * @param geometryName - set the geometry name
 	 */
 	public void setGeometryName(String geometryName){

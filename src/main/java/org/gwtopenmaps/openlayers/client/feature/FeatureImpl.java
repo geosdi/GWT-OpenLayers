@@ -16,7 +16,11 @@ public class FeatureImpl {
     
     public static native String getFeatureId(JSObject self)/*-{
         return self.id;
-    }-*/;    
+    }-*/;
+    
+    public static native String getFID(JSObject self)/*-{
+	    return self.fid;
+	}-*/;
 
 	public static native void setPopup(JSObject feature, JSObject inputPopup)/*-{
 		feature.popup = inputPopup;

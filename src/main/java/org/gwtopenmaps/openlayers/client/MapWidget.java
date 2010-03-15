@@ -1,6 +1,8 @@
 package org.gwtopenmaps.openlayers.client;
 
+import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -138,8 +140,12 @@ public class MapWidget extends Widget {
 	 */
 	protected void onLoad() {
 		// We update the size of the map to try to display the map correctly when the MapWidget's size is set with percentage
-		// Works in some configurations (for example, MapWidget in a SimplePanel who has a parent with a fixed size)
-		getMap().updateSize();
+		DeferredCommand.addCommand(new Command() {
+            @Override
+            public void execute() {
+				getMap().updateSize();
+            }
+		});
 	}
 
 }

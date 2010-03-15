@@ -49,10 +49,15 @@ public class WFSProtocol extends Protocol {
 	 */
 	public void read(CRUDOptions options) {
 		WFSProtocolImpl.read(this.getJSObject(), options.getJSObject());
-
-
 	}
 
+	/**
+	 * @param url - the url of the WFS
+	 */
+	public void setUrl(String url){
+		getJSObject().setProperty("url",  url);
+	}
+	
 	/**
 	 * @param geometryName - set the geometry name
 	 */

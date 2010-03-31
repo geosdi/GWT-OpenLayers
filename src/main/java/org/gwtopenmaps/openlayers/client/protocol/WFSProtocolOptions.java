@@ -39,16 +39,30 @@ public class WFSProtocolOptions extends ProtocolOptions {
 	}
 
 	/**
-	 * @param feature namespace - the namespace of the feature schema
+	 * @param featureNS - the namespace of the feature schema
 	 */
 	public void setFeatureNameSpace(String featureNS){
 		getJSObject().setProperty("featureNS", featureNS);
 	}
 
 	/**
-	 * @param feature type - the type of feature, for example: roads, lakes, cities
+	 * @param featureType - the type of feature, for example: roads, lakes, cities
 	 */
 	public void setFeatureType(String featureType){
 		getJSObject().setProperty("featureType", featureType);
+	}
+
+	/**
+	 * @param srsName- name of the spatial reference system (e.g., EPSG:4326)
+	 */
+	public void setSrsName(String srsName){
+		getJSObject().setProperty("srsName", srsName);
+	}
+
+	/**
+	 * @param version - WFS version, defaults to 1.0.0
+	 */
+	public void setVersion(String version){
+		getJSObject().setProperty("version", version);
 	}
 }

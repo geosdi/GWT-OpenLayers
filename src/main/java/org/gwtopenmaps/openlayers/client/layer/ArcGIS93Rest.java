@@ -138,8 +138,8 @@ public class ArcGIS93Rest extends GridLayer {
 	 * Returns:
 	 * {<ArcGIS93Rest>} An exact clone of this layer
 	 */
-	public ArcGIS93Rest Clone(ArcGIS93Rest obj){
-	return new ArcGIS93Rest( ArcGIS93RestImpl.Clone(getJSObject(),obj.getJSObject()));
+	public ArcGIS93Rest clone(ArcGIS93Rest obj){
+		return new ArcGIS93Rest( ArcGIS93RestImpl.clone(getJSObject(),obj.getJSObject()));
 	}
 
 	/**
@@ -195,8 +195,8 @@ public class ArcGIS93Rest extends GridLayer {
 	 * Parameters:
 	 * newParams - {Object} Hashtable of new params to use
 	 */
-	public void mergeNewParams(WMSParams params){
-		ArcGIS93RestImpl.mergeNewParams(getJSObject(), params.getJSObject());
+	public boolean mergeNewParams(WMSParams params){
+		return ArcGIS93RestImpl.mergeNewParams(getJSObject(), params.getJSObject());
 	}
 
 	/**

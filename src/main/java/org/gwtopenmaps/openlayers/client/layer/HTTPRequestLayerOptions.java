@@ -8,7 +8,7 @@ package org.gwtopenmaps.openlayers.client.layer;
  */
 public class HTTPRequestLayerOptions extends LayerOptions {
 
-	//TODO: support setting options specific to GridLayer
+	//TODO: support setting options specific to HTTPRequestLayer
 
 
 }

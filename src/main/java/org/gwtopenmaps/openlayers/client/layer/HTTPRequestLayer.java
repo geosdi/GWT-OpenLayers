@@ -97,7 +97,7 @@ public class HTTPRequestLayer extends Layer {
 	 * Returns:
 	 * {HTTPRequest} An exact clone of this HTTPRequest
 	 */
-	public HTTPRequestLayer Clone(HTTPRequestLayer obj){
+	public HTTPRequestLayer clone(HTTPRequestLayer obj){
 		return new HTTPRequestLayer(HTTPRequestLayerImpl.Clone(getJSObject(), obj.getJSObject()));
 	}
 
@@ -120,7 +120,7 @@ public class HTTPRequestLayer extends Layer {
 	 * Returns:
 	 * redrawn: {Boolean} whether the layer was actually redrawn.
 	 */
-	public boolean MergeNewParams(WMSParams params){
+	public boolean mergeNewParams(WMSParams params){
 		return HTTPRequestLayerImpl.mergeNewParams(getJSObject(), params.getJSObject());
 	}
 
@@ -151,7 +151,7 @@ public class HTTPRequestLayer extends Layer {
 	 * {String} An entry from the urls array, deterministically selected based
 	 *          on the paramString.
 	 */
-	public String SelectUrl(String paramString, String url){
+	public String selectUrl(String paramString, String url){
 		return HTTPRequestLayerImpl.selectUrl(getJSObject(), paramString, url);
 	}
 

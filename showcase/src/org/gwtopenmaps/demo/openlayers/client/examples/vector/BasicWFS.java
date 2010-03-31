@@ -57,10 +57,8 @@ public class BasicWFS implements ShowcaseExample {
 		wfsProtocolOptions.setFeatureType("tasmania_roads");
 		wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
 
-		WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
 
-		String url = wfsProtocol.getUrl();
-		url.length();
+		WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
 
 		VectorOptions vectorOptions =  new VectorOptions();
 		vectorOptions.setProtocol(wfsProtocol);

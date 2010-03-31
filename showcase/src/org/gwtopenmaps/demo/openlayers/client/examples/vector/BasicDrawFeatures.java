@@ -6,7 +6,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.raster.BasicWMS;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
-import org.gwtopenmaps.openlayers.client.control.NavToolBar;
+import org.gwtopenmaps.openlayers.client.control.NavToolbar;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.format.WKT;
 import org.gwtopenmaps.openlayers.client.geometry.LineString;
@@ -60,7 +60,7 @@ public class BasicDrawFeatures implements ShowcaseExample {
 	wmsLayer = new WMS("Basic WMS", BasicWMS.WMS_URL, wmsParams);
 
 	example.getMap().addLayers(new Layer[] { wmsLayer });
-	example.getMap().addControl(new NavToolBar());
+	example.getMap().addControl(new NavToolbar());
 	example.getMap().addControl(new LayerSwitcher());
 
 	double lon = 4.0;

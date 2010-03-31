@@ -8,7 +8,7 @@ import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.MousePosition;
-import org.gwtopenmaps.openlayers.client.control.NavToolBar;
+import org.gwtopenmaps.openlayers.client.control.NavToolbar;
 import org.gwtopenmaps.openlayers.client.control.PanZoomBar;
 import org.gwtopenmaps.openlayers.client.control.SelectFeature;
 import org.gwtopenmaps.openlayers.client.control.SelectFeatureOptions;
@@ -67,7 +67,7 @@ public class SelectFeatureExamples implements ShowcaseExample {
 	// Adding controls to the Map
 	example.getMap().addControl(new PanZoomBar());
 	// use NavToolbar instead of deprecated MouseToolbar
-	example.getMap().addControl(new NavToolBar());
+	example.getMap().addControl(new NavToolbar());
 	example.getMap().addControl(new MousePosition());
 	example.getMap().addControl(new LayerSwitcher());
 

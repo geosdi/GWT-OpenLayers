@@ -8,18 +8,18 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Emily Gouge - Refractions Research
  *
  */
-public class NavToolBar extends Control{
+public class NavToolbar extends Panel{
 
-	protected NavToolBar(JSObject element) {
+	protected NavToolbar(JSObject element) {
 		super(element);
 	}
 
-	public NavToolBar(){
-		this(NavToolBarImpl.create());
+	public NavToolbar(){
+		this(NavToolbarImpl.create());
 	}
 
-	public NavToolBar(NavToolBarOptions options) {
-		this(NavToolBarImpl.create(options.getJSObject()));
+	public NavToolbar(NavToolbarOptions options) {
+		this(NavToolbarImpl.create(options.getJSObject()));
 	}
 
 	/*

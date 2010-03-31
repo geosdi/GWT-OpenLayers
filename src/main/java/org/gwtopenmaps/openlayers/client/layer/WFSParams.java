@@ -1,7 +1,6 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
-import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
 /**
  * The WFSParams correspond with parameters that can be specified
@@ -10,7 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  * @author Edwin Commandeur
  *
  */
-public class WFSParams extends JSObjectWrapper {
+public class WFSParams extends Params {
 
 	protected WFSParams(JSObject jsObject) {
 		super(jsObject);

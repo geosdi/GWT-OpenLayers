@@ -7,7 +7,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class EditingToolbar extends Control{
+public class EditingToolbar extends Panel {
 
 	protected EditingToolbar(JSObject element){
 		super(element);

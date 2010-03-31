@@ -2,7 +2,6 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
-import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
 /**
  * The WMSParams correspond with parameters that can be specified
@@ -15,7 +14,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  * @author Edwin Commandeur
  *
  */
-public class WMSParams extends JSObjectWrapper {
+public class WMSParams extends Params {
 
 	protected WMSParams(JSObject jsObject) {
 		super(jsObject);
@@ -53,25 +52,25 @@ public class WMSParams extends JSObjectWrapper {
 		return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
 	}
 
-    /**
-     * Set transparent parameter in WMS request. Default is false.
-     *
-     * Within this method the value of the parameter will be set in uppercase,
-     * since at least IONIC's WMS requires it to be in uppercase, in
-     * accordance with the WMS Specification
-     *
-     * The WMS 1.1.1 spec states:
-     *  "TRANSPARENT can take on two values, "TRUE" or "FALSE"."
-     *  and
-     *  "Parameter names shall not be case sensitive,
-     *  but parameter values shall be case sensitive."
-     *
-     */
-    public void setIsTransparent(boolean isTransparent){
-        if(isTransparent){
-        	getJSObject().setProperty("transparent", "TRUE");
-        } else {
-        	getJSObject().setProperty("transparent", "FALSE");
-        }
-    }
+	/**
+	 * Set transparent parameter in WMS request. Default is false.
+	 *
+	 * Within this method the value of the parameter will be set in uppercase,
+	 * since at least IONIC's WMS requires it to be in uppercase, in
+	 * accordance with the WMS Specification
+	 *
+	 * The WMS 1.1.1 spec states:
+	 *  "TRANSPARENT can take on two values, "TRUE" or "FALSE"."
+	 *  and
+	 *  "Parameter names shall not be case sensitive,
+	 *  but parameter values shall be case sensitive."
+	 *
+	 */
+	public void setIsTransparent(boolean isTransparent){
+		if(isTransparent){
+			getJSObject().setProperty("transparent", "TRUE");
+		} else {
+			getJSObject().setProperty("transparent", "FALSE");
+		}
+	}
 }

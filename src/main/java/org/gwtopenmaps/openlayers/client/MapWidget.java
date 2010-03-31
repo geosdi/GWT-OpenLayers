@@ -75,7 +75,7 @@ public class MapWidget extends Widget {
 	// created this way can give problems.
 	/*
 	public MapWidget(String elementId, MapOptions options) {
-	    Element element = DOM.getElementById(elementId);
+		Element element = DOM.getElementById(elementId);
 		if(element != null){
 			this.options = options;
 			setElement(element);
@@ -133,7 +133,7 @@ public class MapWidget extends Widget {
 	protected void onAttach() {
 		super.onAttach();
 	}
-	
+
 	/*
 	 * Overrides onLoad method of Widget, which is called immediately after a widget becomes attached to the
 	 * browser's document.
@@ -141,10 +141,9 @@ public class MapWidget extends Widget {
 	protected void onLoad() {
 		// We update the size of the map to try to display the map correctly when the MapWidget's size is set with percentage
 		DeferredCommand.addCommand(new Command() {
-            @Override
-            public void execute() {
+			public void execute() {
 				getMap().updateSize();
-            }
+			}
 		});
 	}
 

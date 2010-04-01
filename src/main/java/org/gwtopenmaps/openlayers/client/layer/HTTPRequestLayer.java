@@ -120,7 +120,7 @@ public class HTTPRequestLayer extends Layer {
 	 * Returns:
 	 * redrawn: {Boolean} whether the layer was actually redrawn.
 	 */
-	public boolean mergeNewParams(WMSParams params){
+	public boolean mergeNewParams(Params params){
 		return HTTPRequestLayerImpl.mergeNewParams(getJSObject(), params.getJSObject());
 	}
 

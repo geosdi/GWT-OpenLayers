@@ -10,14 +10,16 @@ public abstract class Params extends JSObjectWrapper {
 	}
 
 	/**
-	 * For setting parameters that are not standard. E.g. parameters that can be added
-	 * to a WMS request that are not part of the WMS standard, but that are supported by
+	 * For generically setting parameters on Params objects.
+	 *
+	 * Can be used to set vendor specific parameters, such as as paramaters that are added
+	 * to a WMS request, but that are not part of the WMS standard, but that are supported by
 	 * a specific product.
 	 *
 	 * @param name
 	 * @param value
 	 */
-	public void setCustomParameter(String name, String value){
+	public void setParameter(String name, String value){
 		getJSObject().setProperty(name, value);
 	}
 }

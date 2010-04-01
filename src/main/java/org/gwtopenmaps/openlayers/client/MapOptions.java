@@ -25,8 +25,26 @@ public class MapOptions extends JSObjectWrapper {
 		this(JSObject.createJSObject());
 	}
 
+	/**
+	 * By default, OpenLayers 2.7 adds Attribution, ArgParser, Navigation and PanZoom Controls.
+	 *
+	 * This method removes these default controls from the Map.
+	 */
+	public void removeDefaultControls(){
+		this.setControls(new JObjectArray(new JSObject[] {}));
+	}
+
 	public void setNumZoomLevels(int numZoomLevels) {
 		getJSObject().setProperty("numZoomLevels", numZoomLevels);
+	}
+
+	/**
+	 * Allow the map to function with OverLays only (no BaseLayer).
+	 *
+	 * @param allOverlays
+	 */
+	public void setAllOverlays(boolean allOverlays){
+		getJSObject().setProperty("allOverlays", allOverlays);
 	}
 
 	public void setControls(JObjectArray controls) {
@@ -170,12 +188,5 @@ public class MapOptions extends JSObjectWrapper {
 		getJSObject().setProperty("resolutions", array.getJSObject());
 	}
 
-	/**
-	 * By default, OpenLayers 2.7 adds Attribution, ArgParser, Navigation and PanZoom Controls.
-	 *
-	 * This method removes these default controls from the Map.
-	 */
-	public void removeDefaultControls(){
-		this.setControls(new JObjectArray(new JSObject[] {}));
-	}
+
 }

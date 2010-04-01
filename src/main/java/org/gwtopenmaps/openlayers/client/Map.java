@@ -365,6 +365,27 @@ public class Map extends OpenLayersEObjectWrapper {
 		getJSObject().setProperty("restrictedExtent", extent.getJSObject());
 	}
 
+	/*
+	 * see MapOptions.setAllOverlays
+	 *
+	 * @param allOverlays
+	 */
+	public boolean getAllOverlays(){
+		return getJSObject().getPropertyAsBoolean("allOverlays");
+	}
+
+	public void setBaseLayer(Layer newBaseLayer){
+		MapImpl.setBaseLayer(getJSObject(), newBaseLayer.getJSObject());
+	}
+
+	/**
+	 * This function should be called by any external code which dynamically changes the size of the map div.
+	 * It can also be called when experiencing the problem of the single small tile in the upper left corner (doesn't work in all situations thought)
+	 */
+	public void updateSize() {
+		MapImpl.updateSize(getJSObject());
+	};
+
 	public void destroy(){
 		MapImpl.destroy(getJSObject());
 	}
@@ -470,13 +491,5 @@ public class Map extends OpenLayersEObjectWrapper {
 			}
 		});
 	}
-
-	/**
-	 * This function should be called by any external code which dynamically changes the size of the map div.
-	 * It can also be called when experiencing the problem of the single small tile in the upper left corner (doesn't work in all situations thought)
-	 */
-	public void updateSize() {
-		MapImpl.updateSize(getJSObject());
-	};
 
 }

@@ -49,7 +49,7 @@ class MapImpl {
 	public static native void addPopup(JSObject map, JSObject popup)/*-{
 		map.addPopup(popup);
 	}-*/;
-	
+
 	public static native void addPopupExclusive(JSObject map, JSObject popup)/*-{
 	map.addPopup(popup, true);
 }-*/;
@@ -134,7 +134,6 @@ class MapImpl {
 		return map.getScale();
 	}-*/;
 
-
 	public static native void raiseLayer(JSObject map, JSObject layer, int delta)/*-{
 		map.raiseLayer(layer, delta);
 	}-*/;
@@ -167,12 +166,11 @@ class MapImpl {
 		map.destroy();
 	}-*/;
 
-	public static native void getZIndexBase(JSObject map)/*-{
-
-	}-*/;
-	
 	public static native void updateSize(JSObject map)/*-{
 	 	map.updateSize();
-}-*/;
+	}-*/;
 
+	public static native void setBaseLayer(JSObject map, JSObject newBaseLayer)/*-{
+ 		map.setBaseLayer(newBaseLayer);
+	}-*/;
 }

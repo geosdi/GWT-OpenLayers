@@ -195,7 +195,7 @@ public class ArcGIS93Rest extends GridLayer {
 	 * Parameters:
 	 * newParams - {Object} Hashtable of new params to use
 	 */
-	public boolean mergeNewParams(WMSParams params){
+	public boolean mergeNewParams(Params params){
 		return ArcGIS93RestImpl.mergeNewParams(getJSObject(), params.getJSObject());
 	}
 

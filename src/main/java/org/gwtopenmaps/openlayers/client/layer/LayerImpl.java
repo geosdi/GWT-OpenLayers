@@ -61,6 +61,9 @@ class LayerImpl {
 		if(layer.units){ return layer.units }else{ return ""};
 	}-*/;
 
+	public static native void addOptions(JSObject layer, JSObject layerOptions)/*-{
+		layer.addOptions(layerOptions);
+	}-*/;
 
 
 }

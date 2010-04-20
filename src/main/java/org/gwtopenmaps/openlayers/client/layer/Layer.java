@@ -108,11 +108,16 @@ public class Layer extends OpenLayersEObjectWrapper {
 	public void setIsVisible(boolean isVisible){
 		LayerImpl.setIsVisible(isVisible, getJSObject());
 	}
-	
+
 	public boolean redraw() {
 		/* super class redraw doesn't have a force.  But we'll pass through a value since the JSNI expects one */
 		return LayerImpl.redraw(getJSObject(), true);
 	}
+
+	public void addOptions(LayerOptions layerOptions) {
+		LayerImpl.addOptions(getJSObject(), layerOptions.getJSObject());
+	}
+
 
 	public void addLayerLoadStartListener(final LayerLoadStartListener listener){
 		eventListeners.addListener(this, listener, EventType.LAYER_LOADSTART, new EventHandler(){

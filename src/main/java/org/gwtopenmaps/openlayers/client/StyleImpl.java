@@ -20,7 +20,11 @@ public class StyleImpl {
         return $wnd.OpenLayers.Util.extend({}, $wnd.OpenLayers.Feature.Vector.style['default']);
         //return new Object(); //do it all yourself
     }-*/;
-
+    
+    public static native JSObject create(String string)
+	/*-{
+		return new $wnd.OpenLayers.Style(string);
+    }-*/;
 
     public static native void setFillOpacity(JSObject self, double o)
     /*-{
@@ -327,4 +331,5 @@ public class StyleImpl {
     /*-{
     	self.graphicTitle;
     }-*/;
+
 }

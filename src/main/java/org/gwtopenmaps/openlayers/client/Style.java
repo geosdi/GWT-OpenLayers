@@ -29,6 +29,17 @@ public class Style extends OpenLayersObjectWrapper {
 	public Style() {
 		this(StyleImpl.create());
 	}
+	
+	/**
+	 * This constructor is to be used when you want to get an empty Style object, instead of a Style initialized to default.
+	 * For example :
+	 * <code>Style emptyStyle = new Style("{}");
+	 * @param string
+	 * 			The JSON representation of the properties used to initialize the Style object
+	 */
+	public Style(String string) {
+		this(StyleImpl.create(string));
+	}
 
 	/**
 	 * Hex fill color. Default is '#ee9900'.

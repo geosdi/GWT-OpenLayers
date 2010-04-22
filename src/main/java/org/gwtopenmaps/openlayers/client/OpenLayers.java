@@ -24,4 +24,22 @@ public class OpenLayers {
 	public static native String getProxyHost()/*-{
 		return ($wnd.OpenLayers.ProxyHost !== undefined)?$wnd.OpenLayers.ProxyHost:null;
 	}-*/;
+
+	/**
+	 * Sets the IMAGE_RELOAD_ATTEMPTS property on the OpenLayers Object.
+	 *
+	 * @param attempts - the number of times OpenLayers will try to load an image that is requested over HTTP after the first attempt failed
+	 */
+	public static native void setImageReloadAttempts(int attempts)/*-{
+		$wnd.OpenLayers.IMAGE_RELOAD_ATTEMPTS = attempts;
+	}-*/;
+
+	/**
+	 * @return the number of times OpenLayers will try to load an image that is requested over HTTP after the first attempt failed -
+	 *   by default this is 0 (that is, one try)
+	 */
+	public static native int getImageReloadAttempts()/*-{
+		return $wnd.OpenLayers.IMAGE_RELOAD_ATTEMPTS;
+	}-*/;
+
 }

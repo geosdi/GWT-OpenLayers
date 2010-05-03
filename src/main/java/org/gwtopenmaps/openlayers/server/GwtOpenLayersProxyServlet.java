@@ -93,14 +93,13 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 
 					if(clength > 0) {
 						istream = request.getInputStream();
-						connectionOstream = connection.getOutputStream();
-
 						connection.setDoOutput(true);//for POST we need to write to connection
 						connection.setRequestProperty( "Content-Length",Integer.toString(clength)); //only valid for POST request
-
+						connectionOstream = connection.getOutputStream();
 						//copy the request body to remote outputStream
 						copy(istream, connectionOstream);
 					}
+					connectionIstream = connection.getInputStream();
 				}
 				//can output be the same for GET/POST? or different return headers?
 				//servlet may return 3 things: status code, headers, response body

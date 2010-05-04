@@ -41,6 +41,16 @@ public class Attributes extends JSObjectWrapper {
 	public void setAttribute(String name, int value) {
 		this.getJSObject().setProperty(name, value);
 	}
+	
+	/**
+	 * Sets a long value to the arbitrary attribute.
+	 *
+	 * @param name - Name of the attribute
+	 * @param value - Long value of the attribute
+	 */
+	public void setAttribute(String name, long value) {
+		this.getJSObject().setProperty(name, value);
+	}
 
 	/**
 	 * Sets a boolean value to the arbitrary attribute.

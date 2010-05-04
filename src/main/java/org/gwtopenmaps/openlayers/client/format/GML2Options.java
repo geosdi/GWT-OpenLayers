@@ -17,13 +17,13 @@ public class GML2Options extends JSObjectWrapper {
 	/**
 	 * There is no no-argument constructor for this class.
 	 * The unique constructor takes arguments that are absolutely required for the GML parser to work.
-	 * @param featureType
-	 * 						Local (without prefix) feature typeName. For example : "states" 
 	 * @param featureNS
 	 * 						Feature namespace. For example : "http://www.openplans.org/topp"
+	 * @param featureType
+	 * 						Local (without prefix) feature typeName. For example : "states" 
 	 * @author Mikael Couzic
 	 */
-	public GML2Options(String featureType, String featureNS){
+	public GML2Options(String featureNS, String featureType){
 		this(JSObject.createJSObject());
 		setFeatureType(featureType);
 		setFeatureNS(featureNS);

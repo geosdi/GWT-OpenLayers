@@ -27,6 +27,7 @@ public class GML2Options extends JSObjectWrapper {
 		this(JSObject.createJSObject());
 		setFeatureNS(featureNS);
 		setFeatureType(featureType);
+	}
 	
 	public void setFeatureNS(String featureNS) {
 		getJSObject().setProperty("featureNS", featureNS);

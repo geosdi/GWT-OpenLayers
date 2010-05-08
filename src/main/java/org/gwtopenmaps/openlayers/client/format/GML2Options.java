@@ -25,16 +25,15 @@ public class GML2Options extends JSObjectWrapper {
 	 */
 	public GML2Options(String featureNS, String featureType){
 		this(JSObject.createJSObject());
-		setFeatureType(featureType);
 		setFeatureNS(featureNS);
+		setFeatureType(featureType);
+	
+	public void setFeatureNS(String featureNS) {
+		getJSObject().setProperty("featureNS", featureNS);
 	}
 	
 	public void setFeatureType(String featureType) {
 		getJSObject().setProperty("featureType", featureType);
-	}
-	
-	public void setFeatureNS(String featureNS) {
-		getJSObject().setProperty("featureNS", featureNS);
 	}
 	
 	public void setGeometryName(String geometryName) {

@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,26 +14,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * OpenLayers contains an Open Proxy written in Python to circumvent browser restrictions on
- * cross-domain requests with Javascript. This proxy is included in the Examples. This is a similar Open Proxy written in Java.
- *
- * Parameter expected for GET/POST requests:
- *    targetURL - the full remote URL to proxy the request to
- *
- * In addition, a POST request should specify a body.
- *
- * What are the plans for OpenLayers 3.x with the Open Proxy?
- *
- * Initial code for this proxy is based upon the following code:
- * http://trac.openlayers.org/changeset/8099/sandbox?format=diff&new=8099
- * see also:
- * http://java.sun.com/docs/books/tutorial/networking/urls/readingWriting.html
- *
+ * This is a transparent HTTP proxy written in Java that is similar to the proxy in
+ * the OpenLayers examples, which is written in Python. These proxies are used
+ * to circumvent browser restrictions on cross-domain requests with Javascript.
+ * </p>
+ * <p>
+ * To use the proxy you need to 1) configure the proxy servlet in your web.xml
+ * and 2) use OpenLayers.setProxyHost to set the url-path to the proxy. If the
+ * proxy is configured to listen to the url-pattern '/gwtOpenLayersProxy/*' then
+ * the proxy host should be set to 'gwtOpenLayersProxy?targetURL='.
+ * </p>
+ * Initial code for this proxy is based upon <a href=
+ * "http://trac.openlayers.org/changeset/8099/sandbox?format=diff&new=8099">the
+ * following code</a><br />
+ * see also <a href=
+ * "http://java.sun.com/docs/books/tutorial/networking/urls/readingWriting.html"
+ * title="this networking tutorial">this networking tutorial</a>
+ * <p>
  */
-
-//For some level of security it should be possible to specify the allowedHosts.
-//The allowedHosts are the hosts that are allowed to use the Open Proxy.
-
 @SuppressWarnings("serial")
 public class GwtOpenLayersProxyServlet extends HttpServlet {
 
@@ -54,33 +54,36 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 		InputStream connectionIstream = null; //output for the target is input for the connection
 		OutputStream connectionOstream = null; //input for the target is output for the connection
 
-		//request.getRemoteAddr(); // get IP address of client - for checking allowedIPs
-		//request.getRemoteHost(); // get host address of client - for checking allowedHosts
+		//For some security reasons it should be possible to specify the allowedHosts.
+		//The allowedHosts are the hosts that are allowed to use the Open Proxy.
 
+		//request.getRemoteAddr(); // get IP address of client - for checking allowedIPs
+		String remoteHost = request.getRemoteHost(); // get host address of client - for checking allowedHosts
+		boolean allowedHost = isAllowedHost(remoteHost);
 		//HTTP request should be copied 1:1 (that is essence transparent proxy)
 		// GET request is determined by url, parameters, headers
 		// if url is send then no need to copy params, but still need to copy headers
 
 		try {
 			// easy way to ignore case of param?
-			if(request.getParameter("targetURL") != null && request.getParameter("targetURL") != "") {
+			if(request.getParameter("targetURL") != null && request.getParameter("targetURL") != "" && allowedHost) {
 
-				// HTTPUrlConnection looks at http.proxyXxx properties
-//				Properties systemProperties = System.getProperties();
-//				systemProperties.setProperty("http.proxyHost", yourproxy);
-//				systemProperties.setProperty("http.proxyPort", yourport);
+				// HTTPUrlConnection looks at http.proxyHost and http.proxyPort system properties.
+				// Make sure these properties are set these if you are behind a proxy.
 
 				//initialize
 				String requestMethod = request.getMethod();
 
 				URL targetURL = new URL(request.getParameter("targetURL"));
 				connection = (HttpURLConnection) targetURL.openConnection();
-				connection.setRequestMethod(requestMethod);
+				//TODO make sure all headers are copied to target, see for HTTP headers http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
 				//possibly: copyGenericRequestProperties
 				// copyGETSpecificRequestProperties, copyPOSTSpecificRequestProperties
-				connection.setRequestProperty( "Content-Type",request.getContentType()); //also for GET???
-				//What if proxy settings are set in environment
-				//set x-header in forwarded request
+				//TODO set de-facto standard proxy headers (x-forwarded-for etc)
+				connection.setRequestMethod(requestMethod);
+				connection.setRequestProperty( "Content-Type",request.getContentType()); //also for GET??? Not according to http://en.wikipedia.org/wiki/List_of_HTTP_headers
+				Map<String, List<String>> reqProps = connection.getRequestProperties();
+				reqProps.isEmpty();
 				//
 				if (requestMethod.equals("GET")){
 					//default for setDoInput is true
@@ -123,73 +126,6 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 
 	}
 
-		//Does it make sense to have resourceUrl for GET and targetURL for POST?
-		//Why not expect url param and look at request method to decide upon action?
-		//Or call them getUrl and postUrl?
-//		try {
-//			if(request.getParameter("resourceUrl") != null && request.getParameter("resourceUrl") != "") {
-//				URL resourceUrl = new URL(request.getParameter("resourceUrl"));
-//				connection = (HttpURLConnection)resourceUrl.openConnection();
-//				connection.setDoInput(true); // is this necessary ??? NO, is default
-//				connection.setRequestMethod(request.getMethod());
-//				connection.setRequestProperty("Content-Type", "application/xml");
-//				ristream = connection.getInputStream(); //is this where content is retrieved?
-//				//why not get the content type from the connection here?
-//				//is response specific to GET or build in the same was with POST
-//				response.setContentType("application/vnd.google-earth.kml+xml");
-//				rostream = response.getOutputStream();
-
-	//				final int length = 5000;
-//				byte[] bytes = new byte[length];
-//				int bytesRead = 0;
-//
-//				int totalBytes = 0;
-//				while ((bytesRead = ristream.read(bytes, 0, length)) > 0) {
-//					rostream.write(bytes, 0, bytesRead);
-//					totalBytes += bytesRead;
-//				}
-//			} else if(request.getParameter("targetUrl") != null && request.getParameter("targetUrl") != "") {
-//				URL targetUrl = new URL(request.getParameter("targetUrl"));
-//				connection = (HttpURLConnection)targetUrl.openConnection();
-//				connection.setDoOutput(true);
-//				connection.setRequestMethod(request.getMethod());
-//
-//				int clength = request.getContentLength();
-//				if(clength > 0) {
-//					connection.setDoInput(true);
-//					istream = request.getInputStream();
-//					ostream = connection.getOutputStream();
-//					final int length = 5000;
-//					byte[] bytes = new byte[length];
-//					int bytesRead = 0;
-//					while((bytesRead = istream.read(bytes, 0, length)) > 0) {
-//						ostream.write(bytes, 0, bytesRead);
-//					}
-//				}
-//
-//				rostream = response.getOutputStream();
-//				response.setContentType(connection.getContentType());
-//				ristream = connection.getInputStream();
-//				final int length = 5000;
-//				byte[] bytes = new byte[length];
-//				int bytesRead = 0;
-//				while ((bytesRead = ristream.read(bytes, 0, length)) > 0) {
-//					rostream.write(bytes, 0, bytesRead);
-//				}
-//			} else {
-//				return;
-//			}
-//		} catch(Exception e) {
-//			response.setStatus(500);
-//			e.printStackTrace();
-//		} finally {
-//			if(istream != null) { istream.close(); }
-//			if(ostream != null) { ostream.close(); }
-//			if(ristream != null) { ristream.close(); }
-//			if(rostream != null) { rostream.close(); }
-//		}
-//	}
-
 	private void copy(InputStream istream, OutputStream ostream) throws Exception {
 		int bufferSize = 4*4*1024;//same buffer size as in Jetty utils (2*8192)
 		byte[] buffer = new byte[bufferSize];
@@ -197,5 +133,10 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 		while ((read = istream.read(buffer)) != -1) {
 			ostream.write(buffer, 0, read);
 		}
+	}
+
+	private boolean isAllowedHost(String remoteHost){
+		//TODO checking of host
+		return true;
 	}
 }

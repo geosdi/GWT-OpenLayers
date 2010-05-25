@@ -15,6 +15,7 @@ import org.gwtopenmaps.openlayers.client.event.MapLayerRemovedListener;
 import org.gwtopenmaps.openlayers.client.event.MapMarkerAddedListener;
 import org.gwtopenmaps.openlayers.client.event.MapMarkerRemovedListener;
 import org.gwtopenmaps.openlayers.client.event.MapMoveListener;
+import org.gwtopenmaps.openlayers.client.event.MapMoveEndListener;
 import org.gwtopenmaps.openlayers.client.event.MapPopupClosedListener;
 import org.gwtopenmaps.openlayers.client.event.MapPopupOpenedListener;
 import org.gwtopenmaps.openlayers.client.event.MapZoomListener;
@@ -26,6 +27,7 @@ import org.gwtopenmaps.openlayers.client.event.MapLayerRemovedListener.MapLayerR
 import org.gwtopenmaps.openlayers.client.event.MapMarkerAddedListener.MapMarkerAddedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapMarkerRemovedListener.MapMarkerRemovedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapMoveListener.MapMoveEvent;
+import org.gwtopenmaps.openlayers.client.event.MapMoveEndListener.MapMoveEndEvent;
 import org.gwtopenmaps.openlayers.client.event.MapPopupClosedListener.MapPopupClosedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapPopupOpenedListener.MapPopupOpenedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapZoomListener.MapZoomEvent;
@@ -68,6 +70,7 @@ import com.google.gwt.user.client.Element;
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  * @author Edwin Commandeur - Atlis Information Systems
  * @author Curtis Jensen - Integrity Applications Inc.
+ * @author Lukas Johansson
  */
 public class Map extends OpenLayersEObjectWrapper {
 
@@ -434,6 +437,15 @@ public class Map extends OpenLayersEObjectWrapper {
 			public void onHandle(EventObject eventObject) {
 				MapMoveEvent e = new MapMoveEvent(eventObject);
 				listener.onMapMove(e);
+			}
+		});
+	};
+
+	public void addMapMoveEndListener(final MapMoveEndListener listener){
+		eventListeners.addListener(this, listener, EventType.MAP_MOVEEND, new EventHandler(){
+			public void onHandle(EventObject eventObject) {
+				MapMoveEndEvent e = new MapMoveEndEvent(eventObject);
+				listener.onMapMoveEnd(e);
 			}
 		});
 	};

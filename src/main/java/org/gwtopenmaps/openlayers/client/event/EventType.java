@@ -31,6 +31,7 @@ public class EventType {
 	public static final String MAP_LAYER_CHANGED = "changelayer";
 	public static final String MAP_LAYER_REMOVED = "removelayer";
 	public static final String MAP_MOVE = "move";
+	public static final String MAP_MOVEEND = "moveend";
 	public static final String MAP_ZOOMEND = "zoomend";
 	public static final String MAP_POPUP_OPEN = "popupopen";
 	public static final String MAP_POPUP_CLOSE = "popupclose";

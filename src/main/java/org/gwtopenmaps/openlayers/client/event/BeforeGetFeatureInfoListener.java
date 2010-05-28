@@ -6,14 +6,14 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
 /**
- * @author Dave Potts
+ *
  *
  */
-public interface GetFeatureInfoListener extends EventListener {
+public interface BeforeGetFeatureInfoListener extends EventListener {
 
-	class GetFeatureInfoEvent extends EventObject {
+	class BeforeGetFeatureInfoEvent extends EventObject {
 
-		public GetFeatureInfoEvent(EventObject eventObject) {
+		public BeforeGetFeatureInfoEvent(EventObject eventObject) {
 			super(eventObject.getJSObject());
 		}
 
@@ -21,12 +21,13 @@ public interface GetFeatureInfoListener extends EventListener {
 			JSObject object = getSourceJSObject();
 			return (object!=null)?WMSGetFeatureInfo.narrowToWMSGetFeatureInfo(object):null;
 		}
-		public String getText(){
-			return getJSObject().getPropertyAsString("text");
 
+		//TODO: check if return type is OK
+		public String getXY(){
+			return getJSObject().getPropertyAsString("xy");
 		}
 	}
 
-	public void onGetFeatureInfo(GetFeatureInfoEvent eventObject);
+	public void onBeforeGetFeatureInfo(BeforeGetFeatureInfoEvent eventObject);
 
 }

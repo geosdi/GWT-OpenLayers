@@ -3,7 +3,7 @@ package org.gwtopenmaps.demo.openlayers.client.widget;
 import org.gwtopenmaps.demo.openlayers.client.examples.control.CustomMousePosition;
 import org.gwtopenmaps.demo.openlayers.client.examples.events.MapEvents;
 import org.gwtopenmaps.demo.openlayers.client.examples.raster.BasicWMS;
-import org.gwtopenmaps.demo.openlayers.client.examples.raster.WMSGetFeatureInfo;
+import org.gwtopenmaps.demo.openlayers.client.examples.raster.WMSGetFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.BasicDrawFeatures;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.BasicWFS;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.DragExample;
@@ -43,7 +43,7 @@ public class ShowcaseMenu extends FlexTable {
 	ShowcaseMenuItem wmsGetFeatureInfoItem = new ShowcaseMenuItem("WMS GetFeatureInfo",
 			"Demonstrates WMS GetFeatureInfo control.", new ClickHandler() {
 			    public void onClick(ClickEvent evt) {
-				WMSGetFeatureInfo wmsGetFeatureInfo = new WMSGetFeatureInfo();
+				WMSGetFeatureInfoExample wmsGetFeatureInfo = new WMSGetFeatureInfoExample();
 				contentPanel.setExample(wmsGetFeatureInfo.getMapExample());
 				contentPanel.setExampleDescription("Description here.");
 				contentPanel.setExampleSource("Source here");

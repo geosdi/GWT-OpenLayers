@@ -4,13 +4,18 @@ import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.OpenLayers;
+import org.gwtopenmaps.openlayers.client.control.WMSGetFeatureInfo;
+import org.gwtopenmaps.openlayers.client.control.WMSGetFeatureInfoOptions;
+import org.gwtopenmaps.openlayers.client.event.GetFeatureInfoListener;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-public class WMSGetFeatureInfo implements ShowcaseExample {
+import com.google.gwt.user.client.Window;
+
+public class WMSGetFeatureInfoExample implements ShowcaseExample {
 
 	MapExample example;
 
@@ -19,7 +24,7 @@ public class WMSGetFeatureInfo implements ShowcaseExample {
 
 	public static final String WMS_URL = "http://demo.opengeo.org/geoserver/wms";
 
-	public WMSGetFeatureInfo (){
+	public WMSGetFeatureInfoExample (){
 		example = new MapExample();
 
 		example.getMap().setMaxExtent(new Bounds(143.834,-43.648,148.479,-39.573));
@@ -58,6 +63,22 @@ public class WMSGetFeatureInfo implements ShowcaseExample {
 
 		example.getMap().addLayers(new Layer[] {waterBodies});
 		example.getMap().zoomToMaxExtent();
+
+		WMSGetFeatureInfoOptions options = new WMSGetFeatureInfoOptions();
+		options.setURL(WMS_URL);
+		options.setTitle("Query visible layers");
+		options.setQueryVisible(true);
+		WMSGetFeatureInfo info = new WMSGetFeatureInfo(options);
+		info.addGetFeatureListener(new GetFeatureInfoListener(){
+
+			@Override
+			public void onGetFeatureInfo(GetFeatureInfoEvent eo) {
+				Window.alert(eo.getText());
+			}
+
+		});
+		example.getMap().addControl(info);
+		info.activate();
 
 	}
 

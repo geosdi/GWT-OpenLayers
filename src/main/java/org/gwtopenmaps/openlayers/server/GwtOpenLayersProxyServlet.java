@@ -5,8 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -54,15 +52,8 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 		InputStream connectionIstream = null; //output for the target is input for the connection
 		OutputStream connectionOstream = null; //input for the target is output for the connection
 
-		//For some security reasons it should be possible to specify the allowedHosts.
-		//The allowedHosts are the hosts that are allowed to use the Open Proxy.
-
-		//request.getRemoteAddr(); // get IP address of client - for checking allowedIPs
 		String remoteHost = request.getRemoteHost(); // get host address of client - for checking allowedHosts
-		boolean allowedHost = isAllowedHost(remoteHost);
-		//HTTP request should be copied 1:1 (that is essence transparent proxy)
-		// GET request is determined by url, parameters, headers
-		// if url is send then no need to copy params, but still need to copy headers
+		boolean allowedHost = isAllowedHost(remoteHost); //The allowedHosts are the hosts that are allowed to use the Open Proxy.
 
 		try {
 			// easy way to ignore case of param?
@@ -71,27 +62,21 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 				// HTTPUrlConnection looks at http.proxyHost and http.proxyPort system properties.
 				// Make sure these properties are set these if you are behind a proxy.
 
-				//initialize
+				//step 1: initialize
 				String requestMethod = request.getMethod();
 
 				URL targetURL = new URL(request.getParameter("targetURL"));
 				connection = (HttpURLConnection) targetURL.openConnection();
-				//TODO make sure all headers are copied to target, see for HTTP headers http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
-				//possibly: copyGenericRequestProperties
-				// copyGETSpecificRequestProperties, copyPOSTSpecificRequestProperties
-				//TODO set de-facto standard proxy headers (x-forwarded-for etc)
 				connection.setRequestMethod(requestMethod);
-				connection.setRequestProperty( "Content-Type",request.getContentType()); //also for GET??? Not according to http://en.wikipedia.org/wiki/List_of_HTTP_headers
-				Map<String, List<String>> reqProps = connection.getRequestProperties();
-				reqProps.isEmpty();
-				//
+				transferHTTPRequestHeaders(connection, request);
+
+				//step 2: proxy requests
 				if (requestMethod.equals("GET")){
 					//default for setDoInput is true
-					//connection.setDoInput(true); //use connection only for output with GET
 					connectionIstream = connection.getInputStream();
-					//connection.get
 				};
 				if (requestMethod.equals("POST")){
+					transferHTTPRequestHeadersForPOST(connection, request);
 					int clength = request.getContentLength();//clength is for checking if there is a POST body. Is that sufficient?
 
 					if(clength > 0) {
@@ -104,8 +89,10 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 					}
 					connectionIstream = connection.getInputStream();
 				}
+
+				//step 3: return output
 				//can output be the same for GET/POST? or different return headers?
-				//servlet may return 3 things: status code, headers, response body
+				//servlet may return 3 things: status code, response headers, response body
 				// status code and headers have to be set before response body
 				response.setContentType(connection.getContentType());
 				ostream = response.getOutputStream();
@@ -132,6 +119,37 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 		int read;
 		while ((read = istream.read(buffer)) != -1) {
 			ostream.write(buffer, 0, read);
+		}
+	}
+
+	private void transferHTTPRequestHeaders(HttpURLConnection connection, HttpServletRequest request){
+		//TODO make sure all headers are copied to target, see for HTTP headers http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
+		//TODO set de-facto standard proxy headers (x-forwarded-for etc)
+		//Do request.getProperties to get request properties
+		if(request.getHeader("Accept") != null){
+			connection.setRequestProperty("Accept", request.getHeader("Accept"));
+		}
+		if(request.getHeader("Accept-Encoding") != null){
+			//TODO browsers accept gzipped, should proxy accept gzip and how to handle it?
+			//connection.setRequestProperty("Accept-Encoding", request.getHeader("Accept-Encoding"));
+		}
+		if(request.getHeader("Accept-Charset") != null){
+			//TODO browsers accept gzipped
+			connection.setRequestProperty("Accept-Charset", request.getHeader("Accept-Charset"));
+		}
+
+		if(request.getHeader("Connection") != null){
+			//TODO HTTP/1.1 proxies MUST parse the Connection header field before a message is forwarded and, for each connection-token in this field, remove any header field(s) from the message with the same name as the connection-token.
+			//connection.setRequestProperty("Connection", request.getHeader("Connection"));
+		}
+
+	}
+
+	private void transferHTTPRequestHeadersForPOST(HttpURLConnection connection, HttpServletRequest request){
+		if(request.getHeader("Content-Type") != null){
+			connection.setRequestProperty( "Content-Type",request.getContentType());
+		} else {
+			//throw exception?
 		}
 	}
 

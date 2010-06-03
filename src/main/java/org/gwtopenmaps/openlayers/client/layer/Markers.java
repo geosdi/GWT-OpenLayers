@@ -6,6 +6,12 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  *
+ * <p>
+ * Markers is the non-preferred way to create marker layers.
+ * Alternatively, use Vector Layers, as explained
+ * <a href="http://docs.openlayers.org/library/overlays.html">here</a>.
+ * </p>
+ *
  * @author Erdem Gunay
  * @author Wayne Fang - Refractions Research
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.

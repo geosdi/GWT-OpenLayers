@@ -32,7 +32,7 @@ public class Projection extends JSObjectWrapper {
 	 *
 	 * @return String - projection code, see {@link #Projection(String)}.
 	 */
-	public String getProjectionCode(String projectionCode){
+	public String getProjectionCode(){
 		return ProjectionImpl.getProjectionCode(getJSObject());
 	}
 

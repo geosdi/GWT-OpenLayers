@@ -124,25 +124,31 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 
 	private void transferHTTPRequestHeaders(HttpURLConnection connection, HttpServletRequest request){
 		//TODO make sure all headers are copied to target, see for HTTP headers http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
-		//TODO set de-facto standard proxy headers (x-forwarded-for etc)
 		//Do request.getProperties to get request properties
 		if(request.getHeader("Accept") != null){
 			connection.setRequestProperty("Accept", request.getHeader("Accept"));
+		}
+		if(request.getHeader("Accept-Charset") != null){
+			connection.setRequestProperty("Accept-Charset", request.getHeader("Accept-Charset"));
 		}
 		if(request.getHeader("Accept-Encoding") != null){
 			//TODO browsers accept gzipped, should proxy accept gzip and how to handle it?
 			//connection.setRequestProperty("Accept-Encoding", request.getHeader("Accept-Encoding"));
 		}
-		if(request.getHeader("Accept-Charset") != null){
-			//TODO browsers accept gzipped
-			connection.setRequestProperty("Accept-Charset", request.getHeader("Accept-Charset"));
+		if(request.getHeader("Authorization") != null){
+			connection.setRequestProperty("Authorization", request.getHeader("Authorization"));
 		}
-
 		if(request.getHeader("Connection") != null){
 			//TODO HTTP/1.1 proxies MUST parse the Connection header field before a message is forwarded and, for each connection-token in this field, remove any header field(s) from the message with the same name as the connection-token.
 			//connection.setRequestProperty("Connection", request.getHeader("Connection"));
 		}
 
+		//set de-facto standard proxy headers (x-forwarded-for, others?s)
+		if(request.getHeader("X-Forwarded-For") != null){
+			connection.setRequestProperty("X-Forwarded-For", request.getHeader("X-Forwarded-For"));//TODO append IP proxy
+		} else{
+			connection.setRequestProperty("X-Forwarded-For", request.getRemoteAddr());//TODO append IP proxy
+		}
 	}
 
 	private void transferHTTPRequestHeadersForPOST(HttpURLConnection connection, HttpServletRequest request){

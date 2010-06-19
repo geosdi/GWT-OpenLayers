@@ -1,15 +1,17 @@
 package org.gwtopenmaps.openlayers.client.control;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.event.BeforeGetFeatureInfoListener;
+import org.gwtopenmaps.openlayers.client.event.BeforeGetFeatureInfoListener.BeforeGetFeatureInfoEvent;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
 import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
-import org.gwtopenmaps.openlayers.client.event.GetFeatureInfoEvent;
 import org.gwtopenmaps.openlayers.client.event.GetFeatureInfoListener;
-import org.gwtopenmaps.openlayers.client.handler.HandlerOptions;
+import org.gwtopenmaps.openlayers.client.event.GetFeatureInfoListener.GetFeatureInfoEvent;
+import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * @author Dave Potts
+ * @author Edwin Commandeur
  *
  * requires OpenLayers 2.7 or higher
  */
@@ -23,10 +25,6 @@ public class WMSGetFeatureInfo extends Control{
 		this(WMSGetFeatureInfoImpl.create());
 	}
 
-	public WMSGetFeatureInfo(WMSGetFeatureInfoOptions o, HandlerOptions ho){
-		this(WMSGetFeatureInfoImpl.create(o.getJSObject()));
-	}
-
 	public WMSGetFeatureInfo(WMSGetFeatureInfoOptions o){
 		this(WMSGetFeatureInfoImpl.create(o.getJSObject()));
 	}
@@ -34,14 +32,23 @@ public class WMSGetFeatureInfo extends Control{
 		return (object == null)? null: new WMSGetFeatureInfo(object);
 	}
 
+	public void addBeforeGetFeatureListener(final BeforeGetFeatureInfoListener listener){
+		eventListeners.addListener(this, listener, EventType.CONTROL_GET_FEATURE_INFO_BEFORE, new EventHandler(){
+			@Override
+			public void onHandle(EventObject eventObject){
+				BeforeGetFeatureInfoEvent e = new BeforeGetFeatureInfoEvent(eventObject);
+				listener.onBeforeGetFeatureInfo(e);
+			}
+		});
+	}
+
 	public void addGetFeatureListener(final GetFeatureInfoListener listener){
 		eventListeners.addListener(this, listener, EventType.CONTROL_GET_FEATURE_INFO, new EventHandler(){
 			@Override
 			public void onHandle(EventObject eventObject){
 				GetFeatureInfoEvent e = new GetFeatureInfoEvent(eventObject);
-				listener.onGetFeature(e);
+				listener.onGetFeatureInfo(e);
 			}
 		});
 	}
-
 }

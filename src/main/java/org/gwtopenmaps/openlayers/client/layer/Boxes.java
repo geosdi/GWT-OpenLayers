@@ -2,7 +2,13 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.marker.Box;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+
 /**
+* <p>
+* Boxes is only maintained for backwards compatibility, as explained <a href="http://docs.openlayers.org/library/layers.html">here<a>.
+*  Alternatively, use Vector Layers, as described <a href="http://docs.openlayers.org/library/overlays.html">here</a>.
+* </p>
+*
 * @author Michel Vitor A Rodrigues
 */
 public class Boxes extends Markers {

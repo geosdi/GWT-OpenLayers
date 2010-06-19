@@ -35,6 +35,26 @@ public class WMSGetFeatureInfoOptions extends JSObjectWrapper {
 		return getJSObject().getPropertyAsInt("maxFeatures");
 	}
 
+	public void setURL(String url){
+		getJSObject().setProperty("url", url);
+	}
 
+	public void setTitle(String title){
+		getJSObject().setProperty("title", title);
+	}
 
+	public void setQueryVisible(Boolean qvis){
+		getJSObject().setProperty("queryVisible", qvis);
+	}
+
+//	public void setLayers(WMS[] layers){
+//
+//	}
+
+	/**
+	 * defaults to 'text/html'
+	 */
+	public void setInfoFormat(String infoFormat){
+		getJSObject().setProperty("infoformat", infoFormat);
+	}
 }

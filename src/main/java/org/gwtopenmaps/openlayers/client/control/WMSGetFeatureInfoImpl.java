@@ -4,7 +4,6 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * @author Dave Potts
- *
  */
 public class WMSGetFeatureInfoImpl {
 

@@ -14,6 +14,7 @@ public class EventType {
 	public static final String CONTROL_MEASURE = "measure";
 	public static final String CONTROL_MEASURE_PARTIAL = "measurepartial";
 	public static final String CONTROL_GET_FEATURE_INFO = "getfeatureinfo";
+	public static final String CONTROL_GET_FEATURE_INFO_BEFORE = "beforegetfeatureinfo";
 	public static final String CONTROL_SELECT_FEATURE_SELECT = "onSelect"; //in OL 2.8 not really event, but name of property that refers to callback fn
 	public static final String CONTROL_SELECT_FEATURE_UNSELECT = "onUnselect"; //in OL 2.8 not really event , but name of property that refers to callback fn
 	public static final String CONTROL_SELECT_FEATURE_BEFORE_HIGHLIGHTED = "beforefeaturehighlighted";
@@ -31,6 +32,7 @@ public class EventType {
 	public static final String MAP_LAYER_CHANGED = "changelayer";
 	public static final String MAP_LAYER_REMOVED = "removelayer";
 	public static final String MAP_MOVE = "move";
+	public static final String MAP_MOVEEND = "moveend";
 	public static final String MAP_ZOOMEND = "zoomend";
 	public static final String MAP_POPUP_OPEN = "popupopen";
 	public static final String MAP_POPUP_CLOSE = "popupclose";

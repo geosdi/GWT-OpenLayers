@@ -21,6 +21,7 @@ syntax: regexp
 ^showcase/war/WEB-INF/lib/*
 ^showcase/war/gwt_ol_showcase/*
 ^target/*
+^gwt-openlayers/target/*
 ^build/*
 ^dist/*
 ^src/main/test/org/gwtopenmaps/test/openlayers/public/third-party/*

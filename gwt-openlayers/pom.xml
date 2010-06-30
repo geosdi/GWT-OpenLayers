@@ -1,23 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.gwtopenmaps.openlayers</groupId>
-	<artifactId>openlayers_gwt</artifactId>
-	<packaging>jar</packaging>
-	<version>0.5-SNAPSHOT</version>
-	<name>gwt-openlayers</name>
-	<url>http://maven.apache.org</url>
+	<parent>
+		<groupId>org.gwtopenmaps.openlayers</groupId>
+		<artifactId>gwt-openlayers-parent</artifactId>
+		<version>0.5-TRAC_TICKET_48-SNAPSHOT</version>	
+	</parent>
+	<artifactId>gwt-openlayers</artifactId>
+	<name>${project.artifactId}</name>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>1.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.1</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -42,21 +40,16 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<configuration>
-							<tasks>
-								<copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar" todir="${basedir}/showcase/lib" />
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4.3</version>
+				<configuration>
+					<excludes>
+						<!-- todo rename *Test.java to *GwtTest.java in the project -->
+						<exclude>**/*Test.java</exclude>
+						<exclude>**/*TestCase.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>			
 		</plugins>
 	</build>
 </project>

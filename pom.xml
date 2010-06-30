@@ -5,13 +5,29 @@
   <version>0.5-TRAC_TICKET_48-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <packaging>pom</packaging>
+  <properties>
+	<gwt.version>2.0.3</gwt.version>
+	<maven.compiler.source>1.5</maven.compiler.source>
+	<maven.compiler.target>1.5</maven.compiler.target>
+  </properties>
   <dependencyManagement>
 	<dependencies>
 		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>gwt-openlayers</artifactId>
+			<version>${project.version}</version>
+		</dependency>	
+		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>1.7.1</version>
+			<version>${gwt.version}</version>
 		</dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <version>${gwt.version}</version>
+      <scope>runtime</scope>
+    </dependency>		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -22,6 +38,6 @@
 	</dependencyManagement>	
   <modules>
 	<module>gwt-openlayers</module>
-	<!-- module>gwt-openlayers-showcase</module -->
+	<module>gwt-openlayers-showcase</module>
   </modules>
 </project>

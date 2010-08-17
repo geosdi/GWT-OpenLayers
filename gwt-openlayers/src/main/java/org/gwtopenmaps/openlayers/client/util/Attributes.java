@@ -113,10 +113,10 @@ public class Attributes extends JSObjectWrapper {
 	}
 
 	/**
-	 * Get the value of an attribute as an integer.
+	 * Get the value of an attribute as a boolean.
 	 *
 	 * @param name - name of the attribute
-	 * @return the attribute as integer
+	 * @return the attribute as boolean
 	 */
 
 	public boolean getAttributeAsBoolean(String name){
@@ -124,7 +124,7 @@ public class Attributes extends JSObjectWrapper {
 	}
 
 	/**
-	 * Get the value of an attribute as an float.
+	 * Get the value of an attribute as a float.
 	 *
 	 * @param name - name of the attribute
 	 * @return the attribute as float
@@ -140,7 +140,7 @@ public class Attributes extends JSObjectWrapper {
 	 * @return the attribute as double
 	 */
 	public double getAttributeAsDouble(String name){
-		return this.getJSObject().getPropertyAsInt(name);
+		return this.getJSObject().getPropertyAsDouble(name);
 	}
 
 	/**

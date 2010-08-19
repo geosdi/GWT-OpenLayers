@@ -80,15 +80,6 @@ public class WMSOptions extends GridLayerOptions {
 		getJSObject().setProperty("wrapDateLine", wrap);
 	}
 
-	/**
-	 * For tiled layers the buffer size can be set.
-	 *
-	 * The default buffer is 2.
-	 */
-	public void setBuffer(int buffer){
-		getJSObject().setProperty("buffer", buffer);
-	}
-
 	public void setRatio(int ratio){
 		getJSObject().setProperty("ratio", ratio);
 	}

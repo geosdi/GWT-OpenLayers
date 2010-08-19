@@ -3,22 +3,33 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.gwtopenmaps.openlayers</groupId>
 	<artifactId>gwt-openlayers-parent</artifactId>
-	<version>0.5-TRAC_TICKET_48-SNAPSHOT</version>
+	<version>0.5-TRAC_TICKET_48-SNAPSHOT
+	</version>
 	<name>${project.artifactId}</name>
+	<description>GWT-OpenLayers is a GWT Wrapper for the
+		OpenLayers JavaScript Map Library</description>
 	<packaging>pom</packaging>
 	<licenses>
 		<license>
 			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0
+			</url>
 		</license>
 	</licenses>
 	<organization>
 		<name>sourceforge</name>
-		<url>http://sourceforge.net/projects/gwt-openlayers/</url>
+		<url>http://sourceforge.net/projects/gwt-openlayers/
+		</url>
 	</organization>
 	<scm>
-		<connection>scm:hg:http://gwt-openlayers.hg.sourceforge.net:8000/hgroot/gwt-openlayers/gwt-openlayers</connection>
-		<developerConnection>scm:hg:ssh://gwt-openlayers.hg.sourceforge.net/hgroot/gwt-openlayers/gwt-openlayers</developerConnection>
-		<url>http://gwt-openlayers.hg.sourceforge.net/hgweb/gwt-openlayers/</url>
+		<connection>
+			scm:hg:http://gwt-openlayers.hg.sourceforge.net:8000/hgroot/gwt-openlayers/gwt-openlayers
+		</connection>
+		<developerConnection>
+			scm:hg:ssh://gwt-openlayers.hg.sourceforge.net/hgroot/gwt-openlayers/gwt-openlayers
+		</developerConnection>
+		<url>http://gwt-openlayers.hg.sourceforge.net/hgweb/gwt-openlayers/
+		</url>
 	</scm>
 	<properties>
 		<gwt.version>2.0.4</gwt.version>
@@ -59,12 +70,14 @@
 		<repository>
 			<id>sonatype-nexus-staging</id>
 			<name>Nexus Release Repository</name>
-			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2
+			</url>
 		</repository>
 		<snapshotRepository>
 			<id>sonatype-nexus-snapshots</id>
 			<name>Sonatype Nexus Snapshots</name>
-			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+			<url>http://oss.sonatype.org/content/repositories/snapshots
+			</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<profiles>
@@ -79,7 +92,8 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
+						<groupId>org.apache.maven.plugins
+						</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
 						<executions>
 							<execution>
@@ -95,4 +109,15 @@
 			</build>
 		</profile>
 	</profiles>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

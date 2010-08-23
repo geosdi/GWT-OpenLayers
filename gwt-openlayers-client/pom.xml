@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.gwtopenmaps.openlayers</groupId>
-		<artifactId>gwt-openlayers-parent</artifactId>
+		<artifactId>gwt-openlayers</artifactId>
 		<version>0.5-TRAC_TICKET_48-SNAPSHOT</version>	
 	</parent>
-	<artifactId>gwt-openlayers</artifactId>
+	<artifactId>gwt-openlayers-client</artifactId>
 	<name>${project.artifactId}</name>
 	<dependencies>
 		<dependency>

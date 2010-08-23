@@ -7,7 +7,7 @@
 		<version>4</version>
 	</parent>
 	<groupId>org.gwtopenmaps.openlayers</groupId>
-	<artifactId>gwt-openlayers-parent</artifactId>
+	<artifactId>gwt-openlayers</artifactId>
 	<version>0.5-TRAC_TICKET_48-SNAPSHOT
 	</version>
 	<name>${project.artifactId}</name>
@@ -68,7 +68,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
-		<module>gwt-openlayers</module>
+		<module>gwt-openlayers-client</module>
 		<module>gwt-openlayers-showcase</module>
 	</modules>
 	<distributionManagement>

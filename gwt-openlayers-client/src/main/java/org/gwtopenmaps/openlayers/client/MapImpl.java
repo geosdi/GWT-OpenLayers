@@ -155,11 +155,11 @@ class MapImpl {
 	}-*/;
 
 	public static native JSObject getTileSize(JSObject map)/*-{
-		map.getTileSize();
+		return map.getTileSize();
 	}-*/;
 
 	public static native JSObject getSize(JSObject map)/*-{
-		map.getSize();
+		return map.getSize();
 	}-*/;
 
 	public static native void destroy(JSObject map)/*-{

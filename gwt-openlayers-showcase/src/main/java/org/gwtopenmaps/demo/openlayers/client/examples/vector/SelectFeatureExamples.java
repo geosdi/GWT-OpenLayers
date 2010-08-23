@@ -142,7 +142,6 @@ public class SelectFeatureExamples implements ShowcaseExample {
 	selectFeatureHover
 		.addBeforeFeatureHighlightedListener(new BeforeFeatureHighlightedListener() {
 
-		    @Override
 		    public void onBeforeFeatureHighlighted(
 			    VectorFeature eventObject) {
 			report(eventObject, "Before Highlighted");
@@ -153,7 +152,6 @@ public class SelectFeatureExamples implements ShowcaseExample {
 	selectFeatureHover
 		.addFeatureHighlightedListener(new FeatureHighlightedListener() {
 
-		    @Override
 		    public void onFeatureHighlighted(VectorFeature eventObject) {
 			report(eventObject, "Feature Highlighted");
 
@@ -163,7 +161,6 @@ public class SelectFeatureExamples implements ShowcaseExample {
 	selectFeatureHover
 		.addFeatureUnhighlightedListener(new FeatureUnhighlightedListener() {
 
-		    @Override
 		    public void onFeatureUnhighlighted(VectorFeature eventObject) {
 			report(eventObject, "Feature Unhighlighted");
 
@@ -195,7 +192,6 @@ public class SelectFeatureExamples implements ShowcaseExample {
 
 	// Add Select event
 	selectFeatureOptions.onSelect(new SelectFeatureListener() {
-	    @Override
 	    public void onFeatureSelected(VectorFeature vectorFeature) {
 		report(vectorFeature, "Selected");
 
@@ -204,7 +200,6 @@ public class SelectFeatureExamples implements ShowcaseExample {
 
 	// Add Unselect event
 	selectFeatureOptions.onUnSelect(new UnselectFeatureListener() {
-	    @Override
 	    public void onFeatureUnselected(VectorFeature vectorFeature) {
 		report(vectorFeature, "UnSelected");
 

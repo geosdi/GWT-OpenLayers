@@ -55,12 +55,10 @@ public class ShowcaseContent extends TabPanel {
     		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, x);
     		try { builder.sendRequest(null, new RequestCallback(){
 
-				@Override
 				public void onError(Request request, Throwable exception) {
 					replaceExampleSource("Error retreiving source.");
 				}
 
-				@Override
 				public void onResponseReceived(Request request,
 						Response response) {
 					replaceExampleSource(response.getText());

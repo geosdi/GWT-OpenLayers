@@ -211,7 +211,6 @@ public class LabeledFeature implements ShowcaseExample {
 	DragFeatureOptions dragFeatureOptions = new DragFeatureOptions();
 	dragFeatureOptions.onComplete(new DragFeatureListener() {
 
-	    @Override
 	    public void onDragEvent(VectorFeature vectorFeature, Pixel pixel) {
 		Window.alert("x=" + pixel.x() + " y=" + pixel.y());
 

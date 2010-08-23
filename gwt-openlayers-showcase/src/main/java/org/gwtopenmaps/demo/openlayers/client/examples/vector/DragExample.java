@@ -130,7 +130,6 @@ public class DragExample implements ShowcaseExample {
     private DragFeatureListener createDragFeatureListener(final String type) {
 	return new DragFeatureListener() {
 
-	    @Override
 	    public void onDragEvent(VectorFeature vectorFeature, Pixel pixel) {
 		report(vectorFeature, type, pixel);
 

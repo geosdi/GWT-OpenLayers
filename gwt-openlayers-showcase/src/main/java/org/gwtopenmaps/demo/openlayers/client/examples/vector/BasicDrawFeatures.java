@@ -39,7 +39,6 @@ public class BasicDrawFeatures implements ShowcaseExample {
 	{
 	    this.addClickHandler(new ClickHandler() {
 
-		@Override
 		public void onClick(ClickEvent event) {
 		    example.getMap().zoomToExtent(vectorLayer.getDataExtent());
 		}

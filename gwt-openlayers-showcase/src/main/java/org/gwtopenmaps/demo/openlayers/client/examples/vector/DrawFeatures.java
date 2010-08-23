@@ -115,7 +115,6 @@ public class DrawFeatures implements ShowcaseExample {
 		SelectFeatureOptions selectFeatureOptions = new SelectFeatureOptions();
 		selectFeatureOptions.onSelect(new SelectFeature.SelectFeatureListener() {
 
-			@Override
 			public void onFeatureSelected(VectorFeature vectorFeature) {
 				popup = new AnchoredBubble("info",
 					new LonLat(0,0),

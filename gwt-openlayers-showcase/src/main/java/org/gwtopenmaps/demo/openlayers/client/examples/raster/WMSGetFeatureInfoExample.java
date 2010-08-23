@@ -71,7 +71,6 @@ public class WMSGetFeatureInfoExample implements ShowcaseExample {
 		WMSGetFeatureInfo info = new WMSGetFeatureInfo(options);
 		info.addGetFeatureListener(new GetFeatureInfoListener(){
 
-			@Override
 			public void onGetFeatureInfo(GetFeatureInfoEvent eo) {
 				Window.alert(eo.getText());
 			}

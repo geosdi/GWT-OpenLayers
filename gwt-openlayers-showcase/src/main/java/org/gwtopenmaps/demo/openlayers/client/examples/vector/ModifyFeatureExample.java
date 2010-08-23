@@ -143,7 +143,6 @@ public class ModifyFeatureExample implements ShowcaseExample {
 	layer
 		.addVectorFeatureModifiedListener(new VectorFeatureModifiedListener() {
 
-		    @Override
 		    public void onFeatureModified(
 			    FeatureModifiedEvent eventObject) {
 

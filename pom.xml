@@ -36,10 +36,16 @@
 		<url>http://gwt-openlayers.hg.sourceforge.net/hgweb/gwt-openlayers/
 		</url>
 	</scm>
+	<issueManagement>
+		<system>trac</system>
+		<url>https://sourceforge.net/apps/trac/gwt-openlayers/</url>
+	</issueManagement>
 	<properties>
 		<gwt.version>2.0.4</gwt.version>
 		<maven.compiler.source>1.5</maven.compiler.source>
 		<maven.compiler.target>1.5</maven.compiler.target>
+		<!-- properties with no dots for velocity template filters -->
+		<projectVersion>${project.version}</projectVersion>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -126,7 +132,7 @@
 				<version>2.7</version>
 				<configuration>
 				</configuration>
-			</plugin>
+			</plugin>	
 		</plugins>
 	</reporting>
 </project>

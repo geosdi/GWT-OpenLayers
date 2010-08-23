@@ -84,6 +84,10 @@
 			<url>http://oss.sonatype.org/content/repositories/snapshots
 			</url>
 		</snapshotRepository>
+		<site>
+			<id>gwt-openlayers.sf.net</id>
+			<url>scp://shell.sourceforge.net/home/groups/g/gw/gwt-openlayers/htdocs/maven-site</url>
+		</site>		
 	</distributionManagement>
 	<profiles>
 		<profile>

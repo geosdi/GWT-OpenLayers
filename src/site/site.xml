@@ -22,14 +22,20 @@ under the License.
 <project xmlns="http://maven.apache.org/DECORATION/1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+  <bannerLeft>
+  	<name>GWT-OpenLayers</name>
+  </bannerLeft>
+  <bannerRight >
+  	<src>gwt-openlayers.png</src>
+  </bannerRight>
   <body>
     <menu name="Overview">
       <item name="About" href="index.html"/>
-      <item name="User Reference" href="userReference.html"/>
+      <item name="User Reference" href="user-reference.html"/>
       <item name="FAQ" href="faq.html"/>
     </menu>
     <menu name="Developer">
-      <item name="developerReference" href="developerReference.html"/>
+      <item name="Developer Reference" href="developer-reference.html"/>
     </menu>
     <menu ref="modules"/>
     <menu ref="reports"/>

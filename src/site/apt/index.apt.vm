@@ -1,11 +1,34 @@
 Welcome to GWT-OpenLayers ${projectVersion}
 
-  Paragraph
+  GWT-OpenLayers is a Java wrapper for the OpenLayers JavaScript API. It allows GWT projects to use the OpenLayers JavaScript API.
   
-* Sub Heading
+* A Special Message
 
-  Paragraph
+  GWT-OpenLayers takes full advantage of the amazing OpenLayers JavaScript API. On behalf of GWT Developers... Thank You for producing such an amazing piece of software so that we Java developers can wrap and use it in our native language.
   
-** Sub Sub Heading
+  Visit {{http://openlayers.org}}.
+  
+* Where can I get it?
 
-  Paragraph
+  * Download it from our sorceforge page {{http://sourceforge.net/projects/gwt-openlayers/files/}}.
+  
+  * Build it from source by taking a {{{source-repository.html}mercurial clone}} and building with maven 2.2.1+. 
+  
+  * Consume it as a maven dependency (see below).
+
+* Maven Developers
+
+  Since 0.5, GWT-Openlayers has been a Maven project and is released to central (via sonatype). Use the following dependency:
+  
+---
+<dependency>
+	<groupId>${projectGroupId}</groupId>
+	<artifactId>${projectArtifactId}-client</artifactId>
+	<version>${projectVersion}</version>
+	<packaging>jar</packaging>
+<dependency>
+---  
+  
+* How do I use it?
+
+  Please take a look at the {{{user-reference.html}user reference}}.

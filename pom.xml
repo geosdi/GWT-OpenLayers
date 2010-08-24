@@ -45,7 +45,9 @@
 		<maven.compiler.source>1.5</maven.compiler.source>
 		<maven.compiler.target>1.5</maven.compiler.target>
 		<!-- properties with no dots for velocity template filters -->
-		<projectVersion>${project.version}</projectVersion>
+		<projectGroupId>${project.groupId}</projectGroupId>
+		<projectArtifactId>${project.artifactId}</projectArtifactId>
+		<projectVersion>${project.version}</projectVersion>		
 	</properties>
 	<dependencyManagement>
 		<dependencies>

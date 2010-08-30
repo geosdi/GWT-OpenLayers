@@ -47,13 +47,13 @@
 		<!-- properties with no dots for velocity template filters -->
 		<projectGroupId>${project.groupId}</projectGroupId>
 		<projectArtifactId>${project.artifactId}</projectArtifactId>
-		<projectVersion>${project.version}</projectVersion>		
+		<projectVersion>${project.version}</projectVersion>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
-				<artifactId>gwt-openlayers</artifactId>
+				<artifactId>gwt-openlayers-client</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -95,7 +95,7 @@
 		<site>
 			<id>gwt-openlayers.sf.net</id>
 			<url>scp://shell.sourceforge.net/home/groups/g/gw/gwt-openlayers/htdocs/maven-site</url>
-		</site>		
+		</site>
 	</distributionManagement>
 	<profiles>
 		<profile>
@@ -132,9 +132,20 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.7</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0</version>
 				<configuration>
+					<!--
+					removed site-deploy from the release goals, a failed site-deploy should not 
+					hold up a release, it can be manually deployed from ./target/checkout
+					after the release:perform has finished or manually deployed later from the
+					scm tag
+					-->
+					<goals>deploy</goals>
 				</configuration>
-			</plugin>	
+			</plugin>
 		</plugins>
 	</reporting>
 </project>

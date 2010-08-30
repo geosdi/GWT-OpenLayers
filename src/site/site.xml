@@ -28,7 +28,14 @@ under the License.
   <bannerRight >
   	<src>gwt-openlayers.png</src>
   </bannerRight>
+  <version position="left"/>
+  <publishDate position="left"/>
   <body>
+  	<links>
+  		<item name="Client Javadocs" href="./gwt-openlayers-client/apidocs/index.html"/>
+  		<item name="Maven Central" href="http://repo1.maven.org/maven2/org/org/gwtopenmaps/openlayers/"/>
+  		<item name="Sourceforge" href="http://sourceforge.net/projects/gwt-openlayers/"/>  		
+  	</links>
     <menu name="Overview">
       <item name="About" href="index.html"/>
       <item name="User Reference" href="user-reference.html"/>

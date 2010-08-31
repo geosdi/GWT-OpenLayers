@@ -38,8 +38,10 @@ under the License.
   	</links>
     <menu name="Overview">
       <item name="About" href="index.html"/>
+      <item name="Getting Started" href="getting-started.html"/>
       <item name="User Reference" href="user-reference.html"/>
       <item name="FAQ" href="faq.html"/>
+      <item name="Versions" href="versions.html"/>
     </menu>
     <menu name="Developer">
       <item name="Developer Reference" href="developer-reference.html"/>

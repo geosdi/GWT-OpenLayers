@@ -43,7 +43,7 @@ public class RendererOptions extends OpenLayersObjectWrapper {
 	 *            The value of the property to set. Default is false.
 	 */
 	public void setZIndexing(boolean zIndexing) {
-		this.getJSObject().setProperty("zIndexing ", zIndexing);
+		this.getJSObject().setProperty("zIndexing", zIndexing);
 	}
 
 	/**
@@ -52,6 +52,6 @@ public class RendererOptions extends OpenLayersObjectWrapper {
 	 * @return The property value
 	 */
 	public boolean getZIndexing() {
-		return this.getJSObject().getPropertyAsBoolean("zIndexing ");
+		return this.getJSObject().getPropertyAsBoolean("zIndexing");
 	}
 };

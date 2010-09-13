@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client;
 
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
+import org.gwtopenmaps.openlayers.client.geometry.Point;
 import org.gwtopenmaps.openlayers.client.util.JDoubleArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
@@ -119,5 +120,17 @@ public class Bounds extends OpenLayersObjectWrapper {
 	
 	public boolean containsBounds(Bounds bounds, boolean partial, boolean contains ) {
 		return BoundsImpl.containsBounds(getJSObject(), bounds.getJSObject(), partial, contains);
+	}
+	
+	public void extend(LonLat lonLat) {
+		BoundsImpl.extend(this.getJSObject(), lonLat.getJSObject());
+	}
+	
+	public void extend(Point point) {
+		BoundsImpl.extend(this.getJSObject(), point.getJSObject());
+	}
+	
+	public void extend(Bounds bounds) {
+		BoundsImpl.extend(this.getJSObject(), bounds.getJSObject());
 	}
 }

@@ -60,4 +60,9 @@ class BoundsImpl {
 	public static native float getHeight(JSObject bounds)/*-{
 		return bounds.getHeight();
 	}-*/;
+	
+	public static native void extend(JSObject bounds, JSObject extension)/*-{
+		bounds.extend(extension);
+	}-*/;
+	
 }

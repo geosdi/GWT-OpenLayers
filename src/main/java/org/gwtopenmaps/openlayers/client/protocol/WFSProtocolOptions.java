@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.protocol;
 
+import org.gwtopenmaps.openlayers.client.filter.Filter;
 import org.gwtopenmaps.openlayers.client.protocol.ProtocolOptions;
 
 /**
@@ -64,5 +65,9 @@ public class WFSProtocolOptions extends ProtocolOptions {
 	 */
 	public void setVersion(String version){
 		getJSObject().setProperty("version", version);
+	}
+	
+	public void setFilter(Filter filter) {
+		getJSObject().setProperty("filter", filter.getJSObject());
 	}
 }

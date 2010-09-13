@@ -23,11 +23,12 @@ public class AnchoredBubble extends Popup {
 	 * For explanation of parameters see {@link Popup}.
 	 */
 	public AnchoredBubble(String id, LonLat lonlat, Size size, String html, OpenLayersObjectWrapper anchor, boolean closeBox) {
-		this(AnchoredBubbleImpl.create(id,
+		this(AnchoredBubbleImpl.create(
+				id,
 				lonlat.getJSObject(),
-				size.getJSObject(),
+				(size != null) ? size.getJSObject() : null,
 				html,
-				anchor.getJSObject(),
+				(anchor != null) ? anchor.getJSObject(): null,
 				closeBox));
 	}
 

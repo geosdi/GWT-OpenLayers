@@ -30,7 +30,7 @@ public class WMSGetFeatureInfoExample implements ShowcaseExample {
 		example.getMap().setMaxExtent(new Bounds(143.834,-43.648,148.479,-39.573));
 
 		//set a proxyHost
-		OpenLayers.setProxyHost("gwtOpenLayersProxy?targetURL=");
+		OpenLayers.setProxyHost("../gwtOpenLayersProxy?targetURL=");
 
 		//Defining WMS layers and adding them to the Map
 		WMSParams wmsParams = new WMSParams();

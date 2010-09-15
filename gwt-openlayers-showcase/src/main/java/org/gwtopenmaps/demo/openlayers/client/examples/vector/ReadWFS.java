@@ -55,7 +55,7 @@ public class ReadWFS implements ShowcaseExample {
 		wfsLayer = new Vector("wfsExample", vectorOptions);
 
 		//set a proxyHost
-		OpenLayers.setProxyHost("gwtOpenLayersProxy?targetURL=");
+		OpenLayers.setProxyHost("../gwtOpenLayersProxy?targetURL=");
 
 		WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
 		wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");

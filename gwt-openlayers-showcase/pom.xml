@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -8,37 +7,34 @@
 		<version>0.5-TRAC_TICKET_48-SNAPSHOT</version>
 	</parent>
 	<artifactId>gwt-openlayers-showcase</artifactId>
-	<packaging>war</packaging>
 	<name>${project.artifactId}</name>
 	<dependencies>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>gwt-openlayers-client</artifactId>
 			<version>${project.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>gwt-openlayers-server</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<version>${gwt.version}</version>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>${gwt.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
 		</dependency>
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
 		<outputDirectory>war/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
@@ -47,9 +43,9 @@
 				<version>1.2</version>
 				<executions>
 					<execution>
+						<phase>compile</phase>
 						<goals>
 							<goal>compile</goal>
-							<!-- <goal>generateAsync</goal> <goal>test</goal> -->
 						</goals>
 					</execution>
 				</executions>
@@ -57,49 +53,21 @@
 					<runTarget>org.gwtopenmaps.demo.openlayers.GwtOpenLayersShowcase/GwtOpenLayersShowcase.html</runTarget>
 				</configuration>
 			</plugin>
-			<!-- If you want to use the target/web.xml file mergewebxml produces, 
-				tell the war plugin to use it. Also, exclude what you want from the final 
-				artifact here. <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
-				<configuration> <webXml>target/web.xml</webXml> <warSourceExcludes>.gwt-tmp/**</warSourceExcludes> 
-				</configuration> </plugin> -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
-				<configuration>
-					<source>${maven.compiler.source}</source>
-					<target>${maven.compiler.target}</target>
-				</configuration>
-			</plugin>
-			<!-- also remove the war directory when running a clean -->
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>war</directory>
-						</fileset>
-					</filesets>
-				</configuration>
-			</plugin>			
-			<!-- copy the web.xml for jetty -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.4.2</version>
 				<executions>
 					<execution>
 						<id>copy-resources</id>
-						<!-- do this early on in the build lifecycle -->
-						<phase>validate</phase>
+						<phase>process-resources</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>war/WEB-INF</outputDirectory>
+							<outputDirectory>${basedir}/war/WEB-INF</outputDirectory>
 							<resources>
 								<resource>
-									<directory>src/main/webapp/WEB-INF</directory>
+									<directory>${basedir}/src/main/webapp/WEB-INF</directory>
 									<filtering>false</filtering>
 									<includes>
 										<include>web.xml</include>
@@ -109,6 +77,18 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<!-- also remove the war directory when running a clean -->
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}/war</directory>
+						</fileset>
+					</filesets>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

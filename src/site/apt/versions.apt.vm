@@ -1,0 +1,16 @@
+Current Release Version
+
+  NOTE: This documentation was released with GWT-OpenLayers ${projectVersion}.
+
+Latest SNAPSHOT Versions
+
+  If the latest stable release does not yet include the features you are looking for, you might want to try to check out GWT-OpenLayers from source and build it yourself. For this, see the {{{developer-reference.html}developer reference}}.
+  The mercurial repository also includes the latest showcase source.
+
+Older GWT versions
+
+  Older GWT-OpenLayers (GWT-OL) versions:
+
+      * GWT-OpenLayers 0.4.
+
+      * GWT-OpenLayers 0.2.

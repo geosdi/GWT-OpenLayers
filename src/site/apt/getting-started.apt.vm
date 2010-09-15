@@ -1,0 +1,23 @@
+Getting started
+
+  There's two popular ways to develop with GWT-OpenLayers, with either the Google Eclipse Plugin or via Maven (or you can mix the two).
+  
+  NOTE: This documentation was released with GWT-OpenLayers ${projectVersion}.
+
+* Run the GWT-OpenLayers Showcase
+  
+  The easiest way to get started with GWT-OpenLayers is to have a look at the gwt-openlayers-showcase. You will need to obtain the gwt-openlayers source from {{{https://sourceforge.net/projects/gwt-openlayers/files/}our sourceforge downloads}}.
+    
+  Maven is the recommended as it should work out the box. If you have not already installed Maven (v2.2.1+) (which Java developer has not...?), you will need to.
+  Startup the showcase from the commandline by typing:
+  
++--
+>cd gwt-openlayers
+>mvn install
+>cd gwt-openlayers-showcase
+>mvn gwt:run
++--  
+
+More Information
+
+  For more information see the {{{user-reference.html}user reference}}.

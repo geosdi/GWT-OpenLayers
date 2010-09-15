@@ -1,29 +1,11 @@
-#
-# use glob syntax
-#
-syntax: glob
-.gwt-tmp
-
-#
-# use regex syntax
-#
-syntax: regexp
-^.project
-^.classpath
-^.settings/*
-^bin/*
-^lib/*
-^showcase/.settings/*
-^showcase/lib/*
-^showcase/war/js/*
-^showcase/war/thirdparty/*
-^showcase/war/WEB-INF/classes/*
-^showcase/war/WEB-INF/lib/*
-^showcase/war/gwt_ol_showcase/*
-^target/*
-^build/*
-^dist/*
-^src/main/test/org/gwtopenmaps/test/openlayers/public/third-party/*
-^tomcat/*
-
-# add regexes for resources that have to be ignored below
+^target$
+^[^/]*/target$
+^[^/]*/war$
+^[^/]*/tomcat$
+.class
+/.settings$
+/.project$
+/.classpath$
+^.settings$
+^.project$
+^.classpath$

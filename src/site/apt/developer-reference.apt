@@ -1,11 +1,47 @@
 Developer Reference
 
-  Paragraph
-  
-* Sub Heading
+  This reference is for people that would like to develop on GWT-OpenLayers itself.
+  People that would just like to use GWT-OpenLayers in their projects should check out the {{{user-reference.html}user reference}}.
 
-  Paragraph
-  
-** Sub Sub Heading
+* Clone and go
 
-  Paragraph
+  GWT-OpenLayers uses Mercurial for version control. For the uninitiated to Mercurial, check out the excellent {{{http://hginit.com/top/00.html}hginit tutorial}}, or read up in the {{{http://hgbook.red-bean.com/}hgbook}}.
+  You can download a Mercurial commandline client {{{http://mercurial.selenic.com/wiki/Download?action=show&redirect=BinaryPackages}here}}, or use an IDE plugin like {{{http://javaforge.com/project/HGE}MercurialEclipse}}.
+
+  The easiest way to start developing on GWT-OpenLayers is by cloning the public central Mercurial repository:
+
++--
+http://gwt-openlayers.hg.sourceforge.net:8000/hgroot/gwt-openlayers/gwt-openlayers
++--
+
+
+  This repository can be cloned anonymously.
+
+  Once you cloned the public repository you got your own local copy of the repository to work with.
+  If you want to contribute code, make sure you have tested your changes to an up-to-date copy (by pulling the latest changes), and send us your exported changesets.
+  See this page about {{{http://mercurial.selenic.com/wiki/CommunicatingChanges}communicating changesets}}.
+
+
+* Building GWT-OpenLayers from source
+
+  Maven is used to build GWT-OpenLayers. Maven has good GWT support with the {{{http://mojo.codehaus.org/gwt-maven-plugin/}Maven GWT plugin}}.
+  To build GWT-OpenLayers using Maven, open the commandline at gwt-openlayers-client and run:
+
++--
+>mvn package
++--
+
+  This produces a GWT module jar that you can use in GWT applications. The server side part (currently consisting of an Ajax Proxy for by-passing the same origin policy) is packaged in the same way.
+
+* Setting up a development environment
+
+  Here we will explain different ways to develop on different OS's
+
+* How to ...
+
+  Some cookbook examples on how to extend GWT-OpenLayers
+
+
+More information
+
+  Currently, more information about developing GWT-OpenLayers is still found in our Trac {{{http://sourceforge.net/apps/trac/gwt-openlayers/wiki/Developer_reference}wiki}}.

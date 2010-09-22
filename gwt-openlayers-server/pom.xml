@@ -3,7 +3,7 @@
   <parent>
     <artifactId>gwt-openlayers</artifactId>
     <groupId>org.gwtopenmaps.openlayers</groupId>
-    <version>0.5-TRAC_TICKET_48-SNAPSHOT</version>
+    <version>0.5</version>
   </parent>
   <artifactId>gwt-openlayers-server</artifactId>
   <name>${project.artifactId}</name>

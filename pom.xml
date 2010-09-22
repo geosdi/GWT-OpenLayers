@@ -48,6 +48,8 @@
 		<projectGroupId>${project.groupId}</projectGroupId>
 		<projectArtifactId>${project.artifactId}</projectArtifactId>
 		<projectVersion>${project.version}</projectVersion>
+		<!-- all modules should have the same version when performing a release -->
+		<autoVersionSubmodules>true</autoVersionSubmodules>		
 	</properties>
 	<dependencyManagement>
 		<dependencies>

@@ -1,0 +1,35 @@
+FAQ
+
+* What is "com.google.gwt.core.client.JavaScriptException: (TypeError): $wnd.OpenLayers has no properties"?
+
+  This means that the OpenLayers javascript library is not loaded on your page. At present, OpenLayers is not included in the GWT-OpenLayers module, so you have to make sure to include OpenLayers in your project. GWT-OpenLayes is compatible with OpenLayers 2.4 and up, but using OpenLayers 2.7 is adviced. There are at least two ways in which OpenLayers can be included in your GWT project. 
+  * in the head tag of your application html 
+  * in the GWT module xml
+
+  Method 1 - Include OpenLayers in the head tag of your html:
+
+---
+<html>
+<head>
+  ...
+  <script src="YOUR_PATH_HERE/OpenLayers.js" type="text/javascript"></script>
+</head>
+...
+</html>
+---
+
+  Method 2 - Include OpenLayers JavaScript in your GWT module xml:
+
++--
+<module>
+...
+ <script src="YOUR_PATH_HERE/OpenLayers.js"/>
+...
+</module>
++--
+
+  See also "Automatic resource inclusion" in the GWT documentation on how to link javascript files via the GWT module xml.
+  
+* How do I integrate GWT-OpenLayers in smartgwt?
+ 
+  Read this thread {{http://forums.smartclient.com/showthread.php?t=4368&highlight=openlayers}} 

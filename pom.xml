@@ -1,62 +1,153 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>4</version>
+	</parent>
 	<groupId>org.gwtopenmaps.openlayers</groupId>
-	<artifactId>openlayers_gwt</artifactId>
-	<packaging>jar</packaging>
-	<version>0.5-SNAPSHOT</version>
-	<name>gwt-openlayers</name>
-	<url>http://maven.apache.org</url>
-	<dependencies>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-user</artifactId>
-			<version>1.7.1</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	<build>
-		<resources>
-			<resource>
-				<filtering>false</filtering>
-				<directory>${basedir}/src/main/java</directory>
-				<includes>
-					<include>**/*.java</include>
-					<include>**/*.xml</include>
-					<include>**/*.js</include>
-				</includes>
-			</resource>
-		</resources>
+	<artifactId>gwt-openlayers</artifactId>
+	<version>0.6-SNAPSHOT
+	</version>
+	<name>${project.artifactId}</name>
+	<description>GWT-OpenLayers is a GWT Wrapper for the
+		OpenLayers JavaScript Map Library</description>
+	<packaging>pom</packaging>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<organization>
+		<name>sourceforge</name>
+		<url>http://sourceforge.net/projects/gwt-openlayers/
+		</url>
+	</organization>
+	<scm>
+		<connection>
+			scm:hg:http://gwt-openlayers.hg.sourceforge.net:8000/hgroot/gwt-openlayers/gwt-openlayers
+		</connection>
+		<developerConnection>
+			scm:hg:ssh://gwt-openlayers.hg.sourceforge.net/hgroot/gwt-openlayers/gwt-openlayers
+		</developerConnection>
+		<url>http://gwt-openlayers.hg.sourceforge.net/hgweb/gwt-openlayers/
+		</url>
+	</scm>
+	<issueManagement>
+		<system>trac</system>
+		<url>https://sourceforge.net/apps/trac/gwt-openlayers/</url>
+	</issueManagement>
+	<properties>
+		<gwt.version>2.0.4</gwt.version>
+		<maven.compiler.source>1.5</maven.compiler.source>
+		<maven.compiler.target>1.5</maven.compiler.target>
+		<!-- properties with no dots for velocity template filters -->
+		<projectGroupId>${project.groupId}</projectGroupId>
+		<projectArtifactId>${project.artifactId}</projectArtifactId>
+		<projectVersion>${project.version}</projectVersion>
+		<!-- all modules should have the same version when performing a release -->
+		<autoVersionSubmodules>true</autoVersionSubmodules>		
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>gwt-openlayers-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-servlet</artifactId>
+				<version>${gwt.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.7</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<modules>
+		<module>gwt-openlayers-client</module>
+		<module>gwt-openlayers-server</module>		
+		<module>gwt-openlayers-showcase</module>
+	</modules>
+	<distributionManagement>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<name>Nexus Release Repository</name>
+			<url>http://oss.sonatype.org/service/local/staging/deploy/maven2
+			</url>
+		</repository>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>http://oss.sonatype.org/content/repositories/snapshots
+			</url>
+		</snapshotRepository>
+		<site>
+			<id>gwt-openlayers.sf.net</id>
+			<url>scp://shell.sourceforge.net/home/groups/g/gw/gwt-openlayers/htdocs/maven-site</url>
+		</site>
+	</distributionManagement>
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins
+						</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	<reporting>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
 			</plugin>
 			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<configuration>
-							<tasks>
-								<copy file="${project.build.directory}/${project.artifactId}-${project.version}.jar" todir="${basedir}/showcase/lib" />
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<!--
+					removed site-deploy from the release goals, a failed site-deploy should not 
+					hold up a release, it can be manually deployed from ./target/checkout
+					after the release:perform has finished or manually deployed later from the
+					scm tag
+					-->
+					<goals>deploy</goals>
+				</configuration>
 			</plugin>
 		</plugins>
-	</build>
+	</reporting>
 </project>

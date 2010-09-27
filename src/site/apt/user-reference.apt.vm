@@ -1,0 +1,38 @@
+User Reference
+
+  Here's a brief guide for working with GWT-OpenLayers in your GWT application.
+
+Inheriting GWT-OpenLayers in Your GWT Application
+
+  * Add the jar to your eclipse lib path, or the dependency to your maven pom.xml.
+
+  * You will need to add the following to your gwt.xml file (see the showcase for a working example):
+  
++--
+<inherits name='org.gwtopenmaps.openlayers.OpenLayers'/>
++--
+
+  * You will need to add the OpenLayers javascript to your html head - YOU MUST DO THIS.
+  
++--
+<script src="http://openlayers.org/api/2.9/OpenLayers.js"></script>
++--
+
+  * Then you can go cut some code, starting with MapWidget. Enjoy. Take a look at the showcase source for reference.
+
+Working with GWT-OpenLayers in your IDE 
+
+  You probably all know this, but there are two popular ways for developing GWT application these days that we'll recommend. It's not really our place to document this but these are noteworthy.
+
+* Maven Developers (Eclipse, IntelliJ and NetBeans)
+
+  * Eclipse - will open gwt-openlayers once you have installed the {{{http://m2eclipse.sonatype.org/m2eclipse}m2eclipse}} plugin.
+
+  * IntelliJ - will open gwt-openlayers out the box.
+  
+  * NetBeans - will open the project providing you have installed the maven plugins.
+
+* Google Eclipse Developers
+
+  If you develop with the Google Plugin for Eclipse, there's some good instructions here {{{http://googlewebtoolkit.blogspot.com/2010/08/how-to-use-google-plugin-for-eclipse.html}blogpost}}.
+  You can download and inherit gwt-openlayers from {{{https://sourceforge.net/projects/gwt-openlayers/files/}here}}.

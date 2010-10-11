@@ -9,6 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  * @author Erdem Gunay
  * @author Curtis Jensen
+ * @author <a href="mailto:marten.karlberg@digpro.se">Marten Karlberg</a>, Digpro AB
  *
  */
 public class Popup extends OpenLayersObjectWrapper {
@@ -21,9 +22,25 @@ public class Popup extends OpenLayersObjectWrapper {
 		super(element);
 	}
 
+	/*
+	 * Constructor also taking a CloseListener callback as suggested by the original OpenLayers 
+	 * JavaScript constructor.
+	 * 
+	 * Added by Digpro.
+	 */
+	public Popup(String id, LonLat lonlat, Size size, String html, boolean closeBox, 
+	             CloseListener closeBoxCallback) {
+	    
+		this(PopupImpl.create(id, lonlat.getJSObject(),
+		                      (size!=null)?size.getJSObject():null, 
+		                      html, closeBox,
+		                      (closeBoxCallback != null) ? closeBoxCallback : null));
+	}
+	
 	/**
 	 *
-	 * Use addCloseListener to respond to popup close event.
+	 * Use addCloseListener to respond to popup close event. (Beware! This does not work as
+	 * expected. Instead pass the CloseListener in the constructor for proper binding. /Digpro)
 	 *
 	 * @param id - String identifier for Popup. Used by ..?..
 	 * @param lonlat - {@link org.gwtopenmaps.openlayers.client.LonLat} where Popup should appear
@@ -45,85 +62,5 @@ public class Popup extends OpenLayersObjectWrapper {
 
 	public void addCloseListener(CloseListener callback) {
 		PopupImpl.addCloseListener(this.getJSObject(), callback);
-	}
-	
-	/**
-	 * autosize the popup
-	 * @param autoSize - boolean
-	 */
-	public void setAutoSize(boolean autoSize) {
-		this.getJSObject().setProperty("autoSize", autoSize);
-	}
-	
-	/**
-	 * Get the popup autoSize state
-	 * @return autoSize - boolean
-	 */
-	public boolean getAutoSize() {
-		return this.getJSObject().getPropertyAsBoolean("autoSize");
-	}
-	
-	/**
-	 * When drawn, pan map such that the entire popup is visible in the current viewport (if necessary). 
-	 * @param panMapIfOutOfView - boolean
-	 */
-	public void setPanMapIfOutOfView(boolean panMapIfOutOfView) {
-		this.getJSObject().setProperty("panMapIfOutOfView", panMapIfOutOfView);
-	}
-	
-	/**
-	 * Get the popup panMapIfOutOfView state
-	 * @return panMapIfOutOfView - boolean
-	 */
-	public boolean getPanMapIfOutOfView() {
-		return this.getJSObject().getPropertyAsBoolean("panMapIfOutOfView");
-	}
-
-	/**
-	 * Set the popup backgroundColor.  Sets the style
-	 * @param color - String
-	 */
-	public void setBackgroundColor(String color) {
-		this.getJSObject().setProperty("backgroundColor", color);
-	}
-
-	/**
-	 * Get the popup backgroundColor
-	 * @return backgroundColor - String
-	 */
-	public String getBackgroundColor() {
-		return this.getJSObject().getPropertyAsString("backgroundColor");
-	}
-
-	/**
-	 * Set the popup opacity
-	 * @param opacity - double
-	 */
-	public void setOpacity(double opacity) {
-		this.getJSObject().setProperty("opacity", opacity);
-	}
-
-	/**
-	 * Get the popup opacity
-	 * @return opacity - double
-	 */
-	public double getOpacity() {
-		return this.getJSObject().getPropertyAsDouble("opacity");
-	}
-
-	/**
-	 * Set the border style
-	 * @param border - String
-	 */
-	public void setBorder(String border) {
-		this.getJSObject().setProperty("border", border);
-	}
-
-	/**
-	 * Get the border style as set by setBorder
-	 * @return border CSS
-	 */
-	public String getBorder() {
-		return this.getJSObject().getPropertyAsString("border");
 	}
 }

@@ -23,20 +23,20 @@ public class Popup extends OpenLayersObjectWrapper {
 	}
 
 	/*
-	 * Constructor also taking a CloseListener callback as suggested by the original OpenLayers 
+	 * Constructor also taking a CloseListener callback as suggested by the original OpenLayers
 	 * JavaScript constructor.
-	 * 
+	 *
 	 * Added by Digpro.
 	 */
-	public Popup(String id, LonLat lonlat, Size size, String html, boolean closeBox, 
+	public Popup(String id, LonLat lonlat, Size size, String html, boolean closeBox,
 	             CloseListener closeBoxCallback) {
-	    
+
 		this(PopupImpl.create(id, lonlat.getJSObject(),
-		                      (size!=null)?size.getJSObject():null, 
+		                      (size!=null)?size.getJSObject():null,
 		                      html, closeBox,
 		                      (closeBoxCallback != null) ? closeBoxCallback : null));
 	}
-	
+
 	/**
 	 *
 	 * Use addCloseListener to respond to popup close event. (Beware! This does not work as
@@ -60,6 +60,11 @@ public class Popup extends OpenLayersObjectWrapper {
 		return (element == null) ? null: new Popup(element);
 	}
 
+	/**
+	 *
+	 * @deprecated add a close listener via the constructor instead
+	 *    this method uses a private method in OL and will not work as expected
+	 */
 	public void addCloseListener(CloseListener callback) {
 		PopupImpl.addCloseListener(this.getJSObject(), callback);
 	}

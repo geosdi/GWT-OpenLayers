@@ -16,19 +16,20 @@ import com.google.gwt.user.client.Element;
  * properties each of which contains a  primitive value, object, or function.
  *
  * @author Edwin Commandeur - Atlis EJS
+ * @author Alexander Solovets
  */
 public class JSObjectHelper {
 
 	public static native JSObject createObject() /*-{
-		return new Object();
+		return new $wnd.Object();
 	}-*/;
 
 	public static native JSObject createFunction() /*-{
-		return new Function();
+		return new $wnd.Function();
 	}-*/;
 
 	public static native JSObject createArray() /*-{
-		return new Array();
+		return new $wnd.Array();
 	}-*/;
 
 	//TODO: implement setProperty getProperty methods
@@ -112,7 +113,16 @@ public class JSObjectHelper {
 	public static native boolean hasProperty(JSObject object, String name) /*-{
 		if(object[name] != undefined){return true}else{return false};
 	}-*/;
-
+	
+	/**
+	 * Unset/Clear the property with the given name. Uses the javascript operator delete
+	 * @param object The object in which the property exists
+	 * @param name The name of the property
+	 */
+	public static native void unsetProperty(JSObject object, String name) /*-{
+		delete object[name];
+	}-*/;
+	
 	/**
 	 * Utility method for creating arguments to functions that take an array of objects.
 	 *

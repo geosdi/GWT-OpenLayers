@@ -113,6 +113,15 @@ public class JSObject extends JavaScriptObject {
 	public final boolean hasProperty(String name){
 		return JSObjectHelper.hasProperty(this, name);
 	}
+	
+	/**
+	 * Unset/Clear the property with the given name. Uses the javascript operator delete
+	 * @param object The object in which the property exists
+	 * @param name The name of the property
+	 */
+	public final void unsetProperty(String name){
+		JSObjectHelper.unsetProperty(this, name);
+	}	
 
 	/**
 	 * Checks whether the JSObject is a JavaScript Array by duck typing. If the

@@ -5,6 +5,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  * @author Edwin Commandeur - Atlis EJS
  * @author Rafael Ceravolo - LOGANN
+ * @author Lukas Johansson 
  */
 public class VectorFeatureImpl {
 
@@ -14,6 +15,10 @@ public class VectorFeatureImpl {
 
 	public native static JSObject create(JSObject geometry, JSObject style)/*-{
 		return new $wnd.OpenLayers.Feature.Vector(geometry, null, style);
+	}-*/;
+
+	public static native String getRenderIntent(JSObject self) /*-{
+		return self.renderIntent;
 	}-*/;
 
 }

@@ -3,6 +3,7 @@ package org.gwtopenmaps.openlayers.client.layer;
 import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.Style;
+import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
 import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
@@ -28,7 +29,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
- *
+ * @author Lukas Johansson
  */
 public class Vector extends Layer {
 
@@ -85,6 +86,22 @@ public class Vector extends Layer {
 
 	public OpenLayersObjectWrapper getProtocol(){
 		return Protocol.narrowToOpenLayersObjectWrapper(getJSObject().getProperty("protocol"));
+	}
+
+	public void setStyle(Style style){
+		VectorImpl.setStyle(getJSObject(), style.getJSObject());
+	}
+
+	public Style getStyle(){
+		return Style.narrowToOpenLayersStyle(VectorImpl.getStyle(getJSObject()));
+	}
+
+	public void setStyleMap(StyleMap styleMap){
+		VectorImpl.setStyleMap(getJSObject(), styleMap.getJSObject());
+	}
+
+	public StyleMap getStyleMap(){
+		return StyleMap.narrowToOpenLayersStyleMap(VectorImpl.getStyleMap(getJSObject()));
 	}
 
 	/**

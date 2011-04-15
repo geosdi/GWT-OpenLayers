@@ -6,7 +6,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * 
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
- * 
+ * @author Lukas Johansson
  */
 public class FeatureImpl {
 
@@ -46,4 +46,9 @@ public class FeatureImpl {
 	public static native void setStyle(JSObject feature, JSObject newStyle)/*-{
 		feature.style = newStyle;
 	}-*/;
+
+	public static native JSObject getStyle(JSObject self)/*-{
+		return self.style;
+	}-*/;
+
 }

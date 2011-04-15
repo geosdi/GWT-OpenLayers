@@ -13,6 +13,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
  * @author Rafael Ceravolo - LOGANN
+ * @author Lukas Johansson 
  *
  */
 //FIXME: This class does not wrap the OpenLayers.Style object, but a symbolizer
@@ -39,6 +40,14 @@ public class Style extends OpenLayersObjectWrapper {
 	 */
 	public Style(String string) {
 		this(StyleImpl.create(string));
+	}
+	
+	public String getId(){
+		return StyleImpl.getId(getJSObject());
+	}
+	
+	public String getName(){
+		return StyleImpl.getName(getJSObject());
 	}
 
 	/**
@@ -436,5 +445,9 @@ public class Style extends OpenLayersObjectWrapper {
 	 */
 	public String getGraphicTitle() {
 		return StyleImpl.getGraphicTitle(this.getJSObject());
+	}
+
+	public static Style narrowToOpenLayersStyle(JSObject element) {
+		return (element == null) ? null: new Style(element);
 	}
 }

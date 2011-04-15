@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client;
 
+import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -12,18 +13,19 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * </ul>
  *
  * @author Rafael Ceravolo - LOGANN
+ * @author Lukas Johansson 
  */
 public class StyleMap extends OpenLayersObjectWrapper {
 
 	protected StyleMap(JSObject openLayersObject) {
-	super(openLayersObject);
+		super(openLayersObject);
 	}
 
 	/**
 	 * Creates a StyleMap with default properties
 	 */
 	public StyleMap() {
-	this(StyleMapImpl.create());
+		this(StyleMapImpl.create());
 	}
 
 	/**
@@ -34,8 +36,13 @@ public class StyleMap extends OpenLayersObjectWrapper {
 	 * temporary)
 	 */
 	public StyleMap(Style style) {
-	this(StyleMapImpl.create(style.getJSObject(), style.getJSObject(),
-		style.getJSObject()));
+		this(
+			StyleMapImpl.create(
+				style.getJSObject(), 
+				style.getJSObject(),
+				style.getJSObject()
+			)
+		);
 	}
 
 	/**
@@ -52,10 +59,26 @@ public class StyleMap extends OpenLayersObjectWrapper {
 	 *            style to render the feature when it is temporarily selected
 	 */
 	public StyleMap(Style defaultStyle, Style selectStyle, Style temporaryStyle) {
-	this(StyleMapImpl.create(
-		defaultStyle == null ? null : defaultStyle.getJSObject(),
-		selectStyle == null ? null : selectStyle.getJSObject(),
-		temporaryStyle == null ? null : temporaryStyle.getJSObject()));
+		this(
+			StyleMapImpl.create(
+				defaultStyle == null ? null : defaultStyle.getJSObject(),
+				selectStyle == null ? null : selectStyle.getJSObject(),
+				temporaryStyle == null ? null : temporaryStyle.getJSObject()
+			)
+		);
 	}
 
+	public static StyleMap narrowToOpenLayersStyleMap(JSObject element) {
+		return (element == null) ? null: new StyleMap(element);
+	}
+	
+	public Style createSymbolizer(VectorFeature feature, String renderIntent){
+		return Style.narrowToOpenLayersStyle(
+			StyleImpl.createSymbolizer(
+				getJSObject(), 
+				feature.getJSObject(), 
+				renderIntent
+			)
+		);
+	}
 }

@@ -11,6 +11,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * 
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
+ * @author Lukas Johansson 
  * 
  */
 public abstract class Feature extends OpenLayersObjectWrapper {
@@ -59,4 +60,9 @@ public abstract class Feature extends OpenLayersObjectWrapper {
 	public void setStyle(Style newStyle) {
 		FeatureImpl.setStyle(this.getJSObject(), newStyle.getJSObject());
 	}
+
+	public Style getStyle() {
+		return Style.narrowToOpenLayersStyle(FeatureImpl.getStyle(this.getJSObject()));
+	}
+
 }

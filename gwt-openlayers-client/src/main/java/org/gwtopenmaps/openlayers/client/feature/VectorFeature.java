@@ -9,6 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
+ * @author Lukas Johansson 
  *
  *  Class name deviates intentionally from OpenLayers class name. Both
  *  vector layers and vector features are called Vector in OpenLayers.
@@ -75,6 +76,10 @@ public class VectorFeature extends Feature {
 	@Deprecated
 	public Attributes getAttributes(VectorFeature attributes){
 		return this.getAttributes();
+	}
+
+	public String getRenderIntent(){
+		return VectorFeatureImpl.getRenderIntent(getJSObject());
 	}
 
 }

@@ -1,5 +1,7 @@
 package org.gwtopenmaps.openlayers.client.style;
 
+import org.gwtopenmaps.openlayers.client.util.JSObject;
+
 /**
  * 
  * @author Maciej Jezierski - Pinocchio
@@ -12,6 +14,10 @@ public class SymbolizerPolygon extends SymbolizerLine {
 		super(SymbolizerPolygonImpl.create());
 	}
 	
+	protected SymbolizerPolygon(JSObject object) {
+		super(object);
+	}
+
 	public void setFillColor(String color) {
 		SymbolizerPolygonImpl.setFillColor(this.getJSObject(), color);
 	}

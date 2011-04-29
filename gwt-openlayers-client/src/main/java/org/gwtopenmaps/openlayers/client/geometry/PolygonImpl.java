@@ -14,5 +14,9 @@ public class PolygonImpl {
 	public static native JSObject create(JSObject rings)/*-{
 		return new $wnd.OpenLayers.Geometry.Polygon($wnd.gwt_openlayers_util.convertToArray(rings));
 	}-*/;
+	
+	public static native boolean intersects(JSObject self, JSObject geometry) /*-{
+		return self.intersects(geometry);
+	}-*/;
 
 }

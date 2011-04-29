@@ -41,5 +41,25 @@ public class OpenLayers {
 	public static native int getImageReloadAttempts()/*-{
 		return $wnd.OpenLayers.IMAGE_RELOAD_ATTEMPTS;
 	}-*/;
+	
+	
+	/**
+	 * 
+	 * @return default 72
+	 */
+	public static native double getDotPerInch() /*-{
+		return $wnd.OpenLayers.DOTS_PER_INCH;
+	}-*/;
+	
+	/**
+	 * @param value
+	 */
+	public static native void setDotPerInch(double value) /*-{
+		$wnd.OpenLayers.DOTS_PER_INCH = value;
+	}-*/;
+	
+	public static native double getInchesPerUnitMeter() /*-{
+		return $wnd.OpenLayers.INCHES_PER_UNIT['m'];
+	}-*/;
 
 }

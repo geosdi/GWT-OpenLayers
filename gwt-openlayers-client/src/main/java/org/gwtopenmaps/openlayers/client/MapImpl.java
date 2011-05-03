@@ -153,6 +153,10 @@ class MapImpl {
 	public static native void panTo(JSObject map, JSObject lonlat)/*-{
 		map.panTo(lonlat);
 	}-*/;
+	
+	public static native void pan(JSObject map, int dx, int dy) /*-{
+		map.pan(dx, dy);
+	}-*/;
 
 	public static native JSObject getTileSize(JSObject map)/*-{
 		return map.getTileSize();

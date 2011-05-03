@@ -312,6 +312,10 @@ public class Map extends OpenLayersEObjectWrapper {
 	public void panTo(LonLat lonlat){
 		MapImpl.panTo(getJSObject(), lonlat.getJSObject());
 	}
+	
+	public void pan(int dx, int dy) {
+		MapImpl.pan(getJSObject(), dx, dy);
+	}
 
 	public Size getTileSize(){
 		return new Size(MapImpl.getTileSize(getJSObject()));

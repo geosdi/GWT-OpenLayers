@@ -16,6 +16,9 @@ class ControlImpl {
 	public static native boolean deactivate(JSObject self)/*-{
 		return self.deactivate();
 	}-*/;
-
+	
+	public static native boolean isActive(JSObject self)/*-{
+		return self.active;
+	}-*/;
 	
 }

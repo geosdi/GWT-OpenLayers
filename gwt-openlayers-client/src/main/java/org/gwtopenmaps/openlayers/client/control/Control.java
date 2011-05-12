@@ -52,6 +52,10 @@ public class Control extends OpenLayersEObjectWrapper {
 		 });
 	};
 	
+	public boolean isActive() {
+		return ControlImpl.isActive(getJSObject());
+	}
+	
 	/**
 	 * get the map to which this control is attached
 	 *

@@ -1,42 +1,38 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
-import org.gwtopenmaps.openlayers.client.Bounds;
-
 /**
  * @author Amr Alam - Refractions Research
- *
  */
 public class TMSOptions extends LayerOptions {
 
-	public TMSOptions() {
+	public TMSOptions(String layername, String type) {
+		// setting required options
+		setLayername(layername);
+		setType(type);
 	}
 
-	public void setLayers(String layers) {
-		getJSObject().setProperty("layers", layers);
+	public void setServiceVersion(String serviceVersion) {
+		getJSObject().setProperty("serviceVersion", serviceVersion);
 	}
 
-	public String getLayers() {
-		return getJSObject().getPropertyAsString("layers");
+	public String getServiceVersion() {
+		return getJSObject().getPropertyAsString("serviceVersion");
 	}
 
-	public void setStyles(String styles) {
-		getJSObject().setProperty("styles", styles);
-	}
-	public String getStyles() {
-		return getJSObject().getPropertyAsString("styles");
+	public void setLayername(String layername) {
+		getJSObject().setProperty("layername", layername);
 	}
 
-	public void setFormat(String styles) {
-		getJSObject().setProperty("format", styles);
-	}
-	public String getFormat() {
-		return getJSObject().getPropertyAsString("format");
+	public String getLayername() {
+		return getJSObject().getPropertyAsString("layername");
 	}
 
-	public void setMaxExtent(Bounds bounds) {
-		getJSObject().setProperty("maxExtent", bounds.getJSObject());
+	public void setType(String type) {
+		getJSObject().setProperty("type", type);
 	}
-	public Bounds getMaxExtent() {
-		return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
+
+	public String getType() {
+		return getJSObject().getPropertyAsString("type");
 	}
+
 }

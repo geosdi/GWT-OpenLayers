@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/gwt-ol/!svn/ver/53/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer
+END
+Symbolizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/gwt-ol/!svn/ver/50/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/Symbolizer.java
+END
+TextSymbolizerOptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/gwt-ol/!svn/ver/53/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/TextSymbolizerOptions.java
+END
+SymbolizerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/gwt-ol/!svn/ver/50/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/SymbolizerImpl.java
+END
+LineSymbolizerOptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/gwt-ol/!svn/ver/50/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/LineSymbolizerOptions.java
+END
+TextSymbolizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/gwt-ol/!svn/ver/51/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/TextSymbolizer.java
+END
+TextSymbolizerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/gwt-ol/!svn/ver/51/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/TextSymbolizerImpl.java
+END
+LineSymbolizer.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/gwt-ol/!svn/ver/50/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/LineSymbolizer.java
+END
+LineSymbolizerImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/gwt-ol/!svn/ver/50/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/LineSymbolizerImpl.java
+END
+SymbolizerOptions.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/gwt-ol/!svn/ver/50/trunk/openlayers_gwt/src/main/java/org/gwtopenmaps/openlayers/client/symbolizer/SymbolizerOptions.java
+END

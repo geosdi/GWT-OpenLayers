@@ -27,7 +27,6 @@ public class Polygon extends Collection {
      * LinearRing geometries are MultiPoint geometries, whose components are Points.
      * The first and last component of a LinearRing is the same point, 
      * even if a LinearRing is instantiated with an array of Points whose first and last point are not the same. 
-     *  
      * @return Array of LinearRing Objects
      */
     public LinearRing[] getComponents(){
@@ -38,6 +37,17 @@ public class Polygon extends Collection {
         }
         return components;
     }
+    
+    /**
+     * Determine if the input geometry intersects this one.
+     * @param geometry  Any type of geometry.
+     * @return The input geometry intersects this one.
+     */
+    public boolean intersects(Geometry geometry) {
+		return PolygonImpl.intersects(getJSObject(), geometry.getJSObject());
+	}
+    
+    
     public double getArea() {
 		return PolygonImpl.getArea(getJSObject());
 	}
@@ -46,4 +56,5 @@ public class Polygon extends Collection {
 		return PolygonImpl.getGeodesicArea(getJSObject(),
 				projection.getJSObject());
 	}
+	
 }

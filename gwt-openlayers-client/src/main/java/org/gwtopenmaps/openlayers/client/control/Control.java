@@ -57,6 +57,10 @@ public class Control extends OpenLayersEObjectWrapper {
 		 });
 	};
 	
+	public boolean isActive() {
+		return ControlImpl.isActive(getJSObject());
+	}
+	
 	/**
 	 * Enable the Control
 	 * 
@@ -90,16 +94,7 @@ public class Control extends OpenLayersEObjectWrapper {
 	public Map getMap() {
 		return Map.narrowToMap(this.getJSObject().getProperty("map"));
 	}
-	
 
-	/**
-	 * The control is active.
-	 * 
-	 * @return boolean
-	 */
-	public Boolean isActive() {
-		return ControlImpl.isActive(getJSObject());
-	}
 
 	public String getZIndex() {
 		return ControlImpl.getZIndex(getJSObject());

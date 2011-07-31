@@ -1,27 +1,40 @@
-/**
- * 
- */
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-/**
- * @author Lorenzo Amato - CNR IMAA geoSDI Group
- * @email lorenzo.amato@geosdi.org
- */
-public class Snapping  extends Control {
+public class Snapping extends Control {
 
-	protected Snapping(JSObject element) {
-		super(element);
-		// TODO Auto-generated constructor stub
+	public Snapping(JSObject options) {
+		super(SnappingImpl.create(options));
 	}
 	
-	public Snapping(){
-		this(SnappingImpl.create());
+	public Snapping(SnappingOptions options) {
+		this(options.getJSObject());
 	}
 	
-	public Snapping(SnappingOptions options){
-		this(SnappingImpl.create(options.getJSObject()));
+	public Snapping() {
+		super(SnappingImpl.create());
+	}
+	
+	public boolean activate() {
+		return SnappingImpl.activate(this.getJSObject());
+	}
+	
+	public boolean deactivate() {
+		return SnappingImpl.deactivate(this.getJSObject());
+	}
+	
+	public void setLayer(Vector vector) {
+		SnappingImpl.setLayer(this.getJSObject(), vector.getJSObject());
+	}
+	
+	public void setTargetLayer(Vector vector) {
+		SnappingImpl.addTargetLayer(this.getJSObject(), vector.getJSObject());
+	}
+	
+	public void removeTargetLayer(Vector vector) {
+		SnappingImpl.removeTargetLayer(this.getJSObject(), vector.getJSObject());
 	}
 	
 	public void addTarget(SnappingTarget target){

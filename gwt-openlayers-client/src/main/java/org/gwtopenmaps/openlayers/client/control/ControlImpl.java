@@ -16,7 +16,7 @@ class ControlImpl {
 	public static native boolean deactivate(JSObject self)/*-{
 		return self.deactivate();
 	}-*/;
-
+	
     public static native String getControlId(JSObject self)/*-{
         return self.id;
     }-*/;

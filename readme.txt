@@ -1,3 +1,4 @@
+
 GWT-OpenLayers can be build using Maven 2.2.1+
 
 First, go to the directory where the parent pom resides

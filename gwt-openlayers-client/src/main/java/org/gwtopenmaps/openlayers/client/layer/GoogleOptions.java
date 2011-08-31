@@ -8,10 +8,11 @@ package org.gwtopenmaps.openlayers.client.layer;
 public class GoogleOptions extends EventPaneOptions {
 
 	public void setType(GMapType type) {
-		getJSObject().setProperty("type", type.getNativeType());
+		getJSObject().setProperty("type", type.getJSObject());
 	}
 
 	public void setSphericalMercator(boolean value) {
 		getJSObject().setProperty("sphericalMercator", value);
 	}
 }
+

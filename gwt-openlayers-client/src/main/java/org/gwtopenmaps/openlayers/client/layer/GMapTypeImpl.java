@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
+
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**

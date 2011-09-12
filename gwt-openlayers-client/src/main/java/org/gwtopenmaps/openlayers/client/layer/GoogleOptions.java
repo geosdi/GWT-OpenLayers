@@ -15,3 +15,4 @@ public class GoogleOptions extends EventPaneOptions {
 		getJSObject().setProperty("sphericalMercator", value);
 	}
 }
+

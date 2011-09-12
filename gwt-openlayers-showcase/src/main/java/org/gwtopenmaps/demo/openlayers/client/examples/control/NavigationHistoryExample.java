@@ -20,6 +20,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Grid;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.raster.BasicWMS;
@@ -35,21 +36,24 @@ import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
+
 /**
  *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  * @email  giuseppe.lascaleia@geosdi.org
  */
-public class NavigationHistoryExample implements ShowcaseExample {
-
+public class NavigationHistoryExample implements ShowcaseExample
+{
     private MapExample example;
     private WMS wmsLayer;
     private NavigationHistory nav;
     private Button next = new Button("next");
     private Button previous = new Button("previous");
 
-    public NavigationHistoryExample() {
+    public NavigationHistoryExample()
+    {
         example = new MapExample();
+
         // Add a WMS layer for a little background
         WMSParams wmsParams = new WMSParams();
         wmsParams.setFormat("image/png");
@@ -63,7 +67,7 @@ public class NavigationHistoryExample implements ShowcaseExample {
 
         wmsLayer = new WMS("Basic WMS", BasicWMS.WMS_URL, wmsParams);
 
-        example.getMap().addLayers(new Layer[]{wmsLayer});
+        example.getMap().addLayers(new Layer[] { wmsLayer });
         example.getMap().setCenter(new LonLat(lon, lat), zoom);
 
         example.getMap().addControl(new Navigation());
@@ -74,58 +78,64 @@ public class NavigationHistoryExample implements ShowcaseExample {
 
         Control prev = nav.getPrevious();
 
-        prev.addControlActivateListener(new ControlActivateListener() {
+        prev.addControlActivateListener(new ControlActivateListener()
+            {
+                public void onActivate(ControlActivateEvent eventObject)
+                {
+                    // TODO Auto-generated method stub
+                    previous.setEnabled(true);
+                }
+            });
 
-            public void onActivate(ControlActivateEvent eventObject) {
-                // TODO Auto-generated method stub
-                previous.setEnabled(true);
-            }
-        });
-
-        prev.addControlDeactivateListener(new ControlDeactivateListener() {
-
-            public void onDeactivate(ControlDeactivateEvent eventObject) {
-                // TODO Auto-generated method stub
-                previous.setEnabled(false);
-            }
-        });
+        prev.addControlDeactivateListener(new ControlDeactivateListener()
+            {
+                public void onDeactivate(ControlDeactivateEvent eventObject)
+                {
+                    // TODO Auto-generated method stub
+                    previous.setEnabled(false);
+                }
+            });
 
         Control nextControl = nav.getNext();
 
-        nextControl.addControlActivateListener(new ControlActivateListener() {
+        nextControl.addControlActivateListener(new ControlActivateListener()
+            {
+                public void onActivate(ControlActivateEvent eventObject)
+                {
+                    // TODO Auto-generated method stub
+                    next.setEnabled(true);
+                }
+            });
 
-            public void onActivate(ControlActivateEvent eventObject) {
-                // TODO Auto-generated method stub
-                next.setEnabled(true);
-            }
-        });
-
-        nextControl.addControlDeactivateListener(new ControlDeactivateListener() {
-
-            public void onDeactivate(ControlDeactivateEvent eventObject) {
-                // TODO Auto-generated method stub
-                next.setEnabled(false);
-            }
-        });
+        nextControl.addControlDeactivateListener(new ControlDeactivateListener()
+            {
+                public void onDeactivate(ControlDeactivateEvent eventObject)
+                {
+                    // TODO Auto-generated method stub
+                    next.setEnabled(false);
+                }
+            });
 
         next.setEnabled(false);
         previous.setEnabled(false);
 
-        next.addClickHandler(new ClickHandler() {
+        next.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent event)
+                {
+                    // TODO Auto-generated method stub
+                    nav.nextTrigger();
+                }
+            });
 
-            public void onClick(ClickEvent event) {
-                // TODO Auto-generated method stub
-                nav.nextTrigger();
-            }
-        });
-
-        previous.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent event) {
-                // TODO Auto-generated method stub
-                nav.previousTrigger();
-            }
-        });
+        previous.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent event)
+                {
+                    // TODO Auto-generated method stub
+                    nav.previousTrigger();
+                }
+            });
 
         Grid buttonGrid = new Grid(1, 2);
         buttonGrid.setWidget(0, 0, previous);
@@ -133,7 +143,8 @@ public class NavigationHistoryExample implements ShowcaseExample {
         example.add(buttonGrid, DockPanel.SOUTH);
     }
 
-    public MapExample getMapExample() {
+    public MapExample getMapExample()
+    {
         return this.example;
     }
 }

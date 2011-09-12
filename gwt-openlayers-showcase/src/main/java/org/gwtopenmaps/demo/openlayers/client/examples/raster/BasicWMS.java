@@ -13,53 +13,56 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-public class BasicWMS implements ShowcaseExample {
 
-	private MapExample example;
+public class BasicWMS implements ShowcaseExample
+{
+    public static final String WMS_URL = "http://labs.metacarta.com/wms/vmap0";
 
-	private WMS wmsLayer;
+    private MapExample example;
 
-	public static final String WMS_URL = "http://labs.metacarta.com/wms/vmap0";
+    private WMS wmsLayer;
 
-	public BasicWMS(){
+    public BasicWMS()
+    {
+        example = new MapExample();
 
-		example = new MapExample();
+        // Defining a WMSLayer and adding it to a Map
+        WMSParams wmsParams = new WMSParams();
+        wmsParams.setFormat("image/png");
+        wmsParams.setLayers("basic");
+        wmsParams.setStyles("");
 
-		//Defining a WMSLayer and adding it to a Map
-		WMSParams wmsParams = new WMSParams();
-		wmsParams.setFormat("image/png");
-		wmsParams.setLayers("basic");
-		wmsParams.setStyles("");
+        WMSOptions wmsLayerParams = new WMSOptions();
+        wmsLayerParams.setUntiled();
+        wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
 
-		WMSOptions wmsLayerParams = new WMSOptions();
-		wmsLayerParams.setUntiled();
-		wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
+        wmsLayer = new WMS(
+                "Basic WMS",
+                WMS_URL,
+                wmsParams,
+                wmsLayerParams);
 
-		wmsLayer = new WMS(
-				"Basic WMS",
-				WMS_URL,
-				wmsParams,
-				wmsLayerParams);
+        example.getMap().addLayers(new Layer[] { wmsLayer });
 
-		example.getMap().addLayers(new Layer[] {wmsLayer});
+        // Adding controls to the Map
+        example.getMap().addControl(new PanZoomBar());
 
-		//Adding controls to the Map
-		example.getMap().addControl(new PanZoomBar());
-		//use NavToolbar instead of deprecated MouseToolbar
-		example.getMap().addControl(new NavToolbar());
-		example.getMap().addControl(new MousePosition());
-		example.getMap().addControl(new LayerSwitcher());
+        // use NavToolbar instead of deprecated MouseToolbar
+        example.getMap().addControl(new NavToolbar());
+        example.getMap().addControl(new MousePosition());
+        example.getMap().addControl(new LayerSwitcher());
 
-		//Center and Zoom
-		double lon = 4.0;
-		double lat = 5.0;
-		int zoom = 5;
-		example.getMap().setCenter(new LonLat(lon, lat), zoom);
-	}
+        // Center and Zoom
+        double lon = 4.0;
+        double lat = 5.0;
+        int zoom = 5;
+        example.getMap().setCenter(new LonLat(lon, lat), zoom);
+    }
 
-	public MapExample getMapExample(){
-		return this.example;
-	}
+    public MapExample getMapExample()
+    {
+        return this.example;
+    }
 
 
 }

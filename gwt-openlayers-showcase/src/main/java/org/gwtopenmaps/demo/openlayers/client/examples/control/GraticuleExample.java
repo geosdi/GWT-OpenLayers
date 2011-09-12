@@ -20,6 +20,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.ToggleButton;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.raster.BasicWMS;
@@ -36,21 +37,25 @@ import org.gwtopenmaps.openlayers.client.symbolizer.LineSymbolizerOptions;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizer;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizerOptions;
 
+
 /**
  *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  * @email  giuseppe.lascaleia@geosdi.org
  */
-public class GraticuleExample implements ShowcaseExample {
-
+public class GraticuleExample implements ShowcaseExample
+{
     private MapExample example;
     private WMS wmsLayer;
+
     // Define buttons
     private ToggleButton activationButton = new ToggleButton("Activate");
     private Graticule grt;
 
-    public GraticuleExample() {
+    public GraticuleExample()
+    {
         example = new MapExample();
+
         // Add a WMS layer for a little background
         WMSParams wmsParams = new WMSParams();
         wmsParams.setFormat("image/png");
@@ -64,7 +69,7 @@ public class GraticuleExample implements ShowcaseExample {
 
         wmsLayer = new WMS("Basic WMS", BasicWMS.WMS_URL, wmsParams);
 
-        example.getMap().addLayers(new Layer[]{wmsLayer});
+        example.getMap().addLayers(new Layer[] { wmsLayer });
         example.getMap().setCenter(new LonLat(lon, lat), zoom);
 
 
@@ -89,21 +94,25 @@ public class GraticuleExample implements ShowcaseExample {
         grt = new Graticule(grtOptions);
 
         grt.setAutoActivate(false);
-     
+
         example.getMap().addControl(new MouseDefaults());
         example.getMap().addControl(grt);
 
-        activationButton.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent arg0) {
-                // TODO Auto-generated method stub
-                if (activationButton.isDown()) {
-                    grt.activate();
-                } else {
-                    grt.deactivate();
+        activationButton.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent arg0)
+                {
+                    // TODO Auto-generated method stub
+                    if (activationButton.isDown())
+                    {
+                        grt.activate();
+                    }
+                    else
+                    {
+                        grt.deactivate();
+                    }
                 }
-            }
-        });
+            });
 
         // Adding the button to the example
         Grid buttonGrid = new Grid(1, 1);
@@ -111,7 +120,8 @@ public class GraticuleExample implements ShowcaseExample {
         example.add(buttonGrid, DockPanel.SOUTH);
     }
 
-    public MapExample getMapExample() {
+    public MapExample getMapExample()
+    {
         return this.example;
     }
 }

@@ -4,6 +4,11 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 public class OSMImpl {
 
+            public static native JSObject OSM()
+            /*-{
+               return new $wnd.OpenLayers.Layer.OSM();
+            }-*/;
+            
 	   public static native JSObject OSM(String name, String url, JSObject params)
 	   /*-{
 	      return new $wnd.OpenLayers.Layer.OSM(name, url, params);

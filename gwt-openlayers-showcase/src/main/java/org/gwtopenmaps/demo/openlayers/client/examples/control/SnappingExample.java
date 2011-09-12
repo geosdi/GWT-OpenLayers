@@ -20,6 +20,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Grid;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -38,13 +39,14 @@ import org.gwtopenmaps.openlayers.client.strategy.FixedStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.FixedStrategyOptions;
 import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 
+
 /**
  *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  * @email  giuseppe.lascaleia@geosdi.org
  */
-public class SnappingExample implements ShowcaseExample {
-
+public class SnappingExample implements ShowcaseExample
+{
     private MapExample example;
     private Vector pointLayer;
     private Vector lineLayer;
@@ -53,7 +55,8 @@ public class SnappingExample implements ShowcaseExample {
     private CheckBox pointCheck = new CheckBox("Snap to point");
     private CheckBox lineCheck = new CheckBox("Snap to line");
 
-    public SnappingExample() {
+    public SnappingExample()
+    {
         example = new MapExample();
 
         // Center and Zoom
@@ -67,6 +70,7 @@ public class SnappingExample implements ShowcaseExample {
                 "data/line.json", false);
         polyLayer = JsonLayerCreator.createLayerFromJson("Polygon Layer",
                 "data/poly.json", false);
+
         Vector drawLayer = new Vector("Drawing Layer");
 
         // Vector[] targets = new Vector[]{polyLayer,lineLayer,pointLayer};
@@ -79,7 +83,7 @@ public class SnappingExample implements ShowcaseExample {
         line.setLayer(lineLayer);
         point.setLayer(pointLayer);
 
-        SnappingTarget[] targets = new SnappingTarget[]{poly, line, point};
+        SnappingTarget[] targets = new SnappingTarget[] { poly, line, point };
 
         SnappingOptions snappingOpts = new SnappingOptions();
         snappingOpts.setGreedy(true);
@@ -90,7 +94,7 @@ public class SnappingExample implements ShowcaseExample {
         snap.activate();
 
         example.getMap().addLayers(
-                new Layer[]{pointLayer, lineLayer, polyLayer, drawLayer});
+            new Layer[] { pointLayer, lineLayer, polyLayer, drawLayer });
 
         example.getMap().setCenter(new LonLat(lon, lat), zoom);
         example.getMap().addControl(new MouseDefaults());
@@ -101,41 +105,53 @@ public class SnappingExample implements ShowcaseExample {
         lineCheck.setValue(Boolean.TRUE);
         pointCheck.setValue(Boolean.TRUE);
 
-        polyCheck.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent arg0) {
-                // TODO Auto-generated method stub
-                if (polyCheck.getValue()) {
-                    snap.addTarget(poly);
-                } else {
-                    snap.removeTarget(poly);
+        polyCheck.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent arg0)
+                {
+                    // TODO Auto-generated method stub
+                    if (polyCheck.getValue())
+                    {
+                        snap.addTarget(poly);
+                    }
+                    else
+                    {
+                        snap.removeTarget(poly);
+                    }
                 }
-            }
-        });
+            });
 
-        lineCheck.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent arg0) {
-                // TODO Auto-generated method stub
-                if (lineCheck.getValue()) {
-                    snap.addTarget(line);
-                } else {
-                    snap.removeTarget(line);
+        lineCheck.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent arg0)
+                {
+                    // TODO Auto-generated method stub
+                    if (lineCheck.getValue())
+                    {
+                        snap.addTarget(line);
+                    }
+                    else
+                    {
+                        snap.removeTarget(line);
+                    }
                 }
-            }
-        });
+            });
 
-        pointCheck.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent arg0) {
-                // TODO Auto-generated method stub
-                if (pointCheck.getValue()) {
-                    snap.addTarget(point);
-                } else {
-                    snap.removeTarget(point);
+        pointCheck.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent arg0)
+                {
+                    // TODO Auto-generated method stub
+                    if (pointCheck.getValue())
+                    {
+                        snap.addTarget(point);
+                    }
+                    else
+                    {
+                        snap.removeTarget(point);
+                    }
                 }
-            }
-        });
+            });
 
         Grid buttonGrid = new Grid(3, 3);
         buttonGrid.setWidget(0, 0, polyCheck);
@@ -144,15 +160,16 @@ public class SnappingExample implements ShowcaseExample {
         example.add(buttonGrid, DockPanel.SOUTH);
     }
 
-    public MapExample getMapExample() {
+    public MapExample getMapExample()
+    {
         return this.example;
     }
 
-    public static class JsonLayerCreator {
-
+    public static class JsonLayerCreator
+    {
         public static Vector createLayerFromJson(String layerName, String url,
-                boolean isBaseLayer) {
-
+            boolean isBaseLayer)
+        {
             FixedStrategyOptions fOptions = new FixedStrategyOptions();
             FixedStrategy fStrategy = new FixedStrategy(fOptions);
 
@@ -165,7 +182,7 @@ public class SnappingExample implements ShowcaseExample {
             HTTPProtocol httpProt = new HTTPProtocol(httpProtOptions);
 
             VectorOptions options = new VectorOptions();
-            options.setStrategies(new Strategy[]{fStrategy});
+            options.setStrategies(new Strategy[] { fStrategy });
             options.setProtocol(httpProt);
             options.setIsBaseLayer(isBaseLayer);
 

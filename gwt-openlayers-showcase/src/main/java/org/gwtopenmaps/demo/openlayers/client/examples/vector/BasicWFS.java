@@ -18,61 +18,65 @@ import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 
-public class BasicWFS implements ShowcaseExample {
 
-	private MapExample example;
+public class BasicWFS implements ShowcaseExample
+{
+    public static final String WMS_URL = "http://labs.metacarta.com/wms/vmap0";
 
-	private WMS wmsLayer;
+    private MapExample example;
 
-	public static final String WMS_URL = "http://labs.metacarta.com/wms/vmap0";
+    private WMS wmsLayer;
 
-	public BasicWFS(){
-		example = new MapExample();
+    public BasicWFS()
+    {
+        example = new MapExample();
 
-		//Defining a WMSLayer and adding it to a Map
-		WMSParams wmsParams = new WMSParams();
-		wmsParams.setFormat("image/png");
-		wmsParams.setLayers("basic");
-		wmsParams.setStyles("");
+        // Defining a WMSLayer and adding it to a Map
+        WMSParams wmsParams = new WMSParams();
+        wmsParams.setFormat("image/png");
+        wmsParams.setLayers("basic");
+        wmsParams.setStyles("");
 
-		WMSOptions wmsLayerParams = new WMSOptions();
-		wmsLayerParams.setUntiled();
-		wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
+        WMSOptions wmsLayerParams = new WMSOptions();
+        wmsLayerParams.setUntiled();
+        wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
 
-		wmsLayer = new WMS(
-				"Basic WMS",
-				WMS_URL,
-				wmsParams,
-				wmsLayerParams);
+        wmsLayer = new WMS(
+                "Basic WMS",
+                WMS_URL,
+                wmsParams,
+                wmsLayerParams);
 
-		//set a proxyHost
-		OpenLayers.setProxyHost("../gwtOpenLayersProxy?targetURL=");
-		//String proxyHost = OpenLayers.getProxyHost();
+        // set a proxyHost
+        OpenLayers.setProxyHost("../gwtOpenLayersProxy?targetURL=");
+        // String proxyHost = OpenLayers.getProxyHost();
 
-		//Defining a WFS and adding it to the map
-		//Define a WFS with WFS protocol
-		WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
-		wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
-		wfsProtocolOptions.setFeatureType("tasmania_roads");
-		wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
-
-
-		WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
-
-		VectorOptions vectorOptions =  new VectorOptions();
-		vectorOptions.setProtocol(wfsProtocol);
-		vectorOptions.setStrategies(new Strategy[]{new BBoxStrategy()});
-		Vector wfsLayer = new Vector("wfsExample", vectorOptions);
-
-		example.getMap().addLayers(new Layer[] {wmsLayer, wfsLayer});
-		example.getMap().addControl(new PanZoomBar());
-		example.getMap().addControl(new LayerSwitcher());
-		example.getMap().setCenter(new LonLat(146.7, -41.8), 6);
+        // Defining a WFS and adding it to the map
+        // Define a WFS with WFS protocol
+        WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
+        wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
+        wfsProtocolOptions.setFeatureType("tasmania_roads");
+        wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
 
 
-	}
+        WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
 
-	public MapExample getMapExample() {
-		return this.example;
-	}
+        VectorOptions vectorOptions = new VectorOptions();
+        vectorOptions.setProtocol(wfsProtocol);
+        vectorOptions.setStrategies(new Strategy[] { new BBoxStrategy() });
+
+        Vector wfsLayer = new Vector("wfsExample", vectorOptions);
+
+        example.getMap().addLayers(new Layer[] { wmsLayer, wfsLayer });
+        example.getMap().addControl(new PanZoomBar());
+        example.getMap().addControl(new LayerSwitcher());
+        example.getMap().setCenter(new LonLat(146.7, -41.8), 6);
+
+
+    }
+
+    public MapExample getMapExample()
+    {
+        return this.example;
+    }
 }

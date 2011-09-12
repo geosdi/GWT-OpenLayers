@@ -14,6 +14,10 @@ public class OSM extends Layer {
 		super(element);
 	}
 	
+        public OSM() {
+            super(OSMImpl.OSM());
+        }
+	
 	public OSM(String name, String url, OSMOptions options){
 		super(OSMImpl.OSM(name, url, options.getJSObject()));
 	}

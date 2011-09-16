@@ -128,7 +128,7 @@ public class Layer extends OpenLayersEObjectWrapper {
 	 * 
 	 * Returns: {Integer} the z-index of this layer
 	 */
-	public String getZIndex() {
+	public Object getZIndex() {
 		return LayerImpl.getZIndex(getJSObject());
 	}
 

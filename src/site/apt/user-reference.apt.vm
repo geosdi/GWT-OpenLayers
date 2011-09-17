@@ -15,7 +15,7 @@ Inheriting GWT-OpenLayers in Your GWT Application
   * You will need to add the OpenLayers javascript to your html head - YOU MUST DO THIS.
   
 +--
-<script src="http://openlayers.org/api/2.9/OpenLayers.js"></script>
+<script src="http://openlayers.org/api/2.11/OpenLayers.js"></script>
 +--
 
   * Then you can go cut some code, starting with MapWidget. Enjoy. Take a look at the showcase source for reference.

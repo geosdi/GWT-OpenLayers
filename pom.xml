@@ -24,12 +24,12 @@
 	</organization>
 	<scm>
 		<connection>
-			scm:hg:http://gwt-openlayers.hg.sourceforge.net:8000/hgroot/gwt-openlayers/gwt-openlayers
+			scm:hg:http://bitbucket.org/gwtopenlayers/gwt-openlayers
 		</connection>
 		<developerConnection>
-			scm:hg:ssh://gwt-openlayers.hg.sourceforge.net/hgroot/gwt-openlayers/gwt-openlayers
+			scm:hg:https://bitbucket.org/gwtopenlayers/gwt-openlayers
 		</developerConnection>
-		<url>http://gwt-openlayers.hg.sourceforge.net/hgweb/gwt-openlayers/</url>
+		<url>http://bitbucket.org/gwtopenlayers/gwt-openlayers</url>
 	</scm>
 	<issueManagement>
 		<system>trac</system>

@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>org.gwtopenmaps.openlayers</groupId>
 	<artifactId>gwt-openlayers</artifactId>
-	<version>0.6-SNAPSHOT</version>
+	<version>0.6</version>
 	<name>${project.artifactId}</name>
 	<description>GWT-OpenLayers is a GWT Wrapper for the OpenLayers JavaScript Map Library</description>
 	<packaging>pom</packaging>

@@ -3,11 +3,11 @@
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
-		<version>4</version>
+		<version>7</version>
 	</parent>
 	<groupId>org.gwtopenmaps.openlayers</groupId>
 	<artifactId>gwt-openlayers</artifactId>
-	<version>0.6</version>
+	<version>0.6-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>GWT-OpenLayers is a GWT Wrapper for the OpenLayers JavaScript Map Library</description>
 	<packaging>pom</packaging>

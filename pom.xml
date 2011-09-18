@@ -10,6 +10,7 @@
 	<version>0.7-SNAPSHOT</version>
 	<name>${project.artifactId}</name>
 	<description>GWT-OpenLayers is a GWT Wrapper for the OpenLayers JavaScript Map Library</description>
+	<url>http://gwt-openlayers.sourceforge.net/maven-site-latest</url>
 	<packaging>pom</packaging>
 	<licenses>
 		<license>

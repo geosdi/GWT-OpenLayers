@@ -21,7 +21,7 @@
 	</licenses>
 	<organization>
 		<name>sourceforge</name>
-		<url>http://sourceforge.net/projects/gwt-openlayers/</url>
+		<url>http://sourceforge.net/projects/gwt-openlayers</url>
 	</organization>
 	<scm>
 		<connection>
@@ -36,6 +36,22 @@
 		<system>trac</system>
 		<url>https://sourceforge.net/apps/trac/gwt-openlayers/</url>
 	</issueManagement>
+	<ciManagement>
+		<system>jenkins</system>
+		<url>http://ci.geo-solutions.it/</url>
+		<notifiers>
+			<notifier>
+				<type>mail</type>
+				<sendOnError>true</sendOnError>
+				<sendOnFailure>true</sendOnFailure>
+				<sendOnSuccess>false</sendOnSuccess>
+				<sendOnWarning>false</sendOnWarning>
+				<configuration>
+					<address>ci@geo-solutions.it</address>
+				</configuration>
+			</notifier>
+		</notifiers>
+	</ciManagement>
 	<properties>
 		<gwt.version>2.3.0</gwt.version>
 		<maven.compiler.source>1.5</maven.compiler.source>

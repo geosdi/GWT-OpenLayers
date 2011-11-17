@@ -9,6 +9,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  * This differs from {@link WMSOptions}, which are options
  * that are set on the OL concept of a layer.
+ * 
+ * All WMS parameter names are case-insensitive, values are case sensitive
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur
@@ -25,39 +27,31 @@ public class WMSParams extends Params {
 	}
 
 	public void setLayers(String layers) {
-		getJSObject().setProperty("layers", layers);
+		getJSObject().setProperty("LAYERS", layers);
 	}
 	
 	public String getLayers() {
-		return getJSObject().getPropertyAsString("layers");
+		return getJSObject().getPropertyAsString("LAYERS");
 	}
 
 	public void setStyles(String styles) {
-		getJSObject().setProperty("styles", styles);
+		getJSObject().setProperty("STYLES", styles);
 	}
 	
 	public String getStyles() {
-		return getJSObject().getPropertyAsString("styles");
+		return getJSObject().getPropertyAsString("STYLES");
 	}
 
 	public void setFormat(String styles) {
-		getJSObject().setProperty("format", styles);
+		getJSObject().setProperty("FORMAT", styles);
 	}
 	
 	public String getFormat() {
-		return getJSObject().getPropertyAsString("format");
-	}
-
-	public void setMaxExtent(Bounds bounds) {
-		getJSObject().setProperty("maxExtent", bounds.getJSObject());
-	}
-	
-	public Bounds getMaxExtent() {
-		return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
+		return getJSObject().getPropertyAsString("FORMAT");
 	}
 
 	public boolean isTransparent() { 
-		String transparent = getJSObject().getPropertyAsString("transparent");
+		String transparent = getJSObject().getPropertyAsString("TRANSPARENT");
 		return transparent != null && "TRUE".equalsIgnoreCase(transparent);
 	}
 	
@@ -77,9 +71,23 @@ public class WMSParams extends Params {
 	 */
 	public void setIsTransparent(boolean isTransparent){
 		if(isTransparent){
-			getJSObject().setProperty("transparent", "TRUE");
+			getJSObject().setProperty("TRANSPARENT", "TRUE");
 		} else {
-			getJSObject().setProperty("transparent", "FALSE");
+			getJSObject().setProperty("TRANSPARENT", "FALSE");
 		}
 	}
+	
+	public String getBgColor() { 
+		return getJSObject().getPropertyAsString("BGCOLOR");
+	}
+	
+	/**
+	 * Hexadecimal red-green-blue colour value for the background color (default=0xFFFFFF).
+	 * @param bgColor
+	 */
+	public void setBgColor(String bgColor) { 
+		getJSObject().setProperty("BGCOLOR", bgColor);
+	}
+	
+	//TODO: add support for time/elevation?
 }

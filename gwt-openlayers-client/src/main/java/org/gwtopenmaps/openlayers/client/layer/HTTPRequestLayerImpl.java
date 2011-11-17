@@ -56,4 +56,10 @@ public class HTTPRequestLayerImpl {
 	public static native String getFullRequestString( JSObject HTTPRequest, JSObject newParams, String altUrl)/*-{
 		return HTTPRequest.getFullRequestString(newParams,altUrl);
 	}-*/;
+	
+	public static native JSObject getParams(JSObject HTTPRequest)/*-{
+		if( HTTPRequest.params ) 		
+			return HTTPRequest.params;
+		else return {};
+	}-*/;
 }

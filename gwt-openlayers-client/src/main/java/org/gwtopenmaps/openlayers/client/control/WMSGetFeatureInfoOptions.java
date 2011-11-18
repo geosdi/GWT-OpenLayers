@@ -112,6 +112,6 @@ public class WMSGetFeatureInfoOptions extends JSObjectWrapper {
 	 * defaults to 'text/html'
 	 */
 	public void setInfoFormat(String infoFormat){
-		getJSObject().setProperty("infoformat", infoFormat);
+		getJSObject().setProperty("infoFormat", infoFormat);
 	}
 }

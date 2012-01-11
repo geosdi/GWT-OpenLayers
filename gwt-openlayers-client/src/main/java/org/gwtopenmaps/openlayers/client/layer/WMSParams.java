@@ -56,7 +56,6 @@ public class WMSParams extends Params {
         return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
     }
     
-
     /**
      * Set transparent parameter in WMS request. Default is false.
      *

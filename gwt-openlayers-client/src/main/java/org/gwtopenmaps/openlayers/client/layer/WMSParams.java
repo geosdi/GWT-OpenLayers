@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
-import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -9,10 +8,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  * This differs from {@link WMSOptions}, which are options
  * that are set on the OL concept of a layer.
+ * 
+ * All WMS parameter names are case-insensitive, values are case sensitive
  *
  * @author Erdem Gunay
  * @author Edwin Commandeur
  *
+ * TODO: add support for time/elevation?
  */
 public class WMSParams extends Params {
 
@@ -24,57 +26,68 @@ public class WMSParams extends Params {
         this(JSObject.createJSObject());
     }
 
-    public void setLayers(String layers) {
-        getJSObject().setProperty("layers", layers);
-    }
+	public void setLayers(String layers) {
+		getJSObject().setProperty("LAYERS", layers);
+	}
+	
+	public String getLayers() {
+		return getJSObject().getPropertyAsString("LAYERS");
+	}
 
-    public String getLayers() {
-        return getJSObject().getPropertyAsString("layers");
-    }
+	public void setStyles(String styles) {
+		getJSObject().setProperty("STYLES", styles);
+	}
+	
+	public String getStyles() {
+		return getJSObject().getPropertyAsString("STYLES");
+	}
 
-    public void setStyles(String styles) {
-        getJSObject().setProperty("styles", styles);
-    }
+	public void setFormat(String styles) {
+		getJSObject().setProperty("FORMAT", styles);
+	}
+	
+	public String getFormat() {
+		return getJSObject().getPropertyAsString("FORMAT");
+	}
 
-    public String getStyles() {
-        return getJSObject().getPropertyAsString("styles");
-    }
-
-    public void setFormat(String styles) {
-        getJSObject().setProperty("format", styles);
-    }
-
-    public String getFormat() {
-        return getJSObject().getPropertyAsString("format");
-    }
-
-    public void setMaxExtent(Bounds bounds) {
-        getJSObject().setProperty("maxExtent", bounds.getJSObject());
-    }
-
-    public Bounds getMaxExtent() {
-        return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
-    }
-    
-    /**
-     * Set transparent parameter in WMS request. Default is false.
-     *
-     * Within this method the value of the parameter will be set in uppercase,
-     * since at least IONIC's WMS requires it to be in uppercase, in
-     * accordance with the WMS Specification
-     *
-     * The WMS 1.1.1 spec states:
-     *  "TRANSPARENT can take on two values, "TRUE" or "FALSE"."
-     *  and
-     *  "Parameter names shall not be case sensitive,
-     *  but parameter values shall be case sensitive."
-     *
-     */
-    public void setIsTransparent(boolean isTransparent) {
-        if (isTransparent) {
-            getJSObject().setProperty("transparent", "TRUE");
-        } else {
-            getJSObject().setProperty("transparent", "FALSE");
-        }
-    }
+	public boolean isTransparent() { 
+		return isTransparent(getJSObject());
+	}
+	
+	public void setTransparent(boolean transparent) {
+		getJSObject().setProperty("TRANSPARENT", transparent);
+	}
+	
+	/**
+	 * use {@link WMSParams#setTransparent} instead
+	 * @param isTransparent
+	 */
+	@Deprecated
+	public void setIsTransparent(boolean isTransparent){
+		getJSObject().setProperty("TRANSPARENT", isTransparent);
+	}
+	
+	public String getBgColor() { 
+		return getJSObject().getPropertyAsString("BGCOLOR");
+	}
+	
+	/**
+	 * Hexadecimal red-green-blue colour value for the background color (default=0xFFFFFF).
+	 * @param bgColor
+	 */
+	public void setBgColor(String bgColor) { 
+		getJSObject().setProperty("BGCOLOR", bgColor);
+	}
+	
+	/**
+	 * Helper for transparency property of WMS 
+	 * 
+	 * @param layer
+	 * @return
+	 */
+	public static native boolean isTransparent(JSObject params)/*-{
+		if (typeof params.TRANSPARENT != "boolean") {
+			return params.TRANSPARENT && params.TRANSPARENT.toString().toLowerCase() == "true";
+		} else return params.TRANSPARENT;
+	}-*/;
 }

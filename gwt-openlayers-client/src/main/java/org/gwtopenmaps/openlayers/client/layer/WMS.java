@@ -36,7 +36,11 @@ public class WMS extends GridLayer {
 	}
 
 	public int getNumLoadingTiles(){
-		return WMSImpl.getNumLoadingTiles(this.getJSObject());
+		return WMSImpl.getNumLoadingTiles(getJSObject());
 	}
 
+	public WMSParams getParams() { 
+		JSObject params = HTTPRequestLayerImpl.getParams(getJSObject());
+		return new WMSParams(params);
+	}
 }

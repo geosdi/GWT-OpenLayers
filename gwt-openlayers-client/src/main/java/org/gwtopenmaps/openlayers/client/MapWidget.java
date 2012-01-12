@@ -1,8 +1,8 @@
 package org.gwtopenmaps.openlayers.client;
 
-import com.google.gwt.user.client.Command;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -140,11 +140,11 @@ public class MapWidget extends Widget {
 	 */
 	protected void onLoad() {
 		// We update the size of the map to try to display the map correctly when the MapWidget's size is set with percentage
-		DeferredCommand.addCommand(new Command() {
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+			
 			public void execute() {
-				getMap().updateSize();
+				getMap().updateSize();				
 			}
 		});
 	}
-
 }

@@ -21,7 +21,7 @@ class ControlImpl {
         return self.id;
     }-*/;
 
-    public static native Boolean isActive(JSObject self)/*-{
+    public static native boolean isActive(JSObject self)/*-{
         return (self.active === null) ? false : self.active;
     }-*/;
 

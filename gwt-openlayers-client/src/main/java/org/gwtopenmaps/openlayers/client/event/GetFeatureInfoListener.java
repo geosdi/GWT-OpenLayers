@@ -1,11 +1,8 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.gwtopenmaps.openlayers.client.control.WMSGetFeatureInfo;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
-
 
 
 /**

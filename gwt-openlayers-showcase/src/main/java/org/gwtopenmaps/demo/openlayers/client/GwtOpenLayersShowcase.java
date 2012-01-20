@@ -15,6 +15,7 @@ import org.gwtopenmaps.demo.openlayers.client.widget.ShowcaseMenu;
  */
 public class GwtOpenLayersShowcase implements EntryPoint
 {
+
     /**
      * main panel contains the showcase app
      */

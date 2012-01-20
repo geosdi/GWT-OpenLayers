@@ -7,16 +7,19 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MapMarkerRemovedListener extends EventListener {
+public interface MapMarkerRemovedListener extends EventListener
+{
 
-	class MapMarkerRemovedEvent extends MapEvent {
+    public void onMarkerRemoved(MapMarkerRemovedEvent eventObject);
 
-		public MapMarkerRemovedEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
+    class MapMarkerRemovedEvent extends MapEvent
+    {
 
-		//getMarker ???
-	}
+        public MapMarkerRemovedEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
 
-	public void onMarkerRemoved(MapMarkerRemovedEvent eventObject);
+        // getMarker ???
+    }
 }

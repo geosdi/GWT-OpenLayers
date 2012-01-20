@@ -4,30 +4,35 @@ import org.gwtopenmaps.openlayers.client.control.WMSGetFeatureInfo;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
-
 /**
  *
  *
  */
-public interface BeforeGetFeatureInfoListener extends EventListener {
+public interface BeforeGetFeatureInfoListener extends EventListener
+{
 
-	class BeforeGetFeatureInfoEvent extends EventObject {
+    public void onBeforeGetFeatureInfo(BeforeGetFeatureInfoEvent eventObject);
 
-		public BeforeGetFeatureInfoEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
+    class BeforeGetFeatureInfoEvent extends EventObject
+    {
 
-		public WMSGetFeatureInfo getSource(){
-			JSObject object = getSourceJSObject();
-			return (object!=null)?WMSGetFeatureInfo.narrowToWMSGetFeatureInfo(object):null;
-		}
+        public BeforeGetFeatureInfoEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
 
-		//TODO: check if return type is OK
-		public String getXY(){
-			return getJSObject().getPropertyAsString("xy");
-		}
-	}
+        public WMSGetFeatureInfo getSource()
+        {
+            JSObject object = getSourceJSObject();
 
-	public void onBeforeGetFeatureInfo(BeforeGetFeatureInfoEvent eventObject);
+            return (object != null) ? WMSGetFeatureInfo.narrowToWMSGetFeatureInfo(object) : null;
+        }
+
+        // TODO: check if return type is OK
+        public String getXY()
+        {
+            return getJSObject().getPropertyAsString("xy");
+        }
+    }
 
 }

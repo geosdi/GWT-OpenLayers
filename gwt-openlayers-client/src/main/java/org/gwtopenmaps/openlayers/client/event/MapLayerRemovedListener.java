@@ -5,15 +5,18 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MapLayerRemovedListener extends EventListener {
+public interface MapLayerRemovedListener extends EventListener
+{
 
-	class MapLayerRemovedEvent extends MapLayerEvent {
+    public void onLayerRemoved(MapLayerRemovedEvent eventObject);
 
-		public MapLayerRemovedEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
+    class MapLayerRemovedEvent extends MapLayerEvent
+    {
 
-	}
+        public MapLayerRemovedEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
 
-	public void onLayerRemoved(MapLayerRemovedEvent eventObject);
+    }
 }

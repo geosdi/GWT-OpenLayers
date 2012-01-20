@@ -5,6 +5,7 @@ import org.gwtopenmaps.openlayers.client.handler.Handler;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  *
  *  Don't be suprised by the following:
@@ -17,44 +18,49 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class DrawFeature extends Control {
+public class DrawFeature extends Control
+{
 
-	public interface FeatureAddedListener {
-		void onFeatureAdded(VectorFeature vectorFeature);
-	}
+    protected DrawFeature(JSObject element)
+    {
+        super(element);
+    }
 
-	protected DrawFeature(JSObject element) {
-		super(element);
-	}
+    /**
+     *
+     * @param layer
+     * @param handler - a PointHandler, PathHandler or PolygonHandler
+     */
+    public DrawFeature(Vector layer, Handler handler)
+    {
+        this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject()));
+    }
 
-	/**
-	 *
-	 * @param layer
-	 * @param handler - a PointHandler, PathHandler or PolygonHandler
-	 */
-	public DrawFeature(Vector layer, Handler handler) {
-		this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject()));
-	}
+    /**
+     *
+     * @param layer
+     * @param handler - a PointHandler, PathHandler or PolygonHandler
+     * @param options - see {@link DrawFeatureOptions}
+     */
+    public DrawFeature(Vector layer, Handler handler, DrawFeatureOptions options)
+    {
+        this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject(), options.getJSObject()));
+    }
 
-	/**
-	 *
-	 * @param layer
-	 * @param handler - a PointHandler, PathHandler or PolygonHandler
-	 * @param options - see {@link DrawFeatureOptions}
-	 */
-	public DrawFeature(Vector layer, Handler handler, DrawFeatureOptions options){
-		this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject(), options.getJSObject()));
-	}
-	
-	/**
-	 * This method returns the Handler associated to the control. The CLASS_NAME
-	 * of the handler depends on the kind of control.
-	 * 
-	 * @return Handler
-	 */
-	public Handler getHandler() {
-		return Handler.narrowToHandler(DrawFeatureImpl
-				.getHandler(getJSObject()));
-	}
+    /**
+     * This method returns the Handler associated to the control. The CLASS_NAME
+     * of the handler depends on the kind of control.
+     *
+     * @return Handler
+     */
+    public Handler getHandler()
+    {
+        return Handler.narrowToHandler(DrawFeatureImpl.getHandler(getJSObject()));
+    }
+
+    public interface FeatureAddedListener
+    {
+        void onFeatureAdded(VectorFeature vectorFeature);
+    }
 
 }

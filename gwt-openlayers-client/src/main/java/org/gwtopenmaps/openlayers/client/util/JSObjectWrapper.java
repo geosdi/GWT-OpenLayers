@@ -7,21 +7,24 @@ package org.gwtopenmaps.openlayers.client.util;
  *
  * @author Edwin Commandeur - Atlis EJS
  */
-public class JSObjectWrapper {
+public class JSObjectWrapper
+{
 
-	private JSObject jsObject;
+    private JSObject jsObject;
 
-	protected JSObjectWrapper(JSObject jsObject)
-	{
-		setJSObject(jsObject);
-	}
+    protected JSObjectWrapper(JSObject jsObject)
+    {
+        setJSObject(jsObject);
+    }
 
-	public JSObject getJSObject() {
-		return jsObject;
-	}
+    public JSObject getJSObject()
+    {
+        return jsObject;
+    }
 
-	public void setJSObject(JSObject jsObject) {
-		this.jsObject = jsObject;
-	}
+    public void setJSObject(JSObject jsObject)
+    {
+        this.jsObject = jsObject;
+    }
 
 }

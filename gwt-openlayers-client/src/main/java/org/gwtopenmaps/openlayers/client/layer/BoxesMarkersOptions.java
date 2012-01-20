@@ -2,16 +2,19 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-public class BoxesMarkersOptions extends MarkersOptions {
 
-	public BoxesMarkersOptions(JSObject jsObject) {
-		super(jsObject);
-	}
+public class BoxesMarkersOptions extends MarkersOptions
+{
 
-	public BoxesMarkersOptions() {
-		this(JSObject.createJSObject());
-	}
- 
-	
-	
+    public BoxesMarkersOptions(JSObject jsObject)
+    {
+        super(jsObject);
+    }
+
+    public BoxesMarkersOptions()
+    {
+        this(JSObject.createJSObject());
+    }
+
+
 }

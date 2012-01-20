@@ -5,15 +5,18 @@ import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  *
  * @author Edwin Commandeur - Atlis Information Systems
  * @author <a href="mailto:marten.karlberg@digpro.se">Marten Karlberg</a>, Digpro AB
  */
-public class FramedCloud extends Popup {
+public class FramedCloud extends Popup
+{
 
-    protected FramedCloud(JSObject element) {
-	super(element);
+    protected FramedCloud(JSObject element)
+    {
+        super(element);
     }
 
     /**
@@ -27,17 +30,18 @@ public class FramedCloud extends Popup {
      *
      * Added by Digpro.
      */
-    public FramedCloud (String id, LonLat lonlat, Size size, String html,
-                        OpenLayersObjectWrapper anchor, boolean closeBox,
-                        CloseListener closeBoxCallback) {
+    public FramedCloud(String id, LonLat lonlat, Size size, String html,
+        OpenLayersObjectWrapper anchor, boolean closeBox,
+        CloseListener closeBoxCallback)
+    {
 
-	this (FramedCloudImpl.create (id,
-	                              lonlat.getJSObject(),
-	                              (size != null) ? size.getJSObject() : null,
-	                              html,
-	                              (anchor != null) ? anchor.getJSObject(): null,
-	                              closeBox,
-	                              (closeBoxCallback != null) ? closeBoxCallback : null));
+        this(FramedCloudImpl.create(id,
+                lonlat.getJSObject(),
+                (size != null) ? size.getJSObject() : null,
+                html,
+                (anchor != null) ? anchor.getJSObject() : null,
+                closeBox,
+                (closeBoxCallback != null) ? closeBoxCallback : null));
     }
 
     /**
@@ -49,21 +53,22 @@ public class FramedCloud extends Popup {
      *
      * For explanation of other parameters see {@link Popup}.
      */
-    public FramedCloud (String id, LonLat lonlat, Size size, String html,
-                        OpenLayersObjectWrapper anchor, boolean closeBox) {
+    public FramedCloud(String id, LonLat lonlat, Size size, String html,
+        OpenLayersObjectWrapper anchor, boolean closeBox)
+    {
 
-	this(FramedCloudImpl.create (id,
-	                             lonlat.getJSObject(),
-	                             (size != null) ? size.getJSObject() : null,
-	                             html,
-	                             (anchor != null) ? anchor.getJSObject(): null,
-	                             closeBox));
+        this(FramedCloudImpl.create(id,
+                lonlat.getJSObject(),
+                (size != null) ? size.getJSObject() : null,
+                html,
+                (anchor != null) ? anchor.getJSObject() : null,
+                closeBox));
 
-	//if size is not defined set Size to auto
-	//
+        // if size is not defined set Size to auto
+        //
     }
 
-    //TODO look into adding widgets to Popups
+    // TODO look into adding widgets to Popups
     /*
     public FramedCloud(
                        String id,
@@ -73,17 +78,17 @@ public class FramedCloud extends Popup {
                        OpenLayersObjectWrapper anchor,
                        boolean closeBox) {
 
-	this(FramedCloudImpl.create(
-				id,
-				lonlat.getJSObject(),
-				(size != null) ? size.getJSObject() : null,
-				"widget here",
-				(anchor != null) ? anchor.getJSObject(): null,
-				closeBox,
-				null));
+    this(FramedCloudImpl.create(
+                        id,
+                        lonlat.getJSObject(),
+                        (size != null) ? size.getJSObject() : null,
+                        "widget here",
+                        (anchor != null) ? anchor.getJSObject(): null,
+                        closeBox,
+                        null));
 
-	Element contentDiv = FramedCloudImpl.getContentDiv(this.getJSObject());
-	//widget.setElement(contentDiv);
+    Element contentDiv = FramedCloudImpl.getContentDiv(this.getJSObject());
+    //widget.setElement(contentDiv);
     }
-    */
+     */
 }

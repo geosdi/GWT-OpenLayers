@@ -2,42 +2,44 @@ package org.gwtopenmaps.openlayers.client.geometry;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class PointImpl {
+public class PointImpl
+{
 
-    public native static JSObject create(double x, double y)/*-{
+    public static native JSObject create(double x, double y) /*-{
         return new $wnd.OpenLayers.Geometry.Point(x, y);
     }-*/;
 
-    public native static double getX(JSObject self)/*-{
+    public static native double getX(JSObject self) /*-{
         return self.x;
     }-*/;
 
-    public native static double getY(JSObject self)/*-{
+    public static native double getY(JSObject self) /*-{
         return self.y;
     }-*/;
 
-    public native static String getId(JSObject self)/*-{
+    public static native String getId(JSObject self) /*-{
         return self.id;
     }-*/;
 
-    public native static void setX(JSObject self, double x)/*-{
+    public static native void setX(JSObject self, double x) /*-{
         self.x = x;
     }-*/;
 
-    public native static void setY(JSObject self, double y)/*-{
+    public static native void setY(JSObject self, double y) /*-{
         self.y = y;
     }-*/;
 
-    public native static boolean equals(JSObject self, JSObject geom)/*-{
+    public static native boolean equals(JSObject self, JSObject geom) /*-{
         self.equals(geom);
     }-*/;
 
-    public native static void transform(JSObject self, JSObject source, JSObject dest)/*-{
+    public static native void transform(JSObject self, JSObject source, JSObject dest) /*-{
         self.transform(source, dest);
     }-*/;
-    
+
 }

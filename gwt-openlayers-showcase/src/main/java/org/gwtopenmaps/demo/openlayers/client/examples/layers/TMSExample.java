@@ -28,12 +28,53 @@ import org.gwtopenmaps.openlayers.client.layer.TMS;
 import org.gwtopenmaps.openlayers.client.layer.TMSOptions;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
- * 
+ *
  * @author Alessio Fabiani - GeoSolutions S.A.S.
  * @email alessio.fabiani@geo-solutions.it
  */
-public class TMSExample implements ShowcaseExample {
+public class TMSExample implements ShowcaseExample
+{
+
+    private static native JSObject getMyUrl()
+    /*-{
+        function get_my_url(bounds) {
+                var res = this.map.getResolution();
+
+                var x = Math.round((bounds.left - this.maxExtent.left)
+                                / (res * this.tileSize.w));
+                var y = Math.round((this.maxExtent.top - bounds.top)
+                                / (res * this.tileSize.h));
+                var z = this.map.getZoom();
+
+                var limit = 100000000;
+                var i = 0;
+                var dir_x = x;
+                var dir_y = y;
+
+                for (i = z; i > 9; i--) {
+                        dir_x = (Math.floor(dir_x / 2.0));
+                        dir_y = (Math.floor(dir_y / 2.0));
+                }
+
+                var path = "9_" + dir_x + "_" + dir_y + "/jpg";
+
+                if (y < 0 || y >= limit) {
+                        return "http://imageatlas.digitalglobe.com/ia-webapp/img/noImage.gif"
+                } else {
+                        limit = Math.pow(2, z);
+
+                        x = ((x % limit) + limit) % limit;
+                        y = ((y % limit) + limit) % limit;
+
+                        var url = "http://biwsapplgmt01.digitalglobe.com:6180/~BASE/tile_production/3857_9_92_200_20110803_50000043/jpg/"+z+"/"+x+"/"+y+".jpg";
+                        return url;
+                }
+        }
+
+        return get_my_url;
+    }-*/;
 
     private MapOptions defaultMapOptions;
 
@@ -43,7 +84,8 @@ public class TMSExample implements ShowcaseExample {
 
     private TMS tileServerImagery;
 
-    public TMSExample() {
+    public TMSExample()
+    {
         this.defaultMapOptions = new MapOptions();
 
         // In OL, the map gets PanZoom, Navigation, ArgParser, and Attribution Controls
@@ -53,8 +95,7 @@ public class TMSExample implements ShowcaseExample {
         this.defaultMapOptions.setDisplayProjection(new Projection("EPSG:4326"));
         this.defaultMapOptions.setUnits("m");
         this.defaultMapOptions.setMaxResolution(156543.0339f);
-        this.defaultMapOptions
-                .setMaxExtent(new Bounds(-20037508, -20037508, 20037508, 20037508.34));
+        this.defaultMapOptions.setMaxExtent(new Bounds(-20037508, -20037508, 20037508, 20037508.34));
 
         example = new MapExample(defaultMapOptions);
 
@@ -77,46 +118,8 @@ public class TMSExample implements ShowcaseExample {
         example.getMap().zoomToMaxExtent();
     }
 
-    private native static JSObject getMyUrl()
-    /*-{
-		function get_my_url(bounds) {
-			var res = this.map.getResolution();
-
-			var x = Math.round((bounds.left - this.maxExtent.left)
-					/ (res * this.tileSize.w));
-			var y = Math.round((this.maxExtent.top - bounds.top)
-					/ (res * this.tileSize.h));
-			var z = this.map.getZoom();
-
-			var limit = 100000000;
-			var i = 0;
-			var dir_x = x;
-			var dir_y = y;
-
-			for (i = z; i > 9; i--) {
-				dir_x = (Math.floor(dir_x / 2.0));
-				dir_y = (Math.floor(dir_y / 2.0));
-			}
-
-			var path = "9_" + dir_x + "_" + dir_y + "/jpg";
-
-			if (y < 0 || y >= limit) {
-				return "http://no_image_url_here/img/noImage.gif"
-			} else {
-				limit = Math.pow(2, z);
-
-				x = ((x % limit) + limit) % limit;
-				y = ((y % limit) + limit) % limit;
-
-				var url = "http://tile_server_url_here/" + z + "/" + x + "/" + y + ".jpg";
-				return url;
-			}
-		}
-
-		return get_my_url;
-    }-*/;
-
-    public MapExample getMapExample() {
+    public MapExample getMapExample()
+    {
         return this.example;
     }
 }

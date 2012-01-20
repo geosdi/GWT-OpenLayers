@@ -6,15 +6,18 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MapPopupClosedListener extends EventListener {
+public interface MapPopupClosedListener extends EventListener
+{
 
-	class MapPopupClosedEvent extends MapEvent {
+    public void onPopupClosed(MapPopupClosedEvent eventObject);
 
-		public MapPopupClosedEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
-		//getPopup ???
-	}
+    class MapPopupClosedEvent extends MapEvent
+    {
 
-	public void onPopupClosed(MapPopupClosedEvent eventObject);
+        public MapPopupClosedEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
+        // getPopup ???
+    }
 }

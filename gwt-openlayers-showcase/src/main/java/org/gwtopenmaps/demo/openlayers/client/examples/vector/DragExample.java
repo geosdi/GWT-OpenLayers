@@ -38,6 +38,7 @@ public class DragExample implements ShowcaseExample
 
     private TextArea reportArea = new TextArea()
         {
+
             {
                 this.setHeight("20em");
             }

@@ -38,12 +38,14 @@ import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
+
 /**
  *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  * @email  giuseppe.lascaleia@geosdi.org
  */
-public class MeasureExample implements ShowcaseExample {
+public class MeasureExample implements ShowcaseExample
+{
 
     private MapExample example;
     private WMS wmsLayer;
@@ -51,18 +53,21 @@ public class MeasureExample implements ShowcaseExample {
             "Activate Distance Measurement");
     private ToggleButton areaButton = new ToggleButton(
             "Activate Area Measurement");
-    private TextArea measureResult = new TextArea() {
-
+    private TextArea measureResult = new TextArea()
         {
-            this.setHeight("2em");
-            this.setWidth("100%");
-            this.setEnabled(false);
-        }
-    };
+
+            {
+                this.setHeight("2em");
+                this.setWidth("100%");
+                this.setEnabled(false);
+            }
+        };
+
     private Measure measure;
     private Measure measureArea;
 
-    public MeasureExample() {
+    public MeasureExample()
+    {
         example = new MapExample();
 
         // Add a WMS layer for a little background
@@ -78,7 +83,7 @@ public class MeasureExample implements ShowcaseExample {
 
         wmsLayer = new WMS("Basic WMS", BasicWMS.WMS_URL, wmsParams);
 
-        example.getMap().addLayers(new Layer[]{wmsLayer});
+        example.getMap().addLayers(new Layer[] { wmsLayer });
         example.getMap().setCenter(new LonLat(lon, lat), zoom);
 
         MeasureOptions measOpts = new MeasureOptions();
@@ -92,53 +97,67 @@ public class MeasureExample implements ShowcaseExample {
         example.getMap().addControl(new Navigation());
         example.add(measureResult, DockPanel.SOUTH);
 
-        this.measure.addMeasureListener(new MeasureListener() {
+        this.measure.addMeasureListener(new MeasureListener()
+            {
 
-            public void onMeasure(MeasureEvent eventObject) {
-                // TODO Auto-generated method stub
-                System.out.println("TEST ************ " + wmsLayer.getZIndex());
-                measureResult.setText("Distance is " + eventObject.getMeasure()
-                        + " " + eventObject.getUnits());
-            }
-        });
+                public void onMeasure(MeasureEvent eventObject)
+                {
+                    // TODO Auto-generated method stub
+                    System.out.println("TEST ************ " + wmsLayer.getZIndex());
+                    measureResult.setText("Distance is " + eventObject.getMeasure() +
+                        " " + eventObject.getUnits());
+                }
+            });
 
-        this.measureArea.addMeasureListener(new MeasureListener() {
+        this.measureArea.addMeasureListener(new MeasureListener()
+            {
 
-            public void onMeasure(MeasureEvent eventObject) {
-                // TODO Auto-generated method stub
+                public void onMeasure(MeasureEvent eventObject)
+                {
+                    // TODO Auto-generated method stub
 
-                measureResult.setText(
+                    measureResult.setText(
                         "Area is " + eventObject.getMeasure() + " " + eventObject.getUnits() + "^2");
-            }
-        });
-
-        distanceButton.addClickHandler(new ClickHandler() {
-
-            public void onClick(ClickEvent arg0) {
-                // TODO Auto-generated method stub
-                if (distanceButton.isDown()) {
-                    measure.activate();
-                    measureArea.deactivate();
-                    areaButton.setDown(false);
-                } else {
-                    measure.deactivate();
                 }
-            }
-        });
+            });
 
-        areaButton.addClickHandler(new ClickHandler() {
+        distanceButton.addClickHandler(new ClickHandler()
+            {
 
-            public void onClick(ClickEvent arg0) {
-                // TODO Auto-generated method stub
-                if (areaButton.isDown()) {
-                    measureArea.activate();
-                    measure.deactivate();
-                    distanceButton.setDown(false);
-                } else {
-                    measureArea.deactivate();
+                public void onClick(ClickEvent arg0)
+                {
+                    // TODO Auto-generated method stub
+                    if (distanceButton.isDown())
+                    {
+                        measure.activate();
+                        measureArea.deactivate();
+                        areaButton.setDown(false);
+                    }
+                    else
+                    {
+                        measure.deactivate();
+                    }
                 }
-            }
-        });
+            });
+
+        areaButton.addClickHandler(new ClickHandler()
+            {
+
+                public void onClick(ClickEvent arg0)
+                {
+                    // TODO Auto-generated method stub
+                    if (areaButton.isDown())
+                    {
+                        measureArea.activate();
+                        measure.deactivate();
+                        distanceButton.setDown(false);
+                    }
+                    else
+                    {
+                        measureArea.deactivate();
+                    }
+                }
+            });
 
         // Adding the button to the example
         Grid buttonGrid = new Grid(2, 2);
@@ -148,7 +167,8 @@ public class MeasureExample implements ShowcaseExample {
 
     }
 
-    public MapExample getMapExample() {
+    public MapExample getMapExample()
+    {
         // TODO Auto-generated method stub
         return example;
     }

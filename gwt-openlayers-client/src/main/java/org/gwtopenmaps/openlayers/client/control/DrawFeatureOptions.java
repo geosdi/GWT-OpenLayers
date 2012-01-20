@@ -7,18 +7,22 @@ import org.gwtopenmaps.openlayers.client.control.DrawFeature.FeatureAddedListene
 import org.gwtopenmaps.openlayers.client.handler.HandlerOptions;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class DrawFeatureOptions extends ControlOptions {
+public class DrawFeatureOptions extends ControlOptions
+{
 
-	public void onFeatureAdded(FeatureAddedListener listener){
-		JSObject callback = DrawFeatureImpl.createFeatureAddedCallback(listener);
-		getJSObject().setProperty("featureAdded", callback);
-	}
+    public void onFeatureAdded(FeatureAddedListener listener)
+    {
+        JSObject callback = DrawFeatureImpl.createFeatureAddedCallback(listener);
+        getJSObject().setProperty("featureAdded", callback);
+    }
 
-	public void setHandlerOptions(HandlerOptions handlerOptions){
-		getJSObject().setProperty("handlerOptions", handlerOptions.getJSObject());
-	}
+    public void setHandlerOptions(HandlerOptions handlerOptions)
+    {
+        getJSObject().setProperty("handlerOptions", handlerOptions.getJSObject());
+    }
 }

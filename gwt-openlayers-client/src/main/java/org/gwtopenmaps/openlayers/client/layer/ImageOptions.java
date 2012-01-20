@@ -6,7 +6,8 @@ package org.gwtopenmaps.openlayers.client.layer;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class ImageOptions extends LayerOptions {
+public class ImageOptions extends LayerOptions
+{
 
 
 }

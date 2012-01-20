@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * The WMSParams correspond with parameters that can be specified
  * in the WMS request.

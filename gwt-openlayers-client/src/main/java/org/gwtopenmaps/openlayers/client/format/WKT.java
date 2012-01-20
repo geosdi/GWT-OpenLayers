@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.format;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * Brief explanation of Well Known Text (WKT) vector format here.
  *
@@ -9,14 +10,17 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  * @author Edwin Commandeur - Atlis EJS
  */
-public class WKT extends VectorFormat {
+public class WKT extends VectorFormat
+{
 
-	protected WKT(JSObject wktFormat){
-		super(wktFormat);
-	}
+    protected WKT(JSObject wktFormat)
+    {
+        super(wktFormat);
+    }
 
-	public WKT(){
-		this(WKTImpl.create());
-	}
+    public WKT()
+    {
+        this(WKTImpl.create());
+    }
 
 }

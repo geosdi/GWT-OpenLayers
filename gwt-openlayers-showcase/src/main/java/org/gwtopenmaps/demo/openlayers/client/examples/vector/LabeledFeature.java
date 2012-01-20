@@ -133,6 +133,7 @@ public class LabeledFeature implements ShowcaseExample
         VectorFeature pointFeature = new VectorFeature(point);
         pointFeature.setAttributes(new Attributes()
             {
+
                 {
                     this.setAttribute("name", "toto");
                     this.setAttribute("age", 20);
@@ -160,6 +161,7 @@ public class LabeledFeature implements ShowcaseExample
                     new LinearRing[] { linearRing }));
         polygonFeature.setAttributes(new Attributes()
             {
+
                 {
                     this.setAttribute("name", "dude");
                     this.setAttribute("age", 21);
@@ -173,6 +175,7 @@ public class LabeledFeature implements ShowcaseExample
         VectorFeature imageFeatureRedCar = new VectorFeature(new Point(point.getX() + 5, point.getY() - 10));
         imageFeatureRedCar.setAttributes(new Attributes()
             {
+
                 {
                     this.setAttribute("plate", "XYZ-1234");
                     this.setAttribute("favColor", "red");
@@ -183,6 +186,7 @@ public class LabeledFeature implements ShowcaseExample
         VectorFeature imageFeatureBlueCar = new VectorFeature(new Point(point.getX() - 5, point.getY() + 10));
         imageFeatureBlueCar.setAttributes(new Attributes()
             {
+
                 {
                     this.setAttribute("plate", "ABC-9876");
                     this.setAttribute("favColor", "blue");

@@ -6,16 +6,19 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MapMarkerAddedListener extends EventListener {
+public interface MapMarkerAddedListener extends EventListener
+{
 
-	class MapMarkerAddedEvent extends MapEvent {
+    public void onMarkerAdded(MapMarkerAddedEvent eventObject);
 
-		public MapMarkerAddedEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
+    class MapMarkerAddedEvent extends MapEvent
+    {
 
-		//getMarker ???
-	}
+        public MapMarkerAddedEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
 
-	public void onMarkerAdded(MapMarkerAddedEvent eventObject);
+        // getMarker ???
+    }
 }

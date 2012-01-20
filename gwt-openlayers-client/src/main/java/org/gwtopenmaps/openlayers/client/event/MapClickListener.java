@@ -4,28 +4,35 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.Pixel;
 
+
 /**
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MapClickListener extends EventListener {
+public interface MapClickListener extends EventListener
+{
 
-	class MapClickEvent extends MapEvent {
+    public void onClick(MapClickEvent mapClickEvent);
 
-		public MapClickEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
+    class MapClickEvent extends MapEvent
+    {
 
-		public LonLat getLonLat(){
-			Map map = Map.narrowToMap(this.getSourceJSObject());
-			Pixel pixel = Pixel.narrowToPixel(getJSObject().getProperty("xy"));
-			return (pixel != null)? map.getLonLatFromPixel(pixel):null;
-		}
-		
-		public Pixel getPixel() {
-			return Pixel.narrowToPixel(getJSObject().getProperty("xy"));
-		}
-	}
+        public MapClickEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
 
-	public void onClick(MapClickEvent mapClickEvent);
+        public LonLat getLonLat()
+        {
+            Map map = Map.narrowToMap(this.getSourceJSObject());
+            Pixel pixel = Pixel.narrowToPixel(getJSObject().getProperty("xy"));
+
+            return (pixel != null) ? map.getLonLatFromPixel(pixel) : null;
+        }
+
+        public Pixel getPixel()
+        {
+            return Pixel.narrowToPixel(getJSObject().getProperty("xy"));
+        }
+    }
 }

@@ -6,14 +6,17 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Lukas Johansson
  *
  */
-public interface MapMoveEndListener extends EventListener {
+public interface MapMoveEndListener extends EventListener
+{
 
-	class MapMoveEndEvent extends MapEvent {
-		public MapMoveEndEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
-	}
+    void onMapMoveEnd(MapMoveEndEvent eventObject);
 
-	void onMapMoveEnd(MapMoveEndEvent eventObject);
+    class MapMoveEndEvent extends MapEvent
+    {
+        public MapMoveEndEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
+    }
 
 }

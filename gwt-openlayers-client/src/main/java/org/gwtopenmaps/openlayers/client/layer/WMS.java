@@ -3,10 +3,11 @@ package org.gwtopenmaps.openlayers.client.layer;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JStringArray;
 
+
 /**
  *
  * @author Erdem Gunay
- * 	       Amr Alam - Refractions Research
+ *             Amr Alam - Refractions Research
  *         Curtis Jensen
  */
 public class WMS extends GridLayer {

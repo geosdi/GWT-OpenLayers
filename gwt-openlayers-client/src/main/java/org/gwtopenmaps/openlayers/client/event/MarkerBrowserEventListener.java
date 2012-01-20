@@ -5,15 +5,18 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MarkerBrowserEventListener extends EventListener {
+public interface MarkerBrowserEventListener extends EventListener
+{
 
-	class MarkerBrowserEvent extends MarkerEvent {
+    public void onBrowserEvent(MarkerBrowserEvent markerBrowserEvent);
 
-		public MarkerBrowserEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
+    class MarkerBrowserEvent extends MarkerEvent
+    {
 
-	}
+        public MarkerBrowserEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
 
-	public void onBrowserEvent(MarkerBrowserEvent markerBrowserEvent);
+    }
 }

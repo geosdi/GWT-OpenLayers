@@ -7,14 +7,17 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MapMoveListener extends EventListener {
+public interface MapMoveListener extends EventListener
+{
 
-	class MapMoveEvent extends MapEvent {
-		public MapMoveEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
-	}
+    void onMapMove(MapMoveEvent eventObject);
 
-	void onMapMove(MapMoveEvent eventObject);
+    class MapMoveEvent extends MapEvent
+    {
+        public MapMoveEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
+    }
 
 }

@@ -3,6 +3,7 @@ package org.gwtopenmaps.openlayers.client.event;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
+
 /**
  * <p>Base class for event objects.</p>
  *
@@ -22,41 +23,49 @@ import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class EventObject extends JSObjectWrapper {
-
-	protected EventObject(JSObject eventObject){
-		super(eventObject);
-	}
+public class EventObject extends JSObjectWrapper
+{
 
 
-	public static EventObject narrowToEventObject(JSObject object){
-		return (object!=null)? new EventObject(object):null;
-	}
+    public static EventObject narrowToEventObject(JSObject object)
+    {
+        return (object != null) ? new EventObject(object) : null;
+    }
 
-	/**
-	 *
-	 * @return Element as an opaque JSObject
-	 */
-	public JSObject getElement(){
-		return EventObjectImpl.getElement(getJSObject());
-	}
+    protected EventObject(JSObject eventObject)
+    {
+        super(eventObject);
+    }
 
-	/**
-	 * Type is a string like "addlayer" or "move" denoting the type of event.
-	 *
-	 * @return A string denoting the type of event, or null if there is no type property.
-	 */
-	public String getType(){
-		String type = EventObjectImpl.getType(getJSObject());
-		return type;
-	}
+    /**
+     *
+     * @return Element as an opaque JSObject
+     */
+    public JSObject getElement()
+    {
+        return EventObjectImpl.getElement(getJSObject());
+    }
 
-	/**
-	 * @return JSObject - source object that fired the event
-	 */
-	public JSObject getSourceJSObject(){
-		JSObject object = EventObjectImpl.getObject(getJSObject());
-		return object;
-	}
+    /**
+     * Type is a string like "addlayer" or "move" denoting the type of event.
+     *
+     * @return A string denoting the type of event, or null if there is no type property.
+     */
+    public String getType()
+    {
+        String type = EventObjectImpl.getType(getJSObject());
+
+        return type;
+    }
+
+    /**
+     * @return JSObject - source object that fired the event
+     */
+    public JSObject getSourceJSObject()
+    {
+        JSObject object = EventObjectImpl.getObject(getJSObject());
+
+        return object;
+    }
 
 }

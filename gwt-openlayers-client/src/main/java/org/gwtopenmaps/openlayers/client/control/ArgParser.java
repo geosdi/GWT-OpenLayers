@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * Parses arguments passed to the url at which the application is located. For example:
  *
@@ -18,17 +19,21 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis Information Systems
  * @since GWT-OL 0.4, OL ...
  */
-public class ArgParser extends Control {
+public class ArgParser extends Control
+{
 
-	protected ArgParser(JSObject element) {
-		super(element);
-	}
+    protected ArgParser(JSObject element)
+    {
+        super(element);
+    }
 
-	public ArgParser() {
-		this(ArgParserImpl.create());
-	}
+    public ArgParser()
+    {
+        this(ArgParserImpl.create());
+    }
 
-	public ArgParser(ArgParserOptions options){
-		this(ArgParserImpl.create(options.getJSObject()));
-	}
+    public ArgParser(ArgParserOptions options)
+    {
+        this(ArgParserImpl.create(options.getJSObject()));
+    }
 }

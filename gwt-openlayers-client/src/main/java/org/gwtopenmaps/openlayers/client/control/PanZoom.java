@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * Pan and Zoom control.
  *
@@ -14,18 +15,22 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur
  * @since GWT-OL 0.4
  */
-public class PanZoom extends Control {
+public class PanZoom extends Control
+{
 
-	protected PanZoom(JSObject element) {
-		super(element);
-	}
+    protected PanZoom(JSObject element)
+    {
+        super(element);
+    }
 
-	public PanZoom() {
-		this(PanZoomImpl.create());
-	}
+    public PanZoom()
+    {
+        this(PanZoomImpl.create());
+    }
 
-	public PanZoom(PanZoomOptions options) {
-		this(PanZoomImpl.create(options.getJSObject()));
-	}
+    public PanZoom(PanZoomOptions options)
+    {
+        this(PanZoomImpl.create(options.getJSObject()));
+    }
 
 }

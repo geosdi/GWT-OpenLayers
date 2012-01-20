@@ -91,8 +91,7 @@ public class DrawFeatures implements ShowcaseExample
                 public void onFeatureAdded(VectorFeature vf)
                 {
                     org.gwtopenmaps.openlayers.client.geometry.Polygon aoi =
-                        org.gwtopenmaps.openlayers.client.geometry.Polygon.narrowToPolygon(vf.getGeometry()
-                            .getJSObject());
+                        org.gwtopenmaps.openlayers.client.geometry.Polygon.narrowToPolygon(vf.getGeometry().getJSObject());
                     LinearRing[] rings = aoi.getComponents();
 
                     if (rings != null)

@@ -11,15 +11,18 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public interface MapLayerChangedListener extends EventListener {
+public interface MapLayerChangedListener extends EventListener
+{
 
-	class MapLayerChangedEvent extends MapLayerEvent {
+    public void onLayerChanged(MapLayerChangedEvent eventObject);
 
-		public MapLayerChangedEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
+    class MapLayerChangedEvent extends MapLayerEvent
+    {
 
-	}
+        public MapLayerChangedEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
 
-	public void onLayerChanged(MapLayerChangedEvent eventObject);
+    }
 }

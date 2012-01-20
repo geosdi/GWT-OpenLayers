@@ -3,19 +3,24 @@ package org.gwtopenmaps.openlayers.client.event;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-class MapEvent extends EventObject {
+class MapEvent extends EventObject
+{
 
-	protected MapEvent(JSObject eventObject) {
-		super(eventObject);
-	}
+    protected MapEvent(JSObject eventObject)
+    {
+        super(eventObject);
+    }
 
-	public Map getSource(){
-		JSObject object = getSourceJSObject();
-		return (object!=null)?Map.narrowToMap(object):null;
-	}
+    public Map getSource()
+    {
+        JSObject object = getSourceJSObject();
+
+        return (object != null) ? Map.narrowToMap(object) : null;
+    }
 
 }

@@ -7,14 +7,17 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Curtis Jensen
  *
  */
-public interface MapZoomListener extends EventListener {
+public interface MapZoomListener extends EventListener
+{
 
-	class MapZoomEvent extends MapEvent {
-		public MapZoomEvent(EventObject eventObject) {
-			super(eventObject.getJSObject());
-		}
-	}
+    void onMapZoom(MapZoomEvent eventObject);
 
-	void onMapZoom(MapZoomEvent eventObject);
+    class MapZoomEvent extends MapEvent
+    {
+        public MapZoomEvent(EventObject eventObject)
+        {
+            super(eventObject.getJSObject());
+        }
+    }
 
 }

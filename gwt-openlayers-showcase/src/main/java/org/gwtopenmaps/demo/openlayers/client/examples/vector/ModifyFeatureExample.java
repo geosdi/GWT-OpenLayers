@@ -41,6 +41,7 @@ public class ModifyFeatureExample implements ShowcaseExample
 
     private TextArea reportArea = new TextArea()
         {
+
             {
                 this.setHeight("20em");
                 this.setWidth("100%");
@@ -99,6 +100,7 @@ public class ModifyFeatureExample implements ShowcaseExample
     {
         Button button = new Button(labelText)
             {
+
                 {
                     this.addClickHandler(new ClickHandler()
                         {

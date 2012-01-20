@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * Displays a line indicator representing the map scale for the
  * state of the map.
@@ -16,17 +17,21 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class ScaleLine extends Control {
+public class ScaleLine extends Control
+{
 
-	protected ScaleLine(JSObject element) {
-		super(element);
-	}
+    protected ScaleLine(JSObject element)
+    {
+        super(element);
+    }
 
-	public ScaleLine(){
-		this(ScaleLineImpl.create());
-	}
+    public ScaleLine()
+    {
+        this(ScaleLineImpl.create());
+    }
 
-	public ScaleLine(ScaleLineOptions options){
-		this(ScaleLineImpl.create(options.getJSObject()));
-	}
+    public ScaleLine(ScaleLineOptions options)
+    {
+        this(ScaleLineImpl.create(options.getJSObject()));
+    }
 }

@@ -2,25 +2,32 @@ package org.gwtopenmaps.openlayers.client.event;
 
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
 
-public class MeasureEvent extends ControlEvent {
 
-	public MeasureEvent(EventObject eventObject) {
-		super(eventObject.getJSObject());
-	}
+public class MeasureEvent extends ControlEvent
+{
 
-	public Geometry getGeometry(){
-		return Geometry.narrowToGeometry(getJSObject().getProperty("geometry"));
-	}
+    public MeasureEvent(EventObject eventObject)
+    {
+        super(eventObject.getJSObject());
+    }
 
-	public float getMeasure(){
-		return getJSObject().getPropertyAsFloat("measure");
-	}
+    public Geometry getGeometry()
+    {
+        return Geometry.narrowToGeometry(getJSObject().getProperty("geometry"));
+    }
 
-	public int getOrder(){
-		return getJSObject().getPropertyAsInt("order");
-	}
+    public float getMeasure()
+    {
+        return getJSObject().getPropertyAsFloat("measure");
+    }
 
-	public String getUnits(){
-		return getJSObject().getPropertyAsString("units");
-	}
+    public int getOrder()
+    {
+        return getJSObject().getPropertyAsInt("order");
+    }
+
+    public String getUnits()
+    {
+        return getJSObject().getPropertyAsString("units");
+    }
 }

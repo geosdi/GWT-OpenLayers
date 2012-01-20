@@ -49,22 +49,23 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 public abstract class EventHandler
 {
 
-	JSObject handler = EventHandlerImpl.createHandler(this);
+    JSObject handler = EventHandlerImpl.createHandler(this);
 
-	/**
-	 * This method is called on the EventHandler when the event fires
-	 * that the handler is registered for.
-	 *
-	 * @param eventObject - an event object that is passed by OpenLayers
-	 * when the event is fired (see also {@link EventObject}).
-	 */
-	public abstract void onHandle(EventObject eventObject);
+    /**
+     * This method is called on the EventHandler when the event fires
+     * that the handler is registered for.
+     *
+     * @param eventObject - an event object that is passed by OpenLayers
+     * when the event is fired (see also {@link EventObject}).
+     */
+    public abstract void onHandle(EventObject eventObject);
 
-	/**
-	 *
-	 * @return the actual handler (a javascript object)
-	 */
-	public JSObject getJSObject(){
-		return this.handler;
-	}
+    /**
+     *
+     * @return the actual handler (a javascript object)
+     */
+    public JSObject getJSObject()
+    {
+        return this.handler;
+    }
 }

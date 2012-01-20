@@ -8,25 +8,26 @@ package org.gwtopenmaps.openlayers.client.util;
  * they get and set the correct type of array element.
  *
  */
-public class JArrayBase extends JSObjectWrapper {
+public class JArrayBase extends JSObjectWrapper
+{
 
-	protected JArrayBase(JSObject element)
-	{
-		super(element);
-	}
+    public static JArrayBase narrowToJArray(JSObject element)
+    {
+        return (element == null) ? null : new JArrayBase(element);
+    }
 
-	public static JArrayBase narrowToJArray(JSObject element)
-	{
-		return (element == null)?null: new JArrayBase(element);
-	}
+    protected JArrayBase(JSObject element)
+    {
+        super(element);
+    }
 
-	protected JArrayBase(int length)
-	{
-		this(JArrayBaseImpl.create(length));
-	}
+    protected JArrayBase(int length)
+    {
+        this(JArrayBaseImpl.create(length));
+    }
 
-	public int length()
-	{
-		return JArrayBaseImpl.arrayLength(getJSObject());
-	}
+    public int length()
+    {
+        return JArrayBaseImpl.arrayLength(getJSObject());
+    }
 }

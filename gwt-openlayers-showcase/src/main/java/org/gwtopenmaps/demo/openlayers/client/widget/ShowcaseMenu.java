@@ -1,5 +1,10 @@
 package org.gwtopenmaps.demo.openlayers.client.widget;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.FlexTable;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.control.CustomMousePosition;
 import org.gwtopenmaps.demo.openlayers.client.examples.control.GraticuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.control.MeasureExample;
@@ -17,11 +22,6 @@ import org.gwtopenmaps.demo.openlayers.client.examples.vector.LabeledFeature;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.ModifyFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.ReadWFS;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.SelectFeatureExamples;
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.FlexTable;
 
 
 public class ShowcaseMenu extends FlexTable
@@ -284,13 +284,13 @@ public class ShowcaseMenu extends FlexTable
                     {
                         TMSExample tmsExample = new TMSExample();
                         contentPanel.setExample(
-                                tmsExample.getMapExample());
+                            tmsExample.getMapExample());
                         contentPanel.setExampleDescription("Description here.");
                         contentPanel.setExampleSource("Source here");
                         contentPanel.selectTab(0);
                     }
                 });
-        
+
         addMenuItem(basicWMSItem);
         addMenuItem(wmsGetFeatureInfoItem);
         addMenuItem(vectorFeaturesItem);

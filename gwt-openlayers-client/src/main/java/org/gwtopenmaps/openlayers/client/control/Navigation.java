@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  *
  *
@@ -13,17 +14,21 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur
  * @since GWT-OL 0.4, OL ...
  */
-public class Navigation extends Control {
+public class Navigation extends Control
+{
 
-	protected Navigation(JSObject element) {
-		super(element);
-	}
+    protected Navigation(JSObject element)
+    {
+        super(element);
+    }
 
-	public Navigation() {
-		this(NavigationImpl.create());
-	}
+    public Navigation()
+    {
+        this(NavigationImpl.create());
+    }
 
-	public Navigation(NavigationOptions options){
-		this(NavigationImpl.create(options.getJSObject()));
-	}
+    public Navigation(NavigationOptions options)
+    {
+        this(NavigationImpl.create(options.getJSObject()));
+    }
 }

@@ -1,7 +1,8 @@
 package org.gwtopenmaps.openlayers.client.event;
 
-public interface MeasureListener extends EventListener {
+public interface MeasureListener extends EventListener
+{
 
-	public void onMeasure(MeasureEvent eventObject);
+    public void onMeasure(MeasureEvent eventObject);
 
 }

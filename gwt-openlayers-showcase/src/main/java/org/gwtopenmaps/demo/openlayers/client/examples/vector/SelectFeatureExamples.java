@@ -43,6 +43,7 @@ public class SelectFeatureExamples implements ShowcaseExample
 
     private TextArea reportArea = new TextArea()
         {
+
             {
                 this.setHeight("20em");
             }

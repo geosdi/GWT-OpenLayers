@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * Must be activated on the map to show attributions that can be
  * set on layers. An example of an attribution is:
@@ -19,17 +20,21 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur -Atlis Information Systems
  * @since GWT-OL 0.4, OL ...
  */
-public class Attribution extends Control {
+public class Attribution extends Control
+{
 
-	protected Attribution(JSObject element) {
-		super(element);
-	}
+    protected Attribution(JSObject element)
+    {
+        super(element);
+    }
 
-	public Attribution() {
-		this(AttributionImpl.create());
-	}
+    public Attribution()
+    {
+        this(AttributionImpl.create());
+    }
 
-	public Attribution(AttributionOptions options){
-		this(AttributionImpl.create(options.getJSObject()));
-	}
+    public Attribution(AttributionOptions options)
+    {
+        this(AttributionImpl.create(options.getJSObject()));
+    }
 }

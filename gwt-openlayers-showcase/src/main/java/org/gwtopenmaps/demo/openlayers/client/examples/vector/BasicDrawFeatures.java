@@ -38,6 +38,7 @@ public class BasicDrawFeatures implements ShowcaseExample
 
     private Button buttonZoomToDataExtent = new Button("Zoom to Data Extent")
         {
+
             {
                 this.addClickHandler(new ClickHandler()
                     {

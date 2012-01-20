@@ -3,15 +3,23 @@ package org.gwtopenmaps.openlayers.client.geometry;
 import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+
 /**
  * ...
  *
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class Point extends Geometry {
+public class Point extends Geometry
+{
 
-    protected Point(JSObject point){
+    public static Point narrowToPoint(JSObject point)
+    {
+        return (point == null) ? null : new Point(point);
+    }
+
+    protected Point(JSObject point)
+    {
         super(point);
     }
 
@@ -20,65 +28,72 @@ public class Point extends Geometry {
      * @param x - double
      * @param y - double
      */
-    public Point(double x, double y) {
-        super(PointImpl.create(x,y));
+    public Point(double x, double y)
+    {
+        super(PointImpl.create(x, y));
     }
 
-    public static Point narrowToPoint(JSObject point){
-        return (point == null)?null: new Point(point);
-    }
-
-    public double getX(){
+    public double getX()
+    {
         return PointImpl.getX(getJSObject());
     }
 
-    public double getY(){
+    public double getY()
+    {
         return PointImpl.getY(getJSObject());
     }
 
-    public String getId(){
+    public String getId()
+    {
         return PointImpl.getId(getJSObject());
     }
 
-    public void setX(double x){
+    public void setX(double x)
+    {
         PointImpl.setX(getJSObject(), x);
     }
 
-    public void setY(double y){
+    public void setY(double y)
+    {
         PointImpl.setY(getJSObject(), y);
     }
 
-    public double[] getXY(){
-        double[] xy = {this.getX(), this.getY()};
+    public double[] getXY()
+    {
+        double[] xy = { this.getX(), this.getY() };
+
         return xy;
     }
 
-    public void setXY(double x, double y){
+    public void setXY(double x, double y)
+    {
         this.setX(x);
         this.setY(y);
     }
-    
-	/**
-	 * APIMethod: equals Determine whether another geometry is equivalent to
-	 * this one. Geometries are considered equivalent if all components have the
-	 * same coordinates.
-	 * 
-	 * Parameters: p - {<OpenLayers.Geometry.Point>} The geometry to test.
-	 * 
-	 * Returns: {Boolean} The supplied geometry is equivalent to this geometry.
-	 */
-	public boolean equals(Point p) {
-		return PointImpl.equals(getJSObject(), p.getJSObject());
-	}
 
-	/**
-	 * Translate the x,y properties of the point from source to dest.
-	 * 
-	 * @param source
-	 * @param dest
-	 */
-	public void transform(Projection source, Projection dest) {
-		PointImpl.transform(getJSObject(), source.getJSObject(),
-				dest.getJSObject());
-	}
+    /**
+     * APIMethod: equals Determine whether another geometry is equivalent to
+     * this one. Geometries are considered equivalent if all components have the
+     * same coordinates.
+     *
+     * Parameters: p - {<OpenLayers.Geometry.Point>} The geometry to test.
+     *
+     * Returns: {Boolean} The supplied geometry is equivalent to this geometry.
+     */
+    public boolean equals(Point p)
+    {
+        return PointImpl.equals(getJSObject(), p.getJSObject());
+    }
+
+    /**
+     * Translate the x,y properties of the point from source to dest.
+     *
+     * @param source
+     * @param dest
+     */
+    public void transform(Projection source, Projection dest)
+    {
+        PointImpl.transform(getJSObject(), source.getJSObject(),
+            dest.getJSObject());
+    }
 }

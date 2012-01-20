@@ -6,9 +6,10 @@ package org.gwtopenmaps.openlayers.client.layer;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class HTTPRequestLayerOptions extends LayerOptions {
+public class HTTPRequestLayerOptions extends LayerOptions
+{
 
-	//TODO: support setting options specific to HTTPRequestLayer
+    // TODO: support setting options specific to HTTPRequestLayer
 
 
 }

@@ -9,6 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *         Amr Alam - Refractions Research
  *         Edwin Commandeur - Atlis EJS
  *
+ * @author Nazzareno Sileno - CNR IMAA geoSDI Group - @email nazzareno.sileno@geosdi.org
  */
 class LayerImpl
 {
@@ -79,5 +80,9 @@ class LayerImpl
 
     public static native void destroy(JSObject layer, boolean setNewBaseLayer) /*-{
         layer.destroy(setNewBaseLayer);
+    }-*/;
+    
+    public static native double getResolutionForZoom(JSObject layer, double zoom) /*-{
+        return layer.getResolutionForZoom(zoom);
     }-*/;
 }

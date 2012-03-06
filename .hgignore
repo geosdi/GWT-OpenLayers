@@ -1,6 +1,5 @@
 ^target$
 ^[^/]*/target$
-^[^/]*/war$
 ^[^/]*/tomcat$
 .class
 /.settings$

@@ -71,5 +71,10 @@ public class OpenLayers {
                 String units)/*-{
         return $wnd.OpenLayers.Util.getScaleFromResolution(resolution, units);
         }-*/;
+                
+        public static native double getResolutionFromScale(double scale,
+                String units)/*-{
+        return $wnd.OpenLayers.Util.getResolutionFromScale(scale, units);
+        }-*/;
     }
 }

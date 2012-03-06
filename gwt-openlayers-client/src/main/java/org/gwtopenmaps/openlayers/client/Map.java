@@ -382,6 +382,15 @@ public class Map extends OpenLayersEObjectWrapper {
         return this.getBaseLayer().getResolutionForZoom(zoom);
     }
 
+    public double getZoomForResolution(double resolution, boolean closest) {
+        return MapImpl.getZoomForResolution(getJSObject(), resolution, closest);
+    }
+
+    public double getZoomFromScale(double scale, boolean closest) {
+        double resolution = OpenLayers.Util.getResolutionFromScale(scale, getCurrentUnits());
+        return this.getZoomForResolution((Double) resolution, closest);
+    }
+
     public double getScaleForZoom(double zoom, String units) {
         double resolution = this.getResolutionForZoom(zoom);
         return OpenLayers.Util.getScaleFromResolution(resolution, units);

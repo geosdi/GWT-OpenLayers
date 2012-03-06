@@ -140,7 +140,7 @@ public class NavigationHistoryExample implements ShowcaseExample
         Grid buttonGrid = new Grid(1, 2);
         buttonGrid.setWidget(0, 0, previous);
         buttonGrid.setWidget(0, 1, next);
-        example.add(buttonGrid, DockPanel.SOUTH);
+        example.add(buttonGrid);
     }
 
     public MapExample getMapExample()

@@ -87,7 +87,7 @@ public class MapEvents implements ShowcaseExample
         eventMessageArea.setHeight("20em");
 
         // TODO this exposes that example is a DockPanel ...
-        example.add(eventMessageArea, DockPanel.EAST);
+        example.add(eventMessageArea);
 /*
                 example.getMap().getEvents().register("move", example.getMap(), new EventHandler(){
                         public void onHandle(EventObject eo) {

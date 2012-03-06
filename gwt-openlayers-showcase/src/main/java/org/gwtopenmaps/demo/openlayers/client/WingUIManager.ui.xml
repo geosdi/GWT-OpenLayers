@@ -1,0 +1,87 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.eastPanel {
+			background-color: #F60;
+		}
+		
+		.westPanel {
+			background-color: #FFF;
+		}
+		
+		.northPanel {
+			background-color: #333;
+		}
+		
+		.southPanel {
+			background-color: #99C;
+		}
+		
+		.centerPanel {
+			background-color: #FFF;
+		}
+		
+		.search {
+			background-color: #EEE;
+		}
+		
+		.menu-wing {
+			padding: 2px;
+			color: #FFFFFF;
+			font-weight: bold;
+			cursor: hand;
+		}
+		
+		.conversationPanelContainer,.conversationPanel,.messageTextAndSendPanel,.messageText
+			{
+			font-weight: bold;
+		}
+	</ui:style>
+	<g:DockLayoutPanel unit='EM'>
+		<g:north size='4.2'>
+			<g:FlowPanel styleName="{style.northPanel}">
+				<g:HTMLPanel styleName="{style.search}" height="56px">
+					<g:HorizontalPanel spacing="3">
+						<g:Image url="gwt-ol-a.png" width="196px" height="50px" />
+						<g:Cell verticalAlignment="ALIGN_MIDDLE">
+							<g:TextBox alignment="LEFT" width="250" height="34" />
+						</g:Cell>
+						<g:Cell verticalAlignment="ALIGN_MIDDLE">
+							<g:Button text="Find" />
+						</g:Cell>
+					</g:HorizontalPanel>
+				</g:HTMLPanel>
+			</g:FlowPanel>
+		</g:north>
+		<g:west size='17.8'>
+			<g:SplitLayoutPanel>
+				<g:center size='60' unit='EM'>
+					<g:ScrollPanel>
+						<g:FlowPanel styleName="{style.centerPanel}" ui:field="westCenterZone">
+
+						</g:FlowPanel>
+					</g:ScrollPanel>
+				</g:center>
+				<g:south size="200" unit='EM'>
+					<g:ScrollPanel>
+						<g:FlowPanel styleName="{style.centerPanel}" ui:field="southWestZone">
+							<g:Label>This is the SOUTH panel</g:Label>
+						</g:FlowPanel>
+					</g:ScrollPanel>
+				</g:south>
+			</g:SplitLayoutPanel>
+		</g:west>
+		<g:center>
+			<g:FlowPanel styleName="{style.centerPanel}">
+				<g:TabLayoutPanel barHeight="2" barUnit="EM" width="100%"
+					height="100%">
+					<g:tab>
+						<g:header>Maps</g:header>
+						<g:LayoutPanel width="100%" height="100%" ui:field="mapZone" />
+					</g:tab>
+				</g:TabLayoutPanel>
+			</g:FlowPanel>
+		</g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder>

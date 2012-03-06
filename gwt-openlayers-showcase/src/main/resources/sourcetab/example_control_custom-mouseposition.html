@@ -1,0 +1,70 @@
+<pre>
+
+public class CustomMousePosition implements EntryPoint {
+
+	private MapWidget mapWidget;
+	private Map map;
+	private WMS wmsLayer;
+
+	public void onModuleLoad() {
+
+		// First create map options.
+		MapOptions mapOptions = new MapOptions();
+		// you probably want to remove default controls
+		mapOptions.removeDefaultControls();
+		mapOptions.setNumZoomLevels(16);
+
+		// Then create map widget and get map object.
+		mapWidget = new MapWidget("350px", "350px", mapOptions);
+		map = mapWidget.getMap();
+
+		// Add some controls to the map
+		map.addControl(new PanZoomBar());
+		map.addControl(new LayerSwitcher());
+		MousePositionOutput mpOut = new MousePositionOutput(){
+			public String format(LonLat lonLat, Map map) {
+				String out = "";
+				out += "<b>This is the longitude </b> ";
+				out += lonLat.lon();
+				out += "<b>, and this the latitude</b> ";
+				out += lonLat.lon();
+				return out;
+			}
+		};
+		MousePositionOptions mpOptions = new MousePositionOptions();
+		mpOptions.setFormatOutput(mpOut); //rename to setFormatOutput
+		map.addControl(new MousePosition(mpOptions));
+
+		// Add a WMS layer
+		WMSParams wmsParams = new WMSParams();
+		wmsParams.setFormat("image/png");
+		wmsParams.setLayers(ExampleConstants.METACARTA_WMS_BASIC_LAYER);
+		wmsParams.setStyles("");
+
+		WMSOptions wmsLayerParams = new WMSOptions();
+		wmsLayerParams.setUntiled();
+		wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
+
+		wmsLayer = new WMS(
+				"Basic WMS",
+				ExampleConstants.METACARTA_WMS_URL,
+				wmsParams,
+				wmsLayerParams);
+
+		// Add WMS layer to map
+		map.addLayers(new Layer[] {wmsLayer});
+
+		//Center and Zoom
+		double lon = 4.0;
+		double lat = 5.0;
+		int zoom = 5;
+		map.setCenter(new LonLat(lon, lat), zoom);
+
+		DockPanel dockPanel = new DockPanel();
+		dockPanel.add(mapWidget, DockPanel.CENTER);
+		dockPanel.setBorderWidth(3);
+		RootPanel.get().add(dockPanel);
+	}
+}
+
+</pre>

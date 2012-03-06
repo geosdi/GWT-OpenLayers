@@ -1,0 +1,15 @@
+<module rename-to="gwt_ol_showcase">
+
+	<inherits name='com.google.gwt.user.User'/>
+	 <inherits name='com.google.gwt.user.theme.clean.Clean'/>
+	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+	<!-- Other module inherits                                      -->
+	<inherits name='org.gwtopenmaps.openlayers.OpenLayers'/>
+
+	<!--Entry point class.                         -->
+	<entry-point class='org.gwtopenmaps.demo.openlayers.client.GwtOpenLayersShowcase'/>
+
+	<!-- third party scripts are referenced in GwtOpenLayersShowcase.html -->
+</module>

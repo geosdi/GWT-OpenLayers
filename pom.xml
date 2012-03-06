@@ -92,6 +92,7 @@
 	<modules>
 		<module>gwt-openlayers-client</module>
 		<module>gwt-openlayers-server</module>
+        <module>gwt-openlayers-showcase</module>
 	</modules>
 	<distributionManagement>
 		<repository>

@@ -115,7 +115,6 @@ public class CQLFilter implements ShowcaseExample {
 		this.operationContents = operationContents;
 	}
 
-	@Override
 	public MapExample getMapExample() {
 		return this.example;
 	}

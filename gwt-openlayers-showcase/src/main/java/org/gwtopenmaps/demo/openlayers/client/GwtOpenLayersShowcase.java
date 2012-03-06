@@ -20,6 +20,7 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.xhr.client.XMLHttpRequest;
 
 /**
  * Entry point for GWT OpenLayers showcase.
@@ -48,6 +49,8 @@ public class GwtOpenLayersShowcase implements EntryPoint {
 	 * Entry point for the GWT OpenLayers Showcase
 	 */
 	public void onModuleLoad() {
+	
+		
 		// HTML tempBanner = new
 		// HTML("Welcome to the GWT OpenLayers showcase.");
 		// bannerPanel.add(tempBanner);

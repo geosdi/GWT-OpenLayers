@@ -16,5 +16,22 @@ public class XYZOptions extends GridLayerOptions
         getJSObject().setProperty("sphericalMercator", b);
     }
 
+    /**
+     *
+     * @param zoomOffset
+     */
+    public void setZoomOffset(int zoomOffset)
+    {
+        getJSObject().setProperty("zoomOffset", zoomOffset);
+    }
+
+    /**
+    *
+    * @param b
+    */
+    public void setIsBaseLayer(boolean b)
+    {
+        getJSObject().setProperty("isBaseLayer", b);
+    }
 
 }

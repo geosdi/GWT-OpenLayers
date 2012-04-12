@@ -157,7 +157,7 @@ public class SnappingExample implements ShowcaseExample
         buttonGrid.setWidget(0, 0, polyCheck);
         buttonGrid.setWidget(1, 0, pointCheck);
         buttonGrid.setWidget(2, 0, lineCheck);
-        example.add(buttonGrid, DockPanel.SOUTH);
+        example.add(buttonGrid);
     }
 
     public MapExample getMapExample()

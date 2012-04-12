@@ -276,7 +276,7 @@ public class DrawFeatures implements ShowcaseExample
         buttons.setWidget(0, 1, drawRegularPolygonBtn);
         buttons.setWidget(1, 0, selectPolygonFeatureBtn);
         buttons.setWidget(1, 1, selectRegularPolygonFeatureBtn);
-        example.add(buttons, DockPanel.SOUTH);
+        example.add(buttons);
         example.getMap().addLayer(boxLayer);
     }
 

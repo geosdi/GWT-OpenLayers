@@ -21,6 +21,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *         Amr Alam - Refractions Research,
  *         Edwin Commandeur - Atlis EJS
  *
+ * @author Nazzareno Sileno - CNR IMAA geoSDI Group - @email nazzareno.sileno@geosdi.org
  */
 public class Layer extends OpenLayersEObjectWrapper
 {
@@ -217,6 +218,14 @@ public class Layer extends OpenLayersEObjectWrapper
                     listener.onVisibilityChanged(e);
                 }
             });
+    }
+    
+    public double getResolutionForZoom(double zoom) {
+        double result = -1;
+        if(this.isBaseLayer()){
+            result = LayerImpl.getResolutionForZoom(getJSObject(), zoom);
+        }
+        return result;
     }
 
 }

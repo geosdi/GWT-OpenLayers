@@ -13,6 +13,7 @@ import com.google.gwt.user.client.Element;
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
  * @author Edwin Commandeur - Atlis Information Systems
  * @author Curtis Jensen - Integrity Applications Inc.
+ * @author Nazzareno Sileno - CNR IMAA geoSDI Group - @email nazzareno.sileno@geosdi.org
  */
 class MapImpl {
 
@@ -207,5 +208,10 @@ class MapImpl {
         
         return false; //cancel the right click of browser
         }; 
+    }-*/;
+    
+    
+    public static native double getZoomForResolution(JSObject map, double resolution, boolean closest)/*-{
+        return map.getZoomForResolution(resolution, closest);
     }-*/;
 }

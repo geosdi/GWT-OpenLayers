@@ -6,6 +6,7 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
+import org.gwtopenmaps.openlayers.client.control.ModifyFeature;
 import org.gwtopenmaps.openlayers.client.control.PanZoomBar;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
@@ -21,6 +22,8 @@ import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolCRUDOptions;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 
+import com.google.gwt.user.client.ui.VerticalPanel;
+
 
 public class ReadWFS implements ShowcaseExample
 {
@@ -31,6 +34,8 @@ public class ReadWFS implements ShowcaseExample
     private WMS wmsLayer;
 
     private Vector wfsLayer;
+    
+    private VerticalPanel operationContents;
 
     public ReadWFS()
     {
@@ -56,7 +61,7 @@ public class ReadWFS implements ShowcaseExample
         wfsLayer = new Vector("wfsExample", vectorOptions);
 
         // set a proxyHost
-        OpenLayers.setProxyHost("../gwtOpenLayersProxy?targetURL=");
+        OpenLayers.setProxyHost("gwtOpenLayersProxy?targetURL=");
 
         WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
         wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
@@ -110,8 +115,23 @@ public class ReadWFS implements ShowcaseExample
         example.getMap().addControl(new PanZoomBar());
         example.getMap().addControl(new LayerSwitcher());
         example.getMap().setCenter(new LonLat(-100, 40), 3);
+        
+        this.createOperationContents();
 
     }
+    
+    private void createOperationContents() {
+		operationContents = new VerticalPanel();
+
+	}
+
+	public VerticalPanel getOperationContents() {
+		return operationContents;
+	}
+
+	public void setOperationContents(VerticalPanel operationContents) {
+		this.operationContents = operationContents;
+	}
 
     public MapExample getMapExample()
     {

@@ -17,11 +17,16 @@ package org.gwtopenmaps.demo.openlayers.client.examples.control;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.i18n.shared.AnyRtlDirectionEstimator;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.ToggleButton;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
@@ -65,6 +70,8 @@ public class MeasureExample implements ShowcaseExample
 
     private Measure measure;
     private Measure measureArea;
+    
+    private VerticalPanel operationContents;
 
     public MeasureExample()
     {
@@ -95,7 +102,7 @@ public class MeasureExample implements ShowcaseExample
         example.getMap().addControl(measure);
         example.getMap().addControl(measureArea);
         example.getMap().addControl(new Navigation());
-        example.add(measureResult, DockPanel.SOUTH);
+        example.add(measureResult);
 
         this.measure.addMeasureListener(new MeasureListener()
             {
@@ -160,13 +167,31 @@ public class MeasureExample implements ShowcaseExample
             });
 
         // Adding the button to the example
-        Grid buttonGrid = new Grid(2, 2);
-        buttonGrid.setWidget(0, 0, distanceButton);
-        buttonGrid.setWidget(0, 1, areaButton);
-        example.add(buttonGrid, DockPanel.SOUTH);
+        this.createOperationContents();
 
     }
 
+    private void createOperationContents() {
+		// Create a dialog box and set the caption text
+		
+		// Create a table to layout the content
+		operationContents = new VerticalPanel();
+		
+		operationContents.add(distanceButton);
+		operationContents.add(areaButton);
+		operationContents.add(measureResult);
+		
+	}
+	
+	public VerticalPanel getOperationContents() {
+		return operationContents;
+	}
+
+	public void setOperationContents(VerticalPanel operationContents) {
+		this.operationContents = operationContents;
+	}
+	
+	
     public MapExample getMapExample()
     {
         // TODO Auto-generated method stub

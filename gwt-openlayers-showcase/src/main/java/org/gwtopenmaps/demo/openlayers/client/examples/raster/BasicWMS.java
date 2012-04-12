@@ -3,10 +3,12 @@ package org.gwtopenmaps.demo.openlayers.client.examples.raster;
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
+import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.MousePosition;
 import org.gwtopenmaps.openlayers.client.control.NavToolbar;
 import org.gwtopenmaps.openlayers.client.control.PanZoomBar;
+import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
@@ -33,8 +35,7 @@ public class BasicWMS implements ShowcaseExample
         wmsParams.setStyles("");
 
         WMSOptions wmsLayerParams = new WMSOptions();
-        wmsLayerParams.setUntiled();
-        wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
+		wmsLayerParams.setTileSize(new Size(256,256));
 
         wmsLayer = new WMS(
                 "Basic WMS",
@@ -51,6 +52,7 @@ public class BasicWMS implements ShowcaseExample
         example.getMap().addControl(new NavToolbar());
         example.getMap().addControl(new MousePosition());
         example.getMap().addControl(new LayerSwitcher());
+        example.getMap().addControl(new ScaleLine());
 
         // Center and Zoom
         double lon = 4.0;

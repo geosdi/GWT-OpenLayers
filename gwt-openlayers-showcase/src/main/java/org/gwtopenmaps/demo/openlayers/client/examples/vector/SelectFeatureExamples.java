@@ -80,7 +80,7 @@ public class SelectFeatureExamples implements ShowcaseExample
 
         example.getMap().addLayer(createLayer());
 
-        example.add(reportArea, DockPanel.EAST);
+        example.add(reportArea);
 
     }
 

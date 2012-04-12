@@ -2,15 +2,15 @@ package org.gwtopenmaps.demo.openlayers.client.examples;
 
 import java.util.ArrayList;
 
-import com.google.gwt.user.client.ui.DockPanel;
-import com.google.gwt.user.client.ui.Widget;
-
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
 
+import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
 
-public class MapExample extends DockPanel
+
+public class MapExample extends LayoutPanel
 {
     private MapOptions defaultMapOptions;
 
@@ -38,9 +38,10 @@ public class MapExample extends DockPanel
 
     private void initMapWidget(MapOptions options)
     {
-        MapWidget mapWidget = new MapWidget("350px", "350px", options);
+        MapWidget mapWidget = new MapWidget("100%", "100%", options);
         this.map = mapWidget.getMap();
-        add(mapWidget, DockPanel.CENTER);
+        add(mapWidget);
+        
     }
 
     public Map getMap()
@@ -60,9 +61,7 @@ public class MapExample extends DockPanel
         ;
     }
 
-    public void add(Widget w, DockLayoutConstant c)
-    {
-        super.add(w, c);
-        this.widgets.add(w);
+    public void add(Widget w)
+    {	super.add(w);
     }
 }

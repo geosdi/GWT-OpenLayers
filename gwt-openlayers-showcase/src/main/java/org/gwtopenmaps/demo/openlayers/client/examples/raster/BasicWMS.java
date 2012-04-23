@@ -35,7 +35,7 @@ public class BasicWMS implements ShowcaseExample
         wmsParams.setStyles("");
 
         WMSOptions wmsLayerParams = new WMSOptions();
-		wmsLayerParams.setTileSize(new Size(256,256));
+        wmsLayerParams.setTileSize(new Size(256, 256));
 
         wmsLayer = new WMS(
                 "Basic WMS",

@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.util.JStringArray;
 
 
 /**
@@ -70,6 +71,10 @@ public class OSM extends Layer
     public OSM(String name, String url, OSMOptions options)
     {
         super(OSMImpl.OSM(name, url, options.getJSObject()));
+    }
+
+    public OSM(String name, String[] urls, OSMOptions options) {
+        this(OSMImpl.OSM(name, new JStringArray(urls).getJSObject(), options.getJSObject()));
     }
 
 

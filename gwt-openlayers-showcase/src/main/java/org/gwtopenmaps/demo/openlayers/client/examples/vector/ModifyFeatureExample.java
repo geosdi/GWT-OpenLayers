@@ -31,188 +31,208 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-public class ModifyFeatureExample implements ShowcaseExample {
-	public static final String WMS_URL = "http://labs.metacarta.com/wms/vmap0";
 
-	private MapExample example = new MapExample();
+public class ModifyFeatureExample implements ShowcaseExample
+{
+    public static final String WMS_URL = "http://labs.metacarta.com/wms/vmap0";
 
-	private WMS wmsLayer;
+    private MapExample example = new MapExample();
 
-	private VerticalPanel operationContents;
+    private WMS wmsLayer;
 
-	private TextArea reportArea = new TextArea() {
+    private VerticalPanel operationContents;
 
-		{
-			this.setHeight("20em");
-			this.setWidth("100%");
-		}
-	};
+    private TextArea reportArea = new TextArea()
+        {
 
-	private ModifyFeature modifyFeature;
+            {
+                this.setHeight("20em");
+                this.setWidth("100%");
+            }
+        };
 
-	private int reportCount = 0;
+    private ModifyFeature modifyFeature;
 
-	public ModifyFeatureExample() {
-		// Defining a WMSLayer and adding it to a Map
-		WMSParams wmsParams = new WMSParams();
-		wmsParams.setFormat("image/png");
-		wmsParams.setLayers("basic");
-		wmsParams.setStyles("");
+    private int reportCount = 0;
 
-		WMSOptions wmsLayerParams = new WMSOptions();
-		wmsLayerParams.setUntiled();
-		wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
+    public ModifyFeatureExample()
+    {
+        // Defining a WMSLayer and adding it to a Map
+        WMSParams wmsParams = new WMSParams();
+        wmsParams.setFormat("image/png");
+        wmsParams.setLayers("basic");
+        wmsParams.setStyles("");
 
-		wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
+        WMSOptions wmsLayerParams = new WMSOptions();
+        wmsLayerParams.setUntiled();
+        wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
 
-		example.getMap().addLayers(new Layer[] { wmsLayer });
+        wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
 
-		// Adding controls to the Map
-		example.getMap().addControl(new PanZoomBar());
+        example.getMap().addLayers(new Layer[] { wmsLayer });
 
-		// use NavToolbar instead of deprecated MouseToolbar
-		example.getMap().addControl(new NavToolbar());
-		example.getMap().addControl(new MousePosition());
-		example.getMap().addControl(new LayerSwitcher());
+        // Adding controls to the Map
+        example.getMap().addControl(new PanZoomBar());
 
-		// Center and Zoom
-		example.getMap().setCenter(new LonLat(-111.04, 45.68), 4);
+        // use NavToolbar instead of deprecated MouseToolbar
+        example.getMap().addControl(new NavToolbar());
+        example.getMap().addControl(new MousePosition());
+        example.getMap().addControl(new LayerSwitcher());
 
-		example.getMap().addLayer(createLayer());
-//		example.add(reportArea);
-		this.createOperationContents();
+        // Center and Zoom
+        example.getMap().setCenter(new LonLat(-111.04, 45.68), 4);
 
-	}
+        example.getMap().addLayer(createLayer());
+//              example.add(reportArea);
+        this.createOperationContents();
 
-	private void createOperationContents() {
-		operationContents = new VerticalPanel();
-		operationContents.add(createModeButton("Resize", ModifyFeature.RESIZE));
-		operationContents.add(createModeButton("Drag", ModifyFeature.DRAG));
-		operationContents.add(createModeButton("Reshape", ModifyFeature.RESHAPE));
-		operationContents.add(createModeButton("Rotate", ModifyFeature.ROTATE));
+    }
 
-	}
+    private void createOperationContents()
+    {
+        operationContents = new VerticalPanel();
+        operationContents.add(createModeButton("Resize", ModifyFeature.RESIZE));
+        operationContents.add(createModeButton("Drag", ModifyFeature.DRAG));
+        operationContents.add(createModeButton("Reshape", ModifyFeature.RESHAPE));
+        operationContents.add(createModeButton("Rotate", ModifyFeature.ROTATE));
 
-	public VerticalPanel getOperationContents() {
-		return operationContents;
-	}
+    }
 
-	public void setOperationContents(VerticalPanel operationContents) {
-		this.operationContents = operationContents;
-	}
+    public VerticalPanel getOperationContents()
+    {
+        return operationContents;
+    }
 
-	/**
-	 * @param labelText
-	 * @param mode
-	 * @return
-	 */
-	private Button createModeButton(String labelText, final int mode) {
-		Button button = new Button(labelText) {
+    public void setOperationContents(VerticalPanel operationContents)
+    {
+        this.operationContents = operationContents;
+    }
 
-			{
-				this.addClickHandler(new ClickHandler() {
-					public void onClick(ClickEvent evt) {
-						modifyFeature.setMode(mode);
-					}
-				});
+    /**
+     * @param labelText
+     * @param mode
+     * @return
+     */
+    private Button createModeButton(String labelText, final int mode)
+    {
+        Button button = new Button(labelText)
+            {
 
-			}
-		};
+                {
+                    this.addClickHandler(new ClickHandler()
+                        {
+                            public void onClick(ClickEvent evt)
+                            {
+                                modifyFeature.setMode(mode);
+                            }
+                        });
 
-		return button;
-	}
+                }
+            };
 
-	public MapExample getMapExample() {
-		return this.example;
-	}
+        return button;
+    }
 
-	private Style createStyle() {
-		Style style = new Style();
-		style.setStrokeColor("#000000");
-		style.setStrokeWidth(1);
-		style.setFillColor("#FF0000");
-		style.setFillOpacity(0.5);
-		style.setPointRadius(5);
-		style.setStrokeOpacity(1.0);
+    public MapExample getMapExample()
+    {
+        return this.example;
+    }
 
-		return style;
+    private Style createStyle()
+    {
+        Style style = new Style();
+        style.setStrokeColor("#000000");
+        style.setStrokeWidth(1);
+        style.setFillColor("#FF0000");
+        style.setFillOpacity(0.5);
+        style.setPointRadius(5);
+        style.setStrokeOpacity(1.0);
 
-	}
+        return style;
 
-	private Layer createLayer() {
-		// Create the vectorOptions
-		VectorOptions vectorOptions = new VectorOptions();
-		vectorOptions.setStyle(createStyle());
+    }
 
-		// Create the layer
-		Vector layer = new Vector("Vector Layer", vectorOptions);
+    private Layer createLayer()
+    {
+        // Create the vectorOptions
+        VectorOptions vectorOptions = new VectorOptions();
+        vectorOptions.setStyle(createStyle());
 
-		// create a point feature
-		Point point = new Point(-111.04, 45.68);
+        // Create the layer
+        Vector layer = new Vector("Vector Layer", vectorOptions);
 
-		// create a polygon feature from a linear ring of points
-		VectorFeature polygonFeature = createPolygon(point);
+        // create a point feature
+        Point point = new Point(-111.04, 45.68);
 
-		layer.addFeature(polygonFeature);
+        // create a polygon feature from a linear ring of points
+        VectorFeature polygonFeature = createPolygon(point);
 
-		modifyFeature = createModifyFeature(layer);
-		example.getMap().addControl(modifyFeature);
-		modifyFeature.activate();
+        layer.addFeature(polygonFeature);
 
-		layer.addVectorFeatureModifiedListener(new VectorFeatureModifiedListener() {
-			public void onFeatureModified(FeatureModifiedEvent eventObject) {
-				VectorFeature feature = eventObject.getVectorFeature();
+        modifyFeature = createModifyFeature(layer);
+        example.getMap().addControl(modifyFeature);
+        modifyFeature.activate();
 
-				Polygon polygon = Polygon.narrowToPolygon(feature.getGeometry()
-						.getJSObject());
+        layer.addVectorFeatureModifiedListener(new VectorFeatureModifiedListener()
+            {
+                public void onFeatureModified(FeatureModifiedEvent eventObject)
+                {
+                    VectorFeature feature = eventObject.getVectorFeature();
 
-				LinearRing linearRing = polygon.getComponents()[0];
+                    Polygon polygon = Polygon.narrowToPolygon(feature.getGeometry().getJSObject());
 
-				String message = "Total Vertexes: "
-						+ linearRing.getNumberOfComponents();
+                    LinearRing linearRing = polygon.getComponents()[0];
 
-				for (Point point : linearRing.getComponents()) {
-					message += "\n(" + point.getX() + ";" + point.getY() + ") ";
-				}
+                    String message = "Total Vertexes: " +
+                        linearRing.getNumberOfComponents();
 
-				report(feature, message);
-			}
-		});
+                    for (Point point : linearRing.getComponents())
+                    {
+                        message += "\n(" + point.getX() + ";" + point.getY() + ") ";
+                    }
 
-		return layer;
+                    report(feature, message);
+                }
+            });
 
-	}
+        return layer;
 
-	private ModifyFeature createModifyFeature(Vector layer) {
-		ModifyFeature modifyFeature = new ModifyFeature(layer);
+    }
 
-		return modifyFeature;
-	}
+    private ModifyFeature createModifyFeature(Vector layer)
+    {
+        ModifyFeature modifyFeature = new ModifyFeature(layer);
 
-	private VectorFeature createPolygon(Point point) {
-		Point[] pointList = new Point[7];
+        return modifyFeature;
+    }
 
-		for (int p = 0; p < 6; ++p) {
-			double a = p * (2 * Math.PI) / 7;
-			double r = 3;
-			Point newPoint = new Point(point.getX() + 5 + (r * Math.cos(a)),
-					point.getY() + 5 + (r * Math.sin(a)));
-			pointList[p] = newPoint;
-		}
+    private VectorFeature createPolygon(Point point)
+    {
+        Point[] pointList = new Point[7];
 
-		pointList[6] = pointList[0];
+        for (int p = 0; p < 6; ++p)
+        {
+            double a = p * (2 * Math.PI) / 7;
+            double r = 3;
+            Point newPoint = new Point(point.getX() + 5 + (r * Math.cos(a)),
+                    point.getY() + 5 + (r * Math.sin(a)));
+            pointList[p] = newPoint;
+        }
 
-		LinearRing linearRing = new LinearRing(pointList);
-		VectorFeature polygonFeature = new VectorFeature(new Polygon(
-				new LinearRing[] { linearRing }));
+        pointList[6] = pointList[0];
 
-		return polygonFeature;
+        LinearRing linearRing = new LinearRing(pointList);
+        VectorFeature polygonFeature = new VectorFeature(new Polygon(
+                    new LinearRing[] { linearRing }));
 
-	}
+        return polygonFeature;
 
-	protected void report(VectorFeature vectorFeature, String message) {
-		reportArea.setText(reportCount++ + ")" + vectorFeature.getFeatureId()
-				+ " " + message + "\n\n");
+    }
 
-	}
+    protected void report(VectorFeature vectorFeature, String message)
+    {
+        reportArea.setText(reportCount++ + ")" + vectorFeature.getFeatureId() +
+            " " + message + "\n\n");
+
+    }
 }

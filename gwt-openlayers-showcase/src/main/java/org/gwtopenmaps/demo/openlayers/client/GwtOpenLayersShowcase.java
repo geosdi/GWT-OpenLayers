@@ -1,5 +1,10 @@
 package org.gwtopenmaps.demo.openlayers.client;
 
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.xhr.client.XMLHttpRequest;
+
 import org.gwtopenmaps.demo.openlayers.client.widget.ShowcaseContent;
 import org.gwtopenmaps.demo.openlayers.client.widget.ShowcaseMenu;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -17,104 +22,104 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.xhr.client.XMLHttpRequest;
 
 /**
  * Entry point for GWT OpenLayers showcase.
  */
-public class GwtOpenLayersShowcase implements EntryPoint {
-	private Map map;
-	private MapOptions defaultMapOptions;
+public class GwtOpenLayersShowcase implements EntryPoint
+{
 
-	public static final String WMS_URL = "http://v2.suite.opengeo.org/geoserver/wms/";
+    public static final String WMS_URL = "http://v2.suite.opengeo.org/geoserver/wms/";
+    private Map map;
+    private MapOptions defaultMapOptions;
 
-	private WMS wmsLayer;
+    private WMS wmsLayer;
 
-	private static final class GeneratorInfo {
-	}
+    /**
+     * main panel contains the showcase app
+     */
+    // private DockPanel mainPanel = new DockPanel();
+    //
+    // private SimplePanel bannerPanel = new SimplePanel();
+    // private ShowcaseContent contentPanel = new ShowcaseContent();
+    // private ShowcaseMenu menuPanel = new ShowcaseMenu(contentPanel);
 
-	/**
-	 * main panel contains the showcase app
-	 */
-	// private DockPanel mainPanel = new DockPanel();
-	//
-	// private SimplePanel bannerPanel = new SimplePanel();
-	// private ShowcaseContent contentPanel = new ShowcaseContent();
-	// private ShowcaseMenu menuPanel = new ShowcaseMenu(contentPanel);
+    /**
+     * Entry point for the GWT OpenLayers Showcase
+     */
+    public void onModuleLoad()
+    {
 
-	/**
-	 * Entry point for the GWT OpenLayers Showcase
-	 */
-	public void onModuleLoad() {
-	
-		
-		// HTML tempBanner = new
-		// HTML("Welcome to the GWT OpenLayers showcase.");
-		// bannerPanel.add(tempBanner);
-		//
-		// // TODO menuPanel gets passed a ShowcaseMenu widget
-		// // the ShowcaseMenu widget gets passed a reference to the
-		// contentPanel
-		//
-		// menuPanel.setTitle("Menu");
-		// menuPanel.setWidth("200px");
-		//
-		// contentPanel.setTitle("Example");
-		//
-		// mainPanel.add(bannerPanel, DockPanel.NORTH);
-		// mainPanel.add(menuPanel, DockPanel.WEST);
-		// mainPanel.add(contentPanel, DockPanel.CENTER);
 
-		this.defaultMapOptions = new MapOptions();
+        // HTML tempBanner = new
+        // HTML("Welcome to the GWT OpenLayers showcase.");
+        // bannerPanel.add(tempBanner);
+        //
+        // // TODO menuPanel gets passed a ShowcaseMenu widget
+        // // the ShowcaseMenu widget gets passed a reference to the
+        // contentPanel
+        //
+        // menuPanel.setTitle("Menu");
+        // menuPanel.setWidth("200px");
+        //
+        // contentPanel.setTitle("Example");
+        //
+        // mainPanel.add(bannerPanel, DockPanel.NORTH);
+        // mainPanel.add(menuPanel, DockPanel.WEST);
+        // mainPanel.add(contentPanel, DockPanel.CENTER);
 
-		// In OL, the map gets PanZoom, Navigation, ArgParser, and Attribution
-		// Controls
-		// by default. Do removeDefaultControls to remove these.
-		this.defaultMapOptions.removeDefaultControls();
-		this.defaultMapOptions.setNumZoomLevels(16);
-		this.defaultMapOptions.setProjection("EPSG:4326");
+        this.defaultMapOptions = new MapOptions();
 
-		MapWidget mapWidget = new MapWidget("100%", "100%", defaultMapOptions);
-		this.map = mapWidget.getMap();
+        // In OL, the map gets PanZoom, Navigation, ArgParser, and Attribution
+        // Controls
+        // by default. Do removeDefaultControls to remove these.
+        this.defaultMapOptions.removeDefaultControls();
+        this.defaultMapOptions.setNumZoomLevels(16);
+        this.defaultMapOptions.setProjection("EPSG:4326");
 
-		final WMSParams wmsParams = new WMSParams();
-		wmsParams.setFormat("image/png");
-		wmsParams.setLayers("usa:states");
-		wmsParams.setStyles("");
+        MapWidget mapWidget = new MapWidget("100%", "100%", defaultMapOptions);
+        this.map = mapWidget.getMap();
 
-		WMSOptions wmsLayerParams = new WMSOptions();
-		wmsLayerParams.setTileSize(new Size(256, 256));
+        final WMSParams wmsParams = new WMSParams();
+        wmsParams.setFormat("image/png");
+        wmsParams.setLayers("usa:states");
+        wmsParams.setStyles("");
 
-		wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
+        WMSOptions wmsLayerParams = new WMSOptions();
+        wmsLayerParams.setTileSize(new Size(256, 256));
 
-		this.map.addLayers(new Layer[] { wmsLayer });
+        wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
 
-		// Adding controls to the Map
-		this.map.addControl(new PanZoomBar());
+        this.map.addLayers(new Layer[] { wmsLayer });
 
-		// use NavToolbar instead of deprecated MouseToolbar
-		this.map.addControl(new NavToolbar());
-		this.map.addControl(new MousePosition());
-		this.map.addControl(new LayerSwitcher());
-		this.map.addControl(new ScaleLine());
+        // Adding controls to the Map
+        this.map.addControl(new PanZoomBar());
 
-		// Center and Zoom
-		double lon = -98;
-		double lat = 38;
-		int zoom = 4;
+        // use NavToolbar instead of deprecated MouseToolbar
+        this.map.addControl(new NavToolbar());
+        this.map.addControl(new MousePosition());
+        this.map.addControl(new LayerSwitcher());
+        this.map.addControl(new ScaleLine());
 
-		this.map.setCenter(new LonLat(lon, lat), zoom);
-		WingUIManager wing = new WingUIManager();
-		ShowcaseContent content = new ShowcaseContent();
-		FlexTable menuPanel = new ShowcaseMenu(wing.getMapZone(),
-				wing.getSouthWestZone());
+        // Center and Zoom
+        double lon = -98;
+        double lat = 38;
+        int zoom = 4;
 
-		wing.getWestCenterZone().add(menuPanel);
-		wing.getMapZone().add(mapWidget);
+        this.map.setCenter(new LonLat(lon, lat), zoom);
 
-		RootLayoutPanel.get().add(wing);
-	}
+        WingUIManager wing = new WingUIManager();
+        ShowcaseContent content = new ShowcaseContent();
+        FlexTable menuPanel = new ShowcaseMenu(wing.getMapZone(),
+                wing.getSouthWestZone());
+
+        wing.getWestCenterZone().add(menuPanel);
+        wing.getMapZone().add(mapWidget);
+
+        RootLayoutPanel.get().add(wing);
+    }
+
+    private static final class GeneratorInfo
+    {
+    }
 }

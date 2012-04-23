@@ -15,6 +15,13 @@
  */
 package org.gwtopenmaps.demo.openlayers.client.examples.control;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.ToggleButton;
+import com.google.gwt.user.client.ui.VerticalPanel;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.raster.BasicWMS;
@@ -30,113 +37,118 @@ import org.gwtopenmaps.openlayers.client.symbolizer.LineSymbolizerOptions;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizer;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizerOptions;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.ToggleButton;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
- * 
+ *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  * @email giuseppe.lascaleia@geosdi.org
  */
-public class GraticuleExample implements ShowcaseExample {
-	private MapExample example;
-	private WMS wmsLayer;
+public class GraticuleExample implements ShowcaseExample
+{
+    private MapExample example;
+    private WMS wmsLayer;
 
-	// Define buttons
-	private ToggleButton activationButton = new ToggleButton("Graticula on/off");
-	private Graticule grt;
+    // Define buttons
+    private ToggleButton activationButton = new ToggleButton("Graticula on/off");
+    private Graticule grt;
 
-	private VerticalPanel operationContents;
+    private VerticalPanel operationContents;
 
-	public GraticuleExample() {
-		example = new MapExample();
+    public GraticuleExample()
+    {
+        example = new MapExample();
 
-		// Add a WMS layer for a little background
-		WMSParams wmsParams = new WMSParams();
-		wmsParams.setFormat("image/png");
-		wmsParams.setLayers("basic");
-		wmsParams.setStyles("");
+        // Add a WMS layer for a little background
+        WMSParams wmsParams = new WMSParams();
+        wmsParams.setFormat("image/png");
+        wmsParams.setLayers("basic");
+        wmsParams.setStyles("");
 
-		// Center and Zoom
-		double lon = 4.0;
-		double lat = 5.0;
-		int zoom = 5;
+        // Center and Zoom
+        double lon = 4.0;
+        double lat = 5.0;
+        int zoom = 5;
 
-		wmsLayer = new WMS("Basic WMS", BasicWMS.WMS_URL, wmsParams);
+        wmsLayer = new WMS("Basic WMS", BasicWMS.WMS_URL, wmsParams);
 
-		example.getMap().addLayers(new Layer[] { wmsLayer });
-		example.getMap().setCenter(new LonLat(lon, lat), zoom);
+        example.getMap().addLayers(new Layer[] { wmsLayer });
+        example.getMap().setCenter(new LonLat(lon, lat), zoom);
 
-		LineSymbolizerOptions lineOptions = new LineSymbolizerOptions();
-		lineOptions.setStrokeColor("#ccccff");
-		lineOptions.setStrokeOpacity(0.5);
-		lineOptions.setStrokeWidth(1);
+        LineSymbolizerOptions lineOptions = new LineSymbolizerOptions();
+        lineOptions.setStrokeColor("#ccccff");
+        lineOptions.setStrokeOpacity(0.5);
+        lineOptions.setStrokeWidth(1);
 
-		LineSymbolizer line = new LineSymbolizer(lineOptions);
+        LineSymbolizer line = new LineSymbolizer(lineOptions);
 
-		TextSymbolizerOptions textOptions = new TextSymbolizerOptions();
-		textOptions.setFontSize("9px");
+        TextSymbolizerOptions textOptions = new TextSymbolizerOptions();
+        textOptions.setFontSize("9px");
 
-		TextSymbolizer text = new TextSymbolizer(textOptions);
+        TextSymbolizer text = new TextSymbolizer(textOptions);
 
-		final GraticuleOptions grtOptions = new GraticuleOptions();
+        final GraticuleOptions grtOptions = new GraticuleOptions();
 
-		grtOptions.setTargetSize(200);
-		grtOptions.setLabelled(true);
-		grtOptions.setLineSymbolyzer(line);
-		grtOptions.setLabelSymbolizer(text);
-		grt = new Graticule(grtOptions);
+        grtOptions.setTargetSize(200);
+        grtOptions.setLabelled(true);
+        grtOptions.setLineSymbolyzer(line);
+        grtOptions.setLabelSymbolizer(text);
+        grt = new Graticule(grtOptions);
 
-		grt.setAutoActivate(false);
+        grt.setAutoActivate(false);
 
-		example.getMap().addControl(new MouseDefaults());
-		example.getMap().addControl(grt);
+        example.getMap().addControl(new MouseDefaults());
+        example.getMap().addControl(grt);
 
-		activationButton.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent arg0) {
-				// TODO Auto-generated method stub
-				if (activationButton.isDown()) {
-					grt.activate();
-				} else {
-					grt.deactivate();
-				}
-			}
-		});
+        activationButton.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent arg0)
+                {
+                    // TODO Auto-generated method stub
+                    if (activationButton.isDown())
+                    {
+                        grt.activate();
+                    }
+                    else
+                    {
+                        grt.deactivate();
+                    }
+                }
+            });
 
-		// Adding the button to the example
-		this.createOperationContents(activationButton);
-		
-	}
+        // Adding the button to the example
+        this.createOperationContents(activationButton);
 
-	private void createOperationContents(ToggleButton activationButton) {
+    }
 
-		// Create a table to layout the content
-		operationContents = new VerticalPanel();
-		
-		HTML details = new HTML(
-				"<i>This is a toogle button that active / deactive Graticula Control</i> ");
-		operationContents.add(details);
-		operationContents.setCellHorizontalAlignment(details,
-				HasHorizontalAlignment.ALIGN_LEFT);
+    private void createOperationContents(ToggleButton activationButton)
+    {
 
-		activationButton.setWidth("100px");
-		operationContents.add(activationButton);
+        // Create a table to layout the content
+        operationContents = new VerticalPanel();
 
-	}
+        HTML details = new HTML(
+                "<i>This is a toogle button that active / deactive Graticula Control</i> ");
+        operationContents.add(details);
+        operationContents.setCellHorizontalAlignment(details,
+            HasHorizontalAlignment.ALIGN_LEFT);
 
-	public VerticalPanel getOperationContents() {
-		return operationContents;
-	}
+        activationButton.setWidth("100px");
+        operationContents.add(activationButton);
 
-	public void setOperationContents(VerticalPanel operationContents) {
-		this.operationContents = operationContents;
-	}
+    }
 
-	public MapExample getMapExample() {
-		return this.example;
-	}
+    public VerticalPanel getOperationContents()
+    {
+        return operationContents;
+    }
+
+    public void setOperationContents(VerticalPanel operationContents)
+    {
+        this.operationContents = operationContents;
+    }
+
+    public MapExample getMapExample()
+    {
+        return this.example;
+    }
 }

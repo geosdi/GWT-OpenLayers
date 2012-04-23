@@ -2,12 +2,12 @@ package org.gwtopenmaps.demo.openlayers.client.examples;
 
 import java.util.ArrayList;
 
+import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
+
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
-
-import com.google.gwt.user.client.ui.LayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
 
 
 public class MapExample extends LayoutPanel
@@ -41,7 +41,7 @@ public class MapExample extends LayoutPanel
         MapWidget mapWidget = new MapWidget("100%", "100%", options);
         this.map = mapWidget.getMap();
         add(mapWidget);
-        
+
     }
 
     public Map getMap()
@@ -62,6 +62,7 @@ public class MapExample extends LayoutPanel
     }
 
     public void add(Widget w)
-    {	super.add(w);
+    {
+        super.add(w);
     }
 }

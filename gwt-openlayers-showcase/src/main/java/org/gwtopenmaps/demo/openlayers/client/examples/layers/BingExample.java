@@ -9,29 +9,32 @@ import org.gwtopenmaps.openlayers.client.layer.Bing;
 import org.gwtopenmaps.openlayers.client.layer.BingOptions;
 import org.gwtopenmaps.openlayers.client.layer.BingType;
 
+
 /**
  *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  * @email  giuseppe.lascaleia@geosdi.org
  */
-public class BingExample implements ShowcaseExample {
+public class BingExample implements ShowcaseExample
+{
 
     private final String key = "Apd8EWF9Ls5tXmyHr22OuL1ay4HRJtI4JG4jgluTDVaJdUXZV6lpSBpX-TwnoRDG";
     private MapExample example;
 
-    public BingExample() {
+    public BingExample()
+    {
         this.example = new MapExample(new MapOptions());
 
         this.example.getMap().addControl(new LayerSwitcher());
 
         Bing road = new Bing(new BingOptions("Road Layer",
-                key, BingType.ROAD));
+                    key, BingType.ROAD));
 
         Bing hybrid = new Bing(new BingOptions("Hybrid Layer",
-                key, BingType.HYBRID));
+                    key, BingType.HYBRID));
 
         Bing aerial = new Bing(new BingOptions("Aerial Layer",
-                key, BingType.AERIAL));
+                    key, BingType.AERIAL));
 
         example.getMap().addLayer(road);
         example.getMap().addLayer(hybrid);
@@ -40,7 +43,8 @@ public class BingExample implements ShowcaseExample {
         example.getMap().setCenter(new LonLat(-110, 45), 3);
     }
 
-    public MapExample getMapExample() {
+    public MapExample getMapExample()
+    {
         return this.example;
     }
 }

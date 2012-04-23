@@ -1,5 +1,7 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.vector;
 
+import com.google.gwt.user.client.ui.VerticalPanel;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -22,8 +24,6 @@ import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolCRUDOptions;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 
-import com.google.gwt.user.client.ui.VerticalPanel;
-
 
 public class ReadWFS implements ShowcaseExample
 {
@@ -34,7 +34,7 @@ public class ReadWFS implements ShowcaseExample
     private WMS wmsLayer;
 
     private Vector wfsLayer;
-    
+
     private VerticalPanel operationContents;
 
     public ReadWFS()
@@ -115,23 +115,26 @@ public class ReadWFS implements ShowcaseExample
         example.getMap().addControl(new PanZoomBar());
         example.getMap().addControl(new LayerSwitcher());
         example.getMap().setCenter(new LonLat(-100, 40), 3);
-        
+
         this.createOperationContents();
 
     }
-    
-    private void createOperationContents() {
-		operationContents = new VerticalPanel();
 
-	}
+    private void createOperationContents()
+    {
+        operationContents = new VerticalPanel();
 
-	public VerticalPanel getOperationContents() {
-		return operationContents;
-	}
+    }
 
-	public void setOperationContents(VerticalPanel operationContents) {
-		this.operationContents = operationContents;
-	}
+    public VerticalPanel getOperationContents()
+    {
+        return operationContents;
+    }
+
+    public void setOperationContents(VerticalPanel operationContents)
+    {
+        this.operationContents = operationContents;
+    }
 
     public MapExample getMapExample()
     {

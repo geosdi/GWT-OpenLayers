@@ -1,5 +1,7 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.vector;
 
+import com.google.gwt.user.client.ui.VerticalPanel;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -18,76 +20,81 @@ import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 
-import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class BasicWFS implements ShowcaseExample {
-	public static final String WMS_URL = "http://demo.opengeo.org/geoserver/wms";
+public class BasicWFS implements ShowcaseExample
+{
+    public static final String WMS_URL = "http://demo.opengeo.org/geoserver/wms";
 
-	private MapExample example;
+    private MapExample example;
 
-	private WMS wmsLayer;
+    private WMS wmsLayer;
 
-	private VerticalPanel operationContents;
+    private VerticalPanel operationContents;
 
-	public BasicWFS() {
-		System.out.println(OpenLayers.getProxyHost());
-		OpenLayers.setProxyHost("gwtOpenLayersProxy?targetURL=");
-		
-		example = new MapExample();
+    public BasicWFS()
+    {
+        System.out.println(OpenLayers.getProxyHost());
+        OpenLayers.setProxyHost("gwtOpenLayersProxy?targetURL=");
 
-		// Defining a WMSLayer and adding it to a Map
-		WMSParams wmsParams = new WMSParams();
-		wmsParams.setFormat("image/png");
-		wmsParams.setLayers("topp:tasmania_state_boundaries");
-		wmsParams.setStyles("");
+        example = new MapExample();
 
-		WMSOptions wmsLayerParams = new WMSOptions();
-		wmsLayerParams.setUntiled();
-		wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
+        // Defining a WMSLayer and adding it to a Map
+        WMSParams wmsParams = new WMSParams();
+        wmsParams.setFormat("image/png");
+        wmsParams.setLayers("topp:tasmania_state_boundaries");
+        wmsParams.setStyles("");
 
-		wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
+        WMSOptions wmsLayerParams = new WMSOptions();
+        wmsLayerParams.setUntiled();
+        wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
 
-		// set a proxyHost
-		
-		// String proxyHost = OpenLayers.getProxyHost();
+        wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
 
-		// Defining a WFS and adding it to the map
-		// Define a WFS with WFS protocol
-		WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
-		wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
-		wfsProtocolOptions.setFeatureType("tasmania_roads");
-		wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
+        // set a proxyHost
 
-		WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
+        // String proxyHost = OpenLayers.getProxyHost();
 
-		VectorOptions vectorOptions = new VectorOptions();
-		vectorOptions.setProtocol(wfsProtocol);
-		vectorOptions.setStrategies(new Strategy[] { new BBoxStrategy() });
+        // Defining a WFS and adding it to the map
+        // Define a WFS with WFS protocol
+        WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
+        wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
+        wfsProtocolOptions.setFeatureType("tasmania_roads");
+        wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
 
-		Vector wfsLayer = new Vector("wfsExample", vectorOptions);
+        WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
 
-		example.getMap().addLayers(new Layer[] { wmsLayer, wfsLayer });
-		example.getMap().addControl(new PanZoomBar());
-		example.getMap().addControl(new LayerSwitcher());
-		example.getMap().setCenter(new LonLat(146.7, -41.8), 6);
+        VectorOptions vectorOptions = new VectorOptions();
+        vectorOptions.setProtocol(wfsProtocol);
+        vectorOptions.setStrategies(new Strategy[] { new BBoxStrategy() });
 
-		this.createOperationContents(null);
+        Vector wfsLayer = new Vector("wfsExample", vectorOptions);
 
-	}
+        example.getMap().addLayers(new Layer[] { wmsLayer, wfsLayer });
+        example.getMap().addControl(new PanZoomBar());
+        example.getMap().addControl(new LayerSwitcher());
+        example.getMap().setCenter(new LonLat(146.7, -41.8), 6);
 
-	private void createOperationContents(Object object) {
-		operationContents = new VerticalPanel();
-	}
-	
-	public VerticalPanel getOperationContents() {
-		return operationContents;
-	}
+        this.createOperationContents(null);
 
-	public void setOperationContents(VerticalPanel operationContents) {
-		this.operationContents = operationContents;
-	}
+    }
 
-	public MapExample getMapExample() {
-		return this.example;
-	}
+    private void createOperationContents(Object object)
+    {
+        operationContents = new VerticalPanel();
+    }
+
+    public VerticalPanel getOperationContents()
+    {
+        return operationContents;
+    }
+
+    public void setOperationContents(VerticalPanel operationContents)
+    {
+        this.operationContents = operationContents;
+    }
+
+    public MapExample getMapExample()
+    {
+        return this.example;
+    }
 }

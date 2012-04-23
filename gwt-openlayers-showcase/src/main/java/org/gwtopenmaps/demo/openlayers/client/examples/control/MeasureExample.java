@@ -70,7 +70,7 @@ public class MeasureExample implements ShowcaseExample
 
     private Measure measure;
     private Measure measureArea;
-    
+
     private VerticalPanel operationContents;
 
     public MeasureExample()
@@ -171,27 +171,30 @@ public class MeasureExample implements ShowcaseExample
 
     }
 
-    private void createOperationContents() {
-		// Create a dialog box and set the caption text
-		
-		// Create a table to layout the content
-		operationContents = new VerticalPanel();
-		
-		operationContents.add(distanceButton);
-		operationContents.add(areaButton);
-		operationContents.add(measureResult);
-		
-	}
-	
-	public VerticalPanel getOperationContents() {
-		return operationContents;
-	}
+    private void createOperationContents()
+    {
+        // Create a dialog box and set the caption text
 
-	public void setOperationContents(VerticalPanel operationContents) {
-		this.operationContents = operationContents;
-	}
-	
-	
+        // Create a table to layout the content
+        operationContents = new VerticalPanel();
+
+        operationContents.add(distanceButton);
+        operationContents.add(areaButton);
+        operationContents.add(measureResult);
+
+    }
+
+    public VerticalPanel getOperationContents()
+    {
+        return operationContents;
+    }
+
+    public void setOperationContents(VerticalPanel operationContents)
+    {
+        this.operationContents = operationContents;
+    }
+
+
     public MapExample getMapExample()
     {
         // TODO Auto-generated method stub

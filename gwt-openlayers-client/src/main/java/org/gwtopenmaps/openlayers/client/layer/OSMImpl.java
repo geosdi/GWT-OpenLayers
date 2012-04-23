@@ -16,6 +16,16 @@ public class OSMImpl
        return new $wnd.OpenLayers.Layer.OSM(name, url, params);
     }-*/;
 
+    public static native JSObject OSM(String name, JSObject urls, JSObject params)
+    /*-{
+        var wmsURLs = new $wnd.Array(urls.length);
+        for (i = 0; i < urls.length; i++) {
+        wmsURLs[i] = urls[i];
+        }
+        
+        return new $wnd.OpenLayers.Layer.OSM(name, wmsURLs, params);
+    }-*/;
+
     public static native JSObject Mapnik(String name)
     /*-{
        return new $wnd.OpenLayers.Layer.OSM.Mapnik(name);

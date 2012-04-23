@@ -1,7 +1,16 @@
 /**
- * 
+ *
  */
 package org.gwtopenmaps.demo.openlayers.client.examples.filter;
+
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.i18n.shared.AnyRtlDirectionEstimator;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 import org.gwtopenmaps.demo.openlayers.client.examples.MapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.ShowcaseExample;
@@ -15,111 +24,112 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.i18n.shared.AnyRtlDirectionEstimator;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 /**
  * @author fizzi
- * 
+ *
  */
-public class CQLFilter implements ShowcaseExample {
+public class CQLFilter implements ShowcaseExample
+{
 
-	public static final String WMS_URL = "http://v2.suite.opengeo.org/geoserver/wms/";
+    public static final String WMS_URL = "http://v2.suite.opengeo.org/geoserver/wms/";
 
-	private MapExample example;
+    private MapExample example;
 
-	private WMS wmsLayer;
+    private WMS wmsLayer;
 
-	private Button cqlButton = new Button("Filter");
+    private Button cqlButton = new Button("Filter");
 
-	private TextBox cqlText = new TextBox();
-	
-	private VerticalPanel operationContents;
+    private TextBox cqlText = new TextBox();
 
-	public CQLFilter() {
-		example = new MapExample();
+    private VerticalPanel operationContents;
 
-		// Defining a WMSLayer and adding it to a Map
-		final WMSParams wmsParams = new WMSParams();
-		wmsParams.setFormat("image/png");
-		wmsParams.setLayers("usa:states");
-		wmsParams.setStyles("");
+    public CQLFilter()
+    {
+        example = new MapExample();
 
-		WMSOptions wmsLayerParams = new WMSOptions();
-		wmsLayerParams.setUntiled();
+        // Defining a WMSLayer and adding it to a Map
+        final WMSParams wmsParams = new WMSParams();
+        wmsParams.setFormat("image/png");
+        wmsParams.setLayers("usa:states");
+        wmsParams.setStyles("");
 
-		wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
+        WMSOptions wmsLayerParams = new WMSOptions();
+        wmsLayerParams.setUntiled();
 
-		example.getMap().addLayers(new Layer[] { wmsLayer });
+        wmsLayer = new WMS("Basic WMS", WMS_URL, wmsParams, wmsLayerParams);
 
-		// Adding controls to the Map
-		example.getMap().addControl(new PanZoomBar());
+        example.getMap().addLayers(new Layer[] { wmsLayer });
 
-		// use NavToolbar instead of deprecated MouseToolbar
-		example.getMap().addControl(new NavToolbar());
-		example.getMap().addControl(new MousePosition());
-		example.getMap().addControl(new LayerSwitcher());
+        // Adding controls to the Map
+        example.getMap().addControl(new PanZoomBar());
 
-		// Center and Zoom
-		double lon = -98;
-		double lat = 38;
-		int zoom = 3;
+        // use NavToolbar instead of deprecated MouseToolbar
+        example.getMap().addControl(new NavToolbar());
+        example.getMap().addControl(new MousePosition());
+        example.getMap().addControl(new LayerSwitcher());
 
-		cqlButton.addClickHandler(new ClickHandler() {
-			public void onClick(ClickEvent arg0) {
-				if (!cqlText.getValue().equals("")) {
-					wmsParams.setParameter("CQL_FILTER", cqlText.getValue());
-					wmsLayer.mergeNewParams(wmsParams);
-				} else {
-					
-				}
-			}
-		});
-		
-		this.createOperationContents(cqlButton);
+        // Center and Zoom
+        double lon = -98;
+        double lat = 38;
+        int zoom = 3;
 
-		example.getMap().setCenter(new LonLat(lon, lat), zoom);
+        cqlButton.addClickHandler(new ClickHandler()
+            {
+                public void onClick(ClickEvent arg0)
+                {
+                    if (!cqlText.getValue().equals(""))
+                    {
+                        wmsParams.setParameter("CQL_FILTER", cqlText.getValue());
+                        wmsLayer.mergeNewParams(wmsParams);
+                    }
+                    else
+                    {
 
-	}
+                    }
+                }
+            });
 
-	private void createOperationContents(Button activationButton) {
-		// Create a dialog box and set the caption text
-		
-		// Create a table to layout the content
-		operationContents = new VerticalPanel();
-		
-		HTML details = new HTML(
-				"<i>Write your filter<i><br /><p>Example: <strong>MALE > 1000000</strong></p> ");
-		operationContents.add(details);
-		operationContents.setCellHorizontalAlignment(details,
-				HasHorizontalAlignment.ALIGN_LEFT);
+        this.createOperationContents(cqlButton);
 
-		cqlText.ensureDebugId("cwBasicText-textbox");
-		cqlText.setDirectionEstimator(AnyRtlDirectionEstimator.get());
-		operationContents.add(cqlText);
-		operationContents.add(activationButton);
-		
-	}
-	
-	public VerticalPanel getOperationContents() {
-		return operationContents;
-	}
+        example.getMap().setCenter(new LonLat(lon, lat), zoom);
 
-	public void setOperationContents(VerticalPanel operationContents) {
-		this.operationContents = operationContents;
-	}
+    }
 
-	public MapExample getMapExample() {
-		return this.example;
-	}
+    private void createOperationContents(Button activationButton)
+    {
+        // Create a dialog box and set the caption text
 
-	
+        // Create a table to layout the content
+        operationContents = new VerticalPanel();
 
-	
+        HTML details = new HTML(
+                "<i>Write your filter<i><br /><p>Example: <strong>MALE > 1000000</strong></p> ");
+        operationContents.add(details);
+        operationContents.setCellHorizontalAlignment(details,
+            HasHorizontalAlignment.ALIGN_LEFT);
+
+        cqlText.ensureDebugId("cwBasicText-textbox");
+        cqlText.setDirectionEstimator(AnyRtlDirectionEstimator.get());
+        operationContents.add(cqlText);
+        operationContents.add(activationButton);
+
+    }
+
+    public VerticalPanel getOperationContents()
+    {
+        return operationContents;
+    }
+
+    public void setOperationContents(VerticalPanel operationContents)
+    {
+        this.operationContents = operationContents;
+    }
+
+    public MapExample getMapExample()
+    {
+        return this.example;
+    }
+
+
 }

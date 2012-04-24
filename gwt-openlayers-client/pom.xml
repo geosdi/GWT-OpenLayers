@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.gwtopenmaps.openlayers</groupId>
 		<artifactId>gwt-openlayers</artifactId>
-		<version>0.8</version>
+		<version>0.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>gwt-openlayers-client</artifactId>
 	<name>${project.artifactId}</name>

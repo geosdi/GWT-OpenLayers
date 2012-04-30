@@ -72,7 +72,7 @@ class VectorImpl
     }-*/;
 
     public static native void setStyle(JSObject self, JSObject style) /*-{
-        layer.style = style;
+        self.style = style;
     }-*/;
 
     public static native JSObject getStyle(JSObject self) /*-{

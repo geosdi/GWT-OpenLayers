@@ -268,7 +268,7 @@ public class StyleImpl {
 
 	public static native double getStrokeOpacity(JSObject self)
 	/*-{
-		return self.StrokeOpacity;
+		return self.strokeOpacity;
 	}-*/;
 
 	public static native void setStrokeLinecap(JSObject self,

@@ -355,7 +355,7 @@ public class StyleImpl {
 
 	public static native JSObject createSymbolizer(JSObject self, JSObject feature, String intent) 
 	/*-{
-		return selft.createSymbolizer(feature, intent)
+		return self.createSymbolizer(feature, intent)
 	}-*/;
 
 }

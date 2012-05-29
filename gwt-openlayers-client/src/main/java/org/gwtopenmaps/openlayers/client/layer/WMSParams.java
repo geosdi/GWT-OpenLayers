@@ -18,6 +18,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * TODO: add support for time/elevation?
  */
 public class WMSParams extends Params {
+    
+    private final static String CQL_FILTER = "CQL_FILTER";
 
     protected WMSParams(JSObject jsObject) {
         super(jsObject);
@@ -42,6 +44,18 @@ public class WMSParams extends Params {
 	public String getStyles() {
 		return getJSObject().getPropertyAsString("STYLES");
 	}
+        
+        public void setCQLFilter(String cqlFilter) {
+            getJSObject().setProperty(CQL_FILTER, cqlFilter);
+        }
+
+        public void removeCQLFilter() {
+            getJSObject().unsetProperty(CQL_FILTER);
+        }
+
+        public String getCQLFilter() {
+            return getJSObject().getPropertyAsString(CQL_FILTER);
+        }
 
 	public void setFormat(String styles) {
 		getJSObject().setProperty("FORMAT", styles);

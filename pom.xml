@@ -38,7 +38,7 @@
 	</issueManagement>
 	<ciManagement>
 		<system>jenkins</system>
-		<url>http://ci.geo-solutions.it/</url>
+		<url>http://hudson.geosdi.org/</url>
 		<notifiers>
 			<notifier>
 				<type>mail</type>
@@ -47,7 +47,7 @@
 				<sendOnSuccess>false</sendOnSuccess>
 				<sendOnWarning>false</sendOnWarning>
 				<configuration>
-					<address>ci@geo-solutions.it</address>
+					<address>core@geosdi.org</address>
 				</configuration>
 			</notifier>
 		</notifiers>

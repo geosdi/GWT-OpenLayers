@@ -1,24 +1,9 @@
 package org.gwtopenmaps.openlayers.client;
 
+import com.google.gwt.user.client.Element;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.gwtopenmaps.openlayers.client.control.Control;
-import org.gwtopenmaps.openlayers.client.event.EventHandler;
-import org.gwtopenmaps.openlayers.client.event.EventObject;
-import org.gwtopenmaps.openlayers.client.event.EventType;
-import org.gwtopenmaps.openlayers.client.event.MapBaseLayerChangedListener;
-import org.gwtopenmaps.openlayers.client.event.MapClickListener;
-import org.gwtopenmaps.openlayers.client.event.MapLayerAddedListener;
-import org.gwtopenmaps.openlayers.client.event.MapLayerChangedListener;
-import org.gwtopenmaps.openlayers.client.event.MapLayerRemovedListener;
-import org.gwtopenmaps.openlayers.client.event.MapMarkerAddedListener;
-import org.gwtopenmaps.openlayers.client.event.MapMarkerRemovedListener;
-import org.gwtopenmaps.openlayers.client.event.MapMoveListener;
-import org.gwtopenmaps.openlayers.client.event.MapMoveEndListener;
-import org.gwtopenmaps.openlayers.client.event.MapPopupClosedListener;
-import org.gwtopenmaps.openlayers.client.event.MapPopupOpenedListener;
-import org.gwtopenmaps.openlayers.client.event.MapZoomListener;
 import org.gwtopenmaps.openlayers.client.event.MapBaseLayerChangedListener.MapBaseLayerChangedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapClickListener.MapClickEvent;
 import org.gwtopenmaps.openlayers.client.event.MapLayerAddedListener.MapLayerAddedEvent;
@@ -26,18 +11,16 @@ import org.gwtopenmaps.openlayers.client.event.MapLayerChangedListener.MapLayerC
 import org.gwtopenmaps.openlayers.client.event.MapLayerRemovedListener.MapLayerRemovedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapMarkerAddedListener.MapMarkerAddedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapMarkerRemovedListener.MapMarkerRemovedEvent;
-import org.gwtopenmaps.openlayers.client.event.MapMoveListener.MapMoveEvent;
 import org.gwtopenmaps.openlayers.client.event.MapMoveEndListener.MapMoveEndEvent;
+import org.gwtopenmaps.openlayers.client.event.MapMoveListener.MapMoveEvent;
 import org.gwtopenmaps.openlayers.client.event.MapPopupClosedListener.MapPopupClosedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapPopupOpenedListener.MapPopupOpenedEvent;
 import org.gwtopenmaps.openlayers.client.event.MapZoomListener.MapZoomEvent;
-import org.gwtopenmaps.openlayers.client.event.MouseEvent;
+import org.gwtopenmaps.openlayers.client.event.*;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.popup.Popup;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
-
-import com.google.gwt.user.client.Element;
 
 /**
  * <p>
@@ -60,12 +43,13 @@ import com.google.gwt.user.client.Element;
  * </pre>
  * <p>
  * Adjusted from OL API docs:
- * On their own maps do not provide much functionality.  To extend a map
+ * On their own maps do not provide much functionality. To extend a map
  * it's necessary to add controls, see {@link org.gwtopenmaps.openlayers.client.control.Control}
  * and layers, see {@link org.gwtopenmaps.openlayers.client.layer.Layer}
  * to the map.
  *
  * </p>
+ *
  * @author Erdem Gunay
  * @author Amr Alam - Refractions Research
  * @author Aaron Novstrup - Stottler Henke Associates, Inc.
@@ -129,7 +113,9 @@ public class Map extends OpenLayersEObjectWrapper {
         MapImpl.addPopup(getJSObject(), popup.getJSObject());
     }
 
-    /** Closes all other popups first */
+    /**
+     * Closes all other popups first
+     */
     public void addPopupExclusive(Popup popup) {
         MapImpl.addPopupExclusive(getJSObject(), popup.getJSObject());
     }
@@ -148,6 +134,7 @@ public class Map extends OpenLayersEObjectWrapper {
      * to get at the layer within the application.
      *
      * @param id - String identifier assigned by OpenLayers
+     *
      * @return Layer - the layer on the map or null if there is no layer with the given id
      */
     public Layer getLayer(String id) {
@@ -176,10 +163,10 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     /**
-     * 
+     *
      * @param layer
-     * @param setNewBaseLayer
-     *            - {Boolean} default is true
+     * @ param setNewBaseLayer
+     * - {Boolean} default is true
      */
     public void removeLayer(Layer layer, boolean setNewBaseLayer) {
         MapImpl.removeLayer(getJSObject(), layer.getJSObject(), setNewBaseLayer);
@@ -199,7 +186,7 @@ public class Map extends OpenLayersEObjectWrapper {
 
     /**
      * Method: setLayerZIndex
-     * 
+     *
      * Parameters: layer - {<OpenLayers.Layer>} zIdx - {int}
      */
     public void setLayerZIndex(Layer layer, int zIdx) {
@@ -215,12 +202,13 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     /**
-     *  This is not an OpenLayers native function. OpenLayers has getLayersByName
-     *  that returns all layers matching the name.
+     * This is not an OpenLayers native function. OpenLayers has getLayersByName
+     * that returns all layers matching the name.
      *
      * @param name - the name of a layer or part of it
+     *
      * @return Layer - the first layer that matches the name (so, if there are more layers
-     *    matching the name then only one is returned) or null if no layer matches
+     * matching the name then only one is returned) or null if no layer matches
      */
     public Layer getLayerByName(String name) {
         //FIXME: this function goes wrong if getLayersByName returns null
@@ -236,8 +224,9 @@ public class Map extends OpenLayersEObjectWrapper {
     /**
      *
      * @param name - the name of a layer or part of it
+     *
      * @return Layer[] - all layers with a name that fully or partially
-     *    matches the input name or null if no layer matches
+     * matches the input name or null if no layer matches
      */
     public Layer[] getLayersByName(String name) {
         String regex = ".*" + name + ".*";
@@ -278,11 +267,13 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     public int getZoomForExtent(Bounds bounds, boolean closest) {
-        return MapImpl.getZoomForExtent(getJSObject(), bounds.getJSObject(), closest);
+        return MapImpl.getZoomForExtent(getJSObject(), bounds.getJSObject(),
+                closest);
     }
 
     /**
      * Returns current zoom level of map object.
+     *
      * @return current zoom level
      */
     public int getZoom() {
@@ -290,11 +281,13 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     public LonLat getLonLatFromPixel(Pixel pixel) {
-        return new LonLat(MapImpl.getLonLatFromPixel(getJSObject(), pixel.getJSObject()));
+        return new LonLat(MapImpl.getLonLatFromPixel(getJSObject(),
+                pixel.getJSObject()));
     }
 
     public Pixel getPixelFromLonLat(LonLat lonlat) {
-        return new Pixel(MapImpl.getPixelFromLonLat(getJSObject(), lonlat.getJSObject()));
+        return new Pixel(MapImpl.getPixelFromLonLat(getJSObject(),
+                lonlat.getJSObject()));
     }
 
     public String getProjection() {
@@ -387,7 +380,8 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     public double getZoomFromScale(double scale, boolean closest) {
-        double resolution = OpenLayers.Util.getResolutionFromScale(scale, getCurrentUnits());
+        double resolution = OpenLayers.Util.getResolutionFromScale(scale,
+                getCurrentUnits());
         return this.getZoomForResolution((Double) resolution, closest);
     }
 
@@ -404,12 +398,12 @@ public class Map extends OpenLayersEObjectWrapper {
      * <p>
      * For a base layer that supports it, allow the map resolution
      * to be set to a value between one of the values in the resolutions
-     * array.  Default is false.
+     * array. Default is false.
      *
      * When fractionalZoom is set to true, it is possible to zoom to
-     * an arbitrary extent.  This requires a base layer from a source
+     * an arbitrary extent. This requires a base layer from a source
      * that supports requests for arbitrary extents (i.e. not cached
-     * tiles on a regular lattice).  This means that fractionalZoom
+     * tiles on a regular lattice). This means that fractionalZoom
      * will not work with commercial layers (Google, Yahoo, VE), layers
      * using TileCache, or any other pre-cached data sources.
      *
@@ -463,10 +457,12 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     public void addMapBaseLayerChangedListener(final MapBaseLayerChangedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_BASE_LAYER_CHANGED, new EventHandler() {
+        eventListeners.addListener(this, listener,
+                EventType.MAP_BASE_LAYER_CHANGED, new EventHandler() {
 
             public void onHandle(EventObject eventObject) {
-                MapBaseLayerChangedEvent e = new MapBaseLayerChangedEvent(eventObject);
+                MapBaseLayerChangedEvent e = new MapBaseLayerChangedEvent(
+                        eventObject);
                 listener.onBaseLayerChanged(e);
             }
         });
@@ -474,136 +470,140 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     public void addMapLayerAddedListener(final MapLayerAddedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_LAYER_ADDED, new EventHandler() {
+        eventListeners.addListener(this, listener, EventType.MAP_LAYER_ADDED,
+                new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapLayerAddedEvent e = new MapLayerAddedEvent(eventObject);
-                listener.onLayerAdded(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapLayerAddedEvent e = new MapLayerAddedEvent(
+                                eventObject);
+                        listener.onLayerAdded(e);
+                    }
+                });
     }
 
     ;
 
 	public void addMapLayerChangedListener(final MapLayerChangedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_LAYER_CHANGED, new EventHandler() {
+        eventListeners.addListener(this, listener, EventType.MAP_LAYER_CHANGED,
+                new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapLayerChangedEvent e = new MapLayerChangedEvent(eventObject);
-                listener.onLayerChanged(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapLayerChangedEvent e = new MapLayerChangedEvent(
+                                eventObject);
+                        listener.onLayerChanged(e);
+                    }
+                });
 
     }
 
     public void addMapLayerRemovedListener(final MapLayerRemovedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_LAYER_REMOVED, new EventHandler() {
+        eventListeners.addListener(this, listener, EventType.MAP_LAYER_REMOVED,
+                new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapLayerRemovedEvent e = new MapLayerRemovedEvent(eventObject);
-                listener.onLayerRemoved(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapLayerRemovedEvent e = new MapLayerRemovedEvent(
+                                eventObject);
+                        listener.onLayerRemoved(e);
+                    }
+                });
 
     }
 
     public void addMapMoveListener(final MapMoveListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_MOVE, new EventHandler() {
+        eventListeners.addListener(this, listener, EventType.MAP_MOVE,
+                new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapMoveEvent e = new MapMoveEvent(eventObject);
-                listener.onMapMove(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapMoveEvent e = new MapMoveEvent(eventObject);
+                        listener.onMapMove(e);
+                    }
+                });
     }
 
-    ;
+    public void addMapMoveEndListener(final MapMoveEndListener listener) {
+        eventListeners.addListener(this, listener, EventType.MAP_MOVEEND,
+                new EventHandler() {
 
-	public void addMapMoveEndListener(final MapMoveEndListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_MOVEEND, new EventHandler() {
-
-            public void onHandle(EventObject eventObject) {
-                MapMoveEndEvent e = new MapMoveEndEvent(eventObject);
-                listener.onMapMoveEnd(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapMoveEndEvent e = new MapMoveEndEvent(eventObject);
+                        listener.onMapMoveEnd(e);
+                    }
+                });
     }
 
-    ;
+    public void addMapZoomListener(final MapZoomListener listener) {
+        eventListeners.addListener(this, listener, EventType.MAP_ZOOMEND,
+                new EventHandler() {
 
-	public void addMapZoomListener(final MapZoomListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_ZOOMEND, new EventHandler() {
-
-            public void onHandle(EventObject eventObject) {
-                MapZoomEvent e = new MapZoomEvent(eventObject);
-                listener.onMapZoom(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapZoomEvent e = new MapZoomEvent(eventObject);
+                        listener.onMapZoom(e);
+                    }
+                });
     }
 
-    ;
+    public void addMapMarkerAddedListener(final MapMarkerAddedListener listener) {
+        eventListeners.addListener(this, listener, EventType.MAP_MARKER_ADDED,
+                new EventHandler() {
 
-	public void addMapMarkerAddedListener(final MapMarkerAddedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_MARKER_ADDED, new EventHandler() {
-
-            public void onHandle(EventObject eventObject) {
-                MapMarkerAddedEvent e = new MapMarkerAddedEvent(eventObject);
-                listener.onMarkerAdded(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapMarkerAddedEvent e = new MapMarkerAddedEvent(
+                                eventObject);
+                        listener.onMarkerAdded(e);
+                    }
+                });
     }
 
-    ;
+    public void addMapMarkerRemovedListener(final MapMarkerRemovedListener listener) {
+        eventListeners.addListener(this, listener, EventType.MAP_MARKER_REMOVED,
+                new EventHandler() {
 
-	public void addMapMarkerRemovedListener(final MapMarkerRemovedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_MARKER_REMOVED, new EventHandler() {
-
-            public void onHandle(EventObject eventObject) {
-                MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(eventObject);
-                listener.onMarkerRemoved(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(
+                                eventObject);
+                        listener.onMarkerRemoved(e);
+                    }
+                });
     }
 
-    ;
+    public void addMapPopupOpenedListener(final MapPopupOpenedListener listener) {
+        eventListeners.addListener(this, listener, EventType.MAP_POPUP_OPEN,
+                new EventHandler() {
 
-	public void addMapPopupOpenedListener(final MapPopupOpenedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_POPUP_OPEN, new EventHandler() {
-
-            public void onHandle(EventObject eventObject) {
-                MapPopupOpenedEvent e = new MapPopupOpenedEvent(eventObject);
-                listener.onPopupOpened(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapPopupOpenedEvent e = new MapPopupOpenedEvent(
+                                eventObject);
+                        listener.onPopupOpened(e);
+                    }
+                });
     }
 
-    ;
+    public void addMapPopupClosedListener(final MapPopupClosedListener listener) {
+        eventListeners.addListener(this, listener, EventType.MAP_POPUP_CLOSE,
+                new EventHandler() {
 
-	public void addMapPopupClosedListener(final MapPopupClosedListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_POPUP_CLOSE, new EventHandler() {
-
-            public void onHandle(EventObject eventObject) {
-                MapPopupClosedEvent e = new MapPopupClosedEvent(eventObject);
-                listener.onPopupClosed(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapPopupClosedEvent e = new MapPopupClosedEvent(
+                                eventObject);
+                        listener.onPopupClosed(e);
+                    }
+                });
     }
 
-    ;
+    public void addMapClickListener(final MapClickListener listener) {
+        eventListeners.addListener(this, listener, EventType.MAP_CLICK,
+                new EventHandler() {
 
-	public void addMapClickListener(final MapClickListener listener) {
-        eventListeners.addListener(this, listener, EventType.MAP_CLICK, new EventHandler() {
-
-            public void onHandle(EventObject eventObject) {
-                MapClickEvent e = new MapClickEvent(eventObject);
-                listener.onClick(e);
-            }
-        });
+                    public void onHandle(EventObject eventObject) {
+                        MapClickEvent e = new MapClickEvent(eventObject);
+                        listener.onClick(e);
+                    }
+                });
     }
 
     /**
      * Remove MapClickListener Defined on the Map
-     * 
+     *
      * @param listener
      */
     public void removeMapClickListener(final MapClickListener listener) {
@@ -615,10 +615,10 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     /**
-     * 
+     *
      * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
      * @email giuseppe.lascaleia@geosdi.org
-     * 
+     *
      */
     public interface BrowserMenuListener {
 

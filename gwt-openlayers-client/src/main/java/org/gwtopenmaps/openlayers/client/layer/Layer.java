@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
+import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
 import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
@@ -226,6 +227,10 @@ public class Layer extends OpenLayersEObjectWrapper
             result = LayerImpl.getResolutionForZoom(getJSObject(), zoom);
         }
         return result;
+    }
+    
+    public Projection getProjection() {
+       return Projection.narrowToProjection(LayerImpl.getProjection(getJSObject()));
     }
 
 }

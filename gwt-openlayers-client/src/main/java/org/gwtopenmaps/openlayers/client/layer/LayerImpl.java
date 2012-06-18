@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
+import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
@@ -84,5 +85,9 @@ class LayerImpl
     
     public static native double getResolutionForZoom(JSObject layer, double zoom) /*-{
         return layer.getResolutionForZoom(zoom);
+    }-*/;
+    
+    public static native JSObject getProjection(JSObject layer) /*-{
+       return layer.projection;
     }-*/;
 }

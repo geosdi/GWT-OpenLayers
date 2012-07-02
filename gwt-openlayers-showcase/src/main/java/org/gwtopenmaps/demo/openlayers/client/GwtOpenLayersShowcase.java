@@ -3,6 +3,8 @@ package org.gwtopenmaps.demo.openlayers.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -11,6 +13,9 @@ import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.FocusHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasVerticalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -23,7 +28,7 @@ import com.google.gwt.user.client.ui.TextBox;
 /**
  * Entry point for GWT OpenLayers showcase.
  */
-public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHandler
+public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHandler, KeyUpHandler
 {
    public static final I18NMessages I18N = (I18NMessages) GWT.create(I18NMessages.class);
 	
@@ -32,7 +37,7 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 	
 	private final FlowPanel examplesPanel = new FlowPanel();
 	
-	private final List<Example> examples = new ArrayList<Example>();
+	private final List<ExampleBean> examples = new ArrayList<ExampleBean>();
 
     /**
      * main panel contains the showcase app
@@ -43,9 +48,23 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
      */
     public void onModuleLoad()
     {
-       buildTopPanel();
        loadExamples();
-       buildExamplePanels("");
+       if (Window.Location.getParameter("example") != null)
+       {
+          for (ExampleBean example : examples)
+          {
+             if (example.getName().equals(Window.Location.getParameter("example"))) 
+             {
+                example.getExample().buildPanel();
+                RootPanel.get().add(example.getExample());
+             }
+          }
+       }
+       else
+       {
+          buildTopPanel();
+          buildExamplePanels("");
+       }
     }
 
     /**
@@ -53,13 +72,11 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
      */
    private void loadExamples()
    {
-      examples.add(new Example("Basic OSM example", "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}));
-      examples.add(new Example("BING example", "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth"}));
-      examples.add(new Example("Google layer example", "Demonstrates the use of the various types of Google layers.", new String[]{"Google"}));
-      examples.add(new Example("WMS example", "Show the basic use of a WMS layer in GWT-OL.", new String[]{"WMS", "basic"}));
-      examples.add(new Example("Measure example", "Shows how to use the measure control to measure distances and and areas.", new String[]{"measure", "control", "length", "distance", "area", "measure", "control", "length", "distance", "area", "measure", "control", "length", "distance", "area"}));
+      String name = "Basic OSM example";
+      examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, I18N.basicOsmExampleSource())));
       
-      lblNumberOfExamples.setText("(" + examples.size() + ")");
+      name = "Basic Bing example";
+      examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth"}, new BasicBingExample(name, I18N.basicBingExampleSource())));
    }
 
 /**
@@ -69,11 +86,34 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
    {
       examplesPanel.clear();
       
-      //TODO filter
-      for (Example example : examples)
+      int numberOfExamples = 0;
+      
+      for (ExampleBean example : examples)
       {
-         examplesPanel.add(new ExamplePanel(example));
+         boolean show = false;
+         String[] tags = example.getTags();
+         if ((filter == null) || (filter.trim().equals(""))) show = true;
+         else
+         {
+            for (String tag : tags)
+            {
+               if (tag.trim().toLowerCase().contains(filter.trim().toLowerCase()))
+               {
+                  show = true;
+                  break;
+               }
+            }
+         }
+         
+         
+         if (show) 
+         {
+            examplesPanel.add(new ExamplePanel(example));
+            numberOfExamples++;
+         }
       }
+      
+      lblNumberOfExamples.setText("(" + numberOfExamples + ")");
    }
 
 /**
@@ -100,6 +140,7 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       txtSearch.addFocusHandler(this);
       txtSearch.addBlurHandler(this);
+      txtSearch.addKeyUpHandler(this);
 
       RootPanel.get().add(hpTop);
       examplesPanel.setWidth("100%");
@@ -136,5 +177,15 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
             txtSearch.addStyleName("emptytextbox");
          }
       }
+   }
+
+   /*
+    * (non-Javadoc)
+    * @see com.google.gwt.event.dom.client.KeyUpHandler#onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)
+    */
+   public void onKeyUp(KeyUpEvent event)
+   {
+      if (event.getSource() == txtSearch) buildExamplePanels(txtSearch.getText());
+      
    }
 }

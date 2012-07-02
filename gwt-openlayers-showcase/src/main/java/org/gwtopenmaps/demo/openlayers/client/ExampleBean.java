@@ -1,5 +1,7 @@
 package org.gwtopenmaps.demo.openlayers.client;
 
+import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
+
 /**
  * One example
  * 
@@ -7,11 +9,12 @@ package org.gwtopenmaps.demo.openlayers.client;
  * 
  */
 
-public class Example
+public class ExampleBean
 {
    private String name;
    private String description;
    private String[] tags;
+   private AbstractExample example;
 
    /**
     * Constructs an example.
@@ -20,12 +23,13 @@ public class Example
     * @param description
     * @param tags
     */
-   public Example(String name, String description, String[] tags)
+   public ExampleBean(String name, String description, String[] tags, AbstractExample example)
    {
       super();
       this.name = name;
       this.description = description;
       this.tags = tags;
+      this.example = example;
    }
 
    /**
@@ -79,4 +83,19 @@ public class Example
       this.tags = tags;
    }
 
+   /**
+    * @return the example
+    */
+   public AbstractExample getExample()
+   {
+      return example;
+   }
+
+   /**
+    * @param example the example to set
+    */
+   public void setExample(AbstractExample example)
+   {
+      this.example = example;
+   }
 }

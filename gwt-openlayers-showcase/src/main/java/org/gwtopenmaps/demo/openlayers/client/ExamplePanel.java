@@ -4,7 +4,11 @@ import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -23,7 +27,7 @@ public class ExamplePanel extends Composite
  * Constructs the ExamplePanel using an Example
  * @param example
  */
-   public ExamplePanel(final Example example)
+   public ExamplePanel(final ExampleBean example)
    {
       final VerticalPanel vp = new VerticalPanel();
       vp.setSpacing(5);
@@ -49,7 +53,17 @@ public class ExamplePanel extends Composite
       vp.add(lblDescription);
       vp.add(lblTags);
       
-      this.initWidget(sp);
+      final FocusPanel fp = new FocusPanel(sp);
+      this.initWidget(fp);
       this.setStyleName("examplepanel");
+      
+      fp.addClickHandler(new ClickHandler()
+      {
+         public void onClick(ClickEvent event)
+         {
+            if (Window.Location.getHref().contains("?")) Window.open(Window.Location.getHref() + "&example=" + example.getName(), "_BLANK", null);
+            else Window.open(Window.Location.getHref() + "?example=" + example.getName(), "_BLANK", null);
+         }
+      });
    }
 }

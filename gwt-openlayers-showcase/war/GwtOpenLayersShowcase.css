@@ -32,3 +32,35 @@
 	color: #aaaaaa;
 	font-size: small;
 }
+
+h1, h2, h3, h4, h5, h6 {
+color: #003A6B;
+background-color: transparent;
+font: 100% 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+margin: 0;
+padding-top: 0.5em;
+}
+
+h1 {
+font-size: 130%;
+margin-bottom: 0.5em;
+border-bottom: 1px solid #FCB100;
+}
+
+.gwt-DialogBox-closebutton {
+        font-weight: bold;
+        color: #dd0000;
+        padding: 2px;
+        margin-left: 2px;
+        cursor: pointer;
+}
+
+.gwt-DialogBox-closebutton:ACTIVE {
+        padding: 1px;
+        border: thin #dd0000 solid;
+}
+
+.gwt-DialogBox-closebutton:HOVER {
+        padding: 2px;
+        color: #ee0000;
+}

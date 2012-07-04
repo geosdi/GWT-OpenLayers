@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
 
@@ -72,11 +73,16 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
      */
    private void loadExamples()
    {
-      String name = "Basic OSM example";
-      examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, I18N.basicOsmExampleSource())));
+      String name = "";
       
       name = "Basic Bing example";
       examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth"}, new BasicBingExample(name, I18N.basicBingExampleSource())));
+
+      name = "Basic Google V3 example";
+      examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3"}, new BasicGoogleV3Example(name, I18N.basicGoogleExampleSource())));
+      
+      name = "Basic OSM example";
+      examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, I18N.basicOsmExampleSource())));
    }
 
 /**

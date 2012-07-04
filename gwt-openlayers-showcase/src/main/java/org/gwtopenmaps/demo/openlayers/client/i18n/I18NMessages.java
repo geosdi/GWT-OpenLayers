@@ -17,4 +17,5 @@ public interface I18NMessages extends Messages
    
    String basicOsmExampleSource();
    String basicBingExampleSource();
+   String basicGoogleExampleSource();
 }

@@ -9,7 +9,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
  * 
  */
 
-public class ExampleBean
+public class ExampleBean implements Comparable<ExampleBean>
 {
    private String name;
    private String description;
@@ -97,5 +97,14 @@ public class ExampleBean
    public void setExample(AbstractExample example)
    {
       this.example = example;
+   }
+
+   /*
+    * (non-Javadoc)
+    * @see java.lang.Comparable#compareTo(java.lang.Object)
+    */
+   public int compareTo(ExampleBean o)
+   {
+      return this.getName().compareTo(o.getName());
    }
 }

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev2.BasicGoogleV2Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
@@ -82,8 +83,11 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
       name = "Basic Bing example";
       examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"}, new BasicBingExample(name, I18N.basicBingExampleSource())));
 
+      name = "Basic Google V2 example";
+      examples.add(new ExampleBean(name, "Demonstrates the use of Google V2 layers.", new String[]{"Google", "V2", "basic"}, new BasicGoogleV2Example(name, I18N.basicGoogleV2ExampleSource())));
+      
       name = "Basic Google V3 example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3", "basic"}, new BasicGoogleV3Example(name, I18N.basicGoogleExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3", "basic"}, new BasicGoogleV3Example(name, I18N.basicGoogleV3ExampleSource())));
       
       
       Collections.sort(examples);

@@ -55,7 +55,7 @@ public class BasicOsmExample extends AbstractExample
       map.setCenter(lonLat, 12);
 
       contentPanel.add(new HTML("<p>This example shows how to add a some OSM layers to GWT-OL.</p>" +
-      		"<p>Don't forget to add the following line to your html file if you want to use OSM : <b><pre>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</pre></b></p>"));
+      		"<p>Don't forget to add the following line to your html file if you want to use OSM : <h2>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</h2></p>"));
       contentPanel.add(mapWidget);
       
       initWidget(contentPanel);

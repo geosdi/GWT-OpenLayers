@@ -67,12 +67,14 @@ public class WmsWfsExample extends AbstractExample
       wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
       wfsProtocolOptions.setFeatureType("tasmania_roads");
       wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
+      //if your wms is in a different projection use wfsProtocolOptions.setSrsName(LAMBERT72);
 
       WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
 
       VectorOptions vectorOptions = new VectorOptions();
       vectorOptions.setProtocol(wfsProtocol);
       vectorOptions.setStrategies(new Strategy[] { new BBoxStrategy() });
+      //if your wms is in a different projection use vectorOptions.setProjection(LAMBERT72);
 
       Vector wfsLayer = new Vector("wfsExample", vectorOptions);
 

@@ -1,3 +1,8 @@
+.infopanel {
+	border: 1px black solid;
+	background-color: #FAE6B3;
+}
+
 .top {
 	background: #9D9FA1;
 	width: 100%;

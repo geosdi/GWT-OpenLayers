@@ -1,5 +1,6 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.basicosm;
 
+import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
@@ -16,12 +17,12 @@ import com.google.gwt.user.client.ui.HTML;
 public class BasicOsmExample extends AbstractExample
 {
    private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
-   
+
    /**
     * Constructor.
     * @param title The title of the example
     * @param source The source of the example.
-    */ 
+    */
    public BasicOsmExample(String title, String source)
    {
       super(title, source);
@@ -43,7 +44,7 @@ public class BasicOsmExample extends AbstractExample
       Map map = mapWidget.getMap();
       map.addLayer(osm_1);
       map.addLayer(osm_2);
-      
+
       //Lets add some default controls to the map
       map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
       map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
@@ -54,12 +55,13 @@ public class BasicOsmExample extends AbstractExample
       lonLat.transform(DEFAULT_PROJECTION.getProjectionCode() , map.getProjection()); //transform lonlat to OSM coordinate system
       map.setCenter(lonLat, 12);
 
-      contentPanel.add(new HTML("<p>This example shows how to add a some OSM layers to GWT-OL.</p>" +
-      		"<p>Don't forget to add the following line to your html file if you want to use OSM : <h2>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</h2></p>"));
+      contentPanel.add(new HTML("<p>This example shows how to add a some OSM layers to GWT-OL.</p>"));
+      contentPanel.add(new InfoPanel("<p>Don't forget to add the following line to your html file if you want to use OSM :</p>" +
+      		"<p><b>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</b></p>"));
       contentPanel.add(mapWidget);
-      
+
       initWidget(contentPanel);
-      
+
       mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
    }
 }

@@ -1,5 +1,6 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev2;
 
+import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
@@ -19,12 +20,12 @@ import com.google.gwt.user.client.ui.HTML;
 public class BasicGoogleV2Example extends AbstractExample
 {
    private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
-   
+
    /**
     * Constructor.
     * @param title The title of the example
     * @param source The source of the example.
-    */ 
+    */
    public BasicGoogleV2Example(String title, String source)
    {
       super(title, source);
@@ -60,7 +61,7 @@ public class BasicGoogleV2Example extends AbstractExample
       map.addLayer(gHybrid);
       map.addLayer(gNormal);
       map.addLayer(gSatellite);
-      
+
       //Lets add some default controls to the map
       map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
       map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
@@ -71,16 +72,19 @@ public class BasicGoogleV2Example extends AbstractExample
       lonLat.transform(DEFAULT_PROJECTION.getProjectionCode() , map.getProjection()); //transform lonlat to map coordinate system
       map.setCenter(lonLat, 12);
 
-      contentPanel.add(new HTML("<p>This example shows how to add Google V2 layers to GWT-OL.</p>Don't forget to add the following line to your HTML if you want to use Google V2 (provide your own API key).</p><h2>&lt;script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAjpkAC9ePGem0lIq5XcMiuhR_wWLPFku8Ix9i2SXYRVK3e45q1BQUd_beF8dtzKET_EteAjPdGDwqpQ'&gt;&lt;/script&gt;</h2>"));
+      contentPanel.add(new HTML("<p>This example shows how to add Google V2 layers to GWT-OL.</p>"));
+      contentPanel.add(new InfoPanel("<p>Don''t forget to add the following line to your HTML if you want to use Google V2 (provide your own API key) :</p>" +
+      		"<p><b>&lt;script src='http://maps.google.com/maps?file=api&amp;" +
+      		"v=2&amp;key=ABQIAAAAjpkAC9ePGem0lIq5XcMiuhR_wWLPFku8Ix9i2SXYRVK3e45q1BQUd_beF8dtzKET_EteAjPdGDwqpQ'&gt;&lt;/script&gt;</b></p>"));
       contentPanel.add(mapWidget);
-      
+
       initWidget(contentPanel);
       mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
 
       //You can try without the following code, but it is the solution if your google map appears in upperleft corner only
       Timer t = new Timer()
       {
-         
+
          @Override
          public void run()
          {

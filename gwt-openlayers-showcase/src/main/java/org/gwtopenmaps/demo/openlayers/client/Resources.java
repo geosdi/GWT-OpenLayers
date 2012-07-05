@@ -24,4 +24,13 @@ public interface Resources extends ClientBundle
      */
     @Source("resources/gwt-ol-a.png")
     ImageResource gwtOlLogo();
+
+    /**
+     * The info icon
+     *
+     * @return The image resource.
+     */
+    @Source("resources/icon-info.png")
+    ImageResource icon_info();
+
 }

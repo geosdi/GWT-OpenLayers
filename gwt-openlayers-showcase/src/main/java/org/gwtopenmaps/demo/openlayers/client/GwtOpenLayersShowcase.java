@@ -8,6 +8,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExampl
 import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev2.BasicGoogleV2Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
 import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -34,12 +35,12 @@ import com.google.gwt.user.client.ui.TextBox;
 public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHandler, KeyUpHandler
 {
    public static final I18NMessages I18N = (I18NMessages) GWT.create(I18NMessages.class);
-	
+
 	private final TextBox txtSearch = new TextBox();
 	private final Label lblNumberOfExamples = new Label("(0)");
-	
+
 	private final FlowPanel examplesPanel = new FlowPanel();
-	
+
 	private final List<ExampleBean> examples = new ArrayList<ExampleBean>();
 
     /**
@@ -56,7 +57,7 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
        {
           for (ExampleBean example : examples)
           {
-             if (example.getName().equals(Window.Location.getParameter("example"))) 
+             if (example.getName().equals(Window.Location.getParameter("example")))
              {
                 example.getExample().buildPanel();
                 RootPanel.get().add(example.getExample());
@@ -76,20 +77,22 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
    private void loadExamples()
    {
       String name = "";
-      
+
       name = "Basic OSM example";
       examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, I18N.basicOsmExampleSource())));
-      
+
       name = "Basic Bing example";
       examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"}, new BasicBingExample(name, I18N.basicBingExampleSource())));
 
       name = "Basic Google V2 example";
       examples.add(new ExampleBean(name, "Demonstrates the use of Google V2 layers.", new String[]{"Google", "V2", "basic"}, new BasicGoogleV2Example(name, I18N.basicGoogleV2ExampleSource())));
-      
+
       name = "Basic Google V3 example";
       examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3", "basic"}, new BasicGoogleV3Example(name, I18N.basicGoogleV3ExampleSource())));
-      
-      
+
+      name = "WMS with WFS overlay";
+      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay.", new String[]{"WMS", "WFS", "overlay"}, new WmsWfsExample(name, I18N.wmsWfsExampleSource())));
+
       Collections.sort(examples);
    }
 
@@ -99,9 +102,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
    private void buildExamplePanels(final String filter)
    {
       examplesPanel.clear();
-      
+
       int numberOfExamples = 0;
-      
+
       for (ExampleBean example : examples)
       {
          boolean show = false;
@@ -118,15 +121,15 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
                }
             }
          }
-         
-         
-         if (show) 
+
+
+         if (show)
          {
             examplesPanel.add(new ExamplePanel(example));
             numberOfExamples++;
          }
       }
-      
+
       lblNumberOfExamples.setText("(" + numberOfExamples + ")");
    }
 
@@ -169,7 +172,7 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
    {
       if (event.getSource() == txtSearch)
       {
-         if (txtSearch.getText().equals(I18N.filterByKeywords())) 
+         if (txtSearch.getText().equals(I18N.filterByKeywords()))
          {
             txtSearch.setText("");
             txtSearch.removeStyleName("emptytextbox");
@@ -200,6 +203,6 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
    public void onKeyUp(KeyUpEvent event)
    {
       if (event.getSource() == txtSearch) buildExamplePanels(txtSearch.getText());
-      
+
    }
 }

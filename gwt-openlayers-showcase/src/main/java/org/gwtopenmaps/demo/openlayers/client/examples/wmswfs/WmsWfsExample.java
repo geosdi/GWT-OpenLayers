@@ -5,6 +5,7 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
+import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
@@ -36,7 +37,7 @@ public class WmsWfsExample extends AbstractExample
    @Override
    public void buildPanel()
    {
-      //FIXME Add a proxy to fix crossreference problems
+       OpenLayers.setProxyHost("olproxy?targetURL=");
 
       //create some MapOptions
       MapOptions defaultMapOptions = new MapOptions();

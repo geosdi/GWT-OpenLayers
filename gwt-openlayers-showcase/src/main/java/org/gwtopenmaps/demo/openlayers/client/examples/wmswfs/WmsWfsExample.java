@@ -1,5 +1,6 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.wmswfs;
 
+import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
@@ -91,6 +92,7 @@ public class WmsWfsExample extends AbstractExample
       map.setCenter(new LonLat(146.7, -41.8), 6);
 
       contentPanel.add(new HTML("<p>This example shows how to add a WMS layer and a WFS overlay to a map.</p>"));
+      contentPanel.add(new InfoPanel("For WFS it is adviced to use a proxy to avoid cross reference problems. See the gwt-openlayers-server code for more info."));
       contentPanel.add(mapWidget);
 
       initWidget(contentPanel);

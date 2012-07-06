@@ -9,6 +9,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev2.BasicGoogle
 import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmswfsedit.WmsWfsEditExample;
 import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -92,6 +93,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       name = "WMS with WFS overlay";
       examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay.", new String[]{"WMS", "WFS", "overlay"}, new WmsWfsExample(name, I18N.wmsWfsExampleSource())));
+
+      name = "WMS with an editable WFS overlay";
+      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.", new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, new WmsWfsEditExample(name, I18N.wmsWfsEditExampleSource())));
 
       Collections.sort(examples);
    }

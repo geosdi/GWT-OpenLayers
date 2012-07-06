@@ -20,4 +20,5 @@ public interface I18NMessages extends Messages
    String basicGoogleV3ExampleSource();
    String basicGoogleV2ExampleSource();
    String wmsWfsExampleSource();
+   String wmsWfsEditExampleSource();
 }

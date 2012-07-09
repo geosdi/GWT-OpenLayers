@@ -1,248 +1,71 @@
-/** Add css rules here for your application. */
+.infopanel {
+	border: 1px black solid;
+	background-color: #FAE6B3;
+}
 
+.top {
+	background: #9D9FA1;
+	width: 100%;
+}
 
-/** Example rules used by the template application (remove for your app) */
+.emptytextbox {
+	color: #cccccc;
+}
+
+.examplename {
+	font-weight: bold;
+}
+
+.examplepanel {
+	margin: 5px;
+	border: 1px #cccccc solid;
+	border-radius: 5px; 
+	float: left;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.exampletags {
+	font-style: italic;
+	color: #aaaaaa;
+	font-size: small;
+}
+
+.examplepanel:hover {
+	background-color: #EEEEEE;
+	font-style: italic;
+	color: #aaaaaa;
+	font-size: small;
+}
+
 h1 {
-  font-size: 2em;
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 0px 70px;
-  text-align: center;
+color: #003A6B;
+background-color: transparent;
+font: 100% 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+margin: 0;
+padding-top: 0.5em;
 }
 
-.sendButton {
-  display: block;
-  font-size: 16pt;
+h1 {
+font-size: 130%;
+margin-bottom: 0.5em;
+border-bottom: 1px solid #FCB100;
 }
 
-/** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
-  width: 400px;
+.gwt-DialogBox-closebutton {
+        font-weight: bold;
+        color: #dd0000;
+        padding: 2px;
+        margin-left: 2px;
+        cursor: pointer;
 }
 
-.dialogVPanel {
-  margin: 5px;
+.gwt-DialogBox-closebutton:ACTIVE {
+        padding: 1px;
+        border: thin #dd0000 solid;
 }
 
-.serverResponseLabelError {
-  color: red;
+.gwt-DialogBox-closebutton:HOVER {
+        padding: 2px;
+        color: #ee0000;
 }
-
-/** Set ids using widget.getElement().setId("idOfElement") */
-#closeButton {
-  margin: 15px 6px 6px;
-}
-
-
-.olControlScaleLine {
-    left: 10px!important;
-    bottom:40px!important;
-    font-size: xx-small;
-    padding: 4px;
-    width: 140px;
-    background-color: #ddebfd;
-    background-position: center right;
-    border: solid 1px #99bbe8;
-}
-
-.olControlScaleLineBottom {
-    border: solid 2px black;
-    border-bottom: none;
-    margin-top: -2px;
-    text-align: center;
-}
-
-.olControlScaleLineTop {
-    border: solid 2px black;
-    border-top: none;
-    text-align: center;
-}
-
-.olLayerGoogleCopyright {
-    display: none;
-    left: 2px;
-    bottom: 2px;
-}
-
-.olLayerGooglePoweredBy {
-    display: none;
-    left: 2px;
-    bottom: 15px;
-}
-
-.olControlMousePosition{
-    left: 10px!important;
-    bottom: 20px!important;
-    font-size: xx-small;
-    padding: 4px;
-    width: 140px;
-    background-color: #ddebfd;
-    color: #66BF25;
-    /*    background-image: url('geoportal/img/compass.gif');
-        background-repeat: no-repeat;
-        background-position: center right;*/
-    border: solid 1px #99bbe8;
-    font-family: "Courier New", Courier, monospace!important;
-    text-align:center;
-    vertical-align:middle;
-    font-weight: bold;
-}
-
-table.featureInfo,table.featureInfo td,table.featureInfo th {
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-    font-size: 90%;
-    padding: .2em .1em;
-}
-
-table.featureInfo th {
-    padding: .2em .2em;
-    text-transform: uppercase;
-    font-weight: bold;
-    background: #d0dafd;
-    height: 30px!important;
-}
-
-table.featureInfo tr {
-    height: 20px!important;
-}
-
-table.featureInfo td {
-    background: #fff;
-    height: 20px!important;
-}
-
-table.featureInfo tr.odd td {
-    background: #eee;
-    height: 20px!important;
-}
-
-table.featureInfo caption {
-    text-align: left;
-    font-size: 100%;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: .2em .2em;
-}
-
-.project-box {
-    float: left !important;
-    width: 135px !important;
-    margin: 5px 5px 0 5px !important;
-    text-align: center !important;
-    height: 130px !important;
-    cursor: default !important;
-    color: #444 !important;
-    /*overflow: hidden !important;*/
-    padding-top: 4px !important;
-    border: none !important;
-}
-
-.overview-page {
-    background-color: white !important; 
-}
-
-.project-box div {
-    color: #1860A8 !important;
-}
-
-.project-box div,#project-box div a {
-    font-size: 10px !important;
-    line-height: 12px !important;
-    font-family: tahoma, arial, sans-serif !important;
-}
-
-.project-box dt a {
-    border: 0 none !important;
-}
-
-.sample-over {
-    background: transparent url(sample-over.gif) no-repeat !important;
-}
-
-.gwt-DialogBox .Caption {
-  background: #F1F1F1;
-  padding: 4px 8px 4px 4px;
-  cursor: default;
-  font-family: Arial Unicode MS, Arial, sans-serif;
-  font-weight: bold;
-  border-bottom: 1px solid #bbbbbb;
-  border-top: 1px solid #D2D2D2;
-}
-.gwt-DialogBox .dialogContent {
-}
-.gwt-DialogBox .dialogMiddleCenter {
-  padding: 3px;
-  background: white;
-}
-.gwt-DialogBox .dialogBottomCenter {
-  background: url(hborder.png) repeat-x 0px -2945px;
-  -background: url(hborder_ie6.png) repeat-x 0px -2144px;
-}
-.gwt-DialogBox .dialogMiddleLeft {
-  background: url(vborder.png) repeat-y -31px 0px;
-}
-.gwt-DialogBox .dialogMiddleRight {
-  background: url(vborder.png) repeat-y -32px 0px;
-  -background: url(vborder_ie6.png) repeat-y -32px 0px;
-}
-.gwt-DialogBox .dialogTopLeftInner {
-  width: 10px;
-  height: 8px;
-  zoom: 1;
-}
-.gwt-DialogBox .dialogTopRightInner {
-  width: 12px;
-  zoom: 1;
-}
-.gwt-DialogBox .dialogBottomLeftInner {
-  width: 10px;
-  height: 12px;
-  zoom: 1;
-}
-.gwt-DialogBox .dialogBottomRightInner {
-  width: 12px;
-  height: 12px;
-  zoom: 1;
-}
-.gwt-DialogBox .dialogTopLeft {
-  background: url(circles.png) no-repeat -20px 0px;
-  -background: url(circles_ie6.png) no-repeat -20px 0px;
-}
-.gwt-DialogBox .dialogTopRight {
-  background: url(circles.png) no-repeat -28px 0px;
-  -background: url(circles_ie6.png) no-repeat -28px 0px;
-}
-.gwt-DialogBox .dialogBottomLeft {
-  background: url(circles.png) no-repeat 0px -36px;
-  -background: url(ircles_ie6.png) no-repeat 0px -36px;
-}
-.gwt-DialogBox .dialogBottomRight {
-  background: url(circles.png) no-repeat -8px -36px;
-  -background: url(circles_ie6.png) no-repeat -8px -36px;
-}
-html>body .gwt-DialogBox {
-}
-* html .gwt-DialogBox .dialogTopLeftInner {
-  width: 10px;
-  overflow: hidden;
-}
-* html .gwt-DialogBox .dialogTopRightInner {
-  width: 12px;
-  overflow: hidden;
-}
-* html .gwt-DialogBox .dialogBottomLeftInner {
-  width: 10px;
-  height: 12px;
-  overflow: hidden;
-}
-* html .gwt-DialogBox .dialogBottomRightInner {
-  width: 12px;
-  height: 12px;
-  overflow: hidden;
-}
-.cw-DialogBox {
-}
-

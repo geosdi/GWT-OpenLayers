@@ -18,7 +18,8 @@ Inheriting GWT-OpenLayers in Your GWT Application
 <script src="http://openlayers.org/api/2.11/OpenLayers.js"></script>
 +--
 
-  * Then you can go cut some code, starting with MapWidget. Enjoy. Take a look at the showcase source for reference.
+  * Then you can go cut some code. Take a look at {{{http://demo.gwt-openlayers.org}the showcase}} for reference.
+    Start by looking at some basic examples (search for basic in the search box), and looking at the code using the 'View source' button. 
 
 Working with GWT-OpenLayers in your IDE 
 

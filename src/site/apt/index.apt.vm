@@ -10,9 +10,9 @@ Welcome to GWT-OpenLayers ${projectVersion}
   
 * Where can I get it?
 
-  * Download it from our sorceforge page {{http://sourceforge.net/projects/gwt-openlayers/files/}}.
+  * Download it from our bitbucket page {{https://bitbucket.org/gwtopenlayers/gwt-openlayers/downloads}}.
   
-  * Build it from source by taking a {{{source-repository.html}mercurial clone}} and building with maven 2.2.1+. 
+  * Build it from source by taking a mercurial clone (hg clone https://bitbucket.org/gwtopenlayers/gwt-openlayers) and building with maven 2.2.1+. 
   
   * Consume it as a maven dependency (see below).
 
@@ -31,4 +31,4 @@ Welcome to GWT-OpenLayers ${projectVersion}
   
 * How do I use it?
 
-  Please take a look at the {{{user-reference.html}user reference}}.
+  * Check out the {{{./user-reference.html}user reference}}.

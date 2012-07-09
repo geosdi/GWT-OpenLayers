@@ -10,6 +10,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfsedit.WmsWfsEditExample;
 import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
@@ -104,6 +105,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       name = "Graticule";
       examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, I18N.noSourceFound())));
+
+      name = "WMS get featuretype example";
+      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, I18N.noSourceFound())));
       
       Collections.sort(examples);
    }

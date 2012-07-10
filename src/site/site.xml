@@ -21,7 +21,8 @@ under the License.
 
 <project xmlns="http://maven.apache.org/DECORATION/1.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd"
+    name="GWT-OpenLayers">
   <bannerLeft>
   	<name>GWT-OpenLayers</name>
   </bannerLeft>
@@ -31,6 +32,10 @@ under the License.
   <version position="left"/>
   <publishDate position="left"/>
   <body>
+    <head>
+    	<meta name="description" content="GWT OpenLayers is an opensource GWT wrapper for the great openlayers project"/>
+    	<meta name="keywords" content="GWT, OpenLayers, GWT-Openlayers, OpenLayers, WMS, WFS, Maps, Bing"/>
+    </head>
   	<links>
   		<item name="Client Javadocs" href="./gwt-openlayers-client/apidocs/index.html"/>
   		<item name="Maven Central" href="http://repo1.maven.org/maven2/org/org/gwtopenmaps/openlayers/"/>

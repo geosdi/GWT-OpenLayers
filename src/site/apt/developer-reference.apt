@@ -11,7 +11,7 @@ Developer Reference
   The easiest way to start developing on GWT-OpenLayers is by cloning the public central Mercurial repository:
 
 +--
-http://gwt-openlayers.hg.sourceforge.net:8000/hgroot/gwt-openlayers/gwt-openlayers
+https://bitbucket.org/gwtopenlayers/gwt-openlayers
 +--
 
 

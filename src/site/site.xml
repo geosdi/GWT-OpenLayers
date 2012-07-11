@@ -37,9 +37,9 @@ under the License.
     	<meta name="keywords" content="GWT, OpenLayers, GWT-Openlayers, OpenLayers, WMS, WFS, Maps, Bing"/>
     </head>
   	<links>
-  		<item name="Client Javadocs" href="./gwt-openlayers-client/apidocs/index.html"/>
+  		<item name="Client Javadocs" href="./apidocs/index.html"/>
   		<item name="Maven Central" href="http://repo1.maven.org/maven2/org/org/gwtopenmaps/openlayers/"/>
-  		<item name="Sourceforge" href="http://sourceforge.net/projects/gwt-openlayers/"/>  		
+  		<item name="Bitbucket" href="https://bitbucket.org/gwtopenlayers/gwt-openlayers"/>  		
   	</links>
     <menu name="Overview">
       <item name="About" href="index.html"/>
@@ -50,7 +50,7 @@ under the License.
     <menu name="Developer">
       <item name="Developer Reference" href="developer-reference.html"/>
     </menu>
-    <menu ref="modules"/>
     <menu ref="reports"/>
+    <footer><a target="_BLANK" href="http://www.geosdi.org">Hosted by geoSDI</a></footer>
   </body>
 </project>

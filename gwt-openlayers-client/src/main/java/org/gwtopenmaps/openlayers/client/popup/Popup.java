@@ -215,6 +215,17 @@ public class Popup extends OpenLayersObjectWrapper
     {
         PopupImpl.updatePosition(getJSObject());
     }
+    
+    /**
+     * APIMethod: updateSize
+     * Auto size the popup so that it precisely fits its contents (as 
+     * determined by this.contentDiv.innerHTML). Popup size will, of
+     * course, be limited by the available space on the current map
+     */
+    public void updateSize()
+    {
+        PopupImpl.updateSize(getJSObject());
+    }
 
     public interface CloseListener
     {

@@ -47,4 +47,8 @@ class PopupImpl
     public static native void updatePosition(JSObject p) /*-{
         p.updatePosition();
     }-*/;
+    
+    public static native void updateSize(JSObject p) /*-{
+        p.updateSize();
+    }-*/;
 }

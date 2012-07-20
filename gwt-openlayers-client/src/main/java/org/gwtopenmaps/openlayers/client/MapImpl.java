@@ -109,6 +109,10 @@ class MapImpl {
 	public static native void zoomToExtent(JSObject map, JSObject bounds)/*-{
 		map.zoomToExtent(bounds);
 	}-*/;
+    
+    public static native void zoomToExtent(JSObject map, JSObject bounds, boolean closest)/*-{
+		map.zoomToExtent(bounds, closest);
+	}-*/;
 
 	public static native int getZoomForExtent(JSObject map, JSObject bounds, boolean closest)/*-{
 		return map.getZoomForExtent(bounds, closest);

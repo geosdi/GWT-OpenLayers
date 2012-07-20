@@ -265,6 +265,18 @@ public class Map extends OpenLayersEObjectWrapper {
     public void zoomToExtent(Bounds bounds) {
         MapImpl.zoomToExtent(getJSObject(), bounds.getJSObject());
     }
+    
+    /**
+     * APIMethod: zoomToExtent
+     * Zoom to the passed in bounds, recenter.
+     * @param bounds
+     * @param closest Find the zoom level that most closely fits the 
+     * specified bounds. Note that this may result in a zoom that does 
+     * not exactly contain the entire extent. Default is false.
+     */
+    public void zoomToExtent(Bounds bounds, boolean closest) {
+        MapImpl.zoomToExtent(getJSObject(), bounds.getJSObject(), closest);
+    }
 
     public int getZoomForExtent(Bounds bounds, boolean closest) {
         return MapImpl.getZoomForExtent(getJSObject(), bounds.getJSObject(),

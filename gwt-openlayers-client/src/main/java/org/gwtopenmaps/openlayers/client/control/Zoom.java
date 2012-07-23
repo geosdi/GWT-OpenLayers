@@ -17,4 +17,9 @@ public class Zoom extends Control
     {
         this(ZoomImpl.create());
     }
+    
+    public Zoom(ZoomOptions options)
+    {
+        this(ZoomImpl.create(options.getJSObject()));
+    }
 }

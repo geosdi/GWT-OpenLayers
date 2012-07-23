@@ -13,4 +13,7 @@ public class ZoomImpl
         return new $wnd.OpenLayers.Control.Zoom();
     }-*/;
 
+    public static native JSObject create(JSObject options) /*-{
+        return new $wnd.OpenLayers.Control.Zoom(options);
+    }-*/;
 }

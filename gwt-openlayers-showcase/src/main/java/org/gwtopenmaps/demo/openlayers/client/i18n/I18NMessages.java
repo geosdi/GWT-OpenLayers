@@ -26,4 +26,5 @@ public interface I18NMessages extends Messages
    String graticuleExampleSource();
    String wmsFeatureInfoExampleSource();
    String vectorExampleSource();
+   String measureExampleSource();
 }

@@ -10,6 +10,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
@@ -112,6 +113,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       name = "Clickable vector example";
       examples.add(new ExampleBean(name, "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.", new String[]{"marker", "feature", "clickable", "vector", "line"}, new VectorExample(name, I18N.vectorExampleSource())));
+
+      name = "Measure control example";
+      examples.add(new ExampleBean(name, "Demonstrates how to add a measure control.", new String[]{"measure", "control"}, new MeasureExample(name, I18N.measureExampleSource())));
 
       Collections.sort(examples);
    }

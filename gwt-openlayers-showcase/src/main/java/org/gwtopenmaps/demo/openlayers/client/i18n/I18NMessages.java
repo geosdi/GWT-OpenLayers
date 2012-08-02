@@ -27,4 +27,5 @@ public interface I18NMessages extends Messages
    String wmsFeatureInfoExampleSource();
    String vectorExampleSource();
    String measureExampleSource();
+   String gpsExampleSource();
 }

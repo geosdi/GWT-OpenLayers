@@ -10,6 +10,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
@@ -116,6 +117,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       name = "Measure control example";
       examples.add(new ExampleBean(name, "Demonstrates how to add a measure control.", new String[]{"measure", "control"}, new MeasureExample(name, I18N.measureExampleSource())));
+
+      name = "GPS location example";
+      examples.add(new ExampleBean(name, "Demonstrates how to display the users current location on the map", new String[]{"gps", "location", "osm"}, new LocationExample(name, I18N.gpsExampleSource())));
 
       Collections.sort(examples);
    }

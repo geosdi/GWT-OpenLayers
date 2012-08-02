@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4"
-	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<display-name>gwtol</display-name>
+         xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+    <display-name>gwtol</display-name>
+    
     <servlet>
         <servlet-name>olproxy</servlet-name>
-        <servlet-class>org.gwtopenmaps.demo.openlayers.server.GwtOpenLayersProxyServlet</servlet-class>
+        <servlet-class>org.gwtopenmaps.openlayers.server.GwtOpenLayersProxyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>olproxy</servlet-name>
-        <url-pattern>olproxy</url-pattern>
+        <url-pattern>/olproxy/*</url-pattern>
     </servlet-mapping>
 </web-app>

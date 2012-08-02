@@ -98,17 +98,17 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
       examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.", new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, new WmsWfsEditExample(name, I18N.wmsWfsEditExampleSource())));
 
       name = "Basic TMS example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, I18N.noSourceFound())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, I18N.tmsExampleSource())));
 
       name = "Custom mouse position";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, I18N.noSourceFound())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, I18N.customMousePostionExampleSource())));
 
       name = "Graticule";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, I18N.noSourceFound())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, I18N.graticuleExampleSource())));
 
       name = "WMS get featuretype example";
-      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, I18N.noSourceFound())));
-      
+      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, I18N.wmsFeatureInfoExampleSource())));
+
       Collections.sort(examples);
    }
 

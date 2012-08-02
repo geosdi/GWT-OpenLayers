@@ -25,4 +25,5 @@ public interface I18NMessages extends Messages
    String customMousePostionExampleSource();
    String graticuleExampleSource();
    String wmsFeatureInfoExampleSource();
+   String vectorExampleSource();
 }

@@ -7,6 +7,10 @@ public class StyleImpl
 {
 
     public static native JSObject create() /*-{
-        return null;
+        return $wnd.OpenLayers.Style();
+    }-*/;
+    
+    public static native JSObject create(JSObject options) /*-{
+        return $wnd.OpenLayers.Style(options);
     }-*/;
 }

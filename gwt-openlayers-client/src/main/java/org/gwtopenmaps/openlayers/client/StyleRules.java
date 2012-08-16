@@ -72,6 +72,20 @@ public class StyleRules extends JSObjectWrapper {
     
     public void setLabel(String label) {
         getJSObject().setProperty("label", label);
-		StyleImpl.setLabel(this.getJSObject(), label);
+	}
+    
+    /** The font size for the label, to be provided like in CSS. */
+	public void setFontSize(String fontSize) {
+        getJSObject().setProperty("fontSize", fontSize);
+	}
+
+	/** The font family for the label, to be provided like in CSS. */
+	public void setFontFamily(String fontFamily) {
+        getJSObject().setProperty("fontFamily", fontFamily);
+	}
+
+	/** The font weight for the label, to be provided like in CSS. */
+	public void setFontWeight(String fontWeight) {
+        getJSObject().setProperty("fontWeight", fontWeight);
 	}
 }

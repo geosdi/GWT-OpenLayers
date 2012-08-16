@@ -7,5 +7,5 @@ import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
  * @author Jon Britton, SpiffyMap Ltd (jonb@spiffymap.net)
  */
 public interface ContextStyler {
-    public double doStyle(VectorFeature feature);
+    public String doStyle(VectorFeature feature);
 }

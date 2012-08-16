@@ -38,4 +38,8 @@ public class VectorFeatureImpl
     public static native JSObject clone(JSObject obj) /*-{
         return obj.clone();
     }-*/;
+
+    public static native JSObject getCluster(JSObject obj) /*-{
+        return (obj.cluster === undefined) ? null : obj.cluster;
+    }-*/;
 }

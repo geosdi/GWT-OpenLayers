@@ -36,6 +36,19 @@ public class StyleRules extends JSObjectWrapper {
 	public void setPointRadius(double r) {
         getJSObject().setProperty("pointRadius", r);
 	}
+    
+    /**
+	 * The passed String is the name of the attribute whose value will determine
+	 * the point radius
+	 */
+    
+    /**
+     * Set point radius as a string. Useful for context styling.
+     * @param r the point radius
+     */
+	public void setPointRadius(String r) {
+		getJSObject().setProperty("pointRadius", r);
+	}
 
 	/**
 	 * Hex stroke color. Default is '#ee9900'.

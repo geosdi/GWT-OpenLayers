@@ -26,4 +26,22 @@ public class NavigationOptions extends ControlOptions
     {
         getJSObject().setProperty("zoomBoxKeyMask", zoomBoxKeyMask);
     }
+    
+    /**
+     * Set options passed to the DragPan control
+     * @param dragPanOptions 
+     */
+    public void setDragPanOptions(DragPanOptions dragPanOptions)
+    {
+        getJSObject().setProperty("dragPanOptions", dragPanOptions.getJSObject());
+    }
+    
+    /**
+     * Set options passed to the PinchZoom control
+     * @param pinchZoomOptions 
+     */
+    public void setPinchZoomOptions(PinchZoomOptions pinchZoomOptions)
+    {
+        getJSObject().setProperty("pinchZoomOptions", pinchZoomOptions.getJSObject());
+    }
 }

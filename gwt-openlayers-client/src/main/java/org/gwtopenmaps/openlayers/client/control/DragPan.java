@@ -20,5 +20,5 @@ public class DragPan extends Control
     {
         this(DragPanImpl.create());
     }
-
+    
 }

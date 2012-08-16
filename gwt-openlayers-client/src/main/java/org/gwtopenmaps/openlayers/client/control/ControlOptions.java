@@ -22,5 +22,9 @@ public class ControlOptions extends OpenLayersEObjectWrapper
     {
         this(JSObject.createJSObject());
     }
-
+    
+    public void setAutoActivate(boolean autoActivate)
+    {
+        getJSObject().setProperty("autoActivate", autoActivate);
+    }
 }

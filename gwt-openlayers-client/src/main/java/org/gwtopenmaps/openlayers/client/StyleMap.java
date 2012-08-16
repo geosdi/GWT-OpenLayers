@@ -67,6 +67,18 @@ public class StyleMap extends OpenLayersObjectWrapper {
 			)
 		);
 	}
+    
+    public StyleMap(OpenLayersStyle defaultStyle, OpenLayersStyle selectStyle, OpenLayersStyle temporaryStyle) {
+		this(
+				defaultStyle == null ? null : defaultStyle.getJSObject(),
+				selectStyle == null ? null : selectStyle.getJSObject(),
+				temporaryStyle == null ? null : temporaryStyle.getJSObject()
+		);
+	}
+    
+    private StyleMap(JSObject defaultStyle, JSObject selectStyle, JSObject temporaryStyle) {
+        this(StyleMapImpl.create(defaultStyle, selectStyle, temporaryStyle));
+    }
 
 	public static StyleMap narrowToOpenLayersStyleMap(JSObject element) {
 		return (element == null) ? null: new StyleMap(element);

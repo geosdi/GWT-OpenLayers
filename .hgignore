@@ -12,3 +12,8 @@
 ^gwt-openlayers-showcase/war/WEB-INF/deploy$
 ^gwt-openlayers-showcase/gwt-unitCache$
 ^gwt-openlayers-showcase/war/WEB-INF/lib$
+\.orig\..*$
+\.orig$
+\.chg\..*$
+\.rej$
+\.conflict\~$

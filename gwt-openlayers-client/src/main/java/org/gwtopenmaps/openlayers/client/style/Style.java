@@ -10,7 +10,10 @@ public class Style extends JSObjectWrapper
     protected Style(JSObject jsObject)
     {
         super(jsObject);
-        // TODO Auto-generated constructor stub
+    }
+    
+    public Style() {
+        this(StyleImpl.create());
     }
 
 }

@@ -5,6 +5,7 @@ import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
 import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
 import org.gwtopenmaps.openlayers.client.util.Attributes;
+import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
@@ -117,6 +118,17 @@ public class VectorFeature extends Feature
     public boolean getVisibility()
     {
         return VectorFeatureImpl.getVisibility(getJSObject());
+    }
+    
+    public VectorFeature[] getCluster()
+    {
+        JSObject jsObjects = VectorFeatureImpl.getCluster(getJSObject());
+        JObjectArray jObjectArray = JObjectArray.narrowToJObjectArray(jsObjects);
+        VectorFeature[] features = new VectorFeature[jObjectArray.length()];
+        for (int i = 0; i < jObjectArray.length(); i++) {
+            features[i] = VectorFeature.narrowToVectorFeature(jObjectArray.get(i));
+        }
+        return features;
     }
 
     /**

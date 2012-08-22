@@ -101,10 +101,11 @@ public class Point extends Geometry
      * Rotate a point around another.
      *
      * @param angle Rotation angle in degrees (measured counterclockwise from
-     *  the positive x-axis)
+     *  the positive x-axis).
+     * @param origin Center point for the rotation.
      */
-    public void rotate(float angle)
+    public void rotate(float angle, Point origin)
     {
-        PointImpl.rotate(angle, getJSObject());
+        PointImpl.rotate(angle, origin.getJSObject());
     }
 }

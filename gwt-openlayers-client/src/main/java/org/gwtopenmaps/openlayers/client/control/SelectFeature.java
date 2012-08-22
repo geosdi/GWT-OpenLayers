@@ -77,6 +77,15 @@ public class SelectFeature extends Control
     {
         SelectFeatureImpl.setHover(getJSObject(), hover);
     }
+    
+    /**
+     * Remove feature from the layer’s selectedFeature array, render the feature as normal, and call the onUnselect function.
+     * @param feature The feature to unselect
+     */
+    public void unSelect(VectorFeature feature)
+    {
+        SelectFeatureImpl.unselect(this.getJSObject(), feature.getJSObject());
+    }
 
     /**
      *

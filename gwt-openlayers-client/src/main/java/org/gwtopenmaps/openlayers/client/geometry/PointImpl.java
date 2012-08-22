@@ -42,4 +42,8 @@ public class PointImpl
         self.transform(source, dest);
     }-*/;
 
+    public static native void rotate(float angle,JSObject self) /*-{
+        self.rotate(angle, self);
+    }-*/;
+
 }

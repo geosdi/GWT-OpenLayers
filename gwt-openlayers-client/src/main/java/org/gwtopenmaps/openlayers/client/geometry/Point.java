@@ -96,4 +96,15 @@ public class Point extends Geometry
         PointImpl.transform(getJSObject(), source.getJSObject(),
             dest.getJSObject());
     }
+
+    /**
+     * Rotate a point around another.
+     *
+     * @param angle Rotation angle in degrees (measured counterclockwise from
+     *  the positive x-axis)
+     */
+    public void rotate(float angle)
+    {
+        PointImpl.rotate(angle, getJSObject());
+    }
 }

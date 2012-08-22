@@ -106,6 +106,14 @@ public class Point extends Geometry
      */
     public void rotate(float angle, Point origin)
     {
-        PointImpl.rotate(angle, origin.getJSObject());
+        PointImpl.rotate(getJSObject(), angle, origin.getJSObject());
+    }
+
+    /**
+     * @return The centroid of the point
+     */
+    public Point getCentroid()
+    {
+        return new Point(PointImpl.getCentroid(getJSObject()));
     }
 }

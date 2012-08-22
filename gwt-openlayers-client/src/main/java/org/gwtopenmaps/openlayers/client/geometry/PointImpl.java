@@ -42,8 +42,11 @@ public class PointImpl
         self.transform(source, dest);
     }-*/;
 
-    public static native void rotate(float angle, JSObject origin) /*-{
+    public static native void rotate(JSObject self, float angle, JSObject origin) /*-{
         self.rotate(angle, origin);
     }-*/;
 
+    public static native JSObject getCentroid(JSObject self) /*-{
+    return self.getCentroid();
+    }-*/;
 }

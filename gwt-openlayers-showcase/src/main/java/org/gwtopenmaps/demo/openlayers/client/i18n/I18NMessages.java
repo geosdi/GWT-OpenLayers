@@ -21,4 +21,11 @@ public interface I18NMessages extends Messages
    String basicGoogleV2ExampleSource();
    String wmsWfsExampleSource();
    String wmsWfsEditExampleSource();
+   String tmsExampleSource();
+   String customMousePostionExampleSource();
+   String graticuleExampleSource();
+   String wmsFeatureInfoExampleSource();
+   String vectorExampleSource();
+   String measureExampleSource();
+   String gpsExampleSource();
 }

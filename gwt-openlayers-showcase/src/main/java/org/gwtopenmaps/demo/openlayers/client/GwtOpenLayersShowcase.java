@@ -10,6 +10,9 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfsedit.WmsWfsEditExample;
@@ -98,17 +101,26 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
       examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.", new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, new WmsWfsEditExample(name, I18N.wmsWfsEditExampleSource())));
 
       name = "Basic TMS example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, I18N.noSourceFound())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, I18N.tmsExampleSource())));
 
       name = "Custom mouse position";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, I18N.noSourceFound())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, I18N.customMousePostionExampleSource())));
 
       name = "Graticule";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, I18N.noSourceFound())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, I18N.graticuleExampleSource())));
 
       name = "WMS get featuretype example";
-      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, I18N.noSourceFound())));
-      
+      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, I18N.wmsFeatureInfoExampleSource())));
+
+      name = "Clickable vector example";
+      examples.add(new ExampleBean(name, "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.", new String[]{"marker", "feature", "clickable", "vector", "line"}, new VectorExample(name, I18N.vectorExampleSource())));
+
+      name = "Measure control example";
+      examples.add(new ExampleBean(name, "Demonstrates how to add a measure control.", new String[]{"measure", "control"}, new MeasureExample(name, I18N.measureExampleSource())));
+
+      name = "GPS location example";
+      examples.add(new ExampleBean(name, "Demonstrates how to display the users current location on the map", new String[]{"gps", "location", "osm"}, new LocationExample(name, I18N.gpsExampleSource())));
+
       Collections.sort(examples);
    }
 

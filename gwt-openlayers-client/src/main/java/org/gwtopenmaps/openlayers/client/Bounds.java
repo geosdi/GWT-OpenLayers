@@ -11,6 +11,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Erdem Gunay
  * @author Curtis Jensen
  * @author Edwin Commandeur
+ * @author Jon Britton, SpiffyMap Ltd.
  */
 public class Bounds extends OpenLayersObjectWrapper {
 
@@ -47,6 +48,13 @@ public class Bounds extends OpenLayersObjectWrapper {
 				upperRightX,
 				upperRightY));
 	}
+    
+    /**
+     * Create an empty Bounds object with coordinates set to null
+     */
+    public Bounds() {
+        this(BoundsImpl.create());
+    }
 
 	public double[] toArray(){
 		JSObject boundsOpaque = BoundsImpl.toArray(getJSObject());

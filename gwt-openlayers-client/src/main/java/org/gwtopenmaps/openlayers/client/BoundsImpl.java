@@ -5,12 +5,16 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  *
  * @author Erdem Gunay
- *
+ * @author Jon Britton, SpiffyMap Ltd.
  */
 class BoundsImpl {
 
 	public static native JSObject create(double lllon, double lllat, double urlon, double urlat)/*-{
 		return new $wnd.OpenLayers.Bounds(lllon, lllat, urlon, urlat);
+	}-*/;
+    
+    public static native JSObject create()/*-{
+		return new $wnd.OpenLayers.Bounds();
 	}-*/;
 
 	public static native JSObject toArray(JSObject bounds)/*-{

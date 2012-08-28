@@ -120,10 +120,18 @@ public class VectorFeature extends Feature
         return VectorFeatureImpl.getVisibility(getJSObject());
     }
     
+    /**
+     * Get the clustered features in this vector feature. If clustering isn't used returns null.
+     * @return the clustered features or null if clustering isn't used
+     */
     public VectorFeature[] getCluster()
     {
         JSObject jsObjects = VectorFeatureImpl.getCluster(getJSObject());
         JObjectArray jObjectArray = JObjectArray.narrowToJObjectArray(jsObjects);
+        // Should be null if this is not a cluster
+        if (jObjectArray == null) {
+            return null;
+        }
         VectorFeature[] features = new VectorFeature[jObjectArray.length()];
         for (int i = 0; i < jObjectArray.length(); i++) {
             features[i] = VectorFeature.narrowToVectorFeature(jObjectArray.get(i));

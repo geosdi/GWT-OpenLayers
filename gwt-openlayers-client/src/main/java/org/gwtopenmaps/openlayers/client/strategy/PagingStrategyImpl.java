@@ -7,7 +7,7 @@ public class PagingStrategyImpl
 {
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Strategy.Paging();
+        return new $wnd.OpenLayers.Strategy.Paging();
     }-*/;
 
     public static native boolean activate(JSObject self) /*-{

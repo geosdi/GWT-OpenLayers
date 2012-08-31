@@ -7,7 +7,7 @@ public class RefreshStrategyImpl
 {
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Strategy.Refresh();
+        return new $wnd.OpenLayers.Strategy.Refresh();
     }-*/;
 
     public static native boolean activate(JSObject self) /*-{

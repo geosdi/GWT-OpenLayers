@@ -20,9 +20,16 @@ class SelectFeatureImpl
         return new $wnd.OpenLayers.Control.SelectFeature(layer);
     }-*/;
 
+    public static native JSObject create2(JSObject layers) /*-{
+        return new $wnd.OpenLayers.Control.SelectFeature($wnd.gwt_openlayers_util.convertToArray(layers));
+    }-*/;
 
     public static native JSObject create(JSObject layer, JSObject options) /*-{
         return new $wnd.OpenLayers.Control.SelectFeature(layer, options);
+    }-*/;
+
+    public static native JSObject create2(JSObject layers, JSObject options) /*-{
+        return new $wnd.OpenLayers.Control.SelectFeature($wnd.gwt_openlayers_util.convertToArray(layers), options);
     }-*/;
 
     public static native void setClickOut(JSObject self, boolean clickout) /*-{

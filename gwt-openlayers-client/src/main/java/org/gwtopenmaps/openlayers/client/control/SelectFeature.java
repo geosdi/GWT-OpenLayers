@@ -8,6 +8,7 @@ import org.gwtopenmaps.openlayers.client.event.FeatureHighlightedListener;
 import org.gwtopenmaps.openlayers.client.event.FeatureUnhighlightedListener;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
+import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
@@ -40,11 +41,29 @@ public class SelectFeature extends Control
 
     /**
      *
+     * @param layers
+     */
+    public SelectFeature(Vector[] layers)
+    {
+        this(SelectFeatureImpl.create2((new JObjectArray(layers)).getJSObject()));
+    }
+
+    /**
+     *
      * @param layer
      */
     public SelectFeature(Vector layer, SelectFeatureOptions options)
     {
         this(SelectFeatureImpl.create(layer.getJSObject(), options.getJSObject()));
+    }
+
+    /**
+     *
+     * @param layers
+     */
+    public SelectFeature(Vector[] layers, SelectFeatureOptions options)
+    {
+        this(SelectFeatureImpl.create2((new JObjectArray(layers)).getJSObject(), options.getJSObject()));
     }
 
     /**
@@ -57,6 +76,15 @@ public class SelectFeature extends Control
     public void setHover(boolean hover)
     {
         SelectFeatureImpl.setHover(getJSObject(), hover);
+    }
+    
+    /**
+     * Remove feature from the layer’s selectedFeature array, render the feature as normal, and call the onUnselect function.
+     * @param feature The feature to unselect
+     */
+    public void unSelect(VectorFeature feature)
+    {
+        SelectFeatureImpl.unselect(this.getJSObject(), feature.getJSObject());
     }
 
     /**

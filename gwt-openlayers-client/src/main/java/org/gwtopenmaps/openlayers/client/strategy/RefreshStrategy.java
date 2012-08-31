@@ -35,4 +35,13 @@ public class RefreshStrategy extends Strategy
     {
         RefreshStrategyImpl.refresh(this.getJSObject());
     }
+
+    /**
+     * Force a refresh on the layer, default is false.
+     * @param force True to enable force, false to disable (default)
+     */
+    public void setForce(boolean force)
+    {
+        this.getJSObject().setProperty("force", force);
+    }
 }

@@ -25,4 +25,8 @@ public class CollectionImpl
     public static native double getLength(JSObject self) /*-{
         return self.getLength();
     }-*/;
+
+	public static native void move(JSObject self, double x, double y) /*-{
+		self.move(x, y);
+	}-*/;
 }

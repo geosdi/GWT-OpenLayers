@@ -55,9 +55,24 @@ public abstract class Collection extends Geometry
         return CollectionImpl.equals(getJSObject(), geometry.getJSObject());
     }
 
+    /**
+     * Calculate the length of this geometry
+     * @return The length of the geometry
+     */
     public double getLength()
     {
         return CollectionImpl.getLength(getJSObject());
+    }
+    
+    /**
+     * Moves a geometry by the given displacement along positive x and y axes.  
+     * This modifies the position of the geometry and clears the cached bounds.
+     * @param x Distance to move geometry in positive x direction.
+     * @param y Distance to move geometry in positive y direction.
+     */
+    public void move(double x, double y)
+    {
+    	CollectionImpl.move(getJSObject(), x, y);
     }
 
 

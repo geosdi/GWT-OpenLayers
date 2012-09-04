@@ -29,4 +29,16 @@ public class CollectionImpl
 	public static native void move(JSObject self, double x, double y) /*-{
 		self.move(x, y);
 	}-*/;
+
+	public static native void rotate(JSObject self, double angle, JSObject origin) /*-{
+		self.rotate(angle, origin);		
+	}-*/;
+
+	public static native void resize(JSObject self, double scale, JSObject origin, double ratio) /*-{
+		self.resize(scale, origin, ratio);
+	}-*/;
+
+	public static native void resize(JSObject self, double scale, JSObject origin) /*-{ 
+		self.resize(scale, origin);
+	}-*/;
 }

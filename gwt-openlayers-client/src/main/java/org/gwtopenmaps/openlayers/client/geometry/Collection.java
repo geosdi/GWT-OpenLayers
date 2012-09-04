@@ -74,6 +74,36 @@ public abstract class Collection extends Geometry
     {
     	CollectionImpl.move(getJSObject(), x, y);
     }
+    
+    /**
+     * Rotate a geometry around some origin.
+     * @param angle Rotation angle in degrees (measured counterclockwise from the positive x-axis)
+     * @param origin Center point for the rotation
+     */
+    public void rotate(double angle, Point origin)
+    {
+    	CollectionImpl.rotate(getJSObject(), angle, origin.getJSObject());
+    }
+    
+    /**
+     * Resize a geometry relative to some origin.  Use this method to apply a uniform scaling to a geometry.
+     * @param scale	Factor by which to scale the geometry.  A scale of 2 doubles the size of the geometry in each dimension (lines, for example, will be twice as long, and polygons will have four times the area).
+	 * @param origin Point of origin for resizing
+	 * @param ratio x:y ratio for resizing.  Default ratio is 1.
+     */
+    public void resize(double scale, Point origin, double ratio)
+    {
+    	CollectionImpl.resize(getJSObject(), scale, origin.getJSObject(), ratio);
+    }
 
-
+    /**
+     * Resize a geometry relative to some origin.  Use this method to apply a uniform scaling to a geometry.
+     * This method uses a default ratio of 1
+     * @param scale	Factor by which to scale the geometry.  A scale of 2 doubles the size of the geometry in each dimension (lines, for example, will be twice as long, and polygons will have four times the area).
+	 * @param origin Point of origin for resizing
+     */
+    public void resize(double scale, Point origin)
+    {
+    	CollectionImpl.resize(getJSObject(), scale, origin.getJSObject());
+    }
 }

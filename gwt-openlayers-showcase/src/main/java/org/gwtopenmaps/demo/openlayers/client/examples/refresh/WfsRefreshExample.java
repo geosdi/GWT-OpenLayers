@@ -127,7 +127,7 @@ public class WfsRefreshExample extends AbstractExample
       //Center and zoom to a location
       map.setCenter(new LonLat(146.7, -41.8), 6);
 
-      contentPanel.add(new HTML("<p>This example shows how to refresh a WFS layer to the server state.</p><p>By clicking on the WFS it can be reshaped.</p><p>By clicking on refresh the original state is refreshed from the server."));
+      contentPanel.add(new HTML("<p>This example shows how to refresh a WFS layer to the server state.</p><p>By clicking on the WFS it can be reshaped.</p><p>By clicking on refresh the original state is refreshed from the server.</p>"));
       contentPanel.add(new InfoPanel("For WFS it is adviced to use a proxy to avoid cross reference problems. See the gwt-openlayers-server code for more info."));
 
       Button butRefresh = new Button("Refresh");

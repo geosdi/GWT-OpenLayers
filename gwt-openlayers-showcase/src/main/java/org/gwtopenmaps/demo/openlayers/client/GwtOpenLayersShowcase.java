@@ -13,6 +13,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExampl
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
@@ -124,6 +125,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       name = "WFS refresh";
       examples.add(new ExampleBean(name, "Demonstrates how to you can reload a WFS to the server state after moving (but not saving) the features.", new String[]{"wfs", "edit", "refresh"}, new WfsRefreshExample(name, I18N.wfsRefreshExampleSource())));
+
+      name = "Rotate vector features";
+      examples.add(new ExampleBean(name, "Details on how to create and rotate vector features programmatically.", new String[]{"features", "rotate", "geometry"}, new RotateVectorExample(name, I18N.rotateExampleSource())));
 
       Collections.sort(examples);
    }

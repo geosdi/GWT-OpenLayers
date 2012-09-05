@@ -29,4 +29,5 @@ public interface I18NMessages extends Messages
    String measureExampleSource();
    String gpsExampleSource();
    String wfsRefreshExampleSource();
+   String rotateExampleSource();
 }

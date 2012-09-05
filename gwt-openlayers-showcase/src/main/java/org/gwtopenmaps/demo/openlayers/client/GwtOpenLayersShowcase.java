@@ -12,6 +12,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.Custo
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
@@ -120,6 +121,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       name = "GPS location example";
       examples.add(new ExampleBean(name, "Demonstrates how to display the users current location on the map", new String[]{"gps", "location", "osm"}, new LocationExample(name, I18N.gpsExampleSource())));
+
+      name = "WFS refresh";
+      examples.add(new ExampleBean(name, "Demonstrates how to you can reload a WFS to the server state after moving (but not saving) the features.", new String[]{"wfs", "edit", "refresh"}, new WfsRefreshExample(name, I18N.wfsRefreshExampleSource())));
 
       Collections.sort(examples);
    }

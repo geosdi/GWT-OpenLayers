@@ -106,10 +106,9 @@ public class VectorFeature extends Feature
         return VectorFeatureImpl.getRenderIntent(getJSObject());
     }
 
-    public boolean redrawParent()
-    {
-        return VectorFeatureImpl.redraw(getLayer(), true);
-    }
+ 	public boolean redrawParent() {
+		return VectorFeatureImpl.redraw(getLayer().getJSObject(), true);
+ 	}
 
     /**
      * Determine whether the feature is displayed or not
@@ -119,7 +118,7 @@ public class VectorFeature extends Feature
     {
         return VectorFeatureImpl.getVisibility(getJSObject());
     }
-    
+
     /**
      * Get the clustered features in this vector feature. If clustering isn't used returns null.
      * @return the clustered features or null if clustering isn't used

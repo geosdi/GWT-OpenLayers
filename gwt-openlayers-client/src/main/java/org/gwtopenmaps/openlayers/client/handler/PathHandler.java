@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.handler;
 
+import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
@@ -21,5 +22,13 @@ public class PathHandler extends PointHandler
     {
         this(PathHandlerImpl.create());
     }
+
+    public void click(Pixel pixel) {
+		PathHandlerImpl.click(getJSObject(), pixel.getJSObject());
+	}
+
+	public static PathHandler narrowTo(Handler h) {
+		return h == null ? null : new PathHandler(h.getJSObject());
+	}
 
 }

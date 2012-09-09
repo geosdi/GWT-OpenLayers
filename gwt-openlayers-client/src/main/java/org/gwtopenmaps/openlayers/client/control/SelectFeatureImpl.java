@@ -76,6 +76,15 @@ class SelectFeatureImpl
         selectFeature.unselect(feature);
     }-*/;
 
+    public static native void unselectAll(JSObject selectFeature, JSObject options)/*-{
+		selectFeature.unselectAll(options);
+	}-*/;
+
+    public static native void select(JSObject selectFeature, JSObject feature)/*-{
+		selectFeature.select(feature);
+	}-*/;
+
+
     public static native void setToggleKey(JSObject selectFeature, String keyName) /*-{
         selectFeature["toggleKey"] = keyName;
     }-*/;

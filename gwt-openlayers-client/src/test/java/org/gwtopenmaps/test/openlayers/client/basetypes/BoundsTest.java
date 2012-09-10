@@ -8,8 +8,7 @@ import org.gwtopenmaps.test.openlayers.client.BaseTestCase;
 public class BoundsTest extends BaseTestCase
 {
 
-    public void testBounds()
-    {
+    public void testBounds() {
         Bounds bounds = new Bounds(0, 0, 4, 4);
         assertEquals("OpenLayers.Bounds", bounds.getClassName());
 

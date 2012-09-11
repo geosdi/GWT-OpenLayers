@@ -11,6 +11,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Erdem Gunay
  * @author Curtis Jensen
  * @author Edwin Commandeur
+ * @author Jon Britton, SpiffyMap Ltd.
  */
 public class Bounds extends OpenLayersObjectWrapper {
 
@@ -47,6 +48,13 @@ public class Bounds extends OpenLayersObjectWrapper {
 				upperRightX,
 				upperRightY));
 	}
+    
+    /**
+     * Create an empty Bounds object with coordinates set to null
+     */
+    public Bounds() {
+        this(BoundsImpl.create());
+    }
 
 	public double[] toArray(){
 		JSObject boundsOpaque = BoundsImpl.toArray(getJSObject());
@@ -96,6 +104,14 @@ public class Bounds extends OpenLayersObjectWrapper {
 	public float getHeight() {
 		return BoundsImpl.getHeight(getJSObject());
 	}
+    
+    /**
+     * @return the size of the box
+     */
+    public Size getSize() {
+        return Size.narrowToSize(BoundsImpl.getSize(getJSObject()));
+    }
+    
 	/**
 	 * @param significantDigits - Number of significant digits in the bbox coordinates,
 	 *  	pass null to use the default of 6.
@@ -110,9 +126,20 @@ public class Bounds extends OpenLayersObjectWrapper {
 		return BoundsImpl.toString(getJSObject());
 	}
 
+    /**
+     * 
+     * @return the center of the bounds in map space
+     */
 	public LonLat getCenterLonLat() {
 		return LonLat.narrowToLonLat(BoundsImpl.getCenterLonLat(this.getJSObject()));
 	}
+    
+    /**
+     * @return the center of the bounds in pixel space
+     */
+    public Pixel getCenterPixel() {
+        return Pixel.narrowToPixel(BoundsImpl.getCenterPixel(this.getJSObject()));
+    }
 
 	public Geometry toGeometry() {
 		return Geometry.narrowToGeometry(BoundsImpl.toGeometry(this.getJSObject()));
@@ -138,6 +165,47 @@ public class Bounds extends OpenLayersObjectWrapper {
 		return Bounds.narrowToBounds(BoundsImpl.transform(getJSObject(),
 				source.getJSObject(), dest.getJSObject()));
 	}
+    
+    /**
+     * Scales the bounds.
+     * @param ratio
+     * @return a new bounds that is scaled by ratio
+     */
+    public Bounds scale(float ratio) {
+        return Bounds.narrowToBounds(BoundsImpl.scale(this.getJSObject(), ratio, null));
+    }
+    
+    /**
+     * Scales the bounds around a pixel. Note that the new bounds may return non-integer properties.
+     * @param ratio
+     * @param origin default is center
+     * @return a new bounds that is scaled by ratio from origin
+     */
+    public Bounds scale(float ratio, Pixel origin) {
+        JSObject originJsObj = (origin == null) ? null : origin.getJSObject();
+        return Bounds.narrowToBounds(BoundsImpl.scale(this.getJSObject(), ratio, originJsObj));
+    }
+    
+    /**
+     * @param x
+     * @param y
+     * @return A new bounds whose coordinates are the same as this, but shifted by the passed-in 
+     * x and y values.
+     */
+    public Bounds add(float x, float y) {
+        return Bounds.narrowToBounds(BoundsImpl.add(this.getJSObject(), x, y));
+    }
+    
+    /**
+     * Scales the bounds around a LonLat.
+     * @param ratio
+     * @param origin default is center
+     * @return a new bounds that is scaled by ratio from origin
+     */
+    public Bounds scale(float ratio, LonLat origin) {
+        JSObject originJsObj = (origin == null) ? null : origin.getJSObject();
+        return Bounds.narrowToBounds(BoundsImpl.scale(this.getJSObject(), ratio, originJsObj));
+    }
 
 	/**
 	 * APIMethod: containsLonLat
@@ -151,4 +219,14 @@ public class Bounds extends OpenLayersObjectWrapper {
 		return BoundsImpl.containsLonLat(getJSObject(), ll.getJSObject(),
 				inclusive);
 	}
+    
+    /**
+     * Determine whether the target bounds intersects this bounds.  Bounds are considered intersecting if any of 
+     * their edges intersect or if one bounds contains the other.
+     * @param bounds the target bounds
+     * @return whether the passed-in bounds object intersects this bounds
+     */
+    public boolean intersectsBounds(Bounds bounds) {
+        return BoundsImpl.intersectsBounds(this.getJSObject(), bounds.getJSObject());
+    }
 }

@@ -11,6 +11,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
+ * @author Lorenzo Amato <lorenzo.amato@geosdi.org>
  *
  */
 class SelectFeatureImpl
@@ -74,6 +75,10 @@ class SelectFeatureImpl
 
     public static native void unselect(JSObject selectFeature, JSObject feature) /*-{
         selectFeature.unselect(feature);
+    }-*/;
+    
+    public static native void select(JSObject vectorLayer, JSObject feature) /*-{
+    vectorLayer.select(feature);
     }-*/;
 
     public static native void setToggleKey(JSObject selectFeature, String keyName) /*-{

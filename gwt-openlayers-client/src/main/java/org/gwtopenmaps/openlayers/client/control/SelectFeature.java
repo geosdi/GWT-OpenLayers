@@ -79,6 +79,15 @@ public class SelectFeature extends Control
     }
     
     /**
+     * Add feature to the layerÕs selectedFeature array, render the feature as selected, and call the onSelect function.
+     * @param feature The feature to select
+     */
+    public void select(VectorFeature feature)
+    {
+        SelectFeatureImpl.select(this.getJSObject(), feature.getJSObject());
+    }
+
+    /**
      * Remove feature from the layerâ€™s selectedFeature array, render the feature as normal, and call the onUnselect function.
      * @param feature The feature to unselect
      */
@@ -86,7 +95,7 @@ public class SelectFeature extends Control
     {
         SelectFeatureImpl.unselect(this.getJSObject(), feature.getJSObject());
     }
-
+    
     /**
      *
      * Select and deselect a feature by clicking on it with the mouse.

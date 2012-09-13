@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.gwtopenmaps.demo.openlayers.client.examples.TransformFeature.TransformFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
@@ -128,6 +129,9 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
 
       name = "Rotate vector features";
       examples.add(new ExampleBean(name, "Details on how to create and rotate vector features programmatically.", new String[]{"features", "rotate", "geometry"}, new RotateVectorExample(name, I18N.rotateExampleSource())));
+      
+      name = "Transform vector features";
+      examples.add(new ExampleBean(name, "Details on how to create and transform vector features. Use the small Handels to transform and the greater ones to rotate.", new String[]{"features", "transform", "geometry"}, new TransformFeatureExample(name, I18N.transformExampleSource())));
 
       Collections.sort(examples);
    }

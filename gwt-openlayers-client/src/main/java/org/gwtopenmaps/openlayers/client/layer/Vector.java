@@ -77,6 +77,7 @@ public class Vector extends Layer
         VectorImpl.addFeature(getJSObject(), f.getJSObject());
     }
 
+    @Override
     public boolean redraw()
     {
         return VectorImpl.redraw(this.getJSObject());
@@ -102,6 +103,10 @@ public class Vector extends Layer
         return VectorImpl.getNumberOfFeatures(getJSObject());
     }
 
+    public int getNumberOfSelectedFeatures()
+    {
+        return VectorImpl.getNumberOfSelectedFeatures(getJSObject());
+    }
 
     public OpenLayersObjectWrapper getProtocol()
     {
@@ -165,16 +170,35 @@ public class Vector extends Layer
         return VectorFeature.narrowToVectorFeature(VectorImpl.getFeatureById(getJSObject(), id));
     }
 
-    // TODO add method for getting selected features
+    /**
+     * Gets an array of all selected features.
+     * @return Array of VectorFeature objects or null if layer does not contain any features
+     */
     public VectorFeature[] getSelectedFeatures()
     {
-        return null;
+        int nr = getNumberOfSelectedFeatures();
+        if (nr < 1)
+        {
+            return null;
+        }
+        else
+        {
+            VectorFeature[] vfs = new VectorFeature[nr];
+            for (int i = 0; i < nr; i++)
+            {
+                VectorFeature vf = VectorFeature.narrowToVectorFeature(VectorImpl.getSelectedFeature(getJSObject(), i));
+                vfs[i] = vf;
+            }
+
+            return vfs;
+        }
     }
 
     public void addVectorFeatureModifiedListener(final VectorFeatureModifiedListener listener)
     {
         eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_MODIFIED, new EventHandler()
             {
+                @Override
                 public void onHandle(EventObject eventObject)
                 {
                     FeatureModifiedEvent e = new FeatureModifiedEvent(eventObject);
@@ -187,6 +211,7 @@ public class Vector extends Layer
     {
         eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_ADDED, new EventHandler()
             {
+                @Override
                 public void onHandle(EventObject eventObject)
                 {
                     FeatureAddedEvent e = new FeatureAddedEvent(eventObject);
@@ -199,6 +224,7 @@ public class Vector extends Layer
     {
         eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_REMOVED, new EventHandler()
             {
+                @Override
                 public void onHandle(EventObject eventObject)
                 {
                     FeatureRemovedEvent e = new FeatureRemovedEvent(eventObject);
@@ -211,6 +237,7 @@ public class Vector extends Layer
     {
         eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_SELECTED, new EventHandler()
             {
+                @Override
                 public void onHandle(EventObject eventObject)
                 {
                     FeatureSelectedEvent e = new FeatureSelectedEvent(eventObject);
@@ -223,6 +250,7 @@ public class Vector extends Layer
     {
         eventListeners.addListener(this, listener, EventType.VECTOR_FEATURE_UNSELECTED, new EventHandler()
             {
+                @Override
                 public void onHandle(EventObject eventObject)
                 {
                     FeatureUnselectedEvent e = new FeatureUnselectedEvent(eventObject);
@@ -235,6 +263,7 @@ public class Vector extends Layer
     {
         eventListeners.addListener(this, listener, EventType.VECTOR_BEFORE_FEATURE_ADDED, new EventHandler()
             {
+                @Override
                 public void onHandle(EventObject eventObject)
                 {
                     BeforeFeatureAddedEvent e = new BeforeFeatureAddedEvent(eventObject);

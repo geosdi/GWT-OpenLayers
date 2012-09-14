@@ -1,6 +1,5 @@
-package org.gwtopenmaps.demo.openlayers.client.examples.basicosm;
+package org.gwtopenmaps.demo.openlayers.client.examples.basicbing;
 
-import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
@@ -10,23 +9,24 @@ import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
-import org.gwtopenmaps.openlayers.client.layer.OSM;
+import org.gwtopenmaps.openlayers.client.layer.Bing;
+import org.gwtopenmaps.openlayers.client.layer.BingOptions;
+import org.gwtopenmaps.openlayers.client.layer.BingType;
 
-import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
 
-public class BasicOsmExample extends AbstractExample
+public class BasicBingExample extends AbstractExample
 {
    private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
-
+   
    /**
     * Constructor.
     * @param title The title of the example
-    * @param textResource The source of the example.
-    */
-   public BasicOsmExample(String title, TextResource textResource)
+    * @param source The source of the example.
+    */ 
+   public BasicBingExample(String title, String source)
    {
-      super(title, textResource);
+      super(title, source);
    }
 
    @Override
@@ -36,16 +36,20 @@ public class BasicOsmExample extends AbstractExample
       MapOptions defaultMapOptions = new MapOptions();
       defaultMapOptions.setNumZoomLevels(16);
 
-      //Create a MapWidget and add 2 OSM layers
+      //Create a MapWidget
       MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
-      OSM osm_1 = OSM.Mapnik("Mapnik");
-      OSM osm_2 = OSM.CycleMap("CycleMap");
-      osm_1.setIsBaseLayer(true);
-      osm_2.setIsBaseLayer(true);
-      Map map = mapWidget.getMap();
-      map.addLayer(osm_1);
-      map.addLayer(osm_2);
+      //Create some Bing layers
+      final String key = "Apd8EWF9Ls5tXmyHr22OuL1ay4HRJtI4JG4jgluTDVaJdUXZV6lpSBpX-TwnoRDG"; //Bing key
+      Bing road = new Bing(new BingOptions("Road Layer", key, BingType.ROAD));
+      Bing hybrid = new Bing(new BingOptions("Hybrid Layer", key, BingType.HYBRID));
+      Bing aerial = new Bing(new BingOptions("Aerial Layer", key, BingType.AERIAL));
 
+      //And add them to the map
+      Map map = mapWidget.getMap();
+      map.addLayer(road);
+      map.addLayer(hybrid);
+      map.addLayer(aerial);
+      
       //Lets add some default controls to the map
       map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
       map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
@@ -56,13 +60,11 @@ public class BasicOsmExample extends AbstractExample
       lonLat.transform(DEFAULT_PROJECTION.getProjectionCode() , map.getProjection()); //transform lonlat to OSM coordinate system
       map.setCenter(lonLat, 12);
 
-      contentPanel.add(new HTML("<p>This example shows how to add a some OSM layers to GWT-OL.</p>"));
-      contentPanel.add(new InfoPanel("<p>Don't forget to add the following line to your html file if you want to use OSM :</p>" +
-      		"<p><b>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</b></p>"));
+      contentPanel.add(new HTML("<p>This example shows how to add Bing layers to GWT-OL.</p>"));
       contentPanel.add(mapWidget);
-
+      
       initWidget(contentPanel);
-
+      
       mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
    }
 }

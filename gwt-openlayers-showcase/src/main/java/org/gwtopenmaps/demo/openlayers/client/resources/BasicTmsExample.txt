@@ -14,25 +14,24 @@ import org.gwtopenmaps.openlayers.client.layer.TMS;
 import org.gwtopenmaps.openlayers.client.layer.TMSOptions;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
 
 public class BasicTmsExample extends AbstractExample
 {
    private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:900913");
-
+   
    /**
     * Constructor.
     * @param title The title of the example
-    * @param textResource The source of the example.
-    */
-   public BasicTmsExample(String title, TextResource textResource)
+    * @param source The source of the example.
+    */ 
+   public BasicTmsExample(String title, String source)
    {
-      super(title, textResource);
+      super(title, source);
    }
 
    /**
-    *
+    * 
     * @return TMS URL for OSM cyclemap
     */
    private static native JSObject getMyUrl()
@@ -73,7 +72,7 @@ public class BasicTmsExample extends AbstractExample
 
        return get_my_url;
    }-*/;
-
+   
    @Override
    public void buildPanel()
    {
@@ -86,11 +85,11 @@ public class BasicTmsExample extends AbstractExample
       defaultMapOptions.setUnits("m");
       defaultMapOptions.setMaxResolution(156543.0339f);
       defaultMapOptions.setMaxExtent(new Bounds(-20037508, -20037508, 20037508, 20037508.34));
-
+      
       //Create a MapWidget
       MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
 
-      //Create TMS layer
+      //Create TMS layer 
       TMSOptions tmsOptions = new TMSOptions();
       tmsOptions.setDisplayOutsideMaxExtent(false);
       tmsOptions.setIsBaseLayer(true);
@@ -98,12 +97,12 @@ public class BasicTmsExample extends AbstractExample
       tmsOptions.setGetURL(getMyUrl());
 
       TMS tms = new TMS("TMS", "", tmsOptions);
-
+      
       //And add them to the map
       Map map = mapWidget.getMap();
       map.addLayer(tms);
-
-
+      
+      
       //Lets add some default controls to the map
       map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
       map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
@@ -116,11 +115,11 @@ public class BasicTmsExample extends AbstractExample
 
       contentPanel.add(new HTML("<p>This example shows how to add a TMS layer to GWT-OL.</p>"));
       contentPanel.add(mapWidget);
-
+      
       map.zoomToMaxExtent();
-
+      
       initWidget(contentPanel);
-
+      
       mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
    }
 }

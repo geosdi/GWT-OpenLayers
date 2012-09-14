@@ -15,6 +15,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.selectfeature.SelectFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
@@ -89,49 +90,52 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHand
       String name = "";
 
       name = "Basic OSM example";
-      examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, I18N.basicOsmExampleSource())));
+      examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, Resources.INSTANCE.basicOsmExample())));
 
       name = "Basic Bing example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"}, new BasicBingExample(name, I18N.basicBingExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"}, new BasicBingExample(name, Resources.INSTANCE.basicBingExample())));
 
       name = "Basic Google V3 example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3", "basic"}, new BasicGoogleV3Example(name, I18N.basicGoogleV3ExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3", "basic"}, new BasicGoogleV3Example(name, Resources.INSTANCE.basicGoogleV3Example())));
 
       name = "WMS with WFS overlay";
-      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay.", new String[]{"WMS", "WFS", "overlay"}, new WmsWfsExample(name, I18N.wmsWfsExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay.", new String[]{"WMS", "WFS", "overlay"}, new WmsWfsExample(name, Resources.INSTANCE.wmsWfsExample())));
 
       name = "WMS with an editable WFS overlay";
-      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.", new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, new WmsWfsEditExample(name, I18N.wmsWfsEditExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.", new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, new WmsWfsEditExample(name, Resources.INSTANCE.wmsWfsEditExample())));
 
       name = "Basic TMS example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, I18N.tmsExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, Resources.INSTANCE.basicTmsExample())));
 
       name = "Custom mouse position";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, I18N.customMousePostionExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, Resources.INSTANCE.customMousePositionExample())));
 
       name = "Graticule";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, I18N.graticuleExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, Resources.INSTANCE.graticuleExample())));
 
       name = "WMS get featuretype example";
-      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, I18N.wmsFeatureInfoExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, Resources.INSTANCE.wmsFeatureInfoExample())));
 
       name = "Clickable vector example";
-      examples.add(new ExampleBean(name, "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.", new String[]{"marker", "feature", "clickable", "vector", "line"}, new VectorExample(name, I18N.vectorExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.", new String[]{"marker", "feature", "clickable", "vector", "line"}, new VectorExample(name, Resources.INSTANCE.vectorExample())));
 
       name = "Measure control example";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a measure control.", new String[]{"measure", "control"}, new MeasureExample(name, I18N.measureExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates how to add a measure control.", new String[]{"measure", "control"}, new MeasureExample(name, Resources.INSTANCE.measureExample())));
 
       name = "GPS location example";
-      examples.add(new ExampleBean(name, "Demonstrates how to display the users current location on the map", new String[]{"gps", "location", "osm"}, new LocationExample(name, I18N.gpsExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates how to display the users current location on the map", new String[]{"gps", "location", "osm"}, new LocationExample(name, Resources.INSTANCE.locationExample())));
 
       name = "WFS refresh";
-      examples.add(new ExampleBean(name, "Demonstrates how to you can reload a WFS to the server state after moving (but not saving) the features.", new String[]{"wfs", "edit", "refresh"}, new WfsRefreshExample(name, I18N.wfsRefreshExampleSource())));
+      examples.add(new ExampleBean(name, "Demonstrates how to you can reload a WFS to the server state after moving (but not saving) the features.", new String[]{"wfs", "edit", "refresh"}, new WfsRefreshExample(name, Resources.INSTANCE.wfsRefreshExample())));
 
       name = "Rotate vector features";
-      examples.add(new ExampleBean(name, "Details on how to create and rotate vector features programmatically.", new String[]{"features", "rotate", "geometry"}, new RotateVectorExample(name, I18N.rotateExampleSource())));
-      
+      examples.add(new ExampleBean(name, "Details on how to create and rotate vector features programmatically.", new String[]{"features", "rotate", "geometry"}, new RotateVectorExample(name, Resources.INSTANCE.rotateVectorExample())));
+
       name = "Transform vector features";
-      examples.add(new ExampleBean(name, "Details on how to create and transform vector features. Use the small Handels to transform and the greater ones to rotate.", new String[]{"features", "transform", "geometry"}, new TransformFeatureExample(name, I18N.transformExampleSource())));
+      examples.add(new ExampleBean(name, "Details on how to create and transform vector features. Use the small Handels to transform and the greater ones to rotate.", new String[]{"features", "transform", "geometry"}, new TransformFeatureExample(name, Resources.INSTANCE.transformFeatureExample())));
+
+      name = "Select Feature Example";
+      examples.add(new ExampleBean(name, "Demonstrates on how to create new features, and select features (on click, on hover and by selecting them in a box)", new String[]{"features", "drawing", "geometry", "select", "vector", "point", "line", "polygon"}, new SelectFeatureExample(name, Resources.INSTANCE.selectFeatureExample())));
 
       Collections.sort(examples);
    }

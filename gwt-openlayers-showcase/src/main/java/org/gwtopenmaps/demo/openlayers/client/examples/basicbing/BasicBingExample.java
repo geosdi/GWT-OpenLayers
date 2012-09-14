@@ -13,20 +13,21 @@ import org.gwtopenmaps.openlayers.client.layer.Bing;
 import org.gwtopenmaps.openlayers.client.layer.BingOptions;
 import org.gwtopenmaps.openlayers.client.layer.BingType;
 
+import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
 
 public class BasicBingExample extends AbstractExample
 {
    private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
-   
+
    /**
     * Constructor.
     * @param title The title of the example
-    * @param source The source of the example.
-    */ 
-   public BasicBingExample(String title, String source)
+    * @param textResource The source of the example.
+    */
+   public BasicBingExample(String title, TextResource textResource)
    {
-      super(title, source);
+      super(title, textResource);
    }
 
    @Override
@@ -49,7 +50,7 @@ public class BasicBingExample extends AbstractExample
       map.addLayer(road);
       map.addLayer(hybrid);
       map.addLayer(aerial);
-      
+
       //Lets add some default controls to the map
       map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
       map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
@@ -62,9 +63,9 @@ public class BasicBingExample extends AbstractExample
 
       contentPanel.add(new HTML("<p>This example shows how to add Bing layers to GWT-OL.</p>"));
       contentPanel.add(mapWidget);
-      
+
       initWidget(contentPanel);
-      
+
       mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
    }
 }

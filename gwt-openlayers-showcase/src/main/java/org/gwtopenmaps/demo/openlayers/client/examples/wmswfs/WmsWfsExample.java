@@ -21,6 +21,7 @@ import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 
+import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
 
 public class WmsWfsExample extends AbstractExample
@@ -28,11 +29,11 @@ public class WmsWfsExample extends AbstractExample
    /**
     * Constructor.
     * @param title The title of the example
-    * @param source The source of the example.
+    * @param textResource The source of the example.
     */
-   public WmsWfsExample(String title, String source)
+   public WmsWfsExample(String title, TextResource textResource)
    {
-      super(title, source);
+      super(title, textResource);
    }
 
    @Override

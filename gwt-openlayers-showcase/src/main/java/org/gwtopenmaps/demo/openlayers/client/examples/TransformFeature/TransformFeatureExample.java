@@ -1,10 +1,8 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.TransformFeature;
 
-/**
- * @author Lorenzo Amato <lorenzo.amato@geosdi.org>
- *
- */
-import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HTML;
+import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -25,13 +23,14 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.ui.HTML;
-
+/**
+ * @author Lorenzo Amato <lorenzo.amato@geosdi.org>
+ *
+ */
 public class TransformFeatureExample extends AbstractExample {
 
-    public TransformFeatureExample(String title, TextResource source) {
-        super(title, source);
+    public TransformFeatureExample(String title) {
+        super(title);
     }
 
     @Override
@@ -94,14 +93,14 @@ public class TransformFeatureExample extends AbstractExample {
             double a = p * (2 * Math.PI) / 7;
             double r = Math.random() + 1;
             Point newPoint = new Point(point.getX() + (r * Math.cos(a)),
-                    point.getY() + (r * Math.sin(a)));
+                                       point.getY() + (r * Math.sin(a)));
             pointList[p] = newPoint;
         }
         LinearRing linearRing = new LinearRing(pointList);
         final Polygon polygon = new Polygon(new LinearRing[]{linearRing});
 
         final VectorFeature polygonFeature = new VectorFeature(polygon,
-                featureStyle); // create a VectorFeature from the polygon
+                                                               featureStyle); // create a VectorFeature from the polygon
 
 
 
@@ -116,7 +115,8 @@ public class TransformFeatureExample extends AbstractExample {
         transformFeatureOptions.setRotationHandleSymbolizer(rotationHandlerStyle);
 
         // Create The Transform Control
-        TransformFeature transformFeature = new TransformFeature(vectorLayer, transformFeatureOptions);
+        TransformFeature transformFeature = new TransformFeature(vectorLayer,
+                                                                 transformFeatureOptions);
 
         map.setCenter(new LonLat(point.getX(), point.getY()), 7);
         map.addLayer(vectorLayer);
@@ -125,7 +125,8 @@ public class TransformFeatureExample extends AbstractExample {
         transformFeature.activate();
 
 
-        contentPanel.add(new HTML("<p>This example shows the transformation of a Feature.</p>"));
+        contentPanel.add(new HTML(
+                "<p>This example shows the transformation of a Feature.</p>"));
 
 
         contentPanel.add(mapWidget);
@@ -133,5 +134,11 @@ public class TransformFeatureExample extends AbstractExample {
         initWidget(contentPanel);
 
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
+    }
+
+    @Override
+    public String getSourceCodeURL() {
+        return GWT.getModuleBaseURL() + "examples/TransformFeature/"
+                + "TransformFeatureExample.txt";
     }
 }

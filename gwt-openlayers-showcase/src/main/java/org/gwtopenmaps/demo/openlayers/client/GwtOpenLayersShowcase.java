@@ -39,214 +39,256 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-
 /**
  * Entry point for GWT OpenLayers showcase.
  */
-public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHandler, KeyUpHandler
-{
-   public static final I18NMessages I18N = (I18NMessages) GWT.create(I18NMessages.class);
+public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
+        BlurHandler, KeyUpHandler {
 
-	private final TextBox txtSearch = new TextBox();
-	private final Label lblNumberOfExamples = new Label("(0)");
-
-	private final FlowPanel examplesPanel = new FlowPanel();
-
-	private final List<ExampleBean> examples = new ArrayList<ExampleBean>();
+    public static final I18NMessages I18N = (I18NMessages) GWT.create(
+            I18NMessages.class);
+    private final TextBox txtSearch = new TextBox();
+    private final Label lblNumberOfExamples = new Label("(0)");
+    private final FlowPanel examplesPanel = new FlowPanel();
+    private final List<ExampleBean> examples = new ArrayList<ExampleBean>();
 
     /**
      * main panel contains the showcase app
      */
-
     /**
      * Entry point for the GWT OpenLayers Showcase
      */
-    public void onModuleLoad()
-    {
-       loadExamples();
-       if (Window.Location.getParameter("example") != null)
-       {
-          for (ExampleBean example : examples)
-          {
-             if (example.getName().equals(Window.Location.getParameter("example")))
-             {
-                example.getExample().buildPanel();
-                RootPanel.get().add(example.getExample());
-             }
-          }
-       }
-       else
-       {
-          buildTopPanel();
-          buildExamplePanels("");
-       }
+    public void onModuleLoad() {
+        loadExamples();
+        if (Window.Location.getParameter("example") != null) {
+            for (ExampleBean example : examples) {
+                if (example.getName().equals(Window.Location.getParameter(
+                        "example"))) {
+                    example.getExample().buildPanel();
+                    RootPanel.get().add(example.getExample());
+                }
+            }
+        } else {
+            buildTopPanel();
+            buildExamplePanels("");
+        }
     }
 
     /**
      * Reads in all the examples.
      */
-   private void loadExamples()
-   {
-      String name = "";
+    private void loadExamples() {
+        String name = "";
 
-      name = "Basic OSM example";
-      examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, Resources.INSTANCE.basicOsmExample())));
+        name = "Basic OSM example";
+        examples.add(new ExampleBean(name, "Show a simple OSM map.",
+                                     new String[]{"openstreetmap", "OSM", "basic"},
+                                     new BasicOsmExample(name)));
 
-      name = "Basic Bing example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"}, new BasicBingExample(name, Resources.INSTANCE.basicBingExample())));
+        name = "Basic Bing example";
+        examples.add(
+                new ExampleBean(name, "Demonstrates the use of Bing layers.",
+                                new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"},
+                                new BasicBingExample(name)));
 
-      name = "Basic Google V3 example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3", "basic"}, new BasicGoogleV3Example(name, Resources.INSTANCE.basicGoogleV3Example())));
+        name = "Basic Google V3 example";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates the use of Google V3 layers.",
+                                new String[]{"Google", "V3", "basic"},
+                                new BasicGoogleV3Example(name)));
 
-      name = "WMS with WFS overlay";
-      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay.", new String[]{"WMS", "WFS", "overlay"}, new WmsWfsExample(name, Resources.INSTANCE.wmsWfsExample())));
+        name = "WMS with WFS overlay";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates the use of WMS base layer with a WFS overlay.",
+                                new String[]{"WMS", "WFS", "overlay"},
+                                new WmsWfsExample(name)));
 
-      name = "WMS with an editable WFS overlay";
-      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.", new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, new WmsWfsEditExample(name, Resources.INSTANCE.wmsWfsEditExample())));
+        name = "WMS with an editable WFS overlay";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.",
+                                new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"},
+                                new WmsWfsEditExample(name)));
 
-      name = "Basic TMS example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, Resources.INSTANCE.basicTmsExample())));
+        name = "Basic TMS example";
+        examples.add(
+                new ExampleBean(name, "Demonstrates the use of a TMS layer.",
+                                new String[]{"TMS", "basic"},
+                                new BasicTmsExample(name)));
 
-      name = "Custom mouse position";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, Resources.INSTANCE.customMousePositionExample())));
+        name = "Custom mouse position";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to add a custom mouse position control to the map.",
+                                new String[]{"mouse", "position"},
+                                new CustomMousePositionExample(name)));
 
-      name = "Graticule";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, Resources.INSTANCE.graticuleExample())));
+        name = "Graticule";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to add a graticule raster to the map.",
+                                new String[]{"graticule", "raster", "control"},
+                                new GraticuleExample(name)));
 
-      name = "WMS get featuretype example";
-      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, Resources.INSTANCE.wmsFeatureInfoExample())));
+        name = "WMS get featuretype example";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to get feature information from a WMS layer.",
+                                new String[]{"WMS", "feature", "featuretype", "get"},
+                                new WmsFeatureInfoExample(name)));
 
-      name = "Clickable vector example";
-      examples.add(new ExampleBean(name, "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.", new String[]{"marker", "feature", "clickable", "vector", "line"}, new VectorExample(name, Resources.INSTANCE.vectorExample())));
+        name = "Clickable vector example";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.",
+                                new String[]{"marker", "feature", "clickable", "vector", "line"},
+                                new VectorExample(name)));
 
-      name = "Measure control example";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a measure control.", new String[]{"measure", "control"}, new MeasureExample(name, Resources.INSTANCE.measureExample())));
+        name = "Measure control example";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to add a measure control.",
+                                new String[]{"measure", "control"},
+                                new MeasureExample(name)));
 
-      name = "GPS location example";
-      examples.add(new ExampleBean(name, "Demonstrates how to display the users current location on the map", new String[]{"gps", "location", "osm"}, new LocationExample(name, Resources.INSTANCE.locationExample())));
+        name = "GPS location example";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to display the users current location on the map",
+                                new String[]{"gps", "location", "osm"},
+                                new LocationExample(name)));
 
-      name = "WFS refresh";
-      examples.add(new ExampleBean(name, "Demonstrates how to you can reload a WFS to the server state after moving (but not saving) the features.", new String[]{"wfs", "edit", "refresh"}, new WfsRefreshExample(name, Resources.INSTANCE.wfsRefreshExample())));
+        name = "WFS refresh";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to you can reload a WFS to the server state after moving (but not saving) the features.",
+                                new String[]{"wfs", "edit", "refresh"},
+                                new WfsRefreshExample(name)));
 
-      name = "Rotate vector features";
-      examples.add(new ExampleBean(name, "Details on how to create and rotate vector features programmatically.", new String[]{"features", "rotate", "geometry"}, new RotateVectorExample(name, Resources.INSTANCE.rotateVectorExample())));
+        name = "Rotate vector features";
+        examples.add(
+                new ExampleBean(name,
+                                "Details on how to create and rotate vector features programmatically.",
+                                new String[]{"features", "rotate", "geometry"},
+                                new RotateVectorExample(name)));
 
-      name = "Transform vector features";
-      examples.add(new ExampleBean(name, "Details on how to create and transform vector features. Use the small Handels to transform and the greater ones to rotate.", new String[]{"features", "transform", "geometry"}, new TransformFeatureExample(name, Resources.INSTANCE.transformFeatureExample())));
+        name = "Transform vector features";
+        examples.add(
+                new ExampleBean(name,
+                                "Details on how to create and transform vector features. Use the small Handels to transform and the greater ones to rotate.",
+                                new String[]{"features", "transform", "geometry"},
+                                new TransformFeatureExample(name)));
 
-      name = "Select Feature Example";
-      examples.add(new ExampleBean(name, "Demonstrates on how to create new features, and select features (on click, on hover and by selecting them in a box)", new String[]{"features", "drawing", "geometry", "select", "vector", "point", "line", "polygon"}, new SelectFeatureExample(name, Resources.INSTANCE.selectFeatureExample())));
+        name = "Select Feature Example";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates on how to create new features, and select features (on click, on hover and by selecting them in a box)",
+                                new String[]{"features", "drawing", "geometry", "select", "vector", "point", "line", "polygon"},
+                                new SelectFeatureExample(name)));
 
-      Collections.sort(examples);
-   }
+        Collections.sort(examples);
+    }
 
-/**
- * Creates a panel for each available example.
- */
-   private void buildExamplePanels(final String filter)
-   {
-      examplesPanel.clear();
+    /**
+     * Creates a panel for each available example.
+     */
+    private void buildExamplePanels(final String filter) {
+        examplesPanel.clear();
 
-      int numberOfExamples = 0;
+        int numberOfExamples = 0;
 
-      for (ExampleBean example : examples)
-      {
-         boolean show = false;
-         String[] tags = example.getTags();
-         if ((filter == null) || (filter.trim().equals(""))) show = true;
-         else
-         {
-            for (String tag : tags)
-            {
-               if (tag.trim().toLowerCase().contains(filter.trim().toLowerCase()))
-               {
-                  show = true;
-                  break;
-               }
+        for (ExampleBean example : examples) {
+            boolean show = false;
+            String[] tags = example.getTags();
+            if ((filter == null) || (filter.trim().equals(""))) {
+                show = true;
+            } else {
+                for (String tag : tags) {
+                    if (tag.trim().toLowerCase().contains(
+                            filter.trim().toLowerCase())) {
+                        show = true;
+                        break;
+                    }
+                }
             }
-         }
 
 
-         if (show)
-         {
-            examplesPanel.add(new ExamplePanel(example));
-            numberOfExamples++;
-         }
-      }
+            if (show) {
+                examplesPanel.add(new ExamplePanel(example));
+                numberOfExamples++;
+            }
+        }
 
-      lblNumberOfExamples.setText("(" + numberOfExamples + ")");
-   }
+        lblNumberOfExamples.setText("(" + numberOfExamples + ")");
+    }
 
-/**
- * Builds the top panel containing the logo, the searchbox, and the number of examples currently shown.
- */
-   private void buildTopPanel()
-   {
-      final HorizontalPanel hpTop = new HorizontalPanel();
-      hpTop.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-      hpTop.setStyleName("top");
+    /**
+     * Builds the top panel containing the logo, the searchbox, and the number
+     * of examples currently shown.
+     */
+    private void buildTopPanel() {
+        final HorizontalPanel hpTop = new HorizontalPanel();
+        hpTop.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+        hpTop.setStyleName("top");
 
-      final Image imgLogo = new Image(Resources.INSTANCE.gwtOlLogo());
-      hpTop.add(imgLogo);
-      final HorizontalPanel hpTopSearch = new HorizontalPanel();
-      hpTopSearch.setSpacing(3);
-      hpTop.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-      hpTopSearch.add(txtSearch);
-      hpTopSearch.add(lblNumberOfExamples);
-      hpTop.add(hpTopSearch);
-      hpTop.setCellWidth(imgLogo, "1px");
+        final Image imgLogo = new Image(Resources.INSTANCE.gwtOlLogo());
+        hpTop.add(imgLogo);
+        final HorizontalPanel hpTopSearch = new HorizontalPanel();
+        hpTopSearch.setSpacing(3);
+        hpTop.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+        hpTopSearch.add(txtSearch);
+        hpTopSearch.add(lblNumberOfExamples);
+        hpTop.add(hpTopSearch);
+        hpTop.setCellWidth(imgLogo, "1px");
 
-      txtSearch.setText(I18N.filterByKeywords());
-      txtSearch.setStyleName("emptytextbox");
+        txtSearch.setText(I18N.filterByKeywords());
+        txtSearch.setStyleName("emptytextbox");
 
-      txtSearch.addFocusHandler(this);
-      txtSearch.addBlurHandler(this);
-      txtSearch.addKeyUpHandler(this);
+        txtSearch.addFocusHandler(this);
+        txtSearch.addBlurHandler(this);
+        txtSearch.addKeyUpHandler(this);
 
-      RootPanel.get().add(hpTop);
-      examplesPanel.setWidth("100%");
-      RootPanel.get().add(examplesPanel);
-   }
+        RootPanel.get().add(hpTop);
+        examplesPanel.setWidth("100%");
+        RootPanel.get().add(examplesPanel);
+    }
 
-   /*
+    /*
      * (non-Javadoc)
      * @see com.google.gwt.event.dom.client.FocusHandler#onFocus(com.google.gwt.event.dom.client.FocusEvent)
      */
-   public void onFocus(FocusEvent event)
-   {
-      if (event.getSource() == txtSearch)
-      {
-         if (txtSearch.getText().equals(I18N.filterByKeywords()))
-         {
-            txtSearch.setText("");
-            txtSearch.removeStyleName("emptytextbox");
-         }
-      }
-   }
+    public void onFocus(FocusEvent event) {
+        if (event.getSource() == txtSearch) {
+            if (txtSearch.getText().equals(I18N.filterByKeywords())) {
+                txtSearch.setText("");
+                txtSearch.removeStyleName("emptytextbox");
+            }
+        }
+    }
 
-   /*
-    * (non-Javadoc)
-    * @see com.google.gwt.event.dom.client.BlurHandler#onBlur(com.google.gwt.event.dom.client.BlurEvent)
-    */
-   public void onBlur(BlurEvent event)
-   {
-      if (event.getSource() == txtSearch)
-      {
-         if (txtSearch.getText().trim().equals(""))
-         {
-            txtSearch.setText(I18N.filterByKeywords());
-            txtSearch.addStyleName("emptytextbox");
-         }
-      }
-   }
+    /*
+     * (non-Javadoc)
+     * @see com.google.gwt.event.dom.client.BlurHandler#onBlur(com.google.gwt.event.dom.client.BlurEvent)
+     */
+    public void onBlur(BlurEvent event) {
+        if (event.getSource() == txtSearch) {
+            if (txtSearch.getText().trim().equals("")) {
+                txtSearch.setText(I18N.filterByKeywords());
+                txtSearch.addStyleName("emptytextbox");
+            }
+        }
+    }
 
-   /*
-    * (non-Javadoc)
-    * @see com.google.gwt.event.dom.client.KeyUpHandler#onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)
-    */
-   public void onKeyUp(KeyUpEvent event)
-   {
-      if (event.getSource() == txtSearch) buildExamplePanels(txtSearch.getText());
+    /*
+     * (non-Javadoc)
+     * @see com.google.gwt.event.dom.client.KeyUpHandler#onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)
+     */
+    public void onKeyUp(KeyUpEvent event) {
+        if (event.getSource() == txtSearch) {
+            buildExamplePanels(txtSearch.getText());
+        }
 
-   }
+    }
 }

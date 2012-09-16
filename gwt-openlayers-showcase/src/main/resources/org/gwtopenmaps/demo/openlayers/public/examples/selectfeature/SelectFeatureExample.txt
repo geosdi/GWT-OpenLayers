@@ -1,6 +1,15 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.selectfeature;
 
-import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.resources.client.TextResource;
+import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RadioButton;
+import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -22,29 +31,24 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RadioButton;
+public class SelectFeatureExample extends AbstractExample {
 
-public class SelectFeatureExample extends AbstractExample
-{
     private final RadioButton rbNavigate = new RadioButton("grp", "navigate");
     private final RadioButton rbDrawPoint = new RadioButton("grp", "draw point");
     private final RadioButton rbDrawLine = new RadioButton("grp", "draw line");
-    private final RadioButton rbDrawPolygon = new RadioButton("grp", "draw polygon");
-    private final RadioButton rbSelectOnHover = new RadioButton("grp", "select features on hover");
-    private final RadioButton rbSelectFeatures = new RadioButton("grp", "select feature (0 features selected)");
-    private final RadioButton rbSelectBox = new RadioButton("grp", "select features in a box");
-    private final CheckBox cbClickOut = new CheckBox("click out to unselect features");
-
+    private final RadioButton rbDrawPolygon = new RadioButton("grp",
+                                                              "draw polygon");
+    private final RadioButton rbSelectOnHover = new RadioButton("grp",
+                                                                "select features on hover");
+    private final RadioButton rbSelectFeatures = new RadioButton("grp",
+                                                                 "select feature (0 features selected)");
+    private final RadioButton rbSelectBox = new RadioButton("grp",
+                                                            "select features in a box");
+    private final CheckBox cbClickOut = new CheckBox(
+            "click out to unselect features");
     private DrawFeature drawPointFeatureControl = null;
     private DrawFeature drawLineFeatureControl = null;
     private DrawFeature drawPolygonFeatureControl = null;
-
     private SelectFeature clickSelectFeature = null;
     private SelectFeature boxSelectFeature = null;
     private SelectFeature hoverSelectFeature = null;
@@ -53,16 +57,13 @@ public class SelectFeatureExample extends AbstractExample
      * Constructor.
      *
      * @param title The title of the example
-     * @param source The source of the example.
      */
-    public SelectFeatureExample(String title, String source)
-    {
-        super(title, source);
+    public SelectFeatureExample(String title) {
+        super(title);
     }
 
     @Override
-    public void buildPanel()
-    {
+    public void buildPanel() {
         // create controls
         final Label lblInfo = new Label(
                 "Use the shift key to select multiple features. Use the ctrl key to toggle selection on features one at a time. Note: the \"clickout\" option has no effect when \"hover\" is selected.");
@@ -97,29 +98,34 @@ public class SelectFeatureExample extends AbstractExample
 
         vectorLayer.addVectorFeatureSelectedListener(new VectorFeatureSelectedListener() //update label that shows the number of selected features
         {
-            public void onFeatureSelected(FeatureSelectedEvent eventObject)
-            {
+            public void onFeatureSelected(FeatureSelectedEvent eventObject) {
                 int length = 0;
-                if (vectorLayer.getSelectedFeatures() != null) length = vectorLayer.getSelectedFeatures().length;
-                rbSelectFeatures.setText("select feature (" + length + " features selected)");
+                if (vectorLayer.getSelectedFeatures() != null) {
+                    length = vectorLayer.getSelectedFeatures().length;
+                }
+                rbSelectFeatures.setText(
+                        "select feature (" + length + " features selected)");
             }
         });
-        vectorLayer.addVectorFeatureUnselectedListener(new VectorFeatureUnselectedListener()
-        {
-            public void onFeatureUnselected(FeatureUnselectedEvent eventObject)
-            {
+        vectorLayer.addVectorFeatureUnselectedListener(new VectorFeatureUnselectedListener() {
+            public void onFeatureUnselected(FeatureUnselectedEvent eventObject) {
                 int length = 0;
-                if (vectorLayer.getSelectedFeatures() != null) length = vectorLayer.getSelectedFeatures().length;
-                rbSelectFeatures.setText("select feature (" + length + " features selected)");
+                if (vectorLayer.getSelectedFeatures() != null) {
+                    length = vectorLayer.getSelectedFeatures().length;
+                }
+                rbSelectFeatures.setText(
+                        "select feature (" + length + " features selected)");
             }
         });
 
         // Create the draw controls
-        drawPointFeatureControl = new DrawFeature(vectorLayer, new PointHandler());
+        drawPointFeatureControl = new DrawFeature(vectorLayer,
+                                                  new PointHandler());
         map.addControl(drawPointFeatureControl);
         drawLineFeatureControl = new DrawFeature(vectorLayer, new PathHandler());
         map.addControl(drawLineFeatureControl);
-        drawPolygonFeatureControl = new DrawFeature(vectorLayer, new PolygonHandler());
+        drawPolygonFeatureControl = new DrawFeature(vectorLayer,
+                                                    new PolygonHandler());
         map.addControl(drawPolygonFeatureControl);
 
         // Create the select controls
@@ -133,7 +139,8 @@ public class SelectFeatureExample extends AbstractExample
 
         SelectFeatureOptions boxSelectFeatureOptions = new SelectFeatureOptions();
         boxSelectFeatureOptions.setBox(true);
-        boxSelectFeature = new SelectFeature(vectorLayer, boxSelectFeatureOptions);
+        boxSelectFeature = new SelectFeature(vectorLayer,
+                                             boxSelectFeatureOptions);
         boxSelectFeature.setClickOut(false); //do not deselect on click out
         boxSelectFeature.setToggle(false); //do not toggle when reclicked
         boxSelectFeature.setMultiple(false); //do not select multiple when clicked normally
@@ -143,7 +150,8 @@ public class SelectFeatureExample extends AbstractExample
 
         SelectFeatureOptions hoverSelectFeatureOptions = new SelectFeatureOptions();
         hoverSelectFeatureOptions.setHover();
-        hoverSelectFeature = new SelectFeature(vectorLayer, hoverSelectFeatureOptions);
+        hoverSelectFeature = new SelectFeature(vectorLayer,
+                                               hoverSelectFeatureOptions);
         map.addControl(hoverSelectFeature);
 
         // Lets add some default controls to the map
@@ -164,71 +172,51 @@ public class SelectFeatureExample extends AbstractExample
         contentPanel.add(rbSelectFeatures);
         contentPanel.add(rbSelectBox);
         final HorizontalPanel hpCbClickOut = new HorizontalPanel();
-        hpCbClickOut.add(new HTML("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"));
+        hpCbClickOut.add(new HTML(
+                "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"));
         hpCbClickOut.add(cbClickOut);
         contentPanel.add(hpCbClickOut);
         contentPanel.add(lblInfo);
 
-        rbNavigate.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        rbNavigate.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 activateControls();
             }
         });
-        rbDrawPoint.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        rbDrawPoint.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 activateControls();
             }
         });
-        rbDrawLine.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        rbDrawLine.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 activateControls();
             }
         });
-        rbDrawPolygon.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        rbDrawPolygon.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 activateControls();
             }
         });
-        rbSelectOnHover.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        rbSelectOnHover.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 activateControls();
             }
         });
-        rbSelectFeatures.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        rbSelectFeatures.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 activateControls();
             }
         });
 
-        rbSelectBox.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        rbSelectBox.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 activateControls();
             }
         });
 
-        cbClickOut.addValueChangeHandler(new ValueChangeHandler<Boolean>()
-        {
-
-            public void onValueChange(ValueChangeEvent<Boolean> event)
-            {
+        cbClickOut.addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+            public void onValueChange(ValueChangeEvent<Boolean> event) {
                 clickSelectFeature.setClickOut(cbClickOut.getValue());
                 boxSelectFeature.setClickOut(cbClickOut.getValue());
             }
@@ -242,24 +230,47 @@ public class SelectFeatureExample extends AbstractExample
     /**
      * Activates the correct controls based on which radiobuttons are pressed.
      */
-    private void activateControls()
-    {
-        if (rbDrawPoint.getValue()) drawPointFeatureControl.activate();
-        else drawPointFeatureControl.deactivate();
+    private void activateControls() {
+        if (rbDrawPoint.getValue()) {
+            drawPointFeatureControl.activate();
+        } else {
+            drawPointFeatureControl.deactivate();
+        }
 
-        if (rbDrawLine.getValue()) drawLineFeatureControl.activate();
-        else drawLineFeatureControl.deactivate();
+        if (rbDrawLine.getValue()) {
+            drawLineFeatureControl.activate();
+        } else {
+            drawLineFeatureControl.deactivate();
+        }
 
-        if (rbDrawPolygon.getValue()) drawPolygonFeatureControl.activate();
-        else drawPolygonFeatureControl.deactivate();
+        if (rbDrawPolygon.getValue()) {
+            drawPolygonFeatureControl.activate();
+        } else {
+            drawPolygonFeatureControl.deactivate();
+        }
 
-        if (rbSelectFeatures.getValue()) clickSelectFeature.activate();
-        else clickSelectFeature.deactivate();
+        if (rbSelectFeatures.getValue()) {
+            clickSelectFeature.activate();
+        } else {
+            clickSelectFeature.deactivate();
+        }
 
-        if (rbSelectOnHover.getValue()) hoverSelectFeature.activate();
-        else hoverSelectFeature.deactivate();
+        if (rbSelectOnHover.getValue()) {
+            hoverSelectFeature.activate();
+        } else {
+            hoverSelectFeature.deactivate();
+        }
 
-        if (rbSelectBox.getValue()) boxSelectFeature.activate();
-        else boxSelectFeature.deactivate();
+        if (rbSelectBox.getValue()) {
+            boxSelectFeature.activate();
+        } else {
+            boxSelectFeature.deactivate();
+        }
+    }
+
+    @Override
+    public String getSourceCodeURL() {
+        return GWT.getModuleBaseURL() + "examples/selectfeature/"
+                + "SelectFeatureExample.txt";
     }
 }

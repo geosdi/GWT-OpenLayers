@@ -1,7 +1,17 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.location;
 
+import com.google.gwt.core.client.Callback;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.geolocation.client.Geolocation;
+import com.google.gwt.geolocation.client.Position;
+import com.google.gwt.geolocation.client.PositionError;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
-import org.gwtopenmaps.demo.openlayers.client.examples.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -16,35 +26,22 @@ import org.gwtopenmaps.openlayers.client.geometry.Point;
 import org.gwtopenmaps.openlayers.client.layer.OSM;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 
-import com.google.gwt.core.client.Callback;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.geolocation.client.Geolocation;
-import com.google.gwt.geolocation.client.Position;
-import com.google.gwt.geolocation.client.PositionError;
-import com.google.gwt.resources.client.TextResource;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HTML;
+public class LocationExample extends AbstractExample {
 
-public class LocationExample extends AbstractExample
-{
-    private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
+    private static final Projection DEFAULT_PROJECTION = new Projection(
+            "EPSG:4326");
 
     /**
      * Constructor.
      *
      * @param title The title of the example
-     * @param source The source of the example.
      */
-    public LocationExample(String title, TextResource source)
-    {
-        super(title, source);
+    public LocationExample(String title) {
+        super(title);
     }
 
     @Override
-    public void buildPanel()
-    {
+    public void buildPanel() {
         // create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
         defaultMapOptions.setNumZoomLevels(16);
@@ -66,46 +63,50 @@ public class LocationExample extends AbstractExample
 
         // Center and zoom to a location
         LonLat lonLat = new LonLat(6.95, 50.94);
-        lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection()); // transform lonlat to OSM coordinate system
+        lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(),
+                         map.getProjection()); // transform lonlat to OSM coordinate system
         map.setCenter(lonLat, 18);
 
         // Create a marker layer to the current location marker
         final Vector markerLayer = new Vector("Marker layer");
         map.addLayer(markerLayer);
 
-        contentPanel.add(new HTML("<p>This example shows how to display a marker on the users current location.</p>" +
-        		"<p>This actually just uses the GWT GeoLocation class and displays a marker on the returned location."));
-        contentPanel.add(new InfoPanel("<p>Don't forget to add the following line to your html file if you want to use OSM :</p>"
+        contentPanel.add(
+                new HTML(
+                "<p>This example shows how to display a marker on the users current location.</p>"
+                + "<p>This actually just uses the GWT GeoLocation class and displays a marker on the returned location."));
+        contentPanel.add(
+                new InfoPanel(
+                "<p>Don't forget to add the following line to your html file if you want to use OSM :</p>"
                 + "<p><b>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</b></p>"));
         contentPanel.add(mapWidget);
-        Button locationButton = new Button("Go to current location", new ClickHandler()
-        {
-            public void onClick(ClickEvent event)
-            {
+        Button locationButton = new Button("Go to current location",
+                                           new ClickHandler() {
+            public void onClick(ClickEvent event) {
                 // Start GeoLocation stuff (note that the GeoLocation is just plain GWT stuff)
                 Geolocation geoLocation = Geolocation.getIfSupported();
-                if (geoLocation == null)
-                {
-                    Window.alert("No GeoLocation supprt available in this browser :-(");
-                }
-                else
-                {
+                if (geoLocation == null) {
+                    Window.alert(
+                            "No GeoLocation supprt available in this browser :-(");
+                } else {
                     final Geolocation.PositionOptions geoOptions = new Geolocation.PositionOptions();
                     geoOptions.setHighAccuracyEnabled(true);
 
-                    geoLocation.watchPosition(new Callback<Position, PositionError>()
-                    {
-                        public void onFailure(final PositionError reason)
-                        {
-                            Window.alert("Something went wrong fetching the geolocation:\n" + reason);
+                    geoLocation.watchPosition(new Callback<Position, PositionError>() {
+                        public void onFailure(final PositionError reason) {
+                            Window.alert(
+                                    "Something went wrong fetching the geolocation:\n" + reason);
                         }
 
-                        public void onSuccess(final Position result)
-                        {
+                        public void onSuccess(final Position result) {
                             // put the received result in an openlayers LonLat
                             // object
-                            final LonLat lonLat = new LonLat(result.getCoordinates().getLongitude(), result.getCoordinates().getLatitude());
-                            lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection()); // transform lonlat to OSM coordinate system
+                            final LonLat lonLat = new LonLat(
+                                    result.getCoordinates().getLongitude(),
+                                    result.getCoordinates().getLatitude());
+                            lonLat.transform(
+                                    DEFAULT_PROJECTION.getProjectionCode(),
+                                    map.getProjection()); // transform lonlat to OSM coordinate system
                             // Center the map on the received location
                             map.setCenter(lonLat);
 
@@ -116,9 +117,13 @@ public class LocationExample extends AbstractExample
                             pointStyle.setStrokeWidth(2);
                             pointStyle.setFillOpacity(0.9);
 
-                            final Point point = new Point(result.getCoordinates().getLongitude(), result.getCoordinates().getLatitude());
-                            point.transform(DEFAULT_PROJECTION, new Projection(map.getProjection())); // transform point to OSM coordinate system
-                            final VectorFeature pointFeature = new VectorFeature(point, pointStyle);
+                            final Point point = new Point(
+                                    result.getCoordinates().getLongitude(),
+                                    result.getCoordinates().getLatitude());
+                            point.transform(DEFAULT_PROJECTION,
+                                            new Projection(map.getProjection())); // transform point to OSM coordinate system
+                            final VectorFeature pointFeature = new VectorFeature(
+                                    point, pointStyle);
                             markerLayer.destroyFeatures();
                             markerLayer.addFeature(pointFeature);
                         }
@@ -131,5 +136,11 @@ public class LocationExample extends AbstractExample
         initWidget(contentPanel);
 
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); // force the map to fall behind popups
+    }
+
+    @Override
+    public String getSourceCodeURL() {
+        return GWT.getModuleBaseURL() + "examples/location/"
+                + "LocationExample.txt";
     }
 }

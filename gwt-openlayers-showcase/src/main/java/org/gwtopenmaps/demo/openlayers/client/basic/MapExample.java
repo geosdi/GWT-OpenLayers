@@ -1,25 +1,20 @@
-package org.gwtopenmaps.demo.openlayers.client.examples;
-
-import java.util.ArrayList;
+package org.gwtopenmaps.demo.openlayers.client.basic;
 
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
-
+import java.util.ArrayList;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
 
+public class MapExample extends LayoutPanel {
 
-public class MapExample extends LayoutPanel
-{
     private MapOptions defaultMapOptions;
-
     // private MapWidget mapWidget;
     private Map map;
     private ArrayList<Widget> widgets = new ArrayList<Widget>();
 
-    public MapExample()
-    {
+    public MapExample() {
         this.defaultMapOptions = new MapOptions();
 
         // In OL, the map gets PanZoom, Navigation, ArgParser, and Attribution Controls
@@ -30,39 +25,32 @@ public class MapExample extends LayoutPanel
         initMapWidget(this.defaultMapOptions);
     }
 
-    public MapExample(MapOptions options)
-    {
+    public MapExample(MapOptions options) {
         this.defaultMapOptions = options;
         initMapWidget(options);
     }
 
-    private void initMapWidget(MapOptions options)
-    {
+    private void initMapWidget(MapOptions options) {
         MapWidget mapWidget = new MapWidget("100%", "100%", options);
         this.map = mapWidget.getMap();
         add(mapWidget);
 
     }
 
-    public Map getMap()
-    {
+    public Map getMap() {
         return this.map;
     }
 
-    public void destroy()
-    {
+    public void destroy() {
         this.map.destroy();
 
-        for (int i = 0, max = widgets.size(); i < max; i++)
-        {
+        for (int i = 0, max = widgets.size(); i < max; i++) {
             this.remove(widgets.get(i));
         }
-
-        ;
     }
 
-    public void add(Widget w)
-    {
+    @Override
+    public void add(Widget w) {
         super.add(w);
     }
 }

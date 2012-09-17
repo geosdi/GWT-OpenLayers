@@ -16,6 +16,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.selectfeature.SelectFeatureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.snap.SnapFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
@@ -181,12 +182,19 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
                                 new String[]{"features", "transform", "geometry"},
                                 new TransformFeatureExample(name)));
 
-        name = "Select and edit Feature Example";
+        name = "Select and edit feature example";
         examples.add(
                 new ExampleBean(name,
                                 "Demonstrates on how to create new features, and select features (on click, on hover and by selecting them in a box)",
                                 new String[]{"features", "drawing", "geometry", "select", "vector", "point", "line", "polygon", "edit"},
                                 new SelectFeatureExample(name)));
+
+        name = "Snap, edit and delete features example";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates on how to create new features and delete features. In this example snapping on the features is enabled.",
+                                new String[]{"features", "drawing", "geometry", "edit", "vector", "line", "polygon", "snapping", "snap", "delete"},
+                                new SnapFeatureExample(name)));
 
         Collections.sort(examples);
     }

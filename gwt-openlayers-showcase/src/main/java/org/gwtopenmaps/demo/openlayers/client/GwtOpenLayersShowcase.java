@@ -181,11 +181,11 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
                                 new String[]{"features", "transform", "geometry"},
                                 new TransformFeatureExample(name)));
 
-        name = "Select Feature Example";
+        name = "Select and edit Feature Example";
         examples.add(
                 new ExampleBean(name,
                                 "Demonstrates on how to create new features, and select features (on click, on hover and by selecting them in a box)",
-                                new String[]{"features", "drawing", "geometry", "select", "vector", "point", "line", "polygon"},
+                                new String[]{"features", "drawing", "geometry", "select", "vector", "point", "line", "polygon", "edit"},
                                 new SelectFeatureExample(name)));
 
         Collections.sort(examples);

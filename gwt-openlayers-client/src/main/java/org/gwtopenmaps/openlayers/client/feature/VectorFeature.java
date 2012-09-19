@@ -3,6 +3,8 @@ package org.gwtopenmaps.openlayers.client.feature;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
+import org.gwtopenmaps.openlayers.client.geometry.LineString;
+import org.gwtopenmaps.openlayers.client.geometry.MultiLineString;
 import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
 import org.gwtopenmaps.openlayers.client.util.Attributes;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
@@ -119,7 +121,7 @@ public class VectorFeature extends Feature
     {
         return VectorFeatureImpl.getVisibility(getJSObject());
     }
-    
+
     /**
      * Get the clustered features in this vector feature. If clustering isn't used returns null.
      * @return the clustered features or null if clustering isn't used
@@ -148,4 +150,28 @@ public class VectorFeature extends Feature
         return narrowToVectorFeature(VectorFeatureImpl.clone(getJSObject()));
     }
 
+    /**
+     * Convenient method to convert a LINESTRING VectorFeature to a MULTILINEFEATURE.
+     * This method can be used of you are trying to save a VectorFeature using WFS-T to geoserver and you are seeing
+     * a "Error performing insert: java.lang.String cannot be cast to com.vividsolutions.jts.geom.Geometry".
+     *
+     * @return true if converting succeeded (if this is not a LINESTRING)
+     */
+    public boolean convertLineStringToMultiLineString()
+    {
+        final Geometry g = this.getGeometry();
+
+        if (g.getClassName().equals(org.gwtopenmaps.openlayers.client.geometry.Geometry.LINESTRING_CLASS_NAME))
+        {
+            final LineString ls = LineString.narrowToLineString(g.getJSObject());
+            final MultiLineString mls = new MultiLineString(new LineString[]{ls});
+            this.getJSObject().setProperty("geometry", mls.getJSObject());
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -107,7 +107,7 @@ public class CancelDrawingExample extends AbstractExample {
 
     @Override
     public String getSourceCodeURL() {
-        return GWT.getModuleBaseURL() + "examples/undoredodrawing/"
-                + "UndoRedoDrawingExample.txt";
+        return GWT.getModuleBaseURL() + "examples/canceldrawing/"
+                + "CancelDrawingExample.txt";
     }
 }

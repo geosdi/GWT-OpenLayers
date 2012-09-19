@@ -63,4 +63,29 @@ public class DrawFeature extends Control
         void onFeatureAdded(VectorFeature vectorFeature);
     }
 
+    /**
+     * Remove the most recently added point in the current sketch geometry.
+     * @return true if an edit was undone.
+     */
+    public boolean undo()
+    {
+        return DrawFeatureImpl.undo(getJSObject());
+    }
+
+    /**
+     * Reinsert the most recently removed point resulting from an undo call.  The undo stack is deleted whenever a point is added by other means.
+     * @return true if an edit was redone.
+     */
+    public boolean redo()
+    {
+        return DrawFeatureImpl.redo(getJSObject());
+    }
+
+    /**
+     * Cancel the current sketch.  This removes the current sketch and keeps the drawing control active.
+     */
+    public void cancel()
+    {
+        DrawFeatureImpl.cancel(getJSObject());
+    }
 }

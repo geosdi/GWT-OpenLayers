@@ -23,6 +23,12 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 
+/**
+ *
+ * @author Frank Wynants
+ *
+ */
+
 public class UndoRedoDrawingExample extends AbstractExample {
 
     private DrawFeature drawLineFeatureControl = null;

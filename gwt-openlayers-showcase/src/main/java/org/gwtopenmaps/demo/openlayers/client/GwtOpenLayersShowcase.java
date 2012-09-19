@@ -18,6 +18,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample
 import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.selectfeature.SelectFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.snap.SnapFeatureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing.UndoRedoDrawingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsrefresh.WmsRefreshExample;
@@ -213,6 +214,14 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
                                 "Demonstrates how to you can reload a WMS to the server state.",
                                 new String[]{"wms", "refresh"},
                                 new WmsRefreshExample(name)));
+
+        name = "Undo/Redo drawing";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates the use of the undo and redo methods WHILE DRAWING.",
+                                new String[]{"undo", "redo", "vector", "feature", "drawing"},
+                                new UndoRedoDrawingExample(name)));
+
 
         Collections.sort(examples);
     }

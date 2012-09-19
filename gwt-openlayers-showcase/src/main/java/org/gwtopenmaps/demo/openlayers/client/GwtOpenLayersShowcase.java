@@ -20,6 +20,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.selectfeature.SelectFeatu
 import org.gwtopenmaps.demo.openlayers.client.examples.snap.SnapFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmsrefresh.WmsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfsedit.WmsWfsEditExample;
 import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
@@ -205,6 +206,13 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
                                 "newly created lines to geoserver using WFS-T.",
                                 new String[]{"LINESTRING", "MULTILINESTRING", "geoserver", "wfs", "wfst", "wfs-t", "error", "cast", "vividsolutions", "geometry"},
                                 new LineString2MultiLineStringExample(name)));
+
+        name = "WMS refresh";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to you can reload a WMS to the server state.",
+                                new String[]{"wms", "refresh"},
+                                new WmsRefreshExample(name)));
 
         Collections.sort(examples);
     }

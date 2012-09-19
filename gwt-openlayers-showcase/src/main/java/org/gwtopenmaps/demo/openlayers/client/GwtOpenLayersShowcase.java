@@ -11,6 +11,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestring.LineString2MultiLineStringExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
@@ -195,6 +196,15 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
                                 "Demonstrates on how to create new features and delete features. In this example snapping on the features is enabled.",
                                 new String[]{"features", "drawing", "geometry", "edit", "vector", "line", "polygon", "snapping", "snap", "delete"},
                                 new SnapFeatureExample(name)));
+
+        name = "Convert a LINESTRING VectorFeature to a MULTILINESTRING";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates how to convert a LINESTRING to a MULTILINESTRING. This is needed when you receive a " +
+                                "\"Error performing insert: java.lang.String cannot be cast to com.vividsolutions.jts.geom.Geometry\" when sending" +
+                                "newly created lines to geoserver using WFS-T.",
+                                new String[]{"LINESTRING", "MULTILINESTRING", "geoserver", "wfs", "wfst", "wfs-t", "error", "cast", "vividsolutions", "geometry"},
+                                new LineString2MultiLineStringExample(name)));
 
         Collections.sort(examples);
     }

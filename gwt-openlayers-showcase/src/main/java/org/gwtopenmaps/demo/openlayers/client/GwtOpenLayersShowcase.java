@@ -219,7 +219,7 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
         name = "Undo/Redo drawing";
         examples.add(
                 new ExampleBean(name,
-                                "Demonstrates the use of the undo and redo methods on DrawFeature WHILE DRAWING.",
+                                "Demonstrates the use of the undo and redo methods on DrawFeature.",
                                 new String[]{"undo", "redo", "vector", "feature", "drawing", "sketch"},
                                 new UndoRedoDrawingExample(name)));
 

@@ -1,6 +1,5 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing;
 
-import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
@@ -46,7 +45,6 @@ public class UndoRedoDrawingExample extends AbstractExample {
     public void buildPanel() {
         // create controls
         final HTML htmlInfo = new HTML("<p>This example shows how you can undo, and redo actions while drawing.</p><p>Draw some lines on the map, but <B>don't end the drawing by double clicking</B>. Then use the UNDO and REDO buttons.</p><p>These buttons simply call the undo() and redo() method on the DrawFeature control.");
-        final InfoPanel info = new InfoPanel("Note that this example does not show how to undo/redo completed actions. For this another example is available.");
 
         // create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
@@ -109,7 +107,6 @@ public class UndoRedoDrawingExample extends AbstractExample {
         map.setCenter(new LonLat(0, 0), 5);
 
         contentPanel.add(htmlInfo);
-        contentPanel.add(info);
         contentPanel.add(mapWidget);
         contentPanel.add(butUndo);
         contentPanel.add(butRedo);

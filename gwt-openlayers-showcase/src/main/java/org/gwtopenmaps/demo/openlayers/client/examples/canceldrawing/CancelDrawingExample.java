@@ -1,6 +1,5 @@
-package org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing;
+package org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing;
 
-import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
@@ -29,7 +28,7 @@ import com.google.gwt.user.client.ui.HTML;
  *
  */
 
-public class UndoRedoDrawingExample extends AbstractExample {
+public class CancelDrawingExample extends AbstractExample {
 
     private DrawFeature drawLineFeatureControl = null;
 
@@ -38,15 +37,14 @@ public class UndoRedoDrawingExample extends AbstractExample {
      *
      * @param title The title of the example
      */
-    public UndoRedoDrawingExample(String title) {
+    public CancelDrawingExample(String title) {
         super(title);
     }
 
     @Override
     public void buildPanel() {
         // create controls
-        final HTML htmlInfo = new HTML("<p>This example shows how you can undo, and redo actions while drawing.</p><p>Draw some lines on the map, but <B>don't end the drawing by double clicking</B>. Then use the UNDO and REDO buttons.</p><p>These buttons simply call the undo() and redo() method on the DrawFeature control.");
-        final InfoPanel info = new InfoPanel("Note that this example does not show how to undo/redo completed actions. For this another example is available.");
+        final HTML htmlInfo = new HTML("<p>This example shows how you can cancel a current sketch while drawing.</p><p>Draw some lines on the map, but <B>don't end the drawing by double clicking</B>. Then use the CANCEL button.</p><p>This button simply calls the cancel() method on the DrawFeature control.");
 
         // create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
@@ -80,23 +78,13 @@ public class UndoRedoDrawingExample extends AbstractExample {
         map.addControl(drawLineFeatureControl);
         drawLineFeatureControl.activate();
 
-        final Button butUndo = new Button("UNDO");
-        final Button butRedo = new Button("REDO");
+        final Button butCancel = new Button("CANCEL");
 
-        butUndo.addClickHandler(new ClickHandler()
+        butCancel.addClickHandler(new ClickHandler()
         {
             public void onClick(ClickEvent event)
             {
-                drawLineFeatureControl.undo(); //the actual undo action
-            }
-        });
-
-        butRedo.addClickHandler(new ClickHandler()
-        {
-
-            public void onClick(ClickEvent event)
-            {
-                drawLineFeatureControl.redo(); //the actual redo action
+                drawLineFeatureControl.cancel(); //the actual cancel action
             }
         });
 
@@ -109,10 +97,8 @@ public class UndoRedoDrawingExample extends AbstractExample {
         map.setCenter(new LonLat(0, 0), 5);
 
         contentPanel.add(htmlInfo);
-        contentPanel.add(info);
         contentPanel.add(mapWidget);
-        contentPanel.add(butUndo);
-        contentPanel.add(butRedo);
+        contentPanel.add(butCancel);
 
         initWidget(contentPanel);
 

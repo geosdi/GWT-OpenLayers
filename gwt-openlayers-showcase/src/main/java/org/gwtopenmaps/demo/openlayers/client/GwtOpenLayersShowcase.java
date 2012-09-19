@@ -9,6 +9,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExampl
 import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing.CancelDrawingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestring.LineString2MultiLineStringExample;
@@ -218,10 +219,16 @@ public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler,
         name = "Undo/Redo drawing";
         examples.add(
                 new ExampleBean(name,
-                                "Demonstrates the use of the undo and redo methods WHILE DRAWING.",
-                                new String[]{"undo", "redo", "vector", "feature", "drawing"},
+                                "Demonstrates the use of the undo and redo methods on DrawFeature WHILE DRAWING.",
+                                new String[]{"undo", "redo", "vector", "feature", "drawing", "sketch"},
                                 new UndoRedoDrawingExample(name)));
 
+        name = "Cancel drawing";
+        examples.add(
+                new ExampleBean(name,
+                                "Demonstrates the use of the cancel method on DrawFeature to cancel a current sketch.",
+                                new String[]{"cancel", "vector", "feature", "drawing", "sketch"},
+                                new CancelDrawingExample(name)));
 
         Collections.sort(examples);
     }

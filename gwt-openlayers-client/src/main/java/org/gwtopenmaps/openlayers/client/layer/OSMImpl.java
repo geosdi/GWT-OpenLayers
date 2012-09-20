@@ -22,7 +22,7 @@ public class OSMImpl
         for (i = 0; i < urls.length; i++) {
         wmsURLs[i] = urls[i];
         }
-        
+
         return new $wnd.OpenLayers.Layer.OSM(name, wmsURLs, params);
     }-*/;
 
@@ -34,16 +34,6 @@ public class OSMImpl
     public static native JSObject Mapnik(String name, JSObject params)
     /*-{
        return new $wnd.OpenLayers.Layer.OSM.Mapnik(name, params);
-    }-*/;
-
-    public static native JSObject Osmarender(String name)
-    /*-{
-       return new $wnd.OpenLayers.Layer.OSM.Osmarender(name);
-    }-*/;
-
-    public static native JSObject Osmarender(String name, JSObject params)
-    /*-{
-       return new $wnd.OpenLayers.Layer.OSM.Osmarender(name, params);
     }-*/;
 
     public static native JSObject CycleMap(String name)

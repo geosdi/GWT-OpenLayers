@@ -28,16 +28,6 @@ public class OSM extends Layer
         return new OSM(OSMImpl.Mapnik(name, options.getJSObject()));
     }
 
-    public static OSM Osmarender(String name)
-    {
-        return new OSM(OSMImpl.Osmarender(name));
-    }
-
-    public static OSM Osmarender(String name, OSMOptions options)
-    {
-        return new OSM(OSMImpl.Osmarender(name, options.getJSObject()));
-    }
-
     public static OSM CycleMap(String name)
     {
         return new OSM(OSMImpl.CycleMap(name));

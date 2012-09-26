@@ -28,6 +28,15 @@ public class Attributes extends JSObjectWrapper
     }
 
     /**
+     * Unset/Clear the property with the given name. Uses the javascript operator delete
+     * @param name - Name of the attribute
+     */
+    public void unsetAttribute(String name)
+    {
+        this.getJSObject().unsetProperty(name);
+    }
+
+    /**
      * Sets a String value to the arbitrary attribute.
      *
      * @param name - Name of the attribute

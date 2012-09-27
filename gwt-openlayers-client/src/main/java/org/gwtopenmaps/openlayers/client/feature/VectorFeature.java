@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.feature;
 
+import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
@@ -174,4 +175,10 @@ public class VectorFeature extends Feature
             return false;
         }
     }
+
+    public void move(LonLat lonLat)
+    {
+        VectorFeatureImpl.move(getJSObject(), lonLat.getJSObject());
+    }
+
 }

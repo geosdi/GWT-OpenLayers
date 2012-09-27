@@ -42,4 +42,9 @@ public class VectorFeatureImpl
     public static native JSObject getCluster(JSObject obj) /*-{
         return (obj.cluster === undefined) ? null : obj.cluster;
     }-*/;
+
+    public static native void move(JSObject self, JSObject location)/*-{
+        self.move(location);
+    }-*/;
+
 }

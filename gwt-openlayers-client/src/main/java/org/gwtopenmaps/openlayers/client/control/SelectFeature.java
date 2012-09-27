@@ -77,7 +77,7 @@ public class SelectFeature extends Control
     {
         SelectFeatureImpl.setHover(getJSObject(), hover);
     }
-    
+
     /**
      * Add feature to the layer’s selectedFeature array, render the feature as selected, and call the onSelect function.
      * @param feature The feature to select
@@ -237,6 +237,44 @@ public class SelectFeature extends Control
                 }
             });
     }
+
+	/**
+	 * Add feature to the layer's selectedFeature array, render the feature as
+	 * selected, and call the onSelect function.
+	 *
+	 * @param feature
+	 */
+	public void select(VectorFeature feature) {
+		SelectFeatureImpl.select(getJSObject(), feature.getJSObject());
+	}
+
+	/**
+	 * Remove feature from the layer's selectedFeature array, render the feature
+	 * as normal, and call the onUnselect function.
+	 *
+	 * @param feature
+	 */
+	public void unselect(VectorFeature feature) {
+		SelectFeatureImpl.unselect(getJSObject(), feature.getJSObject());
+	}
+
+	/**
+	 * Unselect all selected features. To unselect all except for a single
+	 * feature.
+	 *
+	 * @param exceptFeature
+	 *            null or a feature that should stay selected
+	 */
+	public void unselectAll(VectorFeature exceptFeature) {
+		JSObject options = null;
+		if (exceptFeature != null) {
+			options = JSObject.createJSObject();
+			options.setProperty("except", exceptFeature.getJSObject());
+		}
+		SelectFeatureImpl.unselectAll(getJSObject(), options);
+	}
+
+
 
     /**
      *

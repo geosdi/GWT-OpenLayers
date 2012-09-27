@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client.handler;
 
+import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
@@ -21,4 +22,9 @@ public class PointHandler extends Handler
     {
         this(PointHandlerImpl.create());
     }
+
+	public void setStyle(Style s) {
+		PointHandlerImpl.setStyle(getJSObject(), s.getJSObject());
+	}
+
 }

@@ -108,10 +108,9 @@ public class VectorFeature extends Feature
         return VectorFeatureImpl.getRenderIntent(getJSObject());
     }
 
-    public boolean redrawParent()
-    {
-        return VectorFeatureImpl.redraw(getLayer(), true);
-    }
+ 	public boolean redrawParent() {
+		return VectorFeatureImpl.redraw(getLayer().getJSObject(), true);
+ 	}
 
     /**
      * Determine whether the feature is displayed or not

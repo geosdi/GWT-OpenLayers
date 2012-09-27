@@ -3,6 +3,7 @@
  */
 package org.gwtopenmaps.openlayers.client.control;
 
+import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
@@ -69,6 +70,38 @@ public class ModifyFeature extends Control
     {
         return ModifyFeatureImpl.isSelectedFeatureModified(getJSObject());
     }
+
+	/**
+	 * Select a feature for modification in standalone mode. In non-standalone
+	 * mode, this method is called when the select feature control selects a
+	 * feature. Register a listener to the beforefeaturemodified event and
+	 * return false to prevent feature modification.
+	 *
+	 * @param feature
+	 *            - {<OpenLayers.Feature.Vector>} the selected feature.
+	 */
+	public void selectFeature(VectorFeature feature) {
+		ModifyFeatureImpl.selectFeature(getJSObject(), feature.getJSObject());
+	}
+
+	/**
+	 * Called when the select feature control unselects a feature.
+	 *
+	 * @param feature
+	 *            - {<OpenLayers.Feature.Vector>} The unselected feature.
+	 */
+	public void unselectFeature(VectorFeature feature) {
+		ModifyFeatureImpl.unselectFeature(getJSObject(), feature.getJSObject());
+	}
+
+	public void setVirtualStyle(Style virtualStyle) {
+		getJSObject().setProperty("virtualStyle", virtualStyle.getJSObject());
+	}
+
+	@Override
+	public Vector getLayer() {
+		return Vector.narrowToVector(getJSObject().getProperty("layer"));
+	}
 
     /**
      *

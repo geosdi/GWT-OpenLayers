@@ -5,6 +5,7 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
+import org.gwtopenmaps.openlayers.client.State;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.control.DrawFeature;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
@@ -103,7 +104,11 @@ public class SnapFeatureExample extends AbstractExample {
 
             public void onFeatureHighlighted(VectorFeature vectorFeature)
             {
-                vectorFeature.destroy();
+                //if you want to do WFS-T do the following :
+                //vectorFeature.toState(State.Unknown);
+                //vectorFeature.toState(State.Delete);
+
+                vectorFeature.destroy(); //don't do this if you want to use WFS-T
             }
         });
 

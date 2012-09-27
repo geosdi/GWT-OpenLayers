@@ -19,7 +19,7 @@ class PopupImpl
         function callback(evt) {
         closeBoxCallback.@org.gwtopenmaps.openlayers.client.popup.Popup.CloseListener::onPopupClose(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(evt);
         }
-        
+
         return new $wnd.OpenLayers.Popup(id, lonlat, size, html, closeBox, callback);
     }-*/;
 
@@ -31,7 +31,7 @@ class PopupImpl
         function closebox(evt) {
         callback.@org.gwtopenmaps.openlayers.client.popup.Popup.CloseListener::onPopupClose(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(evt);
         }
-        
+
         popup.addCloseBox(closebox);
     }-*/;
 
@@ -47,8 +47,18 @@ class PopupImpl
     public static native void updatePosition(JSObject p) /*-{
         p.updatePosition();
     }-*/;
-    
+
     public static native void updateSize(JSObject p) /*-{
         p.updateSize();
     }-*/;
+
+    public static native void setSize(JSObject p, JSObject size) /*-{
+        p.setSize(size);
+    }-*/;
+
+	public static native void destroy(JSObject p) /*-{
+		p.destroy();
+	}-*/;
+
+
 }

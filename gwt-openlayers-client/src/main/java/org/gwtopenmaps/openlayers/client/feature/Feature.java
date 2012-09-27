@@ -4,6 +4,7 @@ import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.Style;
+import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.popup.Popup;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
@@ -53,9 +54,10 @@ public abstract class Feature extends OpenLayersObjectWrapper
         return Bounds.narrowToBounds(FeatureImpl.getBounds(this.getJSObject())).getCenterLonLat();
     }
 
-    public void setPopup(Popup popup)
-    {
-        FeatureImpl.setPopup(this.getJSObject(), popup.getJSObject());
+	public void setPopup(final Popup popup)
+	{
+		FeatureImpl.setPopup(this.getJSObject(),
+				popup == null ? null : popup.getJSObject());
     }
 
     public Popup getPopup()
@@ -78,9 +80,8 @@ public abstract class Feature extends OpenLayersObjectWrapper
         return Style.narrowToOpenLayersStyle(FeatureImpl.getStyle(this.getJSObject()));
     }
 
-    public JSObject getLayer()
-    {
-        return FeatureImpl.getLayer(getJSObject());
-    }
+	public Layer getLayer() {
+		return Layer.narrowToLayer(FeatureImpl.getLayer(getJSObject()));
+	}
 
 }

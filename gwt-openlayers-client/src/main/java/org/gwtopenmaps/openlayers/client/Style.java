@@ -13,7 +13,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
  * @author Rafael Ceravolo - LOGANN
- * @author Lukas Johansson 
+ * @author Lukas Johansson
  *
  */
 //FIXME: This class does not wrap the OpenLayers.Style object, but a symbolizer
@@ -30,7 +30,7 @@ public class Style extends OpenLayersObjectWrapper {
 	public Style() {
 		this(StyleImpl.create());
 	}
-	
+
 	/**
 	 * This constructor is to be used when you want to get an empty Style object, instead of a Style initialized to default.
 	 * For example :
@@ -41,11 +41,11 @@ public class Style extends OpenLayersObjectWrapper {
 	public Style(String string) {
 		this(StyleImpl.create(string));
 	}
-	
+
 	public String getId(){
 		return StyleImpl.getId(getJSObject());
 	}
-	
+
 	public String getName(){
 		return StyleImpl.getName(getJSObject());
 	}
@@ -81,18 +81,18 @@ public class Style extends OpenLayersObjectWrapper {
 	public void setPointRadius(double r) {
 		StyleImpl.setPointRadius(getJSObject(), r);
 	}
-	
+
 	/** Pixel point radius. */
 	public double getPointRadiusAsDouble() {
 		return StyleImpl.getPointRadiusAsDouble(getJSObject());
 	}
-	
+
 	/** Use getPointRadiusAsDouble() instead */
 	@Deprecated
 	public double getPointRadius() {
 		return getPointRadiusAsDouble();
 	}
-	
+
 	/**
 	 * The passed String is the name of the attribute whose value will determine
 	 * the point radius
@@ -100,12 +100,12 @@ public class Style extends OpenLayersObjectWrapper {
 	public void setPointRadius(String r) {
 		StyleImpl.setPointRadius(getJSObject(), r);
 	}
-	
+
 	/** The name of the attribute which value determines the point radius */
 	public String getPointRadiusAsString() {
 		return StyleImpl.getPointRadiusAsString(getJSObject());
 	}
-	
+
 	/**
 	 * Hex stroke color. Default is '#ee9900'.
 	 *
@@ -150,7 +150,7 @@ public class Style extends OpenLayersObjectWrapper {
 	public String getRotation() {
 		return StyleImpl.getRotation(getJSObject());
 	}
-	
+
 	/**
 	 * Convenient method to set the pixel width and height for sizing an
 	 * external graphic.
@@ -456,6 +456,52 @@ public class Style extends OpenLayersObjectWrapper {
 	public String getGraphicTitle() {
 		return StyleImpl.getGraphicTitle(this.getJSObject());
 	}
+
+	/**
+	 * Pixel offset along the positive x axis for displacing the label.  Not supported by the canvas renderer.
+	 */
+	public int getLabelXOffset() {
+		return StyleImpl.getLabelXOffset(this.getJSObject());
+	}
+
+	/**
+	 * Pixel offset along the positive x axis for displacing the label.  Not supported by the canvas renderer.
+	 * @param offset
+	 */
+	public void setLabelXOffset(int offset) {
+		StyleImpl.setLabelXOffset(this.getJSObject(), offset);
+	}
+
+	/**
+	 * Pixel offset along the positive y axis for displacing the label.  Not supported by the canvas renderer.
+	 */
+	public int getLabelYOffset() {
+		return StyleImpl.getLabelYOffset(this.getJSObject());
+	}
+
+	/**
+	 * Pixel offset along the positive y axis for displacing the label.  Not supported by the canvas renderer.
+	 * @param offset
+	 */
+	public void setLabelYOffset(int offset) {
+		StyleImpl.setLabelYOffset(this.getJSObject(), offset);
+	}
+
+	/**
+	 * If set to true, labels will be selectable using SelectFeature or similar controls.  Default is false.
+	 */
+	public void getLabelSelect() {
+		StyleImpl.getLabelSelect(this.getJSObject());
+	}
+
+	/**
+	 * If set to true, labels will be selectable using SelectFeature or similar controls.  Default is false.
+	 * @param select
+	 */
+	public void setLabelSelect(boolean select) {
+		StyleImpl.setLabelSelect(this.getJSObject(), select);
+	}
+
 
 	public static Style narrowToOpenLayersStyle(JSObject element) {
 		return (element == null) ? null: new Style(element);

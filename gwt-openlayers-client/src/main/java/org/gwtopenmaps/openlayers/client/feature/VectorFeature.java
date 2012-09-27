@@ -11,36 +11,30 @@ import org.gwtopenmaps.openlayers.client.util.Attributes;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
 /**
  * @author Edwin Commandeur - Atlis EJS
  * @author Lukas Johansson
  *
- *  Class name deviates intentionally from OpenLayers class name. Both
- *  vector layers and vector features are called Vector in OpenLayers.
+ * Class name deviates intentionally from OpenLayers class name. Both vector
+ * layers and vector features are called Vector in OpenLayers.
  *
  *
  */
-public class VectorFeature extends Feature
-{
+public class VectorFeature extends Feature {
 
-    public static VectorFeature narrowToVectorFeature(JSObject vectorFeature)
-    {
+    public static VectorFeature narrowToVectorFeature(JSObject vectorFeature) {
         return (vectorFeature == null) ? null : new VectorFeature(vectorFeature);
     }
 
-    protected VectorFeature(JSObject vectorFeature)
-    {
+    protected VectorFeature(JSObject vectorFeature) {
         super(vectorFeature);
     }
 
-    public VectorFeature(Geometry g)
-    {
+    public VectorFeature(Geometry g) {
         super(VectorFeatureImpl.create(g.getJSObject()));
     }
 
-    public VectorFeature(Geometry g, Style s)
-    {
+    public VectorFeature(Geometry g, Style s) {
         super(VectorFeatureImpl.create(g.getJSObject(), s.getJSObject()));
     }
 
@@ -56,8 +50,7 @@ public class VectorFeature extends Feature
      * };
      * </code>
      */
-    public Geometry getGeometry()
-    {
+    public Geometry getGeometry() {
         return Geometry.narrowToGeometry(getJSObject().getProperty("geometry"));
     }
 
@@ -67,25 +60,19 @@ public class VectorFeature extends Feature
      *
      * @param feaureID
      */
-    public void setFeatureId(String feaureID)
-    {
+    public void setFeatureId(String feaureID) {
         VectorFeatureImpl.setFeatureId(getJSObject(), feaureID);
     }
 
-
     /**
      * Set the attributes. This object (attributes) holds arbitrary properties
-     * that describe the feature.
-     * <p>
-     * Note: the attributes are only applied for styles defined inside a
-     * {@link StyleMap}. If just using a single style for the
-     * {@link VectorOptions} the attributes will be ignored.
+     * that describe the feature. <p> Note: the attributes are only applied for
+     * styles defined inside a {@link StyleMap}. If just using a single style
+     * for the {@link VectorOptions} the attributes will be ignored.
      *
-     * @param vectorFeatureAttributes
-     *            The attributes to set
+     * @param vectorFeatureAttributes The attributes to set
      */
-    public void setAttributes(Attributes attributes)
-    {
+    public void setAttributes(Attributes attributes) {
         getJSObject().setProperty("attributes", attributes.getJSObject());
     }
 
@@ -93,41 +80,39 @@ public class VectorFeature extends Feature
      *
      * @return Attributes object
      */
-    public Attributes getAttributes()
-    {
-        return Attributes.narrowToAttributes(getJSObject().getProperty("attributes"));
+    public Attributes getAttributes() {
+        return Attributes.narrowToAttributes(getJSObject().getProperty(
+                "attributes"));
     }
 
     @Deprecated
-    public Attributes getAttributes(VectorFeature attributes)
-    {
+    public Attributes getAttributes(VectorFeature attributes) {
         return this.getAttributes();
     }
 
-    public String getRenderIntent()
-    {
+    public String getRenderIntent() {
         return VectorFeatureImpl.getRenderIntent(getJSObject());
     }
 
- 	public boolean redrawParent() {
-		return VectorFeatureImpl.redraw(getLayer().getJSObject(), true);
- 	}
+    public boolean redrawParent() {
+        return VectorFeatureImpl.redraw(getLayer().getJSObject(), true);
+    }
 
     /**
      * Determine whether the feature is displayed or not
      *
      */
-    public boolean getVisibility()
-    {
+    public boolean getVisibility() {
         return VectorFeatureImpl.getVisibility(getJSObject());
     }
 
     /**
-     * Get the clustered features in this vector feature. If clustering isn't used returns null.
+     * Get the clustered features in this vector feature. If clustering isn't
+     * used returns null.
+     *
      * @return the clustered features or null if clustering isn't used
      */
-    public VectorFeature[] getCluster()
-    {
+    public VectorFeature[] getCluster() {
         JSObject jsObjects = VectorFeatureImpl.getCluster(getJSObject());
         JObjectArray jObjectArray = JObjectArray.narrowToJObjectArray(jsObjects);
         // Should be null if this is not a cluster
@@ -136,7 +121,8 @@ public class VectorFeature extends Feature
         }
         VectorFeature[] features = new VectorFeature[jObjectArray.length()];
         for (int i = 0; i < jObjectArray.length(); i++) {
-            features[i] = VectorFeature.narrowToVectorFeature(jObjectArray.get(i));
+            features[i] = VectorFeature.narrowToVectorFeature(
+                    jObjectArray.get(i));
         }
         return features;
     }
@@ -145,39 +131,36 @@ public class VectorFeature extends Feature
      * Create a clone of this vector feature. Does not set any non-standard
      * properties.
      */
-    public VectorFeature clone()
-    {
+    @Override
+    public VectorFeature clone() {
         return narrowToVectorFeature(VectorFeatureImpl.clone(getJSObject()));
     }
 
     /**
-     * Convenient method to convert a LINESTRING VectorFeature to a MULTILINEFEATURE.
-     * This method can be used of you are trying to save a VectorFeature using WFS-T to geoserver and you are seeing
-     * a "Error performing insert: java.lang.String cannot be cast to com.vividsolutions.jts.geom.Geometry".
+     * Convenient method to convert a LINESTRING VectorFeature to a
+     * MULTILINEFEATURE. This method can be used of you are trying to save a
+     * VectorFeature using WFS-T to geoserver and you are seeing a "Error
+     * performing insert: java.lang.String cannot be cast to
+     * com.vividsolutions.jts.geom.Geometry".
      *
      * @return true if converting succeeded (if this is not a LINESTRING)
      */
-    public boolean convertLineStringToMultiLineString()
-    {
+    public boolean convertLineStringToMultiLineString() {
         final Geometry g = this.getGeometry();
 
-        if (g.getClassName().equals(org.gwtopenmaps.openlayers.client.geometry.Geometry.LINESTRING_CLASS_NAME))
-        {
+        if (g.getClassName().equals(
+                org.gwtopenmaps.openlayers.client.geometry.Geometry.LINESTRING_CLASS_NAME)) {
             final LineString ls = LineString.narrowToLineString(g.getJSObject());
             final MultiLineString mls = new MultiLineString(new LineString[]{ls});
             this.getJSObject().setProperty("geometry", mls.getJSObject());
 
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    public void move(LonLat lonLat)
-    {
+    public void move(LonLat lonLat) {
         VectorFeatureImpl.move(getJSObject(), lonLat.getJSObject());
     }
-
 }

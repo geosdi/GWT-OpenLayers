@@ -44,4 +44,12 @@ public class VectorFeatureImpl {
     public static native void move(JSObject self, JSObject location)/*-{
      self.move(location);
      }-*/;
+
+    public static native void toState(JSObject self, String state) /*-{
+        self.toState(state);
+    }-*/;
+
+    public static native String getState(JSObject self) /*-{
+        return self.state;
+    }-*/;
 }

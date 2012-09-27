@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client.feature;
 
 import org.gwtopenmaps.openlayers.client.LonLat;
+import org.gwtopenmaps.openlayers.client.State;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
@@ -131,7 +132,6 @@ public class VectorFeature extends Feature {
      * Create a clone of this vector feature. Does not set any non-standard
      * properties.
      */
-    @Override
     public VectorFeature clone() {
         return narrowToVectorFeature(VectorFeatureImpl.clone(getJSObject()));
     }
@@ -160,7 +160,27 @@ public class VectorFeature extends Feature {
         }
     }
 
+    /**
+     * Moves the feature and redraws it at its new location.
+     * @param lonLat the location to which to move the feature
+     */
     public void move(LonLat lonLat) {
         VectorFeatureImpl.move(getJSObject(), lonLat.getJSObject());
+    }
+
+    /**
+     * Sets the new state.
+     * @param state The new state
+     */
+    public void toState(State state) {
+        VectorFeatureImpl.toState(getJSObject(), state.toString());
+    }
+
+    /**
+     * Gets the state of the feature.
+     * @return The state of the feature.
+     */
+    public State getState() {
+        return State.valueOf(VectorFeatureImpl.getState(getJSObject()));
     }
 }

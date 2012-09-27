@@ -83,6 +83,11 @@ public class Vector extends Layer
         return VectorImpl.redraw(this.getJSObject());
     }
 
+    public void drawFeature(VectorFeature vector)
+    {
+        VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject());
+    }
+
     public void drawFeature(VectorFeature vector, Style style)
     {
         VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject(), style.getJSObject());

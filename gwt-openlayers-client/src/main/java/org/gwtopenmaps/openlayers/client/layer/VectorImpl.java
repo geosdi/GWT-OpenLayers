@@ -62,6 +62,10 @@ class VectorImpl
         return vector.redraw();
     }-*/;
 
+    public static native void drawFeature(JSObject vector, JSObject feature) /*-{
+        vector.drawFeature(feature);
+    }-*/;
+
     public static native void drawFeature(JSObject vector, JSObject feature,
         JSObject style) /*-{
         vector.drawFeature(feature, style);

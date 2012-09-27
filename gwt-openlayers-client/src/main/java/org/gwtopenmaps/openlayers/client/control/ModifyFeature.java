@@ -71,6 +71,22 @@ public class ModifyFeature extends Control
     }
 
     /**
+     * Select a feature for modification in standalone mode.
+     */
+    public void selectFeature(VectorFeature vectorFeature)
+    {
+        ModifyFeatureImpl.selectFeature(this.getJSObject(), vectorFeature.getJSObject());
+    }
+
+    /**
+     * Called when the select feature control unselects a feature.
+     */
+    public void unselectFeature(VectorFeature vectorFeature)
+    {
+        ModifyFeatureImpl.unselectFeature(this.getJSObject(), vectorFeature.getJSObject());
+    }
+
+    /**
      *
      */
     public interface OnModificationStartListener

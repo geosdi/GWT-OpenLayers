@@ -48,4 +48,13 @@ public class ModifyFeatureImpl
     public static native boolean isSelectedFeatureModified(JSObject obj) /*-{
         return obj.modified;
     }-*/;
+
+    public static native void selectFeature(JSObject modifyFeature, JSObject feature)/*-{
+        modifyFeature.selectFeature(feature);
+    }-*/;
+
+    public static native void unselectFeature(JSObject modifyFeature, JSObject feature)/*-{
+        modifyFeature.unselectFeature(feature);
+    }-*/;
+
 }

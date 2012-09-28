@@ -1,6 +1,12 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.wmsrefresh;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -14,21 +20,13 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HTML;
-
+@GwtOpenlayersExample
 public class WmsRefreshExample extends AbstractExample {
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public WmsRefreshExample(String title) {
-        super(title);
+    public WmsRefreshExample() {
+        super("WMS refresh",
+              "Demonstrates how to you can reload a WMS to the server state.",
+              new String[]{"wms", "refresh"});
     }
 
     @Override
@@ -53,19 +51,19 @@ public class WmsRefreshExample extends AbstractExample {
 
         String wmsUrl = "http://demo.opengeo.org/geoserver/wms";
 
-        final WMS wmsLayer = new WMS("Basic WMS", wmsUrl, wmsParams, wmsLayerParams);
+        final WMS wmsLayer = new WMS("Basic WMS", wmsUrl, wmsParams,
+                                     wmsLayerParams);
 
         //Add the WMS to the map
         Map map = mapWidget.getMap();
         map.addLayer(wmsLayer);
 
         //The actual refresh
-        final Button butRefresh = new Button("Refresh WMS", new ClickHandler()
-        {
-            public void onClick(ClickEvent event)
-            {
+        final Button butRefresh = new Button("Refresh WMS", new ClickHandler() {
+            public void onClick(ClickEvent event) {
                 final WMSParams wmsParams = new WMSParams();
-                wmsParams.setParameter(((Double) Math.random()).toString(), ((Double) Math.random()).toString());
+                wmsParams.setParameter(((Double) Math.random()).toString(),
+                                       ((Double) Math.random()).toString());
                 wmsLayer.mergeNewParams(wmsParams);
                 wmsLayer.redraw();
             }
@@ -81,9 +79,9 @@ public class WmsRefreshExample extends AbstractExample {
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to refresh a WMS layer to its server state.</p>" +
-                "<p>Clicking on the refresh button will refresh the layer, but since the WMS layer used is just a static map you will see nothing happen." +
-                "You will just have to trust us that the code provide really does reload the WMS layer, or check network trafic :-)</p>"));
+                "<p>This example shows how to refresh a WMS layer to its server state.</p>"
+                + "<p>Clicking on the refresh button will refresh the layer, but since the WMS layer used is just a static map you will see nothing happen."
+                + "You will just have to trust us that the code provide really does reload the WMS layer, or check network trafic :-)</p>"));
         contentPanel.add(mapWidget);
         contentPanel.add(butRefresh);
 

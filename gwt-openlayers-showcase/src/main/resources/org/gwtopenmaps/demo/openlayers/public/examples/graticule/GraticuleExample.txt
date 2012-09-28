@@ -3,6 +3,7 @@ package org.gwtopenmaps.demo.openlayers.client.examples.graticule;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -23,15 +24,13 @@ import org.gwtopenmaps.openlayers.client.symbolizer.LineSymbolizerOptions;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizer;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizerOptions;
 
+@GwtOpenlayersExample
 public class GraticuleExample extends AbstractExample {
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public GraticuleExample(String title) {
-        super(title);
+    public GraticuleExample() {
+        super("Graticule",
+              "Demonstrates how to add a graticule raster to the map.",
+              new String[]{"graticule", "raster", "control"});
     }
 
     @Override

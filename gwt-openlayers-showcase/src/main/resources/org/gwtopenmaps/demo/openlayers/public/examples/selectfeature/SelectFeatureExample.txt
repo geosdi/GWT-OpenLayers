@@ -1,6 +1,15 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.selectfeature;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RadioButton;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -22,15 +31,7 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.logical.shared.ValueChangeHandler;
-import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RadioButton;
-
+@GwtOpenlayersExample
 public class SelectFeatureExample extends AbstractExample {
 
     private final RadioButton rbNavigate = new RadioButton("grp", "navigate");
@@ -53,13 +54,12 @@ public class SelectFeatureExample extends AbstractExample {
     private SelectFeature boxSelectFeature = null;
     private SelectFeature hoverSelectFeature = null;
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public SelectFeatureExample(String title) {
-        super(title);
+    public SelectFeatureExample() {
+        super("Select and edit feature example",
+              "Demonstrates on how to create new features, and select features "
+                + "(on click, on hover and by selecting them in a box)",
+              new String[]{"features", "drawing", "geometry", "select",
+                    "vector", "point", "line", "polygon", "edit"});
     }
 
     @Override

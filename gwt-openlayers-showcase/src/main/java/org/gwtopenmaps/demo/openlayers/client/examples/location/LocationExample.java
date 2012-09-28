@@ -12,6 +12,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -26,18 +27,16 @@ import org.gwtopenmaps.openlayers.client.geometry.Point;
 import org.gwtopenmaps.openlayers.client.layer.OSM;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 
+@GwtOpenlayersExample
 public class LocationExample extends AbstractExample {
 
     private static final Projection DEFAULT_PROJECTION = new Projection(
             "EPSG:4326");
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public LocationExample(String title) {
-        super(title);
+    public LocationExample() {
+        super("GPS location example",
+              "Demonstrates how to display the users current location on the map",
+              new String[]{"gps", "location", "osm"});
     }
 
     @Override

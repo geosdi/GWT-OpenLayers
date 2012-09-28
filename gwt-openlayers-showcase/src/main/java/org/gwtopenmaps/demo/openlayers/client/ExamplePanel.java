@@ -1,7 +1,5 @@
 package org.gwtopenmaps.demo.openlayers.client;
 
-import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -12,58 +10,65 @@ import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
 
 /**
  * A clickable example panel.
+ *
  * @author Frank Wynants
  *
  */
+public class ExamplePanel extends Composite {
 
-public class ExamplePanel extends Composite
-{
-   public static final I18NMessages I18N = (I18NMessages) GWT.create(I18NMessages.class);
-   
-/**
- * Constructs the ExamplePanel using an Example
- * @param example
- */
-   public ExamplePanel(final ExampleBean example)
-   {
-      final VerticalPanel vp = new VerticalPanel();
-      vp.setSpacing(5);
-      
-      final ScrollPanel sp = new ScrollPanel();
-      sp.getElement().getStyle().setOverflowX(Overflow.HIDDEN);
-      sp.setSize("350px", "100px");
-      sp.setWidget(vp);
-      
-      final Label lblName = new Label(example.getName());
-      final Label lblDescription = new Label(example.getDescription());
-      final StringBuffer sb = new StringBuffer();
-      final String[] tags = example.getTags();
-      for (String tag : tags)
-      {
-         sb.append(tag).append(", ");
-      }
-      final Label lblTags = new Label(I18N.tags(sb.toString().substring(0, sb.toString().length() - 2)));
-      lblTags.setStyleName("exampletags");
-      
-      lblName.setStyleName("examplename");
-      vp.add(lblName);
-      vp.add(lblDescription);
-      vp.add(lblTags);
-      
-      final FocusPanel fp = new FocusPanel(sp);
-      this.initWidget(fp);
-      this.setStyleName("examplepanel");
-      
-      fp.addClickHandler(new ClickHandler()
-      {
-         public void onClick(ClickEvent event)
-         {
-            if (Window.Location.getHref().contains("?")) Window.open(Window.Location.getHref() + "&example=" + example.getName(), "_BLANK", null);
-            else Window.open(Window.Location.getHref() + "?example=" + example.getName(), "_BLANK", null);
-         }
-      });
-   }
+    public static final I18NMessages I18N = (I18NMessages) GWT.create(
+            I18NMessages.class);
+
+    /**
+     * Constructs the ExamplePanel using an Example
+     *
+     * @param example
+     */
+    public ExamplePanel(final ExampleBean example) {
+        final VerticalPanel vp = new VerticalPanel();
+        vp.setSpacing(5);
+
+        final ScrollPanel sp = new ScrollPanel();
+        sp.getElement().getStyle().setOverflowX(Overflow.HIDDEN);
+        sp.setSize("350px", "100px");
+        sp.setWidget(vp);
+
+        final Label lblName = new Label(example.getName());
+        final Label lblDescription = new Label(example.getDescription());
+        final StringBuffer sb = new StringBuffer();
+        final String[] tags = example.getTags();
+        for (String tag : tags) {
+            sb.append(tag).append(", ");
+        }
+        final Label lblTags = new Label(I18N.tags(
+                sb.toString().substring(0, sb.toString().length() - 2)));
+        lblTags.setStyleName("exampletags");
+
+        lblName.setStyleName("examplename");
+        vp.add(lblName);
+        vp.add(lblDescription);
+        vp.add(lblTags);
+
+        final FocusPanel fp = new FocusPanel(sp);
+        this.initWidget(fp);
+        this.setStyleName("examplepanel");
+
+        fp.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                if (Window.Location.getHref().contains("?")) {
+                    Window.open(
+                            Window.Location.getHref() + "&example=" + example.getName(),
+                                "_BLANK", null);
+                } else {
+                    Window.open(
+                            Window.Location.getHref() + "?example=" + example.getName(),
+                                "_BLANK", null);
+                }
+            }
+        });
+    }
 }

@@ -1,11 +1,16 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.snap;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.ToggleButton;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
-import org.gwtopenmaps.openlayers.client.State;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.control.DrawFeature;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
@@ -23,34 +28,28 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.ToggleButton;
-
 /**
  *
  * @author Frank Wynants
  */
-
+@GwtOpenlayersExample
 public class SnapFeatureExample extends AbstractExample {
+
     private final ToggleButton butDraw = new ToggleButton("Draw Feature");
     private final ToggleButton butDelete = new ToggleButton("Delete feature");
-    private final ToggleButton butSnap = new ToggleButton("Enable snapping", "Disable snapping");
-
+    private final ToggleButton butSnap = new ToggleButton("Enable snapping",
+                                                          "Disable snapping");
     //the DrawFeature, Snapping and DeleteFeature controls
     private DrawFeature drawLineFeatureControl = null;
     private Snapping snapControl = null;
     private SelectFeature deleteFeatureControl = null; //deleting is realized using a SelectFeature control
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public SnapFeatureExample(String title) {
-        super(title);
+    public SnapFeatureExample() {
+        super("Snap, edit and delete features example",
+              "Demonstrates on how to create new features and delete features. "
+                + "In this example snapping on the features is enabled.",
+              new String[]{"features", "drawing", "geometry", "edit", "vector",
+                    "line", "polygon", "snapping", "snap", "delete"});
     }
 
     @Override
@@ -94,16 +93,13 @@ public class SnapFeatureExample extends AbstractExample {
         snapControl = new Snapping();
         snapControl.setLayer(vectorLayer); //The editable layer.  Features from this layer that are digitized or modified may have vertices snapped to features from the target layer
         snapControl.setTargetLayer(vectorLayer); //Editing will snap to features from this layer.
-         map.addControl(snapControl);
+        map.addControl(snapControl);
 
-         //Create the delete control
-         deleteFeatureControl = new SelectFeature(vectorLayer);
-         map.addControl(deleteFeatureControl);
-         deleteFeatureControl.addFeatureHighlightedListener(new FeatureHighlightedListener()
-        {
-
-            public void onFeatureHighlighted(VectorFeature vectorFeature)
-            {
+        //Create the delete control
+        deleteFeatureControl = new SelectFeature(vectorLayer);
+        map.addControl(deleteFeatureControl);
+        deleteFeatureControl.addFeatureHighlightedListener(new FeatureHighlightedListener() {
+            public void onFeatureHighlighted(VectorFeature vectorFeature) {
                 //if you want to do WFS-T do the following :
                 //vectorFeature.toState(State.Unknown);
                 //vectorFeature.toState(State.Delete);
@@ -129,54 +125,37 @@ public class SnapFeatureExample extends AbstractExample {
         hpButtons.add(butSnap);
         contentPanel.add(hpButtons);
 
-        butDraw.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent event)
-            {
-                if (butDraw.isDown())
-                {
+        butDraw.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                if (butDraw.isDown()) {
                     butDelete.setValue(false);
                     deleteFeatureControl.deactivate();
 
                     drawLineFeatureControl.activate();
-                }
-                else
-                {
+                } else {
                     drawLineFeatureControl.deactivate();
                 }
             }
         });
 
-        butDelete.addClickHandler(new ClickHandler()
-        {
-
-            public void onClick(ClickEvent event)
-            {
-                if (butDelete.isDown())
-                {
+        butDelete.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                if (butDelete.isDown()) {
                     butDraw.setValue(false);
                     drawLineFeatureControl.deactivate();
 
                     deleteFeatureControl.activate();
-                }
-                else
-                {
+                } else {
                     deleteFeatureControl.deactivate();
                 }
             }
         });
 
-        butSnap.addClickHandler(new ClickHandler()
-        {
-
-            public void onClick(ClickEvent event)
-            {
-                if (butSnap.isDown())
-                {
+        butSnap.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
+                if (butSnap.isDown()) {
                     snapControl.activate();
-                }
-                else
-                {
+                } else {
                     snapControl.deactivate();
                 }
             }

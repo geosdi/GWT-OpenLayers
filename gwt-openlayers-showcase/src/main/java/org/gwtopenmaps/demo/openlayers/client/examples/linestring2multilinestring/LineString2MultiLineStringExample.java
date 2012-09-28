@@ -1,6 +1,9 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestring;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Label;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -18,28 +21,29 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Label;
-
+@GwtOpenlayersExample
 public class LineString2MultiLineStringExample extends AbstractExample {
 
     private DrawFeature drawLineFeatureControl = null;
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public LineString2MultiLineStringExample(String title) {
-        super(title);
+    public LineString2MultiLineStringExample() {
+        super("Convert a LINESTRING VectorFeature to a MULTILINESTRING",
+              "Demonstrates how to convert a LINESTRING to a MULTILINESTRING."
+                + " This is needed when you receive a "
+                + "\"Error performing insert: java.lang.String cannot be cast "
+                + "to com.vividsolutions.jts.geom.Geometry\" when sending"
+                + "newly created lines to geoserver using WFS-T.",
+              new String[]{"LINESTRING", "MULTILINESTRING", "geoserver", "wfs",
+                    "wfst", "wfs-t", "error", "cast", "vividsolutions",
+                    "geometry"});
     }
 
     @Override
     public void buildPanel() {
         // create controls
         final Label lblInfo = new Label(
-                "When you draw lines on the map GWT-OL will normally create LINESTRING objects. If your server (like geoserver) however requires" +
-                "MULTILINESTRING objects you can modify these objects using the convertLineStringToMultiLineString method on the org.gwtopenmaps.openlayers.client.feature.VectorFeature object. You can do this in an onFeatureAdded listener as shown in this example.<br/><br/>The actual saving to WFS-T is not included in the is example. Please look at other examples for this.");
+                "When you draw lines on the map GWT-OL will normally create LINESTRING objects. If your server (like geoserver) however requires"
+                + "MULTILINESTRING objects you can modify these objects using the convertLineStringToMultiLineString method on the org.gwtopenmaps.openlayers.client.feature.VectorFeature object. You can do this in an onFeatureAdded listener as shown in this example.<br/><br/>The actual saving to WFS-T is not included in the is example. Please look at other examples for this.");
 
         // create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
@@ -72,17 +76,21 @@ public class LineString2MultiLineStringExample extends AbstractExample {
         final DrawFeatureOptions drawFeatureOptions = new DrawFeatureOptions(); //create DrawFeatureOptions to listen on
         drawFeatureOptions.onFeatureAdded(new DrawFeature.FeatureAddedListener() //listen for the adding of features.
         {
-            public void onFeatureAdded(final VectorFeature vectorFeature)
-            {
-                contentPanel.add(new Label("Before convert: " + vectorFeature.getGeometry().toString()));
+            public void onFeatureAdded(final VectorFeature vectorFeature) {
+                contentPanel.add(
+                        new Label(
+                        "Before convert: " + vectorFeature.getGeometry().toString()));
                 vectorFeature.convertLineStringToMultiLineString(); //do the actual converting
-                contentPanel.add(new Label("After convert: " + vectorFeature.getGeometry().toString()));
+                contentPanel.add(
+                        new Label(
+                        "After convert: " + vectorFeature.getGeometry().toString()));
                 contentPanel.add(new Label("============================="));
                 //when you now save vectorLayer using WFS-T, it will use the MULTILINESTRING objects
             }
         });
 
-        drawLineFeatureControl = new DrawFeature(vectorLayer, new PathHandler(), drawFeatureOptions);
+        drawLineFeatureControl = new DrawFeature(vectorLayer, new PathHandler(),
+                                                 drawFeatureOptions);
         map.addControl(drawLineFeatureControl);
         drawLineFeatureControl.activate();
 

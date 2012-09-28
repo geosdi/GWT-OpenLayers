@@ -1,6 +1,12 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -16,35 +22,28 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HTML;
-
 /**
  *
  * @author Frank Wynants
  *
  */
-
+@GwtOpenlayersExample
 public class CancelDrawingExample extends AbstractExample {
 
     private DrawFeature drawLineFeatureControl = null;
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public CancelDrawingExample(String title) {
-        super(title);
+    public CancelDrawingExample() {
+        super("Cancel drawing",
+              "Demonstrates the use of the cancel method on DrawFeature "
+                + "to cancel a current sketch.",
+              new String[]{"cancel", "vector", "feature", "drawing", "sketch"});
     }
 
     @Override
     public void buildPanel() {
         // create controls
-        final HTML htmlInfo = new HTML("<p>This example shows how you can cancel a current sketch while drawing.</p><p>Draw some lines on the map, but <B>don't end the drawing by double clicking</B>. Then use the CANCEL button.</p><p>This button simply calls the cancel() method on the DrawFeature control.");
+        final HTML htmlInfo = new HTML(
+                "<p>This example shows how you can cancel a current sketch while drawing.</p><p>Draw some lines on the map, but <B>don't end the drawing by double clicking</B>. Then use the CANCEL button.</p><p>This button simply calls the cancel() method on the DrawFeature control.");
 
         // create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
@@ -80,10 +79,8 @@ public class CancelDrawingExample extends AbstractExample {
 
         final Button butCancel = new Button("CANCEL");
 
-        butCancel.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent event)
-            {
+        butCancel.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
                 drawLineFeatureControl.cancel(); //the actual cancel action
             }
         });

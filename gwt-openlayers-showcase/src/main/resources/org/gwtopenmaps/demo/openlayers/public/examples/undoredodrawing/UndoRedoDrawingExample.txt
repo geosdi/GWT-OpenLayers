@@ -1,6 +1,12 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -16,35 +22,27 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HTML;
-
 /**
  *
  * @author Frank Wynants
  *
  */
-
+@GwtOpenlayersExample
 public class UndoRedoDrawingExample extends AbstractExample {
 
     private DrawFeature drawLineFeatureControl = null;
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public UndoRedoDrawingExample(String title) {
-        super(title);
+    public UndoRedoDrawingExample() {
+        super("Undo/Redo drawing",
+              "Demonstrates the use of the undo and redo methods on DrawFeature.",
+              new String[]{"undo", "redo", "vector", "feature", "drawing", "sketch"});
     }
 
     @Override
     public void buildPanel() {
         // create controls
-        final HTML htmlInfo = new HTML("<p>This example shows how you can undo, and redo actions while drawing.</p><p>Draw some lines on the map, but <B>don't end the drawing by double clicking</B>. Then use the UNDO and REDO buttons.</p><p>These buttons simply call the undo() and redo() method on the DrawFeature control.");
+        final HTML htmlInfo = new HTML(
+                "<p>This example shows how you can undo, and redo actions while drawing.</p><p>Draw some lines on the map, but <B>don't end the drawing by double clicking</B>. Then use the UNDO and REDO buttons.</p><p>These buttons simply call the undo() and redo() method on the DrawFeature control.");
 
         // create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
@@ -81,19 +79,14 @@ public class UndoRedoDrawingExample extends AbstractExample {
         final Button butUndo = new Button("UNDO");
         final Button butRedo = new Button("REDO");
 
-        butUndo.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent event)
-            {
+        butUndo.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
                 drawLineFeatureControl.undo(); //the actual undo action
             }
         });
 
-        butRedo.addClickHandler(new ClickHandler()
-        {
-
-            public void onClick(ClickEvent event)
-            {
+        butRedo.addClickHandler(new ClickHandler() {
+            public void onClick(ClickEvent event) {
                 drawLineFeatureControl.redo(); //the actual redo action
             }
         });

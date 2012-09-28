@@ -24,7 +24,7 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import org.gwtopenmaps.demo.openlayers.client.GwtOpenLayersShowcase;
+import org.gwtopenmaps.demo.openlayers.client.components.ShowcaseSearchPanel;
 
 /**
  *
@@ -36,7 +36,7 @@ import org.gwtopenmaps.demo.openlayers.client.GwtOpenLayersShowcase;
 public abstract class AbstractSourceButton extends Composite implements
         ClickHandler {
 
-    protected Button button = new Button(GwtOpenLayersShowcase.I18N.viewSource(),
+    protected Button button = new Button(ShowcaseSearchPanel.I18N.viewSource(),
                                          this);
     private String sourceCodeURL;
 

@@ -4,7 +4,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import org.gwtopenmaps.demo.openlayers.client.DialogBoxWithCloseButton;
-import org.gwtopenmaps.demo.openlayers.client.GwtOpenLayersShowcase;
+import org.gwtopenmaps.demo.openlayers.client.components.ShowcaseSearchPanel;
 
 /**
  *
@@ -26,7 +26,7 @@ public class ShowSourceButton extends AbstractSourceButton {
 
         DialogBoxWithCloseButton dialogBox = new DialogBoxWithCloseButton(false);
         dialogBox.setWidget(sp);
-        dialogBox.setText(GwtOpenLayersShowcase.I18N.viewSource());
+        dialogBox.setText(ShowcaseSearchPanel.I18N.viewSource());
         dialogBox.center();
 
         super.doFormat();

@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -23,16 +24,13 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
+@GwtOpenlayersExample
 public class MeasureExample extends AbstractExample {
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     * @param source The source of the example.
-     */
-    public MeasureExample(String title) {
-        super(title);
+    public MeasureExample() {
+        super("Measure control example",
+              "Demonstrates how to add a measure control.",
+              new String[]{"measure", "control"});
     }
 
     @Override

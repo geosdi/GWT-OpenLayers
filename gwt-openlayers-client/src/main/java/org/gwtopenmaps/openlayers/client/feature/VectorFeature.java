@@ -1,7 +1,6 @@
 package org.gwtopenmaps.openlayers.client.feature;
 
 import org.gwtopenmaps.openlayers.client.LonLat;
-import org.gwtopenmaps.openlayers.client.State;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
@@ -22,6 +21,28 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  */
 public class VectorFeature extends Feature {
+
+    /**
+     * {@link VectorFeature} States
+     */
+    public enum State {
+
+        Unknown,
+        Insert,
+        Update,
+        Delete;
+
+        public static State fromString(String state) {
+            if (state != null) {
+                for (State s : State.values()) {
+                    if (state.equalsIgnoreCase(s.toString())) {
+                        return s;
+                    }
+                }
+            }
+            return State.Unknown;
+        }
+    }
 
     public static VectorFeature narrowToVectorFeature(JSObject vectorFeature) {
         return (vectorFeature == null) ? null : new VectorFeature(vectorFeature);
@@ -162,6 +183,7 @@ public class VectorFeature extends Feature {
 
     /**
      * Moves the feature and redraws it at its new location.
+     *
      * @param lonLat the location to which to move the feature
      */
     public void move(LonLat lonLat) {
@@ -170,6 +192,7 @@ public class VectorFeature extends Feature {
 
     /**
      * Sets the new state.
+     *
      * @param state The new state
      */
     public void toState(State state) {
@@ -178,9 +201,10 @@ public class VectorFeature extends Feature {
 
     /**
      * Gets the state of the feature.
+     *
      * @return The state of the feature.
      */
     public State getState() {
-        return State.valueOf(VectorFeatureImpl.getState(getJSObject()));
+        return State.fromString(VectorFeatureImpl.getState(getJSObject()));
     }
 }

@@ -3,6 +3,7 @@ package org.gwtopenmaps.demo.openlayers.client.examples.TransformFeature;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -27,10 +28,15 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
  * @author Lorenzo Amato <lorenzo.amato@geosdi.org>
  *
  */
+@GwtOpenlayersExample
 public class TransformFeatureExample extends AbstractExample {
 
-    public TransformFeatureExample(String title) {
-        super(title);
+    public TransformFeatureExample() {
+        super("Transform vector features",
+              "Details on how to create and transform vector features."
+                + " Use the small Handels to transform and the greater "
+                + "ones to rotate.",
+              new String[]{"features", "transform", "geometry"});
     }
 
     @Override

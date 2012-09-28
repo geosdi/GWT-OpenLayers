@@ -4,6 +4,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.DialogBoxWithCloseButton;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -21,15 +22,13 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
+@GwtOpenlayersExample
 public class WmsFeatureInfoExample extends AbstractExample {
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public WmsFeatureInfoExample(String title) {
-        super(title);
+    public WmsFeatureInfoExample() {
+        super("WMS get featuretype example",
+              "Demonstrates how to get feature information from a WMS layer.",
+              new String[]{"WMS", "feature", "featuretype", "get"});
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -31,15 +32,14 @@ import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.RefreshStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 
+@GwtOpenlayersExample
 public class WfsRefreshExample extends AbstractExample {
 
-    /**
-     * Constructor.
-     *
-     * @param title The title of the example
-     */
-    public WfsRefreshExample(String title) {
-        super(title);
+    public WfsRefreshExample() {
+        super("WFS refresh",
+              "Demonstrates how to you can reload a WFS to the server"
+                + " state after moving (but not saving) the features.",
+              new String[]{"wfs", "edit", "refresh"});
     }
 
     @Override

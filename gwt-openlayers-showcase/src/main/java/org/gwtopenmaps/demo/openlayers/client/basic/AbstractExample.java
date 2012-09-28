@@ -1,10 +1,10 @@
 package org.gwtopenmaps.demo.openlayers.client.basic;
 
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import org.gwtopenmaps.demo.openlayers.client.ExampleBean;
 
 /**
  * The abstract base for each Example
@@ -16,16 +16,17 @@ public abstract class AbstractExample extends Composite {
 
     protected VerticalPanel contentPanel = new VerticalPanel();
     private final ShowSourceButton butShowSource = new ShowSourceButton();
+    protected ExampleBean example;
 
     /**
      * The constructor.
      *
-     * @param title The title of the example
-     * @param textResource The source of the example.
      */
-    public AbstractExample(String title) {
-        setTitle(title);
+    public AbstractExample(String name, String description, String[] tags) {
+        setTitle(name);
         butShowSource.setSourceCodeURL(getSourceCodeURL());
+
+        this.example = new ExampleBean(name, description, tags, this);
     }
 
     public abstract void buildPanel();
@@ -42,5 +43,12 @@ public abstract class AbstractExample extends Composite {
         contentPanel.setWidth("100%");
         contentPanel.add(new HTML("<H1>" + title + "</H1>"));
         contentPanel.add(butShowSource);
+    }
+
+    /**
+     * @return the example
+     */
+    public ExampleBean getExample() {
+        return example;
     }
 }

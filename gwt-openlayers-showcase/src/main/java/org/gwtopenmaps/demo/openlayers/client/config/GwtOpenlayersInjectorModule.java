@@ -36,6 +36,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVector
 import org.gwtopenmaps.demo.openlayers.client.examples.selectfeature.SelectFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.snap.SnapFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing.UndoRedoDrawingExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.variablewfsstyle.VariableWfsStyle;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsrefresh.WmsRefreshExample;
@@ -81,5 +82,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(WmsWfsExample.class).asEagerSingleton();
         bind(WmsWfsEditExample.class).asEagerSingleton();
         bind(CqlExample.class).asEagerSingleton();
+        bind(VariableWfsStyle.class).asEagerSingleton();
     }
 }

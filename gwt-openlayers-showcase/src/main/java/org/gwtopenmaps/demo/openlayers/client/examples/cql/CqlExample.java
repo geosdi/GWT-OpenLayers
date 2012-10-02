@@ -1,9 +1,7 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.cql;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.HTML;
 import javax.inject.Inject;
-import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
+
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -15,23 +13,25 @@ import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
-import org.gwtopenmaps.openlayers.client.layer.Vector;
-import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
-import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
-import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
-import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
-import org.gwtopenmaps.openlayers.client.strategy.Strategy;
+
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.TextBox;
 
 public class CqlExample extends AbstractExample {
 
     @Inject
     public CqlExample(ShowcaseExampleStore store) {
-        super("WMS with WFS overlay",
-              "Demonstrates the use of WMS base layer with a WFS overlay.",
-              new String[]{"WMS", "WFS", "overlay"}, store);
+        super("WMS CQL filtering",
+              "Demonstrates the use of CQL to do filtering.",
+              new String[]{"WMS", "CQL", "filter"}, store);
     }
 
     @Override
@@ -43,11 +43,11 @@ public class CqlExample extends AbstractExample {
         defaultMapOptions.setNumZoomLevels(16);
 
         //Create a MapWidget
-        MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
+        MapWidget mapWidget = new MapWidget("800px", "500px", defaultMapOptions);
         //Create a WMS layer as base layer
-        WMSParams wmsParams = new WMSParams();
+        final WMSParams wmsParams = new WMSParams();
         wmsParams.setFormat("image/png");
-        wmsParams.setLayers("topp:tasmania_state_boundaries");
+        wmsParams.setLayers("topp:states");
         wmsParams.setStyles("");
 
         WMSOptions wmsLayerParams = new WMSOptions();
@@ -56,30 +56,11 @@ public class CqlExample extends AbstractExample {
 
         String wmsUrl = "http://demo.opengeo.org/geoserver/wms";
 
-        WMS wmsLayer = new WMS("Basic WMS", wmsUrl, wmsParams, wmsLayerParams);
+        final WMS wmsLayer = new WMS("Basic WMS", wmsUrl, wmsParams, wmsLayerParams);
 
         //Add the WMS to the map
         Map map = mapWidget.getMap();
         map.addLayer(wmsLayer);
-
-        //Create a WFS layer
-        WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
-        wfsProtocolOptions.setUrl("http://demo.opengeo.org/geoserver/wfs");
-        wfsProtocolOptions.setFeatureType("tasmania_roads");
-        wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
-        //if your wms is in a different projection use wfsProtocolOptions.setSrsName(LAMBERT72);
-
-        WFSProtocol wfsProtocol = new WFSProtocol(wfsProtocolOptions);
-
-        VectorOptions vectorOptions = new VectorOptions();
-        vectorOptions.setProtocol(wfsProtocol);
-        vectorOptions.setStrategies(new Strategy[]{new BBoxStrategy()});
-        //if your wms is in a different projection use vectorOptions.setProjection(LAMBERT72);
-
-        Vector wfsLayer = new Vector("wfsExample", vectorOptions);
-
-        map.addLayer(wfsLayer);
-
 
         //Lets add some default controls to the map
         map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
@@ -87,14 +68,30 @@ public class CqlExample extends AbstractExample {
         map.addControl(new ScaleLine()); //Display the scaleline
 
         //Center and zoom to a location
-        map.setCenter(new LonLat(146.7, -41.8), 6);
+        map.setCenter(new LonLat(-100, 40), 4);
+
+        //Create a textbox and a button for CQL
+        final TextBox txtCql = new TextBox();
+        txtCql.setText("STATE_ABBR = 'TX'");
+        Button butCql = new Button("Do CQL", new ClickHandler()
+        {
+
+            public void onClick(ClickEvent event)
+            {
+                wmsParams.setCQLFilter(txtCql.getText()); //set the CQL filter
+                wmsLayer.mergeNewParams(wmsParams); //and force the layer to reread its WMSParams
+            }
+        });
+
+        HorizontalPanel hpCql = new HorizontalPanel();
+        hpCql.setSpacing(3);
+        hpCql.add(txtCql);
+        hpCql.add(butCql);
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to add a WMS layer and a WFS overlay to a map.</p>"));
-        contentPanel.add(
-                new InfoPanel(
-                "For WFS it is adviced to use a proxy to avoid cross reference problems. See the gwt-openlayers-server code for more info."));
+                "<p>This example shows how to use a CQL filter on a WMS layer.</p><p>Enter the CQL filter in the textbox, and click the <b>'Do CQL'</b> button to execute the CQL. An example CQL you can execute is allready given in the textbox.</p>"));
+        contentPanel.add(hpCql);
         contentPanel.add(mapWidget);
 
         initWidget(contentPanel);

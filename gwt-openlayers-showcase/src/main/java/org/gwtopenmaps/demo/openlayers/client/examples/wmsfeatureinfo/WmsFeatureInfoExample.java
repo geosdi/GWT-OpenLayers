@@ -27,9 +27,9 @@ public class WmsFeatureInfoExample extends AbstractExample {
 
     @Inject
     public WmsFeatureInfoExample(ShowcaseExampleStore store) {
-        super("WMS get featuretype example",
+        super("WMS get featureinfo example",
               "Demonstrates how to get feature information from a WMS layer.",
-              new String[]{"WMS", "feature", "featuretype", "get"}, store);
+              new String[]{"WMS", "feature", "featureinfo", "get", "info"}, store);
     }
 
     @Override

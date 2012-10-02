@@ -2,9 +2,10 @@ package org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -17,16 +18,16 @@ import org.gwtopenmaps.openlayers.client.layer.GoogleV3;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3MapType;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3Options;
 
-@GwtOpenlayersExample
 public class BasicGoogleV3Example extends AbstractExample {
 
     private static final Projection DEFAULT_PROJECTION = new Projection(
             "EPSG:4326");
 
-    public BasicGoogleV3Example() {
+    @Inject
+    public BasicGoogleV3Example(ShowcaseExampleStore store) {
         super("Basic Google V3 example",
               "Demonstrates the use of Google V3 layers.",
-              new String[]{"Google", "V3", "basic"});
+              new String[]{"Google", "V3", "basic"}, store);
     }
 
     @Override

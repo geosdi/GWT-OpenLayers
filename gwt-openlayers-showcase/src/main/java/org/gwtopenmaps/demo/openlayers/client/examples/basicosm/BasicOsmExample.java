@@ -2,9 +2,10 @@ package org.gwtopenmaps.demo.openlayers.client.examples.basicosm;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -15,15 +16,15 @@ import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.layer.OSM;
 
-@GwtOpenlayersExample
 public class BasicOsmExample extends AbstractExample {
 
     private static final Projection DEFAULT_PROJECTION = new Projection(
             "EPSG:4326");
 
-    public BasicOsmExample() {
+    @Inject
+    public BasicOsmExample(ShowcaseExampleStore store) {
         super("Basic OSM example", "Show a simple OSM map.",
-              new String[]{"openstreetmap", "OSM", "basic"});
+              new String[]{"openstreetmap", "OSM", "basic"}, store);
     }
 
     @Override

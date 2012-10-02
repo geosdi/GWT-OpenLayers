@@ -3,8 +3,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.vector;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -26,13 +27,14 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-@GwtOpenlayersExample
 public class VectorExample extends AbstractExample {
 
-    public VectorExample() {
+    @Inject
+    public VectorExample(ShowcaseExampleStore store) {
         super("Clickable vector example",
               "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.",
-              new String[]{"marker", "feature", "clickable", "vector", "line"});
+              new String[]{"marker", "feature", "clickable", "vector",
+                  "line"}, store);
     }
 
     @Override

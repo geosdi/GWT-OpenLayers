@@ -5,8 +5,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -27,16 +28,17 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
  * @author Frank Wynants
  *
  */
-@GwtOpenlayersExample
 public class CancelDrawingExample extends AbstractExample {
 
     private DrawFeature drawLineFeatureControl = null;
 
-    public CancelDrawingExample() {
+    @Inject
+    public CancelDrawingExample(ShowcaseExampleStore store) {
         super("Cancel drawing",
               "Demonstrates the use of the cancel method on DrawFeature "
                 + "to cancel a current sketch.",
-              new String[]{"cancel", "vector", "feature", "drawing", "sketch"});
+              new String[]{"cancel", "vector", "feature", "drawing", "sketch"},
+              store);
     }
 
     @Override

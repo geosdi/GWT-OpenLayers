@@ -2,8 +2,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.basicbing;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -16,15 +17,16 @@ import org.gwtopenmaps.openlayers.client.layer.Bing;
 import org.gwtopenmaps.openlayers.client.layer.BingOptions;
 import org.gwtopenmaps.openlayers.client.layer.BingType;
 
-@GwtOpenlayersExample
 public class BasicBingExample extends AbstractExample {
 
     private static final Projection DEFAULT_PROJECTION = new Projection(
             "EPSG:4326");
 
-    public BasicBingExample() {
+    @Inject
+    public BasicBingExample(ShowcaseExampleStore store) {
         super("Basic Bing example", "Demonstrates the use of Bing layers.",
-              new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"});
+              new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"},
+              store);
     }
 
     @Override

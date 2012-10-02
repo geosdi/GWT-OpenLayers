@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import org.gwtopenmaps.demo.openlayers.client.ExampleBean;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ExampleStore;
 
 /**
  * The abstract base for each Example
@@ -17,6 +18,12 @@ public abstract class AbstractExample extends Composite {
     protected VerticalPanel contentPanel = new VerticalPanel();
     private final ShowSourceButton butShowSource = new ShowSourceButton();
     protected ExampleBean example;
+
+    public AbstractExample(String name, String description, String[] tags,
+            ExampleStore store) {
+       this(name, description, tags);
+       store.addExample(example);
+    }
 
     /**
      * The constructor.

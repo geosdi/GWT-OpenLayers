@@ -2,8 +2,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -21,13 +22,13 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-@GwtOpenlayersExample
 public class CustomMousePositionExample extends AbstractExample {
 
-    public CustomMousePositionExample() {
+    @Inject
+    public CustomMousePositionExample(ShowcaseExampleStore store) {
         super("Custom mouse position",
               "Demonstrates how to add a custom mouse position control to the map.",
-              new String[]{"mouse", "position"});
+              new String[]{"mouse", "position"}, store);
     }
 
     @Override

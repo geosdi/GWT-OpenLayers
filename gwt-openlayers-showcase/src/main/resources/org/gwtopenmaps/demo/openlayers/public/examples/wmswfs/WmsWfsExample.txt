@@ -2,9 +2,10 @@ package org.gwtopenmaps.demo.openlayers.client.examples.wmswfs;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -24,13 +25,13 @@ import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 
-@GwtOpenlayersExample
 public class WmsWfsExample extends AbstractExample {
 
-    public WmsWfsExample() {
+    @Inject
+    public WmsWfsExample(ShowcaseExampleStore store) {
         super("WMS with WFS overlay",
               "Demonstrates the use of WMS base layer with a WFS overlay.",
-              new String[]{"WMS", "WFS", "overlay"});
+              new String[]{"WMS", "WFS", "overlay"}, store);
     }
 
     @Override

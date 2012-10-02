@@ -5,8 +5,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ToggleButton;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -32,7 +33,6 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
  *
  * @author Frank Wynants
  */
-@GwtOpenlayersExample
 public class SnapFeatureExample extends AbstractExample {
 
     private final ToggleButton butDraw = new ToggleButton("Draw Feature");
@@ -44,12 +44,13 @@ public class SnapFeatureExample extends AbstractExample {
     private Snapping snapControl = null;
     private SelectFeature deleteFeatureControl = null; //deleting is realized using a SelectFeature control
 
-    public SnapFeatureExample() {
+    @Inject
+    public SnapFeatureExample(ShowcaseExampleStore store) {
         super("Snap, edit and delete features example",
               "Demonstrates on how to create new features and delete features. "
                 + "In this example snapping on the features is enabled.",
               new String[]{"features", "drawing", "geometry", "edit", "vector",
-                    "line", "polygon", "snapping", "snap", "delete"});
+                    "line", "polygon", "snapping", "snap", "delete"}, store);
     }
 
     @Override

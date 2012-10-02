@@ -2,9 +2,10 @@ package org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.DialogBoxWithCloseButton;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -22,13 +23,13 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-@GwtOpenlayersExample
 public class WmsFeatureInfoExample extends AbstractExample {
 
-    public WmsFeatureInfoExample() {
+    @Inject
+    public WmsFeatureInfoExample(ShowcaseExampleStore store) {
         super("WMS get featuretype example",
               "Demonstrates how to get feature information from a WMS layer.",
-              new String[]{"WMS", "feature", "featuretype", "get"});
+              new String[]{"WMS", "feature", "featuretype", "get"}, store);
     }
 
     @Override

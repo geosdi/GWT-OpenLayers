@@ -3,8 +3,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.rotatevector;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -25,14 +26,14 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-@GwtOpenlayersExample
 public class RotateVectorExample extends AbstractExample {
 
-    public RotateVectorExample() {
+    @Inject
+    public RotateVectorExample(ShowcaseExampleStore store) {
         super("Rotate vector features",
               "Details on how to create and rotate vector "
                 + "features programmatically.",
-              new String[]{"features", "rotate", "geometry"});
+              new String[]{"features", "rotate", "geometry"}, store);
     }
 
     @Override

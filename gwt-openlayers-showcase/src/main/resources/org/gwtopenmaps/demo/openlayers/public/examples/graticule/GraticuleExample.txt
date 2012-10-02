@@ -2,8 +2,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.graticule;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -24,13 +25,13 @@ import org.gwtopenmaps.openlayers.client.symbolizer.LineSymbolizerOptions;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizer;
 import org.gwtopenmaps.openlayers.client.symbolizer.TextSymbolizerOptions;
 
-@GwtOpenlayersExample
 public class GraticuleExample extends AbstractExample {
 
-    public GraticuleExample() {
+    @Inject
+    public GraticuleExample(ShowcaseExampleStore store) {
         super("Graticule",
               "Demonstrates how to add a graticule raster to the map.",
-              new String[]{"graticule", "raster", "control"});
+              new String[]{"graticule", "raster", "control"}, store);
     }
 
     @Override

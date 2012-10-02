@@ -3,8 +3,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.measure;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -24,13 +25,13 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-@GwtOpenlayersExample
 public class MeasureExample extends AbstractExample {
 
-    public MeasureExample() {
+    @Inject
+    public MeasureExample(ShowcaseExampleStore store) {
         super("Measure control example",
               "Demonstrates how to add a measure control.",
-              new String[]{"measure", "control"});
+              new String[]{"measure", "control"}, store);
     }
 
     @Override

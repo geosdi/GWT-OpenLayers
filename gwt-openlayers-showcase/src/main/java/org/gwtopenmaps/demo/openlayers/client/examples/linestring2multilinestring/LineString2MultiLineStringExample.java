@@ -2,8 +2,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestri
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Label;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -21,12 +22,12 @@ import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 
-@GwtOpenlayersExample
 public class LineString2MultiLineStringExample extends AbstractExample {
 
     private DrawFeature drawLineFeatureControl = null;
 
-    public LineString2MultiLineStringExample() {
+    @Inject
+    public LineString2MultiLineStringExample(ShowcaseExampleStore store) {
         super("Convert a LINESTRING VectorFeature to a MULTILINESTRING",
               "Demonstrates how to convert a LINESTRING to a MULTILINESTRING."
                 + " This is needed when you receive a "
@@ -35,7 +36,7 @@ public class LineString2MultiLineStringExample extends AbstractExample {
                 + "newly created lines to geoserver using WFS-T.",
               new String[]{"LINESTRING", "MULTILINESTRING", "geoserver", "wfs",
                     "wfst", "wfs-t", "error", "cast", "vividsolutions",
-                    "geometry"});
+                    "geometry"}, store);
     }
 
     @Override

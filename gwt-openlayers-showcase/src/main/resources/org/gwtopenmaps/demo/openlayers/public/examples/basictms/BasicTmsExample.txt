@@ -2,8 +2,9 @@ package org.gwtopenmaps.demo.openlayers.client.examples.basictms;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
-import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersExample;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
@@ -17,15 +18,15 @@ import org.gwtopenmaps.openlayers.client.layer.TMS;
 import org.gwtopenmaps.openlayers.client.layer.TMSOptions;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-@GwtOpenlayersExample
 public class BasicTmsExample extends AbstractExample {
 
     private static final Projection DEFAULT_PROJECTION = new Projection(
             "EPSG:900913");
 
-    public BasicTmsExample() {
+    @Inject
+    public BasicTmsExample(ShowcaseExampleStore store) {
         super("Basic TMS example", "Demonstrates the use of a TMS layer.",
-              new String[]{"TMS", "basic"});
+              new String[]{"TMS", "basic"}, store);
     }
 
     /**

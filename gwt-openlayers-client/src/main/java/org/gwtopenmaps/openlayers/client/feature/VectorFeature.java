@@ -6,6 +6,8 @@ import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.geometry.Geometry;
 import org.gwtopenmaps.openlayers.client.geometry.LineString;
 import org.gwtopenmaps.openlayers.client.geometry.MultiLineString;
+import org.gwtopenmaps.openlayers.client.geometry.MultiPolygon;
+import org.gwtopenmaps.openlayers.client.geometry.Polygon;
 import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
 import org.gwtopenmaps.openlayers.client.util.Attributes;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
@@ -159,8 +161,8 @@ public class VectorFeature extends Feature {
 
     /**
      * Convenient method to convert a LINESTRING VectorFeature to a
-     * MULTILINEFEATURE. This method can be used of you are trying to save a
-     * VectorFeature using WFS-T to geoserver and you are seeing a "Error
+     * MULTILINE featureE. This method can be used of you are trying to save a
+     * VectorFeature Line using WFS-T to geoserver and you are seeing a "Error
      * performing insert: java.lang.String cannot be cast to
      * com.vividsolutions.jts.geom.Geometry".
      *
@@ -180,6 +182,31 @@ public class VectorFeature extends Feature {
             return false;
         }
     }
+
+    /**
+     * Convenient method to convert a POLYGON VectorFeature to a
+     * MULTIPOLYGON feature. This method can be used of you are trying to save a
+     * VectorFeature Polygon using WFS-T to geoserver and you are seeing a "Error
+     * performing insert: java.lang.String cannot be cast to
+     * com.vividsolutions.jts.geom.Geometry".
+     *
+     * @return true if converting succeeded (if this is not a POLYGON)
+     */
+    public boolean convertPolygonToMultiPolygon() {
+        final Geometry g = this.getGeometry();
+
+        if (g.getClassName().equals(
+                org.gwtopenmaps.openlayers.client.geometry.Geometry.POLYGON_CLASS_NAME)) {
+            final Polygon p = Polygon.narrowToPolygon(g.getJSObject());
+            final MultiPolygon mp = new MultiPolygon(new Polygon[]{p});
+            this.getJSObject().setProperty("geometry", mp.getJSObject());
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     /**
      * Moves the feature and redraws it at its new location.

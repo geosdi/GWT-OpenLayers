@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.popup;
 
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
+import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
@@ -190,6 +191,11 @@ public class Popup extends OpenLayersObjectWrapper
         this.getJSObject().setProperty("lonlat", lt.getJSObject());
     }
 
+    public LonLat getLonLat()
+    {
+    	return LonLat.narrowToLonLat(this.getJSObject().getProperty("lonlat"));
+    }
+
     /**
      * Method: show Makes the popup visible.
      */
@@ -214,6 +220,23 @@ public class Popup extends OpenLayersObjectWrapper
     public void updatePosition()
     {
         PopupImpl.updatePosition(getJSObject());
+    }
+
+    /**
+     * Method: moveTo
+     *
+     * @param px - {<OpenLayers.Pixel>} the top and left position of the popup div.
+     */
+    public void moveTo(Pixel px) {
+        PopupImpl.moveTo(getJSObject(), px.getJSObject());
+    }
+
+    /**
+     * Method: panIntoView
+     * Pans the map such that the popup is totaly viewable (if necessary)
+     */
+    public void panIntoView() {
+    	PopupImpl.panIntoView(getJSObject());
     }
 
     /**

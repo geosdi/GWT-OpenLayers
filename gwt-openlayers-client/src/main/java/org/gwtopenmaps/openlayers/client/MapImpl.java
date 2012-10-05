@@ -73,7 +73,7 @@ class MapImpl {
     public static native JSObject getControlsByClass(JSObject map, String className)/*-{
         return map.getControlsByClass(className)[0];
     }-*/;
-	
+
 	public static native JSObject getLayers(JSObject map)/*-{
 		return (map.layers === undefined) ? null : map.layers;
 	}-*/;
@@ -85,7 +85,7 @@ class MapImpl {
     public static native void removeLayer(JSObject map, JSObject layer, boolean setNewBaseLayer)/*-{
         map.removeLayer(layer, setNewBaseLayer);
     }-*/;
-	
+
 	public static native void removeControl(JSObject map, JSObject control)/*-{
 		map.removeControl(control);
 	}-*/;
@@ -97,7 +97,7 @@ class MapImpl {
 	public static native void setLayerIndex(JSObject map, JSObject layer, int index)/*-{
 		map.setLayerIndex(layer, index);
 	}-*/;
-	
+
     public static native void setLayerZIndex(JSObject map, JSObject layer, int zIdx)/*-{
         map.setLayerZIndex(layer, zIdx);
     }-*/;
@@ -109,7 +109,7 @@ class MapImpl {
 	public static native void zoomToExtent(JSObject map, JSObject bounds)/*-{
 		map.zoomToExtent(bounds);
 	}-*/;
-    
+
     public static native void zoomToExtent(JSObject map, JSObject bounds, boolean closest)/*-{
 		map.zoomToExtent(bounds, closest);
 	}-*/;
@@ -129,6 +129,15 @@ class MapImpl {
 	public static native JSObject getPixelFromLonLat(JSObject map, JSObject lonlat)/*-{
 		return map.getPixelFromLonLat(lonlat);
 	}-*/;
+
+	public static native JSObject getLayerPxFromLonLat(JSObject map, JSObject lonlat)/*-{
+		return map.getLayerPxFromLonLat(lonlat);
+	}-*/;
+
+	public static native JSObject getLonLatFromLayerPx(JSObject map, JSObject px)/*-{
+		return map.getLonLatFromLayerPx(px);
+	}-*/;
+
 	public static native String getProjection(JSObject map)/*-{
 		return map.getProjection();
 	}-*/;
@@ -164,7 +173,7 @@ class MapImpl {
 	public static native void zoomTo(JSObject map, int zoomLevel)/*-{
 		map.zoomTo(zoomLevel);
 	}-*/;
-	
+
     public static native void zoomToScale(JSObject map, float scale, boolean closest)/*-{
         map.zoomToScale(scale, closest);
     }-*/;
@@ -180,7 +189,7 @@ class MapImpl {
 	public static native void panTo(JSObject map, JSObject lonlat)/*-{
 		map.panTo(lonlat);
 	}-*/;
-	
+
 	public static native void pan(JSObject map, int dx, int dy) /*-{
 		map.pan(dx, dy);
 	}-*/;
@@ -204,17 +213,17 @@ class MapImpl {
 	public static native void setBaseLayer(JSObject map, JSObject newBaseLayer)/*-{
  		map.setBaseLayer(newBaseLayer);
 	}-*/;
-	
+
     public static native void disableBrowserContextMenu(JSObject map, BrowserMenuListener listener)/*-{
         map.div.oncontextmenu = function noContextMenu(e) {
         var eventObj = @org.gwtopenmaps.openlayers.client.event.MouseEvent::narrowToMouseEvent(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(e);
         listener.@org.gwtopenmaps.openlayers.client.Map.BrowserMenuListener::onMouseClick(Lorg/gwtopenmaps/openlayers/client/event/MouseEvent;)(eventObj);
-        
+
         return false; //cancel the right click of browser
-        }; 
+        };
     }-*/;
-    
-    
+
+
     public static native double getZoomForResolution(JSObject map, double resolution, boolean closest)/*-{
         return map.getZoomForResolution(resolution, closest);
     }-*/;

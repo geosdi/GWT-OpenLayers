@@ -20,6 +20,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 public class WMSParams extends Params {
     
     private final static String CQL_FILTER = "CQL_FILTER";
+    private final static String TIME = "TIME";
+    private final static String ELEVATION = "ELEVATION";
 
     protected WMSParams(JSObject jsObject) {
         super(jsObject);
@@ -55,6 +57,22 @@ public class WMSParams extends Params {
 
         public String getCQLFilter() {
             return getJSObject().getPropertyAsString(CQL_FILTER);
+        }
+        
+        public void setTimeFilter(String timeFilter) {
+            getJSObject().setProperty(TIME, timeFilter);
+        }
+
+        public void removeTimeFilter() {
+            getJSObject().unsetProperty(TIME);
+        }
+        
+        public void setElevationFilter(String elevationFilter) {
+            getJSObject().setProperty(ELEVATION, elevationFilter);
+        }
+
+        public void removeElevationFilter() {
+            getJSObject().unsetProperty(ELEVATION);
         }
 
 	public void setFormat(String styles) {

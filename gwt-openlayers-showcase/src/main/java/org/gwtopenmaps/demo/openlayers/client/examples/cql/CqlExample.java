@@ -101,7 +101,7 @@ public class CqlExample extends AbstractExample {
 
     @Override
     public String getSourceCodeURL() {
-        return GWT.getModuleBaseURL() + "examples/wmswfs/"
-                + "WmsWfsExample.txt";
+        return GWT.getModuleBaseURL() + "examples/cql/"
+                + "CqlExample.txt";
     }
 }

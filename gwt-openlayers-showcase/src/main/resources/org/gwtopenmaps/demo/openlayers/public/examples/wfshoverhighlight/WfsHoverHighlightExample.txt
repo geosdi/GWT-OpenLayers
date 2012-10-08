@@ -155,6 +155,6 @@ public class WfsHoverHighlightExample extends AbstractExample {
     @Override
     public String getSourceCodeURL() {
         return GWT.getModuleBaseURL() + "examples/wmswfsedit/"
-                + "WmsWfsEditExample.txt";
+                + "WfsHoverHighlightExample.txt";
     }
 }

@@ -164,7 +164,7 @@ public class VariableWfsStyle extends AbstractExample {
 
     @Override
     public String getSourceCodeURL() {
-        return GWT.getModuleBaseURL() + "examples/wmswfs/"
-                + "WmsWfsExample.txt";
+        return GWT.getModuleBaseURL() + "examples/variablewfsstyle/"
+                + "VariableWfsStyle.txt";
     }
 }

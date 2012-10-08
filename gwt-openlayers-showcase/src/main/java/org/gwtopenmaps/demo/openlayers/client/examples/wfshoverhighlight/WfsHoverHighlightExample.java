@@ -1,7 +1,8 @@
-package org.gwtopenmaps.demo.openlayers.client.examples.variablewfsstyle;
+package org.gwtopenmaps.demo.openlayers.client.examples.wfshoverhighlight;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HTML;
 import javax.inject.Inject;
-
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
@@ -13,10 +14,12 @@ import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
+import org.gwtopenmaps.openlayers.client.control.ModifyFeature;
+import org.gwtopenmaps.openlayers.client.control.ModifyFeatureOptions;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
-import org.gwtopenmaps.openlayers.client.event.LayerLoadEndListener;
-import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
+import org.gwtopenmaps.openlayers.client.control.SelectFeature;
+import org.gwtopenmaps.openlayers.client.control.SelectFeatureOptions;
 import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
@@ -27,22 +30,15 @@ import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 import org.gwtopenmaps.openlayers.client.strategy.BBoxStrategy;
 import org.gwtopenmaps.openlayers.client.strategy.Strategy;
-import org.gwtopenmaps.openlayers.client.util.Attributes;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Random;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HTML;
-
-public class VariableWfsStyle extends AbstractExample {
+public class WfsHoverHighlightExample extends AbstractExample {
 
     @Inject
-    public VariableWfsStyle(ShowcaseExampleStore store) {
-        super("Variable style WFS using attributes.",
-              "Demonstrates how the style of a WFS can be made variable using attributes.",
-              new String[]{"WFS", "style", "attribute", "variable"}, store);
+    public WfsHoverHighlightExample(ShowcaseExampleStore store) {
+        super("WMS with an editable WFS overlay, WFS gets highlighted on hover.",
+              "Demonstrates how you can use highlight on hover, to help the user see when he is exactly on top of the feature. This makes it easier for " +
+              "the user to select the feature he wants to edit",
+              new String[]{"WFS", "hover", "highlight", "WMS", "click", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, store);
     }
 
     @Override
@@ -54,7 +50,7 @@ public class VariableWfsStyle extends AbstractExample {
         defaultMapOptions.setNumZoomLevels(16);
 
         //Create a MapWidget
-        MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
+        MapWidget mapWidget = new MapWidget("650px", "500px", defaultMapOptions);
         //Create a WMS layer as base layer
         WMSParams wmsParams = new WMSParams();
         wmsParams.setFormat("image/png");
@@ -87,37 +83,52 @@ public class VariableWfsStyle extends AbstractExample {
         vectorOptions.setStrategies(new Strategy[]{new BBoxStrategy()});
         //if your wms is in a different projection use vectorOptions.setProjection(LAMBERT72);
 
-        final Vector wfsLayer = new Vector("wfsExample", vectorOptions);
-        //give a style to the WFS layer
-        final String[] colors = new String[]{"blue", "red", "green"}; //just some possible colors
-        final double[] opacitys = new double[] {0.3, 0.6, 0.9}; //some possible opacity values
-
-
-        final Style style = new Style();
-        style.setStrokeWidth(3);
-        //set some variable styles using ${attributename}. Later we set an attribute on each Feature with the name defined here (see method randomizeStyles).
-        style.getJSObject().setProperty("strokeOpacity", "${variableopacity}"); // we can't use style.setStrokeOpacity(double d) cause this expects a double and "${variableopacity}" isn't a double
-        style.setStrokeColor("${variablecolor}");
-
-        wfsLayer.setStyleMap(new StyleMap(style));
-
-        wfsLayer.addLayerLoadEndListener(new LayerLoadEndListener()
-        {
-            public void onLoadEnd(LoadEndEvent eventObject)
-            {
-                randomizeStyles(wfsLayer, opacitys, colors); //initialize
-            }
-        });
-
-        final Button butGo = new Button("Randomize style !", new ClickHandler()
-        {
-            public void onClick(ClickEvent event)
-            {
-                randomizeStyles(wfsLayer, opacitys, colors);
-            }
-        });
-
+        Vector wfsLayer = new Vector("wfsExample", vectorOptions);
         map.addLayer(wfsLayer);
+
+        //Create some styles for the wfs
+        final Style normalStyle = new Style(); //the normal style
+        normalStyle.setStrokeWidth(3);
+        normalStyle.setStrokeColor("#FF0000");
+        normalStyle.setFillColor("#FFFF00");
+        normalStyle.setFillOpacity(0.8);
+        normalStyle.setStrokeOpacity(0.8);
+        final Style selectedStyle = new Style(); //the style when a feature is selected,
+        selectedStyle.setStrokeWidth(3);
+        selectedStyle.setStrokeColor("#FFFF00");
+        selectedStyle.setFillColor("#FF0000");
+        selectedStyle.setFillOpacity(0.8);
+        selectedStyle.setStrokeOpacity(0.8);
+        final StyleMap styleMap = new StyleMap(normalStyle, selectedStyle, selectedStyle);
+        wfsLayer.setStyleMap(styleMap);
+
+        //Create a ModifyFeature control that enables WFS modification
+        final ModifyFeatureOptions modifyFeatureControlOptions = new ModifyFeatureOptions();
+        modifyFeatureControlOptions.setMode(ModifyFeature.RESHAPE); //options are RESHAPE, RESIZE, ROTATE and DRAG
+        final ModifyFeature modifyFeatureControl = new ModifyFeature(wfsLayer,
+                                                                     modifyFeatureControlOptions);
+
+        final SelectFeatureOptions selectFeatureOptions = new SelectFeatureOptions();
+        selectFeatureOptions.setHighlightOnly(true);
+        selectFeatureOptions.setHover();
+        final SelectFeature selectFeatureControl = new SelectFeature(wfsLayer, selectFeatureOptions);
+        selectFeatureControl.setClickOut(false);
+
+        //selectFeatureControl.
+
+        map.addControl(selectFeatureControl);
+        map.addControl(modifyFeatureControl);
+
+        selectFeatureControl.activate();
+        modifyFeatureControl.activate();
+
+
+        /*
+         * Note that for saving back to the WFS you can use
+         * final SaveStrategy saveStrategy = new SaveStrategy();
+         * saveStrategy.setAuto(true);
+         * vectorOptions.setStrategies(new Strategy[] {new BBoxStrategy(), saveStrategy }); // (instead of only BBOXStrategy)
+         */
 
         //Lets add some default controls to the map
         map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
@@ -125,15 +136,15 @@ public class VariableWfsStyle extends AbstractExample {
         map.addControl(new ScaleLine()); //Display the scaleline
 
         //Center and zoom to a location
-        map.setCenter(new LonLat(146.7, -41.8), 6);
+        map.setCenter(new LonLat(146.7, -41.8), 7);
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how you can have a variable style that depends on attributes set to the features.</p>Click on the <b>'Randomize style !'</b> button to generate new styles."));
+                "<p>This example shows how highlight a feature on hover, so that after a click this highlighted feature gets selected.<p>" +
+                "<p>Using this technique you can circumvent the fact that users have click exactly on a feature to select it.</p>"));
         contentPanel.add(
                 new InfoPanel(
                 "For WFS it is adviced to use a proxy to avoid cross reference problems. See the gwt-openlayers-server code for more info."));
-        contentPanel.add(butGo);
         contentPanel.add(mapWidget);
 
         initWidget(contentPanel);
@@ -141,30 +152,9 @@ public class VariableWfsStyle extends AbstractExample {
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
     }
 
-    /**
-     * Modify the attributes of the features to modify the styles (because the styles are defined with the same names as the attributes).
-     *
-     * @param wfsLayer The layer which we want to randomize
-     * @param opacitys Some opacity values we choose a random one from
-     * @param colors Some color value whe choose a random one from
-     */
-    private void randomizeStyles(Vector wfsLayer, double[] opacitys, String[] colors)
-    {
-        final VectorFeature[] features = wfsLayer.getFeatures();
-        for (VectorFeature feature : features)
-        {
-            final Attributes attr = feature.getAttributes();
-            String newOpacity = "" + opacitys[Random.nextInt(3)];
-            attr.setAttribute("variableopacity", "" + newOpacity);
-            attr.setAttribute("variablecolor", colors[Random.nextInt(3)]);
-        }
-        wfsLayer.redraw();
-
-    }
-
     @Override
     public String getSourceCodeURL() {
-        return GWT.getModuleBaseURL() + "examples/wmswfs/"
-                + "WmsWfsExample.txt";
+        return GWT.getModuleBaseURL() + "examples/wmswfsedit/"
+                + "WmsWfsEditExample.txt";
     }
 }

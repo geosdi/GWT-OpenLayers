@@ -48,6 +48,14 @@ class PopupImpl
         p.updatePosition();
     }-*/;
 
+    public static native void moveTo(JSObject p, JSObject px) /*-{
+        p.moveTo(px);
+    }-*/;
+
+    public static native void panIntoView(JSObject p) /*-{
+        p.panIntoView();
+    }-*/;
+
     public static native void updateSize(JSObject p) /*-{
         p.updateSize();
     }-*/;

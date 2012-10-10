@@ -386,6 +386,16 @@ public class StyleImpl {
 	/*-{
 		self.labelSelect = select;
 	}-*/;
+	
+	public static native void setGraphicOpacity(JSObject self, double o)
+	/*-{
+		self.graphicOpacity = o;
+	}-*/;
+
+	public static native double getGraphicOpacity(JSObject self)
+	/*-{
+		return self.graphicOpacity;
+	}-*/;
 
 
 }

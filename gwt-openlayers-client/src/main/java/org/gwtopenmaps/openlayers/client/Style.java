@@ -501,7 +501,14 @@ public class Style extends OpenLayersObjectWrapper {
 	public void setLabelSelect(boolean select) {
 		StyleImpl.setLabelSelect(this.getJSObject(), select);
 	}
-
+	
+	public double getGraphicOpacity() {
+		return StyleImpl.getGraphicOpacity(this.getJSObject());
+	}
+	
+	public void setGraphicOpacity(double opacity) {
+		StyleImpl.setGraphicOpacity(this.getJSObject(), opacity);
+	}
 
 	public static Style narrowToOpenLayersStyle(JSObject element) {
 		return (element == null) ? null: new Style(element);

@@ -54,4 +54,9 @@ public class BingOptions extends XYZOptions {
     public String getName() {
         return getJSObject().getPropertyAsString("name");
     }
+
+	@Override
+	public void setAttribution(String attribution) {
+        getJSObject().setProperty("attributionTemplate", attribution);
+	}
 }

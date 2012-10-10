@@ -8,7 +8,6 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
-import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.format.KML;
 import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
@@ -36,8 +35,6 @@ public class KmlExample extends AbstractExample {
 
     @Override
     public void buildPanel() {
-        OpenLayers.setProxyHost("olproxy?targetURL=");
-
         //create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
         defaultMapOptions.setNumZoomLevels(16);

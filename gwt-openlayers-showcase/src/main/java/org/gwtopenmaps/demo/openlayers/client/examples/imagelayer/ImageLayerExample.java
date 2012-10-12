@@ -19,7 +19,6 @@ import org.gwtopenmaps.openlayers.client.layer.GoogleV3MapType;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3Options;
 import org.gwtopenmaps.openlayers.client.layer.Image;
 import org.gwtopenmaps.openlayers.client.layer.ImageOptions;
-import org.gwtopenmaps.openlayers.client.layer.Layer;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
@@ -50,26 +49,22 @@ public class ImageLayerExample extends AbstractExample {
         gNormalOptions.setIsBaseLayer(true);
         gNormalOptions.setType(GoogleV3MapType.G_SATELLITE_MAP);
         GoogleV3 gNormal = new GoogleV3("Google sattelite", gNormalOptions);
+
+        //Create the map
+        Map map = mapWidget.getMap();
+        map.addLayer(gNormal);
         
         //Create a image layer
-        
         final Bounds extent = new Bounds(-88.0, 41.4, -87.0, 42.2);
-        extent.transform(DEFAULT_PROJECTION, new Projection("EPSG:900913"));
+        extent.transform(DEFAULT_PROJECTION, new Projection(map.getProjection()));
         ImageOptions imageOptions = new ImageOptions();
         imageOptions.setNumZoomLevels(18);
-        //imageOptions.setDisplayOutsideMaxExtent(true);
         imageOptions.setLayerOpacity(0.8d);
-        imageOptions.setProjection("EPSG:900913");
         Image imageLayer = new Image("CatsLayer", "http://i1.kym-cdn.com/entries/icons/original/000/007/263/photo_cat2.jpg", extent, new Size(108,73), 
               imageOptions);
         imageLayer.setIsBaseLayer(false);
    
-
-        //And add them to the map
-        Map map = mapWidget.getMap();
-        
-        map.addLayers(new Layer[]{gNormal, imageLayer});
-        //map.addLayer(imageLayer);
+        map.addLayer(imageLayer);
 
         //Lets add some default controls to the map
         map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
@@ -87,8 +82,6 @@ public class ImageLayerExample extends AbstractExample {
         initWidget(contentPanel);
 
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
-        
-        GWT.log("map projection = " + map.getProjection());
     }
 
     @Override

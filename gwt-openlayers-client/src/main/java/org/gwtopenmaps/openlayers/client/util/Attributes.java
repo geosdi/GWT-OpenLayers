@@ -1,5 +1,8 @@
 package org.gwtopenmaps.openlayers.client.util;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
@@ -178,6 +181,15 @@ public class Attributes extends JSObjectWrapper
     public Attributes getAttributes(String name)
     {
         return Attributes.narrowToAttributes(this.getJSObject().getProperty(name));
+    }
+    
+    /**
+     * Gets all the names of the attributes.
+     * @return The names of all attributes.
+     */
+    public List<String> getAttributeNames()
+    {
+    	return Arrays.asList(this.getJSObject().getPropertyNames().split(","));
     }
 
 }

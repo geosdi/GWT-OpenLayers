@@ -110,7 +110,19 @@ public class JSObjectHelper
         }
         return ret;
     }-*/;
-
+    
+    public static native String getPropertyValues(JSObject object) /*-{
+        var ret = "";
+        for (var k in object){
+        if(ret == ""){
+        ret = ret + object[k];
+        } else {
+        ret = ret + "," + object[k];
+        }
+        }
+        return ret;
+    }-*/;
+    
     public static native boolean hasProperty(JSObject object, String name) /*-{
         if(object[name] != undefined){return true}else{return false};
     }-*/;

@@ -131,6 +131,11 @@ public class JSObject extends JavaScriptObject
         return JSObjectHelper.getPropertyNames(this);
     }
 
+    public final String getPropertyValues()
+    {
+        return JSObjectHelper.getPropertyValues(this);
+    }
+
     public final boolean hasProperty(String name)
     {
         return JSObjectHelper.hasProperty(this, name);

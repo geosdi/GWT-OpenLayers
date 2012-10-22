@@ -1,5 +1,6 @@
 package org.gwtopenmaps.openlayers.client;
 
+import com.google.gwt.dom.client.Node;
 import com.google.gwt.user.client.Element;
 import java.util.ArrayList;
 import java.util.List;
@@ -664,4 +665,12 @@ public class Map extends OpenLayersEObjectWrapper {
 
         void onMouseClick(MouseEvent e);
     }
+
+    /**
+     * returns the DOM node of the viewport.
+     * @return
+     */
+	public Element getViewport() {
+		return MapImpl.getViewport(getJSObject());
+	}
 }

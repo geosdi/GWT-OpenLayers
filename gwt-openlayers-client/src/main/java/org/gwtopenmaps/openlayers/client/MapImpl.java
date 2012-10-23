@@ -232,4 +232,12 @@ class MapImpl {
         return map.getViewport();
     }-*/;
 
+	public static native void zoomIn(JSObject map)/*-{
+	    map.zoomIn();
+	}-*/;
+
+	public static native void zoomOut(JSObject map)/*-{
+	    map.zoomOut();
+	}-*/;
+
 }

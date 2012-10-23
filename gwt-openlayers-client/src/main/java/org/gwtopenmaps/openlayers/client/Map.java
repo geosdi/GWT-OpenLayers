@@ -673,4 +673,18 @@ public class Map extends OpenLayersEObjectWrapper {
 	public Element getViewport() {
 		return MapImpl.getViewport(getJSObject());
 	}
+
+	/**
+	 * zoom in with one step.
+	 */
+	public void zoomIn() {
+		MapImpl.zoomIn(getJSObject());
+	}
+
+	/**
+	 * zoom out with one step.
+	 */
+	public void zoomOut() {
+		MapImpl.zoomOut(getJSObject());
+	}
 }

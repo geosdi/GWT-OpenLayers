@@ -90,4 +90,11 @@ class LayerImpl
     public static native JSObject getProjection(JSObject layer) /*-{
        return layer.projection;
     }-*/;
+    
+    public static native JSObject getOptions(JSObject layer) /*-{
+       if( layer.options ) 		
+            return layer.options;
+       else 
+            return {};
+    }-*/;
 }

@@ -18,4 +18,8 @@ public class KeyboardDefaults extends Control {
 		this(KeyboardDefaultsImpl.create());
 	}
 
+	public KeyboardDefaults(KeyboardDefaultOptions keyboardDefaultOptions) {
+		this(KeyboardDefaultsImpl.create(keyboardDefaultOptions.getJSObject()));
+	}
+
 }

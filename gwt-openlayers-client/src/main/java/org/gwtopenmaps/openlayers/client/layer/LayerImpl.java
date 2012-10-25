@@ -15,6 +15,10 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 class LayerImpl
 {
 
+    public static native JSObject clone(JSObject obj) /*-{
+        return obj.clone();
+    }-*/;
+    
     public static native boolean redraw(JSObject layer, boolean force) /*-{
         return layer.redraw(force);
     }-*/;

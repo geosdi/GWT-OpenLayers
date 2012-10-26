@@ -1,6 +1,7 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.vector;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HTML;
 import java.util.List;
 import javax.inject.Inject;
@@ -29,6 +30,7 @@ import org.gwtopenmaps.openlayers.client.protocol.Response;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolCRUDOptions;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
+import org.gwtopenmaps.openlayers.client.strategy.SaveStrategy;
 
 public class WFSFeatureSelectionExamples extends AbstractExample {
 
@@ -74,9 +76,9 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
 
         final WFSProtocolCRUDOptions wfsCRUD = new WFSProtocolCRUDOptions(new CRUDOptions.Callback() {
             public void computeResponse(Response response) {
-                System.out.println(
+                GWT.log(
                         "RESPONSE @@@@@@@@@@@@@@@@@" + response.getRequestType()
-                        + " - " + response.success());
+                        + " - " + response.success() + " - " + response.getFeatures().length);
             }
         });
 
@@ -90,6 +92,10 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
         wfsProtocolOptions.setGeometryName("the_geom");
         final WFSProtocol wfsProtocol = new WFSProtocol(wmsLayer,
                                                         wfsProtocolOptions);
+        
+        final SaveStrategy saveStrategy = new SaveStrategy();
+        
+        saveStrategy.activate();
 
 
         gfo.setProtocol(wfsProtocol);
@@ -114,7 +120,7 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
             @Override
             public void onHandle(EventObject eventObject) {
 
-                VectorFeature vectorFeature = getFeatureFromEventObject(
+                final VectorFeature vectorFeature = getFeatureFromEventObject(
                         eventObject);
 
                 select.addFeature(vectorFeature);
@@ -128,13 +134,27 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
                             string) + "</b></p>";
                 }
 
+                vectorFeature.toState(VectorFeature.State.Unknown);
                 vectorFeature.toState(VectorFeature.State.Update);
+                
 
                 attributesHTML.setHTML(attributes);
                 
-                System.out.println("FEATURE ID @@@@@@@@ " + vectorFeature.getFID());
-
-                wfsProtocol.commit(vectorFeature, wfsCRUD);
+                GWT.log("state 4  = " + vectorFeature.getState().toString());
+                
+                Timer t = new Timer()
+               {
+                  
+                  @Override
+                  public void run()
+                  {
+                     // TODO Auto-generated method stub
+                     GWT.log("go commit now");
+                     wfsProtocol.commit(new VectorFeature[]{vectorFeature}, wfsCRUD);
+                     
+                  }
+               };
+               t.schedule(5000);
 
             }
         });

@@ -52,14 +52,18 @@ public class VectorFeature extends Feature {
 
     protected VectorFeature(JSObject vectorFeature) {
         super(vectorFeature);
+        toState(State.Unknown);
     }
 
     public VectorFeature(Geometry g) {
         super(VectorFeatureImpl.create(g.getJSObject()));
+        toState(State.Unknown);
     }
 
-    public VectorFeature(Geometry g, Style s) {
+    public VectorFeature(Geometry g,
+            Style s) {
         super(VectorFeatureImpl.create(g.getJSObject(), s.getJSObject()));
+        toState(State.Unknown);
     }
 
     /**
@@ -160,8 +164,8 @@ public class VectorFeature extends Feature {
     }
 
     /**
-     * Convenient method to convert a LINESTRING VectorFeature to a
-     * MULTILINE featureE. This method can be used of you are trying to save a
+     * Convenient method to convert a LINESTRING VectorFeature to a MULTILINE
+     * featureE. This method can be used of you are trying to save a
      * VectorFeature Line using WFS-T to geoserver and you are seeing a "Error
      * performing insert: java.lang.String cannot be cast to
      * com.vividsolutions.jts.geom.Geometry".
@@ -184,10 +188,10 @@ public class VectorFeature extends Feature {
     }
 
     /**
-     * Convenient method to convert a POLYGON VectorFeature to a
-     * MULTIPOLYGON feature. This method can be used of you are trying to save a
-     * VectorFeature Polygon using WFS-T to geoserver and you are seeing a "Error
-     * performing insert: java.lang.String cannot be cast to
+     * Convenient method to convert a POLYGON VectorFeature to a MULTIPOLYGON
+     * feature. This method can be used of you are trying to save a
+     * VectorFeature Polygon using WFS-T to geoserver and you are seeing a
+     * "Error performing insert: java.lang.String cannot be cast to
      * com.vividsolutions.jts.geom.Geometry".
      *
      * @return true if converting succeeded (if this is not a POLYGON)
@@ -206,7 +210,6 @@ public class VectorFeature extends Feature {
             return false;
         }
     }
-
 
     /**
      * Moves the feature and redraws it at its new location.

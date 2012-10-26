@@ -1,8 +1,10 @@
 package org.gwtopenmaps.openlayers.client.protocol;
 
+import com.google.gwt.json.client.JSONArray;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
+import org.gwtopenmaps.openlayers.client.util.JSObjectHelper;
 
 /**
  *
@@ -117,14 +119,31 @@ public class WFSProtocol extends Protocol {
     }
 
     /**
-     * Given a list of feature, assemble a batch request for update, create, and delete transactions.  
-     * A commit call on the prototype amounts to writing a WFS transaction - so the write method on the format is used.
+     * Given a list of feature, assemble a batch request for update, create, and
+     * delete transactions. A commit call on the prototype amounts to writing a
+     * WFS transaction - so the write method on the format is used.
+     *
      * @param features
      * @param options
      */
     public void commit(VectorFeature[] features,
             CRUDOptions options) {
-        WFSProtocolImpl.commit(getJSObject(), (new JObjectArray(features)).getJSObject(),
+        WFSProtocolImpl.commit(getJSObject(),
+                               (new JObjectArray(features)).getJSObject(),
+                               options.getJSObject());
+    }
+
+    /**
+     * 
+     * @param feature
+     * @param options 
+     */
+    public void commit(VectorFeature feature,
+            CRUDOptions options) {
+        VectorFeature[] features = new VectorFeature[1];
+        features[0] = feature;
+        WFSProtocolImpl.commit(getJSObject(),
+                               (new JObjectArray(features)).getJSObject(),
                                options.getJSObject());
     }
 }

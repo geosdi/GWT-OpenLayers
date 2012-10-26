@@ -30,7 +30,6 @@ import org.gwtopenmaps.openlayers.client.protocol.Response;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolCRUDOptions;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
-import org.gwtopenmaps.openlayers.client.strategy.SaveStrategy;
 
 public class WFSFeatureSelectionExamples extends AbstractExample {
 
@@ -77,8 +76,7 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
         final WFSProtocolCRUDOptions wfsCRUD = new WFSProtocolCRUDOptions(new CRUDOptions.Callback() {
             public void computeResponse(Response response) {
                 GWT.log(
-                        "RESPONSE @@@@@@@@@@@@@@@@@" + response.getRequestType()
-                        + " - " + response.success() + " - " + response.getFeatures().length);
+                        "RESPONSE @@@@@@@@@@@@@@@@@" + response.success());
             }
         });
 
@@ -92,11 +90,6 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
         wfsProtocolOptions.setGeometryName("the_geom");
         final WFSProtocol wfsProtocol = new WFSProtocol(wmsLayer,
                                                         wfsProtocolOptions);
-        
-        final SaveStrategy saveStrategy = new SaveStrategy();
-        
-        saveStrategy.activate();
-
 
         gfo.setProtocol(wfsProtocol);
         GetFeature controlFeature = new GetFeature(gfo);
@@ -134,27 +127,25 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
                             string) + "</b></p>";
                 }
 
-                vectorFeature.toState(VectorFeature.State.Unknown);
                 vectorFeature.toState(VectorFeature.State.Update);
-                
+
 
                 attributesHTML.setHTML(attributes);
-                
+
                 GWT.log("state 4  = " + vectorFeature.getState().toString());
-                
-                Timer t = new Timer()
-               {
-                  
-                  @Override
-                  public void run()
-                  {
-                     // TODO Auto-generated method stub
-                     GWT.log("go commit now");
-                     wfsProtocol.commit(new VectorFeature[]{vectorFeature}, wfsCRUD);
-                     
-                  }
-               };
-               t.schedule(5000);
+
+                Timer t = new Timer() {
+                    @Override
+                    public void run() {
+                        // TODO Auto-generated method stub
+                        GWT.log("go commit now");
+                        wfsProtocol.commit(
+                                vectorFeature,
+                                wfsCRUD);
+
+                    }
+                };
+                t.schedule(5000);
 
             }
         });

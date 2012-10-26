@@ -24,7 +24,10 @@ import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
 import org.gwtopenmaps.openlayers.client.layer.WMSParams;
+import org.gwtopenmaps.openlayers.client.protocol.CRUDOptions;
+import org.gwtopenmaps.openlayers.client.protocol.Response;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
+import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolCRUDOptions;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
 
 public class WFSFeatureSelectionExamples extends AbstractExample {
@@ -35,8 +38,8 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
     @Inject
     public WFSFeatureSelectionExamples(ShowcaseExampleStore store) {
         super("WFS Select Feature Control Examples",
-                "Demonstrates the use of WMS/WFS selection.",
-                new String[]{"WFS", "VectorFeature", "selection"}, store);
+              "Demonstrates the use of WMS/WFS selection.",
+              new String[]{"WFS", "VectorFeature", "selection"}, store);
     }
 
     @Override
@@ -61,12 +64,22 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
 
         String wmsUrl = "http://demo.opengeo.org/geoserver/ows";
 
-        final WMS wmsLayer = new WMS("Basic WMS", wmsUrl, wmsParams, wmsLayerParams);
+        final WMS wmsLayer = new WMS("Basic WMS", wmsUrl, wmsParams,
+                                     wmsLayerParams);
         final Vector select = new Vector("Basic WFS");
 
 
 
         GetFeatureOptions gfo = new GetFeatureOptions();
+
+        final WFSProtocolCRUDOptions wfsCRUD = new WFSProtocolCRUDOptions(new CRUDOptions.Callback() {
+            public void computeResponse(Response response) {
+                System.out.println(
+                        "RESPONSE @@@@@@@@@@@@@@@@@" + response.getRequestType()
+                        + " - " + response.success());
+            }
+        });
+
 
         WFSProtocolOptions wfsProtocolOptions = new WFSProtocolOptions();
         wfsProtocolOptions.setFeatureNameSpace("http://www.openplans.org/topp");
@@ -75,7 +88,8 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
 
 
         wfsProtocolOptions.setGeometryName("the_geom");
-        WFSProtocol wfsProtocol = new WFSProtocol(wmsLayer, wfsProtocolOptions);
+        final WFSProtocol wfsProtocol = new WFSProtocol(wmsLayer,
+                                                        wfsProtocolOptions);
 
 
         gfo.setProtocol(wfsProtocol);
@@ -95,7 +109,8 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
         controlFeature.activate();
 
 
-        controlFeature.getEvents().register("featureselected", wmsLayer, new EventHandler() {
+        controlFeature.getEvents().register("featureselected", wmsLayer,
+                                            new EventHandler() {
             @Override
             public void onHandle(EventObject eventObject) {
 
@@ -105,18 +120,27 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
                 select.addFeature(vectorFeature);
 
                 List<String> attributesList = vectorFeature.getAttributes().getAttributeNames();
-                
+
                 attributes = "";
                 for (String string : attributesList) {
-                    attributes = attributes + "<p><i>"+string + "</i>"+  " : " +"<b>"+vectorFeature.getAttributes().getAttributeAsString(string)+"</b></p>";
+                    vectorFeature.getAttributes().setAttribute(string, "");
+                    attributes = attributes + "<p><i>" + string + "</i>" + " : " + "<b>" + vectorFeature.getAttributes().getAttributeAsString(
+                            string) + "</b></p>";
                 }
-                
+
+                vectorFeature.toState(VectorFeature.State.Update);
+
                 attributesHTML.setHTML(attributes);
+                
+                System.out.println("FEATURE ID @@@@@@@@ " + vectorFeature.getFID());
+
+                wfsProtocol.commit(vectorFeature, wfsCRUD);
 
             }
         });
 
-        controlFeature.getEvents().register("featureunselected", wmsLayer, new EventHandler() {
+        controlFeature.getEvents().register("featureunselected", wmsLayer,
+                                            new EventHandler() {
             @Override
             public void onHandle(EventObject eventObject) {
 
@@ -124,7 +148,7 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
                         eventObject);
 
                 select.removeFeature(vectorFeature);
-                
+
                 attributes = "";
                 attributesHTML.setHTML(attributes);
             }
@@ -141,9 +165,9 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
         contentPanel.add(
                 new HTML(
                 "<p>This example shows how to use a selection feature on a WMS layer.</p><p>Click on a states to see feature</p>"));
-        
-        
-        
+
+
+
         contentPanel.add(mapWidget);
         contentPanel.add(attributesHTML);
         initWidget(contentPanel);

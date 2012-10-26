@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.protocol;
 
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
+import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 
 /**
  *
@@ -115,9 +116,15 @@ public class WFSProtocol extends Protocol {
         return getJSObject().getPropertyAsString("featureType");
     }
 
-    public void commit(VectorFeature feature,
+    /**
+     * Given a list of feature, assemble a batch request for update, create, and delete transactions.  
+     * A commit call on the prototype amounts to writing a WFS transaction - so the write method on the format is used.
+     * @param features
+     * @param options
+     */
+    public void commit(VectorFeature[] features,
             CRUDOptions options) {
-        WFSProtocolImpl.commit(getJSObject(), feature.getJSObject(),
+        WFSProtocolImpl.commit(getJSObject(), (new JObjectArray(features)).getJSObject(),
                                options.getJSObject());
     }
 }

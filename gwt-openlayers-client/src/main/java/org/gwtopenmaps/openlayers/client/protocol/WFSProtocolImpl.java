@@ -24,8 +24,8 @@ public class WFSProtocolImpl {
     }-*/;
 
     public static native void commit(JSObject protocol,
-            JSObject feature,
+            JSObject features,
             JSObject options) /*-{
-        protocol.commit(feature, options);
+        protocol.commit(features, options);
     }-*/;
 }

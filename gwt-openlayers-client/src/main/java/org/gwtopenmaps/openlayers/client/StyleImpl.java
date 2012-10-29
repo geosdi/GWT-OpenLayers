@@ -9,7 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 * @author Edwin Commandeur - Atlis EJS
 * @author Curtis Jensen
 * @author Rafael Ceravolo - LOGANN
-* @author Lukas Johansson 
+* @author Lukas Johansson
 */
 public class StyleImpl {
 
@@ -21,22 +21,22 @@ public class StyleImpl {
 		return $wnd.OpenLayers.Util.extend({}, $wnd.OpenLayers.Feature.Vector.style['default']);
 		//return new Object(); //do it all yourself
 	}-*/;
-	
+
 	public static native JSObject create(String string)
 	/*-{
 		return new $wnd.OpenLayers.Style(string);
 	}-*/;
-	
-	public static native String getId(JSObject self) 
+
+	public static native String getId(JSObject self)
 	/*-{
 		return self.id;
 	}-*/;
-	
-	public static native String getName(JSObject self) 
+
+	public static native String getName(JSObject self)
 	/*-{
 		return self.name;
 	}-*/;
-	
+
 	public static native void setFillOpacity(JSObject self, double o)
 	/*-{
 		self.fillOpacity = o;
@@ -56,7 +56,7 @@ public class StyleImpl {
     /*-{
         return self.rotation;
     }-*/;
-    
+
 	public static native void setPointRadius(JSObject self, double o)
 	/*-{
 		self.pointRadius = o;
@@ -66,12 +66,12 @@ public class StyleImpl {
 	/*-{
 		return self.pointRadius;
 	}-*/;
-	
+
 	public static native void setPointRadius(JSObject self, String o)
 	/*-{
 		self.pointRadius = o;
 	}-*/;
-	
+
 	public static native String getPointRadiusAsString(JSObject self)
 	/*-{
 		return self.pointRadius;
@@ -353,9 +353,49 @@ public class StyleImpl {
 		self.graphicTitle;
 	}-*/;
 
-	public static native JSObject createSymbolizer(JSObject self, JSObject feature, String intent) 
+	public static native JSObject createSymbolizer(JSObject self, JSObject feature, String intent)
 	/*-{
 		return self.createSymbolizer(feature, intent)
 	}-*/;
+	public static native int getLabelXOffset(JSObject self)
+	/*-{
+		return self.labelXOffset;
+	}-*/;
+
+	public static native String setLabelXOffset(JSObject self, int xoffset)
+	/*-{
+		self.labelXOffset = xoffset;
+	}-*/;
+
+	public static native int getLabelYOffset(JSObject self)
+	/*-{
+		return self.labelYOffset;
+	}-*/;
+
+	public static native String setLabelYOffset(JSObject self, int yoffset)
+	/*-{
+		self.labelYOffset = yoffset;
+	}-*/;
+
+	public static native int getLabelSelect(JSObject self)
+	/*-{
+		return self.labelSelect;
+	}-*/;
+
+	public static native String setLabelSelect(JSObject self, boolean select)
+	/*-{
+		self.labelSelect = select;
+	}-*/;
+	
+	public static native void setGraphicOpacity(JSObject self, double o)
+	/*-{
+		self.graphicOpacity = o;
+	}-*/;
+
+	public static native double getGraphicOpacity(JSObject self)
+	/*-{
+		return self.graphicOpacity;
+	}-*/;
+
 
 }

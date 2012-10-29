@@ -13,21 +13,4 @@ public interface I18NMessages extends Messages
    String filterByKeywords();
    String tags(String string);
    String viewSource();
-   String noSourceFound();
-
-   String basicOsmExampleSource();
-   String basicBingExampleSource();
-   String basicGoogleV3ExampleSource();
-   String basicGoogleV2ExampleSource();
-   String wmsWfsExampleSource();
-   String wmsWfsEditExampleSource();
-   String tmsExampleSource();
-   String customMousePostionExampleSource();
-   String graticuleExampleSource();
-   String wmsFeatureInfoExampleSource();
-   String vectorExampleSource();
-   String measureExampleSource();
-   String gpsExampleSource();
-   String wfsRefreshExampleSource();
-   String rotateExampleSource();
 }

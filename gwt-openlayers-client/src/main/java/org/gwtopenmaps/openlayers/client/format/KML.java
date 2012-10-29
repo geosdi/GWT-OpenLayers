@@ -32,4 +32,20 @@ public class KML extends VectorFormat
     {
         return KMLImpl.write(this.getJSObject(), features.getJSObject(), pretty);
     }
+
+    public void setExtractStyles(boolean b)
+    {
+        getJSObject().setProperty("extractStyles", b);
+    }
+
+    public void setExtractAttributes(boolean b)
+    {
+        getJSObject().setProperty("extractAttributes", b);
+    }
+
+    public void setMaxDepth(int n)
+    {
+        getJSObject().setProperty("maxDepth", n);
+    }
+
 }

@@ -2,6 +2,7 @@ package org.gwtopenmaps.openlayers.client.popup;
 
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
+import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
@@ -190,6 +191,11 @@ public class Popup extends OpenLayersObjectWrapper
         this.getJSObject().setProperty("lonlat", lt.getJSObject());
     }
 
+    public LonLat getLonLat()
+    {
+    	return LonLat.narrowToLonLat(this.getJSObject().getProperty("lonlat"));
+    }
+
     /**
      * Method: show Makes the popup visible.
      */
@@ -215,16 +221,54 @@ public class Popup extends OpenLayersObjectWrapper
     {
         PopupImpl.updatePosition(getJSObject());
     }
-    
+
+    /**
+     * Method: moveTo
+     *
+     * @param px - {<OpenLayers.Pixel>} the top and left position of the popup div.
+     */
+    public void moveTo(Pixel px) {
+        PopupImpl.moveTo(getJSObject(), px.getJSObject());
+    }
+
+    /**
+     * Method: panIntoView
+     * Pans the map such that the popup is totaly viewable (if necessary)
+     */
+    public void panIntoView() {
+    	PopupImpl.panIntoView(getJSObject());
+    }
+
     /**
      * APIMethod: updateSize
-     * Auto size the popup so that it precisely fits its contents (as 
+     * Auto size the popup so that it precisely fits its contents (as
      * determined by this.contentDiv.innerHTML). Popup size will, of
      * course, be limited by the available space on the current map
      */
     public void updateSize()
     {
         PopupImpl.updateSize(getJSObject());
+    }
+
+
+    /**
+     * Method: setSize
+     * Used to adjust the size of the popup.
+     *
+     * Parameters:
+     * contentSize - {<OpenLayers.Size>} the new size for the popup's
+     *     contents div (in pixels).
+     */
+    public void setSize(Size size) {
+    	PopupImpl.setSize(getJSObject(), size.getJSObject());
+    }
+
+    /**
+     * Method: destroy
+     * nullify references to prevent circular references and memory leaks
+     */
+    public void destroy() {
+    	PopupImpl.destroy(getJSObject());
     }
 
     public interface CloseListener

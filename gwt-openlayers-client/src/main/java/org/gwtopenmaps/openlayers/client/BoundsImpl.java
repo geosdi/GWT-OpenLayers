@@ -5,12 +5,16 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  *
  * @author Erdem Gunay
- *
+ * @author Jon Britton, SpiffyMap Ltd.
  */
 class BoundsImpl {
 
 	public static native JSObject create(double lllon, double lllat, double urlon, double urlat)/*-{
 		return new $wnd.OpenLayers.Bounds(lllon, lllat, urlon, urlat);
+	}-*/;
+    
+    public static native JSObject create()/*-{
+		return new $wnd.OpenLayers.Bounds();
 	}-*/;
 
 	public static native JSObject toArray(JSObject bounds)/*-{
@@ -44,6 +48,10 @@ class BoundsImpl {
 	public static native JSObject getCenterLonLat(JSObject bounds)/*-{
     	return bounds.getCenterLonLat();
     }-*/;
+    
+    public static native JSObject getCenterPixel(JSObject bounds)/*-{
+    	return bounds.getCenterPixel();
+    }-*/;
 
 	public static native JSObject toGeometry(JSObject bounds)/*-{
 	   return bounds.toGeometry();
@@ -71,4 +79,21 @@ class BoundsImpl {
     public static native boolean containsLonLat(JSObject bounds, JSObject ll, boolean inclusive)/*-{
         return bounds.containsLonLat(ll, inclusive);
     }-*/;
+
+    public static native JSObject getSize(JSObject bounds)/*-{
+        return bounds.getSize();
+    }-*/;
+    
+    public static native JSObject scale(JSObject bounds, float ratio, JSObject origin)/*-{
+        return bounds.scale(ratio, origin);
+    }-*/;
+    
+    public static native JSObject add(JSObject bounds, float x, float y)/*-{
+        return bounds.add(x, y);
+    }-*/;
+    
+    public static native boolean intersectsBounds(JSObject bounds, JSObject otherBounds)/*-{
+        return bounds.intersectsBounds(otherBounds);
+    }-*/;
+
 }

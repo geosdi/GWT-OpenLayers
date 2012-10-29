@@ -42,6 +42,14 @@ class VectorImpl
         }
     }-*/;
 
+    public static native int getNumberOfSelectedFeatures(JSObject self) /*-{
+        if(self.selectedFeatures){
+        return self.selectedFeatures.length;
+        } else {
+        return -1;
+        }
+    }-*/;
+
     public static native void destroyFeatures(JSObject self) /*-{
         self.destroyFeatures();
     }-*/;
@@ -52,6 +60,10 @@ class VectorImpl
 
     public static native boolean redraw(JSObject vector) /*-{
         return vector.redraw();
+    }-*/;
+
+    public static native void drawFeature(JSObject vector, JSObject feature) /*-{
+        vector.drawFeature(feature);
     }-*/;
 
     public static native void drawFeature(JSObject vector, JSObject feature,
@@ -85,6 +97,10 @@ class VectorImpl
 
     public static native JSObject getStyleMap(JSObject self) /*-{
         return self.styleMap;
+    }-*/;
+
+    public static native JSObject getSelectedFeature(JSObject self, int index) /*-{
+       return self.selectedFeatures[index];
     }-*/;
 
 }

@@ -1,244 +1,50 @@
 package org.gwtopenmaps.demo.openlayers.client;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
-import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.wmswfsedit.WmsWfsEditExample;
-import org.gwtopenmaps.demo.openlayers.client.i18n.I18NMessages;
-
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.BlurEvent;
-import com.google.gwt.event.dom.client.BlurHandler;
-import com.google.gwt.event.dom.client.FocusEvent;
-import com.google.gwt.event.dom.client.FocusHandler;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasVerticalAlignment;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
-
+import org.gwtopenmaps.demo.openlayers.client.components.ShowcaseExamplePanel;
+import org.gwtopenmaps.demo.openlayers.client.components.ShowcaseTopPanel;
+import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
+import org.gwtopenmaps.demo.openlayers.client.config.GwtOpenlayersInjector;
+import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBus;
+import org.gwtopenmaps.demo.openlayers.client.puregwt.event.ExamplePanelBuildEvent;
 
 /**
  * Entry point for GWT OpenLayers showcase.
  */
-public class GwtOpenLayersShowcase implements EntryPoint, FocusHandler, BlurHandler, KeyUpHandler
-{
-   public static final I18NMessages I18N = (I18NMessages) GWT.create(I18NMessages.class);
+public class GwtOpenLayersShowcase implements EntryPoint {
 
-	private final TextBox txtSearch = new TextBox();
-	private final Label lblNumberOfExamples = new Label("(0)");
-
-	private final FlowPanel examplesPanel = new FlowPanel();
-
-	private final List<ExampleBean> examples = new ArrayList<ExampleBean>();
+    private GwtOpenlayersInjector injector = GWT.create(
+            GwtOpenlayersInjector.class);
 
     /**
-     * main panel contains the showcase app
-     */
-
-    /**
+     * TODO : Improve this code with ChainOfResponsibility Pattern
+     * 
      * Entry point for the GWT OpenLayers Showcase
      */
-    public void onModuleLoad()
-    {
-       loadExamples();
-       if (Window.Location.getParameter("example") != null)
-       {
-          for (ExampleBean example : examples)
-          {
-             if (example.getName().equals(Window.Location.getParameter("example")))
-             {
-                example.getExample().buildPanel();
-                RootPanel.get().add(example.getExample());
-             }
-          }
-       }
-       else
-       {
-          buildTopPanel();
-          buildExamplePanels("");
-       }
-    }
+    public void onModuleLoad() {
+        ShowcaseEventBus bus = injector.getEventBus();
+        ShowcaseTopPanel topPanel = injector.getShowcaseTopPanel();
+        ShowcaseExamplePanel examplePanel = injector.getShowcaseExamplePanel();
+        ShowcaseExampleStore store = injector.getExampleStore();
 
-    /**
-     * Reads in all the examples.
-     */
-   private void loadExamples()
-   {
-      String name = "";
+        store.sortStore();
 
-      name = "Basic OSM example";
-      examples.add(new ExampleBean(name, "Show a simple OSM map.", new String[]{"openstreetmap", "OSM", "basic"}, new BasicOsmExample(name, I18N.basicOsmExampleSource())));
-
-      name = "Basic Bing example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of Bing layers.", new String[]{"Bing", "Microsoft", "Virtual Earth", "basic"}, new BasicBingExample(name, I18N.basicBingExampleSource())));
-
-      name = "Basic Google V3 example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of Google V3 layers.", new String[]{"Google", "V3", "basic"}, new BasicGoogleV3Example(name, I18N.basicGoogleV3ExampleSource())));
-
-      name = "WMS with WFS overlay";
-      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay.", new String[]{"WMS", "WFS", "overlay"}, new WmsWfsExample(name, I18N.wmsWfsExampleSource())));
-
-      name = "WMS with an editable WFS overlay";
-      examples.add(new ExampleBean(name, "Demonstrates the use of WMS base layer with a WFS overlay that can be edited.", new String[]{"WMS", "WFS", "WFS-T", "WFST", "WFS T", "save", "overlay", "edit", "modify"}, new WmsWfsEditExample(name, I18N.wmsWfsEditExampleSource())));
-
-      name = "Basic TMS example";
-      examples.add(new ExampleBean(name, "Demonstrates the use of a TMS layer.", new String[]{"TMS", "basic"}, new BasicTmsExample(name, I18N.tmsExampleSource())));
-
-      name = "Custom mouse position";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a custom mouse position control to the map.", new String[]{"mouse", "position"}, new CustomMousePositionExample(name, I18N.customMousePostionExampleSource())));
-
-      name = "Graticule";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a graticule raster to the map.", new String[]{"graticule", "raster", "control"}, new GraticuleExample(name, I18N.graticuleExampleSource())));
-
-      name = "WMS get featuretype example";
-      examples.add(new ExampleBean(name, "Demonstrates how to get feature information from a WMS layer.", new String[]{"WMS", "feature", "featuretype", "get"}, new WmsFeatureInfoExample(name, I18N.wmsFeatureInfoExampleSource())));
-
-      name = "Clickable vector example";
-      examples.add(new ExampleBean(name, "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.", new String[]{"marker", "feature", "clickable", "vector", "line"}, new VectorExample(name, I18N.vectorExampleSource())));
-
-      name = "Measure control example";
-      examples.add(new ExampleBean(name, "Demonstrates how to add a measure control.", new String[]{"measure", "control"}, new MeasureExample(name, I18N.measureExampleSource())));
-
-      name = "GPS location example";
-      examples.add(new ExampleBean(name, "Demonstrates how to display the users current location on the map", new String[]{"gps", "location", "osm"}, new LocationExample(name, I18N.gpsExampleSource())));
-
-      name = "WFS refresh";
-      examples.add(new ExampleBean(name, "Demonstrates how to you can reload a WFS to the server state after moving (but not saving) the features.", new String[]{"wfs", "edit", "refresh"}, new WfsRefreshExample(name, I18N.wfsRefreshExampleSource())));
-
-      name = "Rotate vector features";
-      examples.add(new ExampleBean(name, "Details on how to create and rotate vector features programmatically.", new String[]{"features", "rotate", "geometry"}, new RotateVectorExample(name, I18N.rotateExampleSource())));
-
-      Collections.sort(examples);
-   }
-
-/**
- * Creates a panel for each available example.
- */
-   private void buildExamplePanels(final String filter)
-   {
-      examplesPanel.clear();
-
-      int numberOfExamples = 0;
-
-      for (ExampleBean example : examples)
-      {
-         boolean show = false;
-         String[] tags = example.getTags();
-         if ((filter == null) || (filter.trim().equals(""))) show = true;
-         else
-         {
-            for (String tag : tags)
-            {
-               if (tag.trim().toLowerCase().contains(filter.trim().toLowerCase()))
-               {
-                  show = true;
-                  break;
-               }
+        if (Window.Location.getParameter("example") != null) {
+            for (ExampleBean example : store.getExamples()) {
+                if (example.getName().equals(Window.Location.getParameter(
+                        "example"))) {
+                    example.getExample().buildPanel();
+                    RootPanel.get().add(example.getExample());
+                }
             }
-         }
+        } else {
+            RootPanel.get().add(topPanel);
+            RootPanel.get().add(examplePanel);
 
-
-         if (show)
-         {
-            examplesPanel.add(new ExamplePanel(example));
-            numberOfExamples++;
-         }
-      }
-
-      lblNumberOfExamples.setText("(" + numberOfExamples + ")");
-   }
-
-/**
- * Builds the top panel containing the logo, the searchbox, and the number of examples currently shown.
- */
-   private void buildTopPanel()
-   {
-      final HorizontalPanel hpTop = new HorizontalPanel();
-      hpTop.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-      hpTop.setStyleName("top");
-
-      final Image imgLogo = new Image(Resources.INSTANCE.gwtOlLogo());
-      hpTop.add(imgLogo);
-      final HorizontalPanel hpTopSearch = new HorizontalPanel();
-      hpTopSearch.setSpacing(3);
-      hpTop.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
-      hpTopSearch.add(txtSearch);
-      hpTopSearch.add(lblNumberOfExamples);
-      hpTop.add(hpTopSearch);
-      hpTop.setCellWidth(imgLogo, "1px");
-
-      txtSearch.setText(I18N.filterByKeywords());
-      txtSearch.setStyleName("emptytextbox");
-
-      txtSearch.addFocusHandler(this);
-      txtSearch.addBlurHandler(this);
-      txtSearch.addKeyUpHandler(this);
-
-      RootPanel.get().add(hpTop);
-      examplesPanel.setWidth("100%");
-      RootPanel.get().add(examplesPanel);
-   }
-
-   /*
-     * (non-Javadoc)
-     * @see com.google.gwt.event.dom.client.FocusHandler#onFocus(com.google.gwt.event.dom.client.FocusEvent)
-     */
-   public void onFocus(FocusEvent event)
-   {
-      if (event.getSource() == txtSearch)
-      {
-         if (txtSearch.getText().equals(I18N.filterByKeywords()))
-         {
-            txtSearch.setText("");
-            txtSearch.removeStyleName("emptytextbox");
-         }
-      }
-   }
-
-   /*
-    * (non-Javadoc)
-    * @see com.google.gwt.event.dom.client.BlurHandler#onBlur(com.google.gwt.event.dom.client.BlurEvent)
-    */
-   public void onBlur(BlurEvent event)
-   {
-      if (event.getSource() == txtSearch)
-      {
-         if (txtSearch.getText().trim().equals(""))
-         {
-            txtSearch.setText(I18N.filterByKeywords());
-            txtSearch.addStyleName("emptytextbox");
-         }
-      }
-   }
-
-   /*
-    * (non-Javadoc)
-    * @see com.google.gwt.event.dom.client.KeyUpHandler#onKeyUp(com.google.gwt.event.dom.client.KeyUpEvent)
-    */
-   public void onKeyUp(KeyUpEvent event)
-   {
-      if (event.getSource() == txtSearch) buildExamplePanels(txtSearch.getText());
-
-   }
+            bus.fireEvent(new ExamplePanelBuildEvent(""));
+        }
+    }
 }

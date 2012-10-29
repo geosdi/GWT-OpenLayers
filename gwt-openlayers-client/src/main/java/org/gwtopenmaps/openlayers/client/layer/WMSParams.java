@@ -19,7 +19,9 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class WMSParams extends Params {
     
-    private final static String CQL_FILTER = "CQL_FILTER";
+    public final static String CQL_FILTER = "CQL_FILTER";
+    public final static String TIME = "TIME";
+    public final static String ELEVATION = "ELEVATION";
 
     protected WMSParams(JSObject jsObject) {
         super(jsObject);
@@ -29,6 +31,10 @@ public class WMSParams extends Params {
         this(JSObject.createJSObject());
     }
 
+    	public static WMSParams narrowToWMSParams(JSObject wmsParams){
+		return (wmsParams == null)?null: new WMSParams(wmsParams);
+	}
+    
 	public void setLayers(String layers) {
 		getJSObject().setProperty("LAYERS", layers);
 	}
@@ -55,6 +61,26 @@ public class WMSParams extends Params {
 
         public String getCQLFilter() {
             return getJSObject().getPropertyAsString(CQL_FILTER);
+        }
+
+        public String getTimeFilter() {
+            return getJSObject().getPropertyAsString(TIME);
+        }
+        
+        public void setTimeFilter(String timeFilter) {
+            getJSObject().setProperty(TIME, timeFilter);
+        }
+
+        public void removeTimeFilter() {
+            getJSObject().unsetProperty(TIME);
+        }
+        
+        public void setElevationFilter(String elevationFilter) {
+            getJSObject().setProperty(ELEVATION, elevationFilter);
+        }
+
+        public void removeElevationFilter() {
+            getJSObject().unsetProperty(ELEVATION);
         }
 
 	public void setFormat(String styles) {

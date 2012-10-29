@@ -10,4 +10,10 @@ class PathHandlerImpl
         return $wnd.OpenLayers.Handler.Path;
     }-*/;
 
+	public static native void click(JSObject handler, JSObject pixel)/*-{
+		var fakeEvent = {'xy' : pixel };
+		handler.down(fakeEvent);
+		handler.up(fakeEvent);
+	}-*/;
+
 }

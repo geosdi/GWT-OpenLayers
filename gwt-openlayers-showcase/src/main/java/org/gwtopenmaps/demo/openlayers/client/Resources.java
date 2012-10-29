@@ -10,12 +10,12 @@ import com.google.gwt.resources.client.ImageResource;
  * @author fks/Frank Wynants
  *
  */
-public interface Resources extends ClientBundle
-{
+public interface Resources extends ClientBundle {
+
     /**
      * The singleton instance.
      */
-    Resources INSTANCE =  GWT.create(Resources.class);
+    Resources INSTANCE = GWT.create(Resources.class);
 
     /**
      * The GWT-OL logo.
@@ -32,5 +32,4 @@ public interface Resources extends ClientBundle
      */
     @Source("resources/icon-info.png")
     ImageResource icon_info();
-
 }

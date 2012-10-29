@@ -10,4 +10,9 @@ class PointHandlerImpl
         return $wnd.OpenLayers.Handler.Point;
     }-*/;
 
+    public static native void setStyle(JSObject handler, JSObject style) /*-{
+		handler.style = style;
+	}-*/;
+
+
 }

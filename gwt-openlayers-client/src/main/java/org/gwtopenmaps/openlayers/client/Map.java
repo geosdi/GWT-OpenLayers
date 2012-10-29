@@ -265,13 +265,13 @@ public class Map extends OpenLayersEObjectWrapper {
     public void zoomToExtent(Bounds bounds) {
         MapImpl.zoomToExtent(getJSObject(), bounds.getJSObject());
     }
-    
+
     /**
      * APIMethod: zoomToExtent
      * Zoom to the passed in bounds, recenter.
      * @param bounds
-     * @param closest Find the zoom level that most closely fits the 
-     * specified bounds. Note that this may result in a zoom that does 
+     * @param closest Find the zoom level that most closely fits the
+     * specified bounds. Note that this may result in a zoom that does
      * not exactly contain the entire extent. Default is false.
      */
     public void zoomToExtent(Bounds bounds, boolean closest) {
@@ -300,6 +300,34 @@ public class Map extends OpenLayersEObjectWrapper {
     public Pixel getPixelFromLonLat(LonLat lonlat) {
         return new Pixel(MapImpl.getPixelFromLonLat(getJSObject(),
                 lonlat.getJSObject()));
+    }
+
+    /**
+     * APIMethod: getLayerPxFromLonLat
+     *
+     * Parameters:
+     * @param lonlat {<OpenLayers.LonLat>} lonlat
+     *
+     * @return {<OpenLayers.Pixel>} An OpenLayers.Pixel which is the passed-in
+     *                      <OpenLayers.LonLat>, translated into layer pixels
+     *                      by the current base layer
+     */
+    public Pixel getLayerPxFromLonLat(LonLat lonlat) {
+    	return new Pixel(MapImpl.getLayerPxFromLonLat(getJSObject(),
+    			lonlat.getJSObject()));
+    }
+
+    /**
+     * Method: getLonLatFromLayerPx
+     *
+     * Parameters:
+     * @param px - {<OpenLayers.Pixel>}
+     *
+     * @return {<OpenLayers.LonLat>}
+     */
+    public LonLat getLonLatFromLayerPx(Pixel px) {
+    	return new LonLat(MapImpl.getLonLatFromLayerPx(getJSObject(),
+    			px.getJSObject()));
     }
 
     public String getProjection() {

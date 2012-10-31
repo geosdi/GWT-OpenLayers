@@ -11,7 +11,12 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 class ArgParserImpl
 {
-
+    /**
+     * Private constructor to prevent objects of this class being created.
+     */
+    private ArgParserImpl() {
+    }
+    
     public static native JSObject create() /*-{
         return new $wnd.OpenLayers.Control.ArgParser();
     }-*/;

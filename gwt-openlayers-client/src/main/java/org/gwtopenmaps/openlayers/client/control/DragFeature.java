@@ -15,7 +15,9 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 public class DragFeature extends Control
 {
 
-    /** Internal Constructor */
+    /** Internal Constructor
+     * @param dragFeatureObj 
+     */
     protected DragFeature(JSObject dragFeatureObj)
     {
         super(dragFeatureObj);
@@ -37,7 +39,7 @@ public class DragFeature extends Control
      *
      * @param vectorLayer
      *            The layer that this DragFeature belongs.
-     * @param The
+     * @param options
      *            DragFeature options, used to set the listeners that handles
      *            the drag events
      */

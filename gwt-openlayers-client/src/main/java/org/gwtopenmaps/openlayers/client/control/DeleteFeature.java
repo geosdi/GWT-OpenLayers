@@ -1,6 +1,5 @@
 package org.gwtopenmaps.openlayers.client.control;
 
-import org.gwtopenmaps.openlayers.client.control.Control;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 

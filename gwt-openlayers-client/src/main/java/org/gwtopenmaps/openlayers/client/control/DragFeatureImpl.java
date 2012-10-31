@@ -18,9 +18,9 @@ public class DragFeatureImpl
     public static native JSObject createDragCallback(
         DragFeatureListener listener) /*-{
         var callback = function(vectorFeature,pixel){
-        var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(vectorFeature);
-        var pixelObj = @org.gwtopenmaps.openlayers.client.Pixel::narrowToPixel(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(pixel);
-        listener.@org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener::onDragEvent(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;Lorg/gwtopenmaps/openlayers/client/Pixel;)(vectorFeatureObj,pixelObj);
+            var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(vectorFeature);
+            var pixelObj = @org.gwtopenmaps.openlayers.client.Pixel::narrowToPixel(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(pixel);
+            listener.@org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener::onDragEvent(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;Lorg/gwtopenmaps/openlayers/client/Pixel;)(vectorFeatureObj,pixelObj);
         }
         return callback;
     }-*/;

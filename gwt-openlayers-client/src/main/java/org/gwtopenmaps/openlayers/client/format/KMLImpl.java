@@ -15,6 +15,11 @@ public class KMLImpl
     /*-{
             return new $wnd.OpenLayers.Format.KML();
     }-*/;
+    
+    public static native JSObject create(JSObject formaOptions)
+    /*-{
+            return new $wnd.OpenLayers.Format.KML(formaOptions);
+    }-*/;
 
     public static native JSObject read(JSObject kmlFormat, String kmlString) /*-{
         return kmlFormat.read(kmlString);

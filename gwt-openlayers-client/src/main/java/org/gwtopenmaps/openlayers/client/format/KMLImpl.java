@@ -6,6 +6,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  *
  */
 public class KMLImpl
@@ -16,9 +17,9 @@ public class KMLImpl
             return new $wnd.OpenLayers.Format.KML();
     }-*/;
     
-    public static native JSObject create(JSObject formaOptions)
+    public static native JSObject create(JSObject formatOptions)
     /*-{
-            return new $wnd.OpenLayers.Format.KML(formaOptions);
+            return new $wnd.OpenLayers.Format.KML(formatOptions);
     }-*/;
 
     public static native JSObject read(JSObject kmlFormat, String kmlString) /*-{

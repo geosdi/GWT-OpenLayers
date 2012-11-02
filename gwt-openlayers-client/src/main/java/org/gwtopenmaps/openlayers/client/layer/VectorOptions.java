@@ -99,4 +99,19 @@ public class VectorOptions extends LayerOptions
         }
         self.strategies.push(strategy);
     }-*/;
+
+    public void setRenderers(String[] renderers)
+    {
+        for (int i = 0, max = renderers.length; i < max; i++)
+        {
+            setRenderer(this.getJSObject(), renderers[i]);
+        }
+    }
+
+    private native void setRenderer(JSObject self, String renderer) /*-{
+        if(self.renderers === null || self.renderers === undefined){
+        self.renderers = [];
+        }
+        self.renderers.push(renderer);
+    }-*/;
 }

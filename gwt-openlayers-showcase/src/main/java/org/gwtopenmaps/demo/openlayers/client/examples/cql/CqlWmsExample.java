@@ -25,10 +25,10 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-public class CqlExample extends AbstractExample {
+public class CqlWmsExample extends AbstractExample {
 
     @Inject
-    public CqlExample(ShowcaseExampleStore store) {
+    public CqlWmsExample(ShowcaseExampleStore store) {
         super("WMS CQL filtering",
               "Demonstrates the use of CQL to do filtering.",
               new String[]{"WMS", "CQL", "filter"}, store);

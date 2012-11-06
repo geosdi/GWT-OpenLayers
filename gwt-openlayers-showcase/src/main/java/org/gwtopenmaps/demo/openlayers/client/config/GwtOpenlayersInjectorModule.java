@@ -25,7 +25,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogle
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing.CancelDrawingExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.cql.CqlExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.cql.CqlWmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.imagelayer.ImageLayerExample;
@@ -85,7 +85,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(WmsRefreshExample.class).asEagerSingleton();
         bind(WmsWfsExample.class).asEagerSingleton();
         bind(WmsWfsEditExample.class).asEagerSingleton();
-        bind(CqlExample.class).asEagerSingleton();
+        bind(CqlWmsExample.class).asEagerSingleton();
         bind(VariableWfsStyle.class).asEagerSingleton();
         bind(WfsHoverHighlightExample.class).asEagerSingleton();
         bind(KmlExample.class).asEagerSingleton();

@@ -128,25 +128,8 @@ public class WFSFeatureSelectionExamples extends AbstractExample {
                 }
 
                 vectorFeature.toState(VectorFeature.State.Update);
-
-
                 attributesHTML.setHTML(attributes);
-
-                GWT.log("state 4  = " + vectorFeature.getState().toString());
-
-                Timer t = new Timer() {
-                    @Override
-                    public void run() {
-                        // TODO Auto-generated method stub
-                        GWT.log("go commit now");
-                        wfsProtocol.commit(
-                                vectorFeature,
-                                wfsCRUD);
-
-                    }
-                };
-                t.schedule(5000);
-
+                wfsProtocol.commit(vectorFeature, wfsCRUD);
             }
         });
 

@@ -26,6 +26,8 @@ import org.gwtopenmaps.openlayers.client.event.VectorFeatureUnselectedListener.F
 import org.gwtopenmaps.openlayers.client.event.VectorVertexModifiedListener;
 import org.gwtopenmaps.openlayers.client.event.VectorVertexModifiedListener.VertexModifiedEvent;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
+import org.gwtopenmaps.openlayers.client.filter.FeatureIdFilter;
+import org.gwtopenmaps.openlayers.client.filter.Filter;
 import org.gwtopenmaps.openlayers.client.protocol.Protocol;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
@@ -323,5 +325,14 @@ public class Vector extends Layer {
      */
     public Bounds getDataExtent() {
         return Bounds.narrowToBounds(VectorImpl.getDataExtentImp(getJSObject()));
+    }
+
+    /**
+     * Set a filter.
+     * @param filter The filter to set
+     */
+    public void setFilter(Filter filter)
+    {
+        getJSObject().setProperty("filter", filter.getJSObject());
     }
 }

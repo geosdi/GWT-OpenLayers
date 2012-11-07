@@ -32,6 +32,10 @@ import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 
+/**
+ * @author Frank Wynants/www.fks.be
+ */
+
 public class SpatialFilterExample extends AbstractExample {
     @Inject
     public SpatialFilterExample(ShowcaseExampleStore store) {

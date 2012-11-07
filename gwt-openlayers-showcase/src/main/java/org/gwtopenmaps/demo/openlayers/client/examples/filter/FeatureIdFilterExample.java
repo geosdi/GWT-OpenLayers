@@ -27,11 +27,11 @@ import org.gwtopenmaps.openlayers.client.strategy.Strategy;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.HTML;
 
-public class FilterExample extends AbstractExample {
+public class FeatureIdFilterExample extends AbstractExample {
     @Inject
-    public FilterExample(ShowcaseExampleStore store) {
-        super("WFS Filter example", "Shows how to filter a wfs layer.",
-              new String[]{"WFS", "filter"}, store);
+    public FeatureIdFilterExample(ShowcaseExampleStore store) {
+        super("WFS Filter example", "Shows how to filter a wfs layer using a FeatureIdFilter.",
+              new String[]{"WFS", "filter", "FeatureIdFilter"}, store);
     }
 
     @Override

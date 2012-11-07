@@ -30,7 +30,7 @@ import com.google.gwt.user.client.ui.HTML;
 public class FeatureIdFilterExample extends AbstractExample {
     @Inject
     public FeatureIdFilterExample(ShowcaseExampleStore store) {
-        super("WFS Filter example", "Shows how to filter a wfs layer using a FeatureIdFilter.",
+        super("WFS FeatureIdFilter example", "Shows how to filter a wfs layer using a FeatureIdFilter.",
               new String[]{"WFS", "filter", "FeatureIdFilter"}, store);
     }
 

@@ -26,7 +26,6 @@ import org.gwtopenmaps.openlayers.client.event.VectorFeatureUnselectedListener.F
 import org.gwtopenmaps.openlayers.client.event.VectorVertexModifiedListener;
 import org.gwtopenmaps.openlayers.client.event.VectorVertexModifiedListener.VertexModifiedEvent;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
-import org.gwtopenmaps.openlayers.client.filter.FeatureIdFilter;
 import org.gwtopenmaps.openlayers.client.filter.Filter;
 import org.gwtopenmaps.openlayers.client.protocol.Protocol;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;

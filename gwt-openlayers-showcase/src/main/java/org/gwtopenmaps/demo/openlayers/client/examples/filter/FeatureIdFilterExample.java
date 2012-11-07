@@ -98,6 +98,6 @@ public class FeatureIdFilterExample extends AbstractExample {
     @Override
     public String getSourceCodeURL() {
         return GWT.getModuleBaseURL() + "examples/filter/"
-                + "FilterExample.txt";
+                + "FeatureIdFilterExample.txt";
     }
 }

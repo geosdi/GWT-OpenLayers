@@ -327,11 +327,12 @@ public class Vector extends Layer {
     }
 
     /**
-     * Set a filter.
+     * Set a filter, or unset the filter if passed filter is null.
      * @param filter The filter to set
      */
-    public void setFilter(Filter filter)
+    public void setFilter(final Filter filter)
     {
-        getJSObject().setProperty("filter", filter.getJSObject());
+        if (filter != null) getJSObject().setProperty("filter", filter.getJSObject());
+        else getJSObject().unsetProperty("filter");
     }
 }

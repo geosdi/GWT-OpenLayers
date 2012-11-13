@@ -1,10 +1,8 @@
 package org.gwtopenmaps.openlayers.client.protocol;
 
-import com.google.gwt.json.client.JSONArray;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
-import org.gwtopenmaps.openlayers.client.util.JSObjectHelper;
 
 /**
  *
@@ -56,6 +54,7 @@ public class WFSProtocol extends Protocol {
      * @param options - Options object, encapsulating the callback
      *
      */
+    @Override
     public void read(CRUDOptions options) {
         WFSProtocolImpl.read(this.getJSObject(), options.getJSObject());
     }
@@ -134,9 +133,9 @@ public class WFSProtocol extends Protocol {
     }
 
     /**
-     * 
+     *
      * @param feature
-     * @param options 
+     * @param options
      */
     public void commit(VectorFeature feature,
             CRUDOptions options) {

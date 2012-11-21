@@ -44,6 +44,8 @@ public class Vector extends Layer {
         return (vectorLayer == null) ? null : new Vector(vectorLayer);
     }
 
+    private VectorOptions vectorOptions;
+
     protected Vector(JSObject vector) {
         super(vector);
     }
@@ -54,6 +56,16 @@ public class Vector extends Layer {
 
     public Vector(String name, VectorOptions options) {
         this(VectorImpl.create(name, options.getJSObject()));
+        this.vectorOptions = options;
+    }
+
+    /**
+     * Get the VectorOptions.
+     * @return The VectorOptions.
+     */
+    public VectorOptions getVectorOptions()
+    {
+        return this.vectorOptions;
     }
 
     public void addFeatures(VectorFeature[] features) {

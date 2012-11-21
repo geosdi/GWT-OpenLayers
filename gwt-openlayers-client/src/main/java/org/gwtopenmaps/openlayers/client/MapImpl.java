@@ -227,4 +227,17 @@ class MapImpl {
     public static native double getZoomForResolution(JSObject map, double resolution, boolean closest)/*-{
         return map.getZoomForResolution(resolution, closest);
     }-*/;
+
+    public static native Element getViewport(JSObject map)/*-{
+        return map.getViewport();
+    }-*/;
+
+	public static native void zoomIn(JSObject map)/*-{
+	    map.zoomIn();
+	}-*/;
+
+	public static native void zoomOut(JSObject map)/*-{
+	    map.zoomOut();
+	}-*/;
+
 }

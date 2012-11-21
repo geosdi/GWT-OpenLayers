@@ -17,10 +17,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 public class VectorOptions extends LayerOptions
 {
 
+    private Strategy[] strategies;
+
     public VectorOptions()
     {
     }
 
+    @Override
     public void setIsBaseLayer(boolean b)
     {
         getJSObject().setProperty("isBaseLayer", b);
@@ -87,10 +90,20 @@ public class VectorOptions extends LayerOptions
 
     public void setStrategies(Strategy[] strategies)
     {
+        this.strategies = strategies;
         for (int i = 0, max = strategies.length; i < max; i++)
         {
             setStrategy(this.getJSObject(), strategies[i].getJSObject());
         }
+    }
+
+    /**
+     * Get the setted Strategy objects.
+     * @return The setted Strategy objects.
+     */
+    public Strategy[] getStrategies()
+    {
+        return this.strategies;
     }
 
     private native void setStrategy(JSObject self, JSObject strategy) /*-{

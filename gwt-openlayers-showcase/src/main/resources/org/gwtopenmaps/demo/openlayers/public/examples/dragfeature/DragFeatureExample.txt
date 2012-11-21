@@ -52,7 +52,8 @@ public class DragFeatureExample extends AbstractExample {
     private Map map;
     private TextArea reportArea = new TextArea() {
         {
-            this.setHeight("20em");
+            this.setHeight("100px");
+            this.setWidth("500px");
         }
     };
 

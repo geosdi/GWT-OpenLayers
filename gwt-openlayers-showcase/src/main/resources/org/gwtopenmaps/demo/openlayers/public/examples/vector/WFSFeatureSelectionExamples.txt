@@ -1,9 +1,9 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.vector;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HTML;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -29,9 +29,6 @@ import org.gwtopenmaps.openlayers.client.protocol.Response;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolCRUDOptions;
 import org.gwtopenmaps.openlayers.client.protocol.WFSProtocolOptions;
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.HTML;
 
 public class WFSFeatureSelectionExamples extends AbstractExample {
 

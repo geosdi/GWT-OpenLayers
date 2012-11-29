@@ -5,6 +5,7 @@ import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.RequiresResize;
 
 /**
  * See {@link Map}.
@@ -13,7 +14,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Edwin Commandeur
  *
  */
-public class MapWidget extends Widget {
+public class MapWidget extends Widget implements RequiresResize {
 
 	private Map map;
 	private MapOptions options;
@@ -141,10 +142,14 @@ public class MapWidget extends Widget {
 	protected void onLoad() {
 		// We update the size of the map to try to display the map correctly when the MapWidget's size is set with percentage
 		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
-			
+
 			public void execute() {
-				getMap().updateSize();				
+				getMap().updateSize();
 			}
 		});
+	}
+
+	public void onResize() {
+		getMap().updateSize();
 	}
 }

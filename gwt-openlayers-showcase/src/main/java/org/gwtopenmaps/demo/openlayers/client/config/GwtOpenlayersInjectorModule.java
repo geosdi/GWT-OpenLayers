@@ -25,6 +25,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogle
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing.CancelDrawingExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.click.ClickExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.cql.CqlWmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.dragfeature.DragFeatureExample;
@@ -99,5 +100,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(SpatialFilterExample.class).asEagerSingleton();
         bind(ComparisonAndLogicalFilterExample.class).asEagerSingleton();
         bind(DragFeatureExample.class).asEagerSingleton();
+        bind(ClickExample.class).asEagerSingleton();
     }
 }

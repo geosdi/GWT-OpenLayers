@@ -21,6 +21,7 @@ import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3MapType;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3Options;
+import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 public class ClickExample extends AbstractExample {
 
@@ -74,8 +75,9 @@ public class ClickExample extends AbstractExample {
                 GWT.log(eventObject.getJSObject().getPropertyNames());
                 GWT.log(eventObject.getJSObject().getPropertyValues());
 
-                float x = eventObject.getJSObject().getPropertyAsFloat("x");
-                float y = eventObject.getJSObject().getPropertyAsFloat("y");
+                final JSObject[] xy = eventObject.getJSObject().getPropertyAsArray("xy");
+                final int x = xy[0].getPropertyAsInt("x");
+                final int y = xy[0].getPropertyAsInt("y");
 
                 LonLat lonLat =  map.getLonLatFromPixel(new Pixel(x, y));
                 lonLat.transform(map.getProjection(), DEFAULT_PROJECTION.getProjectionCode()); //transform lonlat to more readable format

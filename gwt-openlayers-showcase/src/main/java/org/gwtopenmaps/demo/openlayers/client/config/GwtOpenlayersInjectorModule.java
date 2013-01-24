@@ -15,9 +15,8 @@
  */
 package org.gwtopenmaps.demo.openlayers.client.config;
 
-import com.google.gwt.inject.client.AbstractGinModule;
-import com.google.gwt.user.client.ui.Image;
 import javax.inject.Singleton;
+
 import org.gwtopenmaps.demo.openlayers.client.config.provider.ShowcaseLogoProvider;
 import org.gwtopenmaps.demo.openlayers.client.examples.TransformFeature.TransformFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExample;
@@ -47,12 +46,16 @@ import org.gwtopenmaps.demo.openlayers.client.examples.variablewfsstyle.Variable
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.WFSFeatureSelectionExamples;
 import org.gwtopenmaps.demo.openlayers.client.examples.wfshoverhighlight.WfsHoverHighlightExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmsPost.WmsPostExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsrefresh.WmsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfsedit.WmsWfsEditExample;
 import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBus;
 import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
+
+import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.gwt.user.client.ui.Image;
 
 /**
  *
@@ -101,5 +104,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(ComparisonAndLogicalFilterExample.class).asEagerSingleton();
         bind(DragFeatureExample.class).asEagerSingleton();
         bind(ClickExample.class).asEagerSingleton();
+        bind(WmsPostExample.class).asEagerSingleton();
     }
 }

@@ -1,6 +1,7 @@
 package org.gwtopenmaps.openlayers.client.geometry;
 
 import org.gwtopenmaps.openlayers.client.Projection;
+import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
@@ -8,7 +9,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public abstract class Collection extends Geometry
+public class Collection extends Geometry
 {
 
     protected Collection(JSObject element)
@@ -16,7 +17,14 @@ public abstract class Collection extends Geometry
         super(element);
     }
 
-    /**
+
+  public Collection(Geometry[] geometries)
+  {
+    this(CollectionImpl.create((new JObjectArray(geometries).getJSObject())));
+  }
+
+
+  /**
      * Every Geometry that is a collection has components
      * These components can be basic geometry types or other collections.
      * The getComponents method is defined for direct subclasses of Collection
@@ -106,4 +114,48 @@ public abstract class Collection extends Geometry
     {
     	CollectionImpl.resize(getJSObject(), scale, origin.getJSObject());
     }
+
+    /**
+     * Add a new component (geometry) to the collection.  If this.componentTypes is set, then the component class name must be in the componentTypes array.
+     * The bounds cache is reset.
+     * @param geometry A geometry to add
+     * @param index index into the array to insert the component
+     * @return The component geometry was successfully added
+     */
+
+  public boolean addComponent(Geometry geometry, int index)
+    {
+      return CollectionImpl.addComponent(getJSObject(),geometry.getJSObject(),index);
+    }
+
+    /**
+     * Add components to this geometry.
+     * @param geometries An array of geometries to add
+     */
+
+  public void addComponents(Geometry[] geometries)
+  {
+    CollectionImpl.addComponents(getJSObject(),new JObjectArray(geometries).getJSObject());
+  }
+
+    /**
+     * Remove a component from this geometry.
+     * @param geometry
+     * @return The component was removed.
+     */
+  public boolean removeComponent(Geometry geometry)
+  {
+    return CollectionImpl.removeComponent(getJSObject(),geometry.getJSObject());
+  }
+
+    /**
+     * Remove components from this geometry.
+     * @param geometries
+     */
+  public boolean removeComponents(Geometry[] geometries)
+  {
+    return CollectionImpl.removeComponents(getJSObject(),new JObjectArray(geometries).getJSObject());
+  }
+
+
 }

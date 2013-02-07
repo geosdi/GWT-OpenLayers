@@ -3,6 +3,7 @@ package org.gwtopenmaps.openlayers.client.geometry;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
+ * MultiPoint is a collection of Points.
  * @author Edwin Commandeur - Atlis EJS
  *
  */
@@ -32,4 +33,22 @@ public abstract class MultiPoint extends Collection {
 
         return coordinateArray;
     }
+
+    /**
+     * Add a point to the MultiPoint
+     * @param point The point to add
+     * @param The index
+     */
+    public void addPoint (Point point, int index) {
+        addComponent(point, index);
+    }
+
+    /**
+     * Removes a point from this MultiPoint
+     * @param point The point to remove
+     */
+    public void removePoint (Point point) {
+        removeComponent(point);
+    }
+
 }

@@ -60,7 +60,7 @@ public class WmsPostExample extends AbstractExample {
         wmsLayerParams.setTransitionEffect(TransitionEffect.RESIZE);
 
         TileOptions options = new TileOptions();
-        options.setParameter("maxGetUrlLength", "10"); //note that the recommended value is 2048
+        options.setMaxGetUrlLength(10); //note that the recommended value is 2048
         wmsLayerParams.setTileOptions(options);
 
         String wmsUrl = "http://demo.opengeo.org/geoserver/wms";

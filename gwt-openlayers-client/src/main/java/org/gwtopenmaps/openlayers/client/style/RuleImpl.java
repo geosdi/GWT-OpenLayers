@@ -6,9 +6,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 public class RuleImpl
 {
-
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Rule();
+        return new $wnd.OpenLayers.Rule();
     }-*/;
 
     public static native JSObject create(JSObject options) /*-{
@@ -65,5 +64,18 @@ public class RuleImpl
 
     public static native void setMaxScaleDenominator(JSObject self, int scale) /*-{
         self.maxScaleDenominator = scale;
+    }-*/;
+
+    public static native void destroy(JSObject self) /*-{
+        self.destroy();
+    }-*/;
+
+    public static native boolean evaluate(JSObject self, JSObject feature) /*-{
+        return self.evaluate(feature);
+    }-*/;
+
+    public static native void setFilter(JSObject self, JSObject filter)
+    /*-{
+        self.filter = filter;
     }-*/;
 }

@@ -7,11 +7,11 @@ public class SymbolizerTextImpl
 {
 
     public static native JSObject create(JSObject config) /*-{
-        return $wnd.OpenLayers.Symbolizer.Text(config);
+        return new $wnd.OpenLayers.Symbolizer.Text(config);
     }-*/;
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Symbolizer.Text();
+        return new $wnd.OpenLayers.Symbolizer.Text();
     }-*/;
 
     public static native void setLabel(JSObject self, String label) /*-{

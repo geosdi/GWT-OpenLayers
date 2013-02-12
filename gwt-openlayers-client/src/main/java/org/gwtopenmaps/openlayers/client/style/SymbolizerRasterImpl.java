@@ -7,7 +7,7 @@ public class SymbolizerRasterImpl
 {
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Symbolizer.Raster();
+        return new $wnd.OpenLayers.Symbolizer.Raster();
     }-*/;
 
     public static native JSObject create(JSObject config) /*-{

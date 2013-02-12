@@ -7,7 +7,7 @@ public class SymbolizerPolygonImpl
 {
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Symbolizer.Polygon();
+        return new $wnd.OpenLayers.Symbolizer.Polygon();
     }-*/;
 
     public static native void setFillColor(JSObject self, String color) /*-{

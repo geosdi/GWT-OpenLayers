@@ -8,11 +8,11 @@ public class SymbolizerMapImpl
 {
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.StyleMap();
+        return new $wnd.OpenLayers.StyleMap();
     }-*/;
 
     public static native JSObject create(JSObject style, JSObject options) /*-{
-        return $wnd.OpenLayers.StyleMap(style, options);
+        return new $wnd.OpenLayers.StyleMap(style, options);
     }-*/;
 
     public static native JSObject createSymbolizer(JSObject self, Feature feature, String intent) /*-{

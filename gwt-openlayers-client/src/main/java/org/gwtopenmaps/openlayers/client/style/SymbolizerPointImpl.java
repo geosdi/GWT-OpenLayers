@@ -7,7 +7,7 @@ public class SymbolizerPointImpl
 {
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Symbolizer.Point();
+        return new $wnd.OpenLayers.Symbolizer.Point();
     }-*/;
 
     public static native void setPointRadius(JSObject self, double radius) /*-{

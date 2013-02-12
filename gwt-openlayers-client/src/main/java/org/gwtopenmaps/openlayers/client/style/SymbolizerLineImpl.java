@@ -7,7 +7,7 @@ public class SymbolizerLineImpl
 {
 
     public static native JSObject create() /*-{
-        return $wnd.OpenLayers.Symbolizer.Line();
+        return new $wnd.OpenLayers.Symbolizer.Line();
     }-*/;
 
     public static native void setStorkeColor(JSObject self, String color) /*-{
@@ -36,7 +36,7 @@ public class SymbolizerLineImpl
 
     /**
      *
-     * @param linecap Stroke cap type (“butt�?, “round�?, or “square�?).
+     * @param linecap Stroke cap type (“butt�?, “round�?, or “square�?).
      */
     public static native void setLinecap(JSObject self, String linecap) /*-{
         self.strokeLinecap = linecap;
@@ -48,7 +48,7 @@ public class SymbolizerLineImpl
 
 
     /**
-     * Stroke dash style according to the SLD spec.  Note that the OpenLayers values for strokeDashstyle (“dot�?, “dash�?, “dashdot�?, “longdash�?, “longdashdot�?, or “solid�?) will not work in SLD, but most SLD patterns will render correctly in OpenLayers
+     * Stroke dash style according to the SLD spec.  Note that the OpenLayers values for strokeDashstyle (“dot�?, “dash�?, “dashdot�?, “longdash�?, “longdashdot�?, or “solid�?) will not work in SLD, but most SLD patterns will render correctly in OpenLayers
      * @param dashstyle
      */
     public static native void setDashstyle(JSObject self, String dashstyle) /*-{

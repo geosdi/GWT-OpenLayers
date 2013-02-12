@@ -1,6 +1,8 @@
 package org.gwtopenmaps.openlayers.client;
 
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
+import org.gwtopenmaps.openlayers.client.style.Rule;
+import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -13,7 +15,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * </ul>
  *
  * @author Rafael Ceravolo - LOGANN
- * @author Lukas Johansson 
+ * @author Lukas Johansson
  */
 public class StyleMap extends OpenLayersObjectWrapper {
 
@@ -38,7 +40,7 @@ public class StyleMap extends OpenLayersObjectWrapper {
 	public StyleMap(Style style) {
 		this(
 			StyleMapImpl.create(
-				style.getJSObject(), 
+				style.getJSObject(),
 				style.getJSObject(),
 				style.getJSObject()
 			)
@@ -67,7 +69,7 @@ public class StyleMap extends OpenLayersObjectWrapper {
 			)
 		);
 	}
-    
+
     public StyleMap(OpenLayersStyle defaultStyle, OpenLayersStyle selectStyle, OpenLayersStyle temporaryStyle) {
 		this(
 				defaultStyle == null ? null : defaultStyle.getJSObject(),
@@ -75,7 +77,7 @@ public class StyleMap extends OpenLayersObjectWrapper {
 				temporaryStyle == null ? null : temporaryStyle.getJSObject()
 		);
 	}
-    
+
     private StyleMap(JSObject defaultStyle, JSObject selectStyle, JSObject temporaryStyle) {
         this(StyleMapImpl.create(defaultStyle, selectStyle, temporaryStyle));
     }
@@ -83,14 +85,27 @@ public class StyleMap extends OpenLayersObjectWrapper {
 	public static StyleMap narrowToOpenLayersStyleMap(JSObject element) {
 		return (element == null) ? null: new StyleMap(element);
 	}
-	
+
 	public Style createSymbolizer(VectorFeature feature, String renderIntent){
 		return Style.narrowToOpenLayersStyle(
 			StyleImpl.createSymbolizer(
-				getJSObject(), 
-				feature.getJSObject(), 
+				getJSObject(),
+				feature.getJSObject(),
 				renderIntent
 			)
 		);
 	}
+
+	/**
+	 * Add rules to the given Style of a StyleMap
+	 * @param rules The rules to add
+	 * @param symbolizer The symbolizer of the style (default, temporary, select, delete, ...)
+	 * @return
+	 */
+    public void addRules(Rule[] rules, String symbolizer)
+    {
+        JObjectArray array = new JObjectArray(rules);
+        JSObject style = getJSObject().getProperty("styles").getProperty(symbolizer);
+        StyleImpl.addRules(style, array.getJSObject());
+    }
 }

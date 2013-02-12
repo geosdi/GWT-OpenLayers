@@ -386,7 +386,7 @@ public class StyleImpl {
 	/*-{
 		self.labelSelect = select;
 	}-*/;
-	
+
 	public static native void setGraphicOpacity(JSObject self, double o)
 	/*-{
 		self.graphicOpacity = o;
@@ -396,6 +396,11 @@ public class StyleImpl {
 	/*-{
 		return self.graphicOpacity;
 	}-*/;
+
+    public static native void addRules(JSObject style, JSObject rules)
+    /*-{
+         style.addRules(rules);
+    }-*/;
 
 
 }

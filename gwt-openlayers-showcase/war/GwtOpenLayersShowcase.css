@@ -69,3 +69,7 @@ border-bottom: 1px solid #FCB100;
         padding: 2px;
         color: #ee0000;
 }
+
+.olControlAttribution {
+	bottom: 5px !important;
+}

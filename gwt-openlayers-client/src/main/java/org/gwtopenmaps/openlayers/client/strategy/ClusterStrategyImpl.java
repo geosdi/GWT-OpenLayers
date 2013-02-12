@@ -7,10 +7,7 @@ public class ClusterStrategyImpl
 {
 
     public static native JSObject create() /*-{
+        console.log(new $wnd.OpenLayers.Strategy.Cluster());
         return new $wnd.OpenLayers.Strategy.Cluster();
     }-*/;
-
-    static void setDistance(JSObject jsObject, int distance) {
-        jsObject.setProperty("distance", distance);
-    }
 }

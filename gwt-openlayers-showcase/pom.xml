@@ -98,6 +98,18 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <configuration>
+                    <header>../header.txt</header>
+                    <excludes>
+                        <exclude>**/target/**</exclude>
+                        <exclude>**/war/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

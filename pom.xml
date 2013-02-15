@@ -36,6 +36,21 @@
         <system>trac</system>
         <url>https://sourceforge.net/apps/trac/gwt-openlayers/</url>
     </issueManagement>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mc-release</id>
+            <name>Local Maven repository of releases</name>
+            <url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+    
     <ciManagement>
         <system>jenkins</system>
         <url>http://hudson.geosdi.org/</url>
@@ -178,6 +193,29 @@
                             <version>2.2</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>com.mycila.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <version>1.9.0</version>
+                    <configuration>
+                        <includes>
+                            <include>**/java/**</include>
+                            <include>**/test/**</include>
+                        </includes>
+                        <excludes>
+                            <exclude>**/target/**</exclude>
+                            <exclude>**/public/**</exclude>
+                            <exclude>**/site/**</exclude>
+                        </excludes>
+                        <useDefaultExcludes>true</useDefaultExcludes>
+                        <useDefaultMapping>true</useDefaultMapping>
+                        <properties>
+                            <year>2013</year>
+                            <email>glascaleia@gmail.com</email>
+                        </properties>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

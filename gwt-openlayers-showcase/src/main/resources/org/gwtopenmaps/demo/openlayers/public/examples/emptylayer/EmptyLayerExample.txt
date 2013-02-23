@@ -121,6 +121,6 @@ public class EmptyLayerExample extends AbstractExample {
     @Override
     public String getSourceCodeURL() {
         return GWT.getModuleBaseURL() + "examples/emptylayer/"
-                + "EmptyLayer.txt";
+                + "EmptyLayerExample.txt";
     }
 }

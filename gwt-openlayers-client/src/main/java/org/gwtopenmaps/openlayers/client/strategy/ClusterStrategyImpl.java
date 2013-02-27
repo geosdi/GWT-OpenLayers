@@ -23,7 +23,9 @@ public class ClusterStrategyImpl
 {
 
     public static native JSObject create() /*-{
-        console.log(new $wnd.OpenLayers.Strategy.Cluster());
+        if (window.console) {
+            console.log(new $wnd.OpenLayers.Strategy.Cluster());
+        }
         return new $wnd.OpenLayers.Strategy.Cluster();
     }-*/;
 }

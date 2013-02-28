@@ -25,8 +25,7 @@ Welcome to GWT-OpenLayers ${projectVersion}
 	<groupId>${projectGroupId}</groupId>
 	<artifactId>${projectArtifactId}-client</artifactId>
 	<version>${projectVersion}</version>
-	<packaging>jar</packaging>
-<dependency>
+</dependency>
 ---  
   
 * How do I use it?

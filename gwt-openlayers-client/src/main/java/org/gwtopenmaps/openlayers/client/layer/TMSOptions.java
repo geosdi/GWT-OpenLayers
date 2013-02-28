@@ -31,6 +31,13 @@ public class TMSOptions extends LayerOptions
     {
     }
 
+    public TMSOptions(String layername, String type)
+    {
+        // setting required options
+        setLayername(layername);
+        setType(type);
+    }
+
     public void setLayers(String layers)
     {
         getJSObject().setProperty("layers", layers);
@@ -61,11 +68,13 @@ public class TMSOptions extends LayerOptions
         return getJSObject().getPropertyAsString("format");
     }
 
+    @Override
     public void setMaxExtent(Bounds bounds)
     {
         getJSObject().setProperty("maxExtent", bounds.getJSObject());
     }
 
+    @Override
     public Bounds getMaxExtent()
     {
         return Bounds.narrowToBounds(getJSObject().getProperty("maxExtent"));
@@ -74,6 +83,31 @@ public class TMSOptions extends LayerOptions
     public void setType(String type)
     {
         getJSObject().setProperty("type", type);
+    }
+
+    public String getType()
+    {
+        return getJSObject().getPropertyAsString("type");
+    }
+
+    public void setServiceVersion(String serviceVersion)
+    {
+        getJSObject().setProperty("serviceVersion", serviceVersion);
+    }
+
+    public String getServiceVersion()
+    {
+        return getJSObject().getPropertyAsString("serviceVersion");
+    }
+
+    public void setLayername(String layername)
+    {
+        getJSObject().setProperty("layername", layername);
+    }
+
+    public String getLayername()
+    {
+        return getJSObject().getPropertyAsString("layername");
     }
 
     public void setGetURL(JSObject getURL)

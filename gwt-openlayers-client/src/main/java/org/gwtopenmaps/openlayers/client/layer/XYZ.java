@@ -17,6 +17,7 @@
 package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.util.JStringArray;
 
 /**
  * Wrapper for OpenLayers.Layer.XYZ which is typically used to
@@ -39,6 +40,17 @@ public class XYZ extends GridLayer {
      */
     public XYZ(String name, String url, XYZOptions options) {
         this(XYZImpl.create(name, url, options.getJSObject()));
+    }
+
+    /**
+     * Constructor with specified options.
+     * @param name the layer name
+     * @param urls urls in the form <code>http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Portland/ESRI_LandBase_WebMercator/MapServer/tile/${z}/${y}/${x}</code>
+     * @param options constructor options
+     */
+    public XYZ(String name, String[] urls, XYZOptions options)
+    {
+            this(XYZImpl.create(name, new JStringArray(urls).getJSObject(), options.getJSObject()));
     }
 
     public XYZ narrowToXYZ(JSObject xyzLayer) {

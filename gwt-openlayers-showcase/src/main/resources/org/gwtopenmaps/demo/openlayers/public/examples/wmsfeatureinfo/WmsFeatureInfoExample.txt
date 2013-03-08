@@ -108,7 +108,7 @@ public class WmsFeatureInfoExample extends AbstractExample {
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to add a custom mouse position to the map..</p>"));
+                "<p>This example shows how to get feature info from a wms.</p>"));
         contentPanel.add(mapWidget);
 
         initWidget(contentPanel);

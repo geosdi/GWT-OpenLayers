@@ -50,7 +50,7 @@ public class ClickFeatureListenerExample extends AbstractExample {
     public ClickFeatureListenerExample(ShowcaseExampleStore store) {
         super("Clickable vector feature example",
               "Demonstrates how to add a vector feature (point) to the map and make it clickable",
-              new String[]{"marker", "feature", "clickable", "vector", "ClickFeatureListener"}, store);
+              new String[]{"marker", "feature", "clickable", "vector"}, store);
     }
 
     @Override

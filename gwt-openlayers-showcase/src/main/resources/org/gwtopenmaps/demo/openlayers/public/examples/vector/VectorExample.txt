@@ -29,6 +29,7 @@ import org.gwtopenmaps.openlayers.client.MapWidget;
 import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.Style;
+import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
@@ -47,10 +48,10 @@ public class VectorExample extends AbstractExample {
 
     @Inject
     public VectorExample(ShowcaseExampleStore store) {
-        super("Clickable vector example",
-              "Demonstrates how to add Vector data to the map and make it clickable. Using this you can for example create markers.",
-              new String[]{"marker", "feature", "clickable", "vector",
-                  "line"}, store);
+        super("Selectable vector example",
+              "Demonstrates how to add Vector data to the map and make it selectable. Also shows how to have a different style for a selected feature.",
+              new String[]{"marker", "feature", "selectable", "vector", "style", "stylemap",
+                  "line", "VectorFeatureSelectedListener"}, store);
     }
 
     @Override
@@ -94,11 +95,20 @@ public class VectorExample extends AbstractExample {
         map.addControl(selectFeature);
 
         //Define a style for the vectors
-        Style pointStyle = new Style();
-        pointStyle.setFillColor("red");
-        pointStyle.setStrokeColor("green");
-        pointStyle.setStrokeWidth(2);
-        pointStyle.setFillOpacity(0.9);
+        Style style = new Style();
+        style.setFillColor("red");
+        style.setStrokeColor("green");
+        style.setStrokeWidth(2);
+        style.setFillOpacity(0.9);
+        Style selectedStyle = new Style();
+        selectedStyle.setFillColor("yellow");
+        selectedStyle.setStrokeColor("yellow");
+        selectedStyle.setStrokeWidth(2);
+        selectedStyle.setFillOpacity(0.9);
+
+        StyleMap styleMap = new StyleMap(style, selectedStyle, style);
+        vectorLayer.setStyleMap(styleMap);
+
         /* or if you want to use an image
          pointStyle.setExternalGraphic("http://photo-dictionary.com/photofiles/list/3020/4043yellow_marker.jpg");
          pointStyle.setGraphicSize(50, 50);
@@ -106,18 +116,18 @@ public class VectorExample extends AbstractExample {
 
         //Add a point
         Point point = new Point(146.7, -41.8);
-        VectorFeature pointFeature = new VectorFeature(point, pointStyle);
+        VectorFeature pointFeature = new VectorFeature(point);
         vectorLayer.addFeature(pointFeature);
 
         //Add a line
         Point[] linePoints = {new Point(145, -40), new Point(147, 42)};
         LineString ls = new LineString(linePoints);
-        vectorLayer.addFeature(new VectorFeature(ls, pointStyle));
+        vectorLayer.addFeature(new VectorFeature(ls));
 
         //capture clicks on the vectorlayer
         vectorLayer.addVectorFeatureSelectedListener(new VectorFeatureSelectedListener() {
             public void onFeatureSelected(FeatureSelectedEvent eventObject) {
-                Window.alert("clicked on a vector");
+                Window.alert("selected a vector");
             }
         });
 
@@ -131,7 +141,13 @@ public class VectorExample extends AbstractExample {
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to add a Vector marker, and a line to the map.</p><p>Note that you can also use the Marker class to add markers, but it is advised to use this method instead."));
+                "<p>This example shows how to add a Vector marker, and a line to the map.</p>" +
+                "<p>Note that you can also use the Marker class to add markers, but it is advised to use this method instead.<p>" +
+                "<p>Click on a vector to select it.<BR/>" +
+                "<UL><LI>Click outside a vector to deselect it." +
+                "<LI>When a feature gets selected a Window.alert pops up, and the feature turns yellow." +
+                "<LI>Note that a feature doesn't get reselected when clicking on it when it was allready selected. So clicking multiple times on the same feature will not show multiple Window.alert popups." +
+                "</UL></p>"));
         contentPanel.add(mapWidget);
 
         initWidget(contentPanel);

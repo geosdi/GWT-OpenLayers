@@ -41,5 +41,29 @@ public class DragFeatureImpl
         return callback;
     }-*/;
 
+    public static native void setDragStopDown(JSObject self, boolean stopDown) /*-{
+        self.handlers['drag'].stopDown = stopDown;
+    }-*/;
+
+    public static native void setDragStopUp(JSObject self, boolean stopUp) /*-{
+        self.handlers['drag'].stopUp = stopUp;
+    }-*/;
+
+    public static native void setDragStopClick(JSObject self, boolean stopClick) /*-{
+    self.handlers['drag'].stopClick = stopClick;
+    }-*/;
+
+    public static native void setFeatureStopDown(JSObject self, boolean stopDown) /*-{
+        self.handlers['feature'].stopDown = stopDown;
+    }-*/;
+
+    public static native void setFeatureStopUp(JSObject self, boolean stopUp) /*-{
+        self.handlers['feature'].stopUp = stopUp;
+    }-*/;
+
+    public static native void setFeatureStopClick(JSObject self, boolean stopClick) /*-{
+        self.handlers['feature'].stopClick = stopClick;
+    }-*/;
+
 
 }

@@ -32,7 +32,7 @@ public class DragFeature extends Control
 {
 
     /** Internal Constructor
-     * @param dragFeatureObj 
+     * @param dragFeatureObj
      */
     protected DragFeature(JSObject dragFeatureObj)
     {
@@ -62,6 +62,60 @@ public class DragFeature extends Control
     public DragFeature(Vector vectorLayer, DragFeatureOptions options)
     {
         this(DragFeatureImpl.create(vectorLayer.getJSObject(), options.getJSObject()));
+    }
+
+    /**
+     * Set dragFeature.handlers['drag'].stopDown to a value
+     * @param stopDown
+     */
+    public void setDragStopDown(boolean stopDown)
+    {
+        DragFeatureImpl.setDragStopDown(getJSObject(), stopDown);
+    }
+
+    /**
+     * Set dragFeature.handlers['drag'].stopUp to a value
+     * @param stopUp
+     */
+    public void setDragStopUp(boolean stopUp)
+    {
+        DragFeatureImpl.setDragStopUp(getJSObject(), stopUp);
+    }
+
+    /**
+     * Set dragFeature.handlers['drag'].stopClick to a value
+     * @param stopClick
+     */
+    public void setDragStopClick(boolean stopClick)
+    {
+        DragFeatureImpl.setDragStopClick(getJSObject(), stopClick);
+    }
+
+    /**
+     * Set dragFeature.handlers['feature'].stopDown to a value
+     * @param stopDown
+     */
+    public void setFeatureStopDown(boolean stopDown)
+    {
+        DragFeatureImpl.setFeatureStopDown(getJSObject(), stopDown);
+    }
+
+    /**
+     * Set dragFeature.handlers['feature'].stopUp to a value
+     * @param stopUp
+     */
+    public void setFeatureStopUp(boolean stopUp)
+    {
+        DragFeatureImpl.setFeatureStopUp(getJSObject(), stopUp);
+    }
+
+    /**
+     * Set dragFeature.handlers['feature'].stopClick to a value
+     * @param stopClick
+     */
+    public void setFeatureStopClick(boolean stopClick)
+    {
+        DragFeatureImpl.setFeatureStopClick(getJSObject(), stopClick);
     }
 
     /**

@@ -38,6 +38,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.filter.SpatialFilterExamp
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.imagelayer.ImageLayerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.kml.KmlExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.label.LabelOverLeapExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestring.LineString2MultiLineStringExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
@@ -118,5 +119,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(EmptyLayerExample.class).asEagerSingleton();
         bind(FeaturePopupExample.class).asEagerSingleton();
         bind(ClickFeatureListenerExample.class).asEagerSingleton();
+        bind(LabelOverLeapExample.class).asEagerSingleton();
     }
 }

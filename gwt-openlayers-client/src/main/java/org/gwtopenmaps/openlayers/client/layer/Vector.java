@@ -363,4 +363,14 @@ public class Vector extends Layer {
         if (filter != null) getJSObject().setProperty("filter", filter.getJSObject());
         else getJSObject().unsetProperty("filter");
     }
+    
+    /**
+     * This causes text and geometry to be rendered in the same container.
+     * Can be used to fix weird overlapping of texts.
+     * @see http://osgeo-org.1560.n6.nabble.com/Problems-with-labels-td4991177.html
+     */
+    public void setTextRootRendererToVectorRootRenderer()
+    {
+    	getJSObject().getProperty("renderer").setProperty("textRoot", getJSObject().getProperty("renderer").getProperty("vectorRoot"));
+    }
 }

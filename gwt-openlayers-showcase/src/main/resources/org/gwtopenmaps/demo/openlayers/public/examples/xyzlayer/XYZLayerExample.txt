@@ -92,7 +92,7 @@ public class XYZLayerExample extends AbstractExample {
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to add a some OSM layers to GWT-OL.</p>"));
+                "<p>This example shows how to add a some XYZ layers to GWT-OL.</p>"));
         contentPanel.add(
                 new InfoPanel(
                 "<p>Don't forget to add the following line to your html file if you want to use OSM :</p>"

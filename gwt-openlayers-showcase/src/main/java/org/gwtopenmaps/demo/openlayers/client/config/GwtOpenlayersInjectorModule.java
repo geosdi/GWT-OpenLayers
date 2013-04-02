@@ -35,6 +35,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.featurepopup.FeaturePopup
 import org.gwtopenmaps.demo.openlayers.client.examples.filter.ComparisonAndLogicalFilterExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.filter.FeatureIdFilterExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.filter.SpatialFilterExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.geojson.GeoJsonExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.imagelayer.ImageLayerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.kml.KmlExample;
@@ -122,5 +123,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(ClickFeatureListenerExample.class).asEagerSingleton();
         bind(LabelOverLeapExample.class).asEagerSingleton();
         bind(XYZLayerExample.class).asEagerSingleton();
+        bind(GeoJsonExample.class).asEagerSingleton();
     }
 }

@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 /**
  *
@@ -23,8 +23,7 @@ package org.gwtopenmaps.openlayers.client.event;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class EventType
-{
+public class EventType {
 
     public static final String CONTROL_ACTIVATE = "activate";
     public static final String CONTROL_DEACTIVATE = "deactivate";
@@ -38,12 +37,10 @@ public class EventType
     public static final String CONTROL_SELECT_FEATURE_BEFORE_HIGHLIGHTED = "beforefeaturehighlighted";
     public static final String CONTROL_SELECT_FEATURE_HIGHLIGHTED = "featurehighlighted";
     public static final String CONTROL_SELECT_FEATURE_UNHIGHLIGHTED = "featureunhighlighted";
-
     public static final String LAYER_LOADSTART = "loadstart";
     public static final String LAYER_LOADEND = "loadend";
     public static final String LAYER_LOADCANCEL = "loadcancel";
     public static final String LAYER_VISIBILITYCHANGED = "visibilitychanged";
-
     public static final String MAP_BASE_LAYER_CHANGED = "changebaselayer";
     public static final String MAP_CLICK = "click";
     public static final String MAP_LAYER_ADDED = "addlayer";
@@ -56,7 +53,6 @@ public class EventType
     public static final String MAP_POPUP_CLOSE = "popupclose";
     public static final String MAP_MARKER_ADDED = "addmarker";
     public static final String MAP_MARKER_REMOVED = "removemarker";
-
     public static final String VECTOR_BEFORE_FEATURE_ADDED = "beforefeatureadded";
     public static final String VECTOR_FEATURE_ADDED = "featureadded";
     public static final String VECTOR_FEATURE_MODIFIED = "featuremodified";
@@ -66,5 +62,7 @@ public class EventType
     public static final String VECTOR_FEATURE_SELECTED = "featureselected";
     public static final String VECTOR_FEATURE_UNSELECTED = "featureunselected";
     public static final String VECTOR_FEATURE_VERTEX_MODIFIED = "vertexmodified";
-
+    public static final String GEOLOCATE_LOCATION_UPDATE = "locationupdated";
+    public static final String GEOLOCATE_LOCATION_FAILED = "locationfailed";
+    public static final String GEOLOCATE_LOCATION_UNCAPABLE = "locationuncapable";
 }

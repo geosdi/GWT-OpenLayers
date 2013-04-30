@@ -68,7 +68,7 @@
         </notifiers>
     </ciManagement>
     <properties>
-        <gwt.version>2.4.0</gwt.version>
+        <gwt.version>2.5.1</gwt.version>
         <maven.compiler.source>1.5</maven.compiler.source>
         <maven.compiler.target>1.5</maven.compiler.target>
         <!-- properties with no dots for velocity template filters -->

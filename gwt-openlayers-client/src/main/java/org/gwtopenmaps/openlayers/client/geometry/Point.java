@@ -1,24 +1,23 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.geometry;
 
 import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
-
 
 /**
  * ...
@@ -26,16 +25,13 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class Point extends Geometry
-{
+public class Point extends Geometry {
 
-    public static Point narrowToPoint(JSObject point)
-    {
+    public static Point narrowToPoint(JSObject point) {
         return (point == null) ? null : new Point(point);
     }
 
-    protected Point(JSObject point)
-    {
+    protected Point(JSObject point) {
         super(point);
     }
 
@@ -44,45 +40,37 @@ public class Point extends Geometry
      * @param x - double
      * @param y - double
      */
-    public Point(double x, double y)
-    {
+    public Point(double x, double y) {
         super(PointImpl.create(x, y));
     }
 
-    public double getX()
-    {
+    public double getX() {
         return PointImpl.getX(getJSObject());
     }
 
-    public double getY()
-    {
+    public double getY() {
         return PointImpl.getY(getJSObject());
     }
 
-    public String getId()
-    {
+    public String getId() {
         return PointImpl.getId(getJSObject());
     }
 
-    public void setX(double x)
-    {
+    public void setX(double x) {
         PointImpl.setX(getJSObject(), x);
     }
 
-    public void setY(double y)
-    {
+    public void setY(double y) {
         PointImpl.setY(getJSObject(), y);
     }
 
-    public double[] getXY()
-    {
-        double[] xy = { this.getX(), this.getY() };
+    public double[] getXY() {
+        double[] xy = {this.getX(), this.getY()};
 
         return xy;
     }
 
-    public void setXY(double x, double y)
-    {
+    public void setXY(double x, double y) {
         this.setX(x);
         this.setY(y);
     }
@@ -96,8 +84,7 @@ public class Point extends Geometry
      *
      * Returns: {Boolean} The supplied geometry is equivalent to this geometry.
      */
-    public boolean equals(Point p)
-    {
+    public boolean equals(Point p) {
         return PointImpl.equals(getJSObject(), p.getJSObject());
     }
 
@@ -107,29 +94,32 @@ public class Point extends Geometry
      * @param source
      * @param dest
      */
-    public void transform(Projection source, Projection dest)
-    {
+    public void transform(Projection source, Projection dest) {
         PointImpl.transform(getJSObject(), source.getJSObject(),
-            dest.getJSObject());
+                dest.getJSObject());
     }
 
     /**
      * Rotate a point around another.
      *
      * @param angle Rotation angle in degrees (measured counterclockwise from
-     *  the positive x-axis).
+     * the positive x-axis).
      * @param origin Center point for the rotation.
      */
-    public void rotate(float angle, Point origin)
-    {
+    public void rotate(float angle, Point origin) {
         PointImpl.rotate(getJSObject(), angle, origin.getJSObject());
     }
 
     /**
      * @return The centroid of the point
      */
-    public Point getCentroid()
-    {
+    public Point getCentroid() {
         return new Point(PointImpl.getCentroid(getJSObject()));
     }
+
+    @Override
+    public String toString() {
+        return "Point{" + "x = " + getX() + " - y = " + getY() + '}';
+    }
+
 }

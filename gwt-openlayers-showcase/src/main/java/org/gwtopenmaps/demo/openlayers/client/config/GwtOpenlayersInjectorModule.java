@@ -65,6 +65,7 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
+import org.gwtopenmaps.demo.openlayers.client.examples.geolocate.GeolocateExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.xyzlayer.XYZLayerExample;
 
 /**
@@ -124,5 +125,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(LabelOverLeapExample.class).asEagerSingleton();
         bind(XYZLayerExample.class).asEagerSingleton();
         bind(GeoJsonExample.class).asEagerSingleton();
+        bind(GeolocateExample.class).asEagerSingleton();
     }
 }

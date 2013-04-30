@@ -27,6 +27,8 @@ import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
 import org.gwtopenmaps.openlayers.client.Projection;
+import org.gwtopenmaps.openlayers.client.Style;
+import org.gwtopenmaps.openlayers.client.StyleMap;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
@@ -73,8 +75,18 @@ public class GeoJsonExample extends AbstractExample {
         EmptyLayer emptyLayer = new EmptyLayer("Blanc", options);
         emptyLayer.setIsBaseLayer(true);
         final Vector lineLayer = JsonLayerCreator.createLayerFromJson("Line Layer", "data/line.json");
-        Vector polyLayer = JsonLayerCreator.createLayerFromJson("Polygon Layer", "data/poly.json");
-        Vector pointLayer = JsonLayerCreator.createLayerFromJson("Point Layer", "data/point.json");
+        final Vector polyLayer = JsonLayerCreator.createLayerFromJson("Polygon Layer", "data/poly.json");
+        final Vector pointLayer = JsonLayerCreator.createLayerFromJson("Point Layer", "data/point.json");
+
+        //In the json we have defined styles in the properties, here we set these properties
+        final Style style = new Style();
+        style.setFillColor("${fill}");
+        style.setStrokeColor("${stroke}");
+
+        final StyleMap styleMap = new StyleMap(style);
+        polyLayer.setStyleMap(styleMap);
+
+        polyLayer.redraw();
 
         Map map = mapWidget.getMap();
 
@@ -120,7 +132,9 @@ public class GeoJsonExample extends AbstractExample {
         contentPanel.add(
                 new HTML(
                 "<p>This example shows how to add a some geoJSON layers to GWT-OL.</p>" +
-                "<p>You can click on the polygon layer, this will display the properties defined in the JSON file (these are accessible as Attributes in GWT-OL</p>" +
+                "<p>You can click on the polygon layer, this will display the properties defined in the JSON file (these are accessible as Attributes in GWT-OL)</p>" +
+                "<p>In this example we also defined some properties 'stroke' and 'fill' attributes to specify a style for one of the polygons. These attributes" +
+                "are used in the Style (style.setFillColor(\"${fill}\"); and style.setStrokeColor(\"${stroke}\");) to make GWT-OL use the style defined in the geojson properties.</p>" +
                 "<p>These are the displayed JSON files (in poly.json you can see the defined properties):" +
                 "<UL>" +
                 "<LI><A HREF=\"data/line.json\" TARGET=\"_BLANK\">line.json</A>" +

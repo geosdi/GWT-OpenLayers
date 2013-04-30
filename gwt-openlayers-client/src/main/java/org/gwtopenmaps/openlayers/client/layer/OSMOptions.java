@@ -16,6 +16,8 @@
  */
 package org.gwtopenmaps.openlayers.client.layer;
 
+import org.gwtopenmaps.openlayers.client.util.JSObject;
+
 public class OSMOptions extends XYZOptions
 {
 
@@ -27,6 +29,17 @@ public class OSMOptions extends XYZOptions
     public void setWrapDateLine(boolean value)
     {
         getJSObject().setProperty("wrapDateLine", value);
+    }
+    
+    /**
+     *  This is a fix to a FF issue to prevent pink rectangles.
+	 *  @see http://lists.osgeo.org/pipermail/openlayers-users/2012-March/024610.html
+     */
+    public void crossOriginFix()
+    {
+    	JSObject topO = JSObject.createJSObject();
+    	topO.setProperty("crossOriginKeyword",(String) null);
+    	this.getJSObject().setProperty("tileOptions", topO);
     }
 
 }

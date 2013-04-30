@@ -23,6 +23,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.TransformFeature.Transfor
 import org.gwtopenmaps.demo.openlayers.client.examples.basicbing.BasicBingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3.BasicGoogleV3Example;
 import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmUrlExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing.CancelDrawingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.click.ClickExample;
@@ -40,6 +41,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExampl
 import org.gwtopenmaps.demo.openlayers.client.examples.imagelayer.ImageLayerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.kml.KmlExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.label.LabelOverLeapExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.label.Labels;
 import org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestring.LineString2MultiLineStringExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
@@ -65,7 +67,6 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
-import org.gwtopenmaps.demo.openlayers.client.examples.geolocate.GeolocateExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.xyzlayer.XYZLayerExample;
 
 /**
@@ -87,6 +88,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(BasicBingExample.class).asEagerSingleton();
         bind(BasicGoogleV3Example.class).asEagerSingleton();
         bind(BasicOsmExample.class).asEagerSingleton();
+        bind(BasicOsmUrlExample.class).asEagerSingleton();
         bind(BasicTmsExample.class).asEagerSingleton();
         bind(CancelDrawingExample.class).asEagerSingleton();
         bind(CustomMousePositionExample.class).asEagerSingleton();
@@ -125,6 +127,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(LabelOverLeapExample.class).asEagerSingleton();
         bind(XYZLayerExample.class).asEagerSingleton();
         bind(GeoJsonExample.class).asEagerSingleton();
-        bind(GeolocateExample.class).asEagerSingleton();
+        bind(Labels.class).asEagerSingleton();
     }
 }

@@ -66,9 +66,5 @@ public class EventType
     public static final String VECTOR_FEATURE_SELECTED = "featureselected";
     public static final String VECTOR_FEATURE_UNSELECTED = "featureunselected";
     public static final String VECTOR_FEATURE_VERTEX_MODIFIED = "vertexmodified";
-    
-    public static final String GEOLOCATE_LOCATION_UPDATE = "locationupdated";
-    public static final String GEOLOCATE_LOCATION_FAILED = "locationfailed";
-    public static final String GEOLOCATE_LOCATION_UNCAPABLE = "locationuncapable";
 
 }

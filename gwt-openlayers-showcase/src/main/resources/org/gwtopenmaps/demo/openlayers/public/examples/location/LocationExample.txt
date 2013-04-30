@@ -103,7 +103,7 @@ public class LocationExample extends AbstractExample {
                 Geolocation geoLocation = Geolocation.getIfSupported();
                 if (geoLocation == null) {
                     Window.alert(
-                            "No GeoLocation support available in this browser :-(");
+                            "No GeoLocation supprt available in this browser :-(");
                 } else {
                     final Geolocation.PositionOptions geoOptions = new Geolocation.PositionOptions();
                     geoOptions.setHighAccuracyEnabled(true);
@@ -117,7 +117,6 @@ public class LocationExample extends AbstractExample {
                         public void onSuccess(final Position result) {
                             // put the received result in an openlayers LonLat
                             // object
-                            System.out.println("CODICE ESEGUITO A PALLET@@@@@@@@@@@@@@");
                             final LonLat lonLat = new LonLat(
                                     result.getCoordinates().getLongitude(),
                                     result.getCoordinates().getLatitude());

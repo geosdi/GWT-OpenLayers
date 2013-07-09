@@ -38,34 +38,34 @@ public class SymbolizerLine extends Symbolizer
         super(object);
     }
 
-    public void setStorkeColor(String color)
+    public void setStrokeColor(String color)
     {
-        SymbolizerLineImpl.setStorkeColor(this.getJSObject(), color);
+        SymbolizerLineImpl.setStrokeColor(this.getJSObject(), color);
     }
 
-    public String getStorkeColor()
+    public String getStrokeColor()
     {
-        return SymbolizerLineImpl.getStorkeColor(this.getJSObject());
+        return SymbolizerLineImpl.getStrokeColor(this.getJSObject());
     }
 
-    public void setStorkeOpacity(double opacity)
+    public void setStrokeOpacity(double opacity)
     {
-        SymbolizerLineImpl.setStorkeOpacity(this.getJSObject(), opacity);
+        SymbolizerLineImpl.setStrokeOpacity(this.getJSObject(), opacity);
     }
 
-    public double getStorkeOpacity()
+    public double getStrokeOpacity()
     {
-        return SymbolizerLineImpl.getStorkeOpacity(this.getJSObject());
+        return SymbolizerLineImpl.getStrokeOpacity(this.getJSObject());
     }
 
-    public void setStorkeWidth(int width)
+    public void setStrokeWidth(int width)
     {
-        SymbolizerLineImpl.setStorkeWidth(this.getJSObject(), width);
+        SymbolizerLineImpl.setStrokeWidth(this.getJSObject(), width);
     }
 
-    public int getStorkeWidth()
+    public int getStrokeWidth()
     {
-        return SymbolizerLineImpl.getStorkeWidth(this.getJSObject());
+        return SymbolizerLineImpl.getStrokeWidth(this.getJSObject());
     }
 
     /**

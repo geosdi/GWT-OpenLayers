@@ -26,27 +26,27 @@ public class SymbolizerLineImpl
         return new $wnd.OpenLayers.Symbolizer.Line();
     }-*/;
 
-    public static native void setStorkeColor(JSObject self, String color) /*-{
+    public static native void setStrokeColor(JSObject self, String color) /*-{
         self.strokeColor = color;
     }-*/;
 
-    public static native String getStorkeColor(JSObject self) /*-{
+    public static native String getStrokeColor(JSObject self) /*-{
         return self.storkeColor;
     }-*/;
 
-    public static native void setStorkeOpacity(JSObject self, double opacity) /*-{
+    public static native void setStrokeOpacity(JSObject self, double opacity) /*-{
         self.strokeOpacity = opacity;
     }-*/;
 
-    public static native double getStorkeOpacity(JSObject self) /*-{
+    public static native double getStrokeOpacity(JSObject self) /*-{
         return self.storkeOpacity;
     }-*/;
 
-    public static native void setStorkeWidth(JSObject self, int width) /*-{
+    public static native void setStrokeWidth(JSObject self, int width) /*-{
         self.strokeWidth = width;
     }-*/;
 
-    public static native int getStorkeWidth(JSObject self) /*-{
+    public static native int getStrokeWidth(JSObject self) /*-{
         return self.strokeWidth;
     }-*/;
 

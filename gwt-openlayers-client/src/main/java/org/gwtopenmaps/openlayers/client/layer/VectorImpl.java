@@ -43,7 +43,7 @@ class VectorImpl
     }-*/;
 
     public static native void addFeatures(JSObject self, JSObject features) /*-{
-        $wnd.gwt_openlayers_util.relay.vectorAddFeatures(self, features);
+        self.addFeatures(features);
     }-*/;
 
     public static native JSObject getFeature(JSObject self, int index) /*-{
@@ -117,6 +117,14 @@ class VectorImpl
 
     public static native JSObject getSelectedFeature(JSObject self, int index) /*-{
        return self.selectedFeatures[index];
+    }-*/;
+    
+    public static native JSObject getFeatureByFid(JSObject self, String featureFID) /*-{
+       return self.getFeatureByFid(featureFID);
+    }-*/;
+    
+    public static native void removeAllFeatures(JSObject self) /*-{
+       self.removeAllFeatures();
     }-*/;
 
 }

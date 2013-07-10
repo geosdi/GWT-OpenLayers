@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.layer;
 
@@ -55,21 +55,21 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Lukas Johansson
  */
 public class Vector extends Layer {
-
+    
     public static Vector narrowToVector(JSObject vectorLayer) {
         return (vectorLayer == null) ? null : new Vector(vectorLayer);
     }
-
+    
     private VectorOptions vectorOptions;
-
+    
     protected Vector(JSObject vector) {
         super(vector);
     }
-
+    
     public Vector(String name) {
         this(VectorImpl.create(name));
     }
-
+    
     public Vector(String name, VectorOptions options) {
         this(VectorImpl.create(name, options.getJSObject()));
         this.vectorOptions = options;
@@ -77,13 +77,13 @@ public class Vector extends Layer {
 
     /**
      * Get the VectorOptions.
+     *
      * @return The VectorOptions.
      */
-    public VectorOptions getVectorOptions()
-    {
+    public VectorOptions getVectorOptions() {
         return this.vectorOptions;
     }
-
+    
     public void addFeatures(VectorFeature[] features) {
         JObjectArray a = new JObjectArray(features);
         VectorImpl.addFeatures(getJSObject(), a.getJSObject());
@@ -93,58 +93,59 @@ public class Vector extends Layer {
          * features.length; i < max; i++){ addFeature(features[i]); }
          */
     }
-
+    
     public void addFeature(VectorFeature f) {
         VectorImpl.addFeature(getJSObject(), f.getJSObject());
     }
-
+    
     @Override
     public boolean redraw() {
         return VectorImpl.redraw(this.getJSObject());
     }
-
+    
     public void drawFeature(VectorFeature vector) {
         VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject());
     }
-
+    
     public void drawFeature(VectorFeature vector, Style style) {
         VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject(),
-                               style.getJSObject());
+                style.getJSObject());
     }
-
+    
     public void eraseFeatures() {
         VectorImpl.eraseFeatures(this.getJSObject());
     }
-
+    
     public void removeFeature(VectorFeature feature) {
         VectorImpl.removeFeature(getJSObject(), feature.getJSObject());
     }
-
+    
     public int getNumberOfFeatures() {
         return VectorImpl.getNumberOfFeatures(getJSObject());
     }
-
+    
     public int getNumberOfSelectedFeatures() {
         return VectorImpl.getNumberOfSelectedFeatures(getJSObject());
     }
-
+    
     public OpenLayersObjectWrapper getProtocol() {
-        return Protocol.narrowToOpenLayersObjectWrapper(getJSObject().getProperty(
+        return Protocol.narrowToOpenLayersObjectWrapper(
+                getJSObject().getProperty(
                 "protocol"));
     }
-
+    
     public void setStyle(Style style) {
         VectorImpl.setStyle(getJSObject(), style.getJSObject());
     }
-
+    
     public Style getStyle() {
         return Style.narrowToOpenLayersStyle(VectorImpl.getStyle(getJSObject()));
     }
-
+    
     public void setStyleMap(StyleMap styleMap) {
         VectorImpl.setStyleMap(getJSObject(), styleMap.getJSObject());
     }
-
+    
     public StyleMap getStyleMap() {
         return StyleMap.narrowToOpenLayersStyleMap(VectorImpl.getStyleMap(
                 getJSObject()));
@@ -161,11 +162,12 @@ public class Vector extends Layer {
         } else {
             VectorFeature[] vfs = new VectorFeature[nr];
             for (int i = 0; i < nr; i++) {
-                VectorFeature vf = VectorFeature.narrowToVectorFeature(VectorImpl.getFeature(
+                VectorFeature vf = VectorFeature.narrowToVectorFeature(
+                        VectorImpl.getFeature(
                         getJSObject(), i));
                 vfs[i] = vf;
             }
-
+            
             return vfs;
         }
     }
@@ -176,7 +178,7 @@ public class Vector extends Layer {
     public void destroyFeatures() {
         VectorImpl.destroyFeatures(getJSObject());
     }
-
+    
     public VectorFeature getFeatureById(String id) {
         return VectorFeature.narrowToVectorFeature(VectorImpl.getFeatureById(
                 getJSObject(), id));
@@ -195,92 +197,105 @@ public class Vector extends Layer {
         } else {
             VectorFeature[] vfs = new VectorFeature[nr];
             for (int i = 0; i < nr; i++) {
-                VectorFeature vf = VectorFeature.narrowToVectorFeature(VectorImpl.getSelectedFeature(
+                VectorFeature vf = VectorFeature.narrowToVectorFeature(
+                        VectorImpl.getSelectedFeature(
                         getJSObject(), i));
                 vfs[i] = vf;
             }
-
+            
             return vfs;
         }
     }
-
+    
     public void addVectorFeatureModifiedListener(
             final VectorFeatureModifiedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_FEATURE_MODIFIED,
-                                   new EventHandler() {
+                EventType.VECTOR_FEATURE_MODIFIED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 FeatureModifiedEvent e = new FeatureModifiedEvent(eventObject);
                 listener.onFeatureModified(e);
             }
+            
         });
     }
-
+    
     public void addVectorFeatureAddedListener(
             final VectorFeatureAddedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_FEATURE_ADDED,
-                                   new EventHandler() {
+                EventType.VECTOR_FEATURE_ADDED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 FeatureAddedEvent e = new FeatureAddedEvent(eventObject);
                 listener.onFeatureAdded(e);
             }
+            
         });
     }
-
+    
     public void addVectorFeatureRemovedListener(
             final VectorFeatureRemovedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_FEATURE_REMOVED,
-                                   new EventHandler() {
+                EventType.VECTOR_FEATURE_REMOVED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 FeatureRemovedEvent e = new FeatureRemovedEvent(eventObject);
                 listener.onFeatureRemoved(e);
             }
+            
         });
     }
-
+    
     public void addVectorFeatureSelectedListener(
             final VectorFeatureSelectedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_FEATURE_SELECTED,
-                                   new EventHandler() {
+                EventType.VECTOR_FEATURE_SELECTED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 FeatureSelectedEvent e = new FeatureSelectedEvent(eventObject);
                 listener.onFeatureSelected(e);
             }
+            
         });
     }
-
+    
     public void addVectorFeatureUnselectedListener(
             final VectorFeatureUnselectedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_FEATURE_UNSELECTED,
-                                   new EventHandler() {
+                EventType.VECTOR_FEATURE_UNSELECTED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 FeatureUnselectedEvent e = new FeatureUnselectedEvent(
                         eventObject);
                 listener.onFeatureUnselected(e);
             }
+            
         });
     }
-
+    
     public void addVectorBeforeFeatureAddedListener(
             final VectorBeforeFeatureAddedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_BEFORE_FEATURE_ADDED,
-                                   new EventHandler() {
+                EventType.VECTOR_BEFORE_FEATURE_ADDED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 BeforeFeatureAddedEvent e = new BeforeFeatureAddedEvent(
                         eventObject);
                 listener.onBeforeFeatureAdded(e);
             }
+            
         });
     }
 
@@ -292,8 +307,9 @@ public class Vector extends Layer {
     public void addVectorAfterFeatureModifiedListener(
             final VectorAfterFeatureModifiedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_AFTER_FEATURE_MODIFIED,
-                                   new EventHandler() {
+                EventType.VECTOR_AFTER_FEATURE_MODIFIED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 // TODO Auto-generated method stub
@@ -301,6 +317,7 @@ public class Vector extends Layer {
                         eventObject);
                 listener.onAfterFeatureModified(e);
             }
+            
         });
     }
 
@@ -312,8 +329,9 @@ public class Vector extends Layer {
     public void addVectorBeforeFeatureModifiedListener(
             final VectorBeforeFeatureModifiedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_BEFORE_FEATURE_MODIFIED,
-                                   new EventHandler() {
+                EventType.VECTOR_BEFORE_FEATURE_MODIFIED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 // TODO Auto-generated method stub
@@ -321,6 +339,7 @@ public class Vector extends Layer {
                         eventObject);
                 listener.onBeforeFeatureModified(e);
             }
+            
         });
     }
 
@@ -332,8 +351,9 @@ public class Vector extends Layer {
     public void addVectorVertexModifiedListener(
             final VectorVertexModifiedListener listener) {
         eventListeners.addListener(this, listener,
-                                   EventType.VECTOR_FEATURE_VERTEX_MODIFIED,
-                                   new EventHandler() {
+                EventType.VECTOR_FEATURE_VERTEX_MODIFIED,
+                new EventHandler() {
+            
             @Override
             public void onHandle(EventObject eventObject) {
                 // TODO Auto-generated method stub
@@ -341,6 +361,7 @@ public class Vector extends Layer {
                         eventObject);
                 listener.onVertexModifiedEvent(e);
             }
+            
         });
     }
 
@@ -356,21 +377,36 @@ public class Vector extends Layer {
 
     /**
      * Set a filter, or unset the filter if passed filter is null.
+     *
      * @param filter The filter to set
      */
-    public void setFilter(final Filter filter)
-    {
-        if (filter != null) getJSObject().setProperty("filter", filter.getJSObject());
-        else getJSObject().unsetProperty("filter");
+    public void setFilter(final Filter filter) {
+        if (filter != null) {
+            getJSObject().setProperty("filter", filter.getJSObject());
+        } else {
+            getJSObject().unsetProperty("filter");
+        }
+    }
+
+    /**
+     * This causes text and geometry to be rendered in the same container. Can
+     * be used to fix weird overlapping of texts.
+     *
+     * @see
+     * http://osgeo-org.1560.n6.nabble.com/Problems-with-labels-td4991177.html
+     */
+    public void setTextRootRendererToVectorRootRenderer() {
+        getJSObject().getProperty("renderer").setProperty("textRoot",
+                getJSObject().getProperty("renderer").getProperty("vectorRoot"));
     }
     
-    /**
-     * This causes text and geometry to be rendered in the same container.
-     * Can be used to fix weird overlapping of texts.
-     * @see http://osgeo-org.1560.n6.nabble.com/Problems-with-labels-td4991177.html
-     */
-    public void setTextRootRendererToVectorRootRenderer()
-    {
-    	getJSObject().getProperty("renderer").setProperty("textRoot", getJSObject().getProperty("renderer").getProperty("vectorRoot"));
+    public VectorFeature getFeatureByFid(String featureFID) {
+        return VectorFeature.narrowToVectorFeature(VectorImpl.getFeatureByFid(
+                getJSObject(), featureFID));
     }
+    
+    public void removeAllFeatures() {
+        VectorImpl.removeAllFeatures(getJSObject());
+    }
+    
 }

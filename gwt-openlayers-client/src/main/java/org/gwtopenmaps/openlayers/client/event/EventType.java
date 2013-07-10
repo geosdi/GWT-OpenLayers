@@ -65,4 +65,15 @@ public class EventType {
     public static final String GEOLOCATE_LOCATION_UPDATE = "locationupdated";
     public static final String GEOLOCATE_LOCATION_FAILED = "locationfailed";
     public static final String GEOLOCATE_LOCATION_UNCAPABLE = "locationuncapable";
+    /**
+     * GET_FEATURE CONTROL *
+     */
+    public static final String BEFORE_FEATURE_SELECTED = "beforefeatureselected";
+    public static final String FEATURE_SELECTED = "featureselected";
+    public static final String BEFORE_FETURES_SELECTED = "beforefeaturesselected";
+    public static final String FEATURES_SELECTED = "featuresselected";
+    public static final String FEATURE_UNSELECTED = "featureunselected";
+    public static final String CLICK_OUT = "clickout";
+    public static final String HOVER_FEATURE = "hoverfeature";
+    public static final String OUT_FEATURE = "outfeature";
 }

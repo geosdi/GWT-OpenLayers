@@ -55,7 +55,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing.UndoRedoD
 import org.gwtopenmaps.demo.openlayers.client.examples.variablewfsstyle.VariableWfsStyle;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.ClickFeatureListenerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.vector.WFSFeatureSelectionExamples;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureClickSelectionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wfshoverhighlight.WfsHoverHighlightExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsPost.WmsPostExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
@@ -68,6 +68,8 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
 import org.gwtopenmaps.demo.openlayers.client.examples.geolocate.GeolocateExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureBoxSelectionExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmts.WMTSExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.xyzlayer.XYZLayerExample;
 
 /**
@@ -113,7 +115,8 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(WfsHoverHighlightExample.class).asEagerSingleton();
         bind(KmlExample.class).asEagerSingleton();
         bind(ImageLayerExample.class).asEagerSingleton();
-        bind(WFSFeatureSelectionExamples.class).asEagerSingleton();
+        bind(GetFeatureClickSelectionExample.class).asEagerSingleton();
+        bind(GetFeatureBoxSelectionExample.class).asEagerSingleton();
         bind(FeatureIdFilterExample.class).asEagerSingleton();
         bind(SpatialFilterExample.class).asEagerSingleton();
         bind(ComparisonAndLogicalFilterExample.class).asEagerSingleton();
@@ -130,6 +133,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(GeoJsonExample.class).asEagerSingleton();
         bind(Labels.class).asEagerSingleton();
         bind(GeolocateExample.class).asEagerSingleton();
+        bind(WMTSExample.class).asEagerSingleton();
     }
 
 }

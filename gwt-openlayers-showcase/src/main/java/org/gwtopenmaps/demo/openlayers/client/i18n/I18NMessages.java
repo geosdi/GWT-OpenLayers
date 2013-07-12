@@ -28,5 +28,5 @@ public interface I18NMessages extends Messages
 {
    String filterByKeywords();
    String tags(String string);
-   String viewSource();
+   String viewSource(String source);
 }

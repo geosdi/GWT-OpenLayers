@@ -32,7 +32,7 @@ import org.gwtopenmaps.demo.openlayers.client.components.store.ExampleStore;
 public abstract class AbstractExample extends Composite {
 
     protected VerticalPanel contentPanel = new VerticalPanel();
-    private final ShowSourceButton butShowSource = new ShowSourceButton();
+    private final ShowSourceButton butShowSource = new ShowSourceButton("");
     protected ExampleBean example;
 
     public AbstractExample(String name, String description, String[] tags,

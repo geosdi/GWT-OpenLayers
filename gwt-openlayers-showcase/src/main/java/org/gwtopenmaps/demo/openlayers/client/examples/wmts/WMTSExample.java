@@ -66,9 +66,9 @@ public class WMTSExample extends AbstractExample {
         wmtsOptions.setIsBaseLayer(false);
         wmtsOptions.setFormat("image/png");
 
-        String[] args = new String[25];
+        String[] args = new String[26];
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 26; i++) {
             args[i] = "EPSG:900913:" + i;
         }
 

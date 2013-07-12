@@ -25,7 +25,6 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
-import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
@@ -51,13 +50,13 @@ public class WMTSExample extends AbstractExample {
 
     @Override
     public void buildPanel() {
-        OpenLayers.setProxyHost("olproxy?targetURL=");
         //create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
+        defaultMapOptions.setProjection("EPSG:900913");
 
         //Create a MapWidget and add OSM layer
         MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
-        OSM osm = OSM.Mapnik("Mapnik_");
+        OSM osm = OSM.Mapnik("Mapnik");
         osm.setIsBaseLayer(true);
 
         WMTSOptions wmtsOptions = new WMTSOptions(url, "medford:buildings",
@@ -67,9 +66,9 @@ public class WMTSExample extends AbstractExample {
         wmtsOptions.setIsBaseLayer(false);
         wmtsOptions.setFormat("image/png");
 
-        String[] args = new String[25];
+        String[] args = new String[26];
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 26; i++) {
             args[i] = "EPSG:900913:" + i;
         }
 

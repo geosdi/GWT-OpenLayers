@@ -52,10 +52,11 @@ public class WMTSExample extends AbstractExample {
     public void buildPanel() {
         //create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
+        defaultMapOptions.setProjection("EPSG:900913");
 
         //Create a MapWidget and add OSM layer
         MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
-        OSM osm = OSM.Mapnik("Mapnik_");
+        OSM osm = OSM.Mapnik("Mapnik");
         osm.setIsBaseLayer(true);
 
         WMTSOptions wmtsOptions = new WMTSOptions(url, "medford:buildings",

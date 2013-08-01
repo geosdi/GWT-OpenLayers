@@ -32,6 +32,7 @@ import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.layer.Bing;
 import org.gwtopenmaps.openlayers.client.layer.BingOptions;
 import org.gwtopenmaps.openlayers.client.layer.BingType;
+import org.gwtopenmaps.openlayers.client.protocol.ProtocolType;
 
 public class BasicBingExample extends AbstractExample {
 
@@ -55,11 +56,23 @@ public class BasicBingExample extends AbstractExample {
         MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
         //Create some Bing layers
         final String key = "Apd8EWF9Ls5tXmyHr22OuL1ay4HRJtI4JG4jgluTDVaJdUXZV6lpSBpX-TwnoRDG"; //Bing key
-        Bing road = new Bing(new BingOptions("Road Layer", key, BingType.ROAD));
-        Bing hybrid = new Bing(new BingOptions("Hybrid Layer", key,
-                                               BingType.HYBRID));
-        Bing aerial = new Bing(new BingOptions("Aerial Layer", key,
-                                               BingType.AERIAL));
+        // configuring road options
+        BingOptions bingOptionRoad = new BingOptions("Bing Road Layer", key,
+                BingType.ROAD);
+        bingOptionRoad.setProtocol(ProtocolType.HTTP);
+        Bing road = new Bing(bingOptionRoad);
+        
+        // configuring hybrid options
+        BingOptions bingOptionHybrid = new BingOptions("Bing Hybrid Layer", key,
+                BingType.HYBRID);
+        bingOptionRoad.setProtocol(ProtocolType.HTTP);
+        Bing hybrid = new Bing(bingOptionHybrid);
+        
+        // configuring aerial options
+        BingOptions bingOptionAerial = new BingOptions("Bing Aerial Layer", key,
+                BingType.AERIAL);
+        bingOptionRoad.setProtocol(ProtocolType.HTTP);
+        Bing aerial = new Bing(bingOptionAerial);
 
         //And add them to the map
         Map map = mapWidget.getMap();

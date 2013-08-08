@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.server;
 
@@ -21,6 +21,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.MessageFormat;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,6 +46,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @SuppressWarnings("serial")
 public class GwtOpenLayersProxyServlet extends HttpServlet {
+
+    public static final Pattern PATTERN = Pattern.compile("^[0-9]+$");
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -71,7 +75,7 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
         try {
             // easy way to ignore case of param?
             if ((request.getParameter("targetURL") != null) && (request.getParameter(
-                                                                "targetURL") != "") && allowedHost) {
+                    "targetURL") != "") && allowedHost) {
                 // HTTPUrlConnection looks at http.proxyHost and http.proxyPort system properties.
                 // Make sure these properties are set these if you are behind a proxy.
 
@@ -80,6 +84,31 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
 
                 URL targetURL = new URL(request.getParameter("targetURL"));
                 connection = (HttpURLConnection) targetURL.openConnection();
+
+                final String connectTimeout = getInitParameter("connectTimeout");
+                if (connectTimeout != null) {
+                    if (PATTERN.matcher(connectTimeout.trim()).matches()) {
+                        connection.setConnectTimeout(Integer.parseInt(
+                                connectTimeout.trim()));
+                    } else {
+                        throw new IllegalStateException(MessageFormat.format(
+                                "connectTimeout init-param {0} is non-numeric",
+                                connectTimeout));
+                    }
+                }
+
+                final String readTimeout = getInitParameter("readTimeout");
+                if (readTimeout != null) {
+                    if (PATTERN.matcher(readTimeout.trim()).matches()) {
+                        connection.setReadTimeout(Integer.parseInt(
+                                readTimeout.trim()));
+                    } else {
+                        throw new IllegalStateException(MessageFormat.format(
+                                "readTimeout init-param {0} is non-numeric",
+                                readTimeout));
+                    }
+                }
+
                 connection.setRequestMethod(requestMethod);
                 transferHTTPRequestHeaders(connection, request);
 
@@ -207,4 +236,5 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
         // TODO checking of host
         return true;
     }
+
 }

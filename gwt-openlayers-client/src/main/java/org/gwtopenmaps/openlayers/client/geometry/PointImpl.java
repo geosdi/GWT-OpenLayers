@@ -51,7 +51,7 @@ public class PointImpl
     }-*/;
 
     public static native boolean equals(JSObject self, JSObject geom) /*-{
-        self.equals(geom);
+        return self.equals(geom);
     }-*/;
 
     public static native void transform(JSObject self, JSObject source, JSObject dest) /*-{

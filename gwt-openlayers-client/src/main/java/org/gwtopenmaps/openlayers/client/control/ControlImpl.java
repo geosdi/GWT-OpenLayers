@@ -40,7 +40,7 @@ class ControlImpl
     }-*/;
 
     public static native boolean isActive(JSObject self)/*-{
-        return (self.active === null) ? false : self.active;
+        return (self.active == null) ? false : self.active;
     }-*/;
 
     public static native String getZIndex(JSObject self) /*-{

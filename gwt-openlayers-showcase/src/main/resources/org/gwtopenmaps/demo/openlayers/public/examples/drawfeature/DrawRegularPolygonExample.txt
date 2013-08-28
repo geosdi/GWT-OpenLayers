@@ -16,6 +16,9 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.drawfeature;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.ToggleButton;
 import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
@@ -24,7 +27,6 @@ import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
 import org.gwtopenmaps.openlayers.client.control.DrawFeature;
-import org.gwtopenmaps.openlayers.client.control.DrawFeatureOptions;
 import org.gwtopenmaps.openlayers.client.handler.RegularPolygonHandler;
 import org.gwtopenmaps.openlayers.client.handler.RegularPolygonHandlerOptions;
 import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
@@ -39,6 +41,8 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
  * @email giuseppe.lascaleia@geosdi.org
  */
 public class DrawRegularPolygonExample extends AbstractExample {
+
+    private RegularPolygonHandlerOptions options = new RegularPolygonHandlerOptions();
 
     @Inject
     public DrawRegularPolygonExample(ShowcaseExampleStore store) {
@@ -76,14 +80,8 @@ public class DrawRegularPolygonExample extends AbstractExample {
         final Vector vectorLayer = new Vector("Vector layer");
         map.addLayer(vectorLayer);
 
-        RegularPolygonHandlerOptions options = new RegularPolygonHandlerOptions();
-        options.setSides(40);
-
-        DrawFeatureOptions drawOptions = new DrawFeatureOptions();
-        drawOptions.setHandlerOptions(options);
-
-        DrawFeature drawRegularPolygon = new DrawFeature(vectorLayer,
-                new RegularPolygonHandler(), drawOptions);
+        final DrawFeature drawRegularPolygon = new DrawFeature(vectorLayer,
+                new RegularPolygonHandler());
 
         map.addControl(drawRegularPolygon);
 
@@ -92,7 +90,25 @@ public class DrawRegularPolygonExample extends AbstractExample {
         // Center and zoom to a location
         map.setCenter(new LonLat(0, 0), 5);
 
+        ToggleButton b = new ToggleButton("Draw Circle", new ClickHandler() {
+
+            public void onClick(ClickEvent event) {
+                if (((ToggleButton) event.getSource()).isDown()) {
+                    options.setSides(40);
+                    ((RegularPolygonHandler) drawRegularPolygon.getHandler()).setOptions(
+                            options);
+                } else {
+                    options.setSides(4);
+                    ((RegularPolygonHandler) drawRegularPolygon.getHandler()).setOptions(
+                            options);
+                }
+            }
+
+        });
+        b.setSize("80px", "20px");
+
         contentPanel.add(mapWidget);
+        contentPanel.add(b);
 
         initWidget(contentPanel);
 

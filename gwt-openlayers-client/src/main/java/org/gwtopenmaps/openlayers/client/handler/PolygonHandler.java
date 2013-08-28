@@ -22,9 +22,16 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  *
  * @author Edwin Commandeur - Atlis EJS
+ * 
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
+ * @email giuseppe.lascaleia@geosdi.org
  *
  */
 public class PolygonHandler extends PointHandler {
+
+    public static PolygonHandler narrowToHandler(JSObject element) {
+        return (element == null) ? null : new PolygonHandler(element);
+    }
 
     protected PolygonHandler(JSObject element) {
         super(element);

@@ -1,32 +1,32 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.control;
 
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.handler.Handler;
+import org.gwtopenmaps.openlayers.client.handler.chain.ChainHandlerManager;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
 /**
  *
- *  Don't be suprised by the following:
- *  Upon activating the DrawFeature tool it creates an extra layer
- *  that is used by the handler (the name of this layer reflects this).
+ * Don't be suprised by the following: Upon activating the DrawFeature tool it
+ * creates an extra layer that is used by the handler (the name of this layer
+ * reflects this).
  *
  * (tested in OpenLayers 2.7)
  *
@@ -34,11 +34,15 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class DrawFeature extends Control
-{
+public class DrawFeature extends Control {
 
-    protected DrawFeature(JSObject element)
-    {
+    static {
+        chainHandlerManager = new ChainHandlerManager();
+    }
+
+    private static final ChainHandlerManager chainHandlerManager;
+
+    protected DrawFeature(JSObject element) {
         super(element);
     }
 
@@ -47,8 +51,7 @@ public class DrawFeature extends Control
      * @param layer
      * @param handler - a PointHandler, PathHandler or PolygonHandler
      */
-    public DrawFeature(Vector layer, Handler handler)
-    {
+    public DrawFeature(Vector layer, Handler handler) {
         this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject()));
     }
 
@@ -58,9 +61,9 @@ public class DrawFeature extends Control
      * @param handler - a PointHandler, PathHandler or PolygonHandler
      * @param options - see {@link DrawFeatureOptions}
      */
-    public DrawFeature(Vector layer, Handler handler, DrawFeatureOptions options)
-    {
-        this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject(), options.getJSObject()));
+    public DrawFeature(Vector layer, Handler handler, DrawFeatureOptions options) {
+        this(DrawFeatureImpl.create(layer.getJSObject(), handler.getJSObject(),
+                options.getJSObject()));
     }
 
     /**
@@ -69,39 +72,42 @@ public class DrawFeature extends Control
      *
      * @return Handler
      */
-    public Handler getHandler()
-    {
-        return Handler.narrowToHandler(DrawFeatureImpl.getHandler(getJSObject()));
+    public <H extends Handler> H getHandler() {
+        return chainHandlerManager.buildHandler(DrawFeatureImpl.getHandler(
+                getJSObject()));
     }
 
-    public interface FeatureAddedListener
-    {
+    public interface FeatureAddedListener {
+
         void onFeatureAdded(VectorFeature vectorFeature);
+
     }
 
     /**
      * Remove the most recently added point in the current sketch geometry.
+     *
      * @return true if an edit was undone.
      */
-    public boolean undo()
-    {
+    public boolean undo() {
         return DrawFeatureImpl.undo(getJSObject());
     }
 
     /**
-     * Reinsert the most recently removed point resulting from an undo call.  The undo stack is deleted whenever a point is added by other means.
+     * Reinsert the most recently removed point resulting from an undo call. The
+     * undo stack is deleted whenever a point is added by other means.
+     *
      * @return true if an edit was redone.
      */
-    public boolean redo()
-    {
+    public boolean redo() {
         return DrawFeatureImpl.redo(getJSObject());
     }
 
     /**
-     * Cancel the current sketch.  This removes the current sketch and keeps the drawing control active.
+     * Cancel the current sketch. This removes the current sketch and keeps the
+     * drawing control active.
      */
-    public void cancel()
-    {
+    public void cancel() {
         DrawFeatureImpl.cancel(getJSObject());
     }
+
 }

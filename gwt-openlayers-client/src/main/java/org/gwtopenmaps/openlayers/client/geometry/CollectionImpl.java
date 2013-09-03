@@ -18,7 +18,7 @@ package org.gwtopenmaps.openlayers.client.geometry;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-public class CollectionImpl {
+class CollectionImpl {
 
     public static native JSObject create(JSObject geometries) /*-{
         return new $wnd.OpenLayers.Geometry.Collection($wnd.gwt_openlayers_util.convertToArray(geometries));
@@ -76,21 +76,25 @@ public class CollectionImpl {
     public static native boolean addComponent(JSObject self,
             JSObject component,
             int index) /*-{
-        return self.addComponent(component,index)
+        return self.addComponent(component,index);
     }-*/;
 
     public static native void addComponents(JSObject self,
             JSObject components) /*-{
-        self.addComponents($wnd.gwt_openlayers_util.convertToArray(components))
+        self.addComponents($wnd.gwt_openlayers_util.convertToArray(components));
     }-*/;
 
     public static native boolean removeComponent(JSObject self,
             JSObject component) /*-{
-        return self.removeComponent(component)
+        return self.removeComponent(component);
     }-*/;
 
     public static native boolean removeComponents(JSObject self,
             JSObject components) /*-{
-        return self.removeComponents($wnd.gwt_openlayers_util.convertToArray(components))
+        return self.removeComponents($wnd.gwt_openlayers_util.convertToArray(components));
+    }-*/;
+    
+    public static native String getComponentsString(JSObject self) /*-{
+        return self.getComponentsString();
     }-*/;
 }

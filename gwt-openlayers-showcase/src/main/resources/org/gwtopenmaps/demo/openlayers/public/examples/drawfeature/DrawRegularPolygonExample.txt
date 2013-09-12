@@ -107,32 +107,10 @@ public class DrawRegularPolygonExample extends AbstractExample {
         });
         b.setSize("80px", "20px");
 
-        ToggleButton activate = new ToggleButton("Activate Control",
-                new ClickHandler() {
-
-            public void onClick(ClickEvent event) {
-                if (((ToggleButton) event.getSource()).isDown()) {
-                    drawRegularPolygon.activate();
-                    System.out.println("CONTROL STATE @@@@@@@@@@@@@@@@@@@@ "
-                            + drawRegularPolygon.isActive());
-                } else {
-                    drawRegularPolygon.deactivate();
-                    System.out.println("CONTROL STATE @@@@@@@@@@@@@@@@@@@@ "
-                            + drawRegularPolygon.isActive());
-                }
-            }
-
-        });
-        activate.setSize("80px", "20px");
-
         contentPanel.add(mapWidget);
         contentPanel.add(b);
-        contentPanel.add(activate);
 
         initWidget(contentPanel);
-
-        System.out.println("CONTROL STATE @@@@@@@@@@@@@@@@@@@@ "
-                + drawRegularPolygon.isActive());
 
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); // force the map to fall behind popups
     }

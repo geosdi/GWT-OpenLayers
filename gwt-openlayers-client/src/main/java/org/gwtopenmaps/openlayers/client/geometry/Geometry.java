@@ -34,6 +34,7 @@ public class Geometry extends OpenLayersObjectWrapper {
     public static final String LINEARRING_CLASS_NAME = "OpenLayers.Geometry.LinearRing";
     public static final String LINESTRING_CLASS_NAME = "OpenLayers.Geometry.LineString";
     public static final String POINT_CLASS_NAME = "OpenLayers.Geometry.Point";
+    public static final String MULTI_POINT_CLASS_NAME = "OpenLayers.Geometry.MultiPoint";
     public static final String POLYGON_CLASS_NAME = "OpenLayers.Geometry.Polygon";
     public static final String MULTI_POLYGON_CLASS_NAME = "OpenLayers.Geometry.MultiPolygon";
     public static final String MULTI_LINE_STRING_CLASS_NAME = "OpenLayers.Geometry.MultiLineString";

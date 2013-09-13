@@ -38,6 +38,7 @@ public class Geometry extends OpenLayersObjectWrapper {
     public static final String POLYGON_CLASS_NAME = "OpenLayers.Geometry.Polygon";
     public static final String MULTI_POLYGON_CLASS_NAME = "OpenLayers.Geometry.MultiPolygon";
     public static final String MULTI_LINE_STRING_CLASS_NAME = "OpenLayers.Geometry.MultiLineString";
+    public static final String CURVE_CLASS_NAME = "OpenLayers.Geometry.Curve";
     // TODO more class names
 
     /**

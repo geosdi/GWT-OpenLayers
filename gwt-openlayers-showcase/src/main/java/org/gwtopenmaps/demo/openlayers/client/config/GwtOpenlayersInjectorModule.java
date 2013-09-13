@@ -46,6 +46,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestrin
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.StyledMeasureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.polygonselect.PolygonSelect;
 import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.rule.RuleExample;
@@ -67,6 +68,7 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.drawfeature.DrawRegularPolygonExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.geolocate.GeolocateExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureBoxSelectionExample;
@@ -136,6 +138,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(GeolocateExample.class).asEagerSingleton();
         bind(WMTSExample.class).asEagerSingleton();
         bind(DrawRegularPolygonExample.class).asEagerSingleton();
+        bind(PolygonSelect.class).asEagerSingleton();
     }
 
 }

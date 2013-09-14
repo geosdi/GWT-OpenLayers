@@ -1,60 +1,59 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
-public class PagingStrategyImpl
-{
+class PagingStrategyImpl {
 
     public static native JSObject create() /*-{
-        return new $wnd.OpenLayers.Strategy.Paging();
-    }-*/;
+     return new $wnd.OpenLayers.Strategy.Paging();
+     }-*/;
 
     public static native boolean activate(JSObject self) /*-{
-        return self.activate();
-    }-*/;
+     return self.activate();
+     }-*/;
 
     public static native boolean deactivate(JSObject self) /*-{
-        return self.deactivate();
-    }-*/;
+     return self.deactivate();
+     }-*/;
 
     public static native int pageCount(JSObject self) /*-{
-        return self.pageCount();
-    }-*/;
+     return self.pageCount();
+     }-*/;
 
     public static native int pageNum(JSObject self) /*-{
-        return self.pageNum();
-    }-*/;
+     return self.pageNum();
+     }-*/;
 
     public static native int pageLength(JSObject self) /*-{
-        return self.pageLength();
-    }-*/;
+     return self.pageLength();
+     }-*/;
 
     public static native int pageLength(JSObject self, int length) /*-{
-        return self.pageLength(length);
-    }-*/;
+     return self.pageLength(length);
+     }-*/;
 
     public static native boolean pageNext(JSObject self) /*-{
-        return self.pageNext();
-    }-*/;
+     return self.pageNext();
+     }-*/;
 
     public static native boolean pagePrevious(JSObject self) /*-{
-        return self.pagePrevious();
-    }-*/;
+     return self.pagePrevious();
+     }-*/;
+
 }

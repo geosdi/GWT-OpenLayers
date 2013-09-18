@@ -76,6 +76,10 @@ public class OpenLayers {
     public static native double getInchesPerUnitMeter() /*-{
     return $wnd.OpenLayers.INCHES_PER_UNIT['m'];
     }-*/;
+    
+    public static native double getInchesPerUnit(String units) /*-{
+    return $wnd.OpenLayers.INCHES_PER_UNIT[units];
+    }-*/;
 
     public static class Util {
 

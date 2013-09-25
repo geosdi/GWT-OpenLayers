@@ -28,6 +28,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing.CancelDrawingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.click.ClickExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.cluster.AnimatedClusterStrategyTreshHoldExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.cluster.AnimatedClusterWithPopup;
 import org.gwtopenmaps.demo.openlayers.client.examples.cluster.ClusterStrategyTreshHoldExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.cql.CqlWmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
@@ -143,6 +144,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(PolygonSelect.class).asEagerSingleton();
         bind(GeodesicLengthExample.class).asEagerSingleton();
         bind(AnimatedClusterStrategyTreshHoldExample.class).asEagerSingleton();
+        bind(AnimatedClusterWithPopup.class).asEagerSingleton();
     }
 
 }

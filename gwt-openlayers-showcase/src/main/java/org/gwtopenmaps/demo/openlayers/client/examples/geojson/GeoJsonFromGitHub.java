@@ -45,6 +45,10 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.control.MousePosition;
+import org.gwtopenmaps.openlayers.client.control.SelectFeatureOptions;
+import org.gwtopenmaps.openlayers.client.event.VectorFeatureUnselectedListener;
+import org.gwtopenmaps.openlayers.client.popup.FramedCloud;
+import org.gwtopenmaps.openlayers.client.popup.Popup;
 
 /**
  * Example showing how to use geojson from GitHub
@@ -71,7 +75,7 @@ public class GeoJsonFromGitHub extends AbstractExample {
         defaultMapOptions.setNumZoomLevels(16);
 
         //Create a MapWidget
-        MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
+        MapWidget mapWidget = new MapWidget("800px", "800px", defaultMapOptions);
 
         //create some layers using geojson
         Options options = new Options();
@@ -82,37 +86,68 @@ public class GeoJsonFromGitHub extends AbstractExample {
 
         //In the json we have defined styles in the properties, here we set these properties
         final Style style = new Style();
-        style.setFillColor("#FFFF00");
+        style.setFillColor("#FA58F4");
         style.setFillOpacity(0.7);
         style.setStrokeColor("#000");
+        
+        final Style selectedStyle = new Style(); //the style when a feature is selected,
 
-        final StyleMap styleMap = new StyleMap(style);
+        selectedStyle.setStrokeColor("#000");
+        selectedStyle.setFillColor("#FFFF00");
+        selectedStyle.setFillOpacity(0.7);
+        
+
+        final StyleMap styleMap = new StyleMap(style, selectedStyle, selectedStyle);
         polyLayer.setStyleMap(styleMap);
 
         polyLayer.redraw();
 
-        Map map = mapWidget.getMap();
+        final Map map = mapWidget.getMap();
 
         //SelectFeature control to capture clicks on the vectors.
         //We use this to unSelect the selected feature
-        final SelectFeature selectFeature = new SelectFeature(polyLayer);
-        selectFeature.setAutoActivate(true);
-        map.addControl(selectFeature);
+        final SelectFeatureOptions selectFeatureOptions = new SelectFeatureOptions();
+//        selectFeatureOptions.setHighlightOnly(true);
+        selectFeatureOptions.setHover();
+        final SelectFeature selectFeatureControl = new SelectFeature(polyLayer, selectFeatureOptions);
+        selectFeatureControl.setClickOut(false);
+        selectFeatureControl.setAutoActivate(true);
+        
+        map.addControl(selectFeatureControl);
+
         polyLayer.addVectorFeatureSelectedListener(new VectorFeatureSelectedListener()
         {
             public void onFeatureSelected(FeatureSelectedEvent eventObject)
             {
+                GWT.log("onFeatureSelected");
                 final VectorFeature selectedFeature = eventObject.getVectorFeature();
-                selectFeature.unSelect(eventObject.getVectorFeature());
-
+                
                 final List<String> attrNames = selectedFeature.getAttributes().getAttributeNames();
                 String s = "";
                 for (String attrName : attrNames)
                 {
-                    s += attrName + ": " + selectedFeature.getAttributes().getAttributeAsString(attrName) + "\n";
+                    s += "<b>"+attrName+ "</b>" + ": <i>" + selectedFeature.getAttributes().getAttributeAsString(attrName) + "</i><BR />";
                 }
-
-                Window.alert("You clicked on a polygon with the following properties in the json file :\n " + s);
+                //Attach a popup to the point, we use null as size cause we set autoSize to true
+                //Note that we use FramedCloud... This extends a normal popup and creates is styled as a baloon
+                Popup popup = new FramedCloud(selectedFeature.getFeatureId(), selectedFeature.getCenterLonLat(), null, "<h1>"+ selectedFeature.getFeatureId()+"</H1><BR/>"+ s, null, false);
+                popup.setPanMapIfOutOfView(true); //this set the popup in a strategic way, and pans the map if needed.
+                popup.setAutoSize(true);
+                selectedFeature.setPopup(popup);
+                
+                //And attach the popup to the map
+                map.addPopup(eventObject.getVectorFeature().getPopup());
+                
+            }
+        });
+        
+        polyLayer.addVectorFeatureUnselectedListener(new VectorFeatureUnselectedListener()
+        {
+            public void onFeatureUnselected(VectorFeatureUnselectedListener.FeatureUnselectedEvent eventObject)
+            {
+                GWT.log("onFeatureUnselected");
+                map.removePopup(eventObject.getVectorFeature().getPopup());
+                eventObject.getVectorFeature().resetPopup();
             }
         });
 

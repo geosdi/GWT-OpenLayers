@@ -64,7 +64,7 @@ public class GeoJsonFromGitHub extends AbstractExample {
     @Inject
     public GeoJsonFromGitHub(ShowcaseExampleStore store) {
         super("geojson from GitHub example", "Shows a geojson example, and how to read properties from the json.",
-              new String[]{"json", "geojson", "properties"}, store);
+              new String[]{"json", "geojson", "properties", "github"}, store);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class GeoJsonFromGitHub extends AbstractExample {
         defaultMapOptions.setNumZoomLevels(16);
 
         //Create a MapWidget
-        MapWidget mapWidget = new MapWidget("800px", "800px", defaultMapOptions);
+        MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
 
         //create some layers using geojson
         Options options = new Options();

@@ -144,5 +144,9 @@ public class Control extends OpenLayersEObjectWrapper
     {
         return Vector.narrowToVector(ControlImpl.getLayer(getJSObject()));
     }
+    
+    public void destroy() {
+        ControlImpl.destroy(getJSObject());
+    }
 
 }

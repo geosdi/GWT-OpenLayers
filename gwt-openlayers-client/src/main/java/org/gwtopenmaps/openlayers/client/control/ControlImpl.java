@@ -60,5 +60,9 @@ class ControlImpl
     public static native JSObject getLayer(JSObject self) /*-{
         return self.handler.layer;
     }-*/;
+    
+    public static native void destroy(JSObject self) /*-{
+        return self.destroy();
+    }-*/;
 
 }

@@ -16,7 +16,6 @@
  */
 package org.gwtopenmaps.openlayers.client;
 
-import com.google.gwt.dom.client.Node;
 import com.google.gwt.user.client.Element;
 import java.util.ArrayList;
 import java.util.List;
@@ -547,6 +546,16 @@ public class Map extends OpenLayersEObjectWrapper {
 
     }
 
+    /**
+     * Remove MapBaseLayerChangedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapBaseLayerChangedListener(
+            final MapBaseLayerChangedListener listener) {
+        eventListeners.removeListener(this, listener);
+    }
+
     public void addMapLayerAddedListener(final MapLayerAddedListener listener) {
         eventListeners.addListener(this, listener, EventType.MAP_LAYER_ADDED,
                 new EventHandler() {
@@ -560,9 +569,16 @@ public class Map extends OpenLayersEObjectWrapper {
         });
     }
 
-    ;
+    /**
+     * Remove MapBaseLayerAddedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapLayerAddedListener(final MapLayerAddedListener listener) {
+        eventListeners.removeListener(this, listener);
+    }
 
-	public void addMapLayerChangedListener(
+    public void addMapLayerChangedListener(
             final MapLayerChangedListener listener) {
         eventListeners.addListener(this, listener, EventType.MAP_LAYER_CHANGED,
                 new EventHandler() {
@@ -575,6 +591,16 @@ public class Map extends OpenLayersEObjectWrapper {
 
         });
 
+    }
+
+    /**
+     * Remove MapLayerChangedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapLayerChangedListener(
+            final MapLayerChangedListener listener) {
+        eventListeners.removeListener(this, listener);
     }
 
     public void addMapLayerRemovedListener(
@@ -592,6 +618,16 @@ public class Map extends OpenLayersEObjectWrapper {
 
     }
 
+    /**
+     * Remove MapLayerRemovedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapLayerRemovedListener(
+            final MapLayerRemovedListener listener) {
+        eventListeners.removeListener(this, listener);
+    }
+
     public void addMapMoveListener(final MapMoveListener listener) {
         eventListeners.addListener(this, listener, EventType.MAP_MOVE,
                 new EventHandler() {
@@ -602,6 +638,15 @@ public class Map extends OpenLayersEObjectWrapper {
             }
 
         });
+    }
+
+    /**
+     * Remove MapMoveListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapMoveListener(final MapMoveListener listener) {
+        eventListeners.removeListener(this, listener);
     }
 
     public void addMapMoveEndListener(final MapMoveEndListener listener) {
@@ -616,6 +661,15 @@ public class Map extends OpenLayersEObjectWrapper {
         });
     }
 
+    /**
+     * Remove MapMoveEndListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapMoveEndListener(final MapMoveEndListener listener) {
+        eventListeners.removeListener(this, listener);
+    }
+
     public void addMapZoomListener(final MapZoomListener listener) {
         eventListeners.addListener(this, listener, EventType.MAP_ZOOMEND,
                 new EventHandler() {
@@ -626,6 +680,15 @@ public class Map extends OpenLayersEObjectWrapper {
             }
 
         });
+    }
+
+    /**
+     * Remove MapZoomListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapZoomListener(final MapZoomListener listener) {
+        eventListeners.removeListener(this, listener);
     }
 
     public void addMapMarkerAddedListener(final MapMarkerAddedListener listener) {
@@ -639,6 +702,16 @@ public class Map extends OpenLayersEObjectWrapper {
             }
 
         });
+    }
+
+    /**
+     * Remove MapMarkerAddedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapMarkerAddedListener(
+            final MapMarkerAddedListener listener) {
+        eventListeners.removeListener(this, listener);
     }
 
     public void addMapMarkerRemovedListener(
@@ -655,6 +728,16 @@ public class Map extends OpenLayersEObjectWrapper {
         });
     }
 
+    /**
+     * Remove MapMarkerRemovedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapMarkerRemovedListener(
+            final MapMarkerRemovedListener listener) {
+        eventListeners.removeListener(this, listener);
+    }
+
     public void addMapPopupOpenedListener(final MapPopupOpenedListener listener) {
         eventListeners.addListener(this, listener, EventType.MAP_POPUP_OPEN,
                 new EventHandler() {
@@ -668,6 +751,16 @@ public class Map extends OpenLayersEObjectWrapper {
         });
     }
 
+    /**
+     * Remove MapPopupOpenedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapPopupOpenedListener(
+            final MapPopupOpenedListener listener) {
+        eventListeners.removeListener(this, listener);
+    }
+
     public void addMapPopupClosedListener(final MapPopupClosedListener listener) {
         eventListeners.addListener(this, listener, EventType.MAP_POPUP_CLOSE,
                 new EventHandler() {
@@ -679,6 +772,16 @@ public class Map extends OpenLayersEObjectWrapper {
             }
 
         });
+    }
+
+    /**
+     * Remove MapPopupClosedListener Defined on the Map
+     *
+     * @param listener
+     */
+    public void removeMapPopupClosedListener(
+            final MapPopupClosedListener listener) {
+        eventListeners.removeListener(this, listener);
     }
 
     public void addMapClickListener(final MapClickListener listener) {

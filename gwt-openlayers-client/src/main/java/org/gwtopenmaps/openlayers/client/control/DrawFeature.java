@@ -110,4 +110,12 @@ public class DrawFeature extends Control {
         DrawFeatureImpl.cancel(getJSObject());
     }
 
+    /**
+     * Finishes the sketch without including the currently drawn point.
+     * This method can be called to terminate drawing programmatically instead of waiting for the user to end the sketch.
+     */
+    public void finishSketch() {
+        DrawFeatureImpl.finishSketch(getJSObject());
+    }
+
 }

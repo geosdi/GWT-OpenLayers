@@ -74,4 +74,14 @@ public class DrawFeatureImpl
     public static native void cancel(JSObject self) /*-{
         self.cancel();
     }-*/;
+
+    /**
+     * Finishes the sketch without including the currently drawn point.
+     * This method can be called to terminate drawing programmatically instead of waiting for the user to end the sketch.
+     * @param self self
+     */
+    public static native void finishSketch(JSObject self) /*-{
+        self.finishSketch();
+    }-*/;
+
 }

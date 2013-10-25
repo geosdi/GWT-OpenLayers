@@ -117,7 +117,6 @@ public class GwtOpenLayersProxyServlet extends HttpServlet {
                     // default for setDoInput is true
                     connectionIstream = connection.getInputStream();
                 }
-                ;
 
                 if (requestMethod.equals("POST")) {
                     transferHTTPRequestHeadersForPOST(connection, request);

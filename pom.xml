@@ -69,6 +69,7 @@
     </ciManagement>
     <properties>
         <gwt.version>2.5.1</gwt.version>
+        <slf4j-version>1.7.5</slf4j-version>
         <maven.compiler.source>1.5</maven.compiler.source>
         <maven.compiler.target>1.5</maven.compiler.target>
         <!-- properties with no dots for velocity template filters -->
@@ -107,6 +108,7 @@
     <modules>
         <module>gwt-openlayers-client</module>
         <module>gwt-openlayers-server</module>
+        <module>gwt-openlayers-cas-server</module>
         <module>gwt-openlayers-showcase</module>
     </modules>
     <distributionManagement>

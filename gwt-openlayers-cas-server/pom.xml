@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>gwt-openlayers</artifactId>
+        <groupId>org.gwtopenmaps.openlayers</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.gwtopenmaps.openlayers</groupId>
+    <artifactId>gwt-openlayers-cas-server</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>gwt-openlayers-cas-server</name>
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- CAS SUPPORT -->
+        <dependency>
+            <groupId>org.jasig.cas.client</groupId>
+            <artifactId>cas-client-core</artifactId>
+            <version>3.2.1</version>
+            <type>jar</type>
+        </dependency>
+        
+        <!-- logging dependencies, delegate all to slf4j and use logback -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+    </dependencies>
+  
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <configuration>
+                    <header>../header.txt</header>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

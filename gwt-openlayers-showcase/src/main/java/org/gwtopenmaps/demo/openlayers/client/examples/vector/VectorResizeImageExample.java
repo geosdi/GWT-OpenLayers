@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
+import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
@@ -45,7 +46,7 @@ import com.google.gwt.user.client.ui.HTML;
 public class VectorResizeImageExample extends AbstractExample {
 	private static final Projection DEFAULT_PROJECTION = new Projection(
 			"EPSG:4326");
-	
+
 
     @Inject
     public VectorResizeImageExample(ShowcaseExampleStore store) {
@@ -58,7 +59,7 @@ public class VectorResizeImageExample extends AbstractExample {
     @Override
     public void buildPanel() {
         OpenLayers.setProxyHost("olproxy?targetURL=");
-        
+
         //create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
         defaultMapOptions.setNumZoomLevels(16);
@@ -89,7 +90,7 @@ public class VectorResizeImageExample extends AbstractExample {
         vectorLayer.setStyleMap(styleMap);
 
         //Add a point
-        Point point = new Point(6.95, 50.94);
+        final Point point = new Point(6.95, 50.94);
         point.transform(DEFAULT_PROJECTION, new Projection(map.getProjection())); //transform lonlat to OSM coordinate system
         VectorFeature pointFeature = new VectorFeature(point);
         vectorLayer.addFeature(pointFeature);
@@ -100,31 +101,49 @@ public class VectorResizeImageExample extends AbstractExample {
         map.addControl(new ScaleLine()); //Display the scaleline
 
         //Center and zoom to a location
-        LonLat llCenter = new LonLat(6.95, 50.94);
+        final LonLat llCenter = new LonLat(6.95, 50.94);
         llCenter.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection()); //transform lonlat to OSM coordinate system
         map.setCenter(llCenter, 8);
         map.zoomTo(9); //fires a zoom event
-        
+
         map.addMapZoomListener(new MapZoomListener() {
-			
+
 			public void onMapZoom(MapZoomEvent eventObject) {
-				LonLat llLeftTop = new LonLat(6.90, 51);
+				LonLat llLeftTop = new LonLat(6.90, 51); //this is where we want the left top of the image to be drawn
 				llLeftTop.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection()); //transform lonlat to OSM coordinate system
-				LonLat llRightBottom = new LonLat(7, 50.90);
+				LonLat llRightBottom = new LonLat(7, 50.90); //this is where we want the right bottom of the image to be drawn
 				llRightBottom.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection()); //transform lonlat to OSM coordinate system
-				
-				Pixel pxLeftTop = map.getPixelFromLonLat(llLeftTop);
-				Pixel pxRightBottom = map.getPixelFromLonLat(llRightBottom);
-				
-				int xLeftTop = pxLeftTop.x();
-				int yLeftTop = pxLeftTop.y();
-				int xRightBottom = pxRightBottom.x();
-				int yRightBottom = pxRightBottom.y();
-				
+
+				Pixel pxLeftTopMap = map.getPixelFromLonLat(llLeftTop);
+				Pixel pxRightBottomMap = map.getPixelFromLonLat(llRightBottom);
+
+				int xLeftTop = pxLeftTopMap.x();
+				int yLeftTop = pxLeftTopMap.y();
+				int xRightBottom = pxRightBottomMap.x();
+				int yRightBottom = pxRightBottomMap.y();
+
 				int xSize = xRightBottom - xLeftTop;
 				int ySize = yRightBottom - yLeftTop;
-				
+
 				style.setGraphicSize(xSize, ySize);
+
+				//By specifying the bounds we make sure the image is rendered when only a part is in the viewpart.
+				//If you don't do this the image is only rendered if the center of the image is in the viewport.
+				//
+				//We do this by searching for the px values of the lowerleft and upperright corners of the img
+				//After this we convert back to latlng values
+				Pixel pxCenterImage = map.getPixelFromLonLat(llCenter);
+				int xLowerLeftImage = pxCenterImage.x() - (xSize / 2);
+				int yLowerLeftImage = pxCenterImage.y() + (ySize / 2);
+                int xUpperRightImage = pxCenterImage.x() + (xSize / 2);
+                int yUpperRightImage = pxCenterImage.y() - (ySize / 2);
+
+				LonLat llLowerLeft = map.getLonLatFromPixel(new Pixel(xLowerLeftImage, yLowerLeftImage));
+				LonLat llUpperRight = map.getLonLatFromPixel(new Pixel(xUpperRightImage, yUpperRightImage));
+
+				GWT.log("set bounds : " + llLowerLeft.lon() + " ; " + llLowerLeft.lat() + " ; " + llUpperRight.lon() + " ; " + llUpperRight.lat());
+				point.setBounds(new Bounds(llLowerLeft.lon(), llLowerLeft.lat(), llUpperRight.lon(), llUpperRight.lat()));
+
 				vectorLayer.redraw();
 			}
 		});

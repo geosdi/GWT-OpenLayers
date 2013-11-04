@@ -18,7 +18,6 @@ package org.gwtopenmaps.demo.openlayers.client.examples.basicgooglev3;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.ListBox;
 import javax.inject.Inject;
@@ -80,7 +79,7 @@ public class IssueWynamp extends AbstractExample {
 
         VectorFeature point1 = new VectorFeature(p1);
 
-        final Point p2 = new Point(120.04, -30.98);
+        final Point p2 = new Point(-106.356183, 35.842721);
         p2.transform(new Projection("EPSG:4326"),
                 new Projection(mapWidget.getMap().getProjection()));
 
@@ -132,16 +131,6 @@ public class IssueWynamp extends AbstractExample {
         initWidget(contentPanel);
 
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0);
-
-        Timer t = new Timer() {
-
-            @Override
-            public void run() {
-                mapWidget.getMap().panTo(new LonLat(p2.getX(), p2.getY()));
-            }
-
-        };
-        t.schedule(5000);
     }
 
     @Override

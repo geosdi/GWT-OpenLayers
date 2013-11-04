@@ -24,6 +24,7 @@ import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
+import org.gwtopenmaps.openlayers.client.Bounds;
 import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
@@ -68,7 +69,6 @@ public class IssueWynamp extends AbstractExample {
         mapWidget.getMap().addLayer(gSatellite);
 
         VectorOptions options = new VectorOptions();
-        options.setDisplayOutsideMaxExtent(true);
         Vector vector = new Vector("layer1", options);
 
         mapWidget.getMap().addControl(new LayerSwitcher());
@@ -79,7 +79,7 @@ public class IssueWynamp extends AbstractExample {
 
         VectorFeature point1 = new VectorFeature(p1);
 
-        final Point p2 = new Point(120.04, -30.98);
+        final Point p2 = new Point(-106.356183, 35.842721);
         p2.transform(new Projection("EPSG:4326"),
                 new Projection(mapWidget.getMap().getProjection()));
 
@@ -118,7 +118,9 @@ public class IssueWynamp extends AbstractExample {
                 if (selectedValue.equals("Point 1")) {
                     mapWidget.getMap().panTo(new LonLat(p1.getX(), p1.getY()));
                 } else if (selectedValue.equals("Point 2")) {
-                    mapWidget.getMap().panTo(new LonLat(p2.getX(), p2.getY()));
+                    Bounds b = new Bounds();
+                    b.extend(new LonLat(p2.getX(), p2.getY()));
+                    mapWidget.getMap().zoomToExtent(b);
                 } else {
                     mapWidget.getMap().panTo(new LonLat(p3.getX(), p3.getY()));
                 }

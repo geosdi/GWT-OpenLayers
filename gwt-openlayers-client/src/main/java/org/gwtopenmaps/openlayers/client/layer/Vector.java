@@ -55,21 +55,21 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Lukas Johansson
  */
 public class Vector extends Layer {
-    
+
     public static Vector narrowToVector(JSObject vectorLayer) {
         return (vectorLayer == null) ? null : new Vector(vectorLayer);
     }
-    
+
     private VectorOptions vectorOptions;
-    
+
     protected Vector(JSObject vector) {
         super(vector);
     }
-    
+
     public Vector(String name) {
         this(VectorImpl.create(name));
     }
-    
+
     public Vector(String name, VectorOptions options) {
         this(VectorImpl.create(name, options.getJSObject()));
         this.vectorOptions = options;
@@ -83,7 +83,7 @@ public class Vector extends Layer {
     public VectorOptions getVectorOptions() {
         return this.vectorOptions;
     }
-    
+
     public void addFeatures(VectorFeature[] features) {
         JObjectArray a = new JObjectArray(features);
         VectorImpl.addFeatures(getJSObject(), a.getJSObject());
@@ -93,59 +93,69 @@ public class Vector extends Layer {
          * features.length; i < max; i++){ addFeature(features[i]); }
          */
     }
-    
+
     public void addFeature(VectorFeature f) {
         VectorImpl.addFeature(getJSObject(), f.getJSObject());
     }
-    
+
     @Override
     public boolean redraw() {
         return VectorImpl.redraw(this.getJSObject());
     }
-    
+
     public void drawFeature(VectorFeature vector) {
         VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject());
     }
-    
+
     public void drawFeature(VectorFeature vector, Style style) {
         VectorImpl.drawFeature(this.getJSObject(), vector.getJSObject(),
                 style.getJSObject());
     }
-    
+
     public void eraseFeatures() {
         VectorImpl.eraseFeatures(this.getJSObject());
     }
-    
+
     public void removeFeature(VectorFeature feature) {
         VectorImpl.removeFeature(getJSObject(), feature.getJSObject());
     }
-    
+
+    public void removeFeatures(VectorFeature[] features) {
+        JSObject[] o = new JSObject[features.length];
+        for (int i = 0; i < features.length; i++) {
+            o[i] = features[i].getJSObject();
+        }
+
+        VectorImpl.removeFeature(getJSObject(),
+                new JObjectArray(o).getJSObject());
+    }
+
     public int getNumberOfFeatures() {
         return VectorImpl.getNumberOfFeatures(getJSObject());
     }
-    
+
     public int getNumberOfSelectedFeatures() {
         return VectorImpl.getNumberOfSelectedFeatures(getJSObject());
     }
-    
+
     public OpenLayersObjectWrapper getProtocol() {
         return Protocol.narrowToOpenLayersObjectWrapper(
                 getJSObject().getProperty(
-                "protocol"));
+                        "protocol"));
     }
-    
+
     public void setStyle(Style style) {
         VectorImpl.setStyle(getJSObject(), style.getJSObject());
     }
-    
+
     public Style getStyle() {
         return Style.narrowToOpenLayersStyle(VectorImpl.getStyle(getJSObject()));
     }
-    
+
     public void setStyleMap(StyleMap styleMap) {
         VectorImpl.setStyleMap(getJSObject(), styleMap.getJSObject());
     }
-    
+
     public StyleMap getStyleMap() {
         return StyleMap.narrowToOpenLayersStyleMap(VectorImpl.getStyleMap(
                 getJSObject()));
@@ -164,10 +174,10 @@ public class Vector extends Layer {
             for (int i = 0; i < nr; i++) {
                 VectorFeature vf = VectorFeature.narrowToVectorFeature(
                         VectorImpl.getFeature(
-                        getJSObject(), i));
+                                getJSObject(), i));
                 vfs[i] = vf;
             }
-            
+
             return vfs;
         }
     }
@@ -178,7 +188,7 @@ public class Vector extends Layer {
     public void destroyFeatures() {
         VectorImpl.destroyFeatures(getJSObject());
     }
-    
+
     public VectorFeature getFeatureById(String id) {
         return VectorFeature.narrowToVectorFeature(VectorImpl.getFeatureById(
                 getJSObject(), id));
@@ -199,104 +209,107 @@ public class Vector extends Layer {
             for (int i = 0; i < nr; i++) {
                 VectorFeature vf = VectorFeature.narrowToVectorFeature(
                         VectorImpl.getSelectedFeature(
-                        getJSObject(), i));
+                                getJSObject(), i));
                 vfs[i] = vf;
             }
-            
+
             return vfs;
         }
     }
-    
+
     public void addVectorFeatureModifiedListener(
             final VectorFeatureModifiedListener listener) {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_FEATURE_MODIFIED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                FeatureModifiedEvent e = new FeatureModifiedEvent(eventObject);
-                listener.onFeatureModified(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        FeatureModifiedEvent e = new FeatureModifiedEvent(
+                                eventObject);
+                        listener.onFeatureModified(e);
+                    }
+
+                });
     }
-    
+
     public void addVectorFeatureAddedListener(
             final VectorFeatureAddedListener listener) {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_FEATURE_ADDED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                FeatureAddedEvent e = new FeatureAddedEvent(eventObject);
-                listener.onFeatureAdded(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        FeatureAddedEvent e = new FeatureAddedEvent(eventObject);
+                        listener.onFeatureAdded(e);
+                    }
+
+                });
     }
-    
+
     public void addVectorFeatureRemovedListener(
             final VectorFeatureRemovedListener listener) {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_FEATURE_REMOVED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                FeatureRemovedEvent e = new FeatureRemovedEvent(eventObject);
-                listener.onFeatureRemoved(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        FeatureRemovedEvent e = new FeatureRemovedEvent(
+                                eventObject);
+                        listener.onFeatureRemoved(e);
+                    }
+
+                });
     }
-    
+
     public void addVectorFeatureSelectedListener(
             final VectorFeatureSelectedListener listener) {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_FEATURE_SELECTED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                FeatureSelectedEvent e = new FeatureSelectedEvent(eventObject);
-                listener.onFeatureSelected(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        FeatureSelectedEvent e = new FeatureSelectedEvent(
+                                eventObject);
+                        listener.onFeatureSelected(e);
+                    }
+
+                });
     }
-    
+
     public void addVectorFeatureUnselectedListener(
             final VectorFeatureUnselectedListener listener) {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_FEATURE_UNSELECTED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                FeatureUnselectedEvent e = new FeatureUnselectedEvent(
-                        eventObject);
-                listener.onFeatureUnselected(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        FeatureUnselectedEvent e = new FeatureUnselectedEvent(
+                                eventObject);
+                        listener.onFeatureUnselected(e);
+                    }
+
+                });
     }
-    
+
     public void addVectorBeforeFeatureAddedListener(
             final VectorBeforeFeatureAddedListener listener) {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_BEFORE_FEATURE_ADDED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                BeforeFeatureAddedEvent e = new BeforeFeatureAddedEvent(
-                        eventObject);
-                listener.onBeforeFeatureAdded(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        BeforeFeatureAddedEvent e = new BeforeFeatureAddedEvent(
+                                eventObject);
+                        listener.onBeforeFeatureAdded(e);
+                    }
+
+                });
     }
 
     /**
@@ -309,16 +322,16 @@ public class Vector extends Layer {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_AFTER_FEATURE_MODIFIED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                // TODO Auto-generated method stub
-                AfterFeatureModifiedEvent e = new AfterFeatureModifiedEvent(
-                        eventObject);
-                listener.onAfterFeatureModified(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        // TODO Auto-generated method stub
+                        AfterFeatureModifiedEvent e = new AfterFeatureModifiedEvent(
+                                eventObject);
+                        listener.onAfterFeatureModified(e);
+                    }
+
+                });
     }
 
     /**
@@ -331,16 +344,16 @@ public class Vector extends Layer {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_BEFORE_FEATURE_MODIFIED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                // TODO Auto-generated method stub
-                BeforeFeatureModifiedEvent e = new BeforeFeatureModifiedEvent(
-                        eventObject);
-                listener.onBeforeFeatureModified(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        // TODO Auto-generated method stub
+                        BeforeFeatureModifiedEvent e = new BeforeFeatureModifiedEvent(
+                                eventObject);
+                        listener.onBeforeFeatureModified(e);
+                    }
+
+                });
     }
 
     /**
@@ -353,16 +366,16 @@ public class Vector extends Layer {
         eventListeners.addListener(this, listener,
                 EventType.VECTOR_FEATURE_VERTEX_MODIFIED,
                 new EventHandler() {
-            
-            @Override
-            public void onHandle(EventObject eventObject) {
-                // TODO Auto-generated method stub
-                VertexModifiedEvent e = new VertexModifiedEvent(
-                        eventObject);
-                listener.onVertexModifiedEvent(e);
-            }
-            
-        });
+
+                    @Override
+                    public void onHandle(EventObject eventObject) {
+                        // TODO Auto-generated method stub
+                        VertexModifiedEvent e = new VertexModifiedEvent(
+                                eventObject);
+                        listener.onVertexModifiedEvent(e);
+                    }
+
+                });
     }
 
     /**
@@ -399,14 +412,14 @@ public class Vector extends Layer {
         getJSObject().getProperty("renderer").setProperty("textRoot",
                 getJSObject().getProperty("renderer").getProperty("vectorRoot"));
     }
-    
+
     public VectorFeature getFeatureByFid(String featureFID) {
         return VectorFeature.narrowToVectorFeature(VectorImpl.getFeatureByFid(
                 getJSObject(), featureFID));
     }
-    
+
     public void removeAllFeatures() {
         VectorImpl.removeAllFeatures(getJSObject());
     }
-    
+
 }

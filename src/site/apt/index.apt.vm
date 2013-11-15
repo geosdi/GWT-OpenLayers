@@ -10,9 +10,9 @@ Welcome to GWT-OpenLayers ${projectVersion}
   
 * Where can I get it?
 
-  * Download it from our bitbucket page {{https://bitbucket.org/gwtopenlayers/gwt-openlayers/downloads}}.
+  * Download the master from our github page {{https://github.com/geosdi/GWT-OpenLayers/archive/master.zip}}.
   
-  * Build it from source by taking a mercurial clone (hg clone https://bitbucket.org/gwtopenlayers/gwt-openlayers) and building with maven 2.2.1+. 
+  * Build it from source by taking a github clone from {{https://github.com/geosdi/GWT-OpenLayers}} and building with maven 2.2.1+. 
   
   * Consume it as a maven dependency (see below).
 

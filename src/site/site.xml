@@ -39,7 +39,7 @@ under the License.
   	<links>
   		<item name="Client Javadocs" href="./apidocs/index.html"/>
   		<item name="Maven Central" href="http://repo1.maven.org/maven2/org/org/gwtopenmaps/openlayers/"/>
-  		<item name="Bitbucket" href="https://bitbucket.org/gwtopenlayers/gwt-openlayers"/>  		
+  		<item name="Github" href="https://github.com/geosdi/GWT-OpenLayers"/>  		
   	</links>
     <menu name="Overview">
       <item name="About" href="index.html"/>

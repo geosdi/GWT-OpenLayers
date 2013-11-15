@@ -5,22 +5,13 @@ Developer Reference
 
 * Clone and go
 
-  GWT-OpenLayers uses Mercurial for version control. For the uninitiated to Mercurial, check out the excellent {{{http://hginit.com/top/00.html}hginit tutorial}}, or read up in the {{{http://hgbook.red-bean.com/}hgbook}}.
-  You can download a Mercurial commandline client {{{http://mercurial.selenic.com/wiki/Download?action=show&redirect=BinaryPackages}here}}, or use an IDE plugin like {{{http://javaforge.com/project/HGE}MercurialEclipse}}.
+  GWT-OpenLayers uses Github for version control.
 
-  The easiest way to start developing on GWT-OpenLayers is by cloning the public central Mercurial repository:
+  The easiest way to start developing on GWT-OpenLayers is by cloning the public github repository:
 
 +--
-https://bitbucket.org/gwtopenlayers/gwt-openlayers
+https://github.com/geosdi/GWT-OpenLayers
 +--
-
-
-  This repository can be cloned anonymously.
-
-  Once you cloned the public repository you got your own local copy of the repository to work with.
-  If you want to contribute code, make sure you have tested your changes to an up-to-date copy (by pulling the latest changes), and send us your exported changesets.
-  See this page about {{{http://mercurial.selenic.com/wiki/CommunicatingChanges}communicating changesets}}.
-
 
 * Building GWT-OpenLayers from source
 

@@ -14,3 +14,8 @@ gwt-unitCache/
 # more caches and things from deploy #
 war/WEB-INF/deploy/
 war/WEB-INF/classes/
+/gwt-openlayers-client/target/
+/gwt-openlayers-server/target/
+/gwt-openlayers-cas-server/target/
+/target/
+/gwt-openlayers-showcase/target/

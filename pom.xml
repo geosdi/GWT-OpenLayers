@@ -51,6 +51,64 @@
         </pluginRepository>
     </pluginRepositories>
     
+    <developers>
+        <developer>
+            <name>Edwin Commandeur</name>
+            <id>ecommandeur</id>
+            <email>commandeur.edwin@gmail.com</email>
+            <organization>Dimensional Insight Netherlands</organization>
+            <roles>
+                <role>Java Developer</role>
+                <role>Project Management Committee (PMC) Member</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Francesco Izzi</name>
+            <id>francesco.izzi</id>
+            <email>francesco.izzi@geosdi.org</email>
+            <organization>geoSDI</organization>
+            <roles>
+                <role>Java Developer</role>
+                <role>Project Management Committee (PMC) Member</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Giuseppe La Scaleia</name>
+            <id>glascaleia</id>
+            <email>giuseppe.lascaleia@geosdi.org</email>
+            <organization>geoSDI</organization>
+            <roles>
+                <role>Java Developer</role>
+                <role>Project Management Committee (PMC) Member</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Nazzareno Sileno</name>
+            <id>nazzareno.sileno</id>
+            <email>nazzareno.sileno@geosdi.org</email>
+            <organization>geoSDI</organization>
+            <roles>
+                <role>Java Developer</role>
+                <role>Project Management Committee (PMC) Member</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Frank Wynants</name>
+            <id>FrankW76</id>
+            <email>frank.wynants@gmail.com</email>
+            <organization>www.fks.be</organization>
+            <roles>
+                <role>Java Developer</role>
+                <role>Project Management Committee (PMC) Member</role>
+            </roles>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+    
     <ciManagement>
         <system>jenkins</system>
         <url>http://hudson.geosdi.org/</url>
@@ -170,11 +228,11 @@
                 <version>2.3.2</version>
                 <configuration>
                     <!--
-               					removed site-deploy from the release goals, a failed site-deploy should not 
-               					hold up a release, it can be manually deployed from ./target/checkout
-               					after the release:perform has finished or manually deployed later from the
-               					scm tag
-               					-->
+                    removed site-deploy from the release goals, a failed site-deploy should not 
+                    hold up a release, it can be manually deployed from ./target/checkout
+                    after the release:perform has finished or manually deployed later from the
+                    scm tag
+                    -->
                     <goals>deploy</goals>
                 </configuration>
             </plugin>

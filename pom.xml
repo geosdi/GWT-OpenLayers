@@ -20,21 +20,21 @@
         </license>
     </licenses>
     <organization>
-        <name>sourceforge</name>
-        <url>http://sourceforge.net/projects/gwt-openlayers</url>
+        <name>geoSDI</name>
+        <url>https://github.com/geosdi/GWT-OpenLayers</url>
     </organization>
     <scm>
         <connection>
-            scm:hg:http://bitbucket.org/gwtopenlayers/gwt-openlayers
+            scm:git@github.com:geosdi/GWT-OpenLayers.git
         </connection>
         <developerConnection>
-            scm:hg:https://bitbucket.org/gwtopenlayers/gwt-openlayers
+            scm:git@github.com:geosdi/GWT-OpenLayers.git
         </developerConnection>
-        <url>http://bitbucket.org/gwtopenlayers/gwt-openlayers</url>
+        <url>github.com:geosdi/GWT-OpenLayers.git</url>
     </scm>
     <issueManagement>
         <system>trac</system>
-        <url>https://sourceforge.net/apps/trac/gwt-openlayers/</url>
+        <url>https://github.com/geosdi/GWT-OpenLayers/issues</url>
     </issueManagement>
     
     <pluginRepositories>

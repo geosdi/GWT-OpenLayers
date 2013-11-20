@@ -844,4 +844,14 @@ public class Map extends OpenLayersEObjectWrapper {
         MapImpl.zoomOut(getJSObject());
     }
 
+    /**
+     * Set the min and max zoomlevel of the map.
+     * This blocks zooming further out or in than the given levels.
+     * @param minZoomLevel The minlevel to zoom
+     * @param maxZoomLevel The maxlevel to zoom
+     */
+	public void setMinMaxZoomLevel(int minZoomLevel, int maxZoomLevel) {
+		MapImpl.setMinMaxZoomLevel(getJSObject(), minZoomLevel, maxZoomLevel);
+	}
+
 }

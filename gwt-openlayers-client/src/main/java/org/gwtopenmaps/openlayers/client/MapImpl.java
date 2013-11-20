@@ -272,4 +272,12 @@ class MapImpl {
      map.zoomOut();
      }-*/;
 
+    public static native void setMinMaxZoomLevel(JSObject map, int minZoomLevel, int maxZoomLevel) /*-{
+		map.isValidZoomLevel = function(zoomLevel) {
+	   		return ((zoomLevel != null) &&
+	      		(zoomLevel >= minZoomLevel) && 
+	      		(zoomLevel <= maxZoomLevel) &&
+	      		(zoomLevel < this.getNumZoomLevels()));
+		}
+	}-*/;    
 }

@@ -49,6 +49,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestrin
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.StyledMeasureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.minmaxzoom.MinMaxZoomExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.polygonselect.PolygonSelect;
 import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
@@ -149,6 +150,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(AnimatedClusterWithPopup.class).asEagerSingleton();
         bind(VectorResizeImageExample.class).asEagerSingleton();
         bind(GeoJsonFromGitHub.class).asEagerSingleton();
+        bind(MinMaxZoomExample.class).asEagerSingleton();
     }
-
 }

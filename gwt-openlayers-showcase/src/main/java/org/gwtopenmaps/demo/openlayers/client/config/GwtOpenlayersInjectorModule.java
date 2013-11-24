@@ -75,6 +75,7 @@ import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
 
 import org.gwtopenmaps.demo.openlayers.client.examples.drawfeature.DrawRegularPolygonExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.drawfeaturestyle.DrawFeatureStyleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.geojson.GeoJsonFromGitHub;
 import org.gwtopenmaps.demo.openlayers.client.examples.geolocate.GeolocateExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureBoxSelectionExample;
@@ -151,5 +152,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(VectorResizeImageExample.class).asEagerSingleton();
         bind(GeoJsonFromGitHub.class).asEagerSingleton();
         bind(MinMaxZoomExample.class).asEagerSingleton();
+        bind(DrawFeatureStyleExample.class).asEagerSingleton();
     }
 }

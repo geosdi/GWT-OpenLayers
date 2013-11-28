@@ -26,6 +26,19 @@ package org.gwtopenmaps.openlayers.client.control;
  */
 public class ScaleOptions extends ControlOptions
 {
+    
+    /**
+     * APIProperty: geodesic
+     * {Boolean} Use geodesic measurement. Default is false. The recommended
+     * setting for maps in EPSG:4326 is false, and true EPSG:900913. If set to
+     * true, the scale will be calculated based on the horizontal size of the
+     * pixel in the center of the map viewport.
+     */
+    
+      public void setGeodesic(boolean geodesic)
+    {
+        getJSObject().setProperty("geodesic", geodesic);
+    }
 
 
 }

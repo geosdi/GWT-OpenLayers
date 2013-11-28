@@ -36,4 +36,8 @@ class ScaleImpl
     public static native JSObject create(Element div) /*-{
         return new $wnd.OpenLayers.Control.Scale(div);
     }-*/;
+    
+    public static native JSObject create(JSObject options) /*-{
+        return new $wnd.OpenLayers.Control.Scale(options);
+    }-*/;
 }

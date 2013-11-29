@@ -1,75 +1,80 @@
 .infopanel {
-	border: 1px black solid;
-	background-color: #FAE6B3;
+    border: 1px black solid;
+    background-color: #FAE6B3;
 }
 
 .top {
-	background: #9D9FA1;
-	width: 100%;
+    background: #9D9FA1;
+    width: 100%;
 }
 
 .emptytextbox {
-	color: #cccccc;
+    color: #cccccc;
 }
 
 .examplename {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .examplepanel {
-	margin: 5px;
-	border: 1px #cccccc solid;
-	border-radius: 5px; 
-	float: left;
-	cursor: pointer;
-	padding: 5px;
+    margin: 5px;
+    border: 1px #cccccc solid;
+    border-radius: 5px; 
+    float: left;
+    cursor: pointer;
+    padding: 5px;
 }
 
 .exampletags {
-	font-style: italic;
-	color: #aaaaaa;
-	font-size: small;
+    font-style: italic;
+    color: #aaaaaa;
+    font-size: small;
 }
 
 .examplepanel:hover {
-	background-color: #EEEEEE;
-	font-style: italic;
-	color: #aaaaaa;
-	font-size: small;
+    background-color: #EEEEEE;
+    font-style: italic;
+    color: #aaaaaa;
+    font-size: small;
 }
 
 h1 {
-color: #003A6B;
-background-color: transparent;
-font: 100% 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
-margin: 0;
-padding-top: 0.5em;
+    color: #003A6B;
+    background-color: transparent;
+    font: 100% 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding-top: 0.5em;
 }
 
 h1 {
-font-size: 130%;
-margin-bottom: 0.5em;
-border-bottom: 1px solid #FCB100;
+    font-size: 130%;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #FCB100;
 }
 
 .gwt-DialogBox-closebutton {
-        font-weight: bold;
-        color: #dd0000;
-        padding: 2px;
-        margin-left: 2px;
-        cursor: pointer;
+    font-weight: bold;
+    color: #dd0000;
+    padding: 2px;
+    margin-left: 2px;
+    cursor: pointer;
 }
 
 .gwt-DialogBox-closebutton:ACTIVE {
-        padding: 1px;
-        border: thin #dd0000 solid;
+    padding: 1px;
+    border: thin #dd0000 solid;
 }
 
 .gwt-DialogBox-closebutton:HOVER {
-        padding: 2px;
-        color: #ee0000;
+    padding: 2px;
+    color: #ee0000;
 }
 
 .olControlAttribution {
-	bottom: 5px !important;
+    bottom: 5px !important;
+}
+
+.olControlScale{
+    color: #000;
+    font-weight: bolder;
 }

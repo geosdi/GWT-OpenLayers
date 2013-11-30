@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.popup;
 
@@ -22,24 +22,24 @@ import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.Size;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
 /**
  *
  * @author Erdem Gunay
  * @author Curtis Jensen
- * @author <a href="mailto:marten.karlberg@digpro.se">Marten Karlberg</a>, Digpro AB
+ * @author <a href="mailto:marten.karlberg@digpro.se">Marten Karlberg</a>,
+ * Digpro AB
+ *
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
+ * @email giuseppe.lascaleia@geosdi.org
  *
  */
-public class Popup extends OpenLayersObjectWrapper
-{
+public class Popup extends OpenLayersObjectWrapper {
 
-    public static Popup narrowToOpenLayersPopup(JSObject element)
-    {
+    public static Popup narrowToOpenLayersPopup(JSObject element) {
         return (element == null) ? null : new Popup(element);
     }
 
-    protected Popup(JSObject element)
-    {
+    protected Popup(JSObject element) {
         super(element);
     }
 
@@ -50,9 +50,8 @@ public class Popup extends OpenLayersObjectWrapper
      * Added by Digpro.
      */
     public Popup(String id, LonLat lonlat, Size size, String html,
-        boolean closeBox,
-        CloseListener closeBoxCallback)
-    {
+            boolean closeBox,
+            CloseListener closeBoxCallback) {
 
         this(PopupImpl.create(id, lonlat.getJSObject(),
                 (size != null) ? size.getJSObject() : null,
@@ -62,18 +61,21 @@ public class Popup extends OpenLayersObjectWrapper
 
     /**
      *
-     * Use addCloseListener to respond to popup close event. (Beware! This does not work as
-     * expected. Instead pass the CloseListener in the constructor for proper binding. /Digpro)
+     * Use addCloseListener to respond to popup close event. (Beware! This does
+     * not work as expected. Instead pass the CloseListener in the constructor
+     * for proper binding. /Digpro)
      *
      * @param id - String identifier for Popup. Used by ..?..
-     * @param lonlat - {@link org.gwtopenmaps.openlayers.client.LonLat} where Popup should appear
-     * @param size - {@link org.gwtopenmaps.openlayers.client.Size} that provides height and width for Popup
+     * @param lonlat - {@link org.gwtopenmaps.openlayers.client.LonLat} where
+     * Popup should appear
+     * @param size - {@link org.gwtopenmaps.openlayers.client.Size} that
+     * provides height and width for Popup
      * @param html - String with html content to appear in Popup
-     * @param closeBox - Set to true to get close button in upper right corner of Popup
+     * @param closeBox - Set to true to get close button in upper right corner
+     * of Popup
      */
     public Popup(String id, LonLat lonlat, Size size, String html,
-        boolean closeBox)
-    {
+            boolean closeBox) {
         this(PopupImpl.create(id,
                 (lonlat != null) ? lonlat.getJSObject() : null,
                 (size != null) ? size.getJSObject() : null,
@@ -83,22 +85,19 @@ public class Popup extends OpenLayersObjectWrapper
 
     /**
      *
-     * @deprecated add a close listener via the constructor instead
-     *    this method uses a private method in OL and will not work as expected
+     * @deprecated add a close listener via the constructor instead this method
+     * uses a private method in OL and will not work as expected
      */
-    public void addCloseListener(CloseListener callback)
-    {
+    public void addCloseListener(CloseListener callback) {
         PopupImpl.addCloseListener(this.getJSObject(), callback);
     }
 
     /**
      * autosize the popup
      *
-     * @param autoSize
-     *            - boolean
+     * @param autoSize - boolean
      */
-    public void setAutoSize(boolean autoSize)
-    {
+    public void setAutoSize(boolean autoSize) {
         this.getJSObject().setProperty("autoSize", autoSize);
     }
 
@@ -107,8 +106,7 @@ public class Popup extends OpenLayersObjectWrapper
      *
      * @return autoSize - boolean
      */
-    public boolean getAutoSize()
-    {
+    public boolean getAutoSize() {
         return this.getJSObject().getPropertyAsBoolean("autoSize");
     }
 
@@ -116,11 +114,9 @@ public class Popup extends OpenLayersObjectWrapper
      * When drawn, pan map such that the entire popup is visible in the current
      * viewport (if necessary).
      *
-     * @param panMapIfOutOfView
-     *            - boolean
+     * @param panMapIfOutOfView - boolean
      */
-    public void setPanMapIfOutOfView(boolean panMapIfOutOfView)
-    {
+    public void setPanMapIfOutOfView(boolean panMapIfOutOfView) {
         this.getJSObject().setProperty("panMapIfOutOfView", panMapIfOutOfView);
     }
 
@@ -129,19 +125,16 @@ public class Popup extends OpenLayersObjectWrapper
      *
      * @return panMapIfOutOfView - boolean
      */
-    public boolean getPanMapIfOutOfView()
-    {
+    public boolean getPanMapIfOutOfView() {
         return this.getJSObject().getPropertyAsBoolean("panMapIfOutOfView");
     }
 
     /**
      * Set the popup backgroundColor. Sets the style
      *
-     * @param color
-     *            - String
+     * @param color - String
      */
-    public void setBackgroundColor(String color)
-    {
+    public void setBackgroundColor(String color) {
         this.getJSObject().setProperty("backgroundColor", color);
     }
 
@@ -150,19 +143,16 @@ public class Popup extends OpenLayersObjectWrapper
      *
      * @return backgroundColor - String
      */
-    public String getBackgroundColor()
-    {
+    public String getBackgroundColor() {
         return this.getJSObject().getPropertyAsString("backgroundColor");
     }
 
     /**
      * Set the popup opacity
      *
-     * @param opacity
-     *            - double
+     * @param opacity - double
      */
-    public void setOpacity(double opacity)
-    {
+    public void setOpacity(double opacity) {
         this.getJSObject().setProperty("opacity", opacity);
     }
 
@@ -171,19 +161,16 @@ public class Popup extends OpenLayersObjectWrapper
      *
      * @return opacity - double
      */
-    public double getOpacity()
-    {
+    public double getOpacity() {
         return this.getJSObject().getPropertyAsDouble("opacity");
     }
 
     /**
      * Set the border style
      *
-     * @param border
-     *            - String
+     * @param border - String
      */
-    public void setBorder(String border)
-    {
+    public void setBorder(String border) {
         this.getJSObject().setProperty("border", border);
     }
 
@@ -192,104 +179,101 @@ public class Popup extends OpenLayersObjectWrapper
      *
      * @return border CSS
      */
-    public String getBorder()
-    {
+    public String getBorder() {
         return this.getJSObject().getPropertyAsString("border");
     }
 
-    public void setContentHTML(String contentHTML)
-    {
+    public void setContentHTML(String contentHTML) {
         this.getJSObject().setProperty("contentHTML", contentHTML);
     }
 
-    public void setLonLat(LonLat lt)
-    {
+    public void setLonLat(LonLat lt) {
         this.getJSObject().setProperty("lonlat", lt.getJSObject());
     }
 
-    public LonLat getLonLat()
-    {
-    	return LonLat.narrowToLonLat(this.getJSObject().getProperty("lonlat"));
+    public LonLat getLonLat() {
+        return LonLat.narrowToLonLat(this.getJSObject().getProperty("lonlat"));
     }
 
     /**
      * Method: show Makes the popup visible.
      */
-    public void show()
-    {
+    public void show() {
         PopupImpl.show(getJSObject());
     }
 
     /**
      * Method: hide Makes the popup invisible.
      */
-    public void hide()
-    {
+    public void hide() {
         PopupImpl.hide(getJSObject());
     }
 
     /**
-     * Method: updatePosition
-     * if the popup has a lonlat and its map members set,
+     * Method: updatePosition if the popup has a lonlat and its map members set,
      * then have it move itself to its proper position
      */
-    public void updatePosition()
-    {
+    public void updatePosition() {
         PopupImpl.updatePosition(getJSObject());
     }
 
     /**
      * Method: moveTo
      *
-     * @param px - {<OpenLayers.Pixel>} the top and left position of the popup div.
+     * @param px - {<OpenLayers.Pixel>} the top and left position of the popup
+     * div.
      */
     public void moveTo(Pixel px) {
         PopupImpl.moveTo(getJSObject(), px.getJSObject());
     }
 
     /**
-     * Method: panIntoView
-     * Pans the map such that the popup is totaly viewable (if necessary)
+     * Method: panIntoView Pans the map such that the popup is totaly viewable
+     * (if necessary)
      */
     public void panIntoView() {
-    	PopupImpl.panIntoView(getJSObject());
+        PopupImpl.panIntoView(getJSObject());
     }
 
     /**
-     * APIMethod: updateSize
-     * Auto size the popup so that it precisely fits its contents (as
-     * determined by this.contentDiv.innerHTML). Popup size will, of
-     * course, be limited by the available space on the current map
+     * APIMethod: updateSize Auto size the popup so that it precisely fits its
+     * contents (as determined by this.contentDiv.innerHTML). Popup size will,
+     * of course, be limited by the available space on the current map
      */
-    public void updateSize()
-    {
+    public void updateSize() {
         PopupImpl.updateSize(getJSObject());
     }
 
-
     /**
-     * Method: setSize
-     * Used to adjust the size of the popup.
+     * Method: setSize Used to adjust the size of the popup.
      *
-     * Parameters:
-     * contentSize - {<OpenLayers.Size>} the new size for the popup's
-     *     contents div (in pixels).
+     * Parameters: contentSize - {<OpenLayers.Size>} the new size for the
+     * popup's contents div (in pixels).
      */
     public void setSize(Size size) {
-    	PopupImpl.setSize(getJSObject(), size.getJSObject());
+        PopupImpl.setSize(getJSObject(), size.getJSObject());
     }
 
     /**
-     * Method: destroy
-     * nullify references to prevent circular references and memory leaks
+     * Method: destroy nullify references to prevent circular references and
+     * memory leaks
      */
     public void destroy() {
-    	PopupImpl.destroy(getJSObject());
+        PopupImpl.destroy(getJSObject());
     }
 
-    public interface CloseListener
-    {
+    /*
+     * Returns:      
+     * {Boolean} Boolean indicating whether or not the popup is visible
+     */
+    public Boolean isVisible() {
+        return PopupImpl.isVisible(getJSObject());
+    }
+
+    public interface CloseListener {
 
         void onPopupClose(JSObject evt);
+
     }
+
 }

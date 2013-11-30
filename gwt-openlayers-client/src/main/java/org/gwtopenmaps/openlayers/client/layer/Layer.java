@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2013 sourceforge.
+ * Copyright 2013 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.layer;
 
@@ -133,6 +133,29 @@ public class Layer extends OpenLayersEObjectWrapper {
     }
 
     /**
+     * APIMethod: calculateInRange
+     * 
+     * Returns:
+     * {Boolean} The layer is displayable at the current map's current
+     *     resolution. Note that if 'alwaysInRange' is true for the layer, 
+     *     this function will always return true.
+     */
+
+    public boolean calculateInRange() {
+        return LayerImpl.calculateInRange(getJSObject());
+    }
+    
+    /** 
+     * Property: inRange
+     * {Boolean} The current map resolution is within the layer's min/max 
+     *     range. This is set in <OpenLayers.Map.setCenter> whenever the zoom 
+     *     changes.
+     */
+    public boolean isInRange() {
+        return LayerImpl.isInRange(getJSObject());
+    }
+
+    /**
      * Method: setZIndex
      *
      * Parameters: zIndex - {Integer}
@@ -171,39 +194,54 @@ public class Layer extends OpenLayersEObjectWrapper {
     }
 
     public void addLayerLoadStartListener(final LayerLoadStartListener listener) {
-        eventListeners.addListener(this, listener, EventType.LAYER_LOADSTART, new EventHandler() {
-            public void onHandle(EventObject eventObject) {
-                LoadStartEvent e = new LoadStartEvent(eventObject);
-                listener.onLoadStart(e);
-            }
-        });
+        eventListeners.addListener(this, listener, EventType.LAYER_LOADSTART,
+                new EventHandler() {
+
+                    public void onHandle(EventObject eventObject) {
+                        LoadStartEvent e = new LoadStartEvent(eventObject);
+                        listener.onLoadStart(e);
+                    }
+
+                });
     }
 
     public void addLayerLoadEndListener(final LayerLoadEndListener listener) {
-        eventListeners.addListener(this, listener, EventType.LAYER_LOADEND, new EventHandler() {
-            public void onHandle(EventObject eventObject) {
-                LoadEndEvent e = new LoadEndEvent(eventObject);
-                listener.onLoadEnd(e);
-            }
-        });
+        eventListeners.addListener(this, listener, EventType.LAYER_LOADEND,
+                new EventHandler() {
+
+                    public void onHandle(EventObject eventObject) {
+                        LoadEndEvent e = new LoadEndEvent(eventObject);
+                        listener.onLoadEnd(e);
+                    }
+
+                });
     }
 
-    public void addLayerLoadCancelListener(final LayerLoadCancelListener listener) {
-        eventListeners.addListener(this, listener, EventType.LAYER_LOADCANCEL, new EventHandler() {
-            public void onHandle(EventObject eventObject) {
-                LoadCancelEvent e = new LoadCancelEvent(eventObject);
-                listener.onLoadCancel(e);
-            }
-        });
+    public void addLayerLoadCancelListener(
+            final LayerLoadCancelListener listener) {
+        eventListeners.addListener(this, listener, EventType.LAYER_LOADCANCEL,
+                new EventHandler() {
+
+                    public void onHandle(EventObject eventObject) {
+                        LoadCancelEvent e = new LoadCancelEvent(eventObject);
+                        listener.onLoadCancel(e);
+                    }
+
+                });
     }
 
-    public void addLayerVisibilityChangedListener(final LayerVisibilityChangedListener listener) {
-        eventListeners.addListener(this, listener, EventType.LAYER_VISIBILITYCHANGED, new EventHandler() {
-            public void onHandle(EventObject eventObject) {
-                VisibilityChangedEvent e = new VisibilityChangedEvent(eventObject);
-                listener.onVisibilityChanged(e);
-            }
-        });
+    public void addLayerVisibilityChangedListener(
+            final LayerVisibilityChangedListener listener) {
+        eventListeners.addListener(this, listener,
+                EventType.LAYER_VISIBILITYCHANGED, new EventHandler() {
+
+                    public void onHandle(EventObject eventObject) {
+                        VisibilityChangedEvent e = new VisibilityChangedEvent(
+                                eventObject);
+                        listener.onVisibilityChanged(e);
+                    }
+
+                });
     }
 
     public double getResolutionForZoom(double zoom) {
@@ -215,6 +253,8 @@ public class Layer extends OpenLayersEObjectWrapper {
     }
 
     public Projection getProjection() {
-        return Projection.narrowToProjection(LayerImpl.getProjection(getJSObject()));
+        return Projection.narrowToProjection(LayerImpl.getProjection(
+                getJSObject()));
     }
+
 }

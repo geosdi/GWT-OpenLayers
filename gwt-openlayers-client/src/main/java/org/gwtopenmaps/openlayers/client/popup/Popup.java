@@ -266,7 +266,7 @@ public class Popup extends OpenLayersObjectWrapper {
      * Returns:      
      * {Boolean} Boolean indicating whether or not the popup is visible
      */
-    public Boolean isVisible() {
+    public boolean isVisible() {
         return PopupImpl.isVisible(getJSObject());
     }
 

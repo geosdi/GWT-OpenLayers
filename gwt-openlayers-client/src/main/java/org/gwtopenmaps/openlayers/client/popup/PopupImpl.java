@@ -87,8 +87,8 @@ class PopupImpl {
      p.destroy();
      }-*/;
 
-    public static native Boolean isVisible(JSObject p) /*-{
-     p.visible();
+    public static native boolean isVisible(JSObject p) /*-{
+     return p.visible();
      }-*/;
 
 }

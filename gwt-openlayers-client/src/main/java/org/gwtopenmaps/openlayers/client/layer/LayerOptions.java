@@ -229,6 +229,20 @@ public class LayerOptions extends JSObjectWrapper {
     /**
      *
      */
+    public void unsetMaxScale() {
+        getJSObject().unsetProperty("maxScale");
+    }
+
+    /**
+     *
+     */
+    public void unsetMinScale() {
+        getJSObject().unsetProperty("minScale");
+    }
+
+    /**
+     *
+     */
     public void setScales(float[] scales) {
         // does this work?
         JSObject scaleArray = JSObject.createJSArray().cast();

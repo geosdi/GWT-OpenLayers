@@ -85,6 +85,10 @@ class LayerImpl {
      return layer.getVisibility();
      }-*/;
 
+    public static native boolean isAlwaysInRange(JSObject layer) /*-{
+        return layer.alwaysInRange;
+    }-*/;
+
     public static native void setIsVisible(boolean isVisible, JSObject layer) /*-{
      layer.setVisibility(isVisible);
      }-*/;

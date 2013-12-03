@@ -132,6 +132,10 @@ public class Layer extends OpenLayersEObjectWrapper {
         return LayerImpl.redraw(getJSObject(), true);
     }
 
+    public boolean isAlwaysInRange() {
+        return LayerImpl.isAlwaysInRange(getJSObject());
+    }
+
     /**
      * APIMethod: calculateInRange
      * 

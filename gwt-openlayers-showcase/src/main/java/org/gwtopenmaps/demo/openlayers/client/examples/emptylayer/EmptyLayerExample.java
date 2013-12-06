@@ -51,7 +51,7 @@ public class EmptyLayerExample extends AbstractExample {
     public EmptyLayerExample(ShowcaseExampleStore store) {
         super("Blank background baselayer with EmptyLayer",
               "Demonstrates the use EmptyLayer to create a blank background baselayer.",
-              new String[]{"Empty", "Blank", "layer", "EmptyLayer"}, store);
+              new String[]{"Empty", "Blank", "layer", "EmptyLayer", "marker"}, store);
     }
 
     @Override

@@ -50,6 +50,15 @@ public class GridLayer extends HTTPRequestLayer
         this(GridLayerImpl.create(name, url, params.getJSObject()));
     }
 
+	/**
+	 * Gets the transition effect to use when the map is zoomed.
+	 * @return transition effect
+	 */
+	public TransitionEffect getTransitionEffect()
+	{
+		return TransitionEffect.get(this.getJSObject().getPropertyAsString("transitionEffect"));
+	}
+
     public GridLayer narrowToGridLayer(JSObject gridLayer)
     {
         return (gridLayer == null) ? null : new GridLayer(gridLayer);
@@ -79,6 +88,22 @@ public class GridLayer extends HTTPRequestLayer
     public void setNumLoadingTiles(Integer numLoadingTiles)
     {
         GridLayerImpl.setNumLoadingTiles(getJSObject(), numLoadingTiles);
+    }
+
+    /**
+     * Sets the transition effect to use when the map is zoomed.
+     * Two posible values:
+     * "resize"	Existing tiles are resized on zoom to provide a visual effect of the zoom having taken place immediately.
+     *          As the new tiles become available, they are drawn on top of the resized tiles (this is the default setting).
+     * "map-resize"	Existing tiles are resized on zoom and placed below the base layer. New tiles for the base layer will cover existing tiles.
+     *              This setting is recommended when having an overlay duplicated during the transition is undesirable (e.g. street labels or big transparent fills).
+     * null	No transition effect.
+     * Using "resize" on non-opaque layers can cause undesired visual effects.  Set transitionEffect to null in this case.
+     * @param transition transition effect
+     */
+    public void setTransitionEffect(TransitionEffect transition)
+    {
+    	this.getJSObject().setProperty("transitionEffect", transition.toString());
     }
 
 }

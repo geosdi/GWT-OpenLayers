@@ -18,6 +18,8 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+import com.google.gwt.core.client.JsArrayMixed;
+
 /**
  *
  * @author Erdem Gunay Amr Alam - Refractions Research Edwin Commandeur - Atlis
@@ -117,6 +119,14 @@ class LayerImpl {
      return layer.getResolutionForZoom(zoom);
      }-*/;
 
+    public static native JsArrayMixed getResolutions(JSObject layer) /*-{
+		return layer.resolutions;
+	}-*/;
+
+	public static native JsArrayMixed getScales(JSObject layer)	/*-{
+		return layer.scales;
+	}-*/;
+    
     public static native JSObject getProjection(JSObject layer) /*-{
      return layer.projection;
      }-*/;

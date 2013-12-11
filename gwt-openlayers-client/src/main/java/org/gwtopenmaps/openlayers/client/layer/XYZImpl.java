@@ -45,4 +45,17 @@ class XYZImpl
 
             return new $wnd.OpenLayers.Layer.XYZ(name, tmsURLs, layerParams);
     }-*/;
+    
+	/**
+	 * If your cache has more zoom levels than you want to provide access to with this layer, supply a zoomOffset. This
+	 * zoom offset is added to the current map zoom level to determine the level for a requested tile. For example, if
+	 * you supply a zoomOffset of 3, when the map is at the zoom 0, tiles will be requested from level 3 of your cache.
+	 * Default is 0 (assumes cache level and map zoom are equivalent). Using zoomOffset is an alternative to setting
+	 * serverResolutions if you only want to expose a subset of the server resolutions.
+	 * @param layer layer
+	 * @param zoomOffset zoom offset
+	 */
+   public static native void setZoomOffset(JSObject layer, int zoomOffset) /*-{
+	    layer["zoomOffset"] = zoomOffset;
+	}-*/;
 }

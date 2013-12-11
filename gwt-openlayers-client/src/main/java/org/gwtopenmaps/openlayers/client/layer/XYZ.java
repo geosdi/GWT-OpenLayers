@@ -28,6 +28,8 @@ import org.gwtopenmaps.openlayers.client.util.JStringArray;
  */
 public class XYZ extends GridLayer {
 
+	private static final double dEarthRadius = 6378137;
+	
     protected XYZ(JSObject xyzLayer) {
         super(xyzLayer);
     }
@@ -53,7 +55,65 @@ public class XYZ extends GridLayer {
             this(XYZImpl.create(name, new JStringArray(urls).getJSObject(), options.getJSObject()));
     }
 
+	/**
+	 * Determines the ground resolution (in meters per pixel) at a specified latitude and level of detail.
+	 * @param latitude latitude
+	 * @param zoomLevel zoomlevel
+	 * @return ground resolution
+	 */
+	private static double getGroundResolutionInMeters(double latitude, int zoomLevel)
+	{
+		return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * dEarthRadius / getMapSizeInPixels(zoomLevel);
+	}
+
+	/**
+	 * Determines the map width and height (in pixels) at a specified level of detail.
+	 * @param zoomLevel Level of detail, from 1 (lowest detail) to 23 (highest detail).
+	 * @return The map width and height in pixels.
+	 */
+	private static double getMapSizeInPixels(int zoomLevel)
+	{
+		return ((double) (1 << zoomLevel)) * 256;
+	}
+
     public XYZ narrowToXYZ(JSObject xyzLayer) {
         return (xyzLayer == null) ? null : new XYZ(xyzLayer);
     }
+    
+	/**
+	 * Sets a range of zoomlevels.
+	 * @param minZoomLevel minimum zoomlevel
+	 * @param maxZoomLevel maximum zoomlevel
+	 */
+	public void setZoomLevelRange(int minZoomLevel, int maxZoomLevel)
+	{
+		setZoomOffset(minZoomLevel);
+
+		int len = maxZoomLevel - minZoomLevel + 1;
+		double[] resolutions = new double[len];
+		double curRes = getGroundResolutionInMeters(0, minZoomLevel);
+		for (int i = 0; i < len; i++)
+		{
+			resolutions[i] = curRes;
+			curRes = curRes / 2;
+		}
+
+		// resolution setting seems to work only via options
+		XYZOptions options = new XYZOptions();
+		options.setResolutions(resolutions);
+		this.addOptions(options);
+	}
+
+	/**
+	 * If your cache has more zoom levels than you want to provide access to with this layer, supply a zoomOffset. This
+	 * zoom offset is added to the current map zoom level to determine the level for a requested tile. For example, if
+	 * you supply a zoomOffset of 3, when the map is at the zoom 0, tiles will be requested from level 3 of your cache.
+	 * Default is 0 (assumes cache level and map zoom are equivalent). Using zoomOffset is an alternative to setting
+	 * serverResolutions if you only want to expose a subset of the server resolutions.
+	 * @param zoomOffset zoom offset
+	 */
+	public void setZoomOffset(int zoomOffset)
+	{
+		XYZImpl.setZoomOffset(this.getJSObject(), zoomOffset);
+	}
 }

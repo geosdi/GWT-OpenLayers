@@ -30,6 +30,7 @@ import org.gwtopenmaps.openlayers.client.event.LayerLoadStartListener.LoadStartE
 import org.gwtopenmaps.openlayers.client.event.LayerVisibilityChangedListener;
 import org.gwtopenmaps.openlayers.client.event.LayerVisibilityChangedListener.VisibilityChangedEvent;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import com.google.gwt.core.client.JsArrayMixed;
 
 /**
  *
@@ -248,6 +249,46 @@ public class Layer extends OpenLayersEObjectWrapper {
                 });
     }
 
+	/**
+	 * Gets the contents of the given {@link JsArrayMixed} as a double array.
+	 * @param o {@link JsArrayMixed}
+	 * @return double[] if the array is not null, else null
+	 */
+	private static double[] getDoubleArray(JsArrayMixed o)
+	{
+		if (o != null)
+		{
+			double[] a = new double[o.length()];
+			for (int i = 0; i < o.length(); i++)
+			{
+				a[i] = o.getNumber(i);
+			}
+			return a;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	/**
+	 * Get the maximum zoomlevel for this layer.
+	 * @return maximum zoomlevel
+	 */
+	public int getMaxZoomLevel()
+	{
+		return getMinZoomLevel() + LayerImpl.getResolutions(this.getJSObject()).length() - 1;
+	}
+
+	/**
+	 * Get the minimum zoomlevel for this layer.
+	 * @return minimum zoomlevel
+	 */
+	public int getMinZoomLevel()
+	{
+		return (int) this.getJSObject().getPropertyAsDouble("zoomOffset");
+	}
+
     public double getResolutionForZoom(double zoom) {
         double result = -1;
         if (this.isBaseLayer()) {
@@ -255,6 +296,24 @@ public class Layer extends OpenLayersEObjectWrapper {
         }
         return result;
     }
+
+	/**
+	 * Get all resolutions for the layer.
+	 * @return resolutions
+	 */
+	public double[] getResolutions()
+	{
+		return getDoubleArray(LayerImpl.getResolutions(this.getJSObject()));
+	}
+
+	/**
+	 * Get all scales for the layer.
+	 * @return scales
+	 */
+	public double[] getScales()
+	{
+		return getDoubleArray(LayerImpl.getScales(this.getJSObject()));
+	}
 
     public Projection getProjection() {
         return Projection.narrowToProjection(LayerImpl.getProjection(

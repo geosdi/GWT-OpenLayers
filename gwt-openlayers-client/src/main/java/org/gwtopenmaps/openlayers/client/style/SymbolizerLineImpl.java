@@ -31,7 +31,7 @@ public class SymbolizerLineImpl
     }-*/;
 
     public static native String getStrokeColor(JSObject self) /*-{
-        return self.storkeColor;
+        return self.strokeColor;
     }-*/;
 
     public static native void setStrokeOpacity(JSObject self, double opacity) /*-{
@@ -39,7 +39,7 @@ public class SymbolizerLineImpl
     }-*/;
 
     public static native double getStrokeOpacity(JSObject self) /*-{
-        return self.storkeOpacity;
+        return self.strokeOpacity;
     }-*/;
 
     public static native void setStrokeWidth(JSObject self, int width) /*-{
@@ -59,7 +59,7 @@ public class SymbolizerLineImpl
     }-*/;
 
     public static native String getLinecap(JSObject self) /*-{
-        return self.storkeLinecap;
+        return self.strokeLinecap;
     }-*/;
 
 

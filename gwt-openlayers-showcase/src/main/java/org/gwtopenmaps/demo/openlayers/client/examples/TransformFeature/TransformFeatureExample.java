@@ -17,8 +17,11 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.TransformFeature;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTML;
+
 import javax.inject.Inject;
+
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -29,8 +32,14 @@ import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
+import org.gwtopenmaps.openlayers.client.control.TransformBeforeSetFeatureListener;
+import org.gwtopenmaps.openlayers.client.control.TransformCompleteListener;
 import org.gwtopenmaps.openlayers.client.control.TransformFeature;
 import org.gwtopenmaps.openlayers.client.control.TransformFeatureOptions;
+import org.gwtopenmaps.openlayers.client.control.TransformSetFeatureListener;
+import org.gwtopenmaps.openlayers.client.control.TransformBeforeSetFeatureListener.BeforeSetFeatureEvent;
+import org.gwtopenmaps.openlayers.client.control.TransformCompleteListener.TransformCompleteEvent;
+import org.gwtopenmaps.openlayers.client.control.TransformSetFeatureListener.SetFeatureEvent;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.geometry.LinearRing;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
@@ -140,6 +149,37 @@ public class TransformFeatureExample extends AbstractExample {
         // Create The Transform Control
         TransformFeature transformFeature = new TransformFeature(vectorLayer,
                                                                  transformFeatureOptions);
+
+        transformFeature.addTransformCompleteListener(new TransformCompleteListener()
+        {
+            @Override
+            public void onTransformComplete(TransformCompleteEvent eventObject)
+            {
+                Window.alert("You finished transforming the feature ; the new latitude, longitude of this feature is :\n"
+                        + vectorLayer.getFeatureByFid(eventObject.getFid()).getCenterLonLat().lat() + " ; "
+                        + vectorLayer.getFeatureByFid(eventObject.getFid()).getCenterLonLat().lon());
+            }
+        });
+
+        transformFeature.addBeforeSetFeatureListener(new TransformBeforeSetFeatureListener()
+        {
+            @Override
+            public void onBeforeSetFeature(BeforeSetFeatureEvent eventObject)
+            {
+                GWT.log("onBeforeSetFeature");
+            }
+        });
+
+        transformFeature.addSetFeatureListener(new TransformSetFeatureListener()
+        {
+            @Override
+            public void onSetFeature(SetFeatureEvent eventObject)
+            {
+                GWT.log("onSetFeature" + vectorLayer.getFeatureByFid(eventObject.getFid()).getCenterLonLat().lat());
+            }
+        });
+
+
 
         map.setCenter(new LonLat(point.getX(), point.getY()), 7);
         map.addLayer(vectorLayer);

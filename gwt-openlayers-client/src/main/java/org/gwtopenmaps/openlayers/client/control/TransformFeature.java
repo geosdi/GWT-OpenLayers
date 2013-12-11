@@ -16,13 +16,18 @@
  */
 package org.gwtopenmaps.openlayers.client.control;
 
-import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
+import org.gwtopenmaps.openlayers.client.control.TransformBeforeSetFeatureListener.BeforeSetFeatureEvent;
+import org.gwtopenmaps.openlayers.client.control.TransformCompleteListener.TransformCompleteEvent;
+import org.gwtopenmaps.openlayers.client.control.TransformSetFeatureListener.SetFeatureEvent;
+import org.gwtopenmaps.openlayers.client.event.EventHandler;
+import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
+ * Control to transform features.
  * @author Lorenzo Amato <lorenzo.amato@geosdi.org>
- * 
+ *
  */
 
 public class TransformFeature extends Control {
@@ -40,12 +45,52 @@ public class TransformFeature extends Control {
 		this(TransformFeatureImpl.create(vectorLayer.getJSObject(),
 				transformFeatureOptions.getJSObject()));
 	}
-	
-        
-       
-        
-        
-//	public void setFeature (VectorFeature feature){
-//        TransformFeatureImpl.setFeature(this.getJSObject(), feature.getJSObject());
-//        }
+
+	/**
+	 * Add a listener that is triggered after dragging.
+	 */
+    public void addTransformCompleteListener(final TransformCompleteListener listener)
+    {
+        eventListeners.addListener(this, listener, "transformcomplete", new EventHandler()
+        {
+            @Override
+            public void onHandle(EventObject eventObject)
+            {
+                TransformCompleteEvent e = new TransformCompleteEvent(eventObject);
+                listener.onTransformComplete(e);
+            }
+        });
+    }
+
+    /**
+     * Triggered before a feature is set for tranformation.
+     */
+    public void addBeforeSetFeatureListener(final TransformBeforeSetFeatureListener listener)
+    {
+        eventListeners.addListener(this, listener, "beforesetfeature", new EventHandler()
+        {
+            @Override
+            public void onHandle(EventObject eventObject)
+            {
+                BeforeSetFeatureEvent e = new BeforeSetFeatureEvent(eventObject);
+                listener.onBeforeSetFeature(e);
+            }
+        });
+    }
+
+    /**
+     * Triggered when a feature is set for tranformation.
+     */
+    public void addSetFeatureListener(final TransformSetFeatureListener listener)
+    {
+        eventListeners.addListener(this, listener, "setfeature", new EventHandler()
+        {
+            @Override
+            public void onHandle(EventObject eventObject)
+            {
+                SetFeatureEvent e = new SetFeatureEvent(eventObject);
+                listener.onSetFeature(e);
+            }
+        });
+    }
 }

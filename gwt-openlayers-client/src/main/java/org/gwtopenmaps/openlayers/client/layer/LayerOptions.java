@@ -253,13 +253,14 @@ public class LayerOptions extends JSObjectWrapper {
     }
 
     /**
-	 * Gets the transition effect to use when the map is zoomed.
-	 * @return transition effect
-	 */
-	public TransitionEffect getTransitionEffect()
-	{
-		return TransitionEffect.get(this.getJSObject().getPropertyAsString("transitionEffect"));
-	}
+     * Gets the transition effect to use when the map is zoomed.
+     *
+     * @return transition effect
+     */
+    public TransitionEffect getTransitionEffect() {
+        return TransitionEffect.fromValue(
+                this.getJSObject().getPropertyAsString("transitionEffect"));
+    }
 
     /**
      *

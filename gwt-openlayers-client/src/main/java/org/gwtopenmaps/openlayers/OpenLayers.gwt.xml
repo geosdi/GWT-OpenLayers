@@ -19,4 +19,6 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
     <script src="js/gwt-openlayers/util.js"></script>
+    <!-- Do not fail to compile using GWT xsiframe linker. -->
+    <set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 </module>

@@ -52,7 +52,7 @@ import com.google.gwt.user.client.ui.HTML;
 
 /**
  * @author Lorenzo Amato <lorenzo.amato@geosdi.org>
- *
+ * 
  */
 public class TransformFeatureExample extends AbstractExample {
 
@@ -141,9 +141,8 @@ public class TransformFeatureExample extends AbstractExample {
 		// Create Options For the Transform Control
 		final TransformFeatureOptions transformFeatureOptions = new TransformFeatureOptions();
 
-		transformFeatureOptions.setRotate(false);
-		transformFeatureOptions.setPreserveAspectRatio(true);
-		//transformFeatureOptions.setRotation(20);
+		transformFeatureOptions.setRotate(true);
+		transformFeatureOptions.setRotation(0);
 		transformFeatureOptions.setRederIntent("transform");
 		transformFeatureOptions
 				.setRotationHandleSymbolizer(rotationHandlerStyle);
@@ -154,8 +153,7 @@ public class TransformFeatureExample extends AbstractExample {
 
 		transformFeature
 				.addTransformCompleteListener(new TransformCompleteListener() {
-					@Override
-                    public void onTransformComplete(
+					public void onTransformComplete(
 							TransformCompleteEvent eventObject) {
 						Window.alert("You finished transforming the feature ; the new latitude, longitude of this feature is :\n"
 								+ vectorLayer
@@ -170,8 +168,7 @@ public class TransformFeatureExample extends AbstractExample {
 
 		transformFeature
 				.addBeforeSetFeatureListener(new TransformBeforeSetFeatureListener() {
-					@Override
-                    public void onBeforeSetFeature(
+					public void onBeforeSetFeature(
 							BeforeSetFeatureEvent eventObject) {
 						GWT.log("onBeforeSetFeature");
 					}
@@ -179,8 +176,7 @@ public class TransformFeatureExample extends AbstractExample {
 
 		transformFeature
 				.addSetFeatureListener(new TransformSetFeatureListener() {
-					@Override
-                    public void onSetFeature(SetFeatureEvent eventObject) {
+					public void onSetFeature(SetFeatureEvent eventObject) {
 						GWT.log("onSetFeature"
 								+ vectorLayer
 										.getFeatureByFid(eventObject.getFid())
@@ -199,8 +195,7 @@ public class TransformFeatureExample extends AbstractExample {
 
 		Button butDelete = new Button("Delete polygon", new ClickHandler() {
 
-			@Override
-            public void onClick(ClickEvent event) {
+			public void onClick(ClickEvent event) {
 				vectorLayer.removeFeature(polygonFeature);
 				transformFeature.destroy();
 				map.removeControl(transformFeature);
@@ -209,8 +204,7 @@ public class TransformFeatureExample extends AbstractExample {
 
 		Button butAddPolygon = new Button("New polygon", new ClickHandler() {
 
-			@Override
-            public void onClick(ClickEvent event) {
+			public void onClick(ClickEvent event) {
 				if ((vectorLayer.getFeatures() != null)
 						&& (vectorLayer.getFeatures().length != 0)) {
 					Window.alert("Please delete first !");

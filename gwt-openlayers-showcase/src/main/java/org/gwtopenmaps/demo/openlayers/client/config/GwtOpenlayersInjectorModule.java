@@ -33,6 +33,8 @@ import org.gwtopenmaps.demo.openlayers.client.examples.cluster.ClusterStrategyTr
 import org.gwtopenmaps.demo.openlayers.client.examples.cql.CqlWmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.custommouseposition.CustomMousePositionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.dragfeature.DragFeatureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.drawfeature.DrawRegularPolygonExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.drawfeaturestyle.DrawFeatureStyleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.emptylayer.EmptyLayerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.featurepopup.FeaturePopupExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.filter.ComparisonAndLogicalFilterExample;
@@ -40,6 +42,8 @@ import org.gwtopenmaps.demo.openlayers.client.examples.filter.FeatureIdFilterExa
 import org.gwtopenmaps.demo.openlayers.client.examples.filter.SpatialFilterExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.geodesiclength.GeodesicLengthExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.geojson.GeoJsonExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.geojson.GeoJsonFromGitHub;
+import org.gwtopenmaps.demo.openlayers.client.examples.geolocate.GeolocateExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.graticule.GraticuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.imagelayer.ImageLayerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.kml.KmlExample;
@@ -54,35 +58,31 @@ import org.gwtopenmaps.demo.openlayers.client.examples.polygonselect.PolygonSele
 import org.gwtopenmaps.demo.openlayers.client.examples.refresh.WfsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.rule.RuleExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.scale.ScaleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.selectfeature.SelectFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.snap.SnapFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing.UndoRedoDrawingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.variablewfsstyle.VariableWfsStyle;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.ClickFeatureListenerExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureBoxSelectionExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureClickSelectionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.HoverAndSelectExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureClickSelectionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorResizeImageExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.WellKnownGraphicExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wfshoverhighlight.WfsHoverHighlightExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsPost.WmsPostExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsfeatureinfo.WmsFeatureInfoExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmsrefresh.WmsRefreshExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfs.WmsWfsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.wmswfsedit.WmsWfsEditExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmts.WMTSExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.xyzlayer.XYZLayerExample;
 import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBus;
 import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
-
-import org.gwtopenmaps.demo.openlayers.client.examples.drawfeature.DrawRegularPolygonExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.drawfeaturestyle.DrawFeatureStyleExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.geojson.GeoJsonFromGitHub;
-import org.gwtopenmaps.demo.openlayers.client.examples.geolocate.GeolocateExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.scale.ScaleExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureBoxSelectionExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.wmts.WMTSExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.xyzlayer.XYZLayerExample;
 
 /**
  *
@@ -157,5 +157,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(DrawFeatureStyleExample.class).asEagerSingleton();
         bind(ScaleExample.class).asEagerSingleton();
         bind(HoverAndSelectExample.class).asEagerSingleton();
+        bind(WellKnownGraphicExample.class).asEagerSingleton();
     }
 }

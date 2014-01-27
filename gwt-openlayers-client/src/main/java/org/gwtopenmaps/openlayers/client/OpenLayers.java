@@ -16,6 +16,8 @@
  */
 package org.gwtopenmaps.openlayers.client;
 
+import com.google.gwt.core.client.JsArrayNumber;
+
 /**
  * Methods for interacting with the global OpenLayers object.
  *
@@ -59,7 +61,7 @@ public class OpenLayers {
     }-*/;
 
     /**
-     * 
+     *
      * @return default 72
      */
     public static native double getDotPerInch() /*-{
@@ -76,9 +78,26 @@ public class OpenLayers {
     public static native double getInchesPerUnitMeter() /*-{
     return $wnd.OpenLayers.INCHES_PER_UNIT['m'];
     }-*/;
-    
+
     public static native double getInchesPerUnit(String units) /*-{
     return $wnd.OpenLayers.INCHES_PER_UNIT[units];
+    }-*/;
+
+    /**
+     * Add a new well known graphic.
+     * @param wellKnownPoints The poins of the new well known graphic
+     * @param name The name of the new well known graphic
+     */
+    public static void addWellKnownGraphic(int[] wellKnownPoints, String name) {
+        JsArrayNumber jsArray = (JsArrayNumber) JsArrayNumber.createArray();
+        for (int wellKnownPoint : wellKnownPoints) {
+            jsArray.push(wellKnownPoint);
+        }
+        addWellKnownGraphic(jsArray, name);
+    }
+
+    private static native void addWellKnownGraphic(JsArrayNumber wellKnownPoints, String name) /*-{
+        $wnd.OpenLayers.Renderer.symbol[name] = wellKnownPoints;
     }-*/;
 
     public static class Util {
@@ -91,7 +110,7 @@ public class OpenLayers {
                 String units)/*-{
         return $wnd.OpenLayers.Util.getScaleFromResolution(resolution, units);
         }-*/;
-                
+
         public static native double getResolutionFromScale(double scale,
                 String units)/*-{
         return $wnd.OpenLayers.Util.getResolutionFromScale(scale, units);

@@ -105,7 +105,7 @@ public class SelectFeature extends Control {
     public void unSelect(VectorFeature feature) {
         SelectFeatureImpl.unselect(this.getJSObject(), feature.getJSObject());
     }
-    
+
     /**
      *
      * Select and deselect a feature by clicking on it with the mouse.
@@ -132,6 +132,14 @@ public class SelectFeature extends Control {
 
     public void setToggleKey(String keyName) {
         SelectFeatureImpl.setToggleKey(this.getJSObject(), keyName);
+    }
+
+    /**
+     * Attach a new layer to the control, overriding any existing layers.
+     * @param layers The layer(s) this control will select features from.
+     */
+    public void setLayers(Vector[] layers) {
+        SelectFeatureImpl.setLayers(this.getJSObject(), (new JObjectArray(layers)).getJSObject());
     }
 
     /**
@@ -176,6 +184,7 @@ public class SelectFeature extends Control {
         eventListeners.addListener(this, beforeFeatureHighlightedListener,
                                    EventType.CONTROL_SELECT_FEATURE_BEFORE_HIGHLIGHTED,
                                    new EventHandler() {
+            @Override
             public void onHandle(EventObject eventObject) {
 
                 VectorFeature vectorFeature = getFeatureFromEventObject(
@@ -199,6 +208,7 @@ public class SelectFeature extends Control {
         eventListeners.addListener(this, featureUnhighlightedListener,
                                    EventType.CONTROL_SELECT_FEATURE_UNHIGHLIGHTED,
                                    new EventHandler() {
+            @Override
             public void onHandle(EventObject eventObject) {
 
                 VectorFeature vectorFeature = getFeatureFromEventObject(
@@ -222,6 +232,7 @@ public class SelectFeature extends Control {
         eventListeners.addListener(this, featureHighlightedListener,
                                    EventType.CONTROL_SELECT_FEATURE_HIGHLIGHTED,
                                    new EventHandler() {
+            @Override
             public void onHandle(EventObject eventObject) {
 
                 VectorFeature vectorFeature = getFeatureFromEventObject(

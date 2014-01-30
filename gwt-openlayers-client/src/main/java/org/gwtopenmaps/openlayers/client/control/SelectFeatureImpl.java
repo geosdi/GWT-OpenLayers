@@ -108,6 +108,10 @@ class SelectFeatureImpl {
      selectFeature["toggleKey"] = keyName;
      }-*/;
 
+    public static native void setLayers(JSObject self, JSObject layers) /*-{
+        self.setLayer(layers);
+    }-*/;
+
     public static native void setMultipleKey(JSObject selectFeature,
             String keyName) /*-{
      selectFeature["multipleKey"] = keyName;

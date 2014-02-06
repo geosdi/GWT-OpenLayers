@@ -22,27 +22,22 @@ import java.util.List;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
-
 /**
  * Class to hold arbitrary attributes. More constrained than JSObject.
  *
  * @author Rafael Ceravolo - LOGANN
  */
-public class Attributes extends JSObjectWrapper
-{
+public class Attributes extends JSObjectWrapper {
 
-    public static Attributes narrowToAttributes(JSObject attributes)
-    {
+    public static Attributes narrowToAttributes(JSObject attributes) {
         return (attributes == null) ? null : new Attributes(attributes);
     }
 
-    public Attributes()
-    {
+    public Attributes() {
         this(JSObject.createJSObject());
     }
 
-    protected Attributes(JSObject jsObject)
-    {
+    protected Attributes(JSObject jsObject) {
         super(jsObject);
     }
 
@@ -50,8 +45,7 @@ public class Attributes extends JSObjectWrapper
      * Unset/Clear the property with the given name. Uses the javascript operator delete
      * @param name - Name of the attribute
      */
-    public void unsetAttribute(String name)
-    {
+    public void unsetAttribute(String name) {
         this.getJSObject().unsetProperty(name);
     }
 
@@ -61,8 +55,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - Name of the attribute
      * @param value - String value of the attribute
      */
-    public void setAttribute(String name, String value)
-    {
+    public void setAttribute(String name, String value) {
         this.getJSObject().setProperty(name, value);
     }
 
@@ -72,8 +65,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - Name of the attribute
      * @param value - Integer value of the attribute
      */
-    public void setAttribute(String name, int value)
-    {
+    public void setAttribute(String name, int value) {
         this.getJSObject().setProperty(name, value);
     }
 
@@ -83,8 +75,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - Name of the attribute
      * @param value - Long value of the attribute
      */
-    public void setAttribute(String name, long value)
-    {
+    public void setAttribute(String name, long value) {
         this.getJSObject().setProperty(name, value);
     }
 
@@ -96,8 +87,7 @@ public class Attributes extends JSObjectWrapper
      * @param value
      *            Value of the attribute
      */
-    public void setAttribute(String name, boolean value)
-    {
+    public void setAttribute(String name, boolean value) {
         this.getJSObject().setProperty(name, value);
     }
 
@@ -107,8 +97,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - Name of the attribute
      * @param value - Value of the attribute
      */
-    public void setAttribute(String name, float value)
-    {
+    public void setAttribute(String name, float value) {
         this.getJSObject().setProperty(name, value);
     }
 
@@ -118,8 +107,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - Name of the attribute
      * @param value - Value of the attribute
      */
-    public void setAttribute(String name, double value)
-    {
+    public void setAttribute(String name, double value) {
         this.getJSObject().setProperty(name, value);
     }
 
@@ -127,8 +115,7 @@ public class Attributes extends JSObjectWrapper
      * Allows nesting attribute objects.
      *
      */
-    public void setAttribute(String name, Attributes attributes)
-    {
+    public void setAttribute(String name, Attributes attributes) {
         this.getJSObject().setProperty(name, attributes.getJSObject());
     }
 
@@ -138,8 +125,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - name of the attribute
      * @return the attribute as String
      */
-    public String getAttributeAsString(String name)
-    {
+    public String getAttributeAsString(String name) {
         return this.getJSObject().getPropertyAsString(name);
     }
 
@@ -149,8 +135,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - name of the attribute
      * @return the attribute as integer
      */
-    public int getAttributeAsInt(String name)
-    {
+    public int getAttributeAsInt(String name) {
         return this.getJSObject().getPropertyAsInt(name);
     }
 
@@ -160,9 +145,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - name of the attribute
      * @return the attribute as boolean
      */
-
-    public boolean getAttributeAsBoolean(String name)
-    {
+    public boolean getAttributeAsBoolean(String name) {
         return this.getJSObject().getPropertyAsBoolean(name);
     }
 
@@ -172,8 +155,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - name of the attribute
      * @return the attribute as float
      */
-    public float getAttributeAsFloat(String name)
-    {
+    public float getAttributeAsFloat(String name) {
         return this.getJSObject().getPropertyAsFloat(name);
     }
 
@@ -183,8 +165,7 @@ public class Attributes extends JSObjectWrapper
      * @param name - name of the attribute
      * @return the attribute as double
      */
-    public double getAttributeAsDouble(String name)
-    {
+    public double getAttributeAsDouble(String name) {
         return this.getJSObject().getPropertyAsDouble(name);
     }
 
@@ -194,18 +175,24 @@ public class Attributes extends JSObjectWrapper
      * @param name - name of the attribute holding the attributes object
      * @return nested attributes object
      */
-    public Attributes getAttributes(String name)
-    {
+    public Attributes getAttributes(String name) {
         return Attributes.narrowToAttributes(this.getJSObject().getProperty(name));
     }
-    
+
     /**
      * Gets all the names of the attributes.
      * @return The names of all attributes.
      */
-    public List<String> getAttributeNames()
-    {
-    	return Arrays.asList(this.getJSObject().getPropertyNames().split(","));
+    public List<String> getAttributeNames() {
+        return Arrays.asList(this.getJSObject().getPropertyNames().split(","));
+    }
+
+    /**
+     * Gets all the values of the attributes.
+     * @return The names of all attributes.
+     */
+    public List<String> getAttributeValues() {
+        return Arrays.asList(this.getJSObject().getPropertyValues().split(","));
     }
 
 }

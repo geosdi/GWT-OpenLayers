@@ -16,13 +16,31 @@
  */
 package org.gwtopenmaps.openlayers.client;
 
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArrayNumber;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.TextResource;
 
 /**
  * Methods for interacting with the global OpenLayers object.
  *
  */
-public class OpenLayers {
+public class OpenLayers implements EntryPoint {
+
+    /** ClientBundle for JavaScript. */
+    public interface Scripts extends ClientBundle
+    {
+        /** Static instance. */
+        Scripts INSTANCE = GWT.create(Scripts.class);
+
+        /**
+         * TextResource for effects.js.
+         * @return TextResource for effects.js
+         */
+        @Source("js/gwt-openlayers/util.js")
+        TextResource scriptUtil();
+    }
 
     /**
      * @param proxyhost - the relative path to the proxyhost, including the
@@ -115,5 +133,11 @@ public class OpenLayers {
                 String units)/*-{
         return $wnd.OpenLayers.Util.getResolutionFromScale(scale, units);
         }-*/;
+    }
+
+    @Override
+    public void onModuleLoad()
+    {
+        ScriptInjector.injectResourceScriptAsFile(Scripts.INSTANCE.scriptUtil().getText());
     }
 }

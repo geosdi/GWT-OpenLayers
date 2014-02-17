@@ -247,11 +247,6 @@ public class AnimatedClusterWithPopup extends AbstractExample
                 // and creates is styled as a baloon
                 int count = eventObject.getVectorFeature().getAttributes().getAttributeAsInt("count");
 
-                GWT.log("attribnames = " + eventObject.getVectorFeature().getAttributes().getAttributeNames());
-                GWT.log("sourcejsobject = " + eventObject.getSourceJSObject().getPropertyNames());
-                GWT.log("elementjsobject = " + eventObject.getElement().getPropertyNames());
-                GWT.log("jsobject = " + eventObject.getJSObject().getPropertyNames());
-
                 int totalNumber = 0;
                 VectorFeature[] clusters = eventObject.getVectorFeature().getCluster();
                 for (int i = 0; i < clusters.length; i++)

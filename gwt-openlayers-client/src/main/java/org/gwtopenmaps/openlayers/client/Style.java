@@ -472,6 +472,10 @@ public class Style extends OpenLayersObjectWrapper {
 	public String getGraphicTitle() {
 		return StyleImpl.getGraphicTitle(this.getJSObject());
 	}
+	
+        public String getLabel() {
+		return StyleImpl.getLabel(this.getJSObject());
+	}
 
 	/**
 	 * Pixel offset along the positive x axis for displacing the label.  Not supported by the canvas renderer.

@@ -138,7 +138,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>2.6.0</version>
                 <configuration>
                     <inplace>true</inplace>
                     <gwtVersion>${gwtVersion}</gwtVersion>
@@ -148,6 +148,7 @@
                     <disableCastChecking>true</disableCastChecking>
                     <disableClassMetadata>true</disableClassMetadata>
                     <hostedWebapp>${basedir}/war</hostedWebapp>
+                    <sourceLevel>1.6</sourceLevel>
                     <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                 </configuration>
                 <executions>

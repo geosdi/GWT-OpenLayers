@@ -17,8 +17,11 @@
 package org.gwtopenmaps.demo.openlayers.client.examples.dragfeature;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.ToggleButton;
 import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
@@ -51,11 +54,14 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 public class DragFeatureExample extends AbstractExample {
 
     private Map map;
-    private TextArea reportArea = new TextArea() {
+    private DragFeature dragFeature;
+    private final TextArea reportArea = new TextArea() {
+
         {
             this.setHeight("100px");
             this.setWidth("500px");
         }
+
     };
 
     @Inject
@@ -98,10 +104,27 @@ public class DragFeatureExample extends AbstractExample {
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to Drag A Vector Feature.</p>"));
+                        "<p>This example shows how to Drag A Vector Feature.</p>"));
         contentPanel.add(mapWidget);
 
+        ToggleButton b = new ToggleButton("Activate Drag Control", new ClickHandler() {
+
+            public void onClick(ClickEvent event) {
+                if (((ToggleButton) event.getSource()).isDown()) {
+                    System.out.println("ECCOLO ############" + dragFeature.getControlId());
+                    map.addControl(dragFeature);
+                    dragFeature.activate();
+                } else {
+                    dragFeature.deactivate();
+                    map.removeControl(dragFeature);
+                }
+            }
+
+        });
+        b.setSize("140px", "20px");
+        
         contentPanel.add(reportArea);
+        contentPanel.add(b);
 
         initWidget(contentPanel);
 
@@ -144,9 +167,7 @@ public class DragFeatureExample extends AbstractExample {
         layer.addFeature(polygonFeature);
         layer.addFeature(pointFeature);
 
-        DragFeature dragFeature = createDragFeature(layer);
-        map.addControl(dragFeature);
-        dragFeature.activate();
+        this.dragFeature = createDragFeature(layer);
 
         return layer;
 
@@ -158,17 +179,18 @@ public class DragFeatureExample extends AbstractExample {
         dragFeatureOptions.onStart(createDragFeatureListener("onStart"));
         dragFeatureOptions.onComplete(createDragFeatureListener("onComplete"));
 
-        DragFeature dragFeature = new DragFeature(layer, dragFeatureOptions);
-        return dragFeature;
+        return new DragFeature(layer, dragFeatureOptions);
     }
 
     private DragFeatureListener createDragFeatureListener(final String type) {
         return new DragFeatureListener() {
+
             public void onDragEvent(VectorFeature vectorFeature,
                     Pixel pixel) {
                 report(vectorFeature, type, pixel);
 
             }
+
         };
     }
 
@@ -197,4 +219,5 @@ public class DragFeatureExample extends AbstractExample {
                 + " (X;Y)=(" + pixel.x() + ";" + pixel.y() + ")\n\n");
 
     }
+
 }

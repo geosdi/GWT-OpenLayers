@@ -135,7 +135,6 @@ public class OpenLayers implements EntryPoint {
         }-*/;
     }
 
-    @Override
     public void onModuleLoad()
     {
         ScriptInjector.injectResourceScriptAsFile(Scripts.INSTANCE.scriptUtil().getText());

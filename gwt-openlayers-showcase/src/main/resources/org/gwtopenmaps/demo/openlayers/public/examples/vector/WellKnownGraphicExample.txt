@@ -117,7 +117,11 @@ public class WellKnownGraphicExample extends AbstractExample {
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to add a Vector to the map with a pre-defined well-known graphic, and with a newly created well-known graphic</p>"));
+                "<p>This example shows how to add a Vector to the map with a pre-defined well-known graphic, and with a newly created well-known graphic</p>" +
+                "<p>For more info about how to draw well-known graphic object check " +
+                "<A TARGET='_BLANK' HREF='https://plus.google.com/104715080777872762852/posts/baRGTS2yFbh'>" +
+                		"https://plus.google.com/104715080777872762852/posts/baRGTS2yFbh" +
+        		"</A></p>"));
         contentPanel.add(mapWidget);
 
         initWidget(contentPanel);

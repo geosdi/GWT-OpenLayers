@@ -66,6 +66,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.variablewfsstyle.Variable
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.ClickFeatureListenerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureBoxSelectionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureClickSelectionExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.HoverAndDragExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.HoverAndSelectExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorResizeImageExample;
@@ -160,5 +161,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(HoverAndSelectExample.class).asEagerSingleton();
         bind(WellKnownGraphicExample.class).asEagerSingleton();
         bind(MarkerPopupOverExample.class).asEagerSingleton();
+        bind(HoverAndDragExample.class).asEagerSingleton();
     }
 }

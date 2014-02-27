@@ -236,7 +236,6 @@ public class AnimatedClusterWithPopup extends AbstractExample
         // Secondly add a VectorFeatureSelectedListener to the feature
         vectorLayer.addVectorFeatureSelectedListener(new VectorFeatureSelectedListener()
         {
-            @Override
             public void onFeatureSelected(FeatureSelectedEvent eventObject)
             {
                 GWT.log("onFeatureSelected");

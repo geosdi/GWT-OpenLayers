@@ -19,51 +19,48 @@ package org.gwtopenmaps.openlayers.client.control;
 import org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
-public class DragFeatureImpl
-{
+class DragFeatureImpl {
 
     public static native JSObject create(JSObject vectorLayer) /*-{
-        return new $wnd.OpenLayers.Control.DragFeature(vectorLayer);
-    }-*/;
+     return new $wnd.OpenLayers.Control.DragFeature(vectorLayer);
+     }-*/;
 
     public static native JSObject create(JSObject vectorLayer, JSObject options) /*-{
-        return new $wnd.OpenLayers.Control.DragFeature(vectorLayer,options);
-    }-*/;
+     return new $wnd.OpenLayers.Control.DragFeature(vectorLayer,options);
+     }-*/;
 
     public static native JSObject createDragCallback(
-        DragFeatureListener listener) /*-{
-        var callback = function(vectorFeature,pixel){
-            var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(vectorFeature);
-            var pixelObj = @org.gwtopenmaps.openlayers.client.Pixel::narrowToPixel(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(pixel);
-            listener.@org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener::onDragEvent(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;Lorg/gwtopenmaps/openlayers/client/Pixel;)(vectorFeatureObj,pixelObj);
-        }
-        return callback;
-    }-*/;
+            DragFeatureListener listener) /*-{
+     var callback = function(vectorFeature,pixel){
+     var vectorFeatureObj = @org.gwtopenmaps.openlayers.client.feature.VectorFeature::narrowToVectorFeature(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(vectorFeature);
+     var pixelObj = @org.gwtopenmaps.openlayers.client.Pixel::narrowToPixel(Lorg/gwtopenmaps/openlayers/client/util/JSObject;)(pixel);
+     listener.@org.gwtopenmaps.openlayers.client.control.DragFeature.DragFeatureListener::onDragEvent(Lorg/gwtopenmaps/openlayers/client/feature/VectorFeature;Lorg/gwtopenmaps/openlayers/client/Pixel;)(vectorFeatureObj,pixelObj);
+     }
+     return callback;
+     }-*/;
 
     public static native void setDragStopDown(JSObject self, boolean stopDown) /*-{
-        self.handlers['drag'].stopDown = stopDown;
-    }-*/;
+     self.handlers['drag'].stopDown = stopDown;
+     }-*/;
 
     public static native void setDragStopUp(JSObject self, boolean stopUp) /*-{
-        self.handlers['drag'].stopUp = stopUp;
-    }-*/;
+     self.handlers['drag'].stopUp = stopUp;
+     }-*/;
 
     public static native void setDragStopClick(JSObject self, boolean stopClick) /*-{
-    self.handlers['drag'].stopClick = stopClick;
-    }-*/;
+     self.handlers['drag'].stopClick = stopClick;
+     }-*/;
 
     public static native void setFeatureStopDown(JSObject self, boolean stopDown) /*-{
-        self.handlers['feature'].stopDown = stopDown;
-    }-*/;
+     self.handlers['feature'].stopDown = stopDown;
+     }-*/;
 
     public static native void setFeatureStopUp(JSObject self, boolean stopUp) /*-{
-        self.handlers['feature'].stopUp = stopUp;
-    }-*/;
+     self.handlers['feature'].stopUp = stopUp;
+     }-*/;
 
     public static native void setFeatureStopClick(JSObject self, boolean stopClick) /*-{
-        self.handlers['feature'].stopClick = stopClick;
-    }-*/;
-
+     self.handlers['feature'].stopClick = stopClick;
+     }-*/;
 
 }

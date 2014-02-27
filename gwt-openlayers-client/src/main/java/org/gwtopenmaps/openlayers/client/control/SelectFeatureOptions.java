@@ -23,7 +23,6 @@ import org.gwtopenmaps.openlayers.client.control.SelectFeature.UnselectFeatureLi
 import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
 /**
  * See {@link SelectFeature}.
  *
@@ -33,8 +32,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Rafael Ceravolo - LOGANN
  *
  */
-public class SelectFeatureOptions extends ControlOptions
-{
+public class SelectFeatureOptions extends ControlOptions {
 
     /**
      * Indicates that the selection of the feature should occur when the mouse
@@ -43,8 +41,7 @@ public class SelectFeatureOptions extends ControlOptions
      * Note: the behavior of the selection on hover depends also of the
      * highlightOnly property
      */
-    public void setHover()
-    {
+    public void setHover() {
         getJSObject().setProperty("hover", true);
     }
 
@@ -52,8 +49,7 @@ public class SelectFeatureOptions extends ControlOptions
      * Indicates that when clicking a already selected feature again, it will be
      * unselected. Defaults to <b>false</b>.
      */
-    public void setToggle()
-    {
+    public void setToggle() {
         getJSObject().setProperty("toggle", true);
     }
 
@@ -61,8 +57,7 @@ public class SelectFeatureOptions extends ControlOptions
      * Indicates that the user can select multiple features at the same time.
      * Defaults to <b>false</b>.
      */
-    public void setMultiple()
-    {
+    public void setMultiple() {
         getJSObject().setProperty("multiple", true);
     }
 
@@ -73,8 +68,7 @@ public class SelectFeatureOptions extends ControlOptions
      * it doesn't work via event object, so removeListener will not work
      * the name should therefore not be addSelectFeature...
      */
-    public void onSelect(SelectFeatureListener listener)
-    {
+    public void onSelect(SelectFeatureListener listener) {
         JSObject callback = SelectFeatureImpl.createSelectFeatureCallback(listener);
         getJSObject().setProperty(EventType.CONTROL_SELECT_FEATURE_SELECT, callback);
     }
@@ -86,8 +80,7 @@ public class SelectFeatureOptions extends ControlOptions
      * it doesn't work via event object, so removeListener will not work
      * the name should therefore not be addUnSelectFeature...
      */
-    public void onUnSelect(UnselectFeatureListener listener)
-    {
+    public void onUnSelect(UnselectFeatureListener listener) {
         JSObject callback = SelectFeatureImpl.createUnselectFeatureCallback(listener);
         getJSObject().setProperty(EventType.CONTROL_SELECT_FEATURE_UNSELECT, callback);
     }
@@ -97,8 +90,7 @@ public class SelectFeatureOptions extends ControlOptions
      *
      * TODO: Same concern that for onSelect and onUnSelect ?
      */
-    public void clickFeature(ClickFeatureListener listener)
-    {
+    public void clickFeature(ClickFeatureListener listener) {
         JSObject callback = SelectFeatureImpl.createClickFeatureCallback(listener);
         getJSObject().setProperty("clickFeature", callback);
     }
@@ -112,8 +104,7 @@ public class SelectFeatureOptions extends ControlOptions
      * @param highlightOnly
      *            The property value
      */
-    public void setHighlightOnly(boolean highlightOnly)
-    {
+    public void setHighlightOnly(boolean highlightOnly) {
         getJSObject().setProperty("highlightOnly", highlightOnly);
     }
 
@@ -125,10 +116,8 @@ public class SelectFeatureOptions extends ControlOptions
      * @param renderIntent
      *            The render intent to be used
      */
-    public void setRenderIntent(RenderIntent renderIntent)
-    {
-        if (renderIntent != null)
-        {
+    public void setRenderIntent(RenderIntent renderIntent) {
+        if (renderIntent != null) {
             getJSObject().setProperty("renderIntent", renderIntent.getValue());
         }
     }
@@ -136,8 +125,7 @@ public class SelectFeatureOptions extends ControlOptions
     /**
      * Allows features to be selected by dragging a box.
      */
-    public void setBox(boolean box)
-    {
+    public void setBox(boolean box) {
         getJSObject().setProperty("box", box);
     }
 

@@ -35,6 +35,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Erdem Gunay
  * @author Edwin Commandeur - Atlis EJS
  * @author Curtis Jensen
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  *
  */
 public class SelectFeature extends Control {

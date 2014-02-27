@@ -23,183 +23,175 @@ import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
-import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
-import org.gwtopenmaps.openlayers.client.OpenLayers;
-import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.RenderIntent;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
-import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
-import org.gwtopenmaps.openlayers.client.control.OverviewMap;
-import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.control.SelectFeature;
 import org.gwtopenmaps.openlayers.client.control.SelectFeatureOptions;
 import org.gwtopenmaps.openlayers.client.event.FeatureHighlightedListener;
 import org.gwtopenmaps.openlayers.client.event.FeatureUnhighlightedListener;
 import org.gwtopenmaps.openlayers.client.event.VectorFeatureSelectedListener;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
-import org.gwtopenmaps.openlayers.client.geometry.LineString;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
 import org.gwtopenmaps.openlayers.client.layer.EmptyLayer;
-import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
-import org.gwtopenmaps.openlayers.client.layer.WMS;
-import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
-import org.gwtopenmaps.openlayers.client.layer.WMSParams;
 import org.gwtopenmaps.openlayers.client.popup.FramedCloud;
 import org.gwtopenmaps.openlayers.client.popup.Popup;
 
 public class HoverAndSelectExample extends AbstractExample {
 
-	@Inject
-	public HoverAndSelectExample(ShowcaseExampleStore store) {
-		super(
-				"Hover and select vector example",
-				"Demonstrates how to show a popup when hovering a feature, and then when clicked select the feature.",
-				new String[] { "popup", "feature", "selectable", "vector",
-						"hover", "select", "selectable" }, store);
-	}
+    @Inject
+    public HoverAndSelectExample(ShowcaseExampleStore store) {
+        super(
+                "Hover and select vector example",
+                "Demonstrates how to show a popup when hovering a feature, and then when clicked select the feature.",
+                new String[]{"popup", "feature", "selectable", "vector",
+                    "hover", "select", "selectable"}, store);
+    }
 
-	@Override
-	public void buildPanel() {
-		// create some MapOptions
-		MapOptions defaultMapOptions = new MapOptions();
-		defaultMapOptions.setNumZoomLevels(16);
+    @Override
+    public void buildPanel() {
+        // create some MapOptions
+        MapOptions defaultMapOptions = new MapOptions();
+        defaultMapOptions.setNumZoomLevels(16);
 
-		// Create a MapWidget
-		final MapWidget mapWidget = new MapWidget("500px", "500px",
-				defaultMapOptions);
+        // Create a MapWidget
+        final MapWidget mapWidget = new MapWidget("500px", "500px",
+                defaultMapOptions);
 
-		// Create an EmptyLayer as base layer
-		EmptyLayer.Options emptyLayerOptions = new EmptyLayer.Options();
-		emptyLayerOptions.setAttribution("EmptyLayer (c) GWT-Openlayers");
-		emptyLayerOptions.setIsBaseLayer(true); // make it a baselayer.
-		EmptyLayer emptyLayer = new EmptyLayer("Empty layer", emptyLayerOptions);
-		mapWidget.getMap().addLayer(emptyLayer);
+        // Create an EmptyLayer as base layer
+        EmptyLayer.Options emptyLayerOptions = new EmptyLayer.Options();
+        emptyLayerOptions.setAttribution("EmptyLayer (c) GWT-Openlayers");
+        emptyLayerOptions.setIsBaseLayer(true); // make it a baselayer.
+        EmptyLayer emptyLayer = new EmptyLayer("Empty layer", emptyLayerOptions);
+        mapWidget.getMap().addLayer(emptyLayer);
 
 		// Add a clickable vectors to the map
+        // create a layer to add the vectors to
+        final Vector vectorLayer = new Vector("Vectorlayer");
+        mapWidget.getMap().addLayer(vectorLayer);
 
-		// create a layer to add the vectors to
-		final Vector vectorLayer = new Vector("Vectorlayer");
-		mapWidget.getMap().addLayer(vectorLayer);
+        // SelectFeature control to capture clicks on the vectors
+        final SelectFeature selectFeature = new SelectFeature(vectorLayer);
+        selectFeature.setAutoActivate(true);
 
-		// SelectFeature control to capture clicks on the vectors
-		final SelectFeature selectFeature = new SelectFeature(vectorLayer);
-		selectFeature.setAutoActivate(true);
+        // SelectFeature control to capture hover on the vectors
+        SelectFeatureOptions selectFeatureHoverOptions = new SelectFeatureOptions();
+        // use the tempory style to be defined in the StyleMap		
+        selectFeatureHoverOptions.setRenderIntent(RenderIntent.TEMPORARY);
+        selectFeatureHoverOptions.setHighlightOnly(true);
+        selectFeatureHoverOptions.setHover();
+        SelectFeature selectHoverFeature = new SelectFeature(vectorLayer,
+                selectFeatureHoverOptions);
+        selectHoverFeature.setClickOut(false);
+        selectHoverFeature.setAutoActivate(true);
 
-		// SelectFeature control to capture hover on the vectors
-		SelectFeatureOptions selectFeatureHoverOptions = new SelectFeatureOptions();
-		// use the tempory style to be defined in the StyleMap		
-		selectFeatureHoverOptions.setRenderIntent(RenderIntent.TEMPORARY); 
-		selectFeatureHoverOptions.setHighlightOnly(true);
-		selectFeatureHoverOptions.setHover();
-		SelectFeature selectHoverFeature = new SelectFeature(vectorLayer,
-				selectFeatureHoverOptions);
-		selectHoverFeature.setClickOut(false);
-		selectHoverFeature.setAutoActivate(true);
+        mapWidget.getMap().addControl(selectHoverFeature);
+        mapWidget.getMap().addControl(selectFeature);
 
-		mapWidget.getMap().addControl(selectHoverFeature);
-		mapWidget.getMap().addControl(selectFeature);
+        // Define a style for the vectors
+        Style style = new Style();
+        style.setFillColor("red");
+        style.setStrokeColor("green");
+        style.setStrokeWidth(2);
+        style.setFillOpacity(0.9);
+        style.setPointRadius(30);
 
-		// Define a style for the vectors
-		Style style = new Style();
-		style.setFillColor("red");
-		style.setStrokeColor("green");
-		style.setStrokeWidth(2);
-		style.setFillOpacity(0.9);
-		style.setPointRadius(30);
+        Style selectedStyle = new Style();
+        selectedStyle.setFillColor("yellow");
+        selectedStyle.setStrokeColor("yellow");
+        selectedStyle.setStrokeWidth(2);
+        selectedStyle.setFillOpacity(0.9);
+        selectedStyle.setPointRadius(30);
 
-		Style selectedStyle = new Style();
-		selectedStyle.setFillColor("yellow");
-		selectedStyle.setStrokeColor("yellow");
-		selectedStyle.setStrokeWidth(2);
-		selectedStyle.setFillOpacity(0.9);
-		selectedStyle.setPointRadius(30);
+        Style hoverStyle = new Style();
+        hoverStyle.setFillColor("blue");
+        hoverStyle.setStrokeColor("pink");
+        hoverStyle.setStrokeWidth(2);
+        hoverStyle.setFillOpacity(0.9);
+        hoverStyle.setPointRadius(30);
 
-		Style hoverStyle = new Style();
-		hoverStyle.setFillColor("blue");
-		hoverStyle.setStrokeColor("pink");
-		hoverStyle.setStrokeWidth(2);
-		hoverStyle.setFillOpacity(0.9);
-		hoverStyle.setPointRadius(30);
+        StyleMap styleMap = new StyleMap(style, selectedStyle, hoverStyle);
+        vectorLayer.setStyleMap(styleMap);
 
-		StyleMap styleMap = new StyleMap(style, selectedStyle, hoverStyle);
-		vectorLayer.setStyleMap(styleMap);
+        // Add a point
+        Point point = new Point(146.7, -41.8);
+        final VectorFeature pointFeature = new VectorFeature(point);
+        vectorLayer.addFeature(pointFeature);
 
-		// Add a point
-		Point point = new Point(146.7, -41.8);
-		final VectorFeature pointFeature = new VectorFeature(point);
-		vectorLayer.addFeature(pointFeature);
+        // capture clicks on the vectorlayer
+        vectorLayer
+                .addVectorFeatureSelectedListener(new VectorFeatureSelectedListener() {
 
-		// capture clicks on the vectorlayer
-		vectorLayer
-				.addVectorFeatureSelectedListener(new VectorFeatureSelectedListener() {
-					public void onFeatureSelected(
-							FeatureSelectedEvent eventObject) {
-						Window.alert("The vector is now selected.\nIt will get de-selected when closing this popup.");
-						selectFeature.unSelect(eventObject.getVectorFeature());
-					}
-				});
+                    public void onFeatureSelected(
+                            FeatureSelectedEvent eventObject) {
+                                Window.alert("The vector is now selected.\nIt will get de-selected when closing this popup.");
+                                selectFeature.unSelect(eventObject.getVectorFeature());
+                            }
+
+                });
 
 		// Attach a popup to the point, we use null as size cause we set
-		// autoSize to true
-		// Note that we use FramedCloud... This extends a normal popup and
-		// creates is styled as a baloon
-		// We want to display this popup on hover, and hide it when hovering
-		// ends
-
-		final Popup popup = new FramedCloud("id1",
-				pointFeature.getCenterLonLat(), null,
-				"<h1>Some popup text</H1><BR/>And more text", null, false);
-		popup.setPanMapIfOutOfView(true); // this set the popup in a strategic
-											// way, and pans the map if needed.
-		popup.setAutoSize(true);
-		pointFeature.setPopup(popup);
+        // autoSize to true
+        // Note that we use FramedCloud... This extends a normal popup and
+        // creates is styled as a baloon
+        // We want to display this popup on hover, and hide it when hovering
+        // ends
+        final Popup popup = new FramedCloud("id1",
+                pointFeature.getCenterLonLat(), null,
+                "<h1>Some popup text</H1><BR/>And more text", null, false);
+        popup.setPanMapIfOutOfView(true); // this set the popup in a strategic
+        // way, and pans the map if needed.
+        popup.setAutoSize(true);
+        pointFeature.setPopup(popup);
 
 		// capture hover by adding a listener to the control, and display the
-		// popup
-		selectHoverFeature
-				.addFeatureHighlightedListener(new FeatureHighlightedListener() {
+        // popup
+        selectHoverFeature
+                .addFeatureHighlightedListener(new FeatureHighlightedListener() {
 
-					public void onFeatureHighlighted(VectorFeature vectorFeature) {
-						mapWidget.getMap().addPopup(vectorFeature.getPopup());
-					}
-				});
+                    public void onFeatureHighlighted(VectorFeature vectorFeature) {
+                        mapWidget.getMap().addPopup(vectorFeature.getPopup());
+                    }
 
-		// capture unhover, and remove popup
-		selectHoverFeature
-				.addFeatureUnhighlightedListener(new FeatureUnhighlightedListener() {
+                });
 
-					public void onFeatureUnhighlighted(
-							VectorFeature vectorFeature) {
-						mapWidget.getMap()
-								.removePopup(vectorFeature.getPopup());
-					}
-				});
+        // capture unhover, and remove popup
+        selectHoverFeature
+                .addFeatureUnhighlightedListener(new FeatureUnhighlightedListener() {
 
-		// Center and zoom to a location
-		mapWidget.getMap().setCenter(new LonLat(146.7, -41.8), 6);
+                    public void onFeatureUnhighlighted(
+                            VectorFeature vectorFeature) {
+                                mapWidget.getMap()
+                                .removePopup(vectorFeature.getPopup());
+                            }
 
-		contentPanel
-				.add(new HTML(
-						"<p>This example shows how to add a Vector (point) to map, and do some action when hovering, and another when clicking.</p>"
-								+ "<p>"
-								+ "<LI>Hover over the point. This will cause a popup to show, and change the style of the point to the temporary style.</LI>"
-								+ "<LI>Then when you click the Vector gets selected, gets another style, and a Window.alert is displayed.</LI>"
-								+ "<LI>When closing the Window.alert, the Vector gets de-selected.</p>"));
+                });
 
-		contentPanel.add(mapWidget);
+        // Center and zoom to a location
+        mapWidget.getMap().setCenter(new LonLat(146.7, -41.8), 6);
 
-		initWidget(contentPanel);
+        contentPanel
+                .add(new HTML(
+                                "<p>This example shows how to add a Vector (point) to map, and do some action when hovering, and another when clicking.</p>"
+                                + "<p>"
+                                + "<LI>Hover over the point. This will cause a popup to show, and change the style of the point to the temporary style.</LI>"
+                                + "<LI>Then when you click the Vector gets selected, gets another style, and a Window.alert is displayed.</LI>"
+                                + "<LI>When closing the Window.alert, the Vector gets de-selected.</p>"));
 
-		mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); 
-	}
+        contentPanel.add(mapWidget);
 
-	@Override
-	public String getSourceCodeURL() {
-		return GWT.getModuleBaseURL() + "examples/vector/"
-				+ "HoverAndSelectExample.txt";
-	}
+        initWidget(contentPanel);
+
+        mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0);
+    }
+
+    @Override
+    public String getSourceCodeURL() {
+        return GWT.getModuleBaseURL() + "examples/vector/"
+                + "HoverAndSelectExample.txt";
+    }
+
 }

@@ -28,66 +28,56 @@ import org.gwtopenmaps.openlayers.client.event.EventType;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
 /**
  *
  * @author Erdem Gunay
  *
  */
-public class Control extends OpenLayersEObjectWrapper
-{
+public class Control extends OpenLayersEObjectWrapper {
 
-    public static Control narrowToControl(JSObject object)
-    {
+    public static Control narrowToControl(JSObject object) {
         return new Control(object);
     }
 
-    protected Control(JSObject element)
-    {
+    protected Control(JSObject element) {
         super(element);
     }
 
-    public void setAutoActivate(boolean autoActivate)
-    {
+    public void setAutoActivate(boolean autoActivate) {
         getJSObject().setProperty("autoActivate", autoActivate);
     }
 
-    public boolean activate()
-    {
+    public boolean activate() {
         return ControlImpl.activate(getJSObject());
     }
 
-    public boolean deactivate()
-    {
+    public boolean deactivate() {
         return ControlImpl.deactivate(getJSObject());
     }
 
-    public void addControlActivateListener(final ControlActivateListener listener)
-    {
-        eventListeners.addListener(this, listener, EventType.CONTROL_ACTIVATE, new EventHandler()
-            {
-                public void onHandle(EventObject eventObject)
-                {
-                    ControlActivateEvent e = new ControlActivateEvent(eventObject);
-                    listener.onActivate(e);
-                }
-            });
+    public void addControlActivateListener(final ControlActivateListener listener) {
+        eventListeners.addListener(this, listener, EventType.CONTROL_ACTIVATE, new EventHandler() {
+
+            public void onHandle(EventObject eventObject) {
+                ControlActivateEvent e = new ControlActivateEvent(eventObject);
+                listener.onActivate(e);
+            }
+
+        });
     }
 
-    public void addControlDeactivateListener(final ControlDeactivateListener listener)
-    {
-        eventListeners.addListener(this, listener, EventType.CONTROL_DEACTIVATE, new EventHandler()
-            {
-                public void onHandle(EventObject eventObject)
-                {
-                    ControlDeactivateEvent e = new ControlDeactivateEvent(eventObject);
-                    listener.onDeactivate(e);
-                }
-            });
+    public void addControlDeactivateListener(final ControlDeactivateListener listener) {
+        eventListeners.addListener(this, listener, EventType.CONTROL_DEACTIVATE, new EventHandler() {
+
+            public void onHandle(EventObject eventObject) {
+                ControlDeactivateEvent e = new ControlDeactivateEvent(eventObject);
+                listener.onDeactivate(e);
+            }
+
+        });
     }
 
-    public boolean isActive()
-    {
+    public boolean isActive() {
         return ControlImpl.isActive(getJSObject());
     }
 
@@ -95,8 +85,7 @@ public class Control extends OpenLayersEObjectWrapper
      * Enable the Control
      *
      */
-    public void enable()
-    {
+    public void enable() {
         ControlImpl.enable(getJSObject());
     }
 
@@ -104,8 +93,7 @@ public class Control extends OpenLayersEObjectWrapper
      * Disable Control
      *
      */
-    public void disable()
-    {
+    public void disable() {
         ControlImpl.disable(getJSObject());
     }
 
@@ -114,8 +102,7 @@ public class Control extends OpenLayersEObjectWrapper
      *
      * @return control id
      */
-    public String getControlId()
-    {
+    public String getControlId() {
         return ControlImpl.getControlId(getJSObject());
     }
 
@@ -124,14 +111,11 @@ public class Control extends OpenLayersEObjectWrapper
      *
      * @return the map
      */
-    public Map getMap()
-    {
+    public Map getMap() {
         return Map.narrowToMap(this.getJSObject().getProperty("map"));
     }
 
-
-    public String getZIndex()
-    {
+    public String getZIndex() {
         return ControlImpl.getZIndex(getJSObject());
     }
 
@@ -140,11 +124,10 @@ public class Control extends OpenLayersEObjectWrapper
      * @return
      *                      Vector on which features are drawn
      */
-    public Vector getLayer()
-    {
+    public Vector getLayer() {
         return Vector.narrowToVector(ControlImpl.getLayer(getJSObject()));
     }
-    
+
     public void destroy() {
         ControlImpl.destroy(getJSObject());
     }

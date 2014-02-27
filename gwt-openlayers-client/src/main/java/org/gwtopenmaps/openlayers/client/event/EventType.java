@@ -76,4 +76,10 @@ public class EventType {
     public static final String CLICK_OUT = "clickout";
     public static final String HOVER_FEATURE = "hoverfeature";
     public static final String OUT_FEATURE = "outfeature";
+    /**
+     * BROWSER EVENTS
+     */
+    public static final String MOUSE_OVER = "mouseover";
+    public static final String MOUSE_OUT = "mouseout";
+
 }

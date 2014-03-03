@@ -16,6 +16,7 @@
  */
 package org.gwtopenmaps.demo.openlayers.client.config;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 import org.gwtopenmaps.demo.openlayers.client.components.ShowcaseExamplePanel;
@@ -32,6 +33,20 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBus;
 @GinModules(value = {GwtOpenlayersInjectorModule.class})
 public interface GwtOpenlayersInjector extends Ginjector {
 
+    public static class MainInjector {
+
+        private static final GwtOpenlayersInjector instance = GWT.create(
+                GwtOpenlayersInjector.class);
+
+        private MainInjector() {
+        }
+
+        public static GwtOpenlayersInjector getInstance() {
+            return instance;
+        }
+
+    }
+
     public ShowcaseEventBus getEventBus();
 
     public ShowcaseExampleStore getExampleStore();
@@ -41,4 +56,5 @@ public interface GwtOpenlayersInjector extends Ginjector {
     public ShowcaseTopPanel getShowcaseTopPanel();
 
     public ShowcaseExamplePanel getShowcaseExamplePanel();
+
 }

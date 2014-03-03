@@ -39,7 +39,7 @@ public class ExampleBean implements Comparable<ExampleBean> {
      * @param tags
      */
     public ExampleBean(String name, String description, String[] tags,
-                       AbstractExample example) {
+            AbstractExample example) {
         super();
         this.name = name;
         this.description = description;
@@ -110,4 +110,27 @@ public class ExampleBean implements Comparable<ExampleBean> {
     public int compareTo(ExampleBean o) {
         return this.getName().compareTo(o.getName());
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + (this.name != null ? this.name.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ExampleBean other = (ExampleBean) obj;
+        if ((this.name == null) ? (other.name != null) : !this.name.equals(other.name)) {
+            return false;
+        }
+        return true;
+    }
+
 }

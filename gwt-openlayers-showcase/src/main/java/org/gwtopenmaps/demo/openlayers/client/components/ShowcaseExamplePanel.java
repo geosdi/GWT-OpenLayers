@@ -16,6 +16,7 @@
  */
 package org.gwtopenmaps.demo.openlayers.client.components;
 
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.FlowPanel;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -33,11 +34,11 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.handler.ExamplePanelBuildH
  */
 @Singleton
 public class ShowcaseExamplePanel extends FlowPanel implements
-        ExamplePanelBuildHandler {
+        IShowcaseExamplePanel {
 
-    private ShowcaseExampleStore store;
-    private ShowcaseEventBus bus;
-    private ExampleNumberEvent event = new ExampleNumberEvent();
+    private final ShowcaseExampleStore store;
+    private final ShowcaseEventBus bus;
+    private final ExampleNumberEvent event = new ExampleNumberEvent();
 
     @Inject
     public ShowcaseExamplePanel(ShowcaseExampleStore theStore,
@@ -46,7 +47,9 @@ public class ShowcaseExamplePanel extends FlowPanel implements
         this.store = theStore;
         this.bus = theBus;
 
-        this.bus.addHandler(ExamplePanelBuildHandler.TYPE, this);
+        this.store.sortStore();
+
+        addShowcaseExamplePanelHandler();
     }
 
     public void buildExamplePanel(String filter) {
@@ -69,7 +72,6 @@ public class ShowcaseExamplePanel extends FlowPanel implements
                 }
             }
 
-
             if (show) {
                 super.add(new ExamplePanel(example));
                 numberOfExamples++;
@@ -79,4 +81,10 @@ public class ShowcaseExamplePanel extends FlowPanel implements
         this.event.setNumber(numberOfExamples);
         this.bus.fireEvent(event);
     }
+
+    public final HandlerRegistration addShowcaseExamplePanelHandler() {
+        return this.bus.addHandler(TYPE, this);
+
+    }
+
 }

@@ -17,9 +17,10 @@
 package org.gwtopenmaps.demo.openlayers.client.components.store;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 import javax.inject.Singleton;
 import org.gwtopenmaps.demo.openlayers.client.ExampleBean;
 
@@ -30,26 +31,31 @@ import org.gwtopenmaps.demo.openlayers.client.ExampleBean;
  */
 @Singleton
 public class ShowcaseExampleStore implements ExampleStore {
-
+    
     private boolean isStoreSorted;
-    /**
-     * TODO : Change this implementation using {@link HashMap}
-     */
-    private List<ExampleBean> examples = new ArrayList<ExampleBean>();
-   
-
+    private final Map<String, ExampleBean> examples = new HashMap<String, ExampleBean>();
+    
     public final void addExample(ExampleBean example) {
-        this.examples.add(example);
+        if (this.examples.containsValue(example)) {
+            throw new IllegalStateException("Example with Name : " + example.getName()
+                    + " already present in the Store");
+        }
+        this.examples.put(example.getName(), example);
     }
-
+    
     public void sortStore() {
         if (!isStoreSorted) {
-            Collections.sort(examples);
+            Collections.sort(new ArrayList<ExampleBean>(examples.values()));
             this.isStoreSorted = true;
         }
     }
-
-    public List<ExampleBean> getExamples() {
-        return Collections.unmodifiableList(examples);
+    
+    public Collection<ExampleBean> getExamples() {
+        return Collections.unmodifiableCollection(examples.values());
     }
+    
+    public ExampleBean getExample(String exampleName) {
+        return this.examples.get(exampleName);
+    }
+    
 }

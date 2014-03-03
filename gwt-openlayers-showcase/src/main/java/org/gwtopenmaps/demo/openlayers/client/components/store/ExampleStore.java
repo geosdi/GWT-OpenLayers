@@ -16,7 +16,7 @@
  */
 package org.gwtopenmaps.demo.openlayers.client.components.store;
 
-import java.util.Collection;
+import java.util.List;
 import org.gwtopenmaps.demo.openlayers.client.ExampleBean;
 
 /**
@@ -28,9 +28,7 @@ public interface ExampleStore {
 
     void addExample(ExampleBean example);
 
-    void sortStore();
-
-    Collection<ExampleBean> getExamples();
+    List<ExampleBean> getExamples();
 
     ExampleBean getExample(String exampleName);
 

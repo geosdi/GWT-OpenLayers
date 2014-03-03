@@ -47,8 +47,6 @@ public class ShowcaseExamplePanel extends FlowPanel implements
         this.store = theStore;
         this.bus = theBus;
 
-        this.store.sortStore();
-
         addShowcaseExamplePanelHandler();
     }
 

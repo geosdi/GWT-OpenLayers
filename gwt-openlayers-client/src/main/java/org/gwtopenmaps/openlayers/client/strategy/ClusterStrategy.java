@@ -44,7 +44,7 @@ public class ClusterStrategy extends Strategy
 
     public void setThreshold(int threshold )
     {
-        getJSObject().setProperty("threshold ", threshold );
+        getJSObject().setProperty("threshold", threshold );
     }
 
     public int getThreshold() {

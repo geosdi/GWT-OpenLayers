@@ -18,10 +18,18 @@ package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-class BBoxStrategyImpl {
+public class BBoxStrategyImpl {
 
-    public static native JSObject create() /*-{
-     return new $wnd.OpenLayers.Strategy.BBOX();
-     }-*/;
-
+	private BBoxStrategyImpl() {
+		throw new AssertionError();
+	}
+	
+	public native static JSObject create()/*-{
+		return new $wnd.OpenLayers.Strategy.BBOX();
+	}-*/;
+	
+	public native static JSObject create(JSObject options) /*-{
+		return new $wnd.OpenLayers.Strategy.BBOX(options);
+	}-*/;
+	
 }

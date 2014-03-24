@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ *   Copyright 2013 sourceforge.
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -14,22 +14,23 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.strategy;
+package org.gwtopenmaps.test.openlayers.client.strategy;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.strategy.ClusterStrategy;
 
-public class RefreshStrategyImpl {
 
-	public native static JSObject create() /*-{
-		return new $wnd.OpenLayers.Strategy.Refresh();
-	}-*/;
-	
-	public native static JSObject create(JSObject options) /*-{
-		return new $wnd.OpenLayers.Strategy.Refresh(options);
-	}-*/;
+/**
+ * Test for ClusterStrategy.
+ *
+ * @author T. Desjardins SRP
+ *
+ */
+public class ClusterStrategyTest extends BaseStrategyTest {
 
-	public native static void refresh(JSObject self) /*-{
-		self.refresh();
-	}-*/;
-	
+    public static final String CLASS_NAME_STRATEGY_CLUSTER = "OpenLayers.Strategy.Cluster";
+
+    public void testClusterStrategy() {
+        this.testInstanceByClassName(new ClusterStrategy(), CLASS_NAME_STRATEGY_CLUSTER);
+    }
+
 }

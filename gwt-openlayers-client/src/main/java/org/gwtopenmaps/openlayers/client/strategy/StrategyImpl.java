@@ -20,33 +20,31 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * 
- * @author Maciej Jezierski - Pinocchio
+ * @author Tino Desjardins - SRP
  *
  */
-public class RefreshStrategy extends Strategy {
+public class StrategyImpl {
 
-	public RefreshStrategy(RefreshStrategyOptions options){
-		this(RefreshStrategyImpl.create(options.getJSObject()));
-	}
+	public native static boolean activate(JSObject self) /*-{
+		return self.activate();
+	}-*/;
 	
-	public void refresh() {
-		RefreshStrategyImpl.refresh(this.getJSObject());
-	}
+	public native static boolean deactivate(JSObject self) /*-{
+		return self.activate();
+	}-*/;
+
+	/*
+	 * SRP GmbH (wir noch nicht verwendet)
+	 * 
+	 * setzt den Layer, auf den sich Save Strategy bezieht
+	 *
+	 */
+	public native static void setLayer(JSObject self, JSObject layer) /*-{
+		self.setLayer(layer);
+	}-*/;
 	
-	public RefreshStrategy(JSObject strategy) {
-		super(strategy);
-	}
-	
-	public RefreshStrategy() {
-		this(RefreshStrategyImpl.create());
-	}
-	
-	/**
-     * Force a refresh on the layer, default is false.
-     * @param force True to enable force, false to disable (default)
-     */
-    public void setForce(boolean force) {
-        this.getJSObject().setProperty("force", force);
-    }
+	public native static JSObject getLayer(JSObject self) /*-{
+		return self.layer;
+	}-*/;
 	
 }

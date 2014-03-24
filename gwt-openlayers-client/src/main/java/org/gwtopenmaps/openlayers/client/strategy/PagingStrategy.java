@@ -37,16 +37,6 @@ public class PagingStrategy extends Strategy
         this(PagingStrategyImpl.create());
     }
 
-    public boolean activate()
-    {
-        return PagingStrategyImpl.activate(this.getJSObject());
-    }
-
-    public boolean deactivate()
-    {
-        return PagingStrategyImpl.deactivate(this.getJSObject());
-    }
-
     public int pageCount()
     {
         return PagingStrategyImpl.pageCount(this.getJSObject());

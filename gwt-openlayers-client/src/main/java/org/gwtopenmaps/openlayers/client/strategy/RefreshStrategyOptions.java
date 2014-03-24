@@ -17,36 +17,23 @@
 package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
 /**
- * 
- * @author Maciej Jezierski - Pinocchio
+ * @author T.Desjardins SRP
  *
  */
-public class RefreshStrategy extends Strategy {
+public class RefreshStrategyOptions extends JSObjectWrapper {
 
-	public RefreshStrategy(RefreshStrategyOptions options){
-		this(RefreshStrategyImpl.create(options.getJSObject()));
+	protected RefreshStrategyOptions(JSObject jsObject) {
+		super(jsObject);
+	}	
+	
+	public  RefreshStrategyOptions() {
+		this(JSObject.createJSObject());
 	}
 	
-	public void refresh() {
-		RefreshStrategyImpl.refresh(this.getJSObject());
+	public void setForce(boolean force){
+		getJSObject().setProperty("force", force);
 	}
-	
-	public RefreshStrategy(JSObject strategy) {
-		super(strategy);
-	}
-	
-	public RefreshStrategy() {
-		this(RefreshStrategyImpl.create());
-	}
-	
-	/**
-     * Force a refresh on the layer, default is false.
-     * @param force True to enable force, false to disable (default)
-     */
-    public void setForce(boolean force) {
-        this.getJSObject().setProperty("force", force);
-    }
-	
 }

@@ -17,36 +17,34 @@
 package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
 /**
- * 
- * @author Maciej Jezierski - Pinocchio
+ * Options for BBoxStrategy.
+ *
+ * @author T.Desjardins - SRP
  *
  */
-public class RefreshStrategy extends Strategy {
+public class BBoxStrategyOptions extends JSObjectWrapper {
 
-	public RefreshStrategy(RefreshStrategyOptions options){
-		this(RefreshStrategyImpl.create(options.getJSObject()));
+	protected BBoxStrategyOptions(JSObject jsObject) {
+		super(jsObject);
 	}
-	
-	public void refresh() {
-		RefreshStrategyImpl.refresh(this.getJSObject());
+
+	public  BBoxStrategyOptions() {
+		this(JSObject.createJSObject());
 	}
-	
-	public RefreshStrategy(JSObject strategy) {
-		super(strategy);
-	}
-	
-	public RefreshStrategy() {
-		this(RefreshStrategyImpl.create());
-	}
-	
+
 	/**
-     * Force a refresh on the layer, default is false.
-     * @param force True to enable force, false to disable (default)
-     */
-    public void setForce(boolean force) {
-        this.getJSObject().setProperty("force", force);
-    }
-	
+	 *
+	 * @param ratio The ratio of the data bounds to the viewport bounds (in each dimension)
+	 */
+	public void setRatio(float ratio){
+		getJSObject().setProperty("ratio", ratio);
+	}
+
+	public void setResFactor(float resFactor){
+		getJSObject().setProperty("resFactor", resFactor);
+	}
+
 }

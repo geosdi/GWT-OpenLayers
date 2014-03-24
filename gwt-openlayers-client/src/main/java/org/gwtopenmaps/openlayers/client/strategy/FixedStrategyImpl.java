@@ -36,7 +36,7 @@ class FixedStrategyImpl {
      * @return
      */
     public static native JSObject create(JSObject options) /*-{
-     return new $wnd.OpenLayers.Strategy.Fixed(options);
+     return new $wnd.OpenLayers.Strategy.Fixed();
      }-*/;
 
     public static native void preload(JSObject self, boolean load) /*-{

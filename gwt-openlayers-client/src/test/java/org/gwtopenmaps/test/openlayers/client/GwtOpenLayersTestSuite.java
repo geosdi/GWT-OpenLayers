@@ -28,11 +28,6 @@ import org.gwtopenmaps.test.openlayers.client.format.KMLTest;
 import org.gwtopenmaps.test.openlayers.client.format.WKTTest;
 import org.gwtopenmaps.test.openlayers.client.geometry.PointTest;
 import org.gwtopenmaps.test.openlayers.client.map.MapOptionsTest;
-import org.gwtopenmaps.test.openlayers.client.strategy.BBoxStrategyTest;
-import org.gwtopenmaps.test.openlayers.client.strategy.ClusterStrategyTest;
-import org.gwtopenmaps.test.openlayers.client.strategy.FixedStrategyTest;
-import org.gwtopenmaps.test.openlayers.client.strategy.PagingStrategyTest;
-import org.gwtopenmaps.test.openlayers.client.strategy.RefreshStrategyTest;
 import org.gwtopenmaps.test.openlayers.client.util.AttributesTest;
 import org.gwtopenmaps.test.openlayers.client.util.JSObjectTest;
 
@@ -55,13 +50,6 @@ public class GwtOpenLayersTestSuite extends GWTTestSuite
 
         // Tests for Geometry
         suite.addTestSuite(PointTest.class);
-
-        // Tests for Strategies
-        suite.addTestSuite(BBoxStrategyTest.class);
-        suite.addTestSuite(ClusterStrategyTest.class);
-        suite.addTestSuite(FixedStrategyTest.class);
-        suite.addTestSuite(PagingStrategyTest.class);
-        suite.addTestSuite(RefreshStrategyTest.class);
 
         // Tests for Util
         suite.addTestSuite(MapOptionsTest.class);

@@ -18,18 +18,17 @@ package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-public class BBoxStrategy extends Strategy {
 
-	protected BBoxStrategy(JSObject strategy) {
-		super(strategy);
-	}
+public class BBoxStrategy extends Strategy
+{
 
-	public BBoxStrategy() {
-		this(BBoxStrategyImpl.create());
-	}
+    protected BBoxStrategy(JSObject strategy)
+    {
+        super(strategy);
+    }
 
-	public BBoxStrategy(BBoxStrategyOptions options) {
-		this(BBoxStrategyImpl.create(options.getJSObject()));
-	}
-
+    public BBoxStrategy()
+    {
+        this(BBoxStrategyImpl.create());
+    }
 }

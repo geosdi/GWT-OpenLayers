@@ -20,12 +20,18 @@ import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
-public abstract class Strategy extends OpenLayersObjectWrapper
-{
+public abstract class Strategy extends OpenLayersObjectWrapper {
 
-    protected Strategy(JSObject strategy)
-    {
+    protected Strategy(JSObject strategy) {
         super(strategy);
+    }
+
+    public boolean activate() {
+        return StrategyImpl.activate(this.getJSObject());
+    }
+
+    public boolean deactivate() {
+        return StrategyImpl.deactivate(this.getJSObject());
     }
 
 }

@@ -30,7 +30,7 @@ public class BBoxStrategyTest extends BaseStrategyTest {
 
     public static final String CLASS_NAME_STRATEGY_BBOX = "OpenLayers.Strategy.BBox";
 
-    public void testClusterStrategy() {
+    public void testBBoxStrategy() {
 
         BBoxStrategyOptions bBoxStrategyOptions = new BBoxStrategyOptions();
         BBoxStrategy bBoxStrategy = new BBoxStrategy(bBoxStrategyOptions);

@@ -22,6 +22,9 @@ import com.google.gwt.junit.tools.GWTTestSuite;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.gwtopenmaps.test.openlayers.client.strategy.ClusterStrategyTest;
+import org.gwtopenmaps.test.openlayers.client.strategy.FixedStrategyTest;
+import org.gwtopenmaps.test.openlayers.client.strategy.RefreshStrategyTest;
 import org.gwtopenmaps.test.openlayers.client.basetypes.BoundsTest;
 import org.gwtopenmaps.test.openlayers.client.basetypes.SizeTest;
 import org.gwtopenmaps.test.openlayers.client.format.KMLTest;
@@ -50,6 +53,11 @@ public class GwtOpenLayersTestSuite extends GWTTestSuite
 
         // Tests for Geometry
         suite.addTestSuite(PointTest.class);
+
+        // Tests for Strategies
+        suite.addTestSuite(ClusterStrategyTest.class);
+        suite.addTestSuite(FixedStrategyTest.class);
+        suite.addTestSuite(RefreshStrategyTest.class);
 
         // Tests for Util
         suite.addTestSuite(MapOptionsTest.class);

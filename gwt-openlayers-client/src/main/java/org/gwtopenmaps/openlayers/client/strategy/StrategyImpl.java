@@ -18,18 +18,19 @@ package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-class BBoxStrategyImpl {
+/**
+ *
+ * @author Tino Desjardins - SRP
+ *
+ */
+class StrategyImpl {
 
-    private BBoxStrategyImpl() {
-        throw new AssertionError();
-    }
+	public native static boolean activate(JSObject self) /*-{
+		return self.activate();
+	}-*/;
 
-    public static native JSObject create() /*-{
-        return new $wnd.OpenLayers.Strategy.BBOX();
-    }-*/;
-
-    public static native JSObject create(JSObject options) /*-{
-        return new $wnd.OpenLayers.Strategy.BBOX(options);
-    }-*/;
+	public native static boolean deactivate(JSObject self) /*-{
+		return self.activate();
+	}-*/;
 
 }

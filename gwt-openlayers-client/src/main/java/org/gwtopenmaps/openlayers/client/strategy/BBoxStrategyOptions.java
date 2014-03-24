@@ -17,19 +17,34 @@
 package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
-class BBoxStrategyImpl {
+/**
+ * Options for BBoxStrategy.
+ * 
+ * @author T.Desjardins SRP
+ *
+ */
+public class BBoxStrategyOptions extends JSObjectWrapper {
 
-    private BBoxStrategyImpl() {
-        throw new AssertionError();
-    }
-
-    public static native JSObject create() /*-{
-        return new $wnd.OpenLayers.Strategy.BBOX();
-    }-*/;
-
-    public static native JSObject create(JSObject options) /*-{
-        return new $wnd.OpenLayers.Strategy.BBOX(options);
-    }-*/;
-
+	protected BBoxStrategyOptions(JSObject jsObject) {
+		super(jsObject);
+	}	
+	
+	public  BBoxStrategyOptions() {
+		this(JSObject.createJSObject());
+	}
+	
+	/**
+	 * 
+	 * @param ratio The ratio of the data bounds to the viewport bounds (in each dimension)
+	 */
+	public void setRatio(float ratio){
+		getJSObject().setProperty("ratio", ratio);
+	}
+	
+	public void setResFactor(float resFactor){
+		getJSObject().setProperty("resFactor", resFactor);
+	}
+	
 }

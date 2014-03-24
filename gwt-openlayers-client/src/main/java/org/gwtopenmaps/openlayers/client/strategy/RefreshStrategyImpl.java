@@ -24,13 +24,9 @@ class RefreshStrategyImpl {
      return new $wnd.OpenLayers.Strategy.Refresh();
      }-*/;
 
-    public static native boolean activate(JSObject self) /*-{
-     return self.activate();
-     }-*/;
-
-    public static native boolean deactivate(JSObject self) /*-{
-     return self.deactivate();
-     }-*/;
+    public native static JSObject create(JSObject options) /*-{
+        return new $wnd.OpenLayers.Strategy.Refresh(options);
+    }-*/;
 
     public static native void refresh(JSObject self) /*-{
      self.refresh();

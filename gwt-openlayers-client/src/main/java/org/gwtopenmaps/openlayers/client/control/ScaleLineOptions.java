@@ -25,6 +25,15 @@ package org.gwtopenmaps.openlayers.client.control;
  */
 public class ScaleLineOptions extends ControlOptions
 {
+	
+	/**
+	 * Set the maximum width of the scale line in pixels.
+	 * @param maxWidth Maximum width of the scale line in pixels (default is 100)
+	 */
+	public void setMaxWidth(int maxWidth)
+	{
+        getJSObject().setProperty("maxWidth", maxWidth);
+	}
 
     /**
      *

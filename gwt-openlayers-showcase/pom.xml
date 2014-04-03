@@ -156,7 +156,7 @@
                         <id>test</id>
                         <goals>
                             <goal>clean</goal>
-                            <goal>compile</goal>
+                            <!--<goal>compile</goal>-->
                             <goal>generateAsync</goal>
                             <goal>test</goal>
                         </goals>
@@ -204,6 +204,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
             </plugin>
 
         </plugins>

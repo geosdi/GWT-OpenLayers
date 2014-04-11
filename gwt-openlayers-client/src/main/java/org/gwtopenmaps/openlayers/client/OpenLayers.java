@@ -16,6 +16,8 @@
  */
 package org.gwtopenmaps.openlayers.client;
 
+import org.gwtopenmaps.openlayers.client.util.JSObject;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArrayNumber;
@@ -133,8 +135,40 @@ public class OpenLayers implements EntryPoint {
                 String units)/*-{
         return $wnd.OpenLayers.Util.getResolutionFromScale(scale, units);
         }-*/;
+
+        /**
+         * Given two objects representing points with geographic coordinates, this calculates the distance between those points on the surface of an ellipsoid.
+         * @param p1
+         * @param p2
+         * @return The distance (in km) between the two input points as measured on an ellipsoid.  Note that the input point objects must be in geographic coordinates (decimal degrees) and the return distance is in kilometers.
+         */
+        public static float distVincenty(LonLat p1, LonLat p2)
+        {
+            return distVincenty(p1.getJSObject(), p2.getJSObject());
+        }
+
+        private static native float distVincenty(JSObject p1, JSObject p2) /*-{
+            return $wnd.OpenLayers.Util.distVincenty(p1, p2);
+        }-*/;
+
+        /**
+         * Calculate destination point given start point lat/long (numeric degrees), bearing (numeric degrees) & distance (in m).  Adapted from Chris Veness work, see http://www.movable-type.co.uk/scripts/latlong-vincenty-direct.html
+         * @param lonlat
+         * @param brng The bearing (degrees).
+         * @param dist The ground distance (meters).
+         * @return The destination point.
+         */
+        public static LonLat destinationVincenty(LonLat lonlat, float brng, float dist)
+        {
+            return LonLat.narrowToLonLat(destinationVincenty(lonlat.getJSObject(), brng, dist));
+        }
+
+        private static native JSObject destinationVincenty(JSObject lonlat, float brng, float dist) /*-{
+            return $wnd.OpenLayers.Util.destinationVincenty(lonlat, brng, dist);
+        }-*/;
     }
 
+    @Override
     public void onModuleLoad()
     {
         ScriptInjector.injectResourceScriptAsFile(Scripts.INSTANCE.scriptUtil().getText());

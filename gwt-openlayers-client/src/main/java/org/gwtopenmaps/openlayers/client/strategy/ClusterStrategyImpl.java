@@ -20,11 +20,11 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 class ClusterStrategyImpl {
 
-    public static native JSObject create() /*-{
-     if (window.console) {
-     console.log(new $wnd.OpenLayers.Strategy.Cluster());
-     }
-     return new $wnd.OpenLayers.Strategy.Cluster();
-     }-*/;
+	private ClusterStrategyImpl() {
+		throw new AssertionError();
+	}
 
+	public native static JSObject create()/*-{
+		return new $wnd.OpenLayers.Strategy.Cluster();
+	}-*/;
 }

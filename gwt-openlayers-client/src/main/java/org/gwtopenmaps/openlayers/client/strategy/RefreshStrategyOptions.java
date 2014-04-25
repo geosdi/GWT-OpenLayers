@@ -17,19 +17,23 @@
 package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
-class RefreshStrategyImpl {
+/**
+ * @author T.Desjardins SRP
+ *
+ */
+public class RefreshStrategyOptions extends JSObjectWrapper {
 
-    public static native JSObject create() /*-{
-     return new $wnd.OpenLayers.Strategy.Refresh();
-     }-*/;
-
-    public native static JSObject create(JSObject options) /*-{
-        return new $wnd.OpenLayers.Strategy.Refresh(options);
-    }-*/;
-
-    public static native void refresh(JSObject self) /*-{
-     self.refresh();
-     }-*/;
-
+	protected RefreshStrategyOptions(JSObject jsObject) {
+		super(jsObject);
+	}	
+	
+	public  RefreshStrategyOptions() {
+		this(JSObject.createJSObject());
+	}
+	
+	public void setForce(boolean force){
+		getJSObject().setProperty("force", force);
+	}
 }

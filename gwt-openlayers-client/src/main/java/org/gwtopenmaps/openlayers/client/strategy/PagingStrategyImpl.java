@@ -24,14 +24,6 @@ class PagingStrategyImpl {
      return new $wnd.OpenLayers.Strategy.Paging();
      }-*/;
 
-    public static native boolean activate(JSObject self) /*-{
-     return self.activate();
-     }-*/;
-
-    public static native boolean deactivate(JSObject self) /*-{
-     return self.deactivate();
-     }-*/;
-
     public static native int pageCount(JSObject self) /*-{
      return self.pageCount();
      }-*/;

@@ -1,6 +1,6 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ *   Copyright 2013 sourceforge.
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -14,22 +14,21 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.strategy;
+package org.gwtopenmaps.test.openlayers.client.strategy;
 
-import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.strategy.Strategy;
+import org.gwtopenmaps.test.openlayers.client.BaseTestCase;
 
-class RefreshStrategyImpl {
 
-    public static native JSObject create() /*-{
-     return new $wnd.OpenLayers.Strategy.Refresh();
-     }-*/;
+/**
+ *
+ * @author T. Desjardins SRP
+ *
+ */
+public abstract class BaseStrategyTest extends BaseTestCase {
 
-    public native static JSObject create(JSObject options) /*-{
-        return new $wnd.OpenLayers.Strategy.Refresh(options);
-    }-*/;
-
-    public static native void refresh(JSObject self) /*-{
-     self.refresh();
-     }-*/;
+    protected void testInstanceByClassName(Strategy strategy, String className) {
+        assertEquals(className, strategy.getClassName());
+    }
 
 }

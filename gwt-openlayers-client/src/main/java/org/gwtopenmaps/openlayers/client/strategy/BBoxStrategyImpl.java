@@ -20,8 +20,16 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 class BBoxStrategyImpl {
 
+    private BBoxStrategyImpl() {
+        throw new AssertionError();
+    }
+
     public static native JSObject create() /*-{
-     return new $wnd.OpenLayers.Strategy.BBOX();
-     }-*/;
+        return new $wnd.OpenLayers.Strategy.BBOX();
+    }-*/;
+
+    public static native JSObject create(JSObject options) /*-{
+        return new $wnd.OpenLayers.Strategy.BBOX(options);
+    }-*/;
 
 }

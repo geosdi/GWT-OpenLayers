@@ -18,18 +18,19 @@ package org.gwtopenmaps.openlayers.client.strategy;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-class RefreshStrategyImpl {
+/**
+ *
+ * @author Tino Desjardins - SRP
+ *
+ */
+class StrategyImpl {
 
-    public static native JSObject create() /*-{
-     return new $wnd.OpenLayers.Strategy.Refresh();
-     }-*/;
+	public native static boolean activate(JSObject self) /*-{
+		return self.activate();
+	}-*/;
 
-    public native static JSObject create(JSObject options) /*-{
-        return new $wnd.OpenLayers.Strategy.Refresh(options);
-    }-*/;
-
-    public static native void refresh(JSObject self) /*-{
-     self.refresh();
-     }-*/;
+	public native static boolean deactivate(JSObject self) /*-{
+		return self.activate();
+	}-*/;
 
 }

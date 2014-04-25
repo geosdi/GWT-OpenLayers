@@ -24,56 +24,37 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Maciej Jezierski - Pinocchio
  *
  */
-public class PagingStrategy extends Strategy
-{
+public class PagingStrategy extends Strategy {
 
-    public PagingStrategy(JSObject strategy)
-    {
+    protected PagingStrategy(JSObject strategy) {
         super(strategy);
     }
 
-    public PagingStrategy()
-    {
+    public PagingStrategy() {
         this(PagingStrategyImpl.create());
     }
 
-    public boolean activate()
-    {
-        return PagingStrategyImpl.activate(this.getJSObject());
-    }
-
-    public boolean deactivate()
-    {
-        return PagingStrategyImpl.deactivate(this.getJSObject());
-    }
-
-    public int pageCount()
-    {
+    public int pageCount() {
         return PagingStrategyImpl.pageCount(this.getJSObject());
     }
 
-    public int pageNum()
-    {
+    public int pageNum() {
         return PagingStrategyImpl.pageNum(this.getJSObject());
     }
 
-    public int pageLength()
-    {
+    public int pageLength() {
         return PagingStrategyImpl.pageLength(this.getJSObject());
     }
 
-    public int pageLength(int length)
-    {
+    public int pageLength(int length) {
         return PagingStrategyImpl.pageLength(this.getJSObject(), length);
     }
 
-    public boolean pageNext()
-    {
+    public boolean pageNext() {
         return PagingStrategyImpl.pageNext(this.getJSObject());
     }
 
-    public boolean pagePrevious()
-    {
+    public boolean pagePrevious() {
         return PagingStrategyImpl.pagePrevious(this.getJSObject());
     }
 }

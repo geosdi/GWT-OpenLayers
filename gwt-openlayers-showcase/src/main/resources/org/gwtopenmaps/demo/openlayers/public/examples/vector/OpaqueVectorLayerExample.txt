@@ -31,6 +31,7 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
+import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.Style;
 import org.gwtopenmaps.openlayers.client.StyleMap;
@@ -59,11 +60,12 @@ public class OpaqueVectorLayerExample extends AbstractExample {
     public OpaqueVectorLayerExample(ShowcaseExampleStore store) {
         super("Opaque vector example",
                 "Demonstrates how to add Vector data to the map and set transparency.",
-                new String[]{"transparency", "vector"}, store);
+                new String[]{"opaque", "transparency", "vector"}, store);
     }
 
     @Override
     public void buildPanel() {
+        OpenLayers.setProxyHost("olproxy?targetURL=");
         //create some MapOptions
         MapOptions defaultMapOptions = new MapOptions();
         defaultMapOptions.setDisplayProjection(new Projection("EPSG:4326"));
@@ -136,6 +138,13 @@ public class OpaqueVectorLayerExample extends AbstractExample {
         for (String v : opacityValues) {
             final RadioButton radio = new RadioButton("VECTOR_OPACITY", v,
                     HasDirection.Direction.LTR);
+
+            /**
+             * I DO THIS FIRST ADDING THE CLICK HANDLER *
+             */
+            if (v.equals("1f")) {
+                radio.setValue(Boolean.TRUE);
+            }
 
             radio.addClickHandler(new ClickHandler() {
 

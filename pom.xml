@@ -7,7 +7,7 @@
     </parent>
     <groupId>org.gwtopenmaps.openlayers</groupId>
     <artifactId>gwt-openlayers</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>${project.artifactId}</name>
     <description>GWT-OpenLayers is a GWT Wrapper for the OpenLayers JavaScript Map Library</description>
     <url>http://gwt-openlayers.sourceforge.net/maven-site-latest</url>
@@ -25,10 +25,10 @@
     </organization>
     <scm>
         <connection>
-            scm:git:ssh://git@github.com:geosdi/GWT-OpenLayers.git
+            scm:git:https://github.com/geosdi/GWT-OpenLayers.git
         </connection>
         <developerConnection>
-            scm:git:ssh://git@github.com:geosdi/GWT-OpenLayers.git
+            scm:git:https://github.com/geosdi/GWT-OpenLayers.git
         </developerConnection>
         <url>https://github.com/geosdi/GWT-OpenLayers.git</url>
       <tag>gwt-openlayers-1.0</tag>

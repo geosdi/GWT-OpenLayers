@@ -116,4 +116,8 @@ class SelectFeatureImpl {
             String keyName) /*-{
      selectFeature["multipleKey"] = keyName;
      }-*/;
+    
+    public static native void setSelectStopDown(JSObject self, boolean stopDown) /*-{
+    	self.handlers['feature'].stopDown = stopDown;
+    }-*/;
 }

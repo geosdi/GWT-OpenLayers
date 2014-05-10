@@ -283,4 +283,12 @@ public class SelectFeature extends Control {
 
         void onFeatureClicked(VectorFeature vectorFeature);
     }
+    
+    /**
+     * Set selectFeature.handlers['drag'].stopDown to a value
+     * @param stopDown
+     */
+    public void setSelectStopDown(boolean stopDown) {
+        SelectFeatureImpl.setSelectStopDown(getJSObject(), stopDown);
+    }    
 }

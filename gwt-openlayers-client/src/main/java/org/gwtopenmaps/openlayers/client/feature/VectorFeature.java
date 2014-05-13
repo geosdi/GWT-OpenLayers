@@ -85,8 +85,8 @@ public class VectorFeature extends Feature {
      * <code>
      * VectorFeature vf = wkt.read("POINT (1 2)");
      * Geometry g = vf.getGeometry();
-     * if(g.getClassName().equals(Geometry.POINT_CLASS_NAME){
-     *   Point p = Point.narrowToPoint(g.getJSObject());
+     * if(g instanceof Point){
+     *   Point p = (Point)g;
      * };
      * </code>
      */

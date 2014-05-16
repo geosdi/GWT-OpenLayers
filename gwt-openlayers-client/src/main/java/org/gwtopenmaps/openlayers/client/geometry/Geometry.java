@@ -19,6 +19,7 @@ package org.gwtopenmaps.openlayers.client.geometry;
 import com.google.gwt.core.client.JsArray;
 
 import org.gwtopenmaps.openlayers.client.*;
+import org.gwtopenmaps.openlayers.client.geometry.responsability.GWTOLGeometryHandlerManager;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -28,7 +29,9 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  *
  */
 public class Geometry extends OpenLayersObjectWrapper {
-
+    
+    public static final GWTOLGeometryHandlerManager geometryHandlerManager = new GWTOLGeometryHandlerManager();
+    //
     public static final String LINEARRING_CLASS_NAME = "OpenLayers.Geometry.LinearRing";
     public static final String LINESTRING_CLASS_NAME = "OpenLayers.Geometry.LineString";
     public static final String POINT_CLASS_NAME = "OpenLayers.Geometry.Point";
@@ -137,43 +140,8 @@ public class Geometry extends OpenLayersObjectWrapper {
 		// this will allow callers to directly use the returned instance without allocating another instance 
 		// of a GWT class
 		String className = OpenLayersObjectWrapper.narrowToOpenLayersObjectWrapper(element).getClassName();
-		if (className != null)
-		{
-			if (className.equals(Geometry.CURVE_CLASS_NAME))
-			{
-				return Curve.narrowToCurve(element);
-			}
-			else if (className.equals(Geometry.LINEARRING_CLASS_NAME))
-			{
-				return LinearRing.narrowToLinearRing(element);
-			}
-			else if (className.equals(Geometry.LINESTRING_CLASS_NAME))
-			{
-				return LineString.narrowToLineString(element);
-			}
-			else if (className.equals(Geometry.MULTI_LINE_STRING_CLASS_NAME))
-			{
-				return MultiLineString.narrowToMultiLineString(element);
-			}
-			else if (className.equals(Geometry.MULTI_POINT_CLASS_NAME))
-			{
-				return MultiPoint.narrowToMultiPoint(element);
-			}
-			else if (className.equals(Geometry.MULTI_POLYGON_CLASS_NAME))
-			{
-				return MultiPolygon.narrowToMultiPolygon(element);
-			}
-			else if (className.equals(Geometry.POINT_CLASS_NAME))
-			{
-				return Point.narrowToPoint(element);
-			}
-			else if (className.equals(Geometry.POLYGON_CLASS_NAME))
-			{
-				return Polygon.narrowToPolygon(element);
-			}
-		}
-		// default case returns a Geometry object wrapping the element
-		return new Geometry(element);
+		
+                return geometryHandlerManager.buildGeometry(className, element);
     }
 
     public static Geometry fromWKT(String wkt) {

@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 public class CodeGeneratorTest {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     //
     private static final String EXAMPLES_DIR = "src/main/java/org/gwtopenmaps"
             + "/demo/openlayers/client/examples/";

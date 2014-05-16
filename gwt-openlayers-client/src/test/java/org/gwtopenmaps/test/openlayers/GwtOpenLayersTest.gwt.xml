@@ -18,12 +18,10 @@
 -->
 <module>
 	<inherits name='com.google.gwt.user.User'/>
-	<!--
-	<inherits name='com.google.gwt.user.User'/>
-	-->
 	<inherits name="org.gwtopenmaps.openlayers.OpenLayers"/>
 	
 	<source path="client" excludes="**/*TestSuite.java" /> 
 	
-	<script src="third-party/OpenLayers-2.7/OpenLayers.js"/>
+	<script src="http://www.openlayers.org/api/OpenLayers.js"/>
+        <script src="js/gwt-openlayers/util.js"/>
 </module>

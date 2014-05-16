@@ -59,6 +59,28 @@
                     <header>../header.txt</header>
                 </configuration>
             </plugin>
+            
+            <!-- Uncomment this to lanch GWT JUNIT TESTS -->
+            
+<!--            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>2.6.1</version>
+                <configuration>
+                    <inplace>true</inplace>
+                    <gwtVersion>${gwtVersion}</gwtVersion>
+                    <sourceLevel>1.6</sourceLevel>
+                    <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
         </plugins>
     </build>
 </project>

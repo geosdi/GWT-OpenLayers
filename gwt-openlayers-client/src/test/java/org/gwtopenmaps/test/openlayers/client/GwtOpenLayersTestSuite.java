@@ -29,7 +29,7 @@ import org.gwtopenmaps.test.openlayers.client.basetypes.BoundsTest;
 import org.gwtopenmaps.test.openlayers.client.basetypes.SizeTest;
 import org.gwtopenmaps.test.openlayers.client.format.KMLTest;
 import org.gwtopenmaps.test.openlayers.client.format.WKTTest;
-import org.gwtopenmaps.test.openlayers.client.geometry.PointTest;
+import org.gwtopenmaps.test.openlayers.client.geometry.GeometryTest;
 import org.gwtopenmaps.test.openlayers.client.map.MapOptionsTest;
 import org.gwtopenmaps.test.openlayers.client.util.AttributesTest;
 import org.gwtopenmaps.test.openlayers.client.util.JSObjectTest;
@@ -52,7 +52,7 @@ public class GwtOpenLayersTestSuite extends GWTTestSuite
         suite.addTestSuite(KMLTest.class);
 
         // Tests for Geometry
-        suite.addTestSuite(PointTest.class);
+        suite.addTestSuite(GeometryTest.class);
 
         // Tests for Strategies
         suite.addTestSuite(ClusterStrategyTest.class);

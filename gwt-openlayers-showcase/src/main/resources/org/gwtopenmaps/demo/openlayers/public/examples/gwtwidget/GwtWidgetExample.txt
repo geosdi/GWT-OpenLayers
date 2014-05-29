@@ -24,14 +24,19 @@ import org.gwtopenmaps.openlayers.client.LonLat;
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
+import org.gwtopenmaps.openlayers.client.Pixel;
 import org.gwtopenmaps.openlayers.client.Projection;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
+import org.gwtopenmaps.openlayers.client.event.MapMoveListener;
+import org.gwtopenmaps.openlayers.client.event.MapMoveListener.MapMoveEvent;
 import org.gwtopenmaps.openlayers.client.layer.OSM;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.TextBox;
 
 /**
  * Shows how to add a GwtWidget to the map.
@@ -61,7 +66,7 @@ public class GwtWidgetExample extends AbstractExample {
         OSM osm_2 = OSM.CycleMap("CycleMap");
         osm_1.setIsBaseLayer(true);
         osm_2.setIsBaseLayer(true);
-        Map map = mapWidget.getMap();
+        final Map map = mapWidget.getMap();
         map.addLayer(osm_1);
         map.addLayer(osm_2);
 
@@ -71,15 +76,34 @@ public class GwtWidgetExample extends AbstractExample {
         map.addControl(new ScaleLine()); //Display the scaleline
 
         //Center and zoom to a location
-        LonLat lonLat = new LonLat(6.95, 50.94);
+        final LonLat lonLat = new LonLat(6.95, 50.94);
         lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(),
                          map.getProjection()); //transform lonlat to OSM coordinate system
         map.setCenter(lonLat, 12);
+        
+        //And now where the real code starts
+        final TextBox tbGwt = new TextBox(); //we will add a TextBox to on top of the map
+        tbGwt.setText("I am a GWT TextBox");
+        
+        final AbsolutePanel panel = new AbsolutePanel(); //use a GWT AbsolutePanel
+        panel.setSize("500px", "500px"); //give it the same size as the MapWidget
+        panel.add(mapWidget, 0, 0); //add the MapWidget to the AbsolutePanel
+        Pixel pxLonLat = map.getPixelFromLonLat(lonLat); //calculate px coordinates from lonLat
+        panel.add(tbGwt, pxLonLat.x(), pxLonLat.y()); //add TextBox add these px coordinates
+        
+        map.addMapMoveListener(new MapMoveListener() { //when map moves, recalculate position of TextBox			
+			public void onMapMove(MapMoveEvent eventObject) {
+				panel.remove(tbGwt);
+		        Pixel pxLonLat = map.getPixelFromLonLat(lonLat);
+		        panel.add(tbGwt, pxLonLat.x(), pxLonLat.y());
+			}
+		});
 
         contentPanel.add(
                 new HTML(
-                "<p>This example shows how to add a GWT widget to the map, at a certain location.</p>"));
-        contentPanel.add(mapWidget);
+                "<p>This example shows how to add a GWT widget to the map, at a certain location.</p>" +
+                "<p>In this example we add a TextBox at LonLat(6.95, 50.94). The upperleft point of the widget will be placed at this point."));
+        contentPanel.add(panel);
 
         initWidget(contentPanel);
 

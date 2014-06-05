@@ -19,6 +19,12 @@ package org.gwtopenmaps.openlayers.client.handler;
 import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
+/**
+ * Handler Base Class.
+ *
+ * @author Tino Desjardins - SRP
+ *
+ */
 public class Handler extends OpenLayersObjectWrapper {
 
     public static final int MOD_NONE = 0;
@@ -37,6 +43,20 @@ public class Handler extends OpenLayersObjectWrapper {
 
     protected Handler(JSObject element) {
         super(element);
+    }
+
+    /**
+     * Activates the Handler.
+     */
+    public void activate() {
+        HandlerImpl.activate(this.getJSObject());
+    }
+
+    /**
+     * Deactivates the Handler.
+     */
+    public void deactivate() {
+        HandlerImpl.deactivate(this.getJSObject());
     }
 
 }

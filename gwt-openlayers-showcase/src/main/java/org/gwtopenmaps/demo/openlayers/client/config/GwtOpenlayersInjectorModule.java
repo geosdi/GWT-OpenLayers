@@ -27,6 +27,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.basicosm.BasicOsmUrlExamp
 import org.gwtopenmaps.demo.openlayers.client.examples.basictms.BasicTmsExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.canceldrawing.CancelDrawingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.click.ClickExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.click.ClickHandlerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.cluster.AnimatedClusterStrategyTreshHoldExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.cluster.AnimatedClusterWithPopup;
 import org.gwtopenmaps.demo.openlayers.client.examples.cluster.ClusterStrategyTreshHoldExample;
@@ -85,6 +86,7 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
+
 import org.gwtopenmaps.demo.openlayers.client.examples.markers.MarkerPopupOverExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.OpaqueVectorLayerExample;
 
@@ -138,6 +140,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(ComparisonAndLogicalFilterExample.class).asEagerSingleton();
         bind(DragFeatureExample.class).asEagerSingleton();
         bind(ClickExample.class).asEagerSingleton();
+        bind(ClickHandlerExample.class).asEagerSingleton();
         bind(WmsPostExample.class).asEagerSingleton();
         bind(RuleExample.class).asEagerSingleton();
         bind(ClusterStrategyTreshHoldExample.class).asEagerSingleton();

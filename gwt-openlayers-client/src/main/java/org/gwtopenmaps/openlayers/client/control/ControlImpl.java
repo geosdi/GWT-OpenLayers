@@ -22,10 +22,18 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  *
  * @author Erdem Gunay
+ * @author Tino Desjardins - SRP
  *
  */
-class ControlImpl
-{
+class ControlImpl {
+
+    public static native JSObject create()/*-{
+        return new $wnd.OpenLayers.Control();
+    }-*/;
+
+    public static native JSObject create(JSObject options)/*-{
+        return new $wnd.OpenLayers.Control(options);
+    }-*/;
 
     public static native boolean activate(JSObject self) /*-{
         return self.activate();
@@ -60,7 +68,7 @@ class ControlImpl
     public static native JSObject getLayer(JSObject self) /*-{
         return self.handler.layer;
     }-*/;
-    
+
     public static native void destroy(JSObject self) /*-{
         return self.destroy();
     }-*/;

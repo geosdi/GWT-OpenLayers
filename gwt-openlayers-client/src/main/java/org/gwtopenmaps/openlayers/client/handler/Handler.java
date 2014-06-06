@@ -32,6 +32,7 @@ public class Handler extends OpenLayersObjectWrapper {
     public static final int MOD_CTRL = 2;
     public static final int MOD_ALT = 4;
     //
+    public static final String CLICK_HANDLER_CLASS_NAME = "OpenLayers.Handler.Click";
     public static final String POINT_HANDLER_CLASS_NAME = "OpenLayers.Handler.Point";
     public static final String PATH_HANDLER_CLASS_NAME = "OpenLayers.Handler.Path";
     public static final String POLYGON_HANDLER_CLASS_NAME = "OpenLayers.Handler.Polygon";

@@ -31,6 +31,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  *
  * @author Erdem Gunay
+ * @author Tino Desjardins - SRP
  *
  */
 public class Control extends OpenLayersEObjectWrapper {
@@ -41,6 +42,14 @@ public class Control extends OpenLayersEObjectWrapper {
 
     protected Control(JSObject element) {
         super(element);
+    }
+
+    protected Control() {
+        this(ControlImpl.create());
+    }
+
+    protected Control(ControlOptions options){
+        this(ControlImpl.create(options.getJSObject()));
     }
 
     public void setAutoActivate(boolean autoActivate) {

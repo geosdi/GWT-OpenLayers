@@ -24,11 +24,8 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
-
 import java.util.HashMap;
-
 import javax.inject.Inject;
-
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
@@ -37,31 +34,31 @@ import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.MapOptions;
 import org.gwtopenmaps.openlayers.client.MapWidget;
 import org.gwtopenmaps.openlayers.client.Projection;
+import org.gwtopenmaps.openlayers.client.control.ClickControl;
 import org.gwtopenmaps.openlayers.client.control.Control;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.event.ClickEvent;
 import org.gwtopenmaps.openlayers.client.event.ClickListener;
-import org.gwtopenmaps.openlayers.client.handler.ClickHandler;
 import org.gwtopenmaps.openlayers.client.handler.ClickHandlerOptions;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3MapType;
 import org.gwtopenmaps.openlayers.client.layer.GoogleV3Options;
 
 /**
-*
-* @author Tino Desjardins - SRP
-*
+ *
+ * @author Tino Desjardins - SRP
+ * 
 */
 public class ClickHandlerExample extends AbstractExample {
 
     private static final Projection DEFAULT_PROJECTION = new Projection(
             "EPSG:4326");
 
-    private TextArea outputPanel = new TextArea();
-    private ListBox listBox = new ListBox();
-    private java.util.Map<String, Control> clickControls = new HashMap<String, Control>();
+    private final TextArea outputPanel = new TextArea();
+    private final ListBox listBox = new ListBox();
+    private final java.util.Map<String, Control> clickControls = new HashMap<String, Control>();
     private String oldValue = null;
 
     @Inject
@@ -170,7 +167,7 @@ public class ClickHandlerExample extends AbstractExample {
 
         String selectedValue = this.listBox.getValue(this.listBox.getSelectedIndex());
 
-        if(this.oldValue != null) {
+        if (this.oldValue != null) {
             this.clickControls.get(this.oldValue).deactivate();
         }
 
@@ -188,14 +185,14 @@ public class ClickHandlerExample extends AbstractExample {
             @Override
             public void onClick(ClickEvent eventObject) {
 
-                writeOutput(mode + " - single click x=" + String.valueOf(eventObject.getX()) + " y=" +  String.valueOf(eventObject.getY()));
+                writeOutput(mode + " - single click x=" + String.valueOf(eventObject.getX()) + " y=" + String.valueOf(eventObject.getY()));
 
             }
 
             @Override
             public void onDoubleClick(ClickEvent eventObject) {
 
-                writeOutput(mode + " - double click x=" + String.valueOf(eventObject.getX()) + " y=" +  String.valueOf(eventObject.getY()));
+                writeOutput(mode + " - double click x=" + String.valueOf(eventObject.getX()) + " y=" + String.valueOf(eventObject.getY()));
 
             }
 
@@ -213,7 +210,7 @@ public class ClickHandlerExample extends AbstractExample {
     private void writeOutput(String output) {
 
         boolean lineBreak = this.outputPanel.getText().length() > 0;
-        this.outputPanel.setText(this.outputPanel.getText() + ( lineBreak ? "\r\n" : "") + output);
+        this.outputPanel.setText(this.outputPanel.getText() + (lineBreak ? "\r\n" : "") + output);
 
     }
 
@@ -221,49 +218,6 @@ public class ClickHandlerExample extends AbstractExample {
     public String getSourceCodeURL() {
         return GWT.getModuleBaseURL() + "examples/click/"
                 + "ClickHandlerExample.txt";
-    }
-
-    /**
-    * Custom control for handling click events.
-    *
-    * @author Tino Desjardins - SRP
-    *
-    */
-    public class ClickControl extends Control {
-
-        private ClickHandler clickHandler;
-        private ClickHandlerOptions clickHandlerOptions;
-
-        public ClickControl(ClickHandlerOptions clickHandlerOptions) {
-            this.clickHandlerOptions = clickHandlerOptions;
-        }
-
-        @Override
-        public boolean activate() {
-
-            if (this.getMap() != null) {
-
-                if (this.clickHandler == null) {
-                    this.clickHandler = new ClickHandler(this, this.clickHandlerOptions);
-                }
-
-                this.clickHandler.activate();
-
-            }
-
-            return super.activate();
-        }
-
-        @Override
-        public boolean deactivate() {
-
-            if (this.clickHandler != null) {
-                this.clickHandler.deactivate();
-            }
-
-            return super.deactivate();
-        }
-
     }
 
 }

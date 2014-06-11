@@ -16,6 +16,9 @@
  */
 package org.gwtopenmaps.demo.openlayers.client.examples.gwtwidget;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
@@ -30,7 +33,6 @@ import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.event.MapMoveListener;
-import org.gwtopenmaps.openlayers.client.event.MapMoveListener.MapMoveEvent;
 import org.gwtopenmaps.openlayers.client.layer.OSM;
 
 import com.google.gwt.core.client.GWT;
@@ -61,7 +63,7 @@ public class GwtWidgetExample extends AbstractExample {
         defaultMapOptions.setNumZoomLevels(16);
 
         //Create a MapWidget and add 2 OSM layers
-        MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
+        final MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
         OSM osm_1 = OSM.Mapnik("Mapnik");
         OSM osm_2 = OSM.CycleMap("CycleMap");
         osm_1.setIsBaseLayer(true);
@@ -79,25 +81,89 @@ public class GwtWidgetExample extends AbstractExample {
         final LonLat lonLat = new LonLat(6.95, 50.94);
         lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(),
                          map.getProjection()); //transform lonlat to OSM coordinate system
-        map.setCenter(lonLat, 12);
+        map.setCenter(lonLat, 5);
         
         //And now where the real code starts
-        final TextBox tbGwt = new TextBox(); //we will add a TextBox to on top of the map
-        tbGwt.setText("I am a GWT TextBox");
-        
         final AbsolutePanel panel = new AbsolutePanel(); //use a GWT AbsolutePanel
         panel.setSize("500px", "500px"); //give it the same size as the MapWidget
         panel.add(mapWidget, 0, 0); //add the MapWidget to the AbsolutePanel
-        Pixel pxLonLat = map.getPixelFromLonLat(lonLat); //calculate px coordinates from lonLat
-        panel.add(tbGwt, pxLonLat.x(), pxLonLat.y()); //add TextBox add these px coordinates
+
+        final List<TextBox> ltb = new ArrayList<TextBox>();
+        final List<LonLat> lll = new ArrayList<LonLat>();
         
-        map.addMapMoveListener(new MapMoveListener() { //when map moves, recalculate position of TextBox			
+        for (int i = 0 ; i < 20 ; i++)
+        {
+        	for (int j = 40 ; j < 60 ; j++)
+        	{
+                final TextBox tbGwt = new TextBox(); //we will add a TextBox to on top of the map
+                tbGwt.setText("I am a GWT TextBox " + i + ";" +j);
+                tbGwt.getElement().getStyle().setProperty("pointerEvents", "none"); //events will go through to the map
+                ltb.add(tbGwt);
+                
+        		final LonLat ll = new LonLat(i, j);
+        		ll.transform(DEFAULT_PROJECTION.getProjectionCode(),
+                        map.getProjection()); //transform lonlat to OSM coordinate system
+        		lll.add(ll);
+        	}
+        }
+        
+        int count=0;
+        for (int i = 0 ; i < 20 ; i++)
+        {
+        	for (int j = 40 ; j < 60 ; j++)
+        	{
+        		final LonLat ll = lll.get(count);
+
+                Pixel pxLonLat = map.getPixelFromLonLat(ll); //calculate px coordinates from lonLat
+                int x = pxLonLat.x();
+                int y = pxLonLat.y();
+                
+                if ((x > 0) && (y > 0) && (x < 500) && (y < 500))
+                {
+                	panel.add(ltb.get(count), pxLonLat.x(), pxLonLat.y()); //add TextBox add these px coordinates
+                }
+                count++;
+        	}
+        }
+        
+        map.addMapMoveListener(new MapMoveListener() {
+			
 			public void onMapMove(MapMoveEvent eventObject) {
-				panel.remove(tbGwt);
-		        Pixel pxLonLat = map.getPixelFromLonLat(lonLat);
-		        panel.add(tbGwt, pxLonLat.x(), pxLonLat.y());
+
+				if (panel.getWidgetCount() > 1)
+				{
+					int count2 = 0;
+			        for (int i = 0 ; i < 20 ; i++)
+			        {
+			        	for (int j = 40 ; j < 60 ; j++)
+			        	{
+			        		panel.remove(ltb.get(count2));
+			        		count2++;
+			        	}
+			        }
+				}
+				
+				int count3 = 0;
+		        for (int i = 0 ; i < 20 ; i++)
+		        {
+		        	for (int j = 40 ; j < 60 ; j++)
+		        	{
+		        		final LonLat ll = lll.get(count3);
+
+		                Pixel pxLonLat = map.getPixelFromLonLat(ll); //calculate px coordinates from lonLat
+		                int x = pxLonLat.x();
+		                int y = pxLonLat.y();
+		                
+		                if ((x > 0) && (y > 0) && (x < 500) && (y < 500))
+		                {
+		                	panel.add(ltb.get(count3), pxLonLat.x(), pxLonLat.y()); //add TextBox add these px coordinates
+		                }
+		                count3++;
+		        	}
+		        }
+				
 			}
-		});
+        });
 
         contentPanel.add(
                 new HTML(

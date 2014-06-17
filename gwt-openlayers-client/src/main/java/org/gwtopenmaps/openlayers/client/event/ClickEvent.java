@@ -31,16 +31,16 @@ public class ClickEvent extends ControlEvent {
 	 *
 	 * @return x-coordinate of the click (pixel).
 	 */
-	public int getX(){
-		return getJSObject().getProperty("xy").getPropertyAsInt("x");
+	public double getX(){
+		return getJSObject().getProperty("xy").getPropertyAsDouble("x");
 	}
 
 	/**
 	 *
 	 * @return y-coordinate of the click (pixel).
 	 */
-	public int getY(){
-        return getJSObject().getProperty("xy").getPropertyAsInt("y");
+	public double getY(){
+        return getJSObject().getProperty("xy").getPropertyAsDouble("y");
     }
 
 }

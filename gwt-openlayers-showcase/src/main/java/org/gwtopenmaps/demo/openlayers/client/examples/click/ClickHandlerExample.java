@@ -118,25 +118,50 @@ public class ClickHandlerExample extends AbstractExample {
         map.addControl(new ScaleLine()); //Display the scaleline
 
         final String singleKey = "single";
-        ClickControl singleClickControl = new ClickControl(this.createClickHandlerOptions(true, false, false, false, -1, singleKey));
+        ClickControl singleClickControl = new ClickControl(this.createClickHandlerOptions(true, false, false, false, 0, singleKey));
         map.addControl(singleClickControl);
         this.clickControls.put(singleKey, singleClickControl);
         listBox.addItem("single only", singleKey);
 
         final String doubleKey = "double";
-        ClickControl doubleClickControl = new ClickControl(this.createClickHandlerOptions(false, true, false, false, -1, doubleKey));
+        ClickControl doubleClickControl = new ClickControl(this.createClickHandlerOptions(false, true, false, false, 0, doubleKey));
         map.addControl(doubleClickControl);
         this.clickControls.put(doubleKey, doubleClickControl);
         this.listBox.addItem("double only", doubleKey);
 
         final String bothKey = "both";
-        ClickControl bothClickControl = new ClickControl(this.createClickHandlerOptions(true, true, false, false, -1, bothKey));
+        ClickControl bothClickControl = new ClickControl(this.createClickHandlerOptions(true, true, false, false, 0, bothKey));
         map.addControl(bothClickControl);
         this.clickControls.put(bothKey, bothClickControl);
         this.listBox.addItem("both", bothKey);
+        
+        final int tolerance = 200;
+        final String dragKey = "drag";
+        ClickControl dragClickControl = new ClickControl(this.createClickHandlerOptions(true, false, false, false, tolerance, dragKey));
+        map.addControl(dragClickControl);
+        this.clickControls.put(dragKey, dragClickControl);
+        this.listBox.addItem("drag ( tolerance: " + tolerance + " )", dragKey);
+        
+        final String singleStopKey = "singlestop";
+        ClickControl singleStopClickControl = new ClickControl(this.createClickHandlerOptions(true, false, true, false, 0, singleStopKey));
+        map.addControl(singleStopClickControl);
+        this.clickControls.put(singleStopKey, singleStopClickControl);
+        listBox.addItem("single with stop", singleStopKey);
+
+        final String doubleStopKey = "doublestop";
+        ClickControl doubleStopClickControl = new ClickControl(this.createClickHandlerOptions(false, true, false, true, 0, doubleStopKey));
+        map.addControl(doubleStopClickControl);
+        this.clickControls.put(doubleStopKey, doubleStopClickControl);
+        this.listBox.addItem("double with stop", doubleStopKey);
+        
+        final String bothStopKey = "bothstop";
+        ClickControl bothStopClickControl = new ClickControl(this.createClickHandlerOptions(true, true, true, true, 0, bothStopKey));
+        map.addControl(bothStopClickControl);
+        this.clickControls.put(bothStopKey, bothStopClickControl);
+        this.listBox.addItem("both with stop", bothStopKey);
 
         // center and zoom to a location
-        LonLat lonLat = new LonLat(6.95, 50.94);
+        LonLat lonLat = new LonLat(13.4, 52.51);
         lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(),
                 map.getProjection()); //transform lonlat to OSM coordinate system
         map.setCenter(lonLat, 12);
@@ -185,14 +210,14 @@ public class ClickHandlerExample extends AbstractExample {
             @Override
             public void onClick(ClickEvent eventObject) {
 
-                writeOutput(mode + " - single click x=" + String.valueOf(eventObject.getX()) + " y=" + String.valueOf(eventObject.getY()));
+                writeOutput(mode + " - single click x=" + String.valueOf((int)eventObject.getX()) + " y=" + String.valueOf((int)eventObject.getY()));
 
             }
 
             @Override
             public void onDoubleClick(ClickEvent eventObject) {
 
-                writeOutput(mode + " - double click x=" + String.valueOf(eventObject.getX()) + " y=" + String.valueOf(eventObject.getY()));
+                writeOutput(mode + " - double click x=" + String.valueOf((int)eventObject.getX()) + " y=" + String.valueOf((int)eventObject.getY()));
 
             }
 
@@ -202,6 +227,7 @@ public class ClickHandlerExample extends AbstractExample {
         clickHandlerOptions.setStopDouble(stopDouble);
         clickHandlerOptions.setSingleClick(singleClick);
         clickHandlerOptions.setDoubleClick(doubleClick);
+        clickHandlerOptions.setPixelTolerance(pixelTolerance);
 
         return clickHandlerOptions;
 

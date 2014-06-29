@@ -29,9 +29,17 @@ class HandlerImpl {
     public static native void activate(JSObject self) /*-{
         self.activate();
     }-*/;
-
+    
     public static native void deactivate(JSObject self) /*-{
         self.deactivate();
+    }-*/;
+    
+    public static native boolean checkModifiers(JSObject self, JSObject event) /*-{
+        return self.checkModifiers(event);
+    }-*/;
+    
+    public static native void setKeyMask(JSObject self, int keyMask) /*-{
+        self.keyMask = keyMask;
     }-*/;
 
 }

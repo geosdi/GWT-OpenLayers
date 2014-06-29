@@ -17,6 +17,7 @@
 package org.gwtopenmaps.openlayers.client.handler;
 
 import org.gwtopenmaps.openlayers.client.OpenLayersObjectWrapper;
+import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -58,6 +59,23 @@ public class Handler extends OpenLayersObjectWrapper {
      */
     public void deactivate() {
         HandlerImpl.deactivate(this.getJSObject());
+    }
+    
+    public boolean checkModifiers(EventObject event) {
+        return HandlerImpl.checkModifiers(this.getJSObject(), event.getJSObject());
+    }
+    
+    public void setKeyMask(int... keyCodes) {
+
+        int keyMask = 0;
+
+        if (keyCodes != null) {
+            for (int keyCode : keyCodes) {
+                keyMask |= keyCode;
+            }
+        }
+
+        HandlerImpl.setKeyMask(this.getJSObject(), keyMask);
     }
 
 }

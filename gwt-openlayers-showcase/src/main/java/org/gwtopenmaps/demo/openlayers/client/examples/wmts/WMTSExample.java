@@ -58,18 +58,18 @@ public class WMTSExample extends AbstractExample {
         //Create a MapWidget and add OSM layer
         MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
         OSM osm = OSM.Mapnik("Mapnik");
-        osm.setIsBaseLayer(true);
+        osm.setIsBaseLayer(Boolean.TRUE);
 
-        WMTSOptions wmtsOptions = new WMTSOptions(url, "medford:buildings",
+        WMTSOptions wmtsOptions = new WMTSOptions(url, "usa:states",
                 "_null", "EPSG:900913");
-        wmtsOptions.setName("Medford Buildings");
+        wmtsOptions.setName("States of the USA");
         wmtsOptions.setLayerOpacity(0.7);
-        wmtsOptions.setIsBaseLayer(false);
+        wmtsOptions.setIsBaseLayer(Boolean.FALSE);
         wmtsOptions.setFormat("image/png");
 
-        String[] args = new String[26];
+        String[] args = new String[31];
 
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 31; i++) {
             args[i] = "EPSG:900913:" + i;
         }
 
@@ -87,7 +87,7 @@ public class WMTSExample extends AbstractExample {
         map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
         map.addControl(new ScaleLine()); //Display the scaleline
 
-        map.setCenter(new LonLat(-13677832, 5213272), 13);
+        map.setCenter(new LonLat(-13677832, 5213272), 3);
 
         contentPanel.add(
                 new HTML(

@@ -40,7 +40,7 @@ import org.gwtopenmaps.openlayers.client.layer.WMTSOptions;
  */
 public class WMTSExample extends AbstractExample {
 
-    private static final String url = "http://v2.suite.opengeo.org/geoserver/gwc/service/wmts";
+    private static final String url = "http://150.145.141.95/geoserver/gwc/service/wmts";
 
     @Inject
     public WMTSExample(ShowcaseExampleStore store) {
@@ -60,16 +60,16 @@ public class WMTSExample extends AbstractExample {
         OSM osm = OSM.Mapnik("Mapnik");
         osm.setIsBaseLayer(true);
 
-        WMTSOptions wmtsOptions = new WMTSOptions(url, "medford:buildings",
+        WMTSOptions wmtsOptions = new WMTSOptions(url, " 	admin:admin_shp_limite_comunali",
                 "_null", "EPSG:900913");
-        wmtsOptions.setName("Medford Buildings");
+        wmtsOptions.setName("Limiti Comunali");
         wmtsOptions.setLayerOpacity(0.7);
         wmtsOptions.setIsBaseLayer(false);
         wmtsOptions.setFormat("image/png");
 
         String[] args = new String[26];
 
-        for (int i = 0; i < 26; i++) {
+        for (int i = 0; i < 31; i++) {
             args[i] = "EPSG:900913:" + i;
         }
 

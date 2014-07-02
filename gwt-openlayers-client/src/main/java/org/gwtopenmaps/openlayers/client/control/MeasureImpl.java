@@ -37,7 +37,19 @@ public class MeasureImpl
         return new $wnd.OpenLayers.Control.Measure(handler, options);
     }-*/;
 
-    public static native void setPersist(JSObject self, boolean persist) /*-{
-        self.persist = persist;
+    public static native boolean getPersist(JSObject self) /*-{
+        return self.persist;
     }-*/;
+
+    public static native void setPersist(JSObject self, boolean persist) /*-{
+	    self.persist = persist;
+	}-*/;
+
+    public static native boolean getImmediate(JSObject self) /*-{
+	    return self.immediate;
+	}-*/;
+
+    public static native void setImmediate(JSObject self, boolean immediate) /*-{
+	    self.setImmediate(immediate);
+	}-*/;
 }

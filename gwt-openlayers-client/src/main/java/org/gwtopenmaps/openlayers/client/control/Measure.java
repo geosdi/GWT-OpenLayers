@@ -55,6 +55,48 @@ public class Measure extends Control
         this(MeasureImpl.create(handler.getJSObject(), options.getJSObject()));
     }
 
+	/**
+	 * Activates the immediate measurement so that the "measurepartial" event is also fired once the measurement sketch
+	 * is modified. Default is false.
+	 * @return true on success, else false
+	 */
+	public boolean getImmediate()
+	{
+		return MeasureImpl.getImmediate(getJSObject());
+	}
+
+	/**
+	 * Sets whether activate the immediate measurement so that the "measurepartial" event is also fired once the
+	 * measurement sketch is modified. Default is false.
+	 * @param immediate Activate the immediate measurement so that the "measurepartial" event is also fired once the
+	 *            measurement sketch is modified?
+	 */
+	public void setImmediate(boolean immediate)
+	{
+		MeasureImpl.setImmediate(getJSObject(), immediate);
+	}
+
+    /**
+     * Keep the temporary measure sketch or not.
+     *
+     * @return - true to keep the temporary measurement sketch drawn after
+     *     the measurement is complete.  The geometry will persist until a new
+     *     measurement is started, the control is deactivated, or <cancel> is called.
+     *     Default is false.
+     */
+	public boolean getPersist()
+	{
+		return MeasureImpl.getPersist(getJSObject());
+	}
+
+    /**
+     * Keep the temporary measure sketch or not.
+     *
+     * @param persist - Set to true to keep the temporary measurement sketch drawn after
+     *     the measurement is complete.  The geometry will persist until a new
+     *     measurement is started, the control is deactivated, or <cancel> is called.
+     *     Default is false.
+     */
     public void setPersist(boolean persist)
     {
         MeasureImpl.setPersist(getJSObject(), persist);

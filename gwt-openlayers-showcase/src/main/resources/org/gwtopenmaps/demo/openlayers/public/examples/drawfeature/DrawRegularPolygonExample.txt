@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ * Copyright 2014 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.demo.openlayers.client.examples.drawfeature;
 
@@ -43,13 +43,11 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
  */
 public class DrawRegularPolygonExample extends AbstractExample {
 
-    private RegularPolygonHandlerOptions options = new RegularPolygonHandlerOptions();
-
     @Inject
     public DrawRegularPolygonExample(ShowcaseExampleStore store) {
         super("Draw Regular Polygon Example", "A Basic Example to use Regular "
                 + "Polygon Handler", new String[]{"features", "drawing",
-            "geometry", "vector", "regular polygon"}, store);
+                    "geometry", "vector", "regular polygon"}, store);
     }
 
     @Override
@@ -81,8 +79,11 @@ public class DrawRegularPolygonExample extends AbstractExample {
         final Vector vectorLayer = new Vector("Vector layer");
         map.addLayer(vectorLayer);
 
-        final DrawFeature drawRegularPolygon = new DrawFeature(vectorLayer,
-                new RegularPolygonHandler());
+        final RegularPolygonHandlerOptions boxHandlerOptions = new RegularPolygonHandlerOptions();
+        boxHandlerOptions.setIrregular(true);
+        RegularPolygonHandler boxHandler = new RegularPolygonHandler();
+        final DrawFeature drawRegularPolygon = new DrawFeature(vectorLayer, boxHandler);
+        ((RegularPolygonHandler) drawRegularPolygon.getHandler()).setOptions(boxHandlerOptions);
 
         map.addControl(drawRegularPolygon);
 
@@ -95,13 +96,13 @@ public class DrawRegularPolygonExample extends AbstractExample {
 
             public void onClick(ClickEvent event) {
                 if (((ToggleButton) event.getSource()).isDown()) {
-                    options.setSides(40);
+                    boxHandlerOptions.setSides(40);
                     ((RegularPolygonHandler) drawRegularPolygon.getHandler()).setOptions(
-                            options);
+                            boxHandlerOptions);
                 } else {
-                    options.setSides(4);
+                    boxHandlerOptions.setSides(4);
                     ((RegularPolygonHandler) drawRegularPolygon.getHandler()).setOptions(
-                            options);
+                            boxHandlerOptions);
                 }
             }
 

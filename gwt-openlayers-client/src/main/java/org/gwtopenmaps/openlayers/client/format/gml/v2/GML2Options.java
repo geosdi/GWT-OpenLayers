@@ -16,9 +16,8 @@
  */
 package org.gwtopenmaps.openlayers.client.format.gml.v2;
 
-import org.gwtopenmaps.openlayers.client.format.GML.Base.Base;
+import org.gwtopenmaps.openlayers.client.format.gml.Base.Base;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
-import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
 /**
  * Properties to be initialized for any GML2 by passing this object to the

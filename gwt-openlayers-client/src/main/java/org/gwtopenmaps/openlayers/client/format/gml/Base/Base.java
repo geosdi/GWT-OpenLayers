@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.format.GML.Base;
+package org.gwtopenmaps.openlayers.client.format.gml.Base;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;

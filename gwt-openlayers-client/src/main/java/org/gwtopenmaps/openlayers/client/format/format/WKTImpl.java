@@ -14,25 +14,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwtopenmaps.openlayers.client.format;
+package org.gwtopenmaps.openlayers.client.format.format;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
- * Brief explanation of Well Known Text (WKT) vector format here.
- *
- * Reference to WKT specification.
- *
  * @author Edwin Commandeur - Atlis EJS
+ *
  */
-public class WKT extends VectorFormat {
+class WKTImpl {
 
-    protected WKT(JSObject wktFormat) {
-        super(wktFormat);
-    }
-
-    public WKT() {
-        this(WKTImpl.create());
-    }
+    public static native JSObject create() /*-{
+     return new $wnd.OpenLayers.Format.WKT();
+     }-*/;
 
 }

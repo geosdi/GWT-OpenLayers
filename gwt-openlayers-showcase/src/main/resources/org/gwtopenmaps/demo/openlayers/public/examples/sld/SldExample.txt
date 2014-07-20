@@ -29,6 +29,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.sld.resources.SldExampleR
 public class SldExample extends AbstractExample {
 
     private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
+    private static final TextResource sldResource = SldExampleResources.INSTANCE.sldResource();
 
     private Map map;
 
@@ -80,7 +81,6 @@ public class SldExample extends AbstractExample {
      * styled according to the SLD
      */
     private void loadStyleAndDisplayVectorMap() {
-        TextResource sldResource = SldExampleResources.INSTANCE.sldResource();
         String document = sldResource.getText();
         SLD sld = new SLD();
         SLDResult result = sld.read(document);

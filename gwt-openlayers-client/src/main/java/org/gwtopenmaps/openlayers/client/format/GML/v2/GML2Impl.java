@@ -14,18 +14,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwtopenmaps.openlayers.client.format;
+package org.gwtopenmaps.openlayers.client.format.GML.v2;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
- *
+ * @author Mikael Couzic
  */
-class GeoJSONImpl {
+class GML2Impl {
 
-    public static native JSObject create() /*-{
-     return new $wnd.OpenLayers.Format.GeoJSON();
+    public static native JSObject create(JSObject options) /*-{
+     return new $wnd.OpenLayers.Format.GML.v2(options);
      }-*/;
 
 }

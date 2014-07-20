@@ -17,7 +17,7 @@
 package org.gwtopenmaps.test.openlayers.client.format;
 
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
-import org.gwtopenmaps.openlayers.client.format.WKT;
+import org.gwtopenmaps.openlayers.client.format.format.WKT;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
 import org.gwtopenmaps.test.openlayers.client.BaseTestCase;
 

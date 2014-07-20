@@ -14,10 +14,30 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.format;
+package org.gwtopenmaps.openlayers.client.format.format;
+
+import org.gwtopenmaps.openlayers.client.format.GML.VectorFormat;
+import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 
-public class WKTOptions extends FormatOptions
+/**
+ * Brief explanation of GeoJSON vector format here.
+ *
+ * Reference to GeoJSON specification.
+ *
+ * @author Edwin Commandeur - Atlis EJS
+ */
+public class GeoJSON extends VectorFormat
 {
+
+    protected GeoJSON(JSObject geoJSONFormat)
+    {
+        super(geoJSONFormat);
+    }
+
+    public GeoJSON()
+    {
+        this(GeoJSONImpl.create());
+    }
 
 }

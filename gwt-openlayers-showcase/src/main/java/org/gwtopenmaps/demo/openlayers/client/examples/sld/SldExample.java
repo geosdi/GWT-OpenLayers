@@ -22,113 +22,89 @@ import org.gwtopenmaps.openlayers.client.layer.OSM;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.http.client.Request;
-import com.google.gwt.http.client.RequestBuilder;
-import com.google.gwt.http.client.RequestCallback;
-import com.google.gwt.http.client.Response;
+import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.HTML;
+import org.gwtopenmaps.demo.openlayers.client.examples.sld.resources.SldExampleResources;
 
 public class SldExample extends AbstractExample {
 
-	private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
+    private static final Projection DEFAULT_PROJECTION = new Projection("EPSG:4326");
+    private static final TextResource sldResource = SldExampleResources.INSTANCE.sldResource();
 
-	private Map map;
-	
-	@Inject
-	public SldExample(ShowcaseExampleStore store) {
-		super("SLD Example", "Show how to use SLD for styling", new String[] { "sld", "style" }, store);
-	}
+    private Map map;
 
-	@Override
-	public void buildPanel() {
-		// create some MapOptions
-		MapOptions defaultMapOptions = new MapOptions();
-		defaultMapOptions.setNumZoomLevels(16);
+    @Inject
+    public SldExample(ShowcaseExampleStore store) {
+        super("SLD Example", "Show how to use SLD for styling", new String[]{"sld", "style"}, store);
+    }
 
-		// create a MapWidget and add an OSM layers
-		MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
-		OSM osm = OSM.Mapnik("Mapnik");
-		osm.setIsBaseLayer(true);
-		map = mapWidget.getMap();
-		map.addLayer(osm);
+    @Override
+    public void buildPanel() {
+        // create some MapOptions
+        MapOptions defaultMapOptions = new MapOptions();
+        defaultMapOptions.setNumZoomLevels(16);
 
-		// lets add some default controls to the map
-		map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
-		map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
-		map.addControl(new ScaleLine()); //display the scaleline
+        // create a MapWidget and add an OSM layers
+        MapWidget mapWidget = new MapWidget("500px", "500px", defaultMapOptions);
+        OSM osm = OSM.Mapnik("Mapnik");
+        osm.setIsBaseLayer(true);
+        map = mapWidget.getMap();
+        map.addLayer(osm);
 
-		// center and zoom to a location
-		LonLat lonLat = new LonLat(14.450000, 50.018120);
-		lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection());
-		map.setCenter(lonLat, 17);
+        // lets add some default controls to the map
+        map.addControl(new LayerSwitcher()); //+ sign in the upperright corner to display the layer switcher
+        map.addControl(new OverviewMap()); //+ sign in the lowerright to display the overviewmap
+        map.addControl(new ScaleLine()); //display the scaleline
 
-		// load the style and create a vector map 
-		loadStyleAndDisplayVectorMap();
-		
-		contentPanel.add(new HTML("<p>This example shows how to use SLD layer for styling purposes</p>"));
-		contentPanel
-				.add(new InfoPanel(
-						"<p>Don't forget to add the following line to your html file if you want to use OSM :</p>"
-								+ "<p><b>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</b></p>"));
-		contentPanel.add(mapWidget);
+        // center and zoom to a location
+        LonLat lonLat = new LonLat(14.450000, 50.018120);
+        lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection());
+        map.setCenter(lonLat, 17);
 
-		initWidget(contentPanel);
+//         load the style and create a vector map 
+        loadStyleAndDisplayVectorMap();
+        contentPanel.add(new HTML("<p>This example shows how to use SLD layer for styling purposes</p>"));
+        contentPanel
+                .add(new InfoPanel(
+                                "<p>Don't forget to add the following line to your html file if you want to use OSM :</p>"
+                                + "<p><b>&lt;script src=\"http://www.openstreetmap.org/openlayers/OpenStreetMap.js\"&gt;&lt;/script&gt;</b></p>"));
+        contentPanel.add(mapWidget);
 
-		mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0);
-	}
-	
-	/**
-	 * This method loads a style map, creates a vector map, assigns the style to the vector map, 
-	 * and adds a new point to the vector map, which will be styled according to the SLD
-	 */
-	private void loadStyleAndDisplayVectorMap(){
-		
-		// start an asynchronous query for the style
-		RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, "data/point.sld");
-		try {
-			builder.sendRequest("", new RequestCallback() {
-				
-				@Override
-				public void onError(Request request, Throwable exception) {
-				}
-				
-				@Override
-				public void onResponseReceived(Request request, Response response) {
-					if (200 == response.getStatusCode()) {
-						
-						String document = response.getText();
-						
-						// convert the response text into a style map
-						SLD sld = new SLD();
-						SLDResult result = sld.read(document);
-						StyleMap userStyleMap = result.getUserStyleMap();
-						
-						// create a vector layer, and set the received style
-						Vector vectorLayer = new Vector("My Vector Layer");
-						vectorLayer.setStyleMap(userStyleMap);
+        initWidget(contentPanel);
 
-						// create a new vector feature from a point 
-						LonLat lonLat = new LonLat(14.450000, 50.018120);
-						lonLat.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection());
-						VectorFeature feature = new VectorFeature(new Point(lonLat.lon(), lonLat.lat()));
-						
-						// add this new point to the vector layer
-						vectorLayer.addFeature(feature);
-						
-						// add this vector layer to the map
-						map.addLayer(vectorLayer);
-					}
-				}
-			});
-		} catch (Exception e){
-			GWT.log("Exception occured: " + e.toString());
-		}
-		
-	}
+        mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0);
+    }
 
-	@Override
-	public String getSourceCodeURL() {
-		return GWT.getModuleBaseURL() + "examples/sld/" + "SldExample.txt";
-	}
+    /**
+     * This method loads a style map, creates a vector map, assigns the style to
+     * the vector map, and adds a new point to the vector map, which will be
+     * styled according to the SLD
+     */
+    private void loadStyleAndDisplayVectorMap() {
+        String document = sldResource.getText();
+        SLD sld = new SLD();
+        SLDResult result = sld.read(document);
+        StyleMap userStyleMap = result.getUserStyleMap();
+
+        // create a vector layer, and set the received style
+        Vector vectorLayer = new Vector("My Vector Layer");
+        vectorLayer.setStyleMap(userStyleMap);
+
+        // create a new vector feature from a point 
+        LonLat lonLat1 = new LonLat(14.450000, 50.018120);
+        lonLat1.transform(DEFAULT_PROJECTION.getProjectionCode(), map.getProjection());
+        VectorFeature feature = new VectorFeature(new Point(lonLat1.lon(), lonLat1.lat()));
+
+        // add this new point to the vector layer
+        vectorLayer.addFeature(feature);
+
+        // add this vector layer to the map
+        map.addLayer(vectorLayer);
+    }
+
+    @Override
+    public String getSourceCodeURL() {
+        return GWT.getModuleBaseURL() + "examples/sld/" + "SldExample.txt";
+    }
 
 }

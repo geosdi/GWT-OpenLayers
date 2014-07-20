@@ -55,6 +55,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.label.LabelOverLeapExampl
 import org.gwtopenmaps.demo.openlayers.client.examples.label.Labels;
 import org.gwtopenmaps.demo.openlayers.client.examples.linestring2multilinestring.LineString2MultiLineStringExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.location.LocationExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.markers.MarkerPopupOverExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.MeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.measure.StyledMeasureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.minmaxzoom.MinMaxZoomExample;
@@ -64,6 +65,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.rotatevector.RotateVector
 import org.gwtopenmaps.demo.openlayers.client.examples.rule.RuleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.scale.ScaleExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.selectfeature.SelectFeatureExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.sld.SldExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.snap.SnapFeatureExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.undoredodrawing.UndoRedoDrawingExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.variablewfsstyle.VariableWfsStyle;
@@ -72,6 +74,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureBoxSelec
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.GetFeatureClickSelectionExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.HoverAndDragExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.HoverAndSelectExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.vector.OpaqueVectorLayerExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.VectorResizeImageExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.vector.WellKnownGraphicExample;
@@ -88,9 +91,6 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
-
-import org.gwtopenmaps.demo.openlayers.client.examples.markers.MarkerPopupOverExample;
-import org.gwtopenmaps.demo.openlayers.client.examples.vector.OpaqueVectorLayerExample;
 
 /**
  *
@@ -173,6 +173,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(OpaqueVectorLayerExample.class).asEagerSingleton();
         bind(GwtWidgetExample.class).asEagerSingleton();
         bind(KeyMaskExample.class).asEagerSingleton();
+        bind(SldExample.class).asEagerSingleton();
     }
 
 }

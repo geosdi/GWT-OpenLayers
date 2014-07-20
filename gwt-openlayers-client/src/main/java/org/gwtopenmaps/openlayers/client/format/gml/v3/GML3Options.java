@@ -14,7 +14,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwtopenmaps.openlayers.client.format.GML.v3;
+package org.gwtopenmaps.openlayers.client.format.gml.v3;
 
 import org.gwtopenmaps.openlayers.client.format.GML.Base.Base;
 import org.gwtopenmaps.openlayers.client.util.JSObject;

@@ -16,7 +16,7 @@
  */
 package org.gwtopenmaps.openlayers.client.format.format;
 
-import org.gwtopenmaps.openlayers.client.format.GML.VectorFormat;
+import org.gwtopenmaps.openlayers.client.format.gml.VectorFormat;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**

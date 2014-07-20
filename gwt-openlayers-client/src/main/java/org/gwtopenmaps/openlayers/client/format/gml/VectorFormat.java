@@ -14,7 +14,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwtopenmaps.openlayers.client.format.GML;
+package org.gwtopenmaps.openlayers.client.format.gml;
 
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.format.Format;

@@ -14,36 +14,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwtopenmaps.openlayers.client.format.GML.v2;
+package org.gwtopenmaps.openlayers.client.format.gml.v2;
 
-import org.gwtopenmaps.openlayers.client.format.GML.VectorFormat;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
- * Wraps OpenLayers.Format.GML.v2
- *
- * Brief explanation of Geographic Markup Language (GML) vector format here.
- *
- * Reference to GML specification. GML is OGC standard.
- *
- * See http://www.ogc.org/
- *
  * @author Edwin Commandeur - Atlis EJS
  * @author Mikael Couzic
  */
-public class GML2 extends VectorFormat {
+class GML2Impl {
 
-    protected GML2(JSObject gmlFormat) {
-        super(gmlFormat);
-    }
-
-    /**
-     * Unique constructor taking required options as a parameter.
-     *
-     * @param options required options
-     */
-    public GML2(GML2Options options) {
-        this(GML2Impl.create(options.getJSObject()));
-    }
+    public static native JSObject create(JSObject options) /*-{
+     return new $wnd.OpenLayers.Format.GML.v2(options);
+     }-*/;
 
 }

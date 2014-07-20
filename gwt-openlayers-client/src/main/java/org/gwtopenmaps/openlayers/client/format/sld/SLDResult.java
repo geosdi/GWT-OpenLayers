@@ -47,9 +47,10 @@ public class SLDResult extends OpenLayersEObjectWrapper {
      * Get the user style map from an SLD object
      *
      * @param sld
-     * @return
+     * 
+     * @return {@link JSObject} jsobject
      */
-    public static native JSObject getUserStyle(JSObject sld)/*-{
+    private static native JSObject getUserStyle(JSObject sld)/*-{
      for ( var l in sld.namedLayers) {
      var styles = sld.namedLayers[l].userStyles;
      return styles[0];

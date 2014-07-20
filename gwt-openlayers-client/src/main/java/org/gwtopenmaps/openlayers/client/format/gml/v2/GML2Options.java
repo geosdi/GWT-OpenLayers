@@ -14,19 +14,30 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwtopenmaps.openlayers.client.format.GML.GML;
+package org.gwtopenmaps.openlayers.client.format.gml.v2;
 
+import org.gwtopenmaps.openlayers.client.format.GML.Base.Base;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
 
 /**
+ * Properties to be initialized for any GML2 by passing this object to the
+ * constructor
  *
  * @author Mikael Couzic
  *
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
+ * @email giuseppe.lascaleia@geosdi.org
  */
-class GMLImpl {
+public class GML2Options extends Base {
 
-    public static native JSObject create() /*-{
-     return new $wnd.OpenLayers.Format.GML();
-     }-*/;
+    protected GML2Options(JSObject jsObject) {
+        super(jsObject);
+    }
+
+    public GML2Options(String featureNS, String featureType) {
+        super(featureNS, featureType);
+
+    }
 
 }

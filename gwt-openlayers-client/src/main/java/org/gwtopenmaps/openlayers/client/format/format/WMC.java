@@ -35,16 +35,26 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class WMC extends Format {
+public class WMC extends Format<Map, String> {
+
+    private WMCOptions wmcOptions;
 
     protected WMC(JSObject element) {
         super(element);
     }
 
-    public WMC() {
+    public WMC(WMCOptions theWMCOptions) {
         this(WMCImpl.create());
+        this.wmcOptions = theWMCOptions;
     }
 
+    /**
+     *
+     * @param map
+     *
+     * @return {@link String} string
+     */
+    @Override
     public String write(Map map) {
         return FormatImpl.write(getJSObject(), map.getJSObject());
     }
@@ -52,13 +62,37 @@ public class WMC extends Format {
     /**
      *
      * @param input
-     * @param wmcOptions
-     * @return map object
+     *
+     * @return {@link Map} map
      */
-    public Map read(String input, WMCOptions wmcOptions) {
-        Map map = Map.narrowToMap(FormatImpl.read(getJSObject(), input, wmcOptions.getJSObject()));
+    @Override
+    public Map read(String input) {
+        if (this.wmcOptions == null) {
+            throw new IllegalStateException("The property wmcOptions must not "
+                    + "be null.");
+        }
+        Map map = Map.narrowToMap(FormatImpl.read(getJSObject(), input,
+                this.wmcOptions.getJSObject()));
 
         return map;
+    }
+
+    /**
+     * @return the wmcOption
+     */
+    public WMCOptions getWmcOptions() {
+        return wmcOptions;
+    }
+
+    /**
+     * <p>
+     * The {@link WMCOptions} wmcOptions to use for read operation.
+     * </p>
+     *
+     * @param wmcOptions the wmcOptions to set
+     */
+    public void setWmcOptions(WMCOptions wmcOptions) {
+        this.wmcOptions = wmcOptions;
     }
 
 }

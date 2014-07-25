@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ * Copyright 2014 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers;
 
@@ -30,7 +30,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Simple example that creates each time you run the Public Folder containing
+ * <p>
+ * Simple example that creates each time you run the Public Folder containing
  * txt files of each Sample </p>
  *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
@@ -59,7 +60,7 @@ public class CodeGeneratorTest {
     public void generateSourceCode() {
         File folder = new File(EXAMPLES_DIR);
         for (File file : folder.listFiles()) {
-            if (file.isDirectory()) {
+            if ((file.isDirectory()) && (file.list().length > 0)) {
                 scanFolder(file);
             }
         }
@@ -67,8 +68,28 @@ public class CodeGeneratorTest {
 
     private void scanFolder(File folder) {
         for (File file : folder.listFiles()) {
-            if (!file.isDirectory() && file.getName().endsWith(".java")) {
-                createFile(file, EXAMPLES_PUBLIC_DIR + folder.getName() + "/");
+            if (!(file.isDirectory()) && (file.getName().endsWith(".java"))) {
+                createFile(file, EXAMPLES_PUBLIC_DIR + folder.getName()
+                        + File.separator);
+            } else {
+                if ((file.isDirectory()) && (file.list().length > 0)) {
+                    scanSubDirs(file);
+                }
+            }
+        }
+    }
+
+    private void scanSubDirs(File dir) {
+        for (File f : dir.listFiles()) {
+            if (!(f.isDirectory()) && (f.getName().endsWith(".java"))) {
+                String path = f.getPath().replaceAll(f.getName(), "");
+                int index = path.indexOf(File.separator + "examples" + File.separator);
+                String completePath = path.substring(index + 10, path.length());
+                createFile(f, EXAMPLES_PUBLIC_DIR + completePath);
+            } else {
+                if ((f.isDirectory()) && (f.listFiles().length > 0)) {
+                    scanSubDirs(f);
+                }
             }
         }
     }
@@ -84,7 +105,7 @@ public class CodeGeneratorTest {
                     .length() - 4) + "txt";
             File publicSourceFile = new File(folder + fileName);
             File folderFile = new File(folder);
-            folderFile.mkdir();
+            folderFile.mkdirs();
             FileOutputStream out = new FileOutputStream(publicSourceFile);
             out.write(javaCode.getBytes());
             out.flush();

@@ -32,8 +32,11 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * A format object can read and write vector features in a specific format.
  *
  * @author Edwin Commandeur - Atlis EJS
+ *
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
+ * @email giuseppe.lascaleia@geosdi.org
  */
-public class VectorFormat extends Format {
+public class VectorFormat extends Format<VectorFeature[], String> {
 
     protected VectorFormat(JSObject element) {
         super(element);

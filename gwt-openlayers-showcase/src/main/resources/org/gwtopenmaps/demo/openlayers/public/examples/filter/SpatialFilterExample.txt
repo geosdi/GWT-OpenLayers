@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ * Copyright 2014 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.demo.openlayers.client.examples.filter;
 
@@ -51,12 +51,11 @@ import com.google.gwt.user.client.ui.HTML;
 /**
  * @author Frank Wynants/www.fks.be
  */
-
 public class SpatialFilterExample extends AbstractExample {
     @Inject
     public SpatialFilterExample(ShowcaseExampleStore store) {
         super("WFS SpatialFilter example", "Shows how to filter a wfs layer using a SpatialFilter.",
-              new String[]{"WFS", "filter", "FeatureIdFilter"}, store);
+                new String[]{"WFS", "filter", "FeatureIdFilter"}, store);
     }
 
     @Override
@@ -109,12 +108,9 @@ public class SpatialFilterExample extends AbstractExample {
         map.addControl(drawFeature);
         drawFeature.activate();
 
-        wfsLayer.addVectorFeatureAddedListener(new VectorFeatureAddedListener()
-        {
-            public void onFeatureAdded(FeatureAddedEvent eventObject)
-            {
-                if (eventObject.getVectorFeature().getGeometry().getClassName().equals("OpenLayers.Geometry.Polygon"))
-                {
+        wfsLayer.addVectorFeatureAddedListener(new VectorFeatureAddedListener() {
+            public void onFeatureAdded(FeatureAddedEvent eventObject) {
+                if (eventObject.getVectorFeature().getGeometry().getClassName().equals("OpenLayers.Geometry.Polygon")) {
                     SpatialFilter spatialFilter = new SpatialFilter();
                     spatialFilter.setType(Types.INTERSECTS);
                     spatialFilter.setGeometryValue(eventObject.getVectorFeature().getGeometry());
@@ -135,9 +131,9 @@ public class SpatialFilterExample extends AbstractExample {
 
         contentPanel
                 .add(new HTML(
-                        "<p>This example shows how you can filter out a WFS layer using a Filter. In this example a SpatialFilter is used. " +
-                        "When you draw a polygon on the map, the filter for the WFS layer will be updated, " +
-                        "and only features that intersect your drawn polygon will be requested."));
+                                "<p>This example shows how you can filter out a WFS layer using a Filter. In this example a SpatialFilter is used. "
+                                + "When you draw a polygon on the map, the filter for the WFS layer will be updated, "
+                                + "and only features that intersect your drawn polygon will be requested."));
         contentPanel.add(mapWidget);
 
         initWidget(contentPanel);

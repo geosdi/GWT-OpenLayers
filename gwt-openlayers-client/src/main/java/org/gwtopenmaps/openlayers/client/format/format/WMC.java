@@ -48,6 +48,10 @@ public class WMC extends Format<Map, String> {
         this.wmcOptions = theWMCOptions;
     }
 
+    public WMC() {
+        this(new WMCOptions());
+    }
+
     /**
      *
      * @param map

@@ -91,6 +91,7 @@ import org.gwtopenmaps.demo.openlayers.client.puregwt.ShowcaseEventBusImpl;
 
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.user.client.ui.Image;
+import org.gwtopenmaps.demo.openlayers.client.examples.format.wmc.WMCFormatExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.format.xml.XMLFormatExample;
 
 /**
@@ -175,7 +176,8 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(GwtWidgetExample.class).asEagerSingleton();
         bind(KeyMaskExample.class).asEagerSingleton();
         bind(SldExample.class).asEagerSingleton();
-        bind((XMLFormatExample.class)).asEagerSingleton();
+        bind(XMLFormatExample.class).asEagerSingleton();
+        bind(WMCFormatExample.class).asEagerSingleton();
     }
 
 }

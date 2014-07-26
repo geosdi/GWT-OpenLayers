@@ -13,14 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.gwtopenmaps.demo.openlayers.client.examples.format.wmc.resources;
 
-package org.gwtopenmaps.demo.openlayers.client.examples.format.wmc;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.TextResource;
 
 /**
  *
  * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
  * @email giuseppe.lascaleia@geosdi.org
  */
-public class Test {
+public interface WMCThemeResources extends ClientBundle {
+
+    public static final WMCThemeResources RESOURCES = GWT.create(WMCThemeResources.class);
+
+    @Source(value = "css/wmc.css")
+    TextResource wmcCSS();
 
 }

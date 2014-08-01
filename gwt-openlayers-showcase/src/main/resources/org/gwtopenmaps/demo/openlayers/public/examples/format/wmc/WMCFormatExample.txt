@@ -34,6 +34,7 @@ import org.gwtopenmaps.openlayers.client.MapWidget;
 import org.gwtopenmaps.openlayers.client.OpenLayers;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.format.format.WMC;
+import org.gwtopenmaps.openlayers.client.format.format.WMCOptions;
 import org.gwtopenmaps.openlayers.client.layer.Layer;
 import org.gwtopenmaps.openlayers.client.layer.WMS;
 import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
@@ -45,14 +46,16 @@ import org.gwtopenmaps.openlayers.client.layer.WMSParams;
  * @email giuseppe.lascaleia@geosdi.org
  */
 public class WMCFormatExample extends AbstractExample {
-    
+
     private static final WMC wmcFormat = new WMC();
+    //
+    private Map map;
 
     @Inject
     public WMCFormatExample(ShowcaseExampleStore store) {
         super("WMC Format Example", "Shows how to use WMC Format.",
                 new String[]{"WMC", "Format"}, store);
-        
+
         StyleInjector.inject(WMCThemeResources.RESOURCES.wmcCSS().getText());
     }
 
@@ -124,7 +127,7 @@ public class WMCFormatExample extends AbstractExample {
                 + "/WMSServlet/AccuWeather_Maps.wms", nexradParams,
                 nexradOptions);
 
-        final Map map = mapWidget.getMap();
+        map = mapWidget.getMap();
         map.addLayers(new Layer[]{gwc, vmap, roads, nexrad});
 
         map.addControl(new LayerSwitcher());
@@ -134,7 +137,7 @@ public class WMCFormatExample extends AbstractExample {
         contentPanel.add(new HTML(
                 "<p>Shows parsing of Web Map Context documents.</p>"));
         contentPanel.add(mapWidget);
-        
+
         final TextArea output = new TextArea();
         output.setStyleName("wmc");
         output.setText("paste WMC doc here");
@@ -146,12 +149,30 @@ public class WMCFormatExample extends AbstractExample {
                 output.setText(wmcString);
             }
         }));
-  
+
+        contentPanel.add(new Button("read and merge", new ClickHandler() {
+
+            public void onClick(ClickEvent event) {
+                if ((output.getText() != null)
+                        && (output.getText().contains("ViewContext"))) {
+                    WMCOptions wmcOptions = new WMCOptions();
+                    wmcOptions.setMap(map);
+                    wmcFormat.setWmcOptions(wmcOptions);
+                    map = wmcFormat.read(output.getText());
+                }
+            }
+        }));
+
         contentPanel.add(output);
 
         initWidget(contentPanel);
 
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); //force the map to fall behind popups
+
+        contentPanel.add(new HTML("<p>This is an example of parsing WMC documents. <br>\n"
+                + "The format class has a layerOptions property, which can be used\n"
+                + "to control the default options of the layer when it is created\n"
+                + "by the parser.</p>"));
     }
 
     @Override

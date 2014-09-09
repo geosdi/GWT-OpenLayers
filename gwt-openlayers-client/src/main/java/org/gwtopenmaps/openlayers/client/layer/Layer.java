@@ -16,8 +16,7 @@
  */
 package org.gwtopenmaps.openlayers.client.layer;
 
-import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
-import org.gwtopenmaps.openlayers.client.Projection;
+import org.gwtopenmaps.openlayers.client.*;
 import org.gwtopenmaps.openlayers.client.event.EventHandler;
 import org.gwtopenmaps.openlayers.client.event.EventObject;
 import org.gwtopenmaps.openlayers.client.event.EventType;
@@ -30,6 +29,7 @@ import org.gwtopenmaps.openlayers.client.event.LayerLoadStartListener.LoadStartE
 import org.gwtopenmaps.openlayers.client.event.LayerVisibilityChangedListener;
 import org.gwtopenmaps.openlayers.client.event.LayerVisibilityChangedListener.VisibilityChangedEvent;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
+
 import com.google.gwt.core.client.JsArrayMixed;
 
 /**
@@ -43,7 +43,9 @@ import com.google.gwt.core.client.JsArrayMixed;
 public class Layer extends OpenLayersEObjectWrapper {
 
     public static final String ARCGIS93REST_CLASS_NAME = "OpenLayers.Layer.ArcGIS93Rest";
+    public static final String BING_CLASS_NAME = "OpenLayers.Layer.Bing";
     public static final String BOXES_CLASS_NAME = "OpenLayers.Layer.Boxes";
+    public static final String GML_CLASS_NAME = "OpenLayers.Layer.GML";
     public static final String GOOGLE_CLASS_NAME = "OpenLayers.Layer.Google";
     public static final String GRIDLAYER_CLASS_NAME = "OpenLayers.Layer.Grid";
     public static final String HTTPREQUESTLAYER_CLASS_NAME = "OpenLayers.Layer.HTTPRequest";
@@ -52,12 +54,88 @@ public class Layer extends OpenLayersEObjectWrapper {
     public static final String OSM_CLASS_NAME = "OpenLayers.Layer.OSM";
     public static final String TMS_CLASS_NAME = "OpenLayers.Layer.TMS";
     public static final String VECTOR_CLASS_NAME = "OpenLayers.Layer.Vector";
+    public static final String WFS_CLASS_NAME = "OpenLayers.Layer.WFS";
     public static final String WMS_CLASS_NAME = "OpenLayers.Layer.WMS";
+    public static final String WMTS_CLASS_NAME = "OpenLayers.Layer.WMTS";
     public static final String XYZ_CLASS_NAME = "OpenLayers.Layer.XYZ";
 
-    public static Layer narrowToLayer(JSObject layer) {
-        return (layer == null) ? null : new Layer(layer);
-    }
+	public static Layer narrowToLayer(JSObject layer)
+	{
+		// try to return an instance of the concrete GWT class instead of a generic Layer instance
+		// this will allow callers to directly use the returned instance without allocating another instance
+		// of a GWT class
+		if (layer != null)
+		{
+			String className = OpenLayersObjectWrapper.narrowToOpenLayersObjectWrapper(layer).getClassName();
+			if (ARCGIS93REST_CLASS_NAME.equals(className))
+			{
+				return new ArcGIS93Rest(layer);
+			}
+			if (BING_CLASS_NAME.equals(className))
+			{
+				return new Bing(layer);
+			}
+			if (BOXES_CLASS_NAME.equals(className))
+			{
+				return new Boxes(layer);
+			}
+			if (GML_CLASS_NAME.equals(className))
+			{
+				return new GML(layer);
+			}
+			if (GOOGLE_CLASS_NAME.equals(className))
+			{
+				return new Google(layer);
+			}
+			if (GRIDLAYER_CLASS_NAME.equals(className))
+			{
+				return new GridLayer(layer);
+			}
+			if (HTTPREQUESTLAYER_CLASS_NAME.equals(className))
+			{
+				return new HTTPRequestLayer(layer);
+			}
+			if (IMAGE_CLASS_NAME.equals(className))
+			{
+				return new Image(layer);
+			}
+			if (MARKERS_CLASS_NAME.equals(className))
+			{
+				return new Markers(layer);
+			}
+			if (OSM_CLASS_NAME.equals(className))
+			{
+				return new OSM(layer);
+			}
+			if (TMS_CLASS_NAME.equals(className))
+			{
+				return new TMS(layer);
+			}
+			if (VECTOR_CLASS_NAME.equals(className))
+			{
+				return new Vector(layer);
+			}
+			if (WFS_CLASS_NAME.equals(className))
+			{
+				return new WFS(layer);
+			}
+			if (WMS_CLASS_NAME.equals(className))
+			{
+				return new WMS(layer);
+			}
+			if (WMTS_CLASS_NAME.equals(className))
+			{
+				return new WMTS(layer);
+			}
+			if (XYZ_CLASS_NAME.equals(className))
+			{
+				return new XYZ(layer);
+			}
+			// fallback
+			return new Layer(layer);
+		}
+		return null;
+	}
 
     // TODO: add support for moveend event
     // TODO: refactor to use getJSObject().getProperty/setProperty

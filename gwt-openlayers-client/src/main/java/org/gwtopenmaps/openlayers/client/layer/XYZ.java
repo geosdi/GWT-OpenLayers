@@ -89,10 +89,6 @@ public class XYZ extends GridLayer {
 		return XYZImpl.getZoomOffset(this.getJSObject());
 	}
 	
-    public static XYZ narrowToXYZ(JSObject xyzLayer) {
-        return (xyzLayer == null) ? null : new XYZ(xyzLayer);
-    }
-    
 	/**
 	 * Sets a range of zoomlevels.
 	 * @param minZoomLevel minimum zoomlevel

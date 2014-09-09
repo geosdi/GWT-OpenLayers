@@ -33,8 +33,4 @@ public class Bing extends XYZ {
         this(BingImpl.create(options.getJSObject()));
     }
     
-    @Override
-    public Bing narrowToXYZ(JSObject bingLayer) {
-        return (bingLayer == null) ? null : new Bing(bingLayer);
-    }
 }

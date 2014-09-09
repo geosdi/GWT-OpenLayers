@@ -36,10 +36,6 @@ public class GoogleV3 extends Layer {
 		super(element);
 	}
 
-	public GoogleV3 narrowToGoogle(JSObject google) {
-		return (google == null) ? null : new GoogleV3(google);
-	}
-
 	public GoogleV3(String name) {
 		this(GoogleV3Impl.create(name));
 	}

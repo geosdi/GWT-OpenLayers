@@ -52,11 +52,6 @@ public class Markers extends Layer
         this(MarkersImpl.create(name, options.getJSObject()));
     }
 
-    public Markers narrowToMarkers(JSObject markersLayer)
-    {
-        return (markersLayer == null) ? null : new Markers(markersLayer);
-    }
-
     public void addMarker(Marker marker)
     {
         MarkersImpl.addMarker(getJSObject(), marker.getJSObject());

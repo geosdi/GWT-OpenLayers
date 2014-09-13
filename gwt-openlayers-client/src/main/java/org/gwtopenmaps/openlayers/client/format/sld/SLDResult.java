@@ -23,6 +23,9 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 /**
  *
  * @author Zsolt Sandor
+ *
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
+ * @email giuseppe.lascaleia@geosdi.org
  */
 public class SLDResult extends OpenLayersEObjectWrapper {
 
@@ -47,14 +50,17 @@ public class SLDResult extends OpenLayersEObjectWrapper {
      * Get the user style map from an SLD object
      *
      * @param sld
-     * 
+     *
      * @return {@link JSObject} jsobject
      */
     private static native JSObject getUserStyle(JSObject sld)/*-{
+     if(sld && sld.namedLayers) {
      for ( var l in sld.namedLayers) {
      var styles = sld.namedLayers[l].userStyles;
      return styles[0];
      }
+     }
+     return null;
      }-*/;
 
 }

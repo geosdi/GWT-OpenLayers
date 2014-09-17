@@ -25,8 +25,9 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
 * From OL API docs: Base class for layers that use a lattice of tiles.
  * 
 * @author Edwin Commandeur - Atlis EJS
- * @author Michel Vitor A Rodrigues - Intec
- * 
+* @author Michel Vitor A Rodrigues - Intec
+* @author Nazzareno Sileno - CNR IMAA geoSDI Group
+* @email nazzareno.sileno@geosdi.org 
 */
 public class GridLayer extends HTTPRequestLayer {
 
@@ -68,6 +69,10 @@ public class GridLayer extends HTTPRequestLayer {
 
     public void setSingleTile(boolean singleTile) {
         GridLayerImpl.setSingleTile(getJSObject(), singleTile);
+    }
+
+    public boolean isSingleTile() {
+        return GridLayerImpl.isSingleTile(getJSObject());
     }
 
     public void setRatio(float ratio) {

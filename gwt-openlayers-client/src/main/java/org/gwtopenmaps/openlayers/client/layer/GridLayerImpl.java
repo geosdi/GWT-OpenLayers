@@ -18,7 +18,10 @@ package org.gwtopenmaps.openlayers.client.layer;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
+/**
+ * @author Nazzareno Sileno - CNR IMAA geoSDI Group
+ * @email nazzareno.sileno@geosdi.org 
+ */
 public class GridLayerImpl
 {
 
@@ -38,6 +41,10 @@ public class GridLayerImpl
 
     public static native void setSingleTile(JSObject self, boolean singleTile) /*-{
         self.singleTile = singleTile;
+    }-*/;
+    
+    public static native boolean isSingleTile(JSObject self) /*-{
+        return self.singleTile;
     }-*/;
 
     public static native void setRatio(JSObject self, float ratio) /*-{

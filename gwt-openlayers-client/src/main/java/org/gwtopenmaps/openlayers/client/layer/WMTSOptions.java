@@ -51,6 +51,26 @@ public class WMTSOptions extends GridLayerOptions {
         setStyle(style);
         setMatrixSet(matrixSet);
     }
+    
+     /**
+     *
+     * <p>Required configuration properties: </p>
+     * <ul>
+     * <li>url - {String} Array The base url for the </li>
+     * <li>layer - {String} The layer identifier.</li>
+     * <li>style - {String} The layer style identifier.</li>
+     * <li>matrixSet - {String} The tile matrix set identifier.</li>
+     * </ul>
+     */
+    public WMTSOptions(String[] url, String layer, String style,
+            String matrixSet) {
+        super();
+        setUrl(url);
+        setLayer(layer);
+        setStyle(style);
+        setMatrixSet(matrixSet);
+    }
+
 
     protected WMTSOptions(JSObject jsObject) {
         super(jsObject);
@@ -58,6 +78,10 @@ public class WMTSOptions extends GridLayerOptions {
 
     protected final void setUrl(String url) {
         getJSObject().setProperty("url", url);
+    }
+    
+    protected final void setUrl(String[] url) {
+        getJSObject().setProperty("url", JStringArray.create(url).getJSObject());
     }
 
     protected final void setLayer(String layer) {

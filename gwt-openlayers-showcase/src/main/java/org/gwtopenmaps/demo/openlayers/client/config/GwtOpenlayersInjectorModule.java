@@ -94,6 +94,7 @@ import com.google.gwt.user.client.ui.Image;
 import org.gwtopenmaps.demo.openlayers.client.examples.format.wmc.WMCFormatExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.format.xml.XMLFormatExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.sld.graphicfill.GraphicFillExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.wmts.WMTSModisTerra;
 
 /**
  *
@@ -180,6 +181,7 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(XMLFormatExample.class).asEagerSingleton();
         bind(WMCFormatExample.class).asEagerSingleton();
         bind(GraphicFillExample.class).asEagerSingleton();
+        bind(WMTSModisTerra.class).asEagerSingleton();
     }
 
 }

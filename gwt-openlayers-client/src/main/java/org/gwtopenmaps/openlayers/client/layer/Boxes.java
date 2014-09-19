@@ -46,11 +46,6 @@ public class Boxes extends Markers
         this(BoxesImpl.create(name));
     }
 
-    public Boxes narrowToBoxes(JSObject boxes)
-    {
-        return (boxes == null) ? null : new Boxes(boxes);
-    }
-
     public void drawMarker(Box marker)
     {
         BoxesImpl.drawMarker(getJSObject(), marker);

@@ -134,11 +134,6 @@ public class ArcGIS93Rest extends GridLayer
         this(ArcGIS93RestImpl.create(name, new JStringArray(urls).getJSObject(), params.getJSObject(), layerParams.getJSObject()));
     }
 
-    public ArcGIS93Rest narrowToArcGIS93Rest(JSObject arcgis93Rest)
-    {
-        return (arcgis93Rest == null) ? null : new ArcGIS93Rest(arcgis93Rest);
-    }
-
     /**
      * APIProperty: isBaseLayer
      * {Boolean} Default is true for ArcGIS93Rest layer

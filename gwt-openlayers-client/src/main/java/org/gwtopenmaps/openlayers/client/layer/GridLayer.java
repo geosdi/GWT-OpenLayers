@@ -58,11 +58,6 @@ public class GridLayer extends HTTPRequestLayer {
                         "transitionEffect"));
     }
 
-    public GridLayer narrowToGridLayer(JSObject gridLayer) {
-        return (gridLayer == null) ? null : new GridLayer(gridLayer);
-
-    }
-
     public void setTitleSize(Integer tileSize) {
         GridLayerImpl.setTitleSize(getJSObject(), tileSize);
     }

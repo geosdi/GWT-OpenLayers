@@ -52,11 +52,6 @@ public class Image extends Layer
 
     }
 
-    public Image narrowToImage(JSObject imageLayer)
-    {
-        return (imageLayer == null) ? null : new Image(imageLayer);
-    }
-
     public Bounds getExtent()
     {
         return Bounds.narrowToBounds(ImageImpl.getExtent(getJSObject()));

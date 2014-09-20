@@ -14,7 +14,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.gwtopenmaps.openlayers.client.format.format;
+package org.gwtopenmaps.openlayers.client.format.format.wmc;
 
 import org.gwtopenmaps.openlayers.client.Map;
 import org.gwtopenmaps.openlayers.client.format.Format;

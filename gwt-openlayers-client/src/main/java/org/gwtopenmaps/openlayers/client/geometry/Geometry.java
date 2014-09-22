@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ * Copyright 2014 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.geometry;
 
@@ -57,113 +57,112 @@ public class Geometry extends OpenLayersObjectWrapper {
         public double getDistance();
 
         /**
-         * @return x coordinate of the closest point on this
-         * geometry. <code>null</code> if no details available.
+         * @return x coordinate of the closest point on this geometry.
+         * <code>null</code> if no details available.
          */
         public Double getX0();
 
         /**
-         * @return y coordinate of the closest point on this
-         * geometry. <code>null</code> if no details available.
+         * @return y coordinate of the closest point on this geometry.
+         * <code>null</code> if no details available.
          */
         public Double getY0();
 
         /**
-         * @return x coordinate of the closest point on the target
-         * geometry. <code>null</code> if no details available.
+         * @return x coordinate of the closest point on the target geometry.
+         * <code>null</code> if no details available.
          */
         public Double getX1();
 
         /**
-         * @return y coordinate of the closest point on the target
-         * geometry. <code>null</code> if no details available.
+         * @return y coordinate of the closest point on the target geometry.
+         * <code>null</code> if no details available.
          */
         public Double getY1();
     }
-
+    
     private class DistanceImpl implements Distance {
-
+        
         private double distance;
         private Double x0 = null;
         private Double y0 = null;
         private Double x1 = null;
         private Double y1 = null;
-
+        
         public DistanceImpl(double distance) {
             this.distance = distance;
         }
-
+        
         public double getDistance() {
             return distance;
         }
-
+        
         public Double getX0() {
             return x0;
         }
-
+        
         public void setX0(Double x0) {
             this.x0 = x0;
         }
-
+        
         public Double getY0() {
             return y0;
         }
-
+        
         public void setY0(Double y0) {
             this.y0 = y0;
         }
-
+        
         public Double getX1() {
             return x1;
         }
-
+        
         public void setX1(Double x1) {
             this.x1 = x1;
         }
-
+        
         public Double getY1() {
             return y1;
         }
-
+        
         public void setY1(Double y1) {
             this.y1 = y1;
         }
     }
-
+    
     public static Geometry narrowToGeometry(JSObject element) {
-		// return null on null
-		if (element == null)
-		{
-			return null;
-		}
-		// try to return an instance of the concrete GWT class instead of a generic Geometry instance
-		// this will allow callers to directly use the returned instance without allocating another instance 
-		// of a GWT class
-		String className = OpenLayersObjectWrapper.narrowToOpenLayersObjectWrapper(element).getClassName();
-		
-                return geometryHandlerManager.buildGeometry(className, element);
+        // return null on null
+        if (element == null) {
+            return null;
+        }
+        // try to return an instance of the concrete GWT class instead of a generic Geometry instance
+        // this will allow callers to directly use the returned instance without allocating another instance 
+        // of a GWT class
+        String className = element.getPropertyAsString("CLASS_NAME");
+        
+        return geometryHandlerManager.buildGeometry(className, element);
     }
-
+    
     public static Geometry fromWKT(String wkt) {
         return narrowToGeometry(GeometryImpl.fromWKT(wkt));
     }
-
+    
     protected Geometry(JSObject element) {
         super(element);
     }
-
+    
     public void destroy() {
         GeometryImpl.destroy(getJSObject());
     }
-
+    
     public Bounds getBounds() {
         return Bounds.narrowToBounds(GeometryImpl.getBounds(this.getJSObject()));
     }
-
+    
     public String toString() {
         return GeometryImpl.toString(this.getJSObject());
     }
-
+    
     public Geometry clone() {
         return narrowToGeometry(GeometryImpl.clone(this.getJSObject()));
     }
@@ -175,11 +174,11 @@ public class Geometry extends OpenLayersObjectWrapper {
     public void calculateBounds() {
         GeometryImpl.calculateBounds(getJSObject());
     }
-
+    
     public double getArea() {
         return 0;
     }
-
+    
     public double getLength() {
         return 0.0;
     }
@@ -222,26 +221,27 @@ public class Geometry extends OpenLayersObjectWrapper {
             JSObject options) {
         JSObject distanceJSObject = GeometryImpl.distanceTo(getJSObject(),
                 geometry.getJSObject(), options);
-
-        DistanceImpl distance = new DistanceImpl(distanceJSObject.getPropertyAsDouble(
-                "distance"));
-
+        
+        DistanceImpl distance = new DistanceImpl(
+                distanceJSObject.getPropertyAsDouble(
+                        "distance"));
+        
         if (distanceJSObject.hasProperty("x0")) {
             distance.setX0(distanceJSObject.getPropertyAsDouble("x0"));
         }
-
+        
         if (distanceJSObject.hasProperty("y0")) {
             distance.setY0(distanceJSObject.getPropertyAsDouble("y0"));
         }
-
+        
         if (distanceJSObject.hasProperty("x1")) {
             distance.setX1(distanceJSObject.getPropertyAsDouble("x1"));
         }
-
+        
         if (distanceJSObject.hasProperty("y1")) {
             distance.setY1(distanceJSObject.getPropertyAsDouble("y1"));
         }
-
+        
         return distance;
     }
 
@@ -256,14 +256,14 @@ public class Geometry extends OpenLayersObjectWrapper {
     public Point[] getVertices(boolean nodes) {
         JsArray<JSObject> vertices = GeometryImpl.getVertices(getJSObject(),
                 nodes);
-
+        
         Point[] points = new Point[vertices.length()];
-
+        
         for (int i = 0; i < vertices.length(); i++) {
-
+            
             points[i] = new Point(vertices.get(i));
         }
-
+        
         return points;
     }
 
@@ -300,7 +300,7 @@ public class Geometry extends OpenLayersObjectWrapper {
      */
     public void transform(Projection source,
             Projection dest) {
-
+        
         GeometryImpl.transform(getJSObject(), source.getJSObject(),
                 dest.getJSObject());
     }

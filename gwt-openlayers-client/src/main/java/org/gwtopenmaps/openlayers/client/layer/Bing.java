@@ -24,16 +24,23 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  * @email giuseppe.lascaleia@geosdi.org
  */
 public class Bing extends XYZ {
-
+    
     protected Bing(JSObject xyzLayer) {
         super(xyzLayer);
     }
-
+    
     public Bing(BingOptions options) {
         this(BingImpl.create(options.getJSObject()));
     }
-
-    public static Bing narrowToXYZ(JSObject bingLayer) {
-        return (bingLayer == null) ? null : new Bing(bingLayer);
+    
+    @Override
+    protected LayerCreator<Bing> getLayerCreator() {
+        return new LayerCreator<Bing>() {
+            
+            public Bing createLayer(JSObject jsObject) {
+                return new Bing(jsObject);
+            }
+        };
     }
+    
 }

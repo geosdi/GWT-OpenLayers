@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ * Copyright 2014 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.layer;
 
@@ -39,12 +39,22 @@ import com.google.gwt.core.client.JsArrayMixed;
  *
  * @author Nazzareno Sileno - CNR IMAA geoSDI Group -
  * @email nazzareno.sileno@geosdi.org
+ *
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
+ * @email giuseppe.lascaleia@geosdi.org
  */
 public class Layer extends OpenLayersEObjectWrapper {
+
+    static {
+        layerCreatorStore = new OpenLayerCreatorStore();
+    }
+
+    private final static LayerCreatorStore layerCreatorStore;
 
     public static final String ARCGIS93REST_CLASS_NAME = "OpenLayers.Layer.ArcGIS93Rest";
     public static final String BOXES_CLASS_NAME = "OpenLayers.Layer.Boxes";
     public static final String GOOGLE_CLASS_NAME = "OpenLayers.Layer.Google";
+    public static final String BING_CLASS_NAME = "OpenLayers.Layer.Bing";
     public static final String GRIDLAYER_CLASS_NAME = "OpenLayers.Layer.Grid";
     public static final String HTTPREQUESTLAYER_CLASS_NAME = "OpenLayers.Layer.HTTPRequest";
     public static final String IMAGE_CLASS_NAME = "OpenLayers.Layer.Image";
@@ -54,15 +64,18 @@ public class Layer extends OpenLayersEObjectWrapper {
     public static final String VECTOR_CLASS_NAME = "OpenLayers.Layer.Vector";
     public static final String WMS_CLASS_NAME = "OpenLayers.Layer.WMS";
     public static final String XYZ_CLASS_NAME = "OpenLayers.Layer.XYZ";
+    public static final String WMTS_CLASS_NAME = "OpenLayers.Layer.TMS";
+    public static final String LAYER_CLASS_NAME = "OpenLayers.Layer";
 
-    public static Layer narrowToLayer(JSObject layer) {
-        return (layer == null) ? null : new Layer(layer);
+    public static <L extends Layer> L narrowToLayer(JSObject layer) {
+        return layerCreatorStore.createLayer(layer);
     }
 
     // TODO: add support for moveend event
     // TODO: refactor to use getJSObject().getProperty/setProperty
     protected Layer(JSObject element) {
         super(element);
+        layerCreatorStore.registerLayerCreator(this);
     }
 
     public void setIsBaseLayer(boolean isBaseLayer) {
@@ -139,22 +152,19 @@ public class Layer extends OpenLayersEObjectWrapper {
 
     /**
      * APIMethod: calculateInRange
-     * 
-     * Returns:
-     * {Boolean} The layer is displayable at the current map's current
-     *     resolution. Note that if 'alwaysInRange' is true for the layer, 
-     *     this function will always return true.
+     *
+     * Returns: {Boolean} The layer is displayable at the current map's current
+     * resolution. Note that if 'alwaysInRange' is true for the layer, this
+     * function will always return true.
      */
-
     public boolean calculateInRange() {
         return LayerImpl.calculateInRange(getJSObject());
     }
-    
-    /** 
-     * Property: inRange
-     * {Boolean} The current map resolution is within the layer's min/max 
-     *     range. This is set in <OpenLayers.Map.setCenter> whenever the zoom 
-     *     changes.
+
+    /**
+     * Property: inRange {Boolean} The current map resolution is within the
+     * layer's min/max range. This is set in <OpenLayers.Map.setCenter> whenever
+     * the zoom changes.
      */
     public boolean isInRange() {
         return LayerImpl.isInRange(getJSObject());
@@ -249,45 +259,41 @@ public class Layer extends OpenLayersEObjectWrapper {
                 });
     }
 
-	/**
-	 * Gets the contents of the given {@link JsArrayMixed} as a double array.
-	 * @param o {@link JsArrayMixed}
-	 * @return double[] if the array is not null, else null
-	 */
-	private static double[] getDoubleArray(JsArrayMixed o)
-	{
-		if (o != null)
-		{
-			double[] a = new double[o.length()];
-			for (int i = 0; i < o.length(); i++)
-			{
-				a[i] = o.getNumber(i);
-			}
-			return a;
-		}
-		else
-		{
-			return null;
-		}
-	}
+    /**
+     * Gets the contents of the given {@link JsArrayMixed} as a double array.
+     *
+     * @param o {@link JsArrayMixed}
+     * @return double[] if the array is not null, else null
+     */
+    private static double[] getDoubleArray(JsArrayMixed o) {
+        if (o != null) {
+            double[] a = new double[o.length()];
+            for (int i = 0; i < o.length(); i++) {
+                a[i] = o.getNumber(i);
+            }
+            return a;
+        } else {
+            return null;
+        }
+    }
 
-	/**
-	 * Get the maximum zoomlevel for this layer.
-	 * @return maximum zoomlevel
-	 */
-	public int getMaxZoomLevel()
-	{
-		return getMinZoomLevel() + LayerImpl.getResolutions(this.getJSObject()).length() - 1;
-	}
+    /**
+     * Get the maximum zoomlevel for this layer.
+     *
+     * @return maximum zoomlevel
+     */
+    public int getMaxZoomLevel() {
+        return getMinZoomLevel() + LayerImpl.getResolutions(this.getJSObject()).length() - 1;
+    }
 
-	/**
-	 * Get the minimum zoomlevel for this layer.
-	 * @return minimum zoomlevel
-	 */
-	public int getMinZoomLevel()
-	{
-		return (int) this.getJSObject().getPropertyAsDouble("zoomOffset");
-	}
+    /**
+     * Get the minimum zoomlevel for this layer.
+     *
+     * @return minimum zoomlevel
+     */
+    public int getMinZoomLevel() {
+        return (int) this.getJSObject().getPropertyAsDouble("zoomOffset");
+    }
 
     public double getResolutionForZoom(double zoom) {
         double result = -1;
@@ -297,27 +303,50 @@ public class Layer extends OpenLayersEObjectWrapper {
         return result;
     }
 
-	/**
-	 * Get all resolutions for the layer.
-	 * @return resolutions
-	 */
-	public double[] getResolutions()
-	{
-		return getDoubleArray(LayerImpl.getResolutions(this.getJSObject()));
-	}
+    /**
+     * Get all resolutions for the layer.
+     *
+     * @return resolutions
+     */
+    public double[] getResolutions() {
+        return getDoubleArray(LayerImpl.getResolutions(this.getJSObject()));
+    }
 
-	/**
-	 * Get all scales for the layer.
-	 * @return scales
-	 */
-	public double[] getScales()
-	{
-		return getDoubleArray(LayerImpl.getScales(this.getJSObject()));
-	}
+    /**
+     * Get all scales for the layer.
+     *
+     * @return scales
+     */
+    public double[] getScales() {
+        return getDoubleArray(LayerImpl.getScales(this.getJSObject()));
+    }
 
     public Projection getProjection() {
         return Projection.narrowToProjection(LayerImpl.getProjection(
                 getJSObject()));
+    }
+
+    /**
+     * <p>
+     * This method must be present in all Layer subclasses, so we can have the
+     * real JavaBean Implementation.
+     * </p>
+     *
+     * @param <L>
+     * @return {@link LayerCreator} layerCreator
+     */
+    protected <L extends Layer> LayerCreator<L> getLayerCreator() {
+        return new LayerCreator<L>() {
+
+            public L createLayer(JSObject jsObject) {
+                return (L) new Layer(jsObject);
+            }
+        };
+    }
+
+    protected interface LayerCreator<L extends Layer> {
+
+        L createLayer(JSObject jsObject);
     }
 
 }

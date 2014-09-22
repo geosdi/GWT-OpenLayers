@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ * Copyright 2014 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client.layer;
 
@@ -29,10 +29,6 @@ public class WMS extends GridLayer {
         super(wms);
     }
 
-    public static WMS narrowToWMS(JSObject wms) {
-        return (wms == null) ? null : new WMS(wms);
-    }
-
     public WMS(String name,
             String url,
             WMSParams params) {
@@ -44,14 +40,14 @@ public class WMS extends GridLayer {
             WMSParams params,
             WMSOptions layerParams) {
         this(WMSImpl.create(name, url, params.getJSObject(),
-                            layerParams.getJSObject()));
+                layerParams.getJSObject()));
     }
 
     public WMS(String name,
             String[] urls,
             WMSParams params) {
         this(WMSImpl.create(name, new JStringArray(urls).getJSObject(),
-                            params.getJSObject()));
+                params.getJSObject()));
     }
 
     public WMS(String name,
@@ -59,7 +55,7 @@ public class WMS extends GridLayer {
             WMSParams params,
             WMSOptions layerParams) {
         this(WMSImpl.create(name, new JStringArray(urls).getJSObject(),
-                            params.getJSObject(), layerParams.getJSObject()));
+                params.getJSObject(), layerParams.getJSObject()));
     }
 
     public int getNumLoadingTiles() {
@@ -75,4 +71,15 @@ public class WMS extends GridLayer {
         JSObject options = LayerImpl.getOptions(getJSObject());
         return new WMSOptions(options);
     }
+
+    @Override
+    protected LayerCreator<WMS> getLayerCreator() {
+        return new LayerCreator<WMS>() {
+
+            public WMS createLayer(JSObject jsObject) {
+                return new WMS(jsObject);
+            }
+        };
+    }
+
 }

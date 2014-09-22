@@ -16,10 +16,10 @@
  */
 package org.gwtopenmaps.openlayers.client;
 
+import com.google.gwt.dom.client.Element;
 import org.gwtopenmaps.openlayers.client.Map.BrowserMenuListener;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-import com.google.gwt.user.client.Element;
 
 /**
  *

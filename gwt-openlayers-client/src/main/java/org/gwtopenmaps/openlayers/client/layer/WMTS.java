@@ -33,4 +33,14 @@ public class WMTS extends GridLayer {
         this(WMTSImpl.create(config.getJSObject()));
     }
 
+    @Override
+    protected LayerCreator<WMTS> getLayerCreator() {
+        return new LayerCreator<WMTS>() {
+
+            public WMTS createLayer(JSObject jsObject) {
+                return new WMTS(jsObject);
+            }
+        };
+    }
+
 }

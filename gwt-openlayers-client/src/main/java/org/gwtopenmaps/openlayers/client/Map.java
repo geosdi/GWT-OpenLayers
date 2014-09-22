@@ -16,7 +16,7 @@
  */
 package org.gwtopenmaps.openlayers.client;
 
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import java.util.ArrayList;
 import java.util.List;
 import org.gwtopenmaps.openlayers.client.control.Control;

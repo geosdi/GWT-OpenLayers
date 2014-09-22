@@ -17,11 +17,13 @@
 
 -->
 <module>
-	<inherits name='com.google.gwt.user.User'/>
-	<inherits name="org.gwtopenmaps.openlayers.OpenLayers"/>
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="org.gwtopenmaps.openlayers.OpenLayers"/>
 	
-	<source path="client" excludes="**/*TestSuite.java" /> 
+    <source path="client" excludes="**/*TestSuite.java" /> 
 	
-	<script src="http://www.openlayers.org/api/OpenLayers.js"/>
-        <script src="js/gwt-openlayers/util.js"/>
+    <script src="http://www.openlayers.org/api/OpenLayers.js"/>
+    <script src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"/>
+    <script src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"/>
+    <script src="js/gwt-openlayers/util.js"/>
 </module>

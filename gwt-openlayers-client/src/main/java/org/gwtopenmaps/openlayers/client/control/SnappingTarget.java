@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2014 sourceforge.
+ * Copyright 2014 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 /**
  *
@@ -23,23 +23,19 @@ import org.gwtopenmaps.openlayers.client.OpenLayersEObjectWrapper;
 import org.gwtopenmaps.openlayers.client.layer.Vector;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
-
 /**
  * @author Lorenzo Amato - CNR IMAA geoSDI Group
  * @email lorenzo.amato@geosdi.org
  *
  */
-public class SnappingTarget extends OpenLayersEObjectWrapper
-{
+public class SnappingTarget extends OpenLayersEObjectWrapper {
 
-    public SnappingTarget(JSObject openLayersObject)
-    {
+    public SnappingTarget(JSObject openLayersObject) {
         super(openLayersObject);
         // TODO Auto-generated constructor stub
     }
 
-    public SnappingTarget()
-    {
+    public SnappingTarget() {
         super(JSObject.createJSObject());
     }
 
@@ -47,8 +43,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param layer
      */
-    public void setLayer(Vector layer)
-    {
+    public void setLayer(Vector layer) {
         getJSObject().setProperty("layer", layer.getJSObject());
     }
 
@@ -56,17 +51,15 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @return Vector
      */
-    public Vector getLayer()
-    {
-        return Vector.narrowToVector(getJSObject().getProperty("layer"));
+    public Vector getLayer() {
+        return Vector.narrowToLayer(getJSObject().getProperty("layer"));
     }
 
     /**
      *
      * @return Tolerance
      */
-    public Float getTolerance()
-    {
+    public Float getTolerance() {
         return getJSObject().getPropertyAsFloat("tolerance");
     }
 
@@ -74,8 +67,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param tolerance
      */
-    public void setTolerance(Float tolerance)
-    {
+    public void setTolerance(Float tolerance) {
         getJSObject().setProperty("tolerance", tolerance);
     }
 
@@ -83,8 +75,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @return boolean
      */
-    public boolean getNode()
-    {
+    public boolean getNode() {
         return getJSObject().getPropertyAsBoolean("node");
     }
 
@@ -92,8 +83,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param node
      */
-    public void setNode(boolean node)
-    {
+    public void setNode(boolean node) {
         getJSObject().setProperty("node", node);
     }
 
@@ -101,8 +91,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @return Node Tolerance
      */
-    public Float getNodeTolerance()
-    {
+    public Float getNodeTolerance() {
         return getJSObject().getPropertyAsFloat("nodeTolerance");
     }
 
@@ -110,8 +99,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param nodeTolerance
      */
-    public void setNodeTolerance(Float nodeTolerance)
-    {
+    public void setNodeTolerance(Float nodeTolerance) {
         getJSObject().setProperty("nodeTolerance", nodeTolerance);
     }
 
@@ -119,8 +107,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @return boolean
      */
-    public boolean getVertex()
-    {
+    public boolean getVertex() {
         return getJSObject().getPropertyAsBoolean("vertex");
     }
 
@@ -128,8 +115,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param vertex
      */
-    public void setVertex(boolean vertex)
-    {
+    public void setVertex(boolean vertex) {
         getJSObject().setProperty("vertex", vertex);
     }
 
@@ -137,8 +123,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @return Vertex Tolerance
      */
-    public Float getVertexTolerance()
-    {
+    public Float getVertexTolerance() {
         return getJSObject().getPropertyAsFloat("vertexTolerance");
     }
 
@@ -146,8 +131,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param vertexTolerance
      */
-    public void setVertexTolerance(Float vertexTolerance)
-    {
+    public void setVertexTolerance(Float vertexTolerance) {
         getJSObject().setProperty("vertexTolerance", vertexTolerance);
     }
 
@@ -155,8 +139,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @return boolean
      */
-    public boolean getEdge()
-    {
+    public boolean getEdge() {
         return getJSObject().getPropertyAsBoolean("edge");
     }
 
@@ -164,8 +147,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param edge
      */
-    public void setEdge(boolean edge)
-    {
+    public void setEdge(boolean edge) {
         getJSObject().setProperty("edge", edge);
     }
 
@@ -173,8 +155,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @return Edge Tolerance
      */
-    public Float getEdgeTolerance()
-    {
+    public Float getEdgeTolerance() {
         return getJSObject().getPropertyAsFloat("edgeTolerance");
     }
 
@@ -182,8 +163,7 @@ public class SnappingTarget extends OpenLayersEObjectWrapper
      *
      * @param edgeTolerance
      */
-    public void setEdgeTolerance(Float edgeTolerance)
-    {
+    public void setEdgeTolerance(Float edgeTolerance) {
         getJSObject().setProperty("edgeTolerance", edgeTolerance);
     }
 

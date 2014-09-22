@@ -26,7 +26,7 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class ChainHandlerManager {
 
-    private PointChainHandler pointHandler = new PointChainHandler();
+    private final PointChainHandler pointHandler = new PointChainHandler();
 
     public <H extends Handler> H buildHandler(JSObject jsObject) {
         return pointHandler.buildHandler(jsObject);

@@ -25,6 +25,9 @@ import org.gwtopenmaps.openlayers.client.util.JStringArray;
  *
  * @see XYZOptions
  * @author Andrew Hughes
+ *
+ * @author Giuseppe La Scaleia - CNR IMAA geoSDI Group
+ * @email giuseppe.lascaleia@geosdi.org
  */
 public class XYZ extends GridLayer {
 
@@ -85,10 +88,6 @@ public class XYZ extends GridLayer {
         return ((double) (1 << zoomLevel)) * 256;
     }
 
-    public static XYZ narrowToXYZ(JSObject xyzLayer) {
-        return (xyzLayer == null) ? null : new XYZ(xyzLayer);
-    }
-
     /**
      * Sets a range of zoomlevels.
      *
@@ -127,4 +126,15 @@ public class XYZ extends GridLayer {
     public void setZoomOffset(int zoomOffset) {
         XYZImpl.setZoomOffset(this.getJSObject(), zoomOffset);
     }
+
+    @Override
+    protected <L extends Layer> LayerCreator<L> getLayerCreator() {
+        return new LayerCreator<L>() {
+
+            public L createLayer(JSObject jsObject) {
+                return (L) new XYZ(jsObject);
+            }
+        };
+    }
+
 }

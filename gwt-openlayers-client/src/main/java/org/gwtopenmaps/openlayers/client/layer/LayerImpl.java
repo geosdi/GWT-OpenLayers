@@ -123,6 +123,15 @@ class LayerImpl {
 		return layer.resolutions;
 	}-*/;
 
+	/**
+	 * Sets all resolutions for the layer.
+	 * @param layer layer
+	 * @param resolutions A list of map resolutions (map units per pixel) in descending order.
+	 */
+	public static native void setResolutions(JSObject layer, double[] resolutions) /*-{
+		layer.resolutions=resolutions;
+	}-*/;
+
 	public static native JsArrayMixed getScales(JSObject layer)	/*-{
 		return layer.scales;
 	}-*/;

@@ -304,13 +304,24 @@ public class Layer extends OpenLayersEObjectWrapper {
     }
 
     /**
-     * Get all resolutions for the layer.
-     *
-     * @return resolutions
-     */
+	 * Get all resolutions for the layer.
+	 * @return resolutions A list of map resolutions (map units per pixel) in descending order. If this is not set in the
+	 *         layer constructor, it will be set based on other resolution related properties (maxExtent, maxResolution,
+	 *         maxScale, etc.).
+	 */
     public double[] getResolutions() {
         return getDoubleArray(LayerImpl.getResolutions(this.getJSObject()));
     }
+    
+    
+	/**
+	 * Sets all resolutions for the layer.
+	 * @param resolutions A list of map resolutions (map units per pixel) in descending order.
+	 */
+	public void setResolutions(double[] resolutions)
+	{
+		LayerImpl.setResolutions(this.getJSObject(), resolutions);
+	}
 
     /**
      * Get all scales for the layer.

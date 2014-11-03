@@ -70,7 +70,7 @@ public class XYZ extends GridLayer {
      * @param zoomLevel zoomlevel
      * @return ground resolution
      */
-    private double getGroundResolutionInMeters(double latitude,
+    public static double getGroundResolutionInMeters(double latitude,
             int zoomLevel) {
         return Math.cos(latitude * Math.PI / 180) * 2 * Math.PI * dEarthRadius / getMapSizeInPixels(
                 zoomLevel);
@@ -84,7 +84,7 @@ public class XYZ extends GridLayer {
      * detail).
      * @return The map width and height in pixels.
      */
-    private double getMapSizeInPixels(int zoomLevel) {
+    public static double getMapSizeInPixels(int zoomLevel) {
         return ((double) (1 << zoomLevel)) * 256;
     }
 

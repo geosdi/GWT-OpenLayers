@@ -197,13 +197,13 @@ public class Collection extends Geometry {
      *
      * Compute the centroid for this geometry collection.
      *
-     * Parameters: weighted - {Boolean} Perform the getCentroid computation
+     * Parameters: weighted - {boolean} Perform the getCentroid computation
      * recursively, returning an area weighted average of all geometries in this
      * collection.
      *
      * Returns: {<OpenLayers.Geometry.Point>} The centroid of the collection
      */
-    public Point getCentroid(Boolean weighted) {
+    public Point getCentroid(boolean weighted) {
         return Point.narrowToPoint(CollectionImpl.getCentroid(getJSObject(),
                 weighted));
     }

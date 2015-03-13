@@ -97,4 +97,8 @@ class CollectionImpl {
     public static native String getComponentsString(JSObject self) /*-{
         return self.getComponentsString();
     }-*/;
+    
+    public static native JSObject getCentroid(JSObject self, Boolean weighted) /*-{
+        return self.getCentroid(weighted);
+    }-*/;
 }

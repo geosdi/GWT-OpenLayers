@@ -1,18 +1,18 @@
 /**
  *
- *   Copyright 2015 sourceforge.
+ * Copyright 2015 sourceforge.
  *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  *
- *        http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
  */
 package org.gwtopenmaps.openlayers.client;
 
@@ -525,9 +525,7 @@ public class Map extends OpenLayersEObjectWrapper {
         MapImpl.updateSize(getJSObject());
     }
 
-    ;
-
-	public void destroy() {
+    public void destroy() {
         MapImpl.destroy(getJSObject());
     }
 
@@ -536,13 +534,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener,
                 EventType.MAP_BASE_LAYER_CHANGED, new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapBaseLayerChangedEvent e = new MapBaseLayerChangedEvent(
-                        eventObject);
-                listener.onBaseLayerChanged(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapBaseLayerChangedEvent e = new MapBaseLayerChangedEvent(
+                                eventObject);
+                        listener.onBaseLayerChanged(e);
+                    }
 
-        });
+                });
 
     }
 
@@ -560,13 +558,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_LAYER_ADDED,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapLayerAddedEvent e = new MapLayerAddedEvent(
-                        eventObject);
-                listener.onLayerAdded(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapLayerAddedEvent e = new MapLayerAddedEvent(
+                                eventObject);
+                        listener.onLayerAdded(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -583,13 +581,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_LAYER_CHANGED,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapLayerChangedEvent e = new MapLayerChangedEvent(
-                        eventObject);
-                listener.onLayerChanged(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapLayerChangedEvent e = new MapLayerChangedEvent(
+                                eventObject);
+                        listener.onLayerChanged(e);
+                    }
 
-        });
+                });
 
     }
 
@@ -608,13 +606,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_LAYER_REMOVED,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapLayerRemovedEvent e = new MapLayerRemovedEvent(
-                        eventObject);
-                listener.onLayerRemoved(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapLayerRemovedEvent e = new MapLayerRemovedEvent(
+                                eventObject);
+                        listener.onLayerRemoved(e);
+                    }
 
-        });
+                });
 
     }
 
@@ -632,12 +630,12 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_MOVE,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapMoveEvent e = new MapMoveEvent(eventObject);
-                listener.onMapMove(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapMoveEvent e = new MapMoveEvent(eventObject);
+                        listener.onMapMove(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -653,12 +651,12 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_MOVEEND,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapMoveEndEvent e = new MapMoveEndEvent(eventObject);
-                listener.onMapMoveEnd(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapMoveEndEvent e = new MapMoveEndEvent(eventObject);
+                        listener.onMapMoveEnd(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -674,12 +672,12 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_ZOOMEND,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapZoomEvent e = new MapZoomEvent(eventObject);
-                listener.onMapZoom(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapZoomEvent e = new MapZoomEvent(eventObject);
+                        listener.onMapZoom(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -695,13 +693,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_MARKER_ADDED,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapMarkerAddedEvent e = new MapMarkerAddedEvent(
-                        eventObject);
-                listener.onMarkerAdded(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapMarkerAddedEvent e = new MapMarkerAddedEvent(
+                                eventObject);
+                        listener.onMarkerAdded(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -719,13 +717,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_MARKER_REMOVED,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(
-                        eventObject);
-                listener.onMarkerRemoved(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapMarkerRemovedEvent e = new MapMarkerRemovedEvent(
+                                eventObject);
+                        listener.onMarkerRemoved(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -742,13 +740,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_POPUP_OPEN,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapPopupOpenedEvent e = new MapPopupOpenedEvent(
-                        eventObject);
-                listener.onPopupOpened(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapPopupOpenedEvent e = new MapPopupOpenedEvent(
+                                eventObject);
+                        listener.onPopupOpened(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -765,13 +763,13 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_POPUP_CLOSE,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapPopupClosedEvent e = new MapPopupClosedEvent(
-                        eventObject);
-                listener.onPopupClosed(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapPopupClosedEvent e = new MapPopupClosedEvent(
+                                eventObject);
+                        listener.onPopupClosed(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -788,12 +786,12 @@ public class Map extends OpenLayersEObjectWrapper {
         eventListeners.addListener(this, listener, EventType.MAP_CLICK,
                 new EventHandler() {
 
-            public void onHandle(EventObject eventObject) {
-                MapClickEvent e = new MapClickEvent(eventObject);
-                listener.onClick(e);
-            }
+                    public void onHandle(EventObject eventObject) {
+                        MapClickEvent e = new MapClickEvent(eventObject);
+                        listener.onClick(e);
+                    }
 
-        });
+                });
     }
 
     /**
@@ -845,13 +843,14 @@ public class Map extends OpenLayersEObjectWrapper {
     }
 
     /**
-     * Set the min and max zoomlevel of the map.
-     * This blocks zooming further out or in than the given levels.
+     * Set the min and max zoomlevel of the map. This blocks zooming further out
+     * or in than the given levels.
+     *
      * @param minZoomLevel The minlevel to zoom
      * @param maxZoomLevel The maxlevel to zoom
      */
-	public void setMinMaxZoomLevel(int minZoomLevel, int maxZoomLevel) {
-		MapImpl.setMinMaxZoomLevel(getJSObject(), minZoomLevel, maxZoomLevel);
-	}
+    public void setMinMaxZoomLevel(int minZoomLevel, int maxZoomLevel) {
+        MapImpl.setMinMaxZoomLevel(getJSObject(), minZoomLevel, maxZoomLevel);
+    }
 
 }

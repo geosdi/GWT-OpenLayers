@@ -40,3 +40,10 @@ gwt-openlayers-showcase/.classpath
 gwt-openlayers-showcase/.project
 gwt-openlayers-showcase/.settings
 
+
+.idea
+gwt-openlayers.iml
+gwt-openlayers-cas-server/gwt-openlayers-cas-server.iml
+gwt-openlayers-client/gwt-openlayers-client.iml
+gwt-openlayers-server/gwt-openlayers-server.iml
+gwt-openlayers-showcase/gwt-openlayers-showcase.iml

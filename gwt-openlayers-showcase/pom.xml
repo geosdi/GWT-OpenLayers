@@ -141,14 +141,13 @@
                 <version>2.7.0</version>
                 <configuration>
                     <inplace>true</inplace>
-                    <gwtVersion>${gwtVersion}</gwtVersion>
                     <module>org.gwtopenmaps.demo.openlayers.GwtOpenLayersShowcase</module>
                     <runTarget>GwtOpenLayersShowcase.html</runTarget>
                     <warSourceDirectory>war</warSourceDirectory>
                     <disableCastChecking>true</disableCastChecking>
                     <disableClassMetadata>true</disableClassMetadata>
                     <hostedWebapp>${basedir}/war</hostedWebapp>
-                    <sourceLevel>1.6</sourceLevel>
+                    <sourceLevel>1.7</sourceLevel>
                     <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                 </configuration>
                 <executions>
@@ -156,7 +155,7 @@
                         <id>test</id>
                         <goals>
                             <goal>clean</goal>
-                            <goal>compile</goal>
+                            <!-- goal>compile</goal -->
                             <goal>generateAsync</goal>
                             <goal>test</goal>
                         </goals>

@@ -124,5 +124,4 @@ public class StyleMap extends OpenLayersObjectWrapper {
         JSObject style = getJSObject().getProperty("styles").getProperty(symbolizer);
         StyleImpl.addRules(style, array.getJSObject());
     }
-
 }

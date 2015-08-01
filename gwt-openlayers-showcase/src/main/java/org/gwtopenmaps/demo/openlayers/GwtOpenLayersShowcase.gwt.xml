@@ -19,6 +19,7 @@
 <module rename-to="gwt_ol_showcase">
 
     <inherits name='com.google.gwt.user.User'/>
+    <inherits name="com.google.gwt.logging.Logging"/>
     <inherits name='com.google.gwt.user.theme.clean.Clean'/>
     <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
     <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
@@ -26,6 +27,13 @@
 
     <!-- Other module inherits                                      -->
     <inherits name='org.gwtopenmaps.openlayers.OpenLayers'/>
+
+    <!--Logging configuration-->
+    <set-property name="gwt.logging.enabled" value="TRUE"/>
+    <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
+    <set-property name="gwt.logging.logLevel" value="INFO"/>
+
+    <!--END Logging configuration-->
 
     <!--Entry point class.                         -->
     <entry-point class='org.gwtopenmaps.demo.openlayers.client.GwtOpenLayersShowcase'/>

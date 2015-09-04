@@ -104,13 +104,17 @@ public class VectorFeature extends Feature {
         VectorFeatureImpl.setFeatureId(getJSObject(), feaureID);
     }
 
+    public void setFID(String fid) {
+        VectorFeatureImpl.setFID(getJSObject(), fid);
+    }
+
     /**
      * Set the attributes. This object (attributes) holds arbitrary properties
      * that describe the feature. <p> Note: the attributes are only applied for
      * styles defined inside a {@link StyleMap}. If just using a single style
      * for the {@link VectorOptions} the attributes will be ignored.
      *
-     * @param vectorFeatureAttributes The attributes to set
+     * @param attributes The attributes to set
      */
     public void setAttributes(Attributes attributes) {
         getJSObject().setProperty("attributes", attributes.getJSObject());

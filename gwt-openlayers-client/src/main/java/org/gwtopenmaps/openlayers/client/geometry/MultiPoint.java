@@ -67,7 +67,7 @@ public class MultiPoint extends Collection {
      * Add a point to the MultiPoint
      *
      * @param point The point to add
-     * @param The index
+     * @param index
      */
     public void addPoint(Point point, int index) {
         addComponent(point, index);

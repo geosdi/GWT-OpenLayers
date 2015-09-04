@@ -41,6 +41,10 @@ public class VectorFeatureImpl {
      obj.id = featureId;
      }-*/;
 
+    public static native void setFID(JSObject obj, String fid) /*-{
+     obj.fid = fid;
+     }-*/;
+
     public static native boolean redraw(JSObject layer, boolean force) /*-{
      return layer.redraw(force);
      }-*/;

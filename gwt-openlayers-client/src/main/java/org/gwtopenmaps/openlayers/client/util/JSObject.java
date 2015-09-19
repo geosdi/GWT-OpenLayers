@@ -1,18 +1,17 @@
 /**
- *
- *   Copyright 2015 sourceforge.
- *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
+ * Copyright 2015 sourceforge.
+ * <p/>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p/>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p/>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.gwtopenmaps.openlayers.client.util;
 
@@ -41,98 +40,79 @@ import com.google.gwt.dom.client.Element;
  * @author Edwin Commandeur - Atlis EJS
  *
  */
-public class JSObject extends JavaScriptObject
-{
+public class JSObject extends JavaScriptObject {
 
-    public static JSObject createJSObject()
-    {
+    public static JSObject createJSObject() {
         return JSObjectHelper.createObject();
     }
 
-    public static JSObject createJSFunction()
-    {
+    public static JSObject createJSFunction() {
         return JSObjectHelper.createFunction();
     }
 
-    public static JSObject createJSArray()
-    {
+    public static JSObject createJSArray() {
         return JSObjectHelper.createArray();
     }
 
-    protected JSObject()
-    {
+    protected JSObject() {
         super();
     }
 
     // TODO: implement setProperty and getProperty methods here
 
-    public final void setProperty(String name, int value)
-    {
+    public final void setProperty(String name, int value) {
         JSObjectHelper.setProperty(this, name, value);
     }
 
-    public final int getPropertyAsInt(String name)
-    {
+    public final int getPropertyAsInt(String name) {
         return JSObjectHelper.getPropertyAsInt(this, name);
     }
 
-    public final void setProperty(String name, String value)
-    {
+    public final void setProperty(String name, String value) {
         JSObjectHelper.setProperty(this, name, value);
     }
 
-    public final String getPropertyAsString(String name)
-    {
+    public final String getPropertyAsString(String name) {
         return JSObjectHelper.getPropertyAsString(this, name);
     }
 
-    public final void setProperty(String name, boolean value)
-    {
+    public final void setProperty(String name, boolean value) {
         JSObjectHelper.setProperty(this, name, value);
     }
 
-    public final boolean getPropertyAsBoolean(String name)
-    {
+    public final boolean getPropertyAsBoolean(String name) {
         return JSObjectHelper.getPropertyAsBoolean(this, name);
     }
 
-    public final void setProperty(String name, float value)
-    {
+    public final void setProperty(String name, float value) {
         JSObjectHelper.setProperty(this, name, value);
     }
 
-    public final float getPropertyAsFloat(String name)
-    {
+    public final float getPropertyAsFloat(String name) {
         return JSObjectHelper.getPropertyAsFloat(this, name);
     }
 
-    public final void setProperty(String name, double value)
-    {
+    public final void setProperty(String name, double value) {
         JSObjectHelper.setProperty(this, name, value);
     }
 
-    public final double getPropertyAsDouble(String name)
-    {
+    public final double getPropertyAsDouble(String name) {
         return JSObjectHelper.getPropertyAsDouble(this, name);
     }
 
-    public final void setProperty(String name, Element value)
-    {
+    public final void setProperty(String name, Element value) {
         JSObjectHelper.setProperty(this, name, value);
     }
 
-    public final Element getPropertyAsDomElement(String name)
-    {
+    public final Element getPropertyAsDomElement(String name) {
         return JSObjectHelper.getPropertyAsDomElement(this, name);
     }
 
-    public final void setProperty(String name, JSObject value)
-    {
+    public final void setProperty(String name, JSObject value) {
         JSObjectHelper.setProperty(this, name, value);
     }
 
-    public final JSObject getProperty(String name)
-    {
+    public final JSObject getProperty(String name) {
         return JSObjectHelper.getProperty(this, name);
     }
 
@@ -142,28 +122,23 @@ public class JSObject extends JavaScriptObject
      * @return property names - A String with the names of all the properties
      *   of the object, separated by a comma. For example: prop1,prop2,prop3.
      */
-    public final String getPropertyNames()
-    {
+    public final String getPropertyNames() {
         return JSObjectHelper.getPropertyNames(this);
     }
 
-    public final String getPropertyValues()
-    {
+    public final String getPropertyValues() {
         return JSObjectHelper.getPropertyValues(this);
     }
 
-    public final boolean hasProperty(String name)
-    {
+    public final boolean hasProperty(String name) {
         return JSObjectHelper.hasProperty(this, name);
     }
 
     /**
      * Unset/Clear the property with the given name. Uses the javascript operator delete
-     * @param object The object in which the property exists
      * @param name The name of the property
      */
-    public final void unsetProperty(String name)
-    {
+    public final void unsetProperty(String name) {
         JSObjectHelper.unsetProperty(this, name);
     }
 
@@ -174,8 +149,7 @@ public class JSObject extends JavaScriptObject
      *
      * @return JSObject - A JavaScript Array
      */
-    public final JSObject ensureOpaqueArray()
-    {
+    public final JSObject ensureOpaqueArray() {
         return JSObjectHelper.ensureOpaqueArray(this);
     }
 
@@ -186,14 +160,13 @@ public class JSObject extends JavaScriptObject
      * @param name
      * @return JSObject[]
      */
-    public final JSObject[] getPropertyAsArray(String name)
-    {
+    public final JSObject[] getPropertyAsArray(String name) {
         JSObject JSArray = JSObjectHelper.ensureOpaqueArray(this.getProperty(name));
         String[] indices = JSArray.getPropertyNames().split(",");
+
         JSObject[] arrayOfProperties = new JSObject[indices.length];
         int i = 0;
-        for (String index : indices)
-        {
+        for (String index : indices) {
             arrayOfProperties[i++] = JSArray.getProperty(index);
         }
 

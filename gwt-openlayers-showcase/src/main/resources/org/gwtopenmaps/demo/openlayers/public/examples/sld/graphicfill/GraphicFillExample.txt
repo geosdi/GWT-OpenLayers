@@ -37,7 +37,6 @@ import org.gwtopenmaps.openlayers.client.format.sld.SLD;
 import org.gwtopenmaps.openlayers.client.format.sld.SLDResult;
 import org.gwtopenmaps.openlayers.client.handler.PolygonHandler;
 import org.gwtopenmaps.openlayers.client.layer.*;
-import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 import javax.inject.Inject;
 import java.util.logging.Logger;
@@ -192,11 +191,6 @@ public class GraphicFillExample extends AbstractExample {
 
         mapWidget.getElement().getFirstChildElement().getStyle().setZIndex(0); // force the map to fall behind popups
     }
-
-    private final native void setStyleMap(JSObject polygonLayer, JSObject styleMap) /*-{
-        polygonLayer.styleMap.styles["default"] = styleMap;
-        polygonLayer.redraw();
-     }-*/;
 
     @Override
     public String getSourceCodeURL() {

@@ -26,8 +26,6 @@ import org.gwtopenmaps.openlayers.client.event.FeaturesSelectedListener;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -51,21 +49,14 @@ public class GetFeatureBoxSelectionExample extends FeatureSelectionExample {
         controlFeature.addFeaturesSelectedListener(new FeaturesSelectedListener() {
 
             public void onFeaturesSelected(final FeaturesSelectedEvent event) {
+                controlFeature.unselectAll();
                 final VectorFeature[] features = event.getFeatures();
-                logger.info("#################features : " + features);
-                List<VectorFeature> cloned = new ArrayList<VectorFeature>(features.length);
-                for(VectorFeature feature : features) {
-                    VectorFeature clone = feature.clone();
-                    clone.setFID(feature.getFID());
-                    cloned.add(clone);
-                }
-                if (select.getNumberOfFeatures() > 0) {
+
+                if(select.getNumberOfFeatures() > 0) {
                     select.removeAllFeatures();
                 }
 
-                for (VectorFeature clone : cloned) {
-                    select.addFeature(clone);
-                }
+                select.addFeatures(features);
             }
 
         });

@@ -41,7 +41,7 @@ under the License.
   		<item name="Maven Central" href="http://repo1.maven.org/maven2/org/org/gwtopenmaps/openlayers/"/>
       <item name="Binary downloads" href="binarydownloads.html"/>
   		<item name="Github" href="https://github.com/geosdi/GWT-OpenLayers"/>  		
-  		<item name="Showcase" href="http://demo.gwt-openlayers.org"/>
+  		<item name="Showcase" href="http://demo.gwtopenlayers.org"/>
   	</links>
     <menu name="Overview">
       <item name="About" href="index.html"/>

@@ -376,7 +376,7 @@ public class Vector extends Layer {
 
     /**
      * Calculates the max extent which includes all of the features of this
-     * vetor layer.
+     * vector layer.
      *
      * @return The bounds of the max extend calculated
      */

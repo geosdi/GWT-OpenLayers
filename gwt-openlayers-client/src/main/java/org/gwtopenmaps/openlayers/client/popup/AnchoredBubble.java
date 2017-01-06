@@ -51,6 +51,7 @@ public class AnchoredBubble extends Popup
                 (anchor != null) ? anchor.getJSObject() : null,
                 closeBox,
                 (closeBoxCallback != null) ? closeBoxCallback : null));
+        this.id = id; 
     }
 
     /**
@@ -69,5 +70,6 @@ public class AnchoredBubble extends Popup
                 html,
                 (anchor != null) ? anchor.getJSObject() : null,
                 closeBox));
+        this.id = id; 
     }
 }

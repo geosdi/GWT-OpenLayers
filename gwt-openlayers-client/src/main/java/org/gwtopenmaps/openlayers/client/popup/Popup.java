@@ -35,6 +35,8 @@ import org.gwtopenmaps.openlayers.client.util.JSObject;
  */
 public class Popup extends OpenLayersObjectWrapper {
 
+    protected String id;
+
     public static Popup narrowToOpenLayersPopup(JSObject element) {
         return (element == null) ? null : new Popup(element);
     }
@@ -57,6 +59,16 @@ public class Popup extends OpenLayersObjectWrapper {
                 (size != null) ? size.getJSObject() : null,
                 html, closeBox,
                 (closeBoxCallback != null) ? closeBoxCallback : null));
+                
+        this.id = id;       
+    }
+    
+    /**
+     * @return The id that was passed in the constructor.
+     */
+    public String getId()
+    {
+        return this.id;
     }
 
     /**

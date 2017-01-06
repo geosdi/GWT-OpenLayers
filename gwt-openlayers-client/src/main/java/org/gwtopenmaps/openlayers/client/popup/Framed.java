@@ -53,6 +53,7 @@ public class Framed extends Popup
                 (anchor != null) ? anchor.getJSObject() : null,
                 closeBox,
                 (closeBoxCallback != null) ? closeBoxCallback : null));
+        this.id = id; 
     }
 
     /**
@@ -73,6 +74,7 @@ public class Framed extends Popup
                 html,
                 (anchor != null) ? anchor.getJSObject() : null,
                 closeBox));
+        this.id = id;   
     }
 
     public Framed(String id, LonLat lonlat, Size size, String html, boolean closeBox)
@@ -83,6 +85,7 @@ public class Framed extends Popup
                 html,
                 null,
                 closeBox));
+        this.id = id; 
     }
 
     public Framed(String id, LonLat lonlat, String html, boolean closeBox)
@@ -93,5 +96,7 @@ public class Framed extends Popup
                 html,
                 null,
                 closeBox));
+                
+        this.id = id; 
     }
 }

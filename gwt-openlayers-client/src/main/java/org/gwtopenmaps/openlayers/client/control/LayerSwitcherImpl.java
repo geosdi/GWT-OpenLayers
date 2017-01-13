@@ -35,4 +35,7 @@ class LayerSwitcherImpl
         return new $wnd.OpenLayers.Control.LayerSwitcher(options);
     }-*/;
 
+    public static native void maximizeControl(JSObject jsObject) /*-{
+        jsObject.maximizeControl();
+    }-*/;
 }

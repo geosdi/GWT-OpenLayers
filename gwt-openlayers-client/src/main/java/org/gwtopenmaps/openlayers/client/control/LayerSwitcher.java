@@ -41,4 +41,9 @@ public class LayerSwitcher extends Control
     {
         this(LayerSwitcherImpl.create(options.getJSObject()));
     }
+    
+    public void maximizeControl()
+    {
+        LayerSwitcherImpl.maximizeControl(getJSObject());  
+    }
 }

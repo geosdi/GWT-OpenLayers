@@ -128,10 +128,10 @@
         </notifiers>
     </ciManagement>
     <properties>
-        <gwt.version>2.7.0</gwt.version>
+        <gwt.version>2.8.0</gwt.version>
         <slf4j-version>1.7.5</slf4j-version>
-        <maven.compiler.source>1.5</maven.compiler.source>
-        <maven.compiler.target>1.5</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <!-- properties with no dots for velocity template filters -->
         <projectGroupId>${project.groupId}</projectGroupId>
         <projectArtifactId>${project.artifactId}</projectArtifactId>

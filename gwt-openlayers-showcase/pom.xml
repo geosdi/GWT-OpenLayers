@@ -138,7 +138,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>2.7.0</version>
+                <version>${gwt.version}</version>
                 <configuration>
                     <inplace>true</inplace>
                     <module>org.gwtopenmaps.demo.openlayers.GwtOpenLayersShowcase</module>
@@ -147,7 +147,7 @@
                     <disableCastChecking>true</disableCastChecking>
                     <disableClassMetadata>true</disableClassMetadata>
                     <hostedWebapp>${basedir}/war</hostedWebapp>
-                    <sourceLevel>1.7</sourceLevel>
+                    <sourceLevel>1.8</sourceLevel>
                     <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                 </configuration>
                 <executions>

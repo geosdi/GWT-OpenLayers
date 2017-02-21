@@ -58,6 +58,8 @@ public class FramedCloud extends Popup
                 (anchor != null) ? anchor.getJSObject() : null,
                 closeBox,
                 (closeBoxCallback != null) ? closeBoxCallback : null));
+                
+        this.id = id;
     }
 
     /**
@@ -80,6 +82,7 @@ public class FramedCloud extends Popup
                 (anchor != null) ? anchor.getJSObject() : null,
                 closeBox));
 
+        this.id = id;
         // if size is not defined set Size to auto
         //
     }

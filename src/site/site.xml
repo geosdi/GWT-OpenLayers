@@ -38,7 +38,7 @@ under the License.
     </head>
   	<links>
   		<item name="Client Javadocs" href="./apidocs/index.html"/>
-  		<item name="Maven Central" href="http://repo1.maven.org/maven2/org/org/gwtopenmaps/openlayers/"/>
+  		<item name="Maven Central" href="http://repo1.maven.org/maven2/org/gwtopenmaps/openlayers/"/>
       <item name="Binary downloads" href="binarydownloads.html"/>
   		<item name="Github" href="https://github.com/geosdi/GWT-OpenLayers"/>  		
   		<item name="Showcase" href="http://demo.gwtopenlayers.org"/>

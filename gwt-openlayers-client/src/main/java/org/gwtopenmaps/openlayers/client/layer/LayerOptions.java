@@ -148,7 +148,7 @@ public class LayerOptions extends JSObjectWrapper {
      * Defaults to zero. Non-tiled layers always have zero gutter."
      */
     public void setGutter(float gutter) {
-        getJSObject().setProperty("alwaysInRange", gutter);
+        getJSObject().setProperty("gutter", gutter);
     }
 
     /**

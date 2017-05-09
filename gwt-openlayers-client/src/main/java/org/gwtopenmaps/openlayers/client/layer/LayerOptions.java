@@ -273,7 +273,7 @@ public class LayerOptions extends JSObjectWrapper {
     }
 
     public void setTransitionEffect(TransitionEffect transition) {
-        getJSObject().setProperty("transitionEffect", transition.toString());
+        getJSObject().setProperty("transitionEffect", transition.getValue());
     }
 
     /**

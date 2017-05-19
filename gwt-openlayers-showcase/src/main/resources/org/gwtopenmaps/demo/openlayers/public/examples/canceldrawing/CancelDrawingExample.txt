@@ -21,7 +21,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
-import javax.inject.Inject;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
 import org.gwtopenmaps.openlayers.client.LonLat;
@@ -33,11 +32,9 @@ import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
 import org.gwtopenmaps.openlayers.client.handler.PathHandler;
-import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
-import org.gwtopenmaps.openlayers.client.layer.Vector;
-import org.gwtopenmaps.openlayers.client.layer.WMS;
-import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
-import org.gwtopenmaps.openlayers.client.layer.WMSParams;
+import org.gwtopenmaps.openlayers.client.layer.*;
+
+import javax.inject.Inject;
 
 /**
  *

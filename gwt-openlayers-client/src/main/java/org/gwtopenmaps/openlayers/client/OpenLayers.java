@@ -102,6 +102,14 @@ public class OpenLayers implements EntryPoint {
     public static native double getInchesPerUnit(String units) /*-{
     return $wnd.OpenLayers.INCHES_PER_UNIT[units];
     }-*/;
+	
+	/**
+	 * Fix the problem of large features disappearing when zooming in by updating the MAX_PIXEL value to MAX_VALUE.
+     * This may cause freezes on older browsers like firefox 2.
+	 */
+	public static native void fixOpenLayersDisappearingFeatures() /*-{
+		$wnd.OpenLayers.Renderer.SVG.prototype.MAX_PIXEL = Number.MAX_VALUE;
+	}-*/;
 
     /**
      * Add a new well known graphic.

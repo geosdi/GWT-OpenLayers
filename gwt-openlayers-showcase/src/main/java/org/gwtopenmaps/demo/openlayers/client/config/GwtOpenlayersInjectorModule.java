@@ -42,6 +42,7 @@ import org.gwtopenmaps.demo.openlayers.client.examples.filter.ComparisonAndLogic
 import org.gwtopenmaps.demo.openlayers.client.examples.filter.FeatureIdFilterExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.filter.SpatialFilterExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.format.geojson.GeoJsonFormatExample;
+import org.gwtopenmaps.demo.openlayers.client.examples.format.geojson.GeoJsonFormatReadExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.format.wmc.WMCFormatExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.format.xml.XMLFormatExample;
 import org.gwtopenmaps.demo.openlayers.client.examples.geodesiclength.GeodesicLengthExample;
@@ -176,6 +177,6 @@ public class GwtOpenlayersInjectorModule extends AbstractGinModule {
         bind(WMTSModisTerra.class).asEagerSingleton();
         bind(WMTSModisTerraWithTime.class).asEagerSingleton();
         bind(GeoJsonFormatExample.class).asEagerSingleton();
+        bind(GeoJsonFormatReadExample.class).asEagerSingleton();
     }
-
 }

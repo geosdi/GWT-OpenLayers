@@ -15,6 +15,7 @@
  */
 package org.gwtopenmaps.openlayers.client.format;
 
+import com.google.gwt.json.client.JSONObject;
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 import org.gwtopenmaps.openlayers.client.util.JSObjectWrapper;
@@ -52,7 +53,7 @@ public class GeoJSON extends VectorFormat {
      * @param obj
      * @return {@link VectorFeature}
      */
-    public VectorFeature parseFeature(JSObjectWrapper obj) {
-        return VectorFeature.narrowToVectorFeature(GeoJSONImpl.parseFeature(getJSObject(), obj.getJSObject()));
+    public VectorFeature parseFeature(JSONObject obj) {
+        return VectorFeature.narrowToVectorFeature(GeoJSONImpl.parseFeature(getJSObject(), obj));
     }
 }

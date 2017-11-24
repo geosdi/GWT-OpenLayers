@@ -15,6 +15,7 @@
  */
 package org.gwtopenmaps.openlayers.client.format;
 
+import com.google.gwt.json.client.JSONObject;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -31,7 +32,7 @@ class GeoJSONImpl {
             return jsonFormat.write(object, pretty);
     }-*/;
 
-    public static native JSObject parseFeature(JSObject jsonFormat, JSObject object)
+    public static native JSObject parseFeature(JSObject jsonFormat, JSONObject object)
     /*-{
             return jsonFormat.parseFeature(object);
     }-*/;

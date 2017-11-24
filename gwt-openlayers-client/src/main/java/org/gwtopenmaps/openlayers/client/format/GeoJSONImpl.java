@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.format.format;
+package org.gwtopenmaps.openlayers.client.format;
 
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
  * @author Edwin Commandeur - Atlis EJS
- *
  */
 class GeoJSONImpl {
 
@@ -30,5 +29,10 @@ class GeoJSONImpl {
     public static native String write(JSObject jsonFormat, JSObject object, Boolean pretty)
     /*-{
             return jsonFormat.write(object, pretty);
+    }-*/;
+
+    public static native JSObject parseFeature(JSObject jsonFormat, JSObject object)
+    /*-{
+            return jsonFormat.parseFeature(object);
     }-*/;
 }

@@ -10,7 +10,7 @@ import org.gwtopenmaps.openlayers.client.MapWidget;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
-import org.gwtopenmaps.openlayers.client.format.format.GeoJSON;
+import org.gwtopenmaps.openlayers.client.format.GeoJSON;
 import org.gwtopenmaps.openlayers.client.layer.*;
 
 import javax.inject.Inject;

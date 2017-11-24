@@ -14,7 +14,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.format.format;
+package org.gwtopenmaps.openlayers.client.format;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;

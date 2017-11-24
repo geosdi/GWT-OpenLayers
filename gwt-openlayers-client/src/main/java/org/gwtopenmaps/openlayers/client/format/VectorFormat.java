@@ -14,11 +14,9 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.format.format;
+package org.gwtopenmaps.openlayers.client.format;
 
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
-import org.gwtopenmaps.openlayers.client.format.Format;
-import org.gwtopenmaps.openlayers.client.format.FormatImpl;
 import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
@@ -44,7 +42,7 @@ public class VectorFormat extends Format<VectorFeature[], String> {
 
     /**
      * Write an array of
-     * {@link org.gwtopenmaps.openlayers.client.feature.VectorFeature} objects
+     * {@link VectorFeature} objects
      * in a particular format that depends on the specific format object.
      *
      * For example, a WKT format object writes the features in Well Known Text
@@ -64,7 +62,7 @@ public class VectorFormat extends Format<VectorFeature[], String> {
     }
 
     /**
-     * Write a {@link org.gwtopenmaps.openlayers.client.feature.VectorFeature}
+     * Write a {@link VectorFeature}
      * in a particular format that depends on the specific format object.
      *
      * For example, a WKT format object writes the features in Well Known Text

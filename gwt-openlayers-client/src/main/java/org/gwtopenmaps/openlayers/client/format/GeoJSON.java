@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.format.format;
+package org.gwtopenmaps.openlayers.client.format;
 
 import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
@@ -46,5 +46,13 @@ public class GeoJSON extends VectorFormat {
      */
     public String write(JSObjectWrapper obj, Boolean pretty) {
         return GeoJSONImpl.write(getJSObject(), obj.getJSObject(), ((pretty != null) ? pretty : FALSE));
+    }
+
+    /**
+     * @param obj
+     * @return {@link VectorFeature}
+     */
+    public VectorFeature parseFeature(JSObjectWrapper obj) {
+        return VectorFeature.narrowToVectorFeature(GeoJSONImpl.parseFeature(getJSObject(), obj.getJSObject()));
     }
 }

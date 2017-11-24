@@ -14,9 +14,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package org.gwtopenmaps.openlayers.client.format.format;
-
-import org.gwtopenmaps.openlayers.client.format.FormatOptions;
+package org.gwtopenmaps.openlayers.client.format;
 
 
 public class WKTOptions extends FormatOptions

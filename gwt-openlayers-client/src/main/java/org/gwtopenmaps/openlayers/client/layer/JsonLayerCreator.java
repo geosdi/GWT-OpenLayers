@@ -16,7 +16,7 @@
  */
 package org.gwtopenmaps.openlayers.client.layer;
 
-import org.gwtopenmaps.openlayers.client.format.format.GeoJSON;
+import org.gwtopenmaps.openlayers.client.format.GeoJSON;
 import org.gwtopenmaps.openlayers.client.protocol.HTTPProtocol;
 import org.gwtopenmaps.openlayers.client.protocol.HTTPProtocolOptions;
 import org.gwtopenmaps.openlayers.client.strategy.FixedStrategy;

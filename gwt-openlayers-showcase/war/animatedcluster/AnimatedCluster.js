@@ -1,15 +1,15 @@
 /* Copyright (c) 2013 by Antonio Santiago <asantiagop_at_gmail_dot_com>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met: 
- * 
+ * modification, are permitted provided that the following conditions are met:
+ *
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer. 
+ *    list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
  *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution. 
- * 
+ *    and/or other materials provided with the distribution.
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -22,12 +22,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * The views and conclusions contained in the software and documentation are those
- * of the authors and should not be interpreted as representing official policies, 
+ * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of OpenLayers Contributors.
  */
 
 /**
- * @requires OpenLayers/Strategy/Cluster
+ * @requires OpenLayers/Strategy/Cluster.js
  */
 
 /**
@@ -38,7 +38,7 @@
  *  - <OpenLayers.Strategy.Cluster>
  */
 OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Cluster, {
-    
+
     /**
      * APIProperty: animationMethod
      * {<OpenLayers.Easing>(Function)} Easing equation used for the animation
@@ -47,37 +47,37 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
     animationMethod: OpenLayers.Easing.Expo.easeOut,
     /**
      * APIProperty: animationDuration
-     * {Integer} The number of steps to be passed to the OpenLayers.Tween.start() 
+     * {Integer} The number of steps to be passed to the OpenLayers.Tween.start()
      * method when the clusters are animated.
      * Default is 20.
      */
     animationDuration: 20,
-    
+
     /**
      * Property: animationTween
      * {OpenLayers.Tween} Animated panning tween object.
      */
     animationTween: null,
-    
+
     /**
      * Property: previousResolution
      * {Float} The previous resolution of the map.
      */
     previousResolution: null,
-    
+
     /**
      * Property: previousClusters
      * {Array(<OpenLayers.Feature.Vector>)} Clusters of features at previous
      * resolution.
      */
     previousClusters: null,
-    
+
     /**
      * Property: animating
      * {Boolean} Indicates if we are in the process of clusters animation.
      */
     animating: false,
-    
+
     /**
      * Property: zoomIn
      * {Boolean} Indicates if we are zooming in or zooming out.
@@ -94,12 +94,12 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
      */
     initialize: function(options) {
         OpenLayers.Strategy.Cluster.prototype.initialize.apply(this, arguments);
-        
+
         if(options.animationMethod) {
             this.animationMethod = options.animationMethod;
         }
     },
-    
+
     /**
      * Method: destroy
      * Free resources.
@@ -110,7 +110,15 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
             this.animationTween = null;
         }
     },
-    
+    /**
+     * Redraw features.
+     */
+    redraw: function() {
+        // After removeAllFeatures and/or destroyFeatures is called it removes only clusters
+        // but but they don't affect the original features the clustering strategy holds in cache.
+        // Changing the clustering strategy resolution forces the addFeatures() to redraw features.
+        this.resolution = -1;
+    },
     /**
      * Method: cluster
      * Cluster features based on some threshold distance.
@@ -125,19 +133,19 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
         var isPan = (event && event.type=="moveend" && !event.zoomChanged);
 
         // Each time clusters are animated we need to call layer.redraw to show
-        // position changes. This produces layer will be redrawn and a call to 
+        // position changes. This produces layer will be redrawn and a call to
         // cluster is made.
         // Because this, ff we are animating clusters and zoom didn't changed, simply return.
         if(this.animating && (resolution == this.resolution)) {
             return;
         }
-        
+
         if((!event || event.zoomChanged || isPan) && this.features) {
 
-            if(resolution != this.resolution || !this.clustersExist() || isPan) { 
+            if(resolution != this.resolution || !this.clustersExist() || isPan) {
 
                 if(resolution != this.resolution) {
-                    this.zoomIn = (!this.resolution || (resolution <= this.resolution));
+                    this.zoomIn = (!this.resolution || ((resolution <= this.resolution)||(resolution > this.resolution)));
                 }
 
                 // Store previous data if we are changing zoom level
@@ -149,7 +157,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                 var feature, clustered, cluster;
                 for(var i=0; i<this.features.length; ++i) {
                     feature = this.features[i];
-                    
+
                     // Check if the feature's geometry is on the map's viewport,
                     // if so then manages it, otherwise ignore.
                     if(this.layer && this.layer.map) {
@@ -158,8 +166,8 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                         if(!screenBounds.intersectsBounds(featureBounds)) {
                             continue;
                         }
-                    }  
-                    
+                    }
+
                     if(feature.geometry) {
                         // Cluster for the current resolution
                         clustered = false;
@@ -175,7 +183,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                             clusters.push(this.createCluster(this.features[i]));
                         }
                     }
-                }                
+                }
                 // Apply threshold for cluster at current resolution
                 if(clusters.length > 0) {
                     if(this.threshold > 1) {
@@ -193,7 +201,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                     }
                 }
                 this.clusters = clusters;
-                
+
                 this.clustering = true;
                 // Add clusters features to the layer
                 this.layer.removeAllFeatures();
@@ -206,7 +214,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                     this.layer.addFeatures(this.previousClusters);
                 }
                 this.clustering = false;
-                
+
                 // Get the initial and final position of each cluster required
                 // make the animation
                 if(this.clusters.length > 0 && this.previousClusters) {
@@ -245,7 +253,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                             }
                         }
                     }
-                    
+
                     // If we are panning then don't animate the cluster
                     if(isPan && !this.animating){
                       // Make sure that layer gets redrawn, even if it is just a pan.
@@ -259,10 +267,10 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                     }
                     this.animating = true;
                     this.animationTween.start({
-                        x: 0.0, 
+                        x: 0.0,
                         y: 0.0
                     }, {
-                        x: 1.0, 
+                        x: 1.0,
                         y: 1.0
                     }, this.animationDuration, {
                         callbacks: {
@@ -274,9 +282,9 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                                 var clusters = this.zoomIn ? this.clusters : this.previousClusters;
                                 for(var i=0; i< clusters.length; i++) {
                                     // if is this really a cluster and not a feature
-                                    if (clusters[i].attributes.count) { 
+                                    if (clusters[i].attributes.count) {
                                         if (clusters[i].cluster._geometry) {
-                                            delete clusters[i].cluster._geometry;                                        
+                                            delete clusters[i].cluster._geometry;
                                         } else if (clusters[i]._geometry) {
                                             delete clusters[i]._geometry;
                                         }
@@ -290,7 +298,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
                                     this.layer.removeFeatures(this.previousClusters);
                                     this.layer.addFeatures(this.clusters);
                                     this.clustering = false;
-                                    
+
                                 }
                                 this.animating = false;
                             }, this)
@@ -300,7 +308,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
             }
         }
     },
-    
+
     /**
      * Method: findFeaturesInClusters
      * Given a set of features and an array of clusters returns the cluster
@@ -311,7 +319,7 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
      * clusters - A cluster as an array of <OpenLayers.Feature.Vector>.
      *
      * Returns:
-     * {<OpenLayers.Feature.Vector>} The cluster where the first feature of 
+     * {<OpenLayers.Feature.Vector>} The cluster where the first feature of
      * the feature array is found.
      */
     findFeaturesInClusters: function(features, clusters) {
@@ -320,40 +328,48 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
             for(var j=0; j<clusters.length; j++) {
                 var cluster = clusters[j];
                 // if cluster is really cluster not a feature
-                if (cluster.attributes.count) { 
+                if (cluster.attributes.count) {
                     var clusterFeatures = clusters[j].cluster;
                     for(var k=0; k<clusterFeatures.length; k++) {
                         if(feature.id == clusterFeatures[k].id) {
                             return cluster;
                         }
-                    }           
+                    }
                 }
             }
         }
         return null;
     },
-    /** 
+    /**
      * APIMethod: animate
      * Animates the clusters changing its position.
-     * 
+     *
      * Parameters:
-     * delta - {Object} Object with x-y values with the new increments to 
+     * delta - {Object} Object with x-y values with the new increments to
      * be applied.
      */
-    animate: function(delta) { 
+    animate: function(delta) {
         var clusters = this.zoomIn ? this.clusters : this.previousClusters;
         for(var i=0; i<clusters.length; i++) {
             if(!clusters[i]._geometry) continue;
 
             var dx = (clusters[i]._geometry.destx - clusters[i]._geometry.origx) * delta.x;
             var dy = (clusters[i]._geometry.desty - clusters[i]._geometry.origy) * delta.y;
-                    
-            clusters[i].geometry.x = clusters[i]._geometry.origx + dx;
-            clusters[i].geometry.y = clusters[i]._geometry.origy + dy; 
+
+            // added test for instance when clusters[i].geometry is null
+            if (clusters[i].hasOwnProperty("geometry") && clusters[i].geometry != null) {
+                clusters[i].geometry.x = clusters[i]._geometry.origx + dx;
+                clusters[i].geometry.y = clusters[i]._geometry.origy + dy;
+            }
+            else{
+                clusters[i].geometry = new OpenLayers.Geometry();
+                clusters[i].geometry.x = clusters[i]._geometry.origx + dx;
+                clusters[i].geometry.y = clusters[i]._geometry.origy + dy;
+            }
         }
         this.layer.redraw();
-    },    
-    
+    },
+
     /**
      * Method: shouldCluster
      * Determine whether to include a feature in a given cluster.
@@ -380,5 +396,5 @@ OpenLayers.Strategy.AnimatedCluster = OpenLayers.Class(OpenLayers.Strategy.Clust
     },
 
 
-    CLASS_NAME: "OpenLayers.Strategy.AnimatedCluster" 
+    CLASS_NAME: "OpenLayers.Strategy.AnimatedCluster"
 });

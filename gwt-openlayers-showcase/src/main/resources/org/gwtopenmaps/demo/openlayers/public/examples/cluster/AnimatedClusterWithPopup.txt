@@ -16,22 +16,13 @@
  */
 package org.gwtopenmaps.demo.openlayers.client.examples.cluster;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Random;
+import com.google.gwt.user.client.ui.HTML;
 import org.gwtopenmaps.demo.openlayers.client.InfoPanel;
 import org.gwtopenmaps.demo.openlayers.client.basic.AbstractExample;
 import org.gwtopenmaps.demo.openlayers.client.components.store.ShowcaseExampleStore;
-import org.gwtopenmaps.openlayers.client.LonLat;
-import org.gwtopenmaps.openlayers.client.Map;
-import org.gwtopenmaps.openlayers.client.MapOptions;
-import org.gwtopenmaps.openlayers.client.MapWidget;
-import org.gwtopenmaps.openlayers.client.OpenLayers;
-import org.gwtopenmaps.openlayers.client.Projection;
-import org.gwtopenmaps.openlayers.client.Style;
-import org.gwtopenmaps.openlayers.client.StyleMap;
+import org.gwtopenmaps.openlayers.client.*;
 import org.gwtopenmaps.openlayers.client.control.LayerSwitcher;
 import org.gwtopenmaps.openlayers.client.control.OverviewMap;
 import org.gwtopenmaps.openlayers.client.control.ScaleLine;
@@ -41,12 +32,7 @@ import org.gwtopenmaps.openlayers.client.feature.VectorFeature;
 import org.gwtopenmaps.openlayers.client.filter.ComparisonFilter;
 import org.gwtopenmaps.openlayers.client.filter.ComparisonFilter.Types;
 import org.gwtopenmaps.openlayers.client.geometry.Point;
-import org.gwtopenmaps.openlayers.client.layer.TransitionEffect;
-import org.gwtopenmaps.openlayers.client.layer.Vector;
-import org.gwtopenmaps.openlayers.client.layer.VectorOptions;
-import org.gwtopenmaps.openlayers.client.layer.WMS;
-import org.gwtopenmaps.openlayers.client.layer.WMSOptions;
-import org.gwtopenmaps.openlayers.client.layer.WMSParams;
+import org.gwtopenmaps.openlayers.client.layer.*;
 import org.gwtopenmaps.openlayers.client.popup.FramedCloud;
 import org.gwtopenmaps.openlayers.client.popup.Popup;
 import org.gwtopenmaps.openlayers.client.strategy.AnimatedClusterStrategy;
@@ -56,9 +42,9 @@ import org.gwtopenmaps.openlayers.client.style.Rule;
 import org.gwtopenmaps.openlayers.client.style.SymbolizerPoint;
 import org.gwtopenmaps.openlayers.client.util.Attributes;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.Random;
-import com.google.gwt.user.client.ui.HTML;
+import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Displays the usage of the Cluster Strategy.
@@ -199,7 +185,7 @@ public class AnimatedClusterWithPopup extends AbstractExample
         { "Canvas", "SVG" });
         Vector vectorLayer = new Vector("Clusters", vectorOptions);
         animatedClusterStrategy.setDistance(20);
-        animatedClusterStrategy.setThreshold(10);
+        animatedClusterStrategy.setThreshold(2);
 
         VectorFeature[] features = new VectorFeature[points.size()];
         for (int i = 0; i < points.size(); i++)

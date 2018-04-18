@@ -16,6 +16,8 @@
  */
 package org.gwtopenmaps.openlayers.client.strategy;
 
+import org.gwtopenmaps.openlayers.client.feature.Feature;
+import org.gwtopenmaps.openlayers.client.util.JObjectArray;
 import org.gwtopenmaps.openlayers.client.util.JSObject;
 
 /**
@@ -72,9 +74,15 @@ public class SaveStrategy extends Strategy {
     /**
      * Tell the layer protocol which features should be saved
      *
-     * @param array array of VectorFeatures
+     * @param features array of features
      */
-    public void save(JSObject array) {
-        SaveStrategyImpl.save(this.getJSObject(), array);
+    public void save(Feature[] features) {
+        JSObject[] jsObjects = new JSObject[features.length];
+        for (int i = 0; i < features.length; i++) {
+            jsObjects[i] = features[i].getJSObject();
+        }
+
+        JObjectArray array = new JObjectArray(jsObjects);
+        SaveStrategyImpl.save(this.getJSObject(), array.getJSObject());
     }
 }

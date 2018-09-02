@@ -180,6 +180,10 @@ class MapImpl {
      return map.getExtent();
      }-*/;
 
+    public static native boolean getFractionalZoom(JSObject map)/*-{
+     return map.fractionalZoom;
+     }-*/;
+
     public static native JSObject getMaxExtent(JSObject map)/*-{
      return map.getMaxExtent();
      }-*/;

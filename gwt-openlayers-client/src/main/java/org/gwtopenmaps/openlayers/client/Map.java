@@ -432,8 +432,8 @@ public class Map extends OpenLayersEObjectWrapper {
         return MapImpl.getMaxResolution(getJSObject());
     }
 
-    public double getResolutionForZoom() {
-        return getJSObject().getPropertyAsDouble("fractionalZoom");
+    public boolean getFractionalZoom(){
+        return MapImpl.getFractionalZoom(getJSObject());
     }
 
     public String getCurrentUnits() {

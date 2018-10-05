@@ -428,6 +428,10 @@ public class Map extends OpenLayersEObjectWrapper {
         return new Size(MapImpl.getSize(getJSObject()));
     }
 
+    public void setMaxResolution(double res) {
+    	getJSObject().setProperty("maxResolution", res);
+    }
+    
     public double getMaxResolution() {
         return MapImpl.getMaxResolution(getJSObject());
     }

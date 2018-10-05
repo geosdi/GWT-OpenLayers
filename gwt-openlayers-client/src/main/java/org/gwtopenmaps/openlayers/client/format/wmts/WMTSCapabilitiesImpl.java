@@ -39,5 +39,16 @@ class WMTSCapabilitiesImpl {
     public static native JSObject createLayer(JSObject self, JSObject capabilities, JSObject options)/*-{
      return self.createLayer(capabilities, options);
      }-*/;
+    
+    public static native String[] createMatrixIds(JSObject self, JSObject capabilities, String tileMatrixSet)/*-{
+    	var matrixIds = [];                   
+        var numOfTileMatrixSet = capabilities.contents.tileMatrixSets[tileMatrixSet].matrixIds.length;
+  
+        for (var i=0; i<numOfTileMatrixSet; ++i) {                   
+			matrixIds[i] = capabilities.contents.tileMatrixSets[tileMatrixSet].matrixIds[i].identifier;
+        }
+                   
+		return matrixIds;
+    }-*/;
 
 }

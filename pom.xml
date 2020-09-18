@@ -296,7 +296,6 @@
         </plugins>
     </reporting>
 
-
     <build>
         <pluginManagement>
             <plugins>

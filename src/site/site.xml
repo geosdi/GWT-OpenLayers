@@ -33,8 +33,8 @@ under the License.
   <publishDate position="left"/>
   <body>
     <head>
-    	<meta name="description" content="GWT OpenLayers is an opensource GWT wrapper for the great openlayers project"/>
-    	<meta name="keywords" content="GWT, OpenLayers, GWT-Openlayers, OpenLayers, WMS, WFS, Maps, Bing"/>
+    	<!--meta name="description" content="GWT OpenLayers is an opensource GWT wrapper for the great openlayers project"/>
+    	<meta name="keywords" content="GWT, OpenLayers, GWT-Openlayers, OpenLayers, WMS, WFS, Maps, Bing"/-->
     </head>
   	<links>
   		<item name="Client Javadocs" href="./apidocs/index.html"/>
@@ -53,6 +53,6 @@ under the License.
       <item name="Developer Reference" href="developer-reference.html"/>
     </menu>
     <menu ref="reports"/>
-    <footer><a target="_BLANK" href="http://www.geosdi.org">Hosted by geoSDI</a></footer>
+    <!--footer><a target="_BLANK" href="http://www.geosdi.org">Hosted by geoSDI</a></footer-->
   </body>
 </project>

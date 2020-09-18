@@ -185,7 +185,7 @@ public class AnimatedClusterWithPopup extends AbstractExample
         { "Canvas", "SVG" });
         Vector vectorLayer = new Vector("Clusters", vectorOptions);
         animatedClusterStrategy.setDistance(20);
-        animatedClusterStrategy.setThreshold(2);
+        animatedClusterStrategy.setThreshold(10);
 
         VectorFeature[] features = new VectorFeature[points.size()];
         for (int i = 0; i < points.size(); i++)

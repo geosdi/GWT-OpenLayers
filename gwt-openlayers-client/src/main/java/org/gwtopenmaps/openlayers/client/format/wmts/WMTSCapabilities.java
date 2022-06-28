@@ -78,6 +78,10 @@ public class WMTSCapabilities extends OpenLayersObjectWrapper {
         JSObject result = WMTSCapabilitiesImpl.createLayer(getJSObject(), capabilities, options.getJSObject());
         return WMTS.narrowToLayer(result);
     }
+    
+    public String[] createMatrixIds(JSObject capabilities, String tileMatrixSet){
+    	return WMTSCapabilitiesImpl.createMatrixIds(getJSObject(), capabilities, tileMatrixSet);
+    }
 
     public static WMTSCapabilities narrowToWMTSCapabilities(JSObject element) {
         return (element == null) ? null : new WMTSCapabilities(element);

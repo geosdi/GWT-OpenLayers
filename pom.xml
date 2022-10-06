@@ -162,20 +162,28 @@
         <module>gwt-openlayers-showcase</module>
     </modules>
     <distributionManagement>
+        <!--.................................. -->
+        <!-- geoSDI Repository -->
+        <!--.................................. -->
         <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <id>geosdi-realese</id>
+            <name>repo.geosdi.org-releases</name>
+            <url>https://repo.geosdi.org/artifactory/libs-release-local</url>
         </repository>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <site>
-            <id>www.gwtopenlayers.org</id>
-            <url>scp://www.gwtopenlayers.org/home/web/gwt-ol-site</url>
-        </site>
+<!--        <repository>-->
+<!--            <id>sonatype-nexus-staging</id>-->
+<!--            <name>Nexus Release Repository</name>-->
+<!--            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>sonatype-nexus-snapshots</id>-->
+<!--            <name>Sonatype Nexus Snapshots</name>-->
+<!--            <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+<!--        </snapshotRepository>-->
+<!--        <site>-->
+<!--            <id>www.gwtopenlayers.org</id>-->
+<!--            <url>scp://www.gwtopenlayers.org/home/web/gwt-ol-site</url>-->
+<!--        </site>-->
     </distributionManagement>
     <profiles>
         <profile>

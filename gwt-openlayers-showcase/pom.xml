@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.gwtopenmaps.openlayers</groupId>
         <artifactId>gwt-openlayers</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.2-SNAPSHOT</version>
     </parent>
     
     <artifactId>gwt-openlayers-showcase</artifactId>
@@ -13,7 +13,7 @@
     
     <dependencies>
         <dependency>
-            <groupId>com.google.gwt</groupId>
+            <groupId>org.gwtproject</groupId>
             <artifactId>gwt-user</artifactId>
         </dependency>
         <dependency>

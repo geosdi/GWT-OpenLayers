@@ -4,24 +4,22 @@
     <parent>
         <artifactId>gwt-openlayers</artifactId>
         <groupId>org.gwtopenmaps.openlayers</groupId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.3-SNAPSHOT</version>
     </parent>
 
     <groupId>org.gwtopenmaps.openlayers</groupId>
     <artifactId>gwt-openlayers-cas-server</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>gwt-openlayers-cas-server</name>
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <type>jar</type>
-            <scope>compile</scope>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
         </dependency>
-        
+
         <!-- CAS SUPPORT -->
         <dependency>
             <groupId>org.jasig.cas.client</groupId>

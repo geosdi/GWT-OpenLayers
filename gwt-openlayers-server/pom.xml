@@ -3,18 +3,16 @@
     <parent>
         <artifactId>gwt-openlayers</artifactId>
         <groupId>org.gwtopenmaps.openlayers</groupId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.3-SNAPSHOT</version>
     </parent>
     
     <artifactId>gwt-openlayers-server</artifactId>
     <name>${project.artifactId}</name>
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-            <type>jar</type>
-            <scope>compile</scope>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
   

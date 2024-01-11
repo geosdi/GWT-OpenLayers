@@ -138,7 +138,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>${gwt.version}</version>
+                <version>${gwt-plugin.version}</version>
                 <configuration>
                     <inplace>true</inplace>
                     <module>org.gwtopenmaps.demo.openlayers.GwtOpenLayersShowcase</module>
@@ -191,12 +191,12 @@
                         <id>remove-build-files</id>
                         <phase>clean</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <delete dir="war/WEB-INF/lib" />
                                 <delete dir="war/gwt_ol_showcase" />
                                 <delete dir="war/WEB-INF/deploy" />
                                 <delete dir="gwt-unitCache" />
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>

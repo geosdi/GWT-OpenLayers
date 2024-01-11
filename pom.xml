@@ -127,7 +127,8 @@
         </notifiers>
     </ciManagement>
     <properties>
-        <gwt.version>2.10.0</gwt.version>
+        <gwt.version>2.10.1</gwt.version>
+        <gwt-plugin.version>2.10.0</gwt-plugin.version>
         <slf4j-version>1.7.5</slf4j-version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -141,7 +142,7 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.google.gwt</groupId>
+                <groupId>org.gwtproject</groupId>
                 <artifactId>gwt</artifactId>
                 <version>${gwt.version}</version>
                 <type>pom</type>

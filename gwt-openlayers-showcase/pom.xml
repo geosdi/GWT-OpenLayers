@@ -211,12 +211,12 @@
                         <id>remove-build-files</id>
                         <phase>clean</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <delete dir="war/WEB-INF/lib" />
                                 <delete dir="war/gwt_ol_showcase" />
                                 <delete dir="war/WEB-INF/deploy" />
                                 <delete dir="gwt-unitCache" />
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>

@@ -128,7 +128,6 @@
     </ciManagement>
     <properties>
         <geoplatform-version>2.1-SNAPSHOT</geoplatform-version>
-        <gwt.version>2.11.0-jakarta-SNAPSHOT</gwt.version>
         <slf4j-version>2.0.5</slf4j-version>
         <!-- properties with no dots for velocity template filters -->
         <projectGroupId>${project.groupId}</projectGroupId>

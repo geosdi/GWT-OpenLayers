@@ -31,7 +31,7 @@
             scm:git:https://github.com/geosdi/GWT-OpenLayers.git
         </developerConnection>
         <url>https://github.com/geosdi/GWT-OpenLayers.git</url>
-        <tag>1.2.0</tag>
+        <tag>1.3.0</tag>
     </scm>
     <issueManagement>
         <system>trac</system>

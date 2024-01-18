@@ -108,8 +108,8 @@
                 <version>2.3.2</version>
                 <configuration>
                     <encoding>utf8</encoding>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
             
@@ -147,7 +147,7 @@
                     <disableCastChecking>true</disableCastChecking>
                     <disableClassMetadata>true</disableClassMetadata>
                     <hostedWebapp>${basedir}/war</hostedWebapp>
-                    <sourceLevel>1.8</sourceLevel>
+                    <sourceLevel>11</sourceLevel>
                     <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                 </configuration>
                 <executions>

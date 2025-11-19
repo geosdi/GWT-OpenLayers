@@ -50,6 +50,16 @@
                 <enabled>true</enabled>
             </releases>
         </pluginRepository>
+        <pluginRepository>
+            <id>geosdi-realese</id>
+            <url>https://repo.geosdi.org/repository/geosdi-releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
     </pluginRepositories>
 
     <developers>
@@ -191,7 +201,7 @@
         <repository>
             <id>geosdi-realese</id>
             <name>repo.geosdi.org-releases</name>
-            <url>https://repo.geosdi.org/artifactory/libs-release-local</url>
+            <url>https://repo.geosdi.org/repository/geosdi-releases/</url>
         </repository>
 <!--        <repository>-->
 <!--            <id>sonatype-nexus-staging</id>-->

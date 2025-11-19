@@ -52,7 +52,7 @@
         </pluginRepository>
         <pluginRepository>
             <id>geosdi-realese</id>
-            <url>https://repo.geosdi.org/repository/geosdi-releases/</url>
+            <url>https://repo.geosdi.org/repository/geosdi-releases</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -203,6 +203,11 @@
             <name>repo.geosdi.org-releases</name>
             <url>https://repo.geosdi.org/repository/geosdi-releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>geosdi-snapshots</id>
+            <name>repo.geosdi.org-snapshots</name>
+            <url>https://repo.geosdi.org/repository/geosdi-snapshots/</url>
+        </snapshotRepository>
 <!--        <repository>-->
 <!--            <id>sonatype-nexus-staging</id>-->
 <!--            <name>Nexus Release Repository</name>-->

@@ -216,6 +216,7 @@
                                 <delete dir="war/gwt_ol_showcase" />
                                 <delete dir="war/WEB-INF/deploy" />
                                 <delete dir="gwt-unitCache" />
+                                <delete dir="target" />
                             </target>
                         </configuration>
                         <goals>
